@@ -10,6 +10,7 @@ export const locale = {
         settingsButtonMemeSettings: "Meme Generation",
         settingsButtonDataRetentionSettings: "Data Retention",
         settingsButtonPremiumSettings: "Premium",
+        settingsButtonNewsSettings: "News feed",
         settingsButtonBetaSettings: "Beta Features",
 
         settingsMemesTitle: "Meme Generation",
@@ -233,7 +234,15 @@ export const locale = {
         settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Почему тебе нравится этот фильм?",
         settingsMemesTemplatesOptionHomerHidingTitle: "Гомер прячется",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб счастлив",
-
+        settingsMemesTemplatesOptionSupermanTitle: "Супермен",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Пытается заснуть в 7 утра",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "Объявление репортера",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Последняя недостающая часть",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Мужчина смотрит вверх в ужасе",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Мужчина улыбается за жалюзи",
+        settingsMemesTemplatesOptionDissapointedTitle: "Разочарован",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Корова смотрит в океан",
 
         settingsFooterDisabled: "🔴 Обучение **отключено** в этом канале!",
         settingsFooterNotEnoughContext: "Сообщений в памяти: **{{amount}}/30**  {{progressBar}}",
@@ -242,6 +251,7 @@ export const locale = {
         settingsButtonMemeSettings: "Мемы в чате",
         settingsButtonDataRetentionSettings: "Хранение данных",
         settingsButtonPremiumSettings: "Премиум",
+        settingsButtonNewsSettings: "Новостная лента",
         settingsButtonBetaSettings: "Бета функции",
 
         settingsDataRetentionTitle: "Хранение данных",
@@ -280,7 +290,7 @@ export const locale = {
         settingsBetaEngineV2Description: "Если вы хотите, чтобы мемы имели какой-то смысл то это тот движок, который вам нужен.",
 
         settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
-        settingsBetaEngineV2QwenDescription: "Использует локальную модель Qwen для преобразования текста в мемы. Медленнее, но более приватно.",
+        settingsBetaEngineV2QwenDescription: "Использует локальную модель Qwen для преобразования текста в мемы с логикой. Медленнее, но более приватно.",
 
         settingsStatusEnabled: "🎉 Бот готов!",
         settingsStatusDisabled: "🔴 Бот **отключен** в этом канале!",
@@ -408,6 +418,15 @@ export const locale = {
         settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Waarom vind je deze film leuk?",
         settingsMemesTemplatesOptionHomerHidingTitle: "Homer hiding",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob blij",
+        settingsMemesTemplatesOptionSupermanTitle: "Superman",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Proberen te slapen om 7 uur 's ochtends",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "Nieuwsverslaggever aankondiging",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Laatste ontbrekende stuk",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Man kijkt omhoog in horror",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Man glimlacht achter jaloezieën",
+        settingsMemesTemplatesOptionDissapointedTitle: "Teleurgesteld",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Koe kijkt naar de oceaan",
 
         settingsFooterDisabled: "🔴 Training is **uitgeschakeld** in dit kanaal!",
         settingsFooterNotEnoughContext: "Berichten in geheugen: **{{amount}}/30**  {{progressBar}}",
@@ -416,6 +435,7 @@ export const locale = {
         settingsButtonMemeSettings: "Meme Generatie",
         settingsButtonDataRetentionSettings: "Gegevensbewaring",
         settingsButtonPremiumSettings: "Premium",
+        settingsButtonNewsSettings: "Nieuws feed",
 
         settingsButtonBetaSettings: "Bètafuncties",
 
@@ -432,7 +452,7 @@ export const locale = {
         settingsBetaEngineV2Description: "Als je wilt dat memes logisch zijn, dan dit is de engine die je wilt gebruiken.",
 
         settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM's",
-        settingsBetaEngineV2QwenDescription: "Dezelfde logica als v2-alpha, maar langzamer en meer privacy-vriendelijk.",
+        settingsBetaEngineV2QwenDescription: "Gebruikt zelf-gehoste Qwen model om tekst te transformeren voor memes met logica. Langzamer, maar privacy vriendelijk.",
 
         settingsDataRetentionTitle: "Gegevensbewaring",
         settingsDataRetentionDescription: "Je kunt kiezen hoe lang de bot gegevens met betrekking tot dit kanaal bewaart. Als je alle gegevens wilt wissen, kun je dat hier ook doen.",
@@ -584,6 +604,15 @@ export const locale = {
         settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Чому тобі подобається цей фільм?",
         settingsMemesTemplatesOptionHomerHidingTitle: "Гомер ховається",
         settingsMemesTemplatesOptionSpongebobHappyTitle: "Губка Боб щасливий",
+        settingsMemesTemplatesOptionSupermanTitle: "Супермен",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Намагається заснути о 7 ранку",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "Оголошення репортера новин",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Остання відсутня частина",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Чоловік дивиться вгору в жаху",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Чоловік усміхається за жалюзі",
+        settingsMemesTemplatesOptionDissapointedTitle: "Розчарований",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Корова дивиться в океан",
 
         settingsButtonBetaSettings: "Бета-функції",
 
@@ -600,7 +629,7 @@ export const locale = {
         settingsBetaEngineV2Description: "Якщо ви хочете, щоб меми мали сенс і реальну логіку, це той двіжок, який вам потрібен.",
 
         settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - LLM",
-        settingsBetaEngineV2QwenDescription: "Те саме, що і v2-alpha, але використовує локальну модель Qwen 3. Повільніший, але більш приватний.",
+        settingsBetaEngineV2QwenDescription: "Використовує локальну модель Qwen для перетворення тексту в меми з логікою. Повільніше, але більш приватно.",
 
         settingsFooterDisabled: "🔴 Навчання **вимкнено** у цьому каналі!",
         settingsFooterNotEnoughContext: "Повідомлень у пам'яті: **{{amount}}/30**  {{progressBar}}",
@@ -609,6 +638,7 @@ export const locale = {
         settingsButtonMemeSettings: "Меми в чаті",
         settingsButtonDataRetentionSettings: "Зберігання даних",
         settingsButtonPremiumSettings: "Преміум",
+        settingsButtonNewsSettings: "Стрічка новин",
         enableDescriptionReady: "Налаштування завершено! Бот навчається на нових повідомленнях і почне генерувати меми, як тільки в його пам'яті буде ~30 повідомлень. Ви можете змінити налаштування в меню нижче.",
         enableMessagesInMemory: "Повідомлень у пам'яті: **{{amount}}/30**",
         enableMessagesInMemoryEnough: "Повідомлень у пам'яті: **{{amount}}**",
@@ -881,5 +911,373 @@ export const locale = {
         no: "Nie",
 
         errorText: "Wystąpił błąd podczas generowania mema. Spróbuj ponownie później."
+    },
+    german: {
+        settingsTitle: "Einstellungen",
+        settingsDescription: "Hier kannst du einstellen, wie sich der Bot in diesem Kanal verhält.",
+        settingsFooterDisabled: "🔴 Training ist **deaktiviert** in diesem Kanal!",
+        settingsFooterNotEnoughContext: "Nachrichten im Speicher: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠  Genug Kontext gesammelt! **{{amount}} Nachrichten**",
+
+        settingsButtonGeneralSettings: "Allgemein",
+        settingsButtonMemeSettings: "Memes",
+        settingsButtonDataRetentionSettings: "Daten",
+        settingsButtonPremiumSettings: "Premium",
+        settingsButtonNewsSettings: "News",
+        settingsButtonBetaSettings: "Beta",
+
+        settingsMemesTitle: "Memes",
+        settingsMemesDescription: "Hier kannst du einstellen, wie oft und welche Memes der Bot automatisch sendet.",
+        settingsMemesFrequencyTitle: "Häufigkeit",
+        settingsMemesFrequencyDescription: "Wie oft soll der Bot automatisch Memes senden?",
+
+        settingsMemesFrequencyOptionNeverTitle: "Nie",
+        settingsMemesFrequencyOptionNeverDescription: "Keine Memes, außer auf Befehl",
+
+        settingsMemesFrequencyOptionHardlyEverTitle: "Sehr selten",
+        settingsMemesFrequencyOptionHardlyEverDescription: "Einmal alle ~100 Nachrichten",
+
+        settingsMemesFrequencyOptionRarelyTitle: "Selten",
+        settingsMemesFrequencyOptionRarelyDescription: "Einmal alle ~50 Nachrichten",
+
+        settingsMemesFrequencyOptionSometimesTitle: "Manchmal",
+        settingsMemesFrequencyOptionSometimesDescription: "Einmal alle ~20 Nachrichten (empfohlen)",
+
+        settingsMemesFrequencyOptionOftenTitle: "Oft",
+        settingsMemesFrequencyOptionOftenDescription: "Einmal alle ~10 Nachrichten",
+
+        settingsMemesTemplatesTitle: "Welche Memes sollen gesendet werden?",
+        settingsMemesTemplatesDescription: "Wähle aus, welche Memes du sehen möchtest. Du kannst auch welche ausschalten, wenn sie dir nicht gefallen.",
+
+        settingsMemesTemplatesOptionWojakPointingTitle: "Wojak zeigt",
+        settingsMemesTemplatesOptionUncannyTitle: "Uncanny",
+        settingsMemesTemplatesOptionSteppedInShitTitle: "In Scheiße getreten",
+        settingsMemesTemplatesOptionSpeechbubbleTitle: "Sprechblase",
+        settingsMemesTemplatesOptionLooksAtPaperAngryTitle: "Schaut wütend auf Papier",
+        settingsMemesTemplatesOptionFancyBearTitle: "Winnie Puuh",
+        settingsMemesTemplatesOptionCycleTitle: "Zyklus",
+        settingsMemesTemplatesOptionGreentextTitle: "Greentext",
+        settingsMemesTemplatesOptionIsThisAPigeonTitle: "Ist das eine Taube?",
+        settingsMemesTemplatesOptionYesChadTitle: "Yes Chad",
+        settingsMemesTemplatesOptionTextingTitle: "Schreibt",
+        settingsMemesTemplatesOptionConnorTitle: "Connor",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Daumen hoch",
+        settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Weint",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Absolutes Kino",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Hahaha",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Politischer Kompass",
+        settingsMemesTemplatesOptionSleepyTitle: "Müde",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Warum magst du diesen Film?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Homer versteckt sich",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob glücklich",
+        settingsMemesTemplatesOptionSupermanTitle: "Superman",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Versucht um 7 Uhr zu schlafen",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "Reporter-Ankündigung",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Letztes fehlendes Teil",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Mann schaut entsetzt hoch",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Mann lächelt hinter Jalousien",
+        settingsMemesTemplatesOptionDissapointedTitle: "Enttäuscht",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Kuh schaut ins Meer",
+
+        settingsDataRetentionTitle: "Datenspeicherung",
+        settingsDataRetentionDescription: "Bestimme, wie lange deine Daten gespeichert werden. Du kannst auch alles löschen.",
+
+        settingsDataRetentionHowLongTitle: "Wie lange sollen die Daten gespeichert werden?",
+        settingsDataRetentionHowLongDescription: "Nach dieser Zeit werden die Nachrichten gelöscht. Mehr Kontext = bessere Memes.",
+
+        settingsDataRetentionHowLongOption2DaysTitle: "2 Tage",
+        settingsDataRetentionHowLongOption2DaysDescription: "Für sehr aktive Kanäle",
+
+        settingsDataRetentionHowLongOption7DaysTitle: "7 Tage",
+        settingsDataRetentionHowLongOption7DaysDescription: "Für aktive Kanäle",
+
+        settingsDataRetentionHowLongOption14DaysTitle: "14 Tage",
+        settingsDataRetentionHowLongOption14DaysDescription: "Für normale Kanäle (empfohlen)",
+
+        settingsDataRetentionHowLongOption30DaysTitle: "30 Tage",
+        settingsDataRetentionHowLongOption30DaysDescription: "Für ruhige Kanäle",
+
+        settingsDataRetentionUserImagesTitle: "Nutzerbilder in Memes verwenden?",
+        settingsDataRetentionUserImagesDescription: "Wenn aktiv, werden manchmal eure Bilder statt Avataren verwendet. Nur Bilder der letzten 24 Stunden. __Kann derzeit nicht deaktiviert werden, wird bald behoben.__",
+
+        settingsBetaTitle: "Beta-Features",
+        settingsBetaDescription: "Diese Features sind noch in der Testphase. Falls du Probleme findest, melde sie bitte im [Support-Server](https://discord.gg/n8DFFcnwDt) oder per E-Mail an [support@jstmemit.com](mailto:support@jstmemit.com).",
+
+        settingsBetaEngineTitle: "Meme-Engine",
+        settingsBetaEngineDescription: "Der Bot wählt normalerweise automatisch die beste Engine für deinen Kanal. Du kannst aber auch selbst wählen. Es gibt drei Engines:\n\n- **v1** - schnell, aber zufällig (Markov-Ketten) **(Empfohlen für Geschwindigkeit)**\n- **v2-alpha** - langsamer, aber klüger (KI) **(Empfohlen für Qualität)**\n- **v2-alpha-qwen** - wie v2-alpha, aber privater. Langsamste Option, aber deine Daten bleiben hier.",
+
+        settingsBetaEngineV1Title: "v1 - Schnell (empfohlen)",
+        settingsBetaEngineV1Description: "Zufällig, aber meist lustig.",
+
+        settingsBetaEngineV2Title: "v2-alpha - Klug (empfohlen)",
+        settingsBetaEngineV2Description: "Wenn Memes Sinn ergeben sollen.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - Privat",
+        settingsBetaEngineV2QwenDescription: "Langsamer, aber deine Daten bleiben privat.",
+
+        settingsFooterChannelId: "Kanal-ID:",
+
+        settingsStatusEnabled: "🎉 Bot ist bereit!",
+        settingsStatusDisabled: "🔴 Training ist **aus**!",
+
+        notEnoughContextTitle: "🤓  Bot sammelt noch Kontext! ",
+        notEnoughContextDescription: "Ich brauche noch mehr Nachrichten von diesem Kanal, um gute Memes zu machen. Schreibt einfach weiter!\n\nNachrichten im Speicher: **{{amount}}/30**",
+
+        noPermissionsTitle: "Keine Berechtigung!",
+        noPermissionsDescription: "Du brauchst **{{permission}}** um das zu machen.\nFrag einen Admin!",
+
+        enableDescription: "Bot ist hier ausgeschaltet! Um deine Privatsphäre zu schützen, muss er erst aktiviert werden. Klick den Button!",
+        enableDescriptionReady: "Fertig! Der Bot lernt jetzt aus euren Nachrichten und macht bald Memes. Einstellungen kannst du unten ändern.",
+        enableMessagesInMemory: "Nachrichten: **{{amount}}/30** ",
+        enableMessagesInMemoryEnough: "Nachrichten: **{{amount}}** ",
+
+        premiumTitle: "Premium",
+        premiumDescription: "Mit Premium unterstützt du die Entwicklung und bekommst **mehr Einstellungen** und **verknüpfte Kanäle**. Alle auf dem Server profitieren, auch wenn nur einer zahlt!\n\n*Falls der Button nicht funktioniert, versuch es im Bot-Profil.*",
+        premiumDescriptionSettingsVariant: "Mit Premium unterstützt du uns und bekommst mehr Features. Alle auf dem Server profitieren, auch wenn nur einer zahlt!",
+        premiumStatusActive: "Premium ist **aktiv**!",
+        premiumStatusInactive: "Premium ist **nicht aktiv**",
+
+        premiumCustomizationTitle: "Mehr Einstellungen",
+        premiumCustomizationDescription: "Mit Premium hast du mehr Kontrolle über das Aussehen und Verhalten in jedem Kanal.",
+
+        premiumSetOwnWatermarkTitle: "Eigenes Wasserzeichen",
+        premiumSetOwnWatermarkDescription: "Normalerweise haben Memes kein Wasserzeichen. Mit Premium kannst du euer Server-Logo hinzufügen.",
+        premiumSetOwnWatermarkActive: "✔️  Wasserzeichen ist **gesetzt**!",
+        premiumSetOwnWatermarkInactive: "❌  Kein Wasserzeichen",
+
+        premiumLinkChannelsTogetherTitle: "Kanäle verknüpfen",
+        premiumLinkChannelsTogetherDescription: "Verbinde einen Meme-Kanal mit diesem Kanal. Der Bot lernt hier, postet aber dort.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> und <#{{floodchannel}}> sind **verknüpft**!",
+        premiumLinkChannelsTogetherInactive: "❌  Nicht verknüpft",
+        premiumSelectChannelPlaceholder: "🔗  Kanal wählen",
+
+        premiumTurnOffMentionsTitle: "@-Pings in Memes ausschalten",
+        premiumTurnOffMentionsDescription: "Normalerweise kann der Bot Leute in Memes erwähnen. Mit Premium werden Pings durch Namen ersetzt.",
+        premiumTurnOffMentionsActive: "✔️  Pings werden **ersetzt**!",
+        premiumTurnOffMentionsInactive: "❌  Pings werden **nicht ersetzt**",
+
+        surveyDescription: "Hilf uns dabei, den Bot zu verbessern! Dauert nur eine Minute.",
+        surveyProgress: "Frage",
+        surveyCompleted: "Umfrage fertig!",
+        surveyCompletedDescription: "Danke! Dein Feedback hilft uns sehr.",
+        surveyTextResponseTitle: "Deine Antwort",
+        surveyTextResponseLabel: "Feedback",
+        surveySelectOptionsPlaceholder: "Wähle eine oder mehrere...",
+        surveySelectOptionPlaceholder: "Wähle eine...",
+        surveyWriteYourResponse: "✏️ Antwort schreiben",
+        surveyOpenLink: "🔗 Link öffnen",
+
+        btnDisable: "Ausschalten",
+        btnDisableTraining: "Training aus",
+        btnEnable: "Einschalten",
+        btnEnableTraining: "Training an",
+        btnEraseData: "Daten löschen",
+        btnSettings: "Einstellungen",
+        btnPremiumActive: "Premium aktiv!",
+        btnManagePremium: "Premium verwalten",
+        btnLearnMore: "Mehr erfahren",
+        btnTurnOn: "An",
+        btnTurnOff: "Aus",
+        btnLink: "Verknüpfen",
+        btnLinkBelow: "Menü unten nutzen",
+        btnUnlink: "Trennen",
+        btnSetWatermark: "Wasserzeichen setzen",
+        btnRemoveWatermark: "Wasserzeichen entfernen",
+        btnGetPremium: "Premium - $1.99",
+
+        loading: "Lädt...",
+
+        yes: "Ja",
+        no: "Nein",
+
+        errorText: "Fehler beim Erstellen des Memes. Versuch's nochmal!"
+    },
+    french: {
+        settingsTitle: "Paramètres",
+        settingsDescription: "Ici tu peux configurer comment le bot se comporte dans ce canal.",
+        settingsFooterDisabled: "🔴 L'apprentissage est **désactivé** !",
+        settingsFooterNotEnoughContext: "Messages en mémoire: **{{amount}}/30**  {{progressBar}}",
+        settingsFooterReady: "🧠  Assez de contexte! **{{amount}} messages**",
+
+        settingsButtonGeneralSettings: "Général",
+        settingsButtonMemeSettings: "Mèmes",
+        settingsButtonDataRetentionSettings: "Données",
+        settingsButtonPremiumSettings: "Premium",
+        settingsButtonNewsSettings: "News",
+        settingsButtonBetaSettings: "Bêta",
+
+        settingsMemesTitle: "Mèmes",
+        settingsMemesDescription: "Ici tu peux régler à quelle fréquence et quels mèmes le bot envoie automatiquement.",
+        settingsMemesFrequencyTitle: "Fréquence",
+        settingsMemesFrequencyDescription: "À quelle fréquence le bot doit-il envoyer des mèmes automatiquement?",
+
+        settingsMemesFrequencyOptionNeverTitle: "Jamais",
+        settingsMemesFrequencyOptionNeverDescription: "Pas de mèmes, sauf sur commande",
+
+        settingsMemesFrequencyOptionHardlyEverTitle: "Presque jamais",
+        settingsMemesFrequencyOptionHardlyEverDescription: "Une fois tous les ~100 messages",
+
+        settingsMemesFrequencyOptionRarelyTitle: "Rarement",
+        settingsMemesFrequencyOptionRarelyDescription: "Une fois tous les ~50 messages",
+
+        settingsMemesFrequencyOptionSometimesTitle: "Parfois",
+        settingsMemesFrequencyOptionSometimesDescription: "Une fois tous les ~20 messages (recommandé)",
+
+        settingsMemesFrequencyOptionOftenTitle: "Souvent",
+        settingsMemesFrequencyOptionOftenDescription: "Une fois tous les ~10 messages",
+
+        settingsMemesTemplatesTitle: "Quels mèmes envoyer?",
+        settingsMemesTemplatesDescription: "Choisis quels mèmes tu veux voir. Tu peux aussi en désactiver si tu ne les aimes pas.",
+
+        settingsMemesTemplatesOptionWojakPointingTitle: "Wojak qui pointe",
+        settingsMemesTemplatesOptionUncannyTitle: "Uncanny",
+        settingsMemesTemplatesOptionSteppedInShitTitle: "A marché dans la merde",
+        settingsMemesTemplatesOptionSpeechbubbleTitle: "Bulle de dialogue",
+        settingsMemesTemplatesOptionLooksAtPaperAngryTitle: "Regarde le papier énervé",
+        settingsMemesTemplatesOptionFancyBearTitle: "Winnie l'Ourson",
+        settingsMemesTemplatesOptionCycleTitle: "Cycle",
+        settingsMemesTemplatesOptionGreentextTitle: "Greentext",
+        settingsMemesTemplatesOptionIsThisAPigeonTitle: "C'est un pigeon?",
+        settingsMemesTemplatesOptionYesChadTitle: "Yes Chad",
+        settingsMemesTemplatesOptionTextingTitle: "Textos",
+        settingsMemesTemplatesOptionConnorTitle: "Connor",
+        settingsMemesTemplatesOptionBigThumbsUpTitle: "Pouce en l'air",
+        settingsMemesTemplatesOptionBuzzTitle: "Buzz",
+        settingsMemesTemplatesOptionSpongebobTitle: "SpongeBob",
+        settingsMemesTemplatesOptionCryingTitle: "Qui pleure",
+        settingsMemesTemplatesOptionAbsoluteCinemaTitle: "Cinéma absolu",
+        settingsMemesTemplatesOptionLiveReactionTitle: "Live Reaction",
+        settingsMemesTemplatesOptionTf2HahahaTitle: "TF2 Hahaha",
+        settingsMemesTemplatesOptionPoliticalCompassTitle: "Compas politique",
+        settingsMemesTemplatesOptionSleepyTitle: "Endormi",
+        settingsMemesTemplatesOptionWhyDoYouLikeThisMovieTitle: "Pourquoi tu aimes ce film?",
+        settingsMemesTemplatesOptionHomerHidingTitle: "Homer se cache",
+        settingsMemesTemplatesOptionSpongebobHappyTitle: "SpongeBob content",
+        settingsMemesTemplatesOptionSupermanTitle: "Superman",
+        settingsMemesTemplatesOptionStonksTitle: "Stonks",
+        settingsMemesTemplatesOptionSleepyThinkingTitle: "Essaie de dormir à 7h",
+        settingsMemesTemplatesOptionNewsReporterSittingTitle: "Annonce du reporter",
+        settingsMemesTemplatesOptionMissingPieceTitle: "Dernier morceau manquant",
+        settingsMemesTemplatesOptionManLookingUpTitle: "Homme regarde en l'air horrifié",
+        settingsMemesTemplatesOptionManBehindBlindsTitle: "Homme sourit derrière les stores",
+        settingsMemesTemplatesOptionDissapointedTitle: "Déçu",
+        settingsMemesTemplatesOptionCowLookingIntoOceanTitle: "Vache regarde l'océan",
+
+        settingsDataRetentionTitle: "Données",
+        settingsDataRetentionDescription: "Choisis combien de temps tes données sont gardées. Tu peux aussi tout supprimer.",
+
+        settingsDataRetentionHowLongTitle: "Combien de temps garder les données?",
+        settingsDataRetentionHowLongDescription: "Après ce délai, les messages sont supprimés. Plus de contexte = meilleurs mèmes.",
+
+        settingsDataRetentionHowLongOption2DaysTitle: "2 jours",
+        settingsDataRetentionHowLongOption2DaysDescription: "Pour les canaux très actifs",
+
+        settingsDataRetentionHowLongOption7DaysTitle: "7 jours",
+        settingsDataRetentionHowLongOption7DaysDescription: "Pour les canaux actifs",
+
+        settingsDataRetentionHowLongOption14DaysTitle: "14 jours",
+        settingsDataRetentionHowLongOption14DaysDescription: "Pour les canaux normaux (recommandé)",
+
+        settingsDataRetentionHowLongOption30DaysTitle: "30 jours",
+        settingsDataRetentionHowLongOption30DaysDescription: "Pour les canaux calmes",
+
+        settingsDataRetentionUserImagesTitle: "Utiliser vos images dans les mèmes?",
+        settingsDataRetentionUserImagesDescription: "Si activé, parfois vos images seront utilisées au lieu des avatars. Seulement les images des dernières 24h. __Ne peut pas être désactivé pour l'instant, sera corrigé bientôt.__",
+
+        settingsBetaTitle: "Fonctions bêta",
+        settingsBetaDescription: "Ces fonctions sont encore en test. Si tu trouves des bugs, signale-les sur le [serveur de support](https://discord.gg/n8DFFcnwDt) ou par email à [support@jstmemit.com](mailto:support@jstmemit.com).",
+
+        settingsBetaEngineTitle: "Moteur de mèmes",
+        settingsBetaEngineDescription: "Le bot choisit automatiquement le meilleur moteur pour ton canal. Mais tu peux aussi choisir. Il y a trois moteurs:\n\n- **v1** - rapide mais aléatoire **(Recommandé pour la vitesse)**\n- **v2-alpha** - plus lent mais plus intelligent (IA) **(Recommandé pour la qualité)**\n- **v2-alpha-qwen** - comme v2-alpha mais plus privé. Le plus lent, mais tes données restent ici.",
+
+        settingsBetaEngineV1Title: "v1 - Rapide (recommandé)",
+        settingsBetaEngineV1Description: "Aléatoire mais généralement marrant.",
+
+        settingsBetaEngineV2Title: "v2-alpha - Intelligent (recommandé)",
+        settingsBetaEngineV2Description: "Si tu veux que les mèmes aient du sens.",
+
+        settingsBetaEngineV2QwenTitle: "v2-alpha-qwen - Privé",
+        settingsBetaEngineV2QwenDescription: "Plus lent mais tes données restent privées.",
+
+        settingsFooterChannelId: "ID du canal:",
+
+        settingsStatusEnabled: "🎉 Bot prêt!",
+        settingsStatusDisabled: "🔴 Apprentissage **désactivé**!",
+
+        notEnoughContextTitle: "🤓  Le bot collecte encore! ",
+        notEnoughContextDescription: "J'ai besoin de plus de messages de ce canal pour faire de bons mèmes. Continuez à écrire!\n\nMessages en mémoire: **{{amount}}/30**",
+
+        noPermissionsTitle: "Pas la permission!",
+        noPermissionsDescription: "Tu as besoin de **{{permission}}** pour ça.\nDemande à un admin!",
+
+        enableDescription: "Le bot est éteint ici! Pour protéger ta vie privée, il faut d'abord l'activer. Clique le bouton!",
+        enableDescriptionReady: "Fini! Le bot apprend maintenant de vos messages et fera bientôt des mèmes. Tu peux changer les paramètres en dessous.",
+        enableMessagesInMemory: "Messages: **{{amount}}/30** ",
+        enableMessagesInMemoryEnough: "Messages: **{{amount}}** ",
+
+        premiumTitle: "Premium",
+        premiumDescription: "Avec Premium tu nous soutiens et tu obtiens **plus de paramètres** et des **canaux liés**. Tout le monde sur le serveur en profite, même si une seule personne paye!\n\n*Si le bouton ne marche pas, essaie dans le profil du bot.*",
+        premiumDescriptionSettingsVariant: "Avec Premium tu nous soutiens et obtiens plus de fonctions. Tout le monde sur le serveur en profite, même si une seule personne paye!",
+        premiumStatusActive: "Premium **actif**!",
+        premiumStatusInactive: "Premium **pas actif**",
+
+        premiumCustomizationTitle: "Plus de paramètres",
+        premiumCustomizationDescription: "Avec Premium tu as plus de contrôle sur l'apparence et le comportement dans chaque canal.",
+
+        premiumSetOwnWatermarkTitle: "Ton propre filigrane",
+        premiumSetOwnWatermarkDescription: "Normalement les mèmes n'ont pas de filigrane. Avec Premium tu peux ajouter le logo de ton serveur.",
+        premiumSetOwnWatermarkActive: "✔️  Filigrane **défini**!",
+        premiumSetOwnWatermarkInactive: "❌  Pas de filigrane",
+
+        premiumLinkChannelsTogetherTitle: "Lier les canaux",
+        premiumLinkChannelsTogetherDescription: "Connecte un canal à mèmes avec celui-ci. Le bot apprend ici, poste là-bas.",
+        premiumLinkChannelsTogetherActive: "✔️  <#{{thischannel}}> et <#{{floodchannel}}> sont **liés**!",
+        premiumLinkChannelsTogetherInactive: "❌  Pas lié",
+        premiumSelectChannelPlaceholder: "🔗  Choisir un canal",
+
+        premiumTurnOffMentionsTitle: "Enlever les @ dans les mèmes",
+        premiumTurnOffMentionsDescription: "Normalement le bot peut mentionner des gens dans les mèmes. Avec Premium les mentions sont remplacées par les noms.",
+        premiumTurnOffMentionsActive: "✔️  Mentions **remplacées**!",
+        premiumTurnOffMentionsInactive: "❌  Mentions **pas remplacées**",
+
+        surveyDescription: "Aide-nous à améliorer le bot! Ça prend juste une minute.",
+        surveyProgress: "Question",
+        surveyCompleted: "Sondage fini!",
+        surveyCompletedDescription: "Merci! Ton avis nous aide beaucoup.",
+        surveyTextResponseTitle: "Ta réponse",
+        surveyTextResponseLabel: "Commentaire",
+        surveySelectOptionsPlaceholder: "Choisis une ou plusieurs...",
+        surveySelectOptionPlaceholder: "Choisis une...",
+        surveyWriteYourResponse: "✏️ Écrire ta réponse",
+        surveyOpenLink: "🔗 Ouvrir le lien",
+
+        btnDisable: "Désactiver",
+        btnDisableTraining: "Apprentissage off",
+        btnEnable: "Activer",
+        btnEnableTraining: "Apprentissage on",
+        btnEraseData: "Supprimer données",
+        btnSettings: "Paramètres",
+        btnPremiumActive: "Premium actif!",
+        btnManagePremium: "Gérer Premium",
+        btnLearnMore: "En savoir plus",
+        btnTurnOn: "Activer",
+        btnTurnOff: "Désactiver",
+        btnLink: "Lier",
+        btnLinkBelow: "Utilise le menu en bas",
+        btnUnlink: "Délier",
+        btnSetWatermark: "Mettre filigrane",
+        btnRemoveWatermark: "Enlever filigrane",
+        btnGetPremium: "Premium - $1.99",
+
+        loading: "Chargement...",
+
+        yes: "Oui",
+        no: "Non",
+
+        errorText: "Erreur lors de la création du mème. Réessaie!"
     }
 }
