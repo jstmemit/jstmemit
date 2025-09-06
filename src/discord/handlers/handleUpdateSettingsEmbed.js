@@ -7,6 +7,7 @@ import {constructDataSettingsEmbed} from "#src/discord/embeds/settings/construct
 import {createSettingsButtonRow} from "#src/discord/helpers/createSettingsButtons.js";
 import {constructBetaSettingsEmbed} from "#src/discord/embeds/settings/constructBetaSettingsEmbed.js";
 import {log} from "../../../bot.js";
+import {constructNewsSettingsEmbed} from "#src/discord/embeds/settings/constructNewsSettingsEmbed.js";
 
 export const handleUpdateSettingsEmbed = async (interaction, tab) => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
@@ -34,11 +35,10 @@ export const handleUpdateSettingsEmbed = async (interaction, tab) => {
                 buttons = createSettingsButtonRow("data", currentSettings?.language);
                 components = constructDataSettingsEmbed(currentSettings, interaction.channelId, buttons);
                 break;
-            // case "premium":
-            //     buttons = createSettingsButtonRow("premium", currentSettings?.language);
-            //     const hasPremium = await checkPremium(interaction);
-            //     components = constructPremiumSettingsEmbed(currentSettings, interaction.channelId, hasPremium, buttons);
-            //     break;
+            case "news":
+                buttons = createSettingsButtonRow("news", currentSettings?.language);
+                components = constructNewsSettingsEmbed(currentSettings, interaction.channelId, buttons);
+                break;
             case "beta":
                 buttons = createSettingsButtonRow("beta", currentSettings?.language);
                 components = await constructBetaSettingsEmbed(currentSettings, interaction.channelId, buttons)

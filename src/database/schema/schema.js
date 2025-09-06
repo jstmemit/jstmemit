@@ -22,6 +22,7 @@ export const channels = mysqlTable("channels", {
         language: mysqlEnum(['english', 'ukrainian', 'dutch', 'russian', 'polish', 'german', 'french']).notNull(),
         replaceMentions: tinyint("replace_mentions").default(0).notNull(),
         linkedChannel: varchar("linked_channel", {length: 128}),
+        newsChannel: varchar("news_channel", {length: 128}),
         watermarkLogo: tinyint().default(0).notNull(),
         watermarkText: varchar({length: 16}),
     },

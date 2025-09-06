@@ -28,6 +28,7 @@ import {handleSurveyButtonInteraction} from "#src/discord/handlers/handleSurveyB
 import {handleEngineChange} from "#src/discord/handlers/handleEngineChange.js";
 import {voice} from "#src/discord/commands/voice.js";
 import {log} from "../../../../bot.js";
+import {handleNewsChannel} from "#src/discord/handlers/handleNewsChannel.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -232,6 +233,13 @@ export default {
                     case "select-linkchannel":
                         await handleLinkChannel(interaction);
                         await handleUpdateSettingsEmbed(interaction, "meme");
+                        break;
+                }
+
+                switch (customId) {
+                    case "select-newschannel":
+                        await handleNewsChannel(interaction);
+                        await handleUpdateSettingsEmbed(interaction, "news");
                         break;
                 }
             }

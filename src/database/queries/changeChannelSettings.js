@@ -17,7 +17,8 @@ export const changeChannelSettings = async (channelSettings) => {
         language,
         replaceMentions,
         watermarkLogo,
-        linkedChannel
+        linkedChannel,
+        newsChannel
     } = channelSettings;
 
     try {
@@ -34,7 +35,8 @@ export const changeChannelSettings = async (channelSettings) => {
                     language,
                     replaceMentions,
                     watermarkLogo,
-                    linkedChannel
+                    linkedChannel,
+                    newsChannel
                 })
                 .onDuplicateKeyUpdate({
                     set: {
@@ -46,7 +48,8 @@ export const changeChannelSettings = async (channelSettings) => {
                         language,
                         replaceMentions,
                         watermarkLogo,
-                        linkedChannel
+                        linkedChannel,
+                        newsChannel
                     }
                 });
         });

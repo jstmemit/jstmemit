@@ -4,7 +4,7 @@ import {handlePermissionCheck} from "./handlePermissionCheck.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
 import {log} from "../../../bot.js";
 
-export const handleLinkChannel = async interaction => {
+export const handleNewsChannel = async interaction => {
     if (!await handlePermissionCheck(interaction, '32', 'Manage Server')) {
         return;
     }
@@ -26,14 +26,14 @@ export const handleLinkChannel = async interaction => {
         const newSettings = {
             ...currentSettings,
             channelId,
-            linkedChannel: linked_channelId
+            newsChannel: linked_channelId
         };
 
         await analytics.capture({
             distinctId: interaction.channelId,
             event: 'settings_changed',
             properties: {
-                LinkedChannel: newSettings.linkedChannel,
+                newsChannel: newSettings.newsChannel,
             },
         })
 

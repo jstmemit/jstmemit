@@ -7,11 +7,14 @@ export const locale = {
         settingsFooterReady: "🧠  Enough context collected! **{{amount}} messages**",
 
         settingsButtonGeneralSettings: "General",
-        settingsButtonMemeSettings: "Meme Generation",
-        settingsButtonDataRetentionSettings: "Data Retention",
+        settingsButtonMemeSettings: "Memes",
+        settingsButtonDataRetentionSettings: "Data",
         settingsButtonPremiumSettings: "Premium",
-        settingsButtonNewsSettings: "News feed",
-        settingsButtonBetaSettings: "Beta Features",
+        settingsButtonNewsSettings: "AI News",
+        settingsButtonBetaSettings: "Beta",
+
+        settingsNewsTitle: "AI News",
+        settingsNewsDescription: "Choose a channel where bot will sometimes post news based on context of this channel. Ideally this should be a separate channel, but you can also choose the same channel if you want to.",
 
         settingsMemesTitle: "Meme Generation",
         settingsMemesDescription: "This section contains options related to random memes in the chat. You can control how often bot is going to send memes and also what memes do you want to see.",
