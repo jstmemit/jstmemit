@@ -167,7 +167,7 @@ export default {
 
                 if (customId.startsWith("unlink-")) {
                     await handleLinkChannel(interaction);
-                    await handleUpdatePremiumEmbed(interaction);
+                    await handleUpdateSettingsEmbed(interaction, "meme");
                 }
 
                 if (id === 'like' || id === 'dislike') {
@@ -231,7 +231,7 @@ export default {
                 switch (customId) {
                     case "select-linkchannel":
                         await handleLinkChannel(interaction);
-                        await handleUpdatePremiumEmbed(interaction);
+                        await handleUpdateSettingsEmbed(interaction, "meme");
                         break;
                 }
             }

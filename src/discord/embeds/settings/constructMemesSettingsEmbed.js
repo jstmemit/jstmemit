@@ -2,8 +2,11 @@
 
 import {
     ActionRowBuilder,
+    ButtonBuilder,
     ButtonStyle,
+    ChannelSelectMenuBuilder,
     ContainerBuilder,
+    SectionBuilder,
     SelectMenuOptionBuilder,
     SeparatorBuilder,
     SeparatorSpacingSize,
@@ -16,6 +19,11 @@ import {settings} from "#config/settings.js";
 export const constructMemesSettingsEmbed = (currentSettings, channelId, buttons) => {
 
     const language = currentSettings?.language || "english";
+    let anyChannelLinked = false;
+
+    if (currentSettings.linkedChannel) {
+        anyChannelLinked = true;
+    }
 
     const frequency = [
         {
@@ -232,66 +240,107 @@ export const constructMemesSettingsEmbed = (currentSettings, channelId, buttons)
         }
     }
 
+    let container = new ContainerBuilder()
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.meme?.name}  ${(t("settingsMemesTitle", language))}`),
+        )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(t("settingsMemesDescription", language)),
+        )
+        .addSeparatorComponents(
+            new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+        )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(`### ${(t("settingsMemesFrequencyTitle", language))}`),
+        )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(t("settingsMemesFrequencyDescription", language)),
+        )
+        .addActionRowComponents(
+            new ActionRowBuilder().addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId("select-frequency")
+                    .addOptions(
+                        frequency.map((option) =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.label)
+                                .setValue(option.value)
+                                .setDefault(currentSettings.frequency === parseInt(option.value))
+                                .setEmoji({name: option.emoji})
+                                .setDescription(option.description || "")
+                        )
+                    )
+            )
+        )
+        // .addSeparatorComponents(
+        //     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+        // )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(`### ${(t("premiumLinkChannelsTogetherTitle", language))}`),
+        )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(t("premiumLinkChannelsTogetherDescription", language))
+        )
+        .addSectionComponents(
+            new SectionBuilder()
+                .setButtonAccessory(
+                    new ButtonBuilder()
+                        .setStyle(anyChannelLinked ? ButtonStyle.Danger : ButtonStyle.Secondary)
+                        .setLabel(`${anyChannelLinked ? (t("btnUnlink", language)) : (t("btnLinkBelow", language))}`)
+                        .setCustomId(`${anyChannelLinked ? "unlink" : "link"}-${channelId}`)
+                        .setDisabled(anyChannelLinked ? false : true)
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        anyChannelLinked
+                            ? t("premiumLinkChannelsTogetherActive", language, {
+                                thischannel: channelId,
+                                floodchannel: currentSettings.linkedChannel
+                            })
+                            : t("premiumLinkChannelsTogetherInactive", language)
+                    ),
+                ),
+        );
+
+    if (!anyChannelLinked) {
+        container = container.addActionRowComponents(
+            new ActionRowBuilder()
+                .addComponents(
+                    new ChannelSelectMenuBuilder()
+                        .setCustomId(`select-linkchannel`)
+                        .setPlaceholder(t("premiumSelectChannelPlaceholder", language))
+                        .setChannelTypes([0, 5])
+                )
+        );
+    }
+
+    container = container
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(`### ${(t("settingsMemesTemplatesTitle", language))}`),
+        )
+        .addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(t("settingsMemesTemplatesDescription", language))
+        )
+        .addActionRowComponents(
+            new ActionRowBuilder().addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId("select-memetemplates")
+                    .setMaxValues(memeTemplates.length)
+                    .setMinValues(1)
+                    .addOptions(
+                        memeTemplates.map((template) =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(template.label)
+                                .setValue(template.value)
+                                .setDefault(currentSettings.enabledRandomMemes?.includes(template.value) ?? true)
+                                .setEmoji(template.emoji)
+                        )
+                    )
+            )
+        );
+
     return [
-        // memes in the chat
-        new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${settings?.emojis?.settings?.meme?.name}  ${(t("settingsMemesTitle", language))}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("settingsMemesDescription", language)),
-            )
-            .addSeparatorComponents(
-                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${(t("settingsMemesFrequencyTitle", language))}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("settingsMemesFrequencyDescription", language)),
-            )
-            .addActionRowComponents(
-                new ActionRowBuilder().addComponents(
-                    new StringSelectMenuBuilder()
-                        .setCustomId("select-frequency")
-                        .addOptions(
-                            frequency.map((option) =>
-                                new SelectMenuOptionBuilder()
-                                    .setLabel(option.label)
-                                    .setValue(option.value)
-                                    .setDefault(currentSettings.frequency === parseInt(option.value))
-                                    .setEmoji({name: option.emoji})
-                                    .setDescription(option.description || "")
-                            )
-                        )
-                )
-            )
-            // .addSeparatorComponents(
-            //     new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
-            // )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${(t("settingsMemesTemplatesTitle", language))}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("settingsMemesTemplatesDescription", language))
-            )
-            .addActionRowComponents(
-                new ActionRowBuilder().addComponents(
-                    new StringSelectMenuBuilder()
-                        .setCustomId("select-memetemplates")
-                        .setMaxValues(memeTemplates.length)
-                        .setMinValues(1)
-                        .addOptions(
-                            memeTemplates.map((template) =>
-                                new SelectMenuOptionBuilder()
-                                    .setLabel(template.label)
-                                    .setValue(template.value)
-                                    .setDefault(currentSettings.enabledRandomMemes?.includes(template.value) ?? true)
-                                    .setEmoji(template.emoji)
-                            )
-                        )
-                )
-            ),
+        container,
         buttons
     ]
 };

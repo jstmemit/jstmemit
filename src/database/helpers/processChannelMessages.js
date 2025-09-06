@@ -24,9 +24,9 @@ export const processChannelMessages = async (channelId, visitedChannels, allMess
             allMessages.push(...messages);
         }
 
-        if (channelSettings.linked_channel) {
+        if (channelSettings.linkedChannel) {
             await processChannelMessages(
-                channelSettings.linked_channel,
+                channelSettings.linkedChannel,
                 visitedChannels,
                 allMessages
             );

@@ -14,6 +14,8 @@ export const handleLinkChannel = async interaction => {
         const channelId = interaction.channelId;
         let linked_channelId = null;
 
+        console.log(1)
+
         // unlink channel if no ID is provided
         if (interaction.values) {
             linked_channelId = interaction.values[0];
@@ -22,12 +24,16 @@ export const handleLinkChannel = async interaction => {
             linked_channelId = null;
         }
 
+        console.log(2)
+
         const currentSettings = await getChannelSettings(channelId);
         const newSettings = {
             ...currentSettings,
             channelId,
             linkedChannel: linked_channelId
         };
+
+        console.log(3, newSettings)
 
         await analytics.capture({
             distinctId: interaction.channelId,

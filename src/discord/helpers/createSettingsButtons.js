@@ -23,6 +23,12 @@ export const createSettingsButtonRow = (activeTab, language) => {
             emoji: settings?.emojis?.settings?.data?.id,
         },
         {
+            id: "news",
+            customId: "settings-tab-news",
+            label: t("settingsButtonNewsSettings", language),
+            emoji: settings?.emojis?.settings?.beta?.id,
+        },
+        {
             id: "beta",
             customId: "settings-tab-beta",
             label: t("settingsButtonBetaSettings", language),
