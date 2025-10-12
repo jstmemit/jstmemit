@@ -10,11 +10,20 @@ export const handlePermissionCheck = async (interaction, permissionValue, permis
         const currentSettings = await getChannelSettings(interaction.channelId)
         const components = constructPermissionEmbed(currentSettings, interaction.channelId, permissionName);
 
-        await interaction.reply({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-            ephemeral: true
-        })
+        try {
+            await interaction.reply({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+                ephemeral: true
+            })
+        } catch (e) {
+            await interaction.editReply({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+                ephemeral: true
+            })
+        }
+
         return false;
     }
     return true;
