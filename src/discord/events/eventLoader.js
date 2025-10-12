@@ -4,6 +4,7 @@ import {fileURLToPath} from 'url';
 import {startDataRoutine} from "#database/routines/startDataRoutine.js";
 import {sendKumaPing} from "#src/analytics/heartbeat/sendKumaPing.js";
 import {analytics} from "#src/analytics/initializeAnalytics.js";
+import {handleSendNews} from "#src/discord/handlers/handleSendNews.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,6 +26,12 @@ export const loadEvents = async (client) => {
 
     try {
         startDataRoutine()
+    } catch (error) {
+        analytics.captureException(error);
+    }
+
+    try {
+        await handleSendNews()
     } catch (error) {
         analytics.captureException(error);
     }

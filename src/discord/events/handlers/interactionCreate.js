@@ -171,6 +171,11 @@ export default {
                     await handleUpdateSettingsEmbed(interaction, "meme");
                 }
 
+                if (customId.startsWith("unlinknews-")) {
+                    await handleNewsChannel(interaction);
+                    await handleUpdateSettingsEmbed(interaction, "news");
+                }
+
                 if (id === 'like' || id === 'dislike') {
                     await vote(interaction, analyticsId, id);
                 }

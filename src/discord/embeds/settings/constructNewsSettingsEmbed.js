@@ -2,9 +2,11 @@
 
 import {
     ActionRowBuilder,
+    ButtonBuilder,
     ButtonStyle,
     ChannelSelectMenuBuilder,
     ContainerBuilder,
+    SectionBuilder,
     SeparatorBuilder,
     SeparatorSpacingSize,
     TextDisplayBuilder
@@ -37,10 +39,24 @@ export const constructNewsSettingsEmbed = (currentSettings, channelId, buttons) 
             new ActionRowBuilder()
                 .addComponents(
                     new ChannelSelectMenuBuilder()
-                        .setCustomId(`select-linkchannel`)
+                        .setCustomId(`select-newschannel`)
                         .setPlaceholder(t("premiumSelectChannelPlaceholder", language))
                         .setChannelTypes([0, 5])
                 )
+        );
+    } else {
+
+        container = container.addSectionComponents(
+            new SectionBuilder()
+                .setButtonAccessory(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Danger)
+                        .setLabel(`${t("settingsNewsUnlinkChannelButton", language)}`)
+                        .setCustomId(`unlinknews-${channelId}`)
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("settingsNewsChannelLinked", language)),
+                ),
         );
     }
 
