@@ -1,5 +1,5 @@
 import {
-  blob, index, int, sqliteTable, text,
+  blob, int, sqliteTable, text,
 } from 'drizzle-orm/sqlite-core';
 
 export const channels = sqliteTable('channels', {
@@ -19,10 +19,6 @@ export const messages = sqliteTable(
     content: text().notNull(),
     createdAt: int().notNull(),
   },
-  (table) => ({
-    channelIdx: index('channel_idx').on(table.channelId),
-  }
-  ),
 );
 
 export const images = sqliteTable('images', {
