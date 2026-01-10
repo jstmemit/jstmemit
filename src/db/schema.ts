@@ -5,7 +5,9 @@ import {
 export const channels = sqliteTable('channels', {
   id: int().primaryKey({ autoIncrement: true }),
   languageCode: text().notNull(),
-  guildId: int().notNull(),
+  isEnabled: int().notNull(),
+  discordChannelId: text().notNull(),
+  discordGuildId: text().notNull(),
   createdAt: int().notNull(),
 });
 
@@ -13,6 +15,7 @@ export const messages = sqliteTable(
   'messages',
   {
     id: int().primaryKey({ autoIncrement: true }),
+    discordMessageId: text().notNull(),
     channelId: int()
       .notNull()
       .references(() => channels.id, { onDelete: 'cascade' }),
@@ -31,5 +34,7 @@ export const images = sqliteTable('images', {
 
 export const users = sqliteTable('users', {
   id: int().primaryKey({ autoIncrement: true }),
+  discordUserId: text().notNull(),
+  avatarUrl: text().notNull(),
   createdAt: int().notNull(),
 });
