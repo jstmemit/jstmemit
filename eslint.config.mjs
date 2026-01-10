@@ -1,20 +1,25 @@
-import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import {defineConfig} from "eslint/config";
+import {FlatCompat} from "@eslint/eslintrc";
 
-export default defineConfig([
+const compat = new FlatCompat();
+
+export default tseslint.config([
     {
-        files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-        plugins: {js},
-        extends: [
-            'airbnb-base',
-            'airbnb-typescript/base'
-        ],
-        parserOptions: {
-            project: './tsconfig.json'
-        },
-        languageOptions: {globals: globals.node}
+        ignores: ["eslint.config.mjs"]
     },
-    tseslint.configs.recommended,
+    ...compat.extends('airbnb-base', 'airbnb-typescript/base'),
+    {
+        files: ["**/*.{js,mjs,cjs,ts}"],
+        languageOptions: {
+            globals: globals.node,
+            parserOptions: {
+                project: './tsconfig.json'
+            }
+        },
+        rules: {
+            "import/prefer-default-export": "off",
+            "import/no-extraneous-dependencies": "off"
+        }
+    }
 ]);
