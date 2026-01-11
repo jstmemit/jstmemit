@@ -23,6 +23,7 @@ export default tseslint.config([
             "class-methods-use-this": "off",
             "max-len": "off",
             "no-useless-return": "off",
+            "no-underscore-dangle": "off",
         }
     }
 ]);
