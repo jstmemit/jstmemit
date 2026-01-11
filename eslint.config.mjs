@@ -21,7 +21,8 @@ export default tseslint.config([
             "import/prefer-default-export": "off",
             "import/no-extraneous-dependencies": "off",
             "class-methods-use-this": "off",
-            "max-len": "off"
+            "max-len": "off",
+            "no-useless-return": "off",
         }
     }
 ]);

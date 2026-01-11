@@ -19,6 +19,21 @@ export class ChannelRepository {
     return this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId));
   }
 
+  public async getDiscordChannelIdById(id: number) {
+    const result = await this.db.select().from(channels).where(eq(channels.id, id));
+    return result[0]?.discordChannelId;
+  }
+
+  public async getIdByDiscordChannelId(discordChannelId: string) {
+    const result = await this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId));
+    return result[0]?.id;
+  }
+
+  public async existsByDiscordChannelId(discordChannelId: string) {
+    const result = await this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId));
+    return result.length > 0;
+  }
+
   public async switchChannelByDiscordId(discordChannelId: string) {
     const channel = await this.getChannelByDiscordId(discordChannelId);
 

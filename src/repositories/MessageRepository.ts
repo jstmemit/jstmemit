@@ -5,12 +5,17 @@ import { messages } from '../db/schema.js';
 export class MessageRepository {
   private readonly db = db;
 
-  public async create(channelId: number, content: string) {
+  public async create(channelId: number, content: string, discordMessageId: string, createdAt: Date) {
     return this.db.insert(messages).values({
       channelId,
+      discordMessageId,
       content,
-      createdAt: Date.now(),
+      createdAt: createdAt.getTime(),
     });
+  }
+
+  public async findByDiscordMessageId(discordMessageId: string) {
+    return this.db.select().from(messages).where(eq(messages.discordMessageId, discordMessageId)).limit(1);
   }
 
   public async findAllByChannelId(channelId: number) {
