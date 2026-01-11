@@ -16,7 +16,7 @@ export class ChannelRepository {
   }
 
   public async getChannelByDiscordId(discordChannelId: string) {
-    return this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId));
+    return this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId)).limit(1);
   }
 
   public async getDiscordChannelIdById(id: number) {
@@ -32,6 +32,11 @@ export class ChannelRepository {
   public async existsByDiscordChannelId(discordChannelId: string) {
     const result = await this.db.select().from(channels).where(eq(channels.discordChannelId, discordChannelId));
     return result.length > 0;
+  }
+
+  public async isChannelEnabled(discordChannelId: string): Promise<boolean> {
+    const channel = await this.getChannelByDiscordId(discordChannelId);
+    return channel[0]?.isEnabled === 1;
   }
 
   public async switchChannelByDiscordId(discordChannelId: string) {

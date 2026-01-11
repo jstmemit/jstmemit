@@ -24,6 +24,10 @@ export class ChatService {
       );
     }
 
+    if (!(await channelRepository.isChannelEnabled(discordChannelId))) {
+      return;
+    }
+
     await messageRepository.create(
       await channelRepository.getIdByDiscordChannelId(discordChannelId) as number,
       content,
@@ -37,6 +41,10 @@ export class ChatService {
     discordChannelId: string,
     attachments: Partial<Attachment>[],
   ): Promise<void> {
+    if (!(await channelRepository.isChannelEnabled(discordChannelId))) {
+      return;
+    }
+
     await Promise.all(
       attachments.map(async (attachment: Partial<Attachment>): Promise<void> => {
         if (!attachment.url) {
