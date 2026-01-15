@@ -11,6 +11,13 @@ export const channels = sqliteTable('channels', {
   createdAt: int().notNull(),
 });
 
+export const settings = sqliteTable('settings', {
+  id: int().primaryKey({ autoIncrement: true }),
+  channelId: int().notNull().references(() => channels.id, { onDelete: 'cascade' }),
+  key: text().notNull().unique(),
+  value: text().notNull(),
+});
+
 export const users = sqliteTable('users', {
   id: int().primaryKey({ autoIncrement: true }),
   discordUserId: text().notNull(),

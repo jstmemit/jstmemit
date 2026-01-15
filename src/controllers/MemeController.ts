@@ -11,7 +11,7 @@ const markovRepository: MarkovRepository = new MarkovRepository();
 
 export class MemeController {
   public async chooseMemeTemplate(discordChannelId: string): Promise<MemeTemplate> {
-    const templateList = await memeRepository.getMemeTemplates();
+    const templateList: MemeTemplate[] = await memeRepository.getMemeTemplates();
     const index: number = Math.floor(Math.random() * templateList.length);
     return templateList[index]!;
   }
@@ -21,8 +21,8 @@ export class MemeController {
     const allMessages = await messageRepository.findAllByChannelId(channelId);
 
     const messages: string[] = allMessages
-      .map((message) => message.content)
-      .filter((content): content is string => content !== null);
+      .map((message): string | null => message.content)
+      .filter((content: string | null): content is string => content !== null);
 
     const neededMessagesCount: number = template.lines;
     const memeTexts: string[] = [];
