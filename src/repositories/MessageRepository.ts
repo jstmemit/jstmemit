@@ -19,7 +19,7 @@ export class MessageRepository {
   }
 
   public async findAllByChannelId(channelId: number) {
-    return this.db.select().from(messages).where(eq(messages.channelId, channelId));
+    return this.db.select().from(messages).where(eq(messages.channelId, channelId)).limit(1000);
   }
 
   public async deleteOlderThanInChannelId(channelId: number, timestamp: number) {

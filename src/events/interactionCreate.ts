@@ -1,8 +1,6 @@
 import type { Interaction } from 'discord.js';
-import { MemeRepository } from '../repositories/MemeRepository.js';
 import { MemeController } from '../controllers/MemeController.js';
 
-const memeRepository = new MemeRepository();
 const memeController = new MemeController();
 
 export const interactionCreate = async (interaction: Interaction): Promise<void> => {
@@ -13,7 +11,7 @@ export const interactionCreate = async (interaction: Interaction): Promise<void>
 
     const template = await memeController.chooseMemeTemplate(interaction.channelId);
 
-    const memeUrl = await memeRepository.generateMeme(template, ['Hello', 'World']);
+    const memeUrl = await memeController.generateMeme(template, interaction.channelId);
 
     await interaction.followUp({ content: memeUrl });
   }

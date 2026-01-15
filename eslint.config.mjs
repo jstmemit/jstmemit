@@ -24,6 +24,8 @@ export default tseslint.config([
             "max-len": "off",
             "no-useless-return": "off",
             "no-underscore-dangle": "off",
+            "no-plusplus": "off",
+            "no-await-in-loop": "off",
         }
     }
 ]);
