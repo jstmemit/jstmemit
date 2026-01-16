@@ -3,11 +3,13 @@ import { MemeRepository } from '../repositories/MemeRepository.js';
 import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { MessageRepository } from '../repositories/MessageRepository.js';
 import { MarkovRepository } from '../repositories/MarkovRepository.js';
+import { AttachmentRepository } from '../repositories/AttachmentRepository.js';
 
 const memeRepository: MemeRepository = new MemeRepository();
 const channelRepository: ChannelRepository = new ChannelRepository();
 const messageRepository: MessageRepository = new MessageRepository();
 const markovRepository: MarkovRepository = new MarkovRepository();
+const attachmentRepository: AttachmentRepository = new AttachmentRepository();
 
 export class MemeController {
   public async chooseMemeTemplate(discordChannelId: string): Promise<MemeTemplate> {
@@ -32,7 +34,13 @@ export class MemeController {
       memeTexts.push(text);
     }
 
-    const meme: string = await memeRepository.generateMeme(template, memeTexts);
+    if (template.overlays > 0) {
+      const overlayImage = await attachmentRepository.getRandomImageByChannelId(channelId) as Buffer;
+
+      const meme: string = await memeRepository.generateMeme(template, memeTexts, 'jpg', overlayImage);
+      return meme;
+    }
+    const meme: string = await memeRepository.generateMeme(template, memeTexts, 'jpg');
     return meme;
   }
 }
