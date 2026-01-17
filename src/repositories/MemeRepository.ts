@@ -13,13 +13,29 @@ export class MemeRepository {
     template: MemeTemplate,
     texts: string[],
     format: string = 'webp',
+    animated: boolean = false,
     overlayImage?: Buffer,
   ) {
     const text: string = texts.join('/');
     const memeUrl: string = template?.blank.replace('.jpg', '');
-    const style: string = overlayImage ? `?style=${encodeURIComponent(await temporaryImageRepository.uploadImage(overlayImage))}` : '';
 
-    const response: Response = await fetch(`${memeUrl!}/${text}.${format}${style}?height=1500`);
+    const params = new URLSearchParams();
+    params.set('width', '2000');
+
+    const styles: string[] = [];
+    if (animated) {
+      styles.push('animated');
+    }
+    if (overlayImage) {
+      styles.push(await temporaryImageRepository.uploadImage(overlayImage));
+    }
+    if (styles.length > 0) {
+      params.set('style', styles.join(','));
+    }
+
+    const response: Response = await fetch(
+      `${memeUrl!}/${text}.${format}?${params.toString()}`,
+    );
     return response.url;
   }
 }

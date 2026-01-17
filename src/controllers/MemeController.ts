@@ -34,13 +34,31 @@ export class MemeController {
       memeTexts.push(text);
     }
 
-    if (template.overlays > 0) {
-      const overlayImage = await attachmentRepository.getRandomImageByChannelId(channelId) as Buffer;
+    // console.log(template);
 
-      const meme: string = await memeRepository.generateMeme(template, memeTexts, 'jpg', overlayImage);
+    const animated: boolean = template.styles.includes('animated');
+    const format: 'webp' | 'jpg' = animated ? 'webp' : 'jpg';
+
+    if (template.overlays > 0) {
+      const overlayImage = (await attachmentRepository.getRandomImageByChannelId(
+        channelId,
+      )) as Buffer;
+
+      const meme: string = await memeRepository.generateMeme(
+        template,
+        memeTexts,
+        format,
+        animated,
+        overlayImage,
+      );
       return meme;
     }
-    const meme: string = await memeRepository.generateMeme(template, memeTexts, 'jpg');
+    const meme: string = await memeRepository.generateMeme(
+      template,
+      memeTexts,
+      format,
+      animated,
+    );
     return meme;
   }
 }
