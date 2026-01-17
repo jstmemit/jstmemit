@@ -4,6 +4,7 @@ import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { MessageRepository } from '../repositories/MessageRepository.js';
 import { MarkovRepository } from '../repositories/MarkovRepository.js';
 import { AttachmentRepository } from '../repositories/AttachmentRepository.js';
+import { memes } from '../config/memes.js';
 
 const memeRepository: MemeRepository = new MemeRepository();
 const channelRepository: ChannelRepository = new ChannelRepository();
@@ -26,20 +27,29 @@ export class MemeController {
       .map((message): string | null => message.content)
       .filter((content: string | null): content is string => content !== null);
 
+    const override = memes[template.id];
+    const emptyLines = new Set(override?.emptyLines ?? []);
+
     const neededMessagesCount: number = template.lines;
     const memeTexts: string[] = [];
 
     for (let i = 0; i < neededMessagesCount; i++) {
-      const text: string = await markovRepository.generateMarkovText(messages);
-      memeTexts.push(text);
+      if (emptyLines.has(i)) {
+        memeTexts.push('_');
+      } else {
+        const text: string = await markovRepository.generateMarkovText(messages);
+        memeTexts.push(text);
+      }
     }
 
-    // console.log(template);
+    console.log(template);
 
     const animated: boolean = template.styles.includes('animated');
     const format: 'webp' | 'jpg' = animated ? 'webp' : 'jpg';
 
-    if (template.overlays > 0) {
+    const useOverlays = template.overlays > 0 && !override?.disableImages;
+
+    if (useOverlays) {
       const overlayImage = (await attachmentRepository.getRandomImageByChannelId(
         channelId,
       )) as Buffer;
