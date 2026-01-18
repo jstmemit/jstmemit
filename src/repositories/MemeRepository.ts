@@ -1,12 +1,12 @@
 import type { MemeTemplate } from '../models/MemeTemplate.js';
 import { TemporaryImageRepository } from './TemporaryImageRepository.js';
+import { templates } from '../config/templates.js';
 
 const temporaryImageRepository: TemporaryImageRepository = new TemporaryImageRepository();
 
 export class MemeRepository {
   public async getMemeTemplates(): Promise<MemeTemplate[]> {
-    const response: Response = await fetch(`${process.env.MEMEGEN_BASE_URL!}/templates/`);
-    return await response.json() as MemeTemplate[];
+    return templates;
   }
 
   public async generateMeme(
