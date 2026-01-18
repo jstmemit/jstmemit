@@ -51,4 +51,25 @@ export const memes: Record<string, MemeOverride> = {
   doge: {
     disableImages: true,
   },
+  happening: {
+    emptyLines: [0],
+  },
+  same: {
+    emptyLines: [0, 2],
+  },
+  kk: {
+    disableImages: true,
+  },
+  both: {
+    disableImages: true,
+  },
+  pool: {
+    emptyLines: [0],
+  },
+  vince: {
+    emptyLines: [0],
+  },
+  'sad-bush': {
+    disableImages: true,
+  },
 };
