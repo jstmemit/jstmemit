@@ -72,4 +72,28 @@ export const memes: Record<string, MemeOverride> = {
   'sad-bush': {
     disableImages: true,
   },
+  bus: {
+    emptyLines: [0],
+  },
+  'sad-obama': {
+    disableImages: true,
+  },
+  waygd: {
+    disableImages: true,
+  },
+  wishes: {
+    disableImages: true,
+  },
+  bongo: {
+    emptyLines: [0],
+  },
+  rollsafe: {
+    disableImages: true,
+  },
+  'khaby-lame': {
+    emptyLines: [0],
+  },
+  perfection: {
+    emptyLines: [0],
+  },
 };
