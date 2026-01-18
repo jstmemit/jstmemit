@@ -16,16 +16,16 @@ export class MemeRepository {
     animated: boolean = false,
     overlayImage?: Buffer,
   ) {
-    const text: string = texts.join('/');
+    const text: string = this.encodePath(texts);
     const memeUrl: string = template?.blank.replace('.jpg', '');
 
     const params = new URLSearchParams();
     params.set('width', '2000');
 
     const styles: string[] = [];
-    if (animated) {
-      styles.push('animated');
-    }
+    // if (animated) {
+    //   styles.push('animated');
+    // }
     if (overlayImage) {
       styles.push(await temporaryImageRepository.uploadImage(overlayImage));
     }
@@ -33,9 +33,31 @@ export class MemeRepository {
       params.set('style', styles.join(','));
     }
 
-    const response: Response = await fetch(
-      `${memeUrl!}/${text}.${format}?${params.toString()}`,
-    );
+    const url = `${memeUrl!}/${text}.${format}?${params.toString()}`;
+    console.log(url);
+
+    const response: Response = await fetch(url);
     return response.url;
+  }
+
+  private encodeText(input: string): string {
+    return input
+      .replace(/_/g, '__')
+      .replace(/-/g, '--')
+      .replace(/\r\n|\r|\n/g, '~n')
+      .replace(/\?/g, '~q')
+      .replace(/&/g, '~a')
+      .replace(/%/g, '~p')
+      .replace(/#/g, '~h')
+      .replace(/\//g, '~s')
+      .replace(/\\/g, '~b')
+      .replace(/</g, '~l')
+      .replace(/>/g, '~g')
+      .replace(/"/g, "''")
+      .replace(/ /g, '_');
+  }
+
+  private encodePath(texts: string[]): string {
+    return texts.map((t) => this.encodeText(t)).join('/');
   }
 }
