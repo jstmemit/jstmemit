@@ -30,4 +30,25 @@ export const memes: Record<string, MemeOverride> = {
   reveal: {
     emptyLines: [0, 2],
   },
+  balloon: {
+    emptyLines: [0, 1],
+  },
+  leo: {
+    emptyLines: [0],
+  },
+  drowning: {
+    emptyLines: [1],
+  },
+  'sad-clinton': {
+    disableImages: true,
+  },
+  dbg: {
+    emptyLines: [0],
+  },
+  spirit: {
+    emptyLines: [1, 2],
+  },
+  doge: {
+    disableImages: true,
+  },
 };

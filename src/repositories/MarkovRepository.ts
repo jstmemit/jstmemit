@@ -11,7 +11,7 @@ export class MarkovRepository {
     markov.addData(corpus);
 
     const options = {
-      maxTries: 100,
+      maxTries: 10000,
       filter: (result: MarkovResult) => result.string.split(' ').length >= minLength && result.string.split(' ').length <= maxLength,
     };
 
