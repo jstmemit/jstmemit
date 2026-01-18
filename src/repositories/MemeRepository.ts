@@ -44,6 +44,10 @@ export class MemeRepository {
   }
 
   private encodeText(input: string): string {
+    if (input === '_') {
+      return '_';
+    }
+
     return input
       .replace(/_/g, '__')
       .replace(/-/g, '--')
