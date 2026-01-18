@@ -23,9 +23,9 @@ export class MemeRepository {
     params.set('width', '2000');
 
     const styles: string[] = [];
-    // if (animated) {
-    //   styles.push('animated');
-    // }
+    if (animated) {
+      styles.push('animated');
+    }
     if (overlayImage) {
       styles.push(await temporaryImageRepository.uploadImage(overlayImage));
     }
@@ -34,7 +34,6 @@ export class MemeRepository {
     }
 
     const url = `${memeUrl!}/${text}.${format}?${params.toString()}`;
-    console.log(url);
 
     const response: Response = await fetch(url);
     return response.url;
