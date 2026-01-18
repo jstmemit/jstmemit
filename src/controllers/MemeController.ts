@@ -58,7 +58,6 @@ export class MemeController {
         template,
         memeTexts,
         format,
-        animated,
         overlayImage,
       );
       return meme;
@@ -67,7 +66,6 @@ export class MemeController {
       template,
       memeTexts,
       format,
-      animated,
     );
     return meme;
   }

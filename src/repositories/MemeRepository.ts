@@ -13,7 +13,6 @@ export class MemeRepository {
     template: MemeTemplate,
     texts: string[],
     format: string = 'webp',
-    animated: boolean = false,
     overlayImage?: Buffer,
   ) {
     const text: string = this.encodePath(texts);
@@ -23,9 +22,14 @@ export class MemeRepository {
     params.set('width', '2000');
 
     const styles: string[] = [];
-    if (animated) {
-      styles.push('animated');
+    if (template.styles && template.styles.length > 0) {
+      const filteredStyles: string[] = template.styles.filter((s) => s !== 'animated' && s !== 'default');
+      if (filteredStyles.length > 0) {
+        const randomStyle: string = filteredStyles[Math.floor(Math.random() * filteredStyles.length)] as string;
+        styles.push(randomStyle);
+      }
     }
+
     if (overlayImage) {
       styles.push(await temporaryImageRepository.uploadImage(overlayImage));
     }
@@ -43,7 +47,7 @@ export class MemeRepository {
     return input
       .replace(/_/g, '__')
       .replace(/-/g, '--')
-      .replace(/\r\n|\r|\n/g, '~n')
+      .replace(/\r\n|\r|\n/g, '')
       .replace(/\?/g, '~q')
       .replace(/&/g, '~a')
       .replace(/%/g, '~p')
