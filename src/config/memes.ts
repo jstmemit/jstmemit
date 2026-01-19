@@ -96,4 +96,7 @@ export const memes: Record<string, MemeOverride> = {
   perfection: {
     emptyLines: [0],
   },
+  grave: {
+    emptyLines: [0],
+  },
 };

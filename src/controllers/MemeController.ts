@@ -3,14 +3,14 @@ import { MemeRepository } from '../repositories/MemeRepository.js';
 import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { MessageRepository } from '../repositories/MessageRepository.js';
 import { MarkovRepository } from '../repositories/MarkovRepository.js';
-import { AttachmentRepository } from '../repositories/AttachmentRepository.js';
 import { memes } from '../config/memes.js';
+import { AttachmentController } from './AttachmentController.js';
 
 const memeRepository: MemeRepository = new MemeRepository();
 const channelRepository: ChannelRepository = new ChannelRepository();
 const messageRepository: MessageRepository = new MessageRepository();
 const markovRepository: MarkovRepository = new MarkovRepository();
-const attachmentRepository: AttachmentRepository = new AttachmentRepository();
+const attachmentController: AttachmentController = new AttachmentController();
 
 export class MemeController {
   public async chooseMemeTemplate(discordChannelId: string): Promise<MemeTemplate> {
@@ -50,7 +50,7 @@ export class MemeController {
     const useOverlays = template.overlays > 0 && !override?.disableImages;
 
     if (useOverlays) {
-      const overlayImage = (await attachmentRepository.getRandomImageByChannelId(
+      const overlayImage = (await attachmentController.getRandomImageByChannelId(
         channelId,
       )) as Buffer;
 
