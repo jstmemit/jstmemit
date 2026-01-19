@@ -1,7 +1,9 @@
 import type { Attachment, Message } from 'discord.js';
 import { ChatService } from '../services/ChatService.js';
+import { UserController } from '../controllers/UserController.js';
 
 const chatService = new ChatService();
+const userController: UserController = new UserController();
 
 export const messageCreate = async (message: Message): Promise<void> => {
   if (message.author.bot) {
@@ -29,4 +31,9 @@ export const messageCreate = async (message: Message): Promise<void> => {
       await chatService.receiveAttachments(message.id, message.channelId, attachments);
     }
   }
+
+  await userController.createOrUpdateByDiscordUserId(
+    message.author.id,
+    message.author.displayAvatarURL({ size: 1024 }),
+  );
 };
