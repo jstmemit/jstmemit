@@ -22,6 +22,10 @@ export class MessageRepository {
     return this.db.select().from(messages).where(eq(messages.channelId, channelId)).limit(1000);
   }
 
+  public async getMessageCountByChannelId(channelId: number): Promise<number> {
+    return this.db.$count(messages, eq(messages.channelId, channelId));
+  }
+
   public async deleteOlderThanInChannelId(channelId: number, timestamp: number) {
     return this.db
       .delete(messages)
