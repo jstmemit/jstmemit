@@ -26,6 +26,7 @@
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "eslint-config-airbnb-typescript": "^18.0.0",
-    "markov-strings": "^3.0.2"
+    "markov-strings": "^3.0.2",
+    "posthog-node": "^5.21.2"
   }
 }

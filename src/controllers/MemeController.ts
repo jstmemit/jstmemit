@@ -5,12 +5,14 @@ import { MessageRepository } from '../repositories/MessageRepository.js';
 import { MarkovRepository } from '../repositories/MarkovRepository.js';
 import { memes } from '../config/memes.js';
 import { AttachmentController } from './AttachmentController.js';
+import { AnalyticsService } from '../services/AnalyticsService.js';
 
 const memeRepository: MemeRepository = new MemeRepository();
 const channelRepository: ChannelRepository = new ChannelRepository();
 const messageRepository: MessageRepository = new MessageRepository();
 const markovRepository: MarkovRepository = new MarkovRepository();
 const attachmentController: AttachmentController = new AttachmentController();
+const analyticsService: AnalyticsService = new AnalyticsService();
 
 export class MemeController {
   public async chooseMemeTemplate(discordChannelId: string): Promise<MemeTemplate> {
@@ -43,6 +45,11 @@ export class MemeController {
     }
 
     console.log(template);
+    analyticsService.captureEvent(
+      discordChannelId,
+      'meme-generated',
+      { ...template },
+    );
 
     const animated: boolean = template.styles.includes('animated');
     const format: 'webp' | 'jpg' = animated ? 'webp' : 'jpg';
