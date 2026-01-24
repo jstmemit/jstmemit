@@ -39,7 +39,12 @@ export class ChannelRepository {
     return channel[0]?.isEnabled === 1;
   }
 
-  public async switchChannelByDiscordId(discordChannelId: string) {
+  public async getLanguageCodeByDiscordChannelId(discordChannelId: string): Promise<string> {
+    const channel = await this.getChannelByDiscordId(discordChannelId);
+    return channel[0]?.languageCode || 'en';
+  }
+
+  public async switchChannelByDiscordChannelId(discordChannelId: string) {
     const channel = await this.getChannelByDiscordId(discordChannelId);
 
     const isEnabled = channel[0]?.isEnabled === 1 ? 0 : 1;
