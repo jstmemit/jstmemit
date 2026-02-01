@@ -50,4 +50,9 @@ export class ChannelRepository {
     const isEnabled = channel[0]?.isEnabled === 1 ? 0 : 1;
     return this.db.update(channels).set({ isEnabled }).where(eq(channels.discordChannelId, discordChannelId));
   }
+
+  public async setChannelEnabledState(discordChannelId: string, enabled: boolean) {
+    const isEnabled = enabled ? 1 : 0;
+    return this.db.update(channels).set({ isEnabled }).where(eq(channels.discordChannelId, discordChannelId));
+  }
 }

@@ -37,7 +37,7 @@ export const getEnableEmbed = (
           new ButtonBuilder()
             .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
             .setLabel(isEnabled ? t('btnDisableTraining', language) : t('btnEnableTraining', language))
-            .setCustomId(`${isEnabled ? 'disable' : 'enable'}-${discordChannelId}-false`),
+            .setCustomId(`${isEnabled ? 'disable' : 'enable'}-${discordChannelId}`),
           new ButtonBuilder()
             .setStyle(ButtonStyle.Secondary)
             .setLabel(t('btnSettings', language))
