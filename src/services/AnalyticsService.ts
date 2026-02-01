@@ -15,4 +15,26 @@ export class AnalyticsService {
       properties,
     });
   }
+
+  public captureMemeLiked(
+    channelId: string,
+    templateName: string,
+    generatedAt: string,
+  ): void {
+    this.captureEvent(channelId, 'meme_liked', {
+      template: templateName,
+      memeGeneratedOn: generatedAt,
+    });
+  }
+
+  public captureMemeDisliked(
+    channelId: string,
+    templateName: string,
+    generatedAt: string,
+  ): void {
+    this.captureEvent(channelId, 'meme_disliked', {
+      template: templateName,
+      memeGeneratedOn: generatedAt,
+    });
+  }
 }

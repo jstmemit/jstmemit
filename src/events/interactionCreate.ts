@@ -1,46 +1,80 @@
 import { type Interaction } from 'discord.js';
 import { enable } from '../commands/enable.js';
 import { meme } from '../commands/meme.js';
-import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { help } from '../commands/help.js';
+import { ChannelRepository } from '../repositories/ChannelRepository.js';
+import { VoteService } from '../services/VoteService.js';
+import { getButtons } from '../embeds/helpers/getButtons.js';
 
-const channelRepository: ChannelRepository = new ChannelRepository();
+const channelRepository = new ChannelRepository();
+const voteService = new VoteService();
 
-export const interactionCreate = async (interaction: Interaction): Promise<void> => {
+export const interactionCreate = async (
+  interaction: Interaction,
+): Promise<void> => {
   try {
-    // buttons
     if (interaction.isButton()) {
-      await interaction.deferUpdate();
-      const [action, id] = interaction.customId.split('-');
+      const [action, ...rest] = interaction.customId.split('-');
+      const id = rest.join('-');
 
       switch (action) {
         case 'enable':
-          channelRepository.setChannelEnabledState(id!, true);
+          await interaction.deferUpdate();
+          channelRepository.setChannelEnabledState(id, true);
           await enable(interaction, true);
           break;
 
         case 'disable':
-          channelRepository.setChannelEnabledState(id!, false);
+          await interaction.deferUpdate();
+          channelRepository.setChannelEnabledState(id, false);
           await enable(interaction, true);
           break;
 
         case 'execute_enable':
+          await interaction.deferUpdate();
           await enable(interaction);
           break;
 
         case 'execute_meme':
+          await interaction.deferUpdate();
           await meme(interaction);
           break;
 
         case 'execute_help':
+          await interaction.deferUpdate();
           await help(interaction);
           break;
+
+        case 'like':
+        case 'dislike': {
+          if (voteService.hasVoted(id, interaction.user.id)) {
+            return;
+          }
+
+          const { likes, dislikes } = voteService.vote(
+            id,
+            interaction.user.id,
+            interaction.channelId,
+            action,
+          );
+
+          await interaction.update({
+            components: [getButtons(likes, dislikes, id)],
+          });
+          break;
+        }
+
+        case 'regenerate': {
+          await interaction.deferUpdate();
+          await meme(interaction);
+          break;
+        }
+
         default:
           return;
       }
     }
 
-    // slash commands
     if (interaction.isChatInputCommand()) {
       switch (interaction.commandName) {
         case 'enable':

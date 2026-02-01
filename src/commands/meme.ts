@@ -1,6 +1,7 @@
 import { AttachmentBuilder, type ButtonInteraction, type ChatInputCommandInteraction } from 'discord.js';
 import type { MemeTemplate } from '../models/MemeTemplate.js';
 import { MemeController } from '../controllers/MemeController.js';
+import { getButtons } from '../embeds/helpers/getButtons.js';
 
 const memeController = new MemeController();
 
@@ -14,5 +15,11 @@ export const meme = async (interaction: ChatInputCommandInteraction | ButtonInte
   const memeUrl: string = await memeController.generateMeme(template, interaction.channelId);
   const attachment = new AttachmentBuilder(memeUrl, { name: 'meme.webp' });
 
-  await interaction.followUp({ files: [attachment] });
+  const id = `${template.name}-${Date.now()}`;
+  const buttons = getButtons(0, 0, id);
+
+  await interaction.followUp({
+    files: [attachment],
+    components: [buttons],
+  });
 };
