@@ -3,7 +3,7 @@ import {
 } from 'discord.js';
 import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { AnalyticsService } from '../services/AnalyticsService.js';
-import { getEnableEmbed } from '../embeds/getEnableEmbed.js';
+import { getEnableEmbed } from '../embeds/templates/getEnableEmbed.js';
 import { MessageRepository } from '../repositories/MessageRepository.js';
 
 const channelRepository: ChannelRepository = new ChannelRepository();

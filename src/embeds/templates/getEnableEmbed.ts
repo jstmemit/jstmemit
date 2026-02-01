@@ -1,8 +1,8 @@
 import {
   ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, TextDisplayBuilder,
 } from 'discord.js';
-import { t } from '../i18n/utils.js';
-import { createProgressBar } from './helpers/createProgressBar.js';
+import { t } from '../../i18n/utils.js';
+import { createProgressBar } from '../helpers/createProgressBar.js';
 
 export const getEnableEmbed = (
   isEnabled: boolean,

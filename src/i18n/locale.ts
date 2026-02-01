@@ -1,5 +1,8 @@
 export const locale: Record<string, Record<string, string>> = {
   english: {
+    helpTitle: 'Help',
+    helpDescription: 'Hi! I am a **Jstmemit**, a meme generating bot that makes memes based on the chat messages in this channel. Here are some commands you can use to interact with me:',
+
     settingsTitle: 'Bot settings',
     settingsDescription: 'This is your control panel for the bot. Here you can customize how the bot behaves in this channel.',
     settingsFooterDisabled: '🔴 Training is **disabled** in this channel!',

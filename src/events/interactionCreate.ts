@@ -2,6 +2,7 @@ import { type Interaction } from 'discord.js';
 import { enable } from '../commands/enable.js';
 import { meme } from '../commands/meme.js';
 import { ChannelRepository } from '../repositories/ChannelRepository.js';
+import { help } from '../commands/help.js';
 
 const channelRepository: ChannelRepository = new ChannelRepository();
 
@@ -35,6 +36,10 @@ export const interactionCreate = async (interaction: Interaction): Promise<void>
 
         case 'meme':
           await meme(interaction);
+          break;
+
+        case 'help':
+          await help(interaction);
           break;
 
         default:
