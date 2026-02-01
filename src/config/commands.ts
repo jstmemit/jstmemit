@@ -1,20 +1,22 @@
+import { t } from '../i18n/utils.js';
+
 export const commands = [
   {
     name: 'meme',
-    displayName: '🎭 Meme',
-    description: 'Generate a meme with a random template',
+    displayName: t('commandMemeDisplayName', 'english'),
+    description: t('commandMemeDescription', 'english'),
     showInHelp: true,
   },
   {
     name: 'enable',
-    displayName: '⚡ Enable',
-    description: 'Enable/disable training for this channel',
+    displayName: t('commandEnableDisplayName', 'english'),
+    description: t('commandEnableDescription', 'english'),
     showInHelp: true,
   },
   {
     name: 'help',
-    displayName: '❓ Help',
-    description: 'Show all available commands',
+    displayName: t('commandHelpDisplayName', 'english'),
+    description: t('commandHelpDescription', 'english'),
     showInHelp: true,
   },
 ];

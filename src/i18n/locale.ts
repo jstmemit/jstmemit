@@ -6,7 +6,7 @@ export const locale: Record<string, Record<string, string>> = {
     settingsFooterChannelId: 'Channel ID:',
 
     settingsStatusEnabled: '🎉 Bot is ready!',
-    settingsStatusDisabled: '🔴 Training is **disabled** in this channel!',
+    settingsStatusDisabled: '⛔ Training is **disabled** in this channel!',
 
     notEnoughContextTitle: '🤓  Bot is still collecting context! ',
     notEnoughContextDescription: "Jstmemit couldn't generate a meme this time because it needs more training data from this channel. Sending both images (or GIFs) and text messages will improve meme quality.\n\nMessages in memory: **{{amount}}/30**",
@@ -29,6 +29,15 @@ export const locale: Record<string, Record<string, string>> = {
 
     yes: 'Yes',
     no: 'No',
+
+    commandMemeDisplayName: '🎭 Meme generation',
+    commandMemeDescription: 'Generate a meme with a random template',
+
+    commandEnableDisplayName: '⚡ Setup training',
+    commandEnableDescription: 'Enable/disable training for this channel',
+
+    commandHelpDisplayName: '❓ Help',
+    commandHelpDescription: 'Show all available commands',
 
     errorText: 'An error happened white generating the meme. Please try again later.',
   },
