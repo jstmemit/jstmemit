@@ -1,33 +1,28 @@
-import { AttachmentBuilder, type Interaction } from 'discord.js';
-import { MemeController } from '../controllers/MemeController.js';
-import type { MemeTemplate } from '../models/MemeTemplate.js';
+import { type Interaction } from 'discord.js';
 import { enable } from '../commands/enable.js';
-
-const memeController = new MemeController();
+import { meme } from '../commands/meme.js';
 
 export const interactionCreate = async (interaction: Interaction): Promise<void> => {
   try {
-    if (!interaction.isChatInputCommand()) return;
+    // buttons
+    if (interaction.isButton()) {
 
-    switch (interaction.commandName) {
-      case 'enable':
-        await enable(interaction);
-        break;
+    }
 
-      case 'meme':
+    // slash commands
+    if (interaction.isChatInputCommand()) {
+      switch (interaction.commandName) {
+        case 'enable':
+          await enable(interaction);
+          break;
 
-        // temporary
+        case 'meme':
+          await meme(interaction);
+          break;
 
-        await interaction.deferReply();
-        const template: MemeTemplate = await memeController.chooseMemeTemplate(interaction.channelId);
-
-        const memeUrl: string = await memeController.generateMeme(template, interaction.channelId);
-        const attachment = new AttachmentBuilder(memeUrl, { name: 'meme.webp' });
-
-        await interaction.followUp({ files: [attachment] });
-        break;
-      default:
-        break;
+        default:
+          break;
+      }
     }
   } catch (e) {
     console.error(e);
