@@ -1,11 +1,14 @@
-import { AttachmentBuilder, type ChatInputCommandInteraction } from 'discord.js';
+import { AttachmentBuilder, type ButtonInteraction, type ChatInputCommandInteraction } from 'discord.js';
 import type { MemeTemplate } from '../models/MemeTemplate.js';
 import { MemeController } from '../controllers/MemeController.js';
 
 const memeController = new MemeController();
 
-export const meme = async (interaction: ChatInputCommandInteraction): Promise<void> => {
-  await interaction.deferReply();
+export const meme = async (interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> => {
+  if (interaction.isChatInputCommand()) {
+    await interaction.deferReply();
+  }
+
   const template: MemeTemplate = await memeController.chooseMemeTemplate(interaction.channelId);
 
   const memeUrl: string = await memeController.generateMeme(template, interaction.channelId);

@@ -44,8 +44,18 @@ export const enable = async (
         channelMessagesAmount,
       ),
     });
-  } else {
+  } else if (interaction.isChatInputCommand()) {
     await interaction.reply({
+      flags: MessageFlags.IsComponentsV2,
+      components: getEnableEmbed(
+        isEnabled,
+        channel.discordChannelId,
+        language,
+        channelMessagesAmount,
+      ),
+    });
+  } else {
+    await interaction.followUp({
       flags: MessageFlags.IsComponentsV2,
       components: getEnableEmbed(
         isEnabled,

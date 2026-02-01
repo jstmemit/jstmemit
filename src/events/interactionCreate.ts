@@ -11,16 +11,29 @@ export const interactionCreate = async (interaction: Interaction): Promise<void>
     // buttons
     if (interaction.isButton()) {
       await interaction.deferUpdate();
-      const [action, channelId] = interaction.customId.split('-');
+      const [action, id] = interaction.customId.split('-');
 
       switch (action) {
         case 'enable':
-          channelRepository.setChannelEnabledState(channelId!, true);
+          channelRepository.setChannelEnabledState(id!, true);
           await enable(interaction, true);
           break;
+
         case 'disable':
-          channelRepository.setChannelEnabledState(channelId!, false);
+          channelRepository.setChannelEnabledState(id!, false);
           await enable(interaction, true);
+          break;
+
+        case 'execute_enable':
+          await enable(interaction);
+          break;
+
+        case 'execute_meme':
+          await meme(interaction);
+          break;
+
+        case 'execute_help':
+          await help(interaction);
           break;
         default:
           return;
