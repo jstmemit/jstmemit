@@ -9,15 +9,17 @@ export const interactionCreate = async (interaction: Interaction): Promise<void>
   try {
     // buttons
     if (interaction.isButton()) {
-      interaction.deferUpdate();
+      await interaction.deferUpdate();
       const [action, channelId] = interaction.customId.split('-');
 
       switch (action) {
         case 'enable':
           channelRepository.setChannelEnabledState(channelId!, true);
+          await enable(interaction, true);
           break;
         case 'disable':
           channelRepository.setChannelEnabledState(channelId!, false);
+          await enable(interaction, true);
           break;
         default:
           return;

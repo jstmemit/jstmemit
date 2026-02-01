@@ -1,5 +1,5 @@
 import {
-  ButtonInteraction, ChatInputCommandInteraction, type Interaction, ButtonStyle, MessageFlags,
+  ButtonInteraction, ChatInputCommandInteraction, MessageFlags,
 } from 'discord.js';
 import { ChannelRepository } from '../repositories/ChannelRepository.js';
 import { AnalyticsService } from '../services/AnalyticsService.js';
@@ -35,7 +35,7 @@ export const enable = async (
   );
 
   if (edit) {
-    interaction.editReply({
+    await interaction.editReply({
       flags: MessageFlags.IsComponentsV2,
       components: getEnableEmbed(
         isEnabled,
@@ -45,7 +45,7 @@ export const enable = async (
       ),
     });
   } else {
-    interaction.reply({
+    await interaction.reply({
       flags: MessageFlags.IsComponentsV2,
       components: getEnableEmbed(
         isEnabled,
