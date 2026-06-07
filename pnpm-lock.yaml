@@ -229,6 +229,9 @@ importers:
 
   apps/bot:
     dependencies:
+      '@jstmemit/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../../packages/shared

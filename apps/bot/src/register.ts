@@ -1,6 +1,6 @@
 import { REST, Routes } from "discord.js";
 import { config } from "dotenv";
-import { commands } from "./commands.ts";
+import { commands } from "./data/commands.ts";
 import { Env } from "@jstmemit/shared/schemas/Env";
 
 config({ path: "../../.env" });

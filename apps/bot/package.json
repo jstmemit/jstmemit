@@ -10,6 +10,7 @@
     "discord.js": "^14.26.4",
     "dotenv": "^17.4.2",
     "zod": "^4.4.3",
-    "@jstmemit/shared": "workspace:*"
+    "@jstmemit/shared": "workspace:*",
+    "@jstmemit/db": "workspace:*"
   }
 }

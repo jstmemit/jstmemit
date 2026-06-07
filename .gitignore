@@ -55,5 +55,5 @@ __fixtures__/custom-modules-dir/patches/
 htpasswd
 tokens.db
 
-/packages/db/db.sqlite
-/packages/db/db.sqlite*
+**db.sqlite
+**db.sqlite*

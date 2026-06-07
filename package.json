@@ -4,8 +4,8 @@
   "scripts": {
     "bot:start": "cd apps/bot && pnpm start",
     "bot:register": "cd apps/bot && pnpm register",
-    "db:push": "cd packages/db && drizzle-kit push",
-    "db:generate": "cd packages/db && drizzle-kit generate"
+    "db:push": "cd packages/db && pnpm drizzle-kit push",
+    "db:generate": "cd packages/db && pnpm drizzle-kit generate"
   },
   "devEngines": {
     "packageManager": {
