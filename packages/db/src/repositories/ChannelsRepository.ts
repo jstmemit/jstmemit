@@ -8,13 +8,13 @@ export class ChannelsRepository implements IChannelsRepository {
     channelId: string,
   ): Promise<typeof channelsTable.$inferSelect | undefined> {
     try {
-      const channel = await db
+      const channels = await db
         .select()
         .from(channelsTable)
         .where(eq(channelsTable.channelId, channelId))
         .limit(1);
 
-      return channel[0] || undefined;
+      return channels[0] || undefined;
     } catch (error) {
       console.error(error);
 
