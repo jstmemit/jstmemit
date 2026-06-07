@@ -7,11 +7,22 @@ import type { IContextService } from "./interfaces/IContextService.ts";
 import { ContextService } from "./services/ContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
+import { ChannelsService } from "./services/ChannelsService.ts";
+import type { IChannelsService } from "./interfaces/IChannelsService.ts";
+import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
+import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
 
 config({ path: "../../.env" });
 
 const messagesRepository: IMessagesRepository = new MessagesRepository();
-const contextService: IContextService = new ContextService(messagesRepository);
+const channelsRepository: IChannelsRepository = new ChannelsRepository();
+const channelsService: IChannelsService = new ChannelsService(
+  channelsRepository,
+);
+const contextService: IContextService = new ContextService(
+  messagesRepository,
+  channelsService,
+);
 const contextController: IContextController = new ContextController(
   contextService,
 );
