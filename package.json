@@ -2,7 +2,10 @@
   "name": "jstmemit",
   "private": "true",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bot:start": "cd apps/bot && pnpm start",
+    "bot:register": "cd apps/bot && pnpm register",
+    "db:push": "cd packages/db && drizzle-kit push",
+    "db:generate": "cd packages/db && drizzle-kit generate"
   },
   "devEngines": {
     "packageManager": {
