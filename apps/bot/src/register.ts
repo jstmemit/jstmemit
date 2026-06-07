@@ -1,16 +1,11 @@
 import { REST, Routes } from "discord.js";
 import { config } from "dotenv";
-import { z } from "zod";
 import { commands } from "./commands.ts";
+import { Env } from "@jstmemit/shared/schemas/Env";
 
 config({ path: "../../.env" });
 
-const env = z
-  .object({
-    DISCORD_TOKEN: z.string().min(1),
-    DISCORD_CLIENT_ID: z.string().min(1),
-  })
-  .parse(process.env);
+const env = Env.parse(process.env);
 
 const rest: REST = new REST({ version: "10" }).setToken(env.DISCORD_TOKEN);
 

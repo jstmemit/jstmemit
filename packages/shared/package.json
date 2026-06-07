@@ -1,0 +1,8 @@
+{
+  "name": "@jstmemit/shared",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./schemas/*": "./src/schemas/*.ts"
+  }
+}

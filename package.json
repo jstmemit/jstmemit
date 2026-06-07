@@ -18,5 +18,8 @@
     "globals": "^17.6.0",
     "prettier": "^3.8.3",
     "typescript-eslint": "^8.60.1"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
   }
 }

@@ -206,6 +206,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@types/node':
         specifier: ^25.9.2
@@ -225,6 +229,9 @@ importers:
 
   apps/bot:
     dependencies:
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       discord.js:
         specifier: ^14.26.4
         version: 14.26.4
@@ -239,6 +246,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@tursodatabase/database':
         specifier: ^0.6.1
         version: 0.6.1
@@ -260,6 +270,8 @@ importers:
         version: 4.22.4
 
   packages/queue: {}
+
+  packages/shared: {}
 
 packages:
 
