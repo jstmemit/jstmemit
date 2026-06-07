@@ -1,4 +1,10 @@
 {
   "name": "@jstmemit/bot",
-  "private": true
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3"
+  }
 }
