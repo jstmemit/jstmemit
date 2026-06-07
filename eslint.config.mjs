@@ -15,7 +15,7 @@ export default [
     },
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/no-misused-promises": "warning",
+      "@typescript-eslint/no-misused-promises": "warn",
     },
   },
 ];
