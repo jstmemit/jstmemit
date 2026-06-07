@@ -10,6 +10,12 @@ export class ChannelsService implements IChannelsService {
 
   public async addChannel(channelId: string): Promise<boolean> {
     try {
+      const channel = await this._channelsRepository.get(channelId);
+
+      if (channel) {
+        return true;
+      }
+
       await this._channelsRepository.add(channelId, new Date());
 
       return true;
