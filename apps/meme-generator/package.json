@@ -1,4 +1,5 @@
 {
   "name": "@jstmemit/meme-generator",
-  "private": true
+  "private": true,
+  "type": "module"
 }
