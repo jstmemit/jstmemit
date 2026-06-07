@@ -2,6 +2,9 @@ logs
 *.log
 npm-debug.log*
 
+**/.env
+.env
+
 **/node_modules/**
 _node_modules
 .pnp.cjs
@@ -51,3 +54,6 @@ __fixtures__/custom-modules-dir/patches/
 
 htpasswd
 tokens.db
+
+/packages/db/db.sqlite
+/packages/db/db.sqlite*
