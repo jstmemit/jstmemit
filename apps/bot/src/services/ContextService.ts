@@ -21,6 +21,12 @@ export class ContextService implements IContextService {
   ): Promise<boolean> {
     await this._channelsService.addChannel(channelId);
 
+    const channel = await this._channelsService.getChannel(channelId);
+
+    if (!channel?.enabled) {
+      return false;
+    }
+
     return await this._messagesRepository.new(
       messageId,
       channelId,
