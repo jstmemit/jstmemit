@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node src/bot.ts",
+    "start": "node src/index.ts",
     "register": "node src/register.ts"
   },
   "dependencies": {
