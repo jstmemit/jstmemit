@@ -1,6 +1,7 @@
 import type { Template } from "./models/Template.ts";
 import type { TemplateResult } from "./models/TemplateResult.ts";
 import satori from "satori";
+import { Resvg } from "@resvg/resvg-js";
 import type { FontsRepository } from "./repositories/FontsRepository.ts";
 
 export class MemeService {
@@ -28,9 +29,15 @@ export class MemeService {
       ],
     });
 
+    const png: Buffer = new Resvg(svg, {
+      fitTo: { mode: "width", value: template.width },
+    })
+      .render()
+      .asPng();
+
     return {
       success: true,
-      result: svg,
+      result: png,
     };
   }
 }
