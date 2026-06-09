@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.2",
-    "@types/react": "^19.2.17"
+    "@types/react": "^19.2.17",
+    "@jstmemit/db": "workspace:*"
   },
   "exports": {
     "./*.ts": "./src/*.ts",

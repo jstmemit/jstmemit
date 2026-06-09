@@ -1,4 +1,4 @@
 export interface TemplateProps {
-  texts: Record<number, string>;
-  images: Record<number, string>;
+  texts: string[];
+  images: string[];
 }

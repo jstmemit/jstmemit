@@ -267,6 +267,9 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0
     devDependencies:
+      '@jstmemit/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@types/node':
         specifier: ^25.9.2
         version: 25.9.2

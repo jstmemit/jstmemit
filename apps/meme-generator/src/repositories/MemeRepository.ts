@@ -3,6 +3,7 @@ import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import type { IMemeRepository } from "../interfaces/IMemeRepository.ts";
 import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
+import type { TemplateProps } from "../models/TemplateProps.ts";
 
 export class MemeRepository implements IMemeRepository {
   private readonly _fontsRepository: IFontsRepository;
@@ -13,11 +14,10 @@ export class MemeRepository implements IMemeRepository {
 
   public async generateMeme(
     template: Template,
-    texts: Record<number, string>,
-    images: Record<number, string>,
+    props: TemplateProps,
   ): Promise<string | undefined> {
     try {
-      return await satori(template.element({ texts, images }), {
+      return await satori(template.element(props), {
         width: template.width,
         height: template.height,
         fonts: [

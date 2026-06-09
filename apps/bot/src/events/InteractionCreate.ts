@@ -8,10 +8,16 @@ import type { IFontsRepository } from "@jstmemit/meme-generator/interfaces/IFont
 import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
 import type { IMemeRepository } from "@jstmemit/meme-generator/interfaces/IMemeRepository";
 import { MemeRepository } from "@jstmemit/meme-generator/repositories/MemeRepository";
+import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
+import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
 
 const fontsRepository: IFontsRepository = new FontsRepository();
+const messagesRepository: IMessagesRepository = new MessagesRepository();
 const memeRepository: IMemeRepository = new MemeRepository(fontsRepository);
-const memeService: IMemeService = new MemeService(memeRepository);
+const memeService: IMemeService = new MemeService(
+  memeRepository,
+  messagesRepository,
+);
 
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;
@@ -21,8 +27,7 @@ client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
 
     const png: TemplateResult = await memeService.generateMeme(
       topBottomText,
-      { 0: "test test", 1: "test 2" },
-      { 0: "https://placehold.co/800x800.png" },
+      interaction.channelId,
     );
 
     if (!png.result) {
