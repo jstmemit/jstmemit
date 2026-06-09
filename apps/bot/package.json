@@ -3,14 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "tsx src/index.ts",
     "register": "node src/register.ts"
   },
   "dependencies": {
+    "@jstmemit/db": "workspace:*",
+    "@jstmemit/meme-generator": "workspace:*",
+    "@jstmemit/shared": "workspace:*",
     "discord.js": "^14.26.4",
     "dotenv": "^17.4.2",
-    "zod": "^4.4.3",
-    "@jstmemit/shared": "workspace:*",
-    "@jstmemit/db": "workspace:*"
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.22.4"
   }
 }

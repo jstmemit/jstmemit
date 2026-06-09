@@ -235,6 +235,9 @@ importers:
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@jstmemit/meme-generator':
+        specifier: workspace:*
+        version: link:../meme-generator
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -247,6 +250,10 @@ importers:
       zod:
         specifier: ^4.4.3
         version: 4.4.3
+    devDependencies:
+      tsx:
+        specifier: ^4.22.4
+        version: 4.22.4
 
   apps/meme-generator:
     dependencies:
