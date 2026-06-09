@@ -1,15 +1,13 @@
 import type { Template } from "../models/Template.ts";
 import type { TemplateResult } from "../models/TemplateResult.ts";
-import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
 import type { IMemeService } from "../interfaces/IMemeService.ts";
-import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
+import type { IMemeRepository } from "../interfaces/IMemeRepository.ts";
 
 export class MemeService implements IMemeService {
-  private readonly _fontsRepository: IFontsRepository;
+  private readonly _memeRepository: IMemeRepository;
 
-  public constructor(fontsRepository: IFontsRepository) {
-    this._fontsRepository = fontsRepository;
+  public constructor(memeRepository: IMemeRepository) {
+    this._memeRepository = memeRepository;
   }
 
   public async generateMeme(
@@ -17,28 +15,33 @@ export class MemeService implements IMemeService {
     texts: Record<number, string>,
     images: Record<number, string>,
   ): Promise<TemplateResult> {
-    const svg: string = await satori(template.element({ texts, images }), {
-      width: template.width,
-      height: template.height,
-      fonts: [
-        {
-          name: "Impact",
-          data: this._fontsRepository.getImpact(),
-          weight: 400,
-          style: "normal",
-        },
-      ],
-    });
+    try {
+      const svg: string | undefined = await this._memeRepository.generateMeme(
+        template,
+        texts,
+        images,
+      );
 
-    const png: Buffer = new Resvg(svg, {
-      fitTo: { mode: "width", value: template.width },
-    })
-      .render()
-      .asPng();
+      if (!svg) {
+        return {
+          success: false,
+        };
+      }
 
-    return {
-      success: true,
-      result: png,
-    };
+      const png: Buffer = this._memeRepository.convertIntoBuffer(
+        svg,
+        template.width,
+      );
+
+      return {
+        success: true,
+        result: png,
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+      };
+    }
   }
 }

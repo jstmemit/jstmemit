@@ -6,9 +6,12 @@ import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottom
 import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
 import type { IFontsRepository } from "@jstmemit/meme-generator/interfaces/IFontsRepository";
 import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
+import type { IMemeRepository } from "@jstmemit/meme-generator/interfaces/IMemeRepository";
+import { MemeRepository } from "@jstmemit/meme-generator/repositories/MemeRepository";
 
 const fontsRepository: IFontsRepository = new FontsRepository();
-const memeService: IMemeService = new MemeService(fontsRepository);
+const memeRepository: IMemeRepository = new MemeRepository(fontsRepository);
+const memeService: IMemeService = new MemeService(memeRepository);
 
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;
