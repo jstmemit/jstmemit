@@ -3,6 +3,11 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "react": "^19.2.7",
     "satori": "^0.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "@types/react": "^19.2.17"
   }
 }
