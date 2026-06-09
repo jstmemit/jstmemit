@@ -1,5 +1,8 @@
 {
   "name": "@jstmemit/meme-generator",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "satori": "^0.26.0"
+  }
 }
