@@ -1,12 +1,14 @@
 import { client } from "../bot.ts";
 import { Events } from "discord.js";
 import { FontsRepository } from "@jstmemit/meme-generator/repositories/FontsRepository";
-import { MemeService } from "@jstmemit/meme-generator/MemeService";
+import { MemeService } from "@jstmemit/meme-generator/services/MemeService";
 import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottomText.tsx";
 import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
+import type { IFontsRepository } from "@jstmemit/meme-generator/interfaces/IFontsRepository";
+import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
 
-const fontsRepository: FontsRepository = new FontsRepository();
-const memeService: MemeService = new MemeService(fontsRepository);
+const fontsRepository: IFontsRepository = new FontsRepository();
+const memeService: IMemeService = new MemeService(fontsRepository);
 
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;

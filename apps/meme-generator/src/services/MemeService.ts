@@ -1,13 +1,14 @@
-import type { Template } from "./models/Template.ts";
-import type { TemplateResult } from "./models/TemplateResult.ts";
+import type { Template } from "../models/Template.ts";
+import type { TemplateResult } from "../models/TemplateResult.ts";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import type { FontsRepository } from "./repositories/FontsRepository.ts";
+import type { IMemeService } from "../interfaces/IMemeService.ts";
+import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
 
-export class MemeService {
-  private readonly _fontsRepository: FontsRepository;
+export class MemeService implements IMemeService {
+  private readonly _fontsRepository: IFontsRepository;
 
-  public constructor(fontsRepository: FontsRepository) {
+  public constructor(fontsRepository: IFontsRepository) {
     this._fontsRepository = fontsRepository;
   }
 
