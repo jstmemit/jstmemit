@@ -12,6 +12,15 @@ export class MemeRepository implements IMemeRepository {
     this._fontsRepository = fontsRepository;
   }
 
+  /**
+   * Renders passed meme template using satori and
+   * returns an SVG string
+   *
+   * @param template
+   * @param props
+   *
+   * @author Kyrylo Maliuha
+   */
   public async generateMeme(
     template: Template,
     props: TemplateProps,
@@ -35,6 +44,15 @@ export class MemeRepository implements IMemeRepository {
     }
   }
 
+  /**
+   * Converts an SVG string into a PNG buffer
+   * using Resvg library
+   *
+   * @param svg
+   * @param width
+   *
+   * @author Kyrylo Maliuha
+   */
   public convertIntoBuffer(svg: string, width: number): Buffer {
     return new Resvg(svg, {
       fitTo: { mode: "width", value: width },

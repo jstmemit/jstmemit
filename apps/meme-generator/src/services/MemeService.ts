@@ -23,6 +23,15 @@ export class MemeService implements IMemeService {
     this._imagesRepository = imagesRepository;
   }
 
+  /**
+   * Generates a meme by first getting needed props, calling the repository
+   * and converting the response into a .png buffer
+   *
+   * @param template
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async generateMeme(
     template: Template,
     channelId: string,
@@ -63,6 +72,15 @@ export class MemeService implements IMemeService {
     }
   }
 
+  /**
+   * Gets text messages and images from the channel, shuffles them
+   * and removes everything what's not needed for the chosen template
+   *
+   * @param template
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async getMemeTemplateContext(
     template: Template,
     channelId: string,
