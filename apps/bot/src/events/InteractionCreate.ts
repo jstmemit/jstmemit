@@ -29,6 +29,7 @@ const memeService: IMemeService = new MemeService(
 // controllers
 const memesController: IMemesController = new MemesController(memeService);
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   // chat commands
   if (interaction.isChatInputCommand()) {

@@ -1,7 +1,7 @@
 import type { IMemesController } from "../interfaces/IMemesController.ts";
 import type { ChatInputCommandInteraction } from "discord.js";
 import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
-import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottomText";
+import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottomText.tsx";
 import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
 
 export class MemesController implements IMemesController {
