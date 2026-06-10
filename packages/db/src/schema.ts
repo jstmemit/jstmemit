@@ -15,7 +15,9 @@ export const messagesTable = sqliteTable(
 export const imagesTable = sqliteTable("images_table", {
   id: int().primaryKey({ autoIncrement: true }),
   messageId: text().notNull(),
+  channelId: text().notNull(),
   imageUrl: text().notNull(),
+  timestamp: int({ mode: "timestamp" }).notNull(),
 });
 
 export const reactionsTable = sqliteTable("reactions_table", {
