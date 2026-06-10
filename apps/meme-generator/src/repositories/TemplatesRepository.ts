@@ -1,6 +1,7 @@
 import type { ITemplatesRepository } from "../interfaces/ITemplatesRepository.ts";
 import type { Template } from "../models/Template.ts";
 import { topBottomText } from "../data/templates/topBottomText.tsx";
+import { liveReaction } from "../data/templates/liveReaction.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
   /**
@@ -11,6 +12,6 @@ export class TemplatesRepository implements ITemplatesRepository {
    * @author Kyrylo Maliuha
    */
   public getAll(): Template[] {
-    return [topBottomText];
+    return [topBottomText, liveReaction];
   }
 }
