@@ -1,6 +1,6 @@
 import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
-import { and, desc, eq, gte, lte, sql } from "drizzle-orm";
+import { and, eq, gte, lte, sql } from "drizzle-orm";
 import { db } from "../index.ts";
 
 export class MessagesRepository implements IMessagesRepository {
@@ -49,7 +49,7 @@ export class MessagesRepository implements IMessagesRepository {
               : undefined,
           ),
         )
-        .orderBy(desc(messagesTable.timestamp))
+        .orderBy(sql`random()`)
         .limit(limit);
 
       return messages.map((message) => message.content);
