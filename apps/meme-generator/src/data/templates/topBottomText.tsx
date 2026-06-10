@@ -1,6 +1,6 @@
 import type { Template } from "../../models/Template.ts";
 import type { TemplateProps } from "../../models/TemplateProps.ts";
-import React from "react";
+import * as React from "react";
 
 export const topBottomText: Template = {
   id: 1,
@@ -35,10 +35,11 @@ export const topBottomText: Template = {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          fontSize: 60,
+          fontSize: 70,
           color: "white",
           WebkitTextStrokeWidth: 5,
           WebkitTextStrokeColor: "black",
+          textAlign: "center",
         }}
       >
         {texts[0]}
@@ -50,10 +51,11 @@ export const topBottomText: Template = {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          fontSize: 60,
+          fontSize: 70,
           color: "white",
           WebkitTextStrokeWidth: 5,
           WebkitTextStrokeColor: "black",
+          textAlign: "center",
         }}
       >
         {texts[1]}
