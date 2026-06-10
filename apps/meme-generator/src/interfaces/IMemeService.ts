@@ -5,5 +5,5 @@ export abstract class IMemeService {
   public abstract generateMeme(
     template: Template,
     channelId: string,
-  ): Promise<TemplateResult>;
+  ): Promise<TemplateResult | undefined>;
 }

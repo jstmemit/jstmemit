@@ -4,6 +4,9 @@ import type { IMemeService } from "../interfaces/IMemeService.ts";
 import type { IMemeRepository } from "../interfaces/IMemeRepository.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
+import type { TemplateProps } from "../models/TemplateProps.ts";
+import type { TemplateImage } from "../models/TemplateImage.ts";
+import type { TemplateText } from "../models/TemplateText.ts";
 
 export class MemeService implements IMemeService {
   private readonly _memeRepository: IMemeRepository;
@@ -23,21 +26,18 @@ export class MemeService implements IMemeService {
   public async generateMeme(
     template: Template,
     channelId: string,
-  ): Promise<TemplateResult> {
+  ): Promise<TemplateResult | undefined> {
     try {
-      const texts: string[] =
-        await this._messagesRepository.getMessagesContentByChannelId(channelId);
+      const props: TemplateProps | undefined =
+        await this.getMemeTemplateContext(template, channelId);
 
-      const images: string[] = (
-        await this._imagesRepository.getImagesByChannelId(channelId, new Date())
-      ).sort(() => Math.random() - 0.5);
+      if (!props) {
+        return undefined;
+      }
 
       const svg: string | undefined = await this._memeRepository.generateMeme(
         template,
-        {
-          texts,
-          images,
-        },
+        props,
       );
 
       if (!svg) {
@@ -61,5 +61,32 @@ export class MemeService implements IMemeService {
         success: false,
       };
     }
+  }
+
+  public async getMemeTemplateContext(
+    template: Template,
+    channelId: string,
+  ): Promise<TemplateProps | undefined> {
+    const templateImages: TemplateImage[] | undefined = template.images;
+    const templateTexts: TemplateText[] | undefined = template.texts;
+
+    const channelTexts: string[] =
+      await this._messagesRepository.getMessagesContentByChannelId(channelId);
+
+    const channelImages: string[] =
+      await this._imagesRepository.getImagesByChannelId(channelId, new Date());
+
+    if (!templateImages || !templateTexts) {
+      return undefined;
+    }
+
+    if (!channelTexts || !channelImages) {
+      return undefined;
+    }
+
+    return {
+      images: channelImages.slice(0, templateImages.length),
+      texts: channelTexts.slice(0, templateTexts.length),
+    };
   }
 }

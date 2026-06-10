@@ -29,12 +29,12 @@ client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   if (interaction.commandName === "ping") {
     await interaction.deferReply();
 
-    const png: TemplateResult = await memeService.generateMeme(
+    const png: TemplateResult | undefined = await memeService.generateMeme(
       topBottomText,
       interaction.channelId,
     );
 
-    if (!png.result) {
+    if (!png?.result) {
       await interaction.reply("error");
       return;
     }
