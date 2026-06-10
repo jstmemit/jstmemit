@@ -1,7 +1,7 @@
 import type { Template } from "../models/Template.ts";
 import type { TemplateProps } from "../models/TemplateProps.ts";
 
-export abstract class IMemeRepository {
+export abstract class IMemesRepository {
   public abstract generateMeme(
     template: Template,
     props: TemplateProps,

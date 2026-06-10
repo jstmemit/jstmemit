@@ -1,20 +1,20 @@
 import type { Template } from "../models/Template.ts";
 import type { TemplateResult } from "../models/TemplateResult.ts";
-import type { IMemeService } from "../interfaces/IMemeService.ts";
-import type { IMemeRepository } from "../interfaces/IMemeRepository.ts";
+import type { IMemesService } from "../interfaces/IMemesService.ts";
+import type { IMemesRepository } from "../interfaces/IMemesRepository.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import type { TemplateProps } from "../models/TemplateProps.ts";
 import type { TemplateImage } from "../models/TemplateImage.ts";
 import type { TemplateText } from "../models/TemplateText.ts";
 
-export class MemeService implements IMemeService {
-  private readonly _memeRepository: IMemeRepository;
+export class MemesService implements IMemesService {
+  private readonly _memeRepository: IMemesRepository;
   private readonly _messagesRepository: IMessagesRepository;
   private readonly _imagesRepository: IImagesRepository;
 
   public constructor(
-    memeRepository: IMemeRepository,
+    memeRepository: IMemesRepository,
     messagesRepository: IMessagesRepository,
     imagesRepository: IImagesRepository,
   ) {

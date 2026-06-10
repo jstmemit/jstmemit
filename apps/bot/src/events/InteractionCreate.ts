@@ -1,11 +1,11 @@
 import { client } from "../bot.ts";
 import { Events } from "discord.js";
 import { FontsRepository } from "@jstmemit/meme-generator/repositories/FontsRepository";
-import { MemeService } from "@jstmemit/meme-generator/services/MemeService";
+import { MemesService } from "@jstmemit/meme-generator/services/MemesService";
 import type { IFontsRepository } from "@jstmemit/meme-generator/interfaces/IFontsRepository";
-import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
-import type { IMemeRepository } from "@jstmemit/meme-generator/interfaces/IMemeRepository";
-import { MemeRepository } from "@jstmemit/meme-generator/repositories/MemeRepository";
+import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
+import type { IMemesRepository } from "@jstmemit/meme-generator/interfaces/IMemesRepository";
+import { MemesRepository } from "@jstmemit/meme-generator/repositories/MemesRepository";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
@@ -16,11 +16,11 @@ import { MemesController } from "../controllers/MemesController.ts";
 // repositories
 const fontsRepository: IFontsRepository = new FontsRepository();
 const messagesRepository: IMessagesRepository = new MessagesRepository();
-const memeRepository: IMemeRepository = new MemeRepository(fontsRepository);
+const memeRepository: IMemesRepository = new MemesRepository(fontsRepository);
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // services
-const memeService: IMemeService = new MemeService(
+const memeService: IMemesService = new MemesService(
   memeRepository,
   messagesRepository,
   imagesRepository,

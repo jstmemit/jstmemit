@@ -1,11 +1,11 @@
 import type { Template } from "../models/Template.ts";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import type { IMemeRepository } from "../interfaces/IMemeRepository.ts";
+import type { IMemesRepository } from "../interfaces/IMemesRepository.ts";
 import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
 import type { TemplateProps } from "../models/TemplateProps.ts";
 
-export class MemeRepository implements IMemeRepository {
+export class MemesRepository implements IMemesRepository {
   private readonly _fontsRepository: IFontsRepository;
 
   public constructor(fontsRepository: IFontsRepository) {

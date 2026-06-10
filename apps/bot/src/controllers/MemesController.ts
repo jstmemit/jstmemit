@@ -2,12 +2,12 @@ import type { IMemesController } from "../interfaces/IMemesController.ts";
 import type { ChatInputCommandInteraction } from "discord.js";
 import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
 import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottomText.tsx";
-import type { IMemeService } from "@jstmemit/meme-generator/interfaces/IMemeService";
+import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
 
 export class MemesController implements IMemesController {
-  private readonly _memeService: IMemeService;
+  private readonly _memeService: IMemesService;
 
-  public constructor(memeService: IMemeService) {
+  public constructor(memeService: IMemesService) {
     this._memeService = memeService;
   }
 
@@ -28,7 +28,6 @@ export class MemesController implements IMemesController {
     }
 
     await interaction.editReply({
-      content: "123 test",
       files: [
         {
           attachment: png.result,
