@@ -5,10 +5,10 @@ import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottom
 import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
 
 export class MemesController implements IMemesController {
-  private readonly _memeService: IMemesService;
+  private readonly _memesService: IMemesService;
 
-  public constructor(memeService: IMemesService) {
-    this._memeService = memeService;
+  public constructor(memesService: IMemesService) {
+    this._memesService = memesService;
   }
 
   public async handleMemeInteraction(
@@ -17,7 +17,7 @@ export class MemesController implements IMemesController {
     await interaction.deferReply();
 
     const png: TemplateResult | undefined =
-      await this._memeService.generateMeme(
+      await this._memesService.generateMeme(
         topBottomText,
         interaction.channelId,
       );

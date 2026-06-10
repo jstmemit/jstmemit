@@ -12,22 +12,27 @@ import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepositor
 import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 import type { IMemesController } from "../interfaces/IMemesController.ts";
 import { MemesController } from "../controllers/MemesController.ts";
+import type { IFontsService } from "@jstmemit/meme-generator/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/meme-generator/controllers/FontsService";
 
-// repositories
+// fonts
 const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
+
+// messages
 const messagesRepository: IMessagesRepository = new MessagesRepository();
-const memeRepository: IMemesRepository = new MemesRepository(fontsRepository);
+
+// images
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
-// services
-const memeService: IMemesService = new MemesService(
-  memeRepository,
+// memes
+const memesRepository: IMemesRepository = new MemesRepository(fontsService);
+const memesService: IMemesService = new MemesService(
+  memesRepository,
   messagesRepository,
   imagesRepository,
 );
-
-// controllers
-const memesController: IMemesController = new MemesController(memeService);
+const memesController: IMemesController = new MemesController(memesService);
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {

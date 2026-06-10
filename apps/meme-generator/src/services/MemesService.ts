@@ -9,16 +9,16 @@ import type { TemplateImage } from "../models/TemplateImage.ts";
 import type { TemplateText } from "../models/TemplateText.ts";
 
 export class MemesService implements IMemesService {
-  private readonly _memeRepository: IMemesRepository;
+  private readonly _memesRepository: IMemesRepository;
   private readonly _messagesRepository: IMessagesRepository;
   private readonly _imagesRepository: IImagesRepository;
 
   public constructor(
-    memeRepository: IMemesRepository,
+    memesRepository: IMemesRepository,
     messagesRepository: IMessagesRepository,
     imagesRepository: IImagesRepository,
   ) {
-    this._memeRepository = memeRepository;
+    this._memesRepository = memesRepository;
     this._messagesRepository = messagesRepository;
     this._imagesRepository = imagesRepository;
   }
@@ -44,7 +44,7 @@ export class MemesService implements IMemesService {
         return undefined;
       }
 
-      const svg: string | undefined = await this._memeRepository.generateMeme(
+      const svg: string | undefined = await this._memesRepository.generateMeme(
         template,
         props,
       );
@@ -55,7 +55,7 @@ export class MemesService implements IMemesService {
         };
       }
 
-      const png: Buffer = this._memeRepository.convertIntoBuffer(
+      const png: Buffer = this._memesRepository.convertIntoBuffer(
         svg,
         template.width,
       );

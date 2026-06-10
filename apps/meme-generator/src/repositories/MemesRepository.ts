@@ -2,14 +2,14 @@ import type { Template } from "../models/Template.ts";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import type { IMemesRepository } from "../interfaces/IMemesRepository.ts";
-import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
 import type { TemplateProps } from "../models/TemplateProps.ts";
+import type { IFontsService } from "../interfaces/IFontsService.ts";
 
 export class MemesRepository implements IMemesRepository {
-  private readonly _fontsRepository: IFontsRepository;
+  private readonly _fontsService: IFontsService;
 
-  public constructor(fontsRepository: IFontsRepository) {
-    this._fontsRepository = fontsRepository;
+  public constructor(fontsService: IFontsService) {
+    this._fontsService = fontsService;
   }
 
   /**
@@ -29,14 +29,7 @@ export class MemesRepository implements IMemesRepository {
       return await satori(template.element(props), {
         width: template.width,
         height: template.height,
-        fonts: [
-          {
-            name: "Impact",
-            data: this._fontsRepository.getImpact(),
-            weight: 800,
-            style: "normal",
-          },
-        ],
+        fonts: this._fontsService.getFonts(),
       });
     } catch (error) {
       console.error("Error generating meme:", error);
