@@ -12,7 +12,7 @@ export class ContextController implements IContextController {
 
   public async handleNewMessage(message: Message): Promise<void> {
     try {
-      const { id, content, channelId } = message;
+      const { id, content, channelId, attachments } = message;
 
       if (!z.string().min(1).max(1999).safeParse(content).success) {
         return;
@@ -23,6 +23,7 @@ export class ContextController implements IContextController {
       }
 
       await this._contextService.saveContent(id, channelId, content);
+      await this._contextService.saveImages(id, channelId, attachments);
     } catch (error) {
       console.error(error);
     }

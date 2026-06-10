@@ -10,13 +10,17 @@ import type { IMemeRepository } from "@jstmemit/meme-generator/interfaces/IMemeR
 import { MemeRepository } from "@jstmemit/meme-generator/repositories/MemeRepository";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
+import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
+import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 
 const fontsRepository: IFontsRepository = new FontsRepository();
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 const memeRepository: IMemeRepository = new MemeRepository(fontsRepository);
+const imagesRepository: IImagesRepository = new ImagesRepository();
 const memeService: IMemeService = new MemeService(
   memeRepository,
   messagesRepository,
+  imagesRepository,
 );
 
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
