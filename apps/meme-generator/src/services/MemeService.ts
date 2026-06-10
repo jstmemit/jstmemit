@@ -28,11 +28,9 @@ export class MemeService implements IMemeService {
       const texts: string[] =
         await this._messagesRepository.getMessagesContentByChannelId(channelId);
 
-      const images: string[] =
-        await this._imagesRepository.getImagesByChannelId(
-          channelId,
-          new Date(),
-        );
+      const images: string[] = (
+        await this._imagesRepository.getImagesByChannelId(channelId, new Date())
+      ).sort(() => Math.random() - 0.5);
 
       const svg: string | undefined = await this._memeRepository.generateMeme(
         template,
