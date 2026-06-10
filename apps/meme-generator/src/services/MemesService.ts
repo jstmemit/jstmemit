@@ -7,20 +7,24 @@ import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepositor
 import type { TemplateProps } from "../models/TemplateProps.ts";
 import type { TemplateImage } from "../models/TemplateImage.ts";
 import type { TemplateText } from "../models/TemplateText.ts";
+import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 
 export class MemesService implements IMemesService {
   private readonly _memesRepository: IMemesRepository;
   private readonly _messagesRepository: IMessagesRepository;
   private readonly _imagesRepository: IImagesRepository;
+  private readonly _templatesService: ITemplatesService;
 
   public constructor(
     memesRepository: IMemesRepository,
     messagesRepository: IMessagesRepository,
     imagesRepository: IImagesRepository,
+    templatesService: ITemplatesService,
   ) {
     this._memesRepository = memesRepository;
     this._messagesRepository = messagesRepository;
     this._imagesRepository = imagesRepository;
+    this._templatesService = templatesService;
   }
 
   /**
@@ -33,10 +37,18 @@ export class MemesService implements IMemesService {
    * @author Kyrylo Maliuha
    */
   public async generateMeme(
-    template: Template,
     channelId: string,
+    template?: Template,
   ): Promise<TemplateResult | undefined> {
     try {
+      if (!template) {
+        template = this._templatesService.getRandomTemplate();
+      }
+
+      if (!template) {
+        return undefined;
+      }
+
       const props: TemplateProps | undefined =
         await this.getMemeTemplateContext(template, channelId);
 

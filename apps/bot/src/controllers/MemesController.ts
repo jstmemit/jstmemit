@@ -1,7 +1,6 @@
 import type { IMemesController } from "../interfaces/IMemesController.ts";
 import type { ChatInputCommandInteraction } from "discord.js";
 import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
-import { topBottomText } from "@jstmemit/meme-generator/data/templates/topBottomText.tsx";
 import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
 
 export class MemesController implements IMemesController {
@@ -17,10 +16,7 @@ export class MemesController implements IMemesController {
     await interaction.deferReply();
 
     const png: TemplateResult | undefined =
-      await this._memesService.generateMeme(
-        topBottomText,
-        interaction.channelId,
-      );
+      await this._memesService.generateMeme(interaction.channelId);
 
     if (!png?.result) {
       await interaction.reply("error");

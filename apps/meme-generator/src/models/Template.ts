@@ -11,4 +11,5 @@ export interface Template {
   height: number;
   images?: TemplateImage[];
   texts?: TemplateText[];
+  weight?: number;
 }

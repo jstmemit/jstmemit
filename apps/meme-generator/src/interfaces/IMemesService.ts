@@ -3,7 +3,7 @@ import type { TemplateResult } from "../models/TemplateResult.ts";
 
 export abstract class IMemesService {
   public abstract generateMeme(
-    template: Template,
     channelId: string,
+    template?: Template,
   ): Promise<TemplateResult | undefined>;
 }

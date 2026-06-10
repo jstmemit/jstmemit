@@ -14,6 +14,10 @@ import type { IMemesController } from "../interfaces/IMemesController.ts";
 import { MemesController } from "../controllers/MemesController.ts";
 import type { IFontsService } from "@jstmemit/meme-generator/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/meme-generator/controllers/FontsService";
+import type { ITemplatesRepository } from "@jstmemit/meme-generator/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/meme-generator/repositories/TemplatesRepository";
+import { TemplatesService } from "@jstmemit/meme-generator/services/TemplatesService";
+import type { ITemplatesService } from "@jstmemit/meme-generator/interfaces/ITemplatesService";
 
 // fonts
 const fontsRepository: IFontsRepository = new FontsRepository();
@@ -25,12 +29,19 @@ const messagesRepository: IMessagesRepository = new MessagesRepository();
 // images
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
+// templates
+const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+const templatesService: ITemplatesService = new TemplatesService(
+  templatesRepository,
+);
+
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 const memesService: IMemesService = new MemesService(
   memesRepository,
   messagesRepository,
   imagesRepository,
+  templatesService,
 );
 const memesController: IMemesController = new MemesController(memesService);
 
