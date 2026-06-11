@@ -1,15 +1,14 @@
-export abstract class IMessagesRepository {
+export abstract class IImagesRepository {
   public abstract new(
     messageId: string,
     channelId: string,
-    content: string,
+    imageUrl: string,
     timestamp: Date,
   ): Promise<boolean>;
 
-  public abstract getMessagesContentByChannelId(
+  public abstract getImagesByChannelId(
     channelId: string,
+    timestamp: Date,
     limit?: number,
-    minLength?: number,
-    maxLength?: number,
   ): Promise<string[]>;
 }

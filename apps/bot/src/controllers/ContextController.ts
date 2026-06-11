@@ -1,6 +1,5 @@
 import type { IContextController } from "../interfaces/IContextController.ts";
 import type { Message } from "discord.js";
-import { z } from "zod";
 import type { IContextService } from "../interfaces/IContextService.ts";
 
 export class ContextController implements IContextController {
@@ -12,17 +11,19 @@ export class ContextController implements IContextController {
 
   public async handleNewMessage(message: Message): Promise<void> {
     try {
-      const { id, content, channelId } = message;
+      const { id, content, channelId, attachments } = message;
 
-      if (!z.string().min(1).max(1999).safeParse(content).success) {
+      if (!channelId) {
         return;
       }
 
-      if (!z.string().min(1).safeParse(channelId).success) {
-        return;
+      if (attachments) {
+        await this._contextService.saveImages(id, channelId, attachments);
       }
 
-      await this._contextService.saveContent(id, channelId, content);
+      if (content.length >= 0 || content.length < 1999) {
+        await this._contextService.saveContent(id, channelId, content);
+      }
     } catch (error) {
       console.error(error);
     }

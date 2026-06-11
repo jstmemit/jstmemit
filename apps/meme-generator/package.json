@@ -1,5 +1,23 @@
 {
   "name": "@jstmemit/meme-generator",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "react": "^19.2.7",
+    "satori": "^0.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "@types/react": "^19.2.17",
+    "@jstmemit/db": "workspace:*"
+  },
+  "exports": {
+    "./*.ts": "./src/*.ts",
+    "./*.tsx": "./src/*.tsx",
+    "./*": [
+      "./src/*.ts",
+      "./src/*.tsx"
+    ]
+  }
 }

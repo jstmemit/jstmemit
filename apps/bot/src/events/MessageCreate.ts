@@ -10,14 +10,18 @@ import { ChannelsService } from "./../services/ChannelsService.ts";
 import type { IChannelsService } from "./../interfaces/IChannelsService.ts";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
+import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
+import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
+const imagesRepository: IImagesRepository = new ImagesRepository();
 const channelsService: IChannelsService = new ChannelsService(
   channelsRepository,
 );
 const contextService: IContextService = new ContextService(
   messagesRepository,
+  imagesRepository,
   channelsService,
 );
 const contextController: IContextController = new ContextController(
