@@ -32,26 +32,26 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 // templates
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(
-  templatesRepository,
+    templatesRepository,
 );
 
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 const memesService: IMemesService = new MemesService(
-  memesRepository,
-  messagesRepository,
-  imagesRepository,
-  templatesService,
+    memesRepository,
+    messagesRepository,
+    imagesRepository,
+    templatesService,
 );
 const memesController: IMemesController = new MemesController(memesService);
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
-  // chat commands
-  if (interaction.isChatInputCommand()) {
-    switch (interaction.commandName) {
-      case "meme":
-        await memesController.handleMemeInteraction(interaction);
+    // chat commands
+    if (interaction.isChatInputCommand()) {
+        switch (interaction.commandName) {
+            case "meme":
+                await memesController.handleMemeInteraction(interaction);
+        }
     }
-  }
 });

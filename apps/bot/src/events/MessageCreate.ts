@@ -17,19 +17,19 @@ const messagesRepository: IMessagesRepository = new MessagesRepository();
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
 const imagesRepository: IImagesRepository = new ImagesRepository();
 const channelsService: IChannelsService = new ChannelsService(
-  channelsRepository,
+    channelsRepository,
 );
 const contextService: IContextService = new ContextService(
-  messagesRepository,
-  imagesRepository,
-  channelsService,
+    messagesRepository,
+    imagesRepository,
+    channelsService,
 );
 const contextController: IContextController = new ContextController(
-  contextService,
+    contextService,
 );
 
 client.on(Events.MessageCreate, async (message): Promise<void> => {
-  if (message.author.bot) return;
+    if (message.author.bot) return;
 
-  await contextController.handleNewMessage(message);
+    await contextController.handleNewMessage(message);
 });

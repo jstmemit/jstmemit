@@ -1,5 +1,5 @@
 {
-  "name": "@jstmemit/queue",
-  "private": true,
-  "type": "module"
+    "name": "@jstmemit/queue",
+    "private": true,
+    "type": "module"
 }
