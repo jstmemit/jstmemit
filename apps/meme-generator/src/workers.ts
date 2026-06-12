@@ -19,6 +19,8 @@ import type { IFontsRepository } from "./interfaces/IFontsRepository.ts";
 import { FontsRepository } from "./repositories/FontsRepository.ts";
 import { createRedisConnection } from "@jstmemit/queue/connection";
 import { Env } from "@jstmemit/shared/schemas/Env";
+import type { ITransformService } from "./interfaces/ITransformService.ts";
+import { TransformService } from "./services/TransformService.ts";
 
 const env = Env.parse(process.env);
 
@@ -43,6 +45,9 @@ const templatesService: ITemplatesService = new TemplatesService(
   templatesRepository,
 );
 
+// transform
+const transformService: ITransformService = new TransformService();
+
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 const memesService: IMemesService = new MemesService(
@@ -50,6 +55,7 @@ const memesService: IMemesService = new MemesService(
   messagesRepository,
   imagesRepository,
   templatesService,
+  transformService,
 );
 
 export const memeGenerationWorker = new Worker<

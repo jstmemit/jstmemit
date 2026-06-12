@@ -9,28 +9,33 @@ import type { TemplateText } from "../models/TemplateText.ts";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
+import type { ITransformService } from "../interfaces/ITransformService.ts";
 
 export class MemesService implements IMemesService {
   private readonly _memesRepository: IMemesRepository;
   private readonly _messagesRepository: IMessagesRepository;
   private readonly _imagesRepository: IImagesRepository;
   private readonly _templatesService: ITemplatesService;
+  private readonly _transformService: ITransformService;
 
   public constructor(
     memesRepository: IMemesRepository,
     messagesRepository: IMessagesRepository,
     imagesRepository: IImagesRepository,
     templatesService: ITemplatesService,
+    transformService: ITransformService,
   ) {
     this._memesRepository = memesRepository;
     this._messagesRepository = messagesRepository;
     this._imagesRepository = imagesRepository;
     this._templatesService = templatesService;
+    this._transformService = transformService;
   }
 
   /**
-   * Generates a meme by first getting needed props, calling the repository
-   * and converting the response into a .png buffer
+   * Generates a meme by first getting needed props, calling the repository to
+   * render props and template into an image, converts it into a png and returns as
+   * an object with meme image as base64
    *
    * @param data
    *
@@ -79,8 +84,9 @@ export class MemesService implements IMemesService {
   }
 
   /**
-   * Gets text messages and images from the channel, shuffles them
-   * and removes everything what's not needed for the chosen template
+   * Gets text messages and images from the channel, shuffles them,
+   * then transforms channel texts into meme slot text and returns
+   * an object with both texts and images
    *
    * @param template
    * @param channelId
@@ -110,7 +116,10 @@ export class MemesService implements IMemesService {
 
     return {
       images: channelImages.slice(0, templateImages.length),
-      texts: channelTexts.slice(0, templateTexts.length),
+      texts: await this._transformService.transformIntoMultipleTexts(
+        channelTexts,
+        templateTexts.length,
+      ),
     };
   }
 }
