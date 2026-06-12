@@ -2,15 +2,23 @@
   "name": "@jstmemit/meme-generator",
   "private": true,
   "type": "module",
+  "scripts": {
+    "start": "tsx src/workers.ts"
+  },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
+    "bullmq": "^5.78.0",
     "react": "^19.2.7",
     "satori": "^0.26.0"
   },
   "devDependencies": {
+    "@jstmemit/bot": "workspace:*",
+    "@jstmemit/db": "workspace:*",
+    "@jstmemit/queue": "workspace:*",
+    "@jstmemit/shared": "workspace:*",
     "@types/node": "^25.9.2",
     "@types/react": "^19.2.17",
-    "@jstmemit/db": "workspace:*"
+    "tsx": "^4.22.4"
   },
   "exports": {
     "./*.ts": "./src/*.ts",

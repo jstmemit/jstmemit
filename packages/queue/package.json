@@ -1,5 +1,12 @@
 {
   "name": "@jstmemit/queue",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "bullmq": "^5.78.0",
+    "@jstmemit/shared": "workspace:*"
+  },
+  "exports": {
+    "./*": "./src/*.ts"
+  }
 }

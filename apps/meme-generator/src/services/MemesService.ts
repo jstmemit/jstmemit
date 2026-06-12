@@ -1,5 +1,4 @@
 import type { Template } from "../models/Template.ts";
-import type { TemplateResult } from "../models/TemplateResult.ts";
 import type { IMemesService } from "../interfaces/IMemesService.ts";
 import type { IMemesRepository } from "../interfaces/IMemesRepository.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
@@ -8,6 +7,8 @@ import type { TemplateProps } from "../models/TemplateProps.ts";
 import type { TemplateImage } from "../models/TemplateImage.ts";
 import type { TemplateText } from "../models/TemplateText.ts";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
+import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
+import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 
 export class MemesService implements IMemesService {
   private readonly _memesRepository: IMemesRepository;
@@ -31,57 +32,50 @@ export class MemesService implements IMemesService {
    * Generates a meme by first getting needed props, calling the repository
    * and converting the response into a .png buffer
    *
-   * @param template
-   * @param channelId
+   * @param data
    *
    * @author Kyrylo Maliuha
    */
   public async generateMeme(
-    channelId: string,
-    template?: Template,
-  ): Promise<TemplateResult | undefined> {
-    try {
-      if (!template) {
-        template = this._templatesService.getRandomTemplate();
-      }
+    data: MemeGenerationJob,
+  ): Promise<MemeGenerationResult> {
+    let { template } = data;
+    const { channelId } = data;
 
-      if (!template) {
-        return undefined;
-      }
-
-      const props: TemplateProps | undefined =
-        await this.getMemeTemplateContext(template, channelId);
-
-      if (!props) {
-        return undefined;
-      }
-
-      const svg: string | undefined = await this._memesRepository.generateMeme(
-        template,
-        props,
-      );
-
-      if (!svg) {
-        return {
-          success: false,
-        };
-      }
-
-      const png: Buffer = this._memesRepository.convertIntoBuffer(
-        svg,
-        template.width,
-      );
-
-      return {
-        success: true,
-        result: png,
-      };
-    } catch (error) {
-      console.log(error);
-      return {
-        success: false,
-      };
+    if (!template) {
+      template = this._templatesService.getRandomTemplate();
     }
+
+    if (!template) {
+      throw new Error();
+    }
+
+    const props: TemplateProps | undefined = await this.getMemeTemplateContext(
+      template,
+      channelId,
+    );
+
+    if (!props) {
+      throw new Error();
+    }
+
+    const svg: string | undefined = await this._memesRepository.generateMeme(
+      template,
+      props,
+    );
+
+    if (!svg) {
+      throw new Error();
+    }
+
+    const png: Buffer = this._memesRepository.convertIntoBuffer(
+      svg,
+      template.width,
+    );
+
+    return {
+      png: png.toString("base64"),
+    };
   }
 
   /**

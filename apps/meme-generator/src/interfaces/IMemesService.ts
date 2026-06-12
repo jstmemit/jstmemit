@@ -1,9 +1,8 @@
-import type { Template } from "../models/Template.ts";
-import type { TemplateResult } from "../models/TemplateResult.ts";
+import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
+import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 
 export abstract class IMemesService {
   public abstract generateMeme(
-    channelId: string,
-    template?: Template,
-  ): Promise<TemplateResult | undefined>;
+    data: MemeGenerationJob,
+  ): Promise<MemeGenerationResult>;
 }

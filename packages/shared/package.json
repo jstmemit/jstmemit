@@ -2,7 +2,10 @@
   "name": "@jstmemit/shared",
   "private": true,
   "type": "module",
+  "devDependencies": {
+    "@jstmemit/meme-generator": "workspace:*"
+  },
   "exports": {
-    "./schemas/*": "./src/schemas/*.ts"
+    "./*": "./src/*.ts"
   }
 }
