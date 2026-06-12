@@ -276,9 +276,6 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0
     devDependencies:
-      '@jstmemit/bot':
-        specifier: workspace:*
-        version: link:../bot
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db

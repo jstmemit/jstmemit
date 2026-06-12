@@ -12,7 +12,6 @@
     "satori": "^0.26.0"
   },
   "devDependencies": {
-    "@jstmemit/bot": "workspace:*",
     "@jstmemit/db": "workspace:*",
     "@jstmemit/queue": "workspace:*",
     "@jstmemit/shared": "workspace:*",

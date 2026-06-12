@@ -1,4 +1,4 @@
-import { client, env } from "../bot.ts";
+import { client } from "../bot.ts";
 import { Events } from "discord.js";
 import { createMemeGenerationQueue } from "@jstmemit/queue/jobs/memeGeneration";
 import { createRedisConnection } from "@jstmemit/queue/connection";
@@ -7,6 +7,9 @@ import { type Queue } from "bullmq";
 import { type ConnectionOptions } from "bullmq";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
 
 const redisConnection: ConnectionOptions = createRedisConnection(
   env.REDIS_HOST,

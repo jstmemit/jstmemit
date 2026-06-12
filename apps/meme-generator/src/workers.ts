@@ -18,7 +18,9 @@ import { FontsService } from "./controllers/FontsService.ts";
 import type { IFontsRepository } from "./interfaces/IFontsRepository.ts";
 import { FontsRepository } from "./repositories/FontsRepository.ts";
 import { createRedisConnection } from "@jstmemit/queue/connection";
-import { env } from "@jstmemit/bot/bot";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
 
 const redisConnection: ConnectionOptions = createRedisConnection(
   env.REDIS_HOST,
