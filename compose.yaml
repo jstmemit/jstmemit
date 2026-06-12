@@ -1,0 +1,47 @@
+services:
+  sqld:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    ports: ["8080:8080"]
+    volumes: ["sqld-data:/var/lib/sqld"]
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    command: [ "redis-server", "--appendonly", "yes" ]
+    volumes: [ "redis-data:/data" ]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  bot:
+    build:
+      context: .
+      dockerfile: apps/bot/Dockerfile
+    env_file:
+      - ".env.docker"
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+      sqld:
+        condition: service_started
+
+  meme-generator:
+    build:
+      context: .
+      dockerfile: apps/meme-generator/Dockerfile
+    env_file:
+      - ".env.docker"
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+      sqld:
+        condition: service_started
+
+volumes:
+  sqld-data:
+  redis-data:
