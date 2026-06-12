@@ -272,6 +272,9 @@ importers:
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
+      markov-strings:
+        specifier: ^3.0.4
+        version: 3.0.4
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -1316,6 +1319,9 @@ packages:
   end-of-stream@1.4.5:
     resolution: {integrity: sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==}
 
+  es-toolkit@1.47.0:
+    resolution: {integrity: sha512-n1GuoD0WEQZMBk5tttoZSqwgyLx01oqa5XsBmCHwPyNe1S9jPBEmtR2pSgp2kJuWE3ciFZ6yRHmY4pM4C3OOkw==}
+
   esbuild@0.25.12:
     resolution: {integrity: sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg==}
     engines: {node: '>=18'}
@@ -1536,6 +1542,10 @@ packages:
 
   magic-bytes.js@1.13.0:
     resolution: {integrity: sha512-afO2mnxW7GDTXMm5/AoN1WuOcdoKhtgXjIvHmobqTD1grNplhGdv3PFOyjCVmrnOZBIT/gD/koDKpYG+0mvHcg==}
+
+  markov-strings@3.0.4:
+    resolution: {integrity: sha512-KsNPlUt8jo5B3My0DHyg513ZOA9YqS5xpBpp3cjyvCm+RD/p9t+U/BTOhuWMw+O3rigcH2FdBtX9gevihjFUNg==}
+    engines: {node: '>=8.0.0'}
 
   mimic-response@3.1.0:
     resolution: {integrity: sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==}
@@ -2499,6 +2509,8 @@ snapshots:
     dependencies:
       once: 1.4.0
 
+  es-toolkit@1.47.0: {}
+
   esbuild@0.25.12:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.25.12
@@ -2768,6 +2780,10 @@ snapshots:
   luxon@3.7.2: {}
 
   magic-bytes.js@1.13.0: {}
+
+  markov-strings@3.0.4:
+    dependencies:
+      es-toolkit: 1.47.0
 
   mimic-response@3.1.0: {}
 

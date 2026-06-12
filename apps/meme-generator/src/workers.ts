@@ -21,6 +21,8 @@ import { createRedisConnection } from "@jstmemit/queue/connection";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import type { ITransformService } from "./interfaces/ITransformService.ts";
 import { TransformService } from "./services/TransformService.ts";
+import type { ITransformProvider } from "./interfaces/ITransformProvider.ts";
+import { MarkovProvider } from "./providers/MarkovProvider.ts";
 
 const env = Env.parse(process.env);
 
@@ -46,7 +48,10 @@ const templatesService: ITemplatesService = new TemplatesService(
 );
 
 // transform
-const transformService: ITransformService = new TransformService();
+const markovProvider: ITransformProvider = new MarkovProvider();
+const transformService: ITransformService = new TransformService(
+  markovProvider,
+);
 
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);

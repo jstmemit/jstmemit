@@ -1,7 +1,14 @@
 import type { ITransformService } from "../interfaces/ITransformService.ts";
 import _ from "lodash";
+import type { ITransformProvider } from "../interfaces/ITransformProvider.ts";
 
 export class TransformService implements ITransformService {
+  private readonly _markovProvider: ITransformProvider;
+
+  public constructor(markovProvider: ITransformProvider) {
+    this._markovProvider = markovProvider;
+  }
+
   public async transformIntoMultipleTexts(
     texts: string[],
     amount: number,
@@ -16,14 +23,19 @@ export class TransformService implements ITransformService {
   }
 
   public async transformIntoText(texts: string[]): Promise<string> {
-    if (!texts || texts.length < 1) {
+    try {
+      if (!texts || texts.length < 1) {
+        return "";
+      }
+
+      if (texts.length < 30) {
+        return _.sample(texts) || "";
+      }
+
+      return await this._markovProvider.getTransformedText(texts);
+    } catch (error) {
+      console.error(error);
       return "";
     }
-
-    if (texts.length < 30) {
-      return _.sample(texts) || "";
-    }
-
-    return "";
   }
 }
