@@ -104,7 +104,7 @@ export class MemesService implements IMemesService {
       return undefined;
     }
 
-    if (!channelTexts || !channelImages) {
+    if (channelTexts.length <= 1 || channelImages.length <= 1) {
       return undefined;
     }
 
