@@ -1,6 +1,6 @@
-import type { IChannelsController } from "../interfaces/IChannelsController.ts";
+import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { ChatInputCommandInteraction } from "discord.js";
-import type { IChannelsService } from "../interfaces/IChannelsService.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 
 export class ChannelsController implements IChannelsController {
   private readonly _channelsService: IChannelsService;

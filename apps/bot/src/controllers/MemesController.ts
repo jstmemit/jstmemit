@@ -1,4 +1,4 @@
-import type { IMemesController } from "../interfaces/IMemesController.ts";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";

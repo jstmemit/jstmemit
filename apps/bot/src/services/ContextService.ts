@@ -1,6 +1,6 @@
-import type { IContextService } from "../interfaces/IContextService.ts";
+import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import type { IChannelsService } from "../interfaces/IChannelsService.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 

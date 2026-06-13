@@ -1,8 +1,8 @@
 import { type Client, type Interaction, type Message } from "discord.js";
-import type { IContextController } from "./../interfaces/IContextController.ts";
-import type { IMemesController } from "../interfaces/IMemesController.ts";
-import type { IChannelsController } from "../interfaces/IChannelsController.ts";
-import type { IEventsController } from "../interfaces/IEventsController.ts";
+import type { IContextController } from "#/interfaces/IContextController.ts";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
+import type { IEventsController } from "#/interfaces/IEventsController.ts";
 
 export class EventsController implements IEventsController {
   private readonly _contextController: IContextController;

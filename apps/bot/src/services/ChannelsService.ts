@@ -1,4 +1,4 @@
-import type { IChannelsService } from "../interfaces/IChannelsService.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 

@@ -1,6 +1,6 @@
-import type { IContextController } from "../interfaces/IContextController.ts";
+import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { Message } from "discord.js";
-import type { IContextService } from "../interfaces/IContextService.ts";
+import type { IContextService } from "#/interfaces/IContextService.ts";
 
 export class ContextController implements IContextController {
   private readonly _contextService: IContextService;
