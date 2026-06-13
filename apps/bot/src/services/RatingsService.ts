@@ -7,20 +7,20 @@ export class RatingsService implements IRatingsService {
     likes: number,
     dislikes: number,
   ): ActionRowBuilder<ButtonBuilder> {
-    const likeButton = new ButtonBuilder()
+    const likeButton: ButtonBuilder = new ButtonBuilder()
       .setCustomId(`like_${interactionId}`)
       .setLabel(`👍 ${likes}`)
-      .setStyle(ButtonStyle.Secondary);
+      .setStyle(ButtonStyle.Success);
 
-    const regenerateButton = new ButtonBuilder()
+    const regenerateButton: ButtonBuilder = new ButtonBuilder()
       .setCustomId(`meme`)
       .setLabel("🔄️")
       .setStyle(ButtonStyle.Secondary);
 
-    const dislikeButton = new ButtonBuilder()
+    const dislikeButton: ButtonBuilder = new ButtonBuilder()
       .setCustomId(`dislike_${interactionId}`)
       .setLabel(`👎 ${dislikes}`)
-      .setStyle(ButtonStyle.Secondary);
+      .setStyle(ButtonStyle.Danger);
 
     return new ActionRowBuilder<ButtonBuilder>().addComponents(
       likeButton,
