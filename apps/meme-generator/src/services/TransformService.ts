@@ -1,6 +1,6 @@
-import type { ITransformService } from "../interfaces/ITransformService.ts";
 import _ from "lodash";
-import type { ITransformProvider } from "../interfaces/ITransformProvider.ts";
+import type { ITransformService } from "#/interfaces/ITransformService.ts";
+import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 
 export class TransformService implements ITransformService {
   private readonly _markovProvider: ITransformProvider;

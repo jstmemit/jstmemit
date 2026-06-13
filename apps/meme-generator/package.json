@@ -22,6 +22,11 @@
     "@types/react": "^19.2.17",
     "tsx": "^4.22.4"
   },
+  "imports": {
+    "#/*": [
+      "./src/*"
+    ]
+  },
   "exports": {
     "./*.ts": "./src/*.ts",
     "./*.tsx": "./src/*.tsx",

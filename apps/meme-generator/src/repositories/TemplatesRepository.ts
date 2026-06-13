@@ -1,8 +1,8 @@
-import type { ITemplatesRepository } from "../interfaces/ITemplatesRepository.ts";
-import type { Template } from "../models/Template.ts";
-import { topBottomText } from "../data/templates/topBottomText.tsx";
-import { liveReaction } from "../data/templates/liveReaction.tsx";
-import { spongebob } from "../data/templates/spongebob.tsx";
+import { topBottomText } from "#/data/templates/topBottomText.tsx";
+import { liveReaction } from "#/data/templates/liveReaction.tsx";
+import { spongebob } from "#/data/templates/spongebob.tsx";
+import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
+import type { Template } from "#/models/Template.ts";
 
 export class TemplatesRepository implements ITemplatesRepository {
   /**

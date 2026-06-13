@@ -1,4 +1,4 @@
-import type { ITransformProvider } from "../interfaces/ITransformProvider.ts";
+import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import MarkovPkg from "markov-strings";
 
 export class MarkovProvider implements ITransformProvider {

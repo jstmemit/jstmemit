@@ -1,6 +1,6 @@
-import type { Template } from "../models/Template.ts";
-import type { ITemplatesRepository } from "../interfaces/ITemplatesRepository.ts";
-import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
+import type { Template } from "#/models/Template.ts";
+import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
+import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 
 export class TemplatesService implements ITemplatesService {
   private readonly _templatesRepository: ITemplatesRepository;

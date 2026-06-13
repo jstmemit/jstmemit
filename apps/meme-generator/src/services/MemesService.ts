@@ -1,15 +1,15 @@
-import type { Template } from "../models/Template.ts";
-import type { IMemesService } from "../interfaces/IMemesService.ts";
-import type { IMemesRepository } from "../interfaces/IMemesRepository.ts";
+import type { Template } from "#/models/Template.ts";
+import type { IMemesService } from "#/interfaces/IMemesService.ts";
+import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
-import type { TemplateProps } from "../models/TemplateProps.ts";
-import type { TemplateImage } from "../models/TemplateImage.ts";
-import type { TemplateText } from "../models/TemplateText.ts";
-import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { TemplateImage } from "#/models/TemplateImage.ts";
+import type { TemplateText } from "#/models/TemplateText.ts";
+import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
-import type { ITransformService } from "../interfaces/ITransformService.ts";
+import type { ITransformService } from "#/interfaces/ITransformService.ts";
 
 export class MemesService implements IMemesService {
   private readonly _memesRepository: IMemesRepository;
