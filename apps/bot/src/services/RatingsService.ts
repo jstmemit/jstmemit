@@ -13,7 +13,7 @@ export class RatingsService implements IRatingsService {
       .setStyle(ButtonStyle.Secondary);
 
     const regenerateButton = new ButtonBuilder()
-      .setCustomId(`meme-regenerate`)
+      .setCustomId(`meme`)
       .setLabel("🔄️")
       .setStyle(ButtonStyle.Secondary);
 

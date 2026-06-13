@@ -1,4 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import type { ButtonInteraction } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -26,7 +27,7 @@ export class MemesController implements IMemesController {
   }
 
   public async handleMemeInteraction(
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction | ButtonInteraction,
   ): Promise<void> {
     await interaction.deferReply();
 
@@ -40,17 +41,35 @@ export class MemesController implements IMemesController {
         this._memeGenerationQueueEvents,
         60_000,
       );
-      await interaction.editReply({
-        components: [
-          this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
-        ],
-        files: [
-          {
-            attachment: Buffer.from(jobResult.png, "base64"),
-            name: "meme.png",
-          },
-        ],
-      });
+
+      if (interaction.isChatInputCommand()) {
+        await interaction.editReply({
+          components: [
+            this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
+          ],
+          files: [
+            {
+              attachment: Buffer.from(jobResult.png, "base64"),
+              name: "meme.png",
+            },
+          ],
+        });
+      }
+
+      if (interaction.isButton() && interaction.channel?.isSendable()) {
+        await interaction.channel.send({
+          content: `<@${interaction.user.id}>`,
+          components: [
+            this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
+          ],
+          files: [
+            {
+              attachment: Buffer.from(jobResult.png, "base64"),
+              name: "meme.png",
+            },
+          ],
+        });
+      }
     } catch {
       await interaction.editReply("error");
     }

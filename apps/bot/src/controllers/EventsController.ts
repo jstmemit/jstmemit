@@ -44,5 +44,14 @@ export class EventsController implements IEventsController {
           await this._channelsController.handleEnableInteraction(interaction);
       }
     }
+
+    // buttons
+    if (interaction.isButton()) {
+      switch (interaction.customId) {
+        case "meme":
+          await this._memesController.handleMemeInteraction(interaction);
+          break;
+      }
+    }
   }
 }
