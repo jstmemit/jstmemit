@@ -25,6 +25,8 @@ import { EventsController } from "#/controllers/EventsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import { RatingsService } from "#/services/RatingsService.ts";
+import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import { RatingsRepository } from "@jstmemit/db/repositories/RatingsRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -67,7 +69,8 @@ const contextController: IContextController = new ContextController(
 );
 
 // ratings
-const ratingsService: IRatingsService = new RatingsService();
+const ratingsRepository: IRatingsRepository = new RatingsRepository();
+const ratingsService: IRatingsService = new RatingsService(ratingsRepository);
 
 // memes
 const memesController: IMemesController = new MemesController(
@@ -81,4 +84,5 @@ export const eventsController: IEventsController = new EventsController(
   contextController,
   channelsController,
   memesController,
+  ratingsService,
 );

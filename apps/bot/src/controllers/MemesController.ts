@@ -1,5 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { ButtonInteraction } from "discord.js";
+import type { ButtonInteraction, Message } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -30,6 +30,7 @@ export class MemesController implements IMemesController {
     interaction: ChatInputCommandInteraction | ButtonInteraction,
   ): Promise<void> {
     await interaction.deferReply();
+    const message: Message = await interaction.fetchReply();
 
     const job: Job<MemeGenerationJob, MemeGenerationResult> =
       await this._memeGenerationQueue.add("meme-generation", {
@@ -45,9 +46,7 @@ export class MemesController implements IMemesController {
       if (interaction.isChatInputCommand() || interaction.isButton()) {
         await interaction.editReply({
           content: `<@${interaction.user.id}>`,
-          components: [
-            this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
-          ],
+          components: [this._ratingsService.constructRatingButtons(0, 0)],
           files: [
             {
               attachment: Buffer.from(jobResult.png, "base64"),

@@ -3,20 +3,24 @@ import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
+import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 
 export class EventsController implements IEventsController {
   private readonly _contextController: IContextController;
   private readonly _channelsController: IChannelsController;
   private readonly _memesController: IMemesController;
+  private readonly _ratingsService: IRatingsService;
 
   public constructor(
     contextController: IContextController,
     channelsController: IChannelsController,
     memesController: IMemesController,
+    ratingsService: IRatingsService,
   ) {
     this._contextController = contextController;
     this._channelsController = channelsController;
     this._memesController = memesController;
+    this._ratingsService = ratingsService;
   }
 
   public handleClientReady(readyClient: Client<true>): void {
@@ -50,6 +54,12 @@ export class EventsController implements IEventsController {
       switch (interaction.customId) {
         case "meme":
           await this._memesController.handleMemeInteraction(interaction);
+          break;
+        case "like":
+          await this._ratingsService.updateRatingButtons(interaction);
+          break;
+        case "dislike":
+          await this._ratingsService.updateRatingButtons(interaction);
           break;
       }
     }
