@@ -38,4 +38,19 @@ export class ChannelsRepository implements IChannelsRepository {
       return false;
     }
   }
+
+  public async switch(channelId: string, isEnabled: boolean): Promise<boolean> {
+    try {
+      await db
+        .update(channelsTable)
+        .set({ enabled: !isEnabled })
+        .where(eq(channelsTable.channelId, channelId));
+
+      return true;
+    } catch (error) {
+      console.error(error);
+
+      return false;
+    }
+  }
 }
