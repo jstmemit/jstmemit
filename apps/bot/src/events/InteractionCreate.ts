@@ -11,6 +11,12 @@ import { type Queue } from "bullmq";
 import { type ConnectionOptions } from "bullmq";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import type { z } from "zod";
+import type { IChannelsController } from "../interfaces/IChannelsController.ts";
+import { ChannelsController } from "../controllers/ChannelsController.ts";
+import type { IChannelsService } from "../interfaces/IChannelsService.ts";
+import { ChannelsService } from "../services/ChannelsService.ts";
+import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
+import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -32,6 +38,14 @@ const memesController: IMemesController = new MemesController(
   memeGenerationQueueEvents,
 );
 
+const channelsRepository: IChannelsRepository = new ChannelsRepository();
+const channelsService: IChannelsService = new ChannelsService(
+  channelsRepository,
+);
+const channelsController: IChannelsController = new ChannelsController(
+  channelsService,
+);
+
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
   // chat commands
@@ -40,6 +54,8 @@ client.on(Events.InteractionCreate, async (interaction): Promise<void> => {
       case "meme":
         await memesController.handleMemeInteraction(interaction);
         break;
+      case "enable":
+        await channelsController.handleEnableInteraction(interaction);
     }
   }
 });

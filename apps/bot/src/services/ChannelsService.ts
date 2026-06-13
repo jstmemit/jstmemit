@@ -34,16 +34,10 @@ export class ChannelsService implements IChannelsService {
   }
 
   public async switchChannel(channelId: string): Promise<boolean> {
-    try {
-      const isEnabled: boolean = await this.isChannelEnabled(channelId);
-      await this._channelsRepository.switch(channelId, isEnabled);
+    const isEnabled: boolean = await this.isChannelEnabled(channelId);
+    await this._channelsRepository.switch(channelId, isEnabled);
 
-      return true;
-    } catch (error) {
-      console.error(error);
-
-      return false;
-    }
+    return !isEnabled;
   }
 
   public async isChannelEnabled(channelId: string): Promise<boolean> {
