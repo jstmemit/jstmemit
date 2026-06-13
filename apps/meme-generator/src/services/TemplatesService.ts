@@ -9,6 +9,14 @@ export class TemplatesService implements ITemplatesService {
     this._templatesRepository = templatesRepository;
   }
 
+  /**
+   * Gets all templates from TemplatesRepository, then shuffles them
+   * with each template's weight in mind
+   *
+   * @return Template
+   *
+   * @author Kyrylo Maliuha
+   */
   public getRandomTemplate(): Template | undefined {
     const templates: Template[] = this._templatesRepository.getAll();
 

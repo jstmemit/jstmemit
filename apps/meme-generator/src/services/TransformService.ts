@@ -9,6 +9,15 @@ export class TransformService implements ITransformService {
     this._markovProvider = markovProvider;
   }
 
+  /**
+   * Transforms raw strings into a specific amount of transformed
+   * strings.
+   *
+   * @param texts
+   * @param amount
+   *
+   * @author Kyrylo Maliuha
+   */
   public async transformIntoMultipleTexts(
     texts: string[],
     amount: number,
@@ -22,6 +31,15 @@ export class TransformService implements ITransformService {
     return transformedTexts;
   }
 
+  /**
+   * Decides how to transform a specific string based on amount of
+   * raw strings available. If zero, then returns an empty string. If less than 30,
+   * then returns a random one. If more, transforms by using MarkovProvider class
+   *
+   * @param texts
+   *
+   * @author Kyrylo Maliuha
+   */
   public async transformIntoText(texts: string[]): Promise<string> {
     try {
       if (!texts || texts.length < 1) {
