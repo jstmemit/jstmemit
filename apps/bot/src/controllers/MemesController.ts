@@ -5,6 +5,7 @@ import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGeneratio
 import type { QueueEvents } from "bullmq";
 import { type Job } from "bullmq";
 import { type Queue } from "bullmq";
+import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 
 export class MemesController implements IMemesController {
   private readonly _memeGenerationQueue: Queue<
@@ -12,13 +13,16 @@ export class MemesController implements IMemesController {
     MemeGenerationResult
   >;
   private readonly _memeGenerationQueueEvents: QueueEvents;
+  private readonly _ratingsService: IRatingsService;
 
   public constructor(
     memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
     memeGenerationQueueEvents: QueueEvents,
+    ratingsService: IRatingsService,
   ) {
     this._memeGenerationQueue = memeGenerationQueue;
     this._memeGenerationQueueEvents = memeGenerationQueueEvents;
+    this._ratingsService = ratingsService;
   }
 
   public async handleMemeInteraction(
@@ -37,6 +41,9 @@ export class MemesController implements IMemesController {
         60_000,
       );
       await interaction.editReply({
+        components: [
+          this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
+        ],
         files: [
           {
             attachment: Buffer.from(jobResult.png, "base64"),

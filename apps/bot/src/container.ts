@@ -23,6 +23,8 @@ import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import { ChannelsController } from "#/controllers/ChannelsController.ts";
 import { EventsController } from "#/controllers/EventsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
+import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
+import { RatingsService } from "#/services/RatingsService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -64,10 +66,14 @@ const contextController: IContextController = new ContextController(
   contextService,
 );
 
+// ratings
+const ratingsService: IRatingsService = new RatingsService();
+
 // memes
 const memesController: IMemesController = new MemesController(
   memeGenerationQueue,
   memeGenerationQueueEvents,
+  ratingsService,
 );
 
 // events
