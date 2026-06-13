@@ -1,6 +1,9 @@
 import { REST, Routes } from "discord.js";
 import { commands } from "./data/commands.ts";
 import { Env } from "@jstmemit/shared/schemas/Env";
+import { config } from "dotenv";
+
+config({ path: "../../.env" });
 
 const env = Env.parse(process.env);
 
