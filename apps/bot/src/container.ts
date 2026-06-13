@@ -22,6 +22,7 @@ import type { IMemesController } from "./interfaces/IMemesController.ts";
 import type { IChannelsController } from "./interfaces/IChannelsController.ts";
 import { ChannelsController } from "./controllers/ChannelsController.ts";
 import { EventsController } from "./controllers/EventsController.ts";
+import type { IEventsController } from "./interfaces/IEventsController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -70,7 +71,7 @@ const memesController: IMemesController = new MemesController(
 );
 
 // events
-export const eventsController: EventsController = new EventsController(
+export const eventsController: IEventsController = new EventsController(
   contextController,
   channelsController,
   memesController,
