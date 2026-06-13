@@ -1,5 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { ButtonInteraction, Message } from "discord.js";
+import type { ButtonInteraction } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -26,6 +26,14 @@ export class MemesController implements IMemesController {
     this._ratingsService = ratingsService;
   }
 
+  /**
+   * Sends a meme generation job to the queue and replies
+   * to the channel back with a meme
+   *
+   * @param interaction
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleMemeInteraction(
     interaction: ChatInputCommandInteraction | ButtonInteraction,
   ): Promise<void> {
@@ -39,7 +47,7 @@ export class MemesController implements IMemesController {
     try {
       const jobResult: MemeGenerationResult = await job.waitUntilFinished(
         this._memeGenerationQueueEvents,
-        60_000,
+        60000,
       );
 
       if (interaction.isChatInputCommand() || interaction.isButton()) {
@@ -69,6 +77,7 @@ export class MemesController implements IMemesController {
       //   ],
       // });
     } catch {
+      // TODO: needs an embed
       await interaction.editReply("error");
     }
   }

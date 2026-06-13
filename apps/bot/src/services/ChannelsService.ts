@@ -9,12 +9,28 @@ export class ChannelsService implements IChannelsService {
     this._channelsRepository = channelsRepository;
   }
 
+  /**
+   * Calls ChannelsRepository to fetch channel information
+   * by passed channelId.
+   *
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async getChannel(
     channelId: string,
   ): Promise<typeof channelsTable.$inferSelect | undefined> {
     return await this._channelsRepository.get(channelId);
   }
 
+  /**
+   * Searches for the channel and does nothing if it already exists.
+   * If it doesn't, it calls ChannelsRepository to add it.
+   *
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async addChannel(channelId: string): Promise<boolean> {
     try {
       const channel = await this._channelsRepository.get(channelId);
@@ -33,6 +49,14 @@ export class ChannelsService implements IChannelsService {
     }
   }
 
+  /**
+   * Gets current channel status (enabled or disabled) and
+   * calls ChannelsRepository to change it.
+   *
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async switchChannel(channelId: string): Promise<boolean> {
     const isEnabled: boolean = await this.isChannelEnabled(channelId);
     await this._channelsRepository.switch(channelId, isEnabled);
@@ -40,6 +64,14 @@ export class ChannelsService implements IChannelsService {
     return !isEnabled;
   }
 
+  /**
+   * Checks if a channel exists in the database and returns false if
+   * it doesn't. If it does, then returns current status (enabled or disabled)
+   *
+   * @param channelId
+   *
+   * @author Kyrylo Maliuha
+   */
   public async isChannelEnabled(channelId: string): Promise<boolean> {
     try {
       const channel = await this._channelsRepository.get(channelId);

@@ -9,6 +9,14 @@ export class ContextController implements IContextController {
     this._contextService = contextService;
   }
 
+  /**
+   * Handles new messages. Calls ContextService to save
+   * images and text content
+   *
+   * @param message
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleNewMessage(message: Message): Promise<void> {
     try {
       const { id, content, channelId, attachments } = message;

@@ -9,6 +9,15 @@ export class RatingsController implements IRatingsController {
     this._ratingsService = ratingsService;
   }
 
+  /**
+   * Handles clicks on like/dislike buttons under meme messages.
+   * Passes new rating to RatingsService and then updates buttons
+   *
+   * @param interaction
+   * @param rating
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleRatingInteraction(
     interaction: ButtonInteraction,
     rating: "like" | "dislike",

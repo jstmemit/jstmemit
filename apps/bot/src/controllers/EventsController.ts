@@ -23,10 +23,24 @@ export class EventsController implements IEventsController {
     this._ratingsController = ratingsController;
   }
 
+  /**
+   * Handles the Events.ClientReady event from discord.js library
+   *
+   * @param readyClient
+   *
+   * @author Kyrylo Maliuha
+   */
   public handleClientReady(readyClient: Client<true>): void {
     console.log(`Logged in as ${readyClient.user.tag}!`);
   }
 
+  /**
+   * Handles the Events.MessageCreate event from discord.js library
+   *
+   * @param message
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleMessageCreate(message: Message): Promise<void> {
     if (message.author.bot) {
       return;
@@ -35,6 +49,13 @@ export class EventsController implements IEventsController {
     await this._contextController.handleNewMessage(message);
   }
 
+  /**
+   * Handles the Events.InteractionCreate event from discord.js library
+   *
+   * @param interaction
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleInteractionCreate(
     interaction: Interaction,
   ): Promise<void> {

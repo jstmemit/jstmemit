@@ -18,6 +18,16 @@ export class RatingsService implements IRatingsService {
     this._ratingsRepository = ratingsRepository;
   }
 
+  /**
+   * Checks if a user already rated the same meme recently and if not,
+   * then calls RatingsRepository and saves his rating.
+   *
+   * @param userId
+   * @param messageId
+   * @param rating
+   *
+   * @author Kyrylo Maliuha
+   */
   public async addRating(
     userId: string,
     messageId: string,
@@ -40,6 +50,14 @@ export class RatingsService implements IRatingsService {
     this._ratings.get(messageId)?.add(userId);
   }
 
+  /**
+   * Constructs a row of discord.js buttons (like, regenerate, dislike).
+   *
+   * @param likes
+   * @param dislikes
+   *
+   * @author Kyrylo Maliuha
+   */
   public constructRatingButtons(
     likes: number,
     dislikes: number,
@@ -66,6 +84,14 @@ export class RatingsService implements IRatingsService {
     );
   }
 
+  /**
+   * Fetches the meme message from the bot, then likes/dislikes from the database
+   * for it and updates the entire button row.
+   *
+   * @param interaction
+   *
+   * @author Kyrylo Maliuha
+   */
   public async updateRatingButtons(
     interaction: ButtonInteraction,
   ): Promise<void> {
@@ -79,6 +105,18 @@ export class RatingsService implements IRatingsService {
     });
   }
 
+  /**
+   * Gets a Set of users who rated the meme with passed messageId,
+   * if Set doesn't exist returns false (didn't rate) and creates one.
+   * If exists, checks if a passed userId is there and returns true (rated)
+   * if it is.
+   *
+   * @param userId
+   * @param messageId
+   * @private
+   *
+   * @author Kyrylo Maliuha
+   */
   private _checkIfUserRated(userId: string, messageId: string): boolean {
     const userRatings: Set<string> | undefined = this._ratings.get(messageId);
 

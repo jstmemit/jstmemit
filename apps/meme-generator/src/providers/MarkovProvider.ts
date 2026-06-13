@@ -6,6 +6,17 @@ export class MarkovProvider implements ITransformProvider {
     return await Promise.resolve(this._generateText(texts, 1, 5));
   }
 
+  /**
+   * Makes a corpus out of passed strings and returns back
+   * generation result from running markov chains
+   *
+   * @param corpus
+   * @param minLength
+   * @param maxLength
+   * @private
+   *
+   * @author Kyrylo Maliuha
+   */
   private _generateText(
     corpus: string[],
     minLength: number,

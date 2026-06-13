@@ -9,6 +9,14 @@ export class ChannelsController implements IChannelsController {
     this._channelsService = channelsService;
   }
 
+  /**
+   * Handles /enable command. Calls ChannelService to
+   * switch channel (if disabled, then enable and vice versa).
+   *
+   * @param interaction
+   *
+   * @author Kyrylo Maliuha
+   */
   public async handleEnableInteraction(
     interaction: ChatInputCommandInteraction,
   ): Promise<void> {
@@ -19,10 +27,12 @@ export class ChannelsController implements IChannelsController {
         interaction.channelId,
       );
 
+      // TODO: needs an embed
       await interaction.editReply(`channel is ${isEnabled}`);
     } catch (error) {
       console.error(error);
 
+      // TODO: needs an embed
       await interaction.editReply("error");
     }
   }
