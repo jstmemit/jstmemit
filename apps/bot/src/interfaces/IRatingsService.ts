@@ -6,6 +6,7 @@ import type {
 
 export abstract class IRatingsService {
   public abstract addRating(
+    userId: string,
     messageId: string,
     rating: "like" | "dislike",
   ): Promise<void>;

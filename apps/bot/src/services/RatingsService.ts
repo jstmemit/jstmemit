@@ -8,6 +8,10 @@ import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 
 export class RatingsService implements IRatingsService {
+  // doesn't have to persist because template analytics is stored in database anyway
+  // and who exactly voted doesn't matter that much
+  private _ratings: Map<string, Set<string>> = new Map();
+
   private readonly _ratingsRepository: IRatingsRepository;
 
   public constructor(ratingsRepository: IRatingsRepository) {
@@ -15,9 +19,16 @@ export class RatingsService implements IRatingsService {
   }
 
   public async addRating(
+    userId: string,
     messageId: string,
     rating: "like" | "dislike",
   ): Promise<void> {
+    const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
+
+    if (alreadyRated) {
+      return;
+    }
+
     if (rating === "like") {
       await this._ratingsRepository.addLikeRating(messageId);
     }
@@ -25,6 +36,8 @@ export class RatingsService implements IRatingsService {
     if (rating === "dislike") {
       await this._ratingsRepository.addDislikeRating(messageId);
     }
+
+    this._ratings.get(messageId)?.add(userId);
   }
 
   public constructRatingButtons(
@@ -64,5 +77,16 @@ export class RatingsService implements IRatingsService {
     await interaction.update({
       components: [this.constructRatingButtons(likes, dislikes)],
     });
+  }
+
+  private _checkIfUserRated(userId: string, messageId: string): boolean {
+    const userRatings: Set<string> | undefined = this._ratings.get(messageId);
+
+    if (!userRatings) {
+      this._ratings.set(messageId, new Set());
+      return false;
+    }
+
+    return userRatings.has(userId);
   }
 }

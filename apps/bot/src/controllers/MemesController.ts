@@ -30,7 +30,6 @@ export class MemesController implements IMemesController {
     interaction: ChatInputCommandInteraction | ButtonInteraction,
   ): Promise<void> {
     await interaction.deferReply();
-    const message: Message = await interaction.fetchReply();
 
     const job: Job<MemeGenerationJob, MemeGenerationResult> =
       await this._memeGenerationQueue.add("meme-generation", {

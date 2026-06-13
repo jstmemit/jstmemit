@@ -14,7 +14,11 @@ export class RatingsController implements IRatingsController {
     rating: "like" | "dislike",
   ): Promise<void> {
     try {
-      await this._ratingsService.addRating(interaction.message.id, rating);
+      await this._ratingsService.addRating(
+        interaction.user.id,
+        interaction.message.id,
+        rating,
+      );
       await this._ratingsService.updateRatingButtons(interaction);
     } catch (error) {
       console.error(error);
