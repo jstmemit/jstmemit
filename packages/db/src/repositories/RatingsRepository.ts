@@ -1,7 +1,7 @@
 import type { MemeRatings } from "@jstmemit/shared/models/MemeRatings";
 import { db } from "../index.ts";
 import { ratingsTable } from "../schema.ts";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import type { IRatingsRepository } from "../interfaces/IRatingsRepository.ts";
 
 export class RatingsRepository implements IRatingsRepository {
@@ -25,5 +25,38 @@ export class RatingsRepository implements IRatingsRepository {
         dislikes: 0,
       };
     }
+  }
+
+  public async addLikeRating(messageId: string): Promise<void> {
+    try {
+      await this._insertRating(messageId);
+
+      await db
+        .update(ratingsTable)
+        .set({ likes: sql`${ratingsTable.likes} + 1` })
+        .where(eq(ratingsTable.messageId, messageId));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  public async addDislikeRating(messageId: string): Promise<void> {
+    try {
+      await this._insertRating(messageId);
+
+      await db
+        .update(ratingsTable)
+        .set({ dislikes: sql`${ratingsTable.dislikes} + 1` })
+        .where(eq(ratingsTable.messageId, messageId));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  private async _insertRating(messageId: string): Promise<void> {
+    await db
+      .insert(ratingsTable)
+      .values({ messageId, likes: 0, dislikes: 0 })
+      .onConflictDoNothing({ target: ratingsTable.messageId });
   }
 }

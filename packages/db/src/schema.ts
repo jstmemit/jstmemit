@@ -53,7 +53,6 @@ export const channelsTable = sqliteTable("channels_table", {
 export const ratingsTable = sqliteTable("ratings_table", {
   id: int().primaryKey({ autoIncrement: true }),
   messageId: text().notNull().unique(),
-  channelId: text().notNull(),
   likes: int().notNull().default(0),
   dislikes: int().notNull().default(0),
 });

@@ -5,6 +5,10 @@ import type {
 } from "discord.js";
 
 export abstract class IRatingsService {
+  public abstract addRating(
+    messageId: string,
+    rating: "like" | "dislike",
+  ): Promise<void>;
   public abstract constructRatingButtons(
     likes: number,
     dislikes: number,

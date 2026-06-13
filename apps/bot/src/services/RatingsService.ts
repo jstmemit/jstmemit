@@ -14,6 +14,19 @@ export class RatingsService implements IRatingsService {
     this._ratingsRepository = ratingsRepository;
   }
 
+  public async addRating(
+    messageId: string,
+    rating: "like" | "dislike",
+  ): Promise<void> {
+    if (rating === "like") {
+      await this._ratingsRepository.addLikeRating(messageId);
+    }
+
+    if (rating === "dislike") {
+      await this._ratingsRepository.addDislikeRating(messageId);
+    }
+  }
+
   public constructRatingButtons(
     likes: number,
     dislikes: number,
@@ -48,9 +61,8 @@ export class RatingsService implements IRatingsService {
     const { likes, dislikes } =
       await this._ratingsRepository.getMemeRatings(messageId);
 
-    // for testing
     await interaction.update({
-      components: [this.constructRatingButtons(likes + 1, dislikes + 1)],
+      components: [this.constructRatingButtons(likes, dislikes)],
     });
   }
 }

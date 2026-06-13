@@ -3,24 +3,24 @@ import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
-import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
+import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 
 export class EventsController implements IEventsController {
   private readonly _contextController: IContextController;
   private readonly _channelsController: IChannelsController;
   private readonly _memesController: IMemesController;
-  private readonly _ratingsService: IRatingsService;
+  private readonly _ratingsController: IRatingsController;
 
   public constructor(
     contextController: IContextController,
     channelsController: IChannelsController,
     memesController: IMemesController,
-    ratingsService: IRatingsService,
+    ratingsController: IRatingsController,
   ) {
     this._contextController = contextController;
     this._channelsController = channelsController;
     this._memesController = memesController;
-    this._ratingsService = ratingsService;
+    this._ratingsController = ratingsController;
   }
 
   public handleClientReady(readyClient: Client<true>): void {
@@ -56,10 +56,16 @@ export class EventsController implements IEventsController {
           await this._memesController.handleMemeInteraction(interaction);
           break;
         case "like":
-          await this._ratingsService.updateRatingButtons(interaction);
+          await this._ratingsController.handleRatingInteraction(
+            interaction,
+            "like",
+          );
           break;
         case "dislike":
-          await this._ratingsService.updateRatingButtons(interaction);
+          await this._ratingsController.handleRatingInteraction(
+            interaction,
+            "dislike",
+          );
           break;
       }
     }
