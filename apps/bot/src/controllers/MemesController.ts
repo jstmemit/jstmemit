@@ -1,35 +1,52 @@
 import type { IMemesController } from "../interfaces/IMemesController.ts";
-import type { ChatInputCommandInteraction } from "discord.js";
-import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
-import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
+import { type ChatInputCommandInteraction } from "discord.js";
+import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
+import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
+import { createMemeGenerationQueue } from "@jstmemit/queue/jobs/memeGeneration";
+import { createRedisConnection } from "@jstmemit/queue/connection";
+import { type Job, QueueEvents } from "bullmq";
+import { type Queue } from "bullmq";
+import { type ConnectionOptions } from "bullmq";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
+
+const redisConnection: ConnectionOptions = createRedisConnection(
+  env.REDIS_HOST,
+  env.REDIS_PORT,
+);
+const memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult> =
+  createMemeGenerationQueue(redisConnection);
+const memeGenerationQueueEvents = new QueueEvents("meme-generation", {
+  connection: redisConnection,
+});
 
 export class MemesController implements IMemesController {
-  private readonly _memesService: IMemesService;
-
-  public constructor(memesService: IMemesService) {
-    this._memesService = memesService;
-  }
-
   public async handleMemeInteraction(
     interaction: ChatInputCommandInteraction,
   ): Promise<void> {
     await interaction.deferReply();
 
-    const png: TemplateResult | undefined =
-      await this._memesService.generateMeme(interaction.channelId);
+    const job: Job<MemeGenerationJob, MemeGenerationResult> =
+      await memeGenerationQueue.add("meme-generation", {
+        channelId: interaction.channelId,
+      });
 
-    if (!png?.result) {
-      await interaction.reply("error");
-      return;
+    try {
+      const jobResult: MemeGenerationResult = await job.waitUntilFinished(
+        memeGenerationQueueEvents,
+        60_000,
+      );
+      await interaction.editReply({
+        files: [
+          {
+            attachment: Buffer.from(jobResult.png, "base64"),
+            name: "meme.png",
+          },
+        ],
+      });
+    } catch {
+      await interaction.editReply("error");
     }
-
-    await interaction.editReply({
-      files: [
-        {
-          attachment: png.result,
-          name: "meme.png",
-        },
-      ],
-    });
   }
 }
