@@ -1,6 +1,9 @@
 import { Events } from "discord.js";
 import { client } from "../bot.ts";
+import { EventsController } from "../controllers/EventsController.ts";
 
-client.on(Events.ClientReady, (readyClient) => {
-  console.log(`Logged in as ${readyClient.user.tag}!`);
+const eventsController: EventsController = new EventsController();
+
+client.on(Events.ClientReady, (readyClient): void => {
+  eventsController.handleClientReady(readyClient);
 });
