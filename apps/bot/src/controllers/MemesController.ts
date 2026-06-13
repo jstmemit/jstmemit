@@ -42,22 +42,8 @@ export class MemesController implements IMemesController {
         60_000,
       );
 
-      if (interaction.isChatInputCommand()) {
+      if (interaction.isChatInputCommand() || interaction.isButton()) {
         await interaction.editReply({
-          components: [
-            this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
-          ],
-          files: [
-            {
-              attachment: Buffer.from(jobResult.png, "base64"),
-              name: "meme.png",
-            },
-          ],
-        });
-      }
-
-      if (interaction.isButton() && interaction.channel?.isSendable()) {
-        await interaction.channel.send({
           content: `<@${interaction.user.id}>`,
           components: [
             this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
@@ -70,6 +56,20 @@ export class MemesController implements IMemesController {
           ],
         });
       }
+
+      // interaction.channel?.isSendable()
+
+      // await interaction.channel.send({
+      //   components: [
+      //     this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
+      //   ],
+      //   files: [
+      //     {
+      //       attachment: Buffer.from(jobResult.png, "base64"),
+      //       name: "meme.png",
+      //     },
+      //   ],
+      // });
     } catch {
       await interaction.editReply("error");
     }
