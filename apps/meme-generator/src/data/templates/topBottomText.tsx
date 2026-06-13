@@ -20,13 +20,14 @@ export const topBottomText: Template = {
         width: "100%",
         height: "100%",
         fontFamily: "Impact",
+        backgroundColor: "#000",
       }}
     >
       <img
         src={images[0]}
         width={800}
         height={800}
-        style={{ position: "absolute", top: 0, left: 0 }}
+        style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
       />
       <div
         style={{
@@ -36,6 +37,8 @@ export const topBottomText: Template = {
           display: "flex",
           justifyContent: "center",
           fontSize: 70,
+          paddingLeft: 10,
+          paddingRight: 10,
           color: "white",
           WebkitTextStrokeWidth: 5,
           WebkitTextStrokeColor: "black",
@@ -52,6 +55,8 @@ export const topBottomText: Template = {
           display: "flex",
           justifyContent: "center",
           fontSize: 70,
+          paddingLeft: 10,
+          paddingRight: 10,
           color: "white",
           WebkitTextStrokeWidth: 5,
           WebkitTextStrokeColor: "black",
