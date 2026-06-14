@@ -1,4 +1,4 @@
-import type { IFontsRepository } from "../interfaces/IFontsRepository.ts";
+import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";

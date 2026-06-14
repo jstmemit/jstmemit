@@ -1,6 +1,6 @@
-import type { IContextService } from "../interfaces/IContextService.ts";
+import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import type { IChannelsService } from "../interfaces/IChannelsService.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 
@@ -19,6 +19,16 @@ export class ContextService implements IContextService {
         this._channelsService = channelsService;
     }
 
+    /**
+     * Saves text content from a message. First tries to add it to the database,
+     * then checks if it is enabled and only then saves the text.
+     *
+     * @param messageId
+     * @param channelId
+     * @param content
+     *
+     * @author Kyrylo Maliuha
+     */
     public async saveContent(
         messageId: string,
         channelId: string,
@@ -40,6 +50,17 @@ export class ContextService implements IContextService {
         );
     }
 
+    /**
+     * Saves images from a message. First tries to add it to the database,
+     * then checks if it is enabled and only then saves the images. Goes
+     * through all images in a message.
+     *
+     * @param messageId
+     * @param channelId
+     * @param attachments
+     *
+     * @author Kyrylo Maliuha
+     */
     public async saveImages(
         messageId: string,
         channelId: string,

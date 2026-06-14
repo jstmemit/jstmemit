@@ -6,4 +6,7 @@ export abstract class IChannelsService {
     public abstract getChannel(
         channelId: string,
     ): Promise<typeof channelsTable.$inferSelect | undefined>;
+
+    public abstract switchChannel(channelId: string): Promise<boolean>;
+    public abstract isChannelEnabled(channelId: string): Promise<boolean>;
 }

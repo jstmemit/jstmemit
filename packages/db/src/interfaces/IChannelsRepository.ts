@@ -5,4 +5,8 @@ export abstract class IChannelsRepository {
         channelId: string,
     ): Promise<typeof channelsTable.$inferSelect | undefined>;
     public abstract add(channelId: string, addedAt: Date): Promise<boolean>;
+    public abstract switch(
+        channelId: string,
+        isEnabled: boolean,
+    ): Promise<boolean>;
 }

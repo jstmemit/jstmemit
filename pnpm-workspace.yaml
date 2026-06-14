@@ -5,5 +5,6 @@ allowBuilds:
   better-sqlite3: true
   esbuild: true
   sharp: true
+  msgpackr-extract: true
 minimumReleaseAgeExclude:
   - astro@6.4.5
