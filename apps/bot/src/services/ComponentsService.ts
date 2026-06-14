@@ -3,6 +3,15 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 
 export class ComponentsService implements IComponentsService {
+  /**
+   * Returns back a message component for /enable command with a progress bar
+   * showing passed messages amount in the channel
+   *
+   * @param isEnabled
+   * @param messagesAmount
+   *
+   * @author Kyrylo Maliuha
+   */
   public getEnableMessageComponent(
     isEnabled: boolean,
     messagesAmount: number,
@@ -34,6 +43,16 @@ export class ComponentsService implements IComponentsService {
       );
   }
 
+  /**
+   * Makes a progress bar with emojis
+   *
+   * @param value
+   * @param max
+   * @param segments
+   * @private
+   *
+   * @author Kyrylo Maliuha
+   */
   private _createProgressBar(
     value: number,
     max: number,
