@@ -1,4 +1,4 @@
 export interface TemplateResult {
-  success: boolean;
-  result?: Buffer;
+    success: boolean;
+    result?: Buffer;
 }

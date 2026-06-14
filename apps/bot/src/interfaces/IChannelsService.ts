@@ -1,12 +1,12 @@
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 
 export abstract class IChannelsService {
-  public abstract addChannel(channelId: string): Promise<boolean>;
+    public abstract addChannel(channelId: string): Promise<boolean>;
 
-  public abstract getChannel(
-    channelId: string,
-  ): Promise<typeof channelsTable.$inferSelect | undefined>;
+    public abstract getChannel(
+        channelId: string,
+    ): Promise<typeof channelsTable.$inferSelect | undefined>;
 
-  public abstract switchChannel(channelId: string): Promise<boolean>;
-  public abstract isChannelEnabled(channelId: string): Promise<boolean>;
+    public abstract switchChannel(channelId: string): Promise<boolean>;
+    public abstract isChannelEnabled(channelId: string): Promise<boolean>;
 }

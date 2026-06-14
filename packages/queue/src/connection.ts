@@ -1,10 +1,10 @@
 import type { ConnectionOptions } from "bullmq";
 
 export const createRedisConnection = (
-  host: string,
-  port: number,
+    host: string,
+    port: number,
 ): ConnectionOptions => ({
-  host,
-  port,
-  maxRetriesPerRequest: null,
+    host,
+    port,
+    maxRetriesPerRequest: null,
 });

@@ -1,3 +1,3 @@
 export interface MemeGenerationResult {
-  png: string;
+    png: string;
 }

@@ -1,30 +1,30 @@
 {
-  "name": "@jstmemit/bot",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "tsx src/index.ts",
-    "register": "node src/register.ts"
-  },
-  "dependencies": {
-    "@jstmemit/db": "workspace:*",
-    "@jstmemit/meme-generator": "workspace:*",
-    "@jstmemit/shared": "workspace:*",
-    "@jstmemit/queue": "workspace:*",
-    "bullmq": "^5.78.0",
-    "discord.js": "^14.26.4",
-    "dotenv": "^17.4.2",
-    "zod": "^4.4.3"
-  },
-  "imports": {
-    "#/*": [
-      "./src/*"
-    ]
-  },
-  "exports": {
-    "./*": "./src/*.ts"
-  },
-  "devDependencies": {
-    "tsx": "^4.22.4"
-  }
+    "name": "@jstmemit/bot",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "start": "tsx src/index.ts",
+        "register": "node src/register.ts"
+    },
+    "dependencies": {
+        "@jstmemit/db": "workspace:*",
+        "@jstmemit/meme-generator": "workspace:*",
+        "@jstmemit/shared": "workspace:*",
+        "@jstmemit/queue": "workspace:*",
+        "bullmq": "^5.78.0",
+        "discord.js": "^14.26.4",
+        "dotenv": "^17.4.2",
+        "zod": "^4.4.3"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*": "./src/*.ts"
+    },
+    "devDependencies": {
+        "tsx": "^4.22.4"
+    }
 }

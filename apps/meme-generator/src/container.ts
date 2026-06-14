@@ -25,8 +25,8 @@ import { MarkovProvider } from "#/providers/MarkovProvider.ts";
 const env = Env.parse(process.env);
 
 export const redisConnection: ConnectionOptions = createRedisConnection(
-  env.REDIS_HOST,
-  env.REDIS_PORT,
+    env.REDIS_HOST,
+    env.REDIS_PORT,
 );
 
 // fonts
@@ -42,21 +42,21 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 // templates
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(
-  templatesRepository,
+    templatesRepository,
 );
 
 // transform
 const markovProvider: ITransformProvider = new MarkovProvider();
 const transformService: ITransformService = new TransformService(
-  markovProvider,
+    markovProvider,
 );
 
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 export const memesService: IMemesService = new MemesService(
-  memesRepository,
-  messagesRepository,
-  imagesRepository,
-  templatesService,
-  transformService,
+    memesRepository,
+    messagesRepository,
+    imagesRepository,
+    templatesService,
+    transformService,
 );

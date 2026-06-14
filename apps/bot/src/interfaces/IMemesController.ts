@@ -1,10 +1,10 @@
 import type {
-  ButtonInteraction,
-  ChatInputCommandInteraction,
+    ButtonInteraction,
+    ChatInputCommandInteraction,
 } from "discord.js";
 
 export abstract class IMemesController {
-  public abstract handleMemeInteraction(
-    interaction: ChatInputCommandInteraction | ButtonInteraction,
-  ): Promise<void>;
+    public abstract handleMemeInteraction(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+    ): Promise<void>;
 }

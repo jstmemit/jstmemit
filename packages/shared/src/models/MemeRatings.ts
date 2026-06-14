@@ -1,4 +1,4 @@
 export interface MemeRatings {
-  likes: number;
-  dislikes: number;
+    likes: number;
+    dislikes: number;
 }

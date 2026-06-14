@@ -1,4 +1,4 @@
 export interface TemplateProps {
-  texts: string[];
-  images: string[];
+    texts: string[];
+    images: string[];
 }

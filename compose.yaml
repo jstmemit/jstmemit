@@ -1,8 +1,8 @@
 services:
   sqld:
     image: ghcr.io/tursodatabase/libsql-server:latest
-    ports: ["8080:8080"]
-    volumes: ["sqld-data:/var/lib/sqld"]
+    ports: [ "8080:8080" ]
+    volumes: [ "sqld-data:/var/lib/sqld" ]
     restart: unless-stopped
 
   redis:
@@ -10,7 +10,7 @@ services:
     command: [ "redis-server", "--appendonly", "yes" ]
     volumes: [ "redis-data:/data" ]
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 5s
       timeout: 3s
       retries: 5

@@ -4,9 +4,9 @@ import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGeneratio
 import { memesService, redisConnection } from "#/container.ts";
 
 export const memeGenerationWorker = new Worker<
-  MemeGenerationJob,
-  MemeGenerationResult
+    MemeGenerationJob,
+    MemeGenerationResult
 >("meme-generation", async (job) => memesService.generateMeme(job.data), {
-  connection: redisConnection,
-  concurrency: 5,
+    connection: redisConnection,
+    concurrency: 5,
 });

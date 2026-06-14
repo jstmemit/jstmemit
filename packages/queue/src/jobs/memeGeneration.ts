@@ -3,12 +3,12 @@ import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJo
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 
 export const createMemeGenerationQueue = (connection: ConnectionOptions) =>
-  new Queue<MemeGenerationJob, MemeGenerationResult>("meme-generation", {
-    connection,
-    defaultJobOptions: {
-      attempts: 3,
-      backoff: { type: "exponential", delay: 2000 },
-      removeOnComplete: 100,
-      removeOnFail: 500,
-    },
-  });
+    new Queue<MemeGenerationJob, MemeGenerationResult>("meme-generation", {
+        connection,
+        defaultJobOptions: {
+            attempts: 3,
+            backoff: { type: "exponential", delay: 2000 },
+            removeOnComplete: 100,
+            removeOnFail: 500,
+        },
+    });

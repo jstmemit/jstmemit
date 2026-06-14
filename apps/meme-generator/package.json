@@ -1,38 +1,38 @@
 {
-  "name": "@jstmemit/meme-generator",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "tsx src/workers.ts"
-  },
-  "dependencies": {
-    "@resvg/resvg-js": "^2.6.2",
-    "bullmq": "^5.78.0",
-    "lodash": "^4.18.1",
-    "markov-strings": "^3.0.4",
-    "react": "^19.2.7",
-    "satori": "^0.26.0"
-  },
-  "devDependencies": {
-    "@jstmemit/db": "workspace:*",
-    "@jstmemit/queue": "workspace:*",
-    "@jstmemit/shared": "workspace:*",
-    "@types/lodash": "^4.17.24",
-    "@types/node": "^25.9.2",
-    "@types/react": "^19.2.17",
-    "tsx": "^4.22.4"
-  },
-  "imports": {
-    "#/*": [
-      "./src/*"
-    ]
-  },
-  "exports": {
-    "./*.ts": "./src/*.ts",
-    "./*.tsx": "./src/*.tsx",
-    "./*": [
-      "./src/*.ts",
-      "./src/*.tsx"
-    ]
-  }
+    "name": "@jstmemit/meme-generator",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "start": "tsx src/workers.ts"
+    },
+    "dependencies": {
+        "@resvg/resvg-js": "^2.6.2",
+        "bullmq": "^5.78.0",
+        "lodash": "^4.18.1",
+        "markov-strings": "^3.0.4",
+        "react": "^19.2.7",
+        "satori": "^0.26.0"
+    },
+    "devDependencies": {
+        "@jstmemit/db": "workspace:*",
+        "@jstmemit/queue": "workspace:*",
+        "@jstmemit/shared": "workspace:*",
+        "@types/lodash": "^4.17.24",
+        "@types/node": "^25.9.2",
+        "@types/react": "^19.2.17",
+        "tsx": "^4.22.4"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*.ts": "./src/*.ts",
+        "./*.tsx": "./src/*.tsx",
+        "./*": [
+            "./src/*.ts",
+            "./src/*.tsx"
+        ]
+    }
 }

@@ -2,7 +2,7 @@ import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJo
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 
 export abstract class IMemesService {
-  public abstract generateMeme(
-    data: MemeGenerationJob,
-  ): Promise<MemeGenerationResult>;
+    public abstract generateMeme(
+        data: MemeGenerationJob,
+    ): Promise<MemeGenerationResult>;
 }

@@ -35,16 +35,16 @@ import { ComponentsService } from "#/services/ComponentsService.ts";
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
 const redisConnection: ConnectionOptions = createRedisConnection(
-  env.REDIS_HOST,
-  env.REDIS_PORT,
+    env.REDIS_HOST,
+    env.REDIS_PORT,
 );
 const memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult> =
-  createMemeGenerationQueue(redisConnection);
+    createMemeGenerationQueue(redisConnection);
 const memeGenerationQueueEvents: QueueEvents = new QueueEvents(
-  "meme-generation",
-  {
-    connection: redisConnection,
-  },
+    "meme-generation",
+    {
+        connection: redisConnection,
+    },
 );
 
 // messages
@@ -56,12 +56,12 @@ const componentsService: IComponentsService = new ComponentsService();
 // channels
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
 const channelsService: IChannelsService = new ChannelsService(
-  channelsRepository,
+    channelsRepository,
 );
 const channelsController: IChannelsController = new ChannelsController(
-  channelsService,
-  componentsService,
-  messagesRepository,
+    channelsService,
+    componentsService,
+    messagesRepository,
 );
 
 // images
@@ -69,32 +69,32 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // context
 const contextService: IContextService = new ContextService(
-  messagesRepository,
-  imagesRepository,
-  channelsService,
+    messagesRepository,
+    imagesRepository,
+    channelsService,
 );
 const contextController: IContextController = new ContextController(
-  contextService,
+    contextService,
 );
 
 // ratings
 const ratingsRepository: IRatingsRepository = new RatingsRepository();
 const ratingsService: IRatingsService = new RatingsService(ratingsRepository);
 const ratingsController: IRatingsController = new RatingsController(
-  ratingsService,
+    ratingsService,
 );
 
 // memes
 const memesController: IMemesController = new MemesController(
-  memeGenerationQueue,
-  memeGenerationQueueEvents,
-  ratingsService,
+    memeGenerationQueue,
+    memeGenerationQueueEvents,
+    ratingsService,
 );
 
 // events
 export const eventsController: IEventsController = new EventsController(
-  contextController,
-  channelsController,
-  memesController,
-  ratingsController,
+    contextController,
+    channelsController,
+    memesController,
+    ratingsController,
 );
