@@ -10,22 +10,26 @@ import { ChannelsService } from "./../services/ChannelsService.ts";
 import type { IChannelsService } from "./../interfaces/IChannelsService.ts";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
+import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
+import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
+const imagesRepository: IImagesRepository = new ImagesRepository();
 const channelsService: IChannelsService = new ChannelsService(
-  channelsRepository,
+    channelsRepository,
 );
 const contextService: IContextService = new ContextService(
-  messagesRepository,
-  channelsService,
+    messagesRepository,
+    imagesRepository,
+    channelsService,
 );
 const contextController: IContextController = new ContextController(
-  contextService,
+    contextService,
 );
 
 client.on(Events.MessageCreate, async (message): Promise<void> => {
-  if (message.author.bot) return;
+    if (message.author.bot) return;
 
-  await contextController.handleNewMessage(message);
+    await contextController.handleNewMessage(message);
 });

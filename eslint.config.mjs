@@ -5,7 +5,7 @@ export default [
   { ignores: ["**/dist/**", "**/node_modules/**", "eslint.config.mjs"] },
   ...tseslint.configs.recommendedTypeChecked,
   {
-    files: ["**/*.{js,mjs,cjs,ts}"],
+    files: ["**/*.{js,mjs,cjs,ts,tsx}"],
     languageOptions: {
       globals: globals.node,
       parserOptions: {

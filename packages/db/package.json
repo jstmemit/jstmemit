@@ -1,24 +1,24 @@
 {
-  "name": "@jstmemit/db",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@jstmemit/shared": "workspace:*",
-    "@libsql/client": "^0.17.3",
-    "@tursodatabase/database": "^0.6.1",
-    "better-sqlite3": "^12.10.0",
-    "dotenv": "^17.4.2",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@types/node": "^25.9.2",
-    "drizzle-kit": "1.0.0-rc.3",
-    "drizzle-orm": "1.0.0-rc.3",
-    "tsx": "^4.22.4"
-  },
-  "exports": {
-    "./repositories/*": "./src/repositories/*.ts",
-    "./interfaces/*": "./src/interfaces/*.ts",
-    "./schema.ts": "./src/schema.ts"
-  }
+    "name": "@jstmemit/db",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "@libsql/client": "^0.17.3",
+        "@tursodatabase/database": "^0.6.1",
+        "better-sqlite3": "^12.10.0",
+        "dotenv": "^17.4.2",
+        "zod": "^4.4.3"
+    },
+    "devDependencies": {
+        "@types/node": "^25.9.2",
+        "drizzle-kit": "1.0.0-rc.3",
+        "drizzle-orm": "1.0.0-rc.3",
+        "tsx": "^4.22.4"
+    },
+    "exports": {
+        "./repositories/*": "./src/repositories/*.ts",
+        "./interfaces/*": "./src/interfaces/*.ts",
+        "./schema.ts": "./src/schema.ts"
+    }
 }
