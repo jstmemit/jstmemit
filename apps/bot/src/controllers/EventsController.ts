@@ -94,6 +94,12 @@ export class EventsController implements IEventsController {
                         "dislike",
                     );
                     break;
+                case "enable":
+                case "disable":
+                    await this._channelsController.handleEnableInteraction(
+                        interaction,
+                    );
+                    break;
             }
         }
     }

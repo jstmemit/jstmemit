@@ -77,7 +77,7 @@ export class ComponentsService implements IComponentsService {
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Open settings`)
+                    .setLabel(`⚙️ Open settings`)
                     .setCustomId(`settings`),
             );
     }
