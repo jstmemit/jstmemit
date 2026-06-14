@@ -1,6 +1,6 @@
 import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
-import { and, eq, gte, lte, sql } from "drizzle-orm";
+import { and, count, eq, gte, lte, sql } from "drizzle-orm";
 import { db } from "../index.ts";
 
 export class MessagesRepository implements IMessagesRepository {
@@ -25,6 +25,23 @@ export class MessagesRepository implements IMessagesRepository {
       console.error(error);
 
       return false;
+    }
+  }
+
+  public async getMessagesAmountByChannelId(
+    channelId: string,
+  ): Promise<number> {
+    try {
+      const messages = await db
+        .select({ amount: count(messagesTable.content) })
+        .from(messagesTable)
+        .where(eq(messagesTable.channelId, channelId));
+
+      return messages[0]?.amount || 0;
+    } catch (error) {
+      console.error(error);
+
+      return 0;
     }
   }
 

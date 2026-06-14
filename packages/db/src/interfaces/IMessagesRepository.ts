@@ -6,6 +6,10 @@ export abstract class IMessagesRepository {
     timestamp: Date,
   ): Promise<boolean>;
 
+  public abstract getMessagesAmountByChannelId(
+    channelId: string,
+  ): Promise<number>;
+
   public abstract getMessagesContentByChannelId(
     channelId: string,
     limit?: number,

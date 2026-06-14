@@ -29,6 +29,8 @@ import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsReposit
 import { RatingsRepository } from "@jstmemit/db/repositories/RatingsRepository";
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import { RatingsController } from "#/controllers/RatingsController.ts";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { ComponentsService } from "#/services/ComponentsService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -48,6 +50,9 @@ const memeGenerationQueueEvents: QueueEvents = new QueueEvents(
 // messages
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 
+// components
+const componentsService: IComponentsService = new ComponentsService();
+
 // channels
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
 const channelsService: IChannelsService = new ChannelsService(
@@ -55,6 +60,8 @@ const channelsService: IChannelsService = new ChannelsService(
 );
 const channelsController: IChannelsController = new ChannelsController(
   channelsService,
+  componentsService,
+  messagesRepository,
 );
 
 // images
