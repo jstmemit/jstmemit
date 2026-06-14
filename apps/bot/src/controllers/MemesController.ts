@@ -1,35 +1,86 @@
-import type { IMemesController } from "../interfaces/IMemesController.ts";
-import type { ChatInputCommandInteraction } from "discord.js";
-import type { TemplateResult } from "@jstmemit/meme-generator/models/TemplateResult";
-import type { IMemesService } from "@jstmemit/meme-generator/interfaces/IMemesService";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import type { ButtonInteraction } from "discord.js";
+import { type ChatInputCommandInteraction } from "discord.js";
+import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
+import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
+import type { QueueEvents } from "bullmq";
+import { type Job } from "bullmq";
+import { type Queue } from "bullmq";
+import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 
 export class MemesController implements IMemesController {
-    private readonly _memesService: IMemesService;
+    private readonly _memeGenerationQueue: Queue<
+        MemeGenerationJob,
+        MemeGenerationResult
+    >;
+    private readonly _memeGenerationQueueEvents: QueueEvents;
+    private readonly _ratingsService: IRatingsService;
 
-    public constructor(memesService: IMemesService) {
-        this._memesService = memesService;
+    public constructor(
+        memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
+        memeGenerationQueueEvents: QueueEvents,
+        ratingsService: IRatingsService,
+    ) {
+        this._memeGenerationQueue = memeGenerationQueue;
+        this._memeGenerationQueueEvents = memeGenerationQueueEvents;
+        this._ratingsService = ratingsService;
     }
 
+    /**
+     * Sends a meme generation job to the queue and replies
+     * to the channel back with a meme
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
     public async handleMemeInteraction(
-        interaction: ChatInputCommandInteraction,
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
     ): Promise<void> {
         await interaction.deferReply();
 
-        const png: TemplateResult | undefined =
-            await this._memesService.generateMeme(interaction.channelId);
+        const job: Job<MemeGenerationJob, MemeGenerationResult> =
+            await this._memeGenerationQueue.add("meme-generation", {
+                channelId: interaction.channelId,
+            });
 
-        if (!png?.result) {
-            await interaction.reply("error");
-            return;
+        try {
+            const jobResult: MemeGenerationResult = await job.waitUntilFinished(
+                this._memeGenerationQueueEvents,
+                60000,
+            );
+
+            if (interaction.isChatInputCommand() || interaction.isButton()) {
+                await interaction.editReply({
+                    content: `<@${interaction.user.id}>`,
+                    components: [
+                        this._ratingsService.constructRatingButtons(0, 0),
+                    ],
+                    files: [
+                        {
+                            attachment: Buffer.from(jobResult.png, "base64"),
+                            name: "meme.png",
+                        },
+                    ],
+                });
+            }
+
+            // interaction.channel?.isSendable()
+
+            // await interaction.channel.send({
+            //   components: [
+            //     this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
+            //   ],
+            //   files: [
+            //     {
+            //       attachment: Buffer.from(jobResult.png, "base64"),
+            //       name: "meme.png",
+            //     },
+            //   ],
+            // });
+        } catch {
+            // TODO: needs an embed
+            await interaction.editReply("error");
         }
-
-        await interaction.editReply({
-            files: [
-                {
-                    attachment: png.result,
-                    name: "meme.png",
-                },
-            ],
-        });
     }
 }

@@ -3,7 +3,9 @@ logs
 npm-debug.log*
 
 **/.env
+**/.env.docker
 .env
+.env.docker
 
 **/node_modules/**
 _node_modules

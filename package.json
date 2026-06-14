@@ -1,30 +1,31 @@
 {
-  "name": "jstmemit",
-  "private": "true",
-  "scripts": {
-    "bot:start": "cd apps/bot && pnpm start",
-    "bot:register": "cd apps/bot && pnpm register",
-    "db:studio": "cd packages/db && pnpm drizzle-kit studio",
-    "db:push": "cd packages/db && pnpm drizzle-kit push",
-    "db:generate": "cd packages/db && pnpm drizzle-kit generate"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.5.2",
-      "onFail": "download"
+    "name": "jstmemit",
+    "private": "true",
+    "scripts": {
+        "bot:start": "cd apps/bot && pnpm start",
+        "bot:register": "cd apps/bot && pnpm register",
+        "db:studio": "cd packages/db && pnpm drizzle-kit studio",
+        "db:push": "cd packages/db && pnpm drizzle-kit push",
+        "db:generate": "cd packages/db && pnpm drizzle-kit generate",
+        "meme-generator:start": "cd apps/meme-generator && pnpm start"
+    },
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "11.5.2",
+            "onFail": "download"
+        }
+    },
+    "type": "module",
+    "devDependencies": {
+        "@types/node": "^25.9.2",
+        "@types/react": "^19.2.17",
+        "eslint": "^10.4.1",
+        "globals": "^17.6.0",
+        "prettier": "^3.8.3",
+        "typescript-eslint": "^8.60.1"
+    },
+    "dependencies": {
+        "zod": "^4.4.3"
     }
-  },
-  "type": "module",
-  "devDependencies": {
-    "@types/node": "^25.9.2",
-    "@types/react": "^19.2.17",
-    "eslint": "^10.4.1",
-    "globals": "^17.6.0",
-    "prettier": "^3.8.3",
-    "typescript-eslint": "^8.60.1"
-  },
-  "dependencies": {
-    "zod": "^4.4.3"
-  }
 }
