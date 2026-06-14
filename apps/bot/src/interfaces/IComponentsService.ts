@@ -9,4 +9,7 @@ export abstract class IComponentsService {
     public abstract getEnableButtonsComponent(
         isEnabled: boolean,
     ): ActionRowBuilder<ButtonBuilder>;
+    public abstract getErrorMessageComponent(
+        interactionId: string,
+    ): ContainerBuilder;
 }

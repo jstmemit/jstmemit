@@ -83,6 +83,32 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for an unknown error
+     *
+     * @param interactionId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getErrorMessageComponent(interactionId: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# 🔴 Something went wrong!`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `**Error ID:** ${interactionId}`,
+                ),
+            );
+    }
+
+    /**
      * Makes a progress bar with emojis
      *
      * @param value

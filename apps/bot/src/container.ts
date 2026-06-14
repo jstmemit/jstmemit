@@ -89,6 +89,7 @@ const memesController: IMemesController = new MemesController(
     memeGenerationQueue,
     memeGenerationQueueEvents,
     ratingsService,
+    componentsService,
 );
 
 // events

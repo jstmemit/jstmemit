@@ -1,5 +1,9 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { ButtonInteraction } from "discord.js";
+import {
+    type ButtonInteraction,
+    type ContainerBuilder,
+    MessageFlags,
+} from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -7,6 +11,7 @@ import type { QueueEvents } from "bullmq";
 import { type Job } from "bullmq";
 import { type Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<
@@ -15,15 +20,18 @@ export class MemesController implements IMemesController {
     >;
     private readonly _memeGenerationQueueEvents: QueueEvents;
     private readonly _ratingsService: IRatingsService;
+    private readonly _componentsService: IComponentsService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
         memeGenerationQueueEvents: QueueEvents,
         ratingsService: IRatingsService,
+        componentsService: IComponentsService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
         this._ratingsService = ratingsService;
+        this._componentsService = componentsService;
     }
 
     /**
@@ -79,8 +87,15 @@ export class MemesController implements IMemesController {
             //   ],
             // });
         } catch {
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            await interaction.editReply({
+                flags: MessageFlags.IsComponentsV2,
+                components: [message],
+            });
         }
     }
 }
