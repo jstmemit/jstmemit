@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+:root {
+    --color-neon-ice: #21F1ED;
+    --color-hot-fuchsia: #F72D55;
+    --color-dark-cyan: #159592;
+    --color-bubblegum-pink: #EC5775;
+    --color-carbon-black: #1E2124;
+    --color-carbon-gray: #3F3F3F;
+    --color-carbon-light-gray: #424242;
+    --color-discord-blue: #5865F2;
+
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+}
