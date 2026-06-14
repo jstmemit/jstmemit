@@ -1,5 +1,10 @@
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
-import type { ChatInputCommandInteraction, ContainerBuilder } from "discord.js";
+import type {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ChatInputCommandInteraction,
+    ContainerBuilder,
+} from "discord.js";
 import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -50,9 +55,12 @@ export class ChannelsController implements IChannelsController {
                     messagesAmount,
                 );
 
+            const buttons: ActionRowBuilder<ButtonBuilder> =
+                this._componentsService.getEnableButtonsComponent(isEnabled);
+
             await interaction.editReply({
                 flags: MessageFlags.IsComponentsV2,
-                components: [message],
+                components: [message, buttons],
             });
         } catch (error) {
             console.error(error);

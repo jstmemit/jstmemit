@@ -1,4 +1,10 @@
-import { ContainerBuilder, TextDisplayBuilder } from "discord.js";
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    ContainerBuilder,
+    TextDisplayBuilder,
+} from "discord.js";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 
@@ -44,6 +50,35 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${progressBar}`),
+            );
+    }
+
+    /**
+     * Returns back a row with enable/disable and open settings buttons
+     *
+     * @param isEnabled
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getEnableButtonsComponent(
+        isEnabled: boolean,
+    ): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(
+                        isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
+                    )
+                    .setLabel(
+                        `${isEnabled ? `Disable training` : `Enable training`}`,
+                    )
+                    .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`Open settings`)
+                    .setCustomId(`settings`),
             );
     }
 
