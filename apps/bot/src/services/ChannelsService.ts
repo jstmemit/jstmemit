@@ -58,6 +58,8 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async switchChannel(channelId: string): Promise<boolean> {
+        await this.addChannel(channelId);
+
         const isEnabled: boolean = await this.isChannelEnabled(channelId);
         await this._channelsRepository.switch(channelId, isEnabled);
 
