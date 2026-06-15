@@ -4,23 +4,27 @@ import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
+import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 
 export class EventsController implements IEventsController {
     private readonly _contextController: IContextController;
     private readonly _channelsController: IChannelsController;
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
+    private readonly _settingsController: ISettingsController;
 
     public constructor(
         contextController: IContextController,
         channelsController: IChannelsController,
         memesController: IMemesController,
         ratingsController: IRatingsController,
+        settingsController: ISettingsController,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
         this._memesController = memesController;
         this._ratingsController = ratingsController;
+        this._settingsController = settingsController;
     }
 
     /**
@@ -71,6 +75,12 @@ export class EventsController implements IEventsController {
                     await this._channelsController.handleEnableInteraction(
                         interaction,
                     );
+                    break;
+                case "settings":
+                    await this._settingsController.handleSettingsInteraction(
+                        interaction,
+                    );
+                    break;
             }
         }
 
@@ -97,6 +107,11 @@ export class EventsController implements IEventsController {
                 case "enable":
                 case "disable":
                     await this._channelsController.handleEnableInteraction(
+                        interaction,
+                    );
+                    break;
+                case "settings":
+                    await this._settingsController.handleSettingsInteraction(
                         interaction,
                     );
                     break;

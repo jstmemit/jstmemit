@@ -12,4 +12,7 @@ export abstract class IComponentsService {
     public abstract getErrorMessageComponent(
         interactionId: string,
     ): ContainerBuilder;
+    public abstract getSettingsHeaderMessageComponent(
+        isEnabled: boolean,
+    ): ContainerBuilder;
 }

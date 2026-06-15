@@ -31,6 +31,8 @@ import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import { RatingsController } from "#/controllers/RatingsController.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { ComponentsService } from "#/services/ComponentsService.ts";
+import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
+import { SettingsController } from "#/controllers/SettingsController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -92,10 +94,17 @@ const memesController: IMemesController = new MemesController(
     componentsService,
 );
 
+// settings
+const settingsController: ISettingsController = new SettingsController(
+    channelsService,
+    componentsService,
+);
+
 // events
 export const eventsController: IEventsController = new EventsController(
     contextController,
     channelsController,
     memesController,
     ratingsController,
+    settingsController,
 );

@@ -39,4 +39,26 @@ export const commands = [
         contexts: [0],
         dm_permission: false,
     },
+    {
+        name: "settings",
+        name_localizations: {
+            ru: "настройки",
+            nl: "instellingen",
+            fr: "paramètres",
+            de: "einstellungen",
+            uk: "налаштування",
+            pl: "ustawienia",
+        },
+        description: "Change bot settings for this channel",
+        description_localizations: {
+            ru: "Изменить настройки бота для этого канала",
+            nl: "Bot instellingen voor dit kanaal wijzigen",
+            fr: "Modifier les paramètres du bot pour ce canal",
+            de: "Bot-Einstellungen für diesen Kanal ändern",
+            uk: "Змінити налаштування бота для цього каналу",
+            pl: "Zmień ustawienia bota dla tego kanału",
+        },
+        contexts: [0],
+        dm_permission: false,
+    },
 ];

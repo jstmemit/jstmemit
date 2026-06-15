@@ -3,7 +3,11 @@ import {
     ButtonBuilder,
     ButtonStyle,
     ContainerBuilder,
+    SectionBuilder,
+    SeparatorBuilder,
+    SeparatorSpacingSize,
     TextDisplayBuilder,
+    ThumbnailBuilder,
 } from "discord.js";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
@@ -105,6 +109,60 @@ export class ComponentsService implements IComponentsService {
                 new TextDisplayBuilder().setContent(
                     `**Error ID:** ${interactionId}`,
                 ),
+            );
+    }
+
+    /**
+     * Returns back a message component for header of the /settings command.
+     *
+     * @param isEnabled
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsHeaderMessageComponent(
+        isEnabled: boolean,
+    ): ContainerBuilder {
+        return new ContainerBuilder()
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.wideunits.nl/jstmemit/images/logos/logo.png",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ⚙️ Bot settings`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            "This is your control panel for the bot. Here you can customize how the bot behaves in this channel.",
+                        ),
+                    ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setButtonAccessory(
+                        new ButtonBuilder()
+                            .setStyle(
+                                isEnabled
+                                    ? ButtonStyle.Danger
+                                    : ButtonStyle.Success,
+                            )
+                            .setLabel(
+                                `${isEnabled ? `Disable training` : `Enable training`}`,
+                            )
+                            .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `${isEnabled ? "**🎉 Bot is ready and collecting context in this channel!**" : "🔴 Context training is **disabled** in this channel!"}`,
+                        ),
+                    ),
             );
     }
 
