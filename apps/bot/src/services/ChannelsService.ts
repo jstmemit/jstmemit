@@ -87,4 +87,27 @@ export class ChannelsService implements IChannelsService {
             return false;
         }
     }
+
+    /**
+     * Returns meme frequency of the channel
+     *
+     * @param channelId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async getFrequency(channelId: string): Promise<number> {
+        try {
+            const channel = await this._channelsRepository.get(channelId);
+
+            if (!channel) {
+                return 0;
+            }
+
+            return channel.frequency;
+        } catch (error) {
+            console.error(error);
+
+            return 0;
+        }
+    }
 }

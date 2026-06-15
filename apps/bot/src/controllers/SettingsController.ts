@@ -38,9 +38,18 @@ export class SettingsController implements ISettingsController {
                     interaction.channelId,
                 );
 
+            const frequency: number = await this._channelsService.getFrequency(
+                interaction.channelId,
+            );
+
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
                     isEnabled,
+                );
+
+            const body: ContainerBuilder =
+                this._componentsService.getSettingsBodyMessageComponent(
+                    frequency,
                 );
 
             if (interaction.isButton()) {
@@ -49,7 +58,7 @@ export class SettingsController implements ISettingsController {
 
             await interaction.editReply({
                 flags: MessageFlags.IsComponentsV2,
-                components: [header],
+                components: [header, body],
             });
         } catch (error) {
             console.error(error);

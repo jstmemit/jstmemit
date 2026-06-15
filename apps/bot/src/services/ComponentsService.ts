@@ -4,13 +4,16 @@ import {
     ButtonStyle,
     ContainerBuilder,
     SectionBuilder,
+    SelectMenuOptionBuilder,
     SeparatorBuilder,
     SeparatorSpacingSize,
+    StringSelectMenuBuilder,
     TextDisplayBuilder,
     ThumbnailBuilder,
 } from "discord.js";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
+import type { Frequency } from "#/models/Frequency.ts";
 
 export class ComponentsService implements IComponentsService {
     /**
@@ -167,6 +170,60 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for body of the /settings command.
+     *
+     * @param frequency
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsBodyMessageComponent(
+        frequency: number,
+    ): ContainerBuilder {
+        const frequencies: Frequency[] = this._getFrequencyOptions();
+
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`## 💬 Meme settings`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    "You can control how often bot is going to send memes and what's on them",
+                ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### Frequency`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `How often should the bot send a random meme in the chat without being asked to?`,
+                ),
+            )
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("select-frequency")
+                        .addOptions(
+                            frequencies.map((option: Frequency) =>
+                                new SelectMenuOptionBuilder()
+                                    .setLabel(option.label)
+                                    .setValue(option.value)
+                                    .setDefault(
+                                        frequency === Number(option.value),
+                                    )
+                                    .setEmoji({ name: option.emoji })
+                                    .setDescription(option.description),
+                            ),
+                        ),
+                ),
+            );
+    }
+
+    /**
      * Makes a progress bar with emojis
      *
      * @param value
@@ -210,5 +267,41 @@ export class ComponentsService implements IComponentsService {
         }
 
         return progressBar;
+    }
+
+    private _getFrequencyOptions(): Frequency[] {
+        return [
+            {
+                label: "Never",
+                value: "0",
+                description:
+                    "Don't send memes, unless requested via a /meme command",
+                emoji: "⬛",
+            },
+            {
+                label: "Hardly ever",
+                value: "100",
+                description: "Once every ~100 messages",
+                emoji: "🟥",
+            },
+            {
+                label: "Rarely",
+                value: "50",
+                description: "Once every ~50 message",
+                emoji: "🟧",
+            },
+            {
+                label: "Sometimes",
+                value: "20",
+                description: "Once every ~20 messages (recommended)",
+                emoji: "🟨",
+            },
+            {
+                label: "Often",
+                value: "10",
+                description: "Once every ~10 messages",
+                emoji: "🟩",
+            },
+        ];
     }
 }

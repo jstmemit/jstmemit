@@ -15,4 +15,7 @@ export abstract class IComponentsService {
     public abstract getSettingsHeaderMessageComponent(
         isEnabled: boolean,
     ): ContainerBuilder;
+    public abstract getSettingsBodyMessageComponent(
+        frequency: number,
+    ): ContainerBuilder;
 }
