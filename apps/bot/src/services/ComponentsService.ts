@@ -38,14 +38,14 @@ export class ComponentsService implements IComponentsService {
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Training is **disabled** in this channel!`}`,
+                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Jstmemit is off in this channel`}`,
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     isEnabled
-                        ? `Setup is finished! Bot is training on new messages and will generate memes during active chatting moments. Quality of text inside memes will improve as soon as bot has ~30 messages in its memory.`
-                        : `Bot is disabled in this channel! To respect your privacy, Jstmemit needs to be enabled before it can start learning from messages here.`,
+                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around ~30 messages in memory.`
+                        : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
                 ),
             )
             .addTextDisplayComponents(
@@ -135,10 +135,10 @@ export class ComponentsService implements IComponentsService {
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            `# ⚙️ Bot settings`,
+                            `# ❓ About this bot`,
                         ),
                         new TextDisplayBuilder().setContent(
-                            "This is your control panel for the bot. Here you can customize how the bot behaves in this channel.",
+                            `A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that. ${isEnabled ? `` : `Enable Jstmemit below to start!`}`,
                         ),
                     ),
             )
@@ -153,17 +153,15 @@ export class ComponentsService implements IComponentsService {
                         new ButtonBuilder()
                             .setStyle(
                                 isEnabled
-                                    ? ButtonStyle.Danger
+                                    ? ButtonStyle.Secondary
                                     : ButtonStyle.Success,
                             )
-                            .setLabel(
-                                `${isEnabled ? `Disable training` : `Enable training`}`,
-                            )
+                            .setLabel(`${isEnabled ? `Disable` : `Enable`}`)
                             .setCustomId(`${isEnabled ? "disable" : "enable"}`),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            `${isEnabled ? "**🎉 Bot is ready and collecting context in this channel!**" : "🔴 Context training is **disabled** in this channel!"}`,
+                            `${isEnabled ? "**✅ Jstmemit is learning in this channel, memes will get better over time!**" : "**⚠️ Jstmemit needs to be enabled to make memes here!**"}`,
                         ),
                     ),
             );
@@ -183,7 +181,7 @@ export class ComponentsService implements IComponentsService {
 
         return new ContainerBuilder()
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`## 💬 Meme settings`),
+                new TextDisplayBuilder().setContent(`# 💬 Meme settings`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
@@ -279,27 +277,27 @@ export class ComponentsService implements IComponentsService {
                 emoji: "⬛",
             },
             {
-                label: "Hardly ever",
+                label: "Rarely",
                 value: "100",
                 description: "Once every ~100 messages",
                 emoji: "🟥",
             },
             {
-                label: "Rarely",
+                label: "Sometimes",
                 value: "50",
-                description: "Once every ~50 message",
+                description: "Once every ~50 message (for bigger servers)",
                 emoji: "🟧",
             },
             {
-                label: "Sometimes",
+                label: "Often",
                 value: "20",
-                description: "Once every ~20 messages (recommended)",
+                description: "Once every ~20 messages (for smaller servers)",
                 emoji: "🟨",
             },
             {
-                label: "Often",
+                label: "Very often",
                 value: "10",
-                description: "Once every ~10 messages",
+                description: "Once every ~10 messages (can produce spam)",
                 emoji: "🟩",
             },
         ];
