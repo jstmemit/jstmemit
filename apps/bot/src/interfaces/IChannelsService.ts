@@ -9,4 +9,5 @@ export abstract class IChannelsService {
 
     public abstract switchChannel(channelId: string): Promise<boolean>;
     public abstract isChannelEnabled(channelId: string): Promise<boolean>;
+    public abstract getFrequency(channelId: string): Promise<number>;
 }
