@@ -58,6 +58,8 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async switchChannel(channelId: string): Promise<boolean> {
+        await this.addChannel(channelId);
+
         const isEnabled: boolean = await this.isChannelEnabled(channelId);
         await this._channelsRepository.switch(channelId, isEnabled);
 
@@ -85,6 +87,29 @@ export class ChannelsService implements IChannelsService {
             console.error(error);
 
             return false;
+        }
+    }
+
+    /**
+     * Returns meme frequency of the channel
+     *
+     * @param channelId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async getFrequency(channelId: string): Promise<number> {
+        try {
+            const channel = await this._channelsRepository.get(channelId);
+
+            if (!channel) {
+                return 0;
+            }
+
+            return channel.frequency;
+        } catch (error) {
+            console.error(error);
+
+            return 0;
         }
     }
 }

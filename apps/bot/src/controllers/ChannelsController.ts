@@ -1,5 +1,11 @@
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
-import type { ChatInputCommandInteraction, ContainerBuilder } from "discord.js";
+import type {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonInteraction,
+    ChatInputCommandInteraction,
+    ContainerBuilder,
+} from "discord.js";
 import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -22,22 +28,30 @@ export class ChannelsController implements IChannelsController {
 
     /**
      * Handles /enable command. Calls ChannelService to
-     * switch channel (if disabled, then enable and vice versa).
+     * switch channel. If a channel is disabled and /enable
+     * is ran, then it gets enabled. If a channel is enabled
+     * then it can be disabled by clicking on the button in reply.
      *
      * @param interaction
      *
      * @author Kyrylo Maliuha
      */
     public async handleEnableInteraction(
-        interaction: ChatInputCommandInteraction,
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
     ): Promise<void> {
         await interaction.deferReply();
 
         try {
-            const isEnabled: boolean =
-                await this._channelsService.switchChannel(
+            let isEnabled: boolean =
+                await this._channelsService.isChannelEnabled(
                     interaction.channelId,
                 );
+
+            if (!isEnabled || interaction.isButton()) {
+                isEnabled = await this._channelsService.switchChannel(
+                    interaction.channelId,
+                );
+            }
 
             const messagesAmount: number =
                 await this._messagesRepository.getMessagesAmountByChannelId(
@@ -50,9 +64,16 @@ export class ChannelsController implements IChannelsController {
                     messagesAmount,
                 );
 
+            const buttons: ActionRowBuilder<ButtonBuilder> =
+                this._componentsService.getEnableButtonsComponent(isEnabled);
+
+            if (interaction.isButton()) {
+                await interaction.message.delete();
+            }
+
             await interaction.editReply({
                 flags: MessageFlags.IsComponentsV2,
-                components: [message],
+                components: [message, buttons],
             });
         } catch (error) {
             console.error(error);

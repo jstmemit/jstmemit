@@ -1,6 +1,19 @@
-import { ContainerBuilder, TextDisplayBuilder } from "discord.js";
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    ContainerBuilder,
+    SectionBuilder,
+    SelectMenuOptionBuilder,
+    SeparatorBuilder,
+    SeparatorSpacingSize,
+    StringSelectMenuBuilder,
+    TextDisplayBuilder,
+    ThumbnailBuilder,
+} from "discord.js";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
+import type { Frequency } from "#/models/Frequency.ts";
 
 export class ComponentsService implements IComponentsService {
     /**
@@ -25,14 +38,16 @@ export class ComponentsService implements IComponentsService {
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Training is **disabled** in this channel!`}`,
+                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Jstmemit is off in this channel`}`,
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     isEnabled
-                        ? `Setup is finished! Bot is training on new messages and will generate memes during active chatting moments. Quality of text inside memes will improve as soon as bot has ~30 messages in its memory.`
-                        : `Bot is disabled in this channel! To respect your privacy, Jstmemit needs to be enabled before it can start learning from messages here.`,
+                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.`
+                        : messagesAmount >= 30
+                          ? `You already have over **${messagesAmount} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.`
+                          : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
                 ),
             )
             .addTextDisplayComponents(
@@ -44,6 +59,165 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${progressBar}`),
+            );
+    }
+
+    /**
+     * Returns back a row with enable/disable and open settings buttons
+     *
+     * @param isEnabled
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getEnableButtonsComponent(
+        isEnabled: boolean,
+    ): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(
+                        isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
+                    )
+                    .setLabel(`${isEnabled ? `Turn off` : `Turn on`}`)
+                    .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`⚙️ Open settings`)
+                    .setCustomId(`settings`),
+            );
+    }
+
+    /**
+     * Returns back a message component for an unknown error
+     *
+     * @param interactionId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getErrorMessageComponent(interactionId: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# 🔴 Something went wrong!`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `**Error ID:** ${interactionId}`,
+                ),
+            );
+    }
+
+    /**
+     * Returns back a message component for header of the /settings command.
+     *
+     * @param isEnabled
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsHeaderMessageComponent(
+        isEnabled: boolean,
+    ): ContainerBuilder {
+        return new ContainerBuilder()
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.wideunits.nl/jstmemit/images/logos/logo.png",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ❓ About this bot`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            `A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that. ${isEnabled ? `` : `Enable Jstmemit below to start!`}`,
+                        ),
+                    ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setButtonAccessory(
+                        new ButtonBuilder()
+                            .setStyle(
+                                isEnabled
+                                    ? ButtonStyle.Secondary
+                                    : ButtonStyle.Success,
+                            )
+                            .setLabel(`${isEnabled ? `Disable` : `Enable`}`)
+                            .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `${isEnabled ? "**✅ Jstmemit is turned on in this channel!**" : "**⚠️ Jstmemit needs to be enabled to make memes here!**"}`,
+                        ),
+                    ),
+            );
+    }
+
+    /**
+     * Returns back a message component for body of the /settings command.
+     *
+     * @param frequency
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsBodyMessageComponent(
+        frequency: number,
+    ): ContainerBuilder {
+        const frequencies: Frequency[] = this._getFrequencyOptions();
+
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# 💬 Meme settings`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    "You can control how often the bot is going to send memes and what's on them",
+                ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### Frequency`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `How often should the bot send a random meme in the chat without being asked to?`,
+                ),
+            )
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("select-frequency")
+                        .addOptions(
+                            frequencies.map((option: Frequency) =>
+                                new SelectMenuOptionBuilder()
+                                    .setLabel(option.label)
+                                    .setValue(option.value)
+                                    .setDefault(
+                                        frequency === Number(option.value),
+                                    )
+                                    .setEmoji({ name: option.emoji })
+                                    .setDescription(option.description),
+                            ),
+                        ),
+                ),
             );
     }
 
@@ -91,5 +265,41 @@ export class ComponentsService implements IComponentsService {
         }
 
         return progressBar;
+    }
+
+    private _getFrequencyOptions(): Frequency[] {
+        return [
+            {
+                label: "Never",
+                value: "0",
+                description:
+                    "Don't send memes, unless requested via a /meme command",
+                emoji: "⬛",
+            },
+            {
+                label: "Rarely",
+                value: "100",
+                description: "Once every ~100 messages",
+                emoji: "🟥",
+            },
+            {
+                label: "Sometimes",
+                value: "50",
+                description: "Once every ~50 message (for bigger servers)",
+                emoji: "🟧",
+            },
+            {
+                label: "Often",
+                value: "20",
+                description: "Once every ~20 messages (for smaller servers)",
+                emoji: "🟨",
+            },
+            {
+                label: "Very often",
+                value: "10",
+                description: "Once every ~10 messages (can produce spam)",
+                emoji: "🟩",
+            },
+        ];
     }
 }
