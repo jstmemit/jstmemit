@@ -171,11 +171,13 @@ export class ComponentsService implements IComponentsService {
      * Returns back a message component for body of the /settings command.
      *
      * @param frequency
+     * @param useAvatarsInMemes
      *
      * @author Kyrylo Maliuha
      */
     public getSettingsBodyMessageComponent(
         frequency: number,
+        useAvatarsInMemes: boolean,
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions();
 
@@ -240,7 +242,7 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel("Yes")
                                 .setValue("true")
-                                .setDefault(true)
+                                .setDefault(useAvatarsInMemes)
                                 .setEmoji({ name: "✅" })
                                 .setDescription(
                                     "Bot will use avatars for memes (recommended)",
@@ -248,7 +250,7 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel("No")
                                 .setValue("false")
-                                .setDefault(false)
+                                .setDefault(!useAvatarsInMemes)
                                 .setEmoji({ name: "❌" })
                                 .setDescription(
                                     "Bot won't use avatars for memes",

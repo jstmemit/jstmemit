@@ -11,4 +11,7 @@ export abstract class ISettingsController {
     public abstract handleFrequencySelect(
         interaction: StringSelectMenuInteraction,
     ): Promise<void>;
+    public abstract handleUserAvatarsSelect(
+        interaction: StringSelectMenuInteraction,
+    ): Promise<void>;
 }

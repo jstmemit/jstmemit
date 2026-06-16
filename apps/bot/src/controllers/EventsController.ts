@@ -126,6 +126,11 @@ export class EventsController implements IEventsController {
                         interaction,
                     );
                     break;
+                case "avatar":
+                    await this._settingsController.handleUserAvatarsSelect(
+                        interaction,
+                    );
+                    break;
             }
         }
     }

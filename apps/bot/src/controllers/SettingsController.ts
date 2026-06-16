@@ -85,11 +85,11 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
-            const frequency: number = Number(interaction.values[0]);
+            channel.frequency = Number(interaction.values[0]);
 
-            await this._channelsService.setFrequency(
+            await this._channelsService.setChannel(
                 interaction.channelId,
-                frequency,
+                channel,
             );
 
             const header: ContainerBuilder =
@@ -99,7 +99,7 @@ export class SettingsController implements ISettingsController {
 
             const body: ContainerBuilder =
                 this._componentsService.getSettingsBodyMessageComponent(
-                    frequency,
+                    channel.frequency,
                     channel.useAvatarsInMemes,
                 );
 
@@ -115,7 +115,7 @@ export class SettingsController implements ISettingsController {
         }
     }
 
-    public async handleUseAvatarsInMemesSelect(
+    public async handleUserAvatarsSelect(
         interaction: StringSelectMenuInteraction,
     ): Promise<void> {
         try {
@@ -126,7 +126,12 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
-            const useAvatarsInMemes: boolean = Boolean(interaction.values[0]);
+            channel.useAvatarsInMemes = interaction.values[0] === "true";
+
+            await this._channelsService.setChannel(
+                interaction.channelId,
+                channel,
+            );
 
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
@@ -136,7 +141,7 @@ export class SettingsController implements ISettingsController {
             const body: ContainerBuilder =
                 this._componentsService.getSettingsBodyMessageComponent(
                     channel.frequency,
-                    useAvatarsInMemes,
+                    channel.useAvatarsInMemes,
                 );
 
             await interaction.update({

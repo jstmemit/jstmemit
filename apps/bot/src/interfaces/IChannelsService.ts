@@ -11,10 +11,8 @@ export abstract class IChannelsService {
 
     public abstract isChannelEnabled(channelId: string): Promise<boolean>;
 
-    public abstract getFrequency(channelId: string): Promise<number>;
-
-    public abstract setFrequency(
+    public abstract setChannel(
         channelId: string,
-        frequency: number,
+        channel: typeof channelsTable.$inferSelect,
     ): Promise<boolean>;
 }

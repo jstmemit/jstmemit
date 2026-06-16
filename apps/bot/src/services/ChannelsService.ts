@@ -90,42 +90,11 @@ export class ChannelsService implements IChannelsService {
         }
     }
 
-    /**
-     * Returns meme frequency of the channel
-     *
-     * @param channelId
-     *
-     * @author Kyrylo Maliuha
-     */
-    public async getFrequency(channelId: string): Promise<number> {
-        try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (!channel) {
-                return 0;
-            }
-
-            return channel.frequency;
-        } catch (error) {
-            console.error(error);
-
-            return 0;
-        }
-    }
-
-    public async setFrequency(
+    public async setChannel(
         channelId: string,
-        frequency: number,
+        channel: typeof channelsTable.$inferSelect,
     ): Promise<boolean> {
         try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (!channel) {
-                return false;
-            }
-
-            channel.frequency = frequency;
-
             await this._channelsRepository.set(channelId, channel);
 
             return true;
