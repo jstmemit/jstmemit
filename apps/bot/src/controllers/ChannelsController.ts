@@ -39,7 +39,9 @@ export class ChannelsController implements IChannelsController {
     public async handleEnableInteraction(
         interaction: ChatInputCommandInteraction | ButtonInteraction,
     ): Promise<void> {
-        await interaction.deferReply();
+        if (interaction.isCommand()) {
+            await interaction.deferReply();
+        }
 
         try {
             let isEnabled: boolean =
@@ -68,13 +70,16 @@ export class ChannelsController implements IChannelsController {
                 this._componentsService.getEnableButtonsComponent(isEnabled);
 
             if (interaction.isButton()) {
-                await interaction.message.delete();
+                await interaction.update({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message, buttons],
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message, buttons],
+                });
             }
-
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message, buttons],
-            });
         } catch (error) {
             console.error(error);
 

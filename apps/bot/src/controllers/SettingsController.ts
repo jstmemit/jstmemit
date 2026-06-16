@@ -31,7 +31,9 @@ export class SettingsController implements ISettingsController {
     public async handleSettingsInteraction(
         interaction: ChatInputCommandInteraction | ButtonInteraction,
     ): Promise<void> {
-        await interaction.deferReply();
+        if (interaction.isCommand()) {
+            await interaction.deferReply();
+        }
 
         try {
             const isEnabled: boolean =
@@ -54,13 +56,16 @@ export class SettingsController implements ISettingsController {
                 );
 
             if (interaction.isButton()) {
-                await interaction.message.delete();
+                await interaction.update({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [header, body],
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [header, body],
+                });
             }
-
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components: [header, body],
-            });
         } catch (error) {
             console.error(error);
 
