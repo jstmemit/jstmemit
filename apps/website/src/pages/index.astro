@@ -5,12 +5,28 @@ import PageLayout from "../layout/PageLayout.astro";
 ---
 
 <PageLayout>
-    <section class="bg-black text-white h-[80vh] flex flex-col gap-5 justify-center items-center">
-        <h1 class="font-bold uppercase text-4xl md:text-7xl w-[80%] md:w-[50%] text-center mx-auto">
+    <section class="overflow-hidden bg-black text-white h-[80vh] relative flex flex-col gap-5 justify-center items-center">
+        <h1 class="z-2 font-bold uppercase text-4xl md:text-7xl w-[80%] md:w-[50%] text-center mx-auto">
             personalized memes for <span class="text-hot-fuchsia">your</span> community
         </h1>
-        <p class="text-white/60 text-xl md:text-3xl w-[70%] md:w-[50%] text-center mx-auto">
+        <p class="z-2 text-white/60 text-xl md:text-3xl w-[70%] md:w-[50%] text-center mx-auto">
             Auto-generated memes from your conversations
         </p>
+        <img class="absolute z-2" src="https://files.wideunits.nl/jstmemit/images/background/Highlights.png" alt="background highlight" />
+        <img class="absolute opacity-6 z-1" src="https://files.wideunits.nl/jstmemit/images/background/Noise.png" alt="background noise" />
+        <img class="absolute z-1" src="https://files.wideunits.nl/jstmemit/images/background/Grid.png" alt="grid" />
+
+        <div class="z-0">
+            <img class="absolute w-125 top-10 right-20" src="https://files.wideunits.nl/jstmemit/images/background/meme1.png" alt="winnie pooh meme"/>
+            <img class="absolute w-125 bottom-20 left-20" src="https://files.wideunits.nl/jstmemit/images/background/meme2.png" alt="valorant meme"/>
+        </div>
+
+        <div class="z-0">
+            <img class="absolute blur-md opacity-40 w-150 -bottom-70 -right-10" src="https://files.wideunits.nl/jstmemit/images/background/meme1.png" alt="winnie pooh meme"/>
+            <img class="absolute blur-md opacity-40 w-150 -top-35 -left-20" src="https://files.wideunits.nl/jstmemit/images/background/meme2.png" alt="valorant meme"/>
+        </div>
+
+        <img class="z-1 absolute opacity-55 brightness-0" src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20memes.png" alt="fog over memes"/>
+        <img class="z-1 absolute opacity-55 brightness-0" src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20blurred%20memes.png" alt="fog over memes"/>
     </section>
 </PageLayout>
