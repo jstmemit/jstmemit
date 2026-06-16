@@ -235,6 +235,9 @@ importers:
 
   apps/bot:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../../packages/analytics
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db

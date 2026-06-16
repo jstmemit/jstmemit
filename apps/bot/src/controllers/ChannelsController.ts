@@ -10,6 +10,7 @@ import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
+import { analytics } from "@jstmemit/analytics/index";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
@@ -60,6 +61,17 @@ export class ChannelsController implements IChannelsController {
                     interaction.channelId,
                 );
 
+            analytics.capture({
+                event: isEnabled ? "channel_enabled" : "channel_disabled",
+                distinctId: interaction.user.id,
+                properties: {
+                    channel_id: interaction.channelId,
+                    guild_id: interaction.guildId,
+                    messagesAmount: messagesAmount,
+                    enabled: isEnabled,
+                },
+            });
+
             const message: ContainerBuilder =
                 this._componentsService.getEnableMessageComponent(
                     isEnabled,
@@ -82,6 +94,11 @@ export class ChannelsController implements IChannelsController {
             }
         } catch (error) {
             console.error(error);
+            analytics.captureException(error, "user_distinct_id", {
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId || "",
+                command: "/enable",
+            });
 
             // TODO: needs an embed
             await interaction.editReply("error");

@@ -5,6 +5,7 @@ const env = Env.parse(process.env);
 
 export const analytics = new PostHog(env.POSTHOG_WRITE_KEY, {
     host: "https://eu.i.posthog.com",
+    enableExceptionAutocapture: true,
 });
 
 const shutdown = async () => {
