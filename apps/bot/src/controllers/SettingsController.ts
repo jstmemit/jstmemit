@@ -8,6 +8,7 @@ import {
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
+import type { channelsTable } from "@jstmemit/db/schema.ts";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
@@ -36,23 +37,21 @@ export class SettingsController implements ISettingsController {
         }
 
         try {
-            const isEnabled: boolean =
-                await this._channelsService.isChannelEnabled(
-                    interaction.channelId,
-                );
+            const channel: typeof channelsTable.$inferSelect | undefined =
+                await this._channelsService.getChannel(interaction.channelId);
 
-            const frequency: number = await this._channelsService.getFrequency(
-                interaction.channelId,
-            );
+            if (!channel) {
+                throw new Error();
+            }
 
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
-                    isEnabled,
+                    channel.enabled,
                 );
 
             const body: ContainerBuilder =
                 this._componentsService.getSettingsBodyMessageComponent(
-                    frequency,
+                    channel.frequency,
                 );
 
             if (interaction.isButton()) {
@@ -78,10 +77,12 @@ export class SettingsController implements ISettingsController {
         interaction: StringSelectMenuInteraction,
     ): Promise<void> {
         try {
-            const isEnabled: boolean =
-                await this._channelsService.isChannelEnabled(
-                    interaction.channelId,
-                );
+            const channel: typeof channelsTable.$inferSelect | undefined =
+                await this._channelsService.getChannel(interaction.channelId);
+
+            if (!channel) {
+                throw new Error();
+            }
 
             const frequency: number = Number(interaction.values[0]);
 
@@ -92,7 +93,7 @@ export class SettingsController implements ISettingsController {
 
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
-                    isEnabled,
+                    channel.enabled,
                 );
 
             const body: ContainerBuilder =
