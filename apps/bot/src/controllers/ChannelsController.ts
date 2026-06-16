@@ -65,8 +65,8 @@ export class ChannelsController implements IChannelsController {
                 event: isEnabled ? "channel_enabled" : "channel_disabled",
                 distinctId: interaction.user.id,
                 properties: {
-                    channel_id: interaction.channelId,
-                    guild_id: interaction.guildId,
+                    channelId: interaction.channelId,
+                    guildId: interaction.guildId,
                     messagesAmount: messagesAmount,
                     enabled: isEnabled,
                 },
@@ -94,7 +94,7 @@ export class ChannelsController implements IChannelsController {
             }
         } catch (error) {
             console.error(error);
-            analytics.captureException(error, "user_distinct_id", {
+            analytics.captureException(error, interaction.user.id, {
                 channel_id: interaction.channelId,
                 guild_id: interaction?.guildId || "",
                 command: "/enable",

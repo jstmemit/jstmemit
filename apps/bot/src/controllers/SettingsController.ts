@@ -9,6 +9,7 @@ import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
+import { analytics } from "@jstmemit/analytics/index";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
@@ -55,6 +56,18 @@ export class SettingsController implements ISettingsController {
                     channel.useAvatarsInMemes,
                 );
 
+            // opening settings (via button in /enable or /settings)
+            analytics.capture({
+                event: "settings_opened",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    trigger: interaction.isCommand() ? "/settings" : "/enable",
+                    command: "/settings",
+                    ...channel,
+                },
+            });
+
             if (interaction.isButton()) {
                 await interaction.update({
                     flags: MessageFlags.IsComponentsV2,
@@ -68,9 +81,29 @@ export class SettingsController implements ISettingsController {
             }
         } catch (error) {
             console.error(error);
+            analytics.captureException(error, interaction.user.id, {
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId || "",
+                trigger: interaction.isCommand() ? "/settings" : "/enable",
+                command: "/settings",
+            });
 
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            if (interaction.isButton()) {
+                await interaction.update({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message],
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message],
+                });
+            }
         }
     }
 
@@ -85,12 +118,26 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
+            const old: number = channel.frequency;
             channel.frequency = Number(interaction.values[0]);
 
             await this._channelsService.setChannel(
                 interaction.channelId,
                 channel,
             );
+
+            // memes in chat frequency
+            analytics.capture({
+                event: "frequency_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    old: old,
+                    new: channel.frequency,
+                },
+            });
 
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
@@ -109,9 +156,22 @@ export class SettingsController implements ISettingsController {
             });
         } catch (error) {
             console.error(error);
+            analytics.captureException(error, interaction.user.id, {
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId || "",
+                command: "/settings",
+                action: "frequency",
+            });
 
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            await interaction.update({
+                flags: MessageFlags.IsComponentsV2,
+                components: [message],
+            });
         }
     }
 
@@ -126,12 +186,26 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
+            const old: boolean = channel.useAvatarsInMemes;
             channel.useAvatarsInMemes = interaction.values[0] === "true";
 
             await this._channelsService.setChannel(
                 interaction.channelId,
                 channel,
             );
+
+            // enable/disable using avatars in memes
+            analytics.capture({
+                event: "avatar_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    old: old,
+                    new: channel.useAvatarsInMemes,
+                },
+            });
 
             const header: ContainerBuilder =
                 this._componentsService.getSettingsHeaderMessageComponent(
@@ -150,9 +224,22 @@ export class SettingsController implements ISettingsController {
             });
         } catch (error) {
             console.error(error);
+            analytics.captureException(error, interaction.user.id, {
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId || "",
+                command: "/settings",
+                action: "avatar",
+            });
 
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            await interaction.update({
+                flags: MessageFlags.IsComponentsV2,
+                components: [message],
+            });
         }
     }
 }
