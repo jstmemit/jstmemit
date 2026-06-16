@@ -161,7 +161,7 @@ export class ComponentsService implements IComponentsService {
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            `${isEnabled ? "**✅ Jstmemit is learning in this channel, memes will get better over time!**" : "**⚠️ Jstmemit needs to be enabled to make memes here!**"}`,
+                            `${isEnabled ? "**✅ Jstmemit is turned on in this channel!**" : "**⚠️ Jstmemit needs to be enabled to make memes here!**"}`,
                         ),
                     ),
             );
@@ -185,7 +185,7 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    "You can control how often bot is going to send memes and what's on them",
+                    "You can control how often the bot is going to send memes and what's on them",
                 ),
             )
             .addSeparatorComponents(
