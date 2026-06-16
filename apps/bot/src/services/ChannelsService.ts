@@ -15,7 +15,7 @@ export class ChannelsService implements IChannelsService {
      *
      * @param channelId
      *
-     * @author Kyrylo Maliuha
+     * @author Jia Miao Hui
      */
     public async getChannel(
         channelId: string,
@@ -110,6 +110,29 @@ export class ChannelsService implements IChannelsService {
             console.error(error);
 
             return 0;
+        }
+    }
+
+    public async setFrequency(
+        channelId: string,
+        frequency: number,
+    ): Promise<boolean> {
+        try {
+            const channel = await this._channelsRepository.get(channelId);
+
+            if (!channel) {
+                return false;
+            }
+
+            channel.frequency = frequency;
+
+            await this._channelsRepository.set(channelId, channel);
+
+            return true;
+        } catch (error) {
+            console.error(error);
+
+            return false;
         }
     }
 }

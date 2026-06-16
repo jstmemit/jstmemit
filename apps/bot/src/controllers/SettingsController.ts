@@ -1,3 +1,4 @@
+import type { StringSelectMenuInteraction } from "discord.js";
 import {
     type ButtonInteraction,
     type ChatInputCommandInteraction,
@@ -57,6 +58,44 @@ export class SettingsController implements ISettingsController {
             }
 
             await interaction.editReply({
+                flags: MessageFlags.IsComponentsV2,
+                components: [header, body],
+            });
+        } catch (error) {
+            console.error(error);
+
+            // TODO: needs an embed
+            await interaction.editReply("error");
+        }
+    }
+
+    public async handleFrequencySelect(
+        interaction: StringSelectMenuInteraction,
+    ): Promise<void> {
+        try {
+            const isEnabled: boolean =
+                await this._channelsService.isChannelEnabled(
+                    interaction.channelId,
+                );
+
+            const frequency: number = Number(interaction.values[0]);
+
+            await this._channelsService.setFrequency(
+                interaction.channelId,
+                frequency,
+            );
+
+            const header: ContainerBuilder =
+                this._componentsService.getSettingsHeaderMessageComponent(
+                    isEnabled,
+                );
+
+            const body: ContainerBuilder =
+                this._componentsService.getSettingsBodyMessageComponent(
+                    frequency,
+                );
+
+            await interaction.update({
                 flags: MessageFlags.IsComponentsV2,
                 components: [header, body],
             });

@@ -204,7 +204,7 @@ export class ComponentsService implements IComponentsService {
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                     new StringSelectMenuBuilder()
-                        .setCustomId("select-frequency")
+                        .setCustomId("frequency")
                         .addOptions(
                             frequencies.map((option: Frequency) =>
                                 new SelectMenuOptionBuilder()

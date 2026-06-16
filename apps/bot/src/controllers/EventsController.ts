@@ -117,5 +117,16 @@ export class EventsController implements IEventsController {
                     break;
             }
         }
+
+        // string select menu
+        if (interaction.isStringSelectMenu()) {
+            switch (interaction.customId) {
+                case "frequency":
+                    await this._settingsController.handleFrequencySelect(
+                        interaction,
+                    );
+                    break;
+            }
+        }
     }
 }

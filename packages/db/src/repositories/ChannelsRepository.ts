@@ -22,6 +22,25 @@ export class ChannelsRepository implements IChannelsRepository {
         }
     }
 
+    public async set(
+        channelId: string,
+        channel: typeof channelsTable.$inferSelect,
+    ): Promise<typeof channelsTable.$inferSelect | undefined> {
+        try {
+            const channels = await db
+                .update(channelsTable)
+                .set(channel)
+                .where(eq(channelsTable.channelId, channelId))
+                .returning();
+
+            return channels[0] || undefined;
+        } catch (error) {
+            console.error(error);
+
+            return undefined;
+        }
+    }
+
     public async add(channelId: string, addedAt: Date): Promise<boolean> {
         try {
             const channel: typeof channelsTable.$inferInsert = {
