@@ -44,8 +44,10 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     isEnabled
-                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around ~30 messages in memory.`
-                        : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
+                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.`
+                        : messagesAmount >= 30
+                          ? `You already have over **${messagesAmount} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.`
+                          : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
                 ),
             )
             .addTextDisplayComponents(
@@ -76,9 +78,7 @@ export class ComponentsService implements IComponentsService {
                     .setStyle(
                         isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
                     )
-                    .setLabel(
-                        `${isEnabled ? `Disable training` : `Enable training`}`,
-                    )
+                    .setLabel(`${isEnabled ? `Turn off` : `Turn on`}`)
                     .setCustomId(`${isEnabled ? "disable" : "enable"}`),
             )
             .addComponents(
