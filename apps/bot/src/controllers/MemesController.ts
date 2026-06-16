@@ -50,6 +50,8 @@ export class MemesController implements IMemesController {
         const job: Job<MemeGenerationJob, MemeGenerationResult> =
             await this._memeGenerationQueue.add("meme-generation", {
                 channelId: interaction.channelId,
+                userId: interaction.user.id,
+                trigger: interaction.isCommand() ? "command" : "regenerate",
             });
 
         try {

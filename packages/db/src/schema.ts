@@ -31,9 +31,8 @@ export const generationsTable = sqliteTable(
     "generations_table",
     {
         id: int().primaryKey({ autoIncrement: true }),
-        messageId: text().notNull().unique(),
         channelId: text().notNull(),
-        templateId: text().notNull(),
+        templateId: int().notNull(),
         createdAt: int({ mode: "timestamp" }).notNull(),
     },
     (table) => [

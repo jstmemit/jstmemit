@@ -288,6 +288,9 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0
     devDependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../../packages/analytics
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db
