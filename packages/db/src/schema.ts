@@ -47,6 +47,7 @@ export const channelsTable = sqliteTable("channels_table", {
     channelId: text().notNull().unique(),
     enabled: int({ mode: "boolean" }).notNull().default(false),
     frequency: int().notNull().default(20),
+    useAvatarsInMemes: int({ mode: "boolean" }).notNull().default(true),
     addedAt: int({ mode: "timestamp" }).notNull(),
 });
 

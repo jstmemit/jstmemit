@@ -218,6 +218,43 @@ export class ComponentsService implements IComponentsService {
                             ),
                         ),
                 ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### Avatars in memes`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Include profile pictures in generated memes?`,
+                ),
+            )
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("avatar")
+                        .addOptions(
+                            new SelectMenuOptionBuilder()
+                                .setLabel("Yes")
+                                .setValue("true")
+                                .setDefault(true)
+                                .setEmoji({ name: "✅" })
+                                .setDescription(
+                                    "Bot will use avatars for memes (recommended)",
+                                ),
+                            new SelectMenuOptionBuilder()
+                                .setLabel("No")
+                                .setValue("false")
+                                .setDefault(false)
+                                .setEmoji({ name: "❌" })
+                                .setDescription(
+                                    "Bot won't use avatars for memes",
+                                ),
+                        ),
+                ),
             );
     }
 

@@ -52,6 +52,7 @@ export class SettingsController implements ISettingsController {
             const body: ContainerBuilder =
                 this._componentsService.getSettingsBodyMessageComponent(
                     channel.frequency,
+                    channel.useAvatarsInMemes,
                 );
 
             if (interaction.isButton()) {
@@ -99,6 +100,43 @@ export class SettingsController implements ISettingsController {
             const body: ContainerBuilder =
                 this._componentsService.getSettingsBodyMessageComponent(
                     frequency,
+                    channel.useAvatarsInMemes,
+                );
+
+            await interaction.update({
+                flags: MessageFlags.IsComponentsV2,
+                components: [header, body],
+            });
+        } catch (error) {
+            console.error(error);
+
+            // TODO: needs an embed
+            await interaction.editReply("error");
+        }
+    }
+
+    public async handleUseAvatarsInMemesSelect(
+        interaction: StringSelectMenuInteraction,
+    ): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined =
+                await this._channelsService.getChannel(interaction.channelId);
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const useAvatarsInMemes: boolean = Boolean(interaction.values[0]);
+
+            const header: ContainerBuilder =
+                this._componentsService.getSettingsHeaderMessageComponent(
+                    channel.enabled,
+                );
+
+            const body: ContainerBuilder =
+                this._componentsService.getSettingsBodyMessageComponent(
+                    channel.frequency,
+                    useAvatarsInMemes,
                 );
 
             await interaction.update({
