@@ -100,8 +100,22 @@ export class ChannelsController implements IChannelsController {
                 command: "/enable",
             });
 
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            if (interaction.isButton()) {
+                await interaction.update({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message],
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [message],
+                });
+            }
         }
     }
 }
