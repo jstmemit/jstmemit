@@ -118,6 +118,26 @@ export class ContextService implements IContextService {
         return true;
     }
 
+    public async saveAvatar(
+        messageId: string,
+        channelId: string,
+        avatarUrl: string,
+    ): Promise<boolean> {
+        if (!(await this._channelsService.isChannelEnabled(channelId))) {
+            return false;
+        }
+
+        avatarUrl = `${avatarUrl.replace(".webp", "")}?size=1024&format=png`;
+
+        this._imagesRepository
+            .new(messageId, channelId, avatarUrl, "avatar", new Date())
+            .catch((error): void => {
+                console.error(error);
+            });
+
+        return true;
+    }
+
     private async _resolveTenorGifUrl(
         tenorUrl: string,
     ): Promise<string | undefined> {

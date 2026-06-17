@@ -22,7 +22,10 @@ export class ImagesRepository extends IImagesRepository {
                 expiresAt: expiresAt,
             };
 
-            await db.insert(imagesTable).values(image);
+            await db.insert(imagesTable).values(image).onConflictDoUpdate({
+                target: imagesTable.imageUrl,
+                set: { imageUrl },
+            });
 
             return true;
         } catch (error) {

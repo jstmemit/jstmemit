@@ -18,4 +18,10 @@ export abstract class IContextService {
         channelId: string,
         content: string,
     ): Promise<boolean>;
+
+    public abstract saveAvatar(
+        messageId: string,
+        channelId: string,
+        avatarUrl: string,
+    ): Promise<boolean>;
 }

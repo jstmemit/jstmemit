@@ -16,7 +16,7 @@ export const imagesTable = sqliteTable("images_table", {
     id: int().primaryKey({ autoIncrement: true }),
     messageId: text().notNull(),
     channelId: text().notNull(),
-    imageUrl: text().notNull(),
+    imageUrl: text().notNull().unique(),
     source: text().notNull().default("attachment"),
     timestamp: int({ mode: "timestamp" }).notNull(),
     expiresAt: int({ mode: "timestamp" }),

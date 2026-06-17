@@ -19,10 +19,16 @@ export class ContextController implements IContextController {
      */
     public async handleNewMessage(message: Message): Promise<void> {
         try {
-            const { id, content, channelId, attachments } = message;
+            const { id, content, channelId, attachments, author } = message;
 
             if (!channelId) {
                 return;
+            }
+
+            const avatar: string | null = author.avatarURL();
+
+            if (avatar) {
+                await this._contextService.saveAvatar(id, channelId, avatar);
             }
 
             if (attachments) {
