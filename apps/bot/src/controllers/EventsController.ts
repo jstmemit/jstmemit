@@ -99,7 +99,11 @@ export class EventsController implements IEventsController {
 
         // buttons
         if (interaction.isButton()) {
-            switch (interaction.customId) {
+            const id: string | undefined = interaction.customId.split(":")[1];
+            const customId: string =
+                interaction.customId.split(":")[0] || interaction.customId;
+
+            switch (customId) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(
                         interaction,
@@ -109,12 +113,14 @@ export class EventsController implements IEventsController {
                     await this._ratingsController.handleRatingInteraction(
                         interaction,
                         "like",
+                        Number(id),
                     );
                     break;
                 case "dislike":
                     await this._ratingsController.handleRatingInteraction(
                         interaction,
                         "dislike",
+                        Number(id),
                     );
                     break;
                 case "enable":

@@ -33,6 +33,8 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { ComponentsService } from "#/services/ComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { SettingsController } from "#/controllers/SettingsController.ts";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
+import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -79,11 +81,15 @@ const contextController: IContextController = new ContextController(
     contextService,
 );
 
+// generations
+const generationsRepository: IGenerationsRepository = new GenerationsRepository();
+
 // ratings
 const ratingsRepository: IRatingsRepository = new RatingsRepository();
 const ratingsService: IRatingsService = new RatingsService(ratingsRepository);
 const ratingsController: IRatingsController = new RatingsController(
     ratingsService,
+    generationsRepository,
 );
 
 // memes
