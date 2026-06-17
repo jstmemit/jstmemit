@@ -45,7 +45,7 @@ export class ContextController implements IContextController {
                 this._contextService.saveImages(id, channelId, attachments);
             }
 
-            if (content.length >= 0 || content.length < 1999) {
+            if (content.length > 0 && content.length < 2000) {
                 if (content.startsWith("https://tenor.com/view")) {
                     await this._contextService.saveGif(id, channelId, content);
                 } else {
