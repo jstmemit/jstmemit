@@ -1,7 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, eq, gte } from "drizzle-orm";
+import { and, eq, gte, sql } from "drizzle-orm";
 
 export class ImagesRepository extends IImagesRepository {
     public async new(
@@ -46,6 +46,7 @@ export class ImagesRepository extends IImagesRepository {
                         eq(imagesTable.channelId, channelId),
                     ),
                 )
+                .orderBy(sql`random()`)
                 .limit(limit);
 
             return images.map((image) => image.imageUrl);
