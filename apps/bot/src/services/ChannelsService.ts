@@ -41,8 +41,7 @@ export class ChannelsService implements IChannelsService {
     }
 
     /**
-     * Checks if a channel exists in the database and returns false if
-     * it doesn't. If it does, then returns current status (enabled or disabled)
+     * Upserts a channel into database and returns if it's enabled or not.
      *
      * @param channelId
      *
@@ -63,6 +62,14 @@ export class ChannelsService implements IChannelsService {
         }
     }
 
+    /**
+     * Modifies fields for a channel by its id
+     *
+     * @param channelId
+     * @param channel
+     *
+     * @author Kyrylo Maliuha
+     */
     public async setChannel(
         channelId: string,
         channel: typeof channelsTable.$inferSelect,

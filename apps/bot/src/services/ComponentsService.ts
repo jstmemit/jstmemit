@@ -306,6 +306,13 @@ export class ComponentsService implements IComponentsService {
         return progressBar;
     }
 
+    /**
+     * Returns an array of meme frequency options
+     *
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _getFrequencyOptions(): Frequency[] {
         return [
             {

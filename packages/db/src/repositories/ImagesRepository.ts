@@ -8,7 +8,7 @@ export class ImagesRepository extends IImagesRepository {
         messageId: string,
         channelId: string,
         imageUrl: string,
-        source: "attachment" | "gif",
+        source: "attachment" | "gif" | "avatar",
         timestamp: Date,
         expiresAt?: Date,
     ): Promise<boolean> {
