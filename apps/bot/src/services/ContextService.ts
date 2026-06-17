@@ -102,19 +102,37 @@ export class ContextService implements IContextService {
             return false;
         }
 
-        const result: Response = await fetch(content);
+        const result: string | undefined =
+            await this._resolveTenorGifUrl(content);
 
-        if (!result.ok) {
+        if (!result) {
             return false;
         }
 
         this._imagesRepository
-            .new(messageId, channelId, content, "gif", new Date())
+            .new(messageId, channelId, result, "gif", new Date())
             .catch((error): void => {
                 console.error(error);
             });
 
         return true;
+    }
+
+    private async _resolveTenorGifUrl(
+        tenorUrl: string,
+    ): Promise<string | undefined> {
+        const response: Response = await fetch(tenorUrl);
+
+        if (!response.ok) {
+            return undefined;
+        }
+
+        const html: string = await response.text();
+        const match: RegExpMatchArray | null = html.match(
+            /<link[^>]+rel="image_src"[^>]+href="([^"]+)"/i,
+        );
+
+        return match?.[1];
     }
 
     private _getExpirationDate(attachmentUrl: string): Date {
