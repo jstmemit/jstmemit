@@ -12,4 +12,10 @@ export abstract class IContextService {
         channelId: string,
         attachments: Collection<string, Attachment>,
     ): Promise<boolean>;
+
+    public abstract saveGif(
+        messageId: string,
+        channelId: string,
+        content: string,
+    ): Promise<boolean>;
 }

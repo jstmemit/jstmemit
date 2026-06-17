@@ -3,6 +3,7 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
+import { analytics } from "@jstmemit/analytics";
 
 export class ContextService implements IContextService {
     private readonly _messagesRepository: IMessagesRepository;
@@ -66,14 +67,73 @@ export class ContextService implements IContextService {
             return false;
         }
 
-        attachments.forEach((attachment) => {
+        attachments.forEach((attachment: Attachment): void => {
+            if (!attachment.contentType?.startsWith("image/")) {
+                return;
+            }
+
+            const expiresAt: Date = this._getExpirationDate(
+                attachment.proxyURL,
+            );
+
             this._imagesRepository
-                .new(messageId, channelId, attachment.url, new Date())
-                .catch((error) => {
+                .new(
+                    messageId,
+                    channelId,
+                    attachment.proxyURL,
+                    "attachment",
+                    new Date(),
+                    expiresAt,
+                )
+                .catch((error): void => {
                     console.error(error);
                 });
         });
 
         return true;
+    }
+
+    public async saveGif(
+        messageId: string,
+        channelId: string,
+        content: string,
+    ): Promise<boolean> {
+        if (!(await this._channelsService.isChannelEnabled(channelId))) {
+            return false;
+        }
+
+        const result: Response = await fetch(content);
+
+        if (!result.ok) {
+            return false;
+        }
+
+        this._imagesRepository
+            .new(messageId, channelId, content, "gif", new Date())
+            .catch((error): void => {
+                console.error(error);
+            });
+
+        return true;
+    }
+
+    private _getExpirationDate(attachmentUrl: string): Date {
+        try {
+            const expiration: string | null = new URL(
+                attachmentUrl,
+            ).searchParams.get("ex");
+
+            return expiration
+                ? new Date(parseInt(expiration, 16) * 1000)
+                : new Date(Date.now() + 24 * 60 * 60 * 1000);
+        } catch (error) {
+            console.error(error);
+
+            analytics.captureException(error, "bot", {
+                attachmentUrl,
+            });
+
+            return new Date(Date.now() + 24 * 60 * 60 * 1000);
+        }
     }
 }

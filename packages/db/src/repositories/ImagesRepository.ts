@@ -1,21 +1,25 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, eq, gte, sql } from "drizzle-orm";
+import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
 
 export class ImagesRepository extends IImagesRepository {
     public async new(
         messageId: string,
         channelId: string,
         imageUrl: string,
+        source: "attachment" | "gif",
         timestamp: Date,
+        expiresAt?: Date,
     ): Promise<boolean> {
         try {
             const image: typeof imagesTable.$inferInsert = {
                 messageId: messageId,
                 channelId: channelId,
                 imageUrl: imageUrl,
+                source: source,
                 timestamp: timestamp,
+                expiresAt: expiresAt,
             };
 
             await db.insert(imagesTable).values(image);
@@ -32,18 +36,18 @@ export class ImagesRepository extends IImagesRepository {
         channelId: string,
         timestamp: Date,
         limit: number = 100,
-        cutoffTime: number = 24 * 60 * 60 * 1000,
     ): Promise<string[]> {
         try {
-            const cutoff = new Date(+timestamp - cutoffTime);
-
             const images = await db
                 .select()
                 .from(imagesTable)
                 .where(
                     and(
-                        gte(imagesTable.timestamp, cutoff),
                         eq(imagesTable.channelId, channelId),
+                        or(
+                            isNull(imagesTable.expiresAt),
+                            gt(imagesTable.expiresAt, timestamp),
+                        ),
                     ),
                 )
                 .orderBy(sql`random()`)

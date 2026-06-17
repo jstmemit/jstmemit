@@ -3,7 +3,9 @@ export abstract class IImagesRepository {
         messageId: string,
         channelId: string,
         imageUrl: string,
+        source: "attachment" | "gif",
         timestamp: Date,
+        expiresAt?: Date,
     ): Promise<boolean>;
 
     public abstract getImagesByChannelId(

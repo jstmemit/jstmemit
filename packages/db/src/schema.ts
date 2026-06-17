@@ -17,7 +17,9 @@ export const imagesTable = sqliteTable("images_table", {
     messageId: text().notNull(),
     channelId: text().notNull(),
     imageUrl: text().notNull(),
+    source: text().notNull().default("attachment"),
     timestamp: int({ mode: "timestamp" }).notNull(),
+    expiresAt: int({ mode: "timestamp" }),
 });
 
 export const reactionsTable = sqliteTable("reactions_table", {
