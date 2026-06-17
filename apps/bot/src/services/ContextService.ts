@@ -17,8 +17,8 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Saves text content from a message. First tries to add it to the database,
-     * then checks if it is enabled and only then saves the text.
+     * Calls MessagesRepository to save text content into
+     * the database
      *
      * @param messageId
      * @param channelId
@@ -40,9 +40,9 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Saves images from a message. First tries to add it to the database,
-     * then checks if it is enabled and only then saves the images. Goes
-     * through all images in a message.
+     * Gets expiration date for every attachment and
+     * then calls ImagesRepository to save it into
+     * the database
      *
      * @param messageId
      * @param channelId
@@ -77,6 +77,16 @@ export class ContextService implements IContextService {
         return true;
     }
 
+    /**
+     * Finds a source link to the Tenor GIF and then calls
+     * ImagesRepository to save it into the database
+     *
+     * @param messageId
+     * @param channelId
+     * @param content
+     *
+     * @author Kyrylo Maliuha
+     */
     public async saveGif(
         messageId: string,
         channelId: string,
@@ -98,6 +108,16 @@ export class ContextService implements IContextService {
         return true;
     }
 
+    /**
+     * Modifies avatar URL string to be a .png and calls
+     * ImagesRepository to save it into the database
+     *
+     * @param messageId
+     * @param channelId
+     * @param avatarUrl
+     *
+     * @author Kyrylo Maliuha
+     */
     public saveAvatar(
         messageId: string,
         channelId: string,
@@ -114,6 +134,15 @@ export class ContextService implements IContextService {
         return true;
     }
 
+    /**
+     * Fetches a Tenor URL and looks for a direct link to the GIF
+     * source inside <link> elements with "image_src" rel attribute
+     *
+     * @param tenorUrl
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _resolveTenorGifUrl(
         tenorUrl: string,
     ): Promise<string | undefined> {
@@ -131,6 +160,14 @@ export class ContextService implements IContextService {
         return match?.[1];
     }
 
+    /**
+     * Extracts expiration date out of a Discord media URL
+     *
+     * @param attachmentUrl
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _getExpirationDate(attachmentUrl: string): Date {
         try {
             const expiration: string | null = new URL(

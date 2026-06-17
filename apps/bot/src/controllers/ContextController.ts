@@ -16,8 +16,8 @@ export class ContextController implements IContextController {
     }
 
     /**
-     * Handles new messages. Calls ContextService to save
-     * images and text content
+     * Handles new messages. Checks if a channel is enabled and
+     * then calls ContextService to save images, avatars and text content
      *
      * @param message
      *

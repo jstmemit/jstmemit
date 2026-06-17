@@ -64,6 +64,14 @@ export class SettingsController implements ISettingsController {
         }
     }
 
+    /**
+     * Handles changing of the meme frequency
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
     public async handleFrequencySelect(
         interaction: StringSelectMenuInteraction,
     ): Promise<void> {
@@ -105,6 +113,14 @@ export class SettingsController implements ISettingsController {
         }
     }
 
+    /**
+     * Handles changing if the bot can use avatars
+     * in memes that are generated in the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
     public async handleUserAvatarsSelect(
         interaction: StringSelectMenuInteraction,
     ): Promise<void> {
@@ -146,6 +162,16 @@ export class SettingsController implements ISettingsController {
         }
     }
 
+    /**
+     * Responds with a head + body of the /settings command
+     * message component
+     *
+     * @param interaction
+     * @param channel
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _replyWithSettings(
         interaction:
             | ButtonInteraction
@@ -164,6 +190,17 @@ export class SettingsController implements ISettingsController {
         ]);
     }
 
+    /**
+     * Logs the error and captures it with PostHog, then responds
+     * with an error message component
+     *
+     * @param interaction
+     * @param error
+     * @param properties
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _replyWithError(
         interaction:
             | ButtonInteraction
