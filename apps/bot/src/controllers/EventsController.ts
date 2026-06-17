@@ -17,6 +17,8 @@ export class EventsController implements IEventsController {
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
+    private readonly _isProduction: boolean =
+        env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
         contextController: IContextController,
@@ -42,7 +44,7 @@ export class EventsController implements IEventsController {
     public handleClientReady(readyClient: Client<true>): void {
         console.log(`Logged in as ${readyClient.user.tag}!`);
 
-        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+        if (this._isProduction) {
             analytics.capture({
                 event: "guild_count_update",
                 distinctId: "bot",
@@ -110,16 +112,10 @@ export class EventsController implements IEventsController {
                     );
                     break;
                 case "like":
-                    await this._ratingsController.handleRatingInteraction(
-                        interaction,
-                        "like",
-                        Number(id),
-                    );
-                    break;
                 case "dislike":
                     await this._ratingsController.handleRatingInteraction(
                         interaction,
-                        "dislike",
+                        customId,
                         Number(id),
                     );
                     break;
@@ -162,7 +158,7 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public handleGuildCreate(guild: Guild): void {
-        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+        if (this._isProduction) {
             analytics.capture({
                 event: "guild_joined",
                 distinctId: "bot",
@@ -183,7 +179,7 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public handleGuildDelete(guild: Guild): void {
-        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+        if (this._isProduction) {
             analytics.capture({
                 event: "guild_left",
                 distinctId: "bot",
