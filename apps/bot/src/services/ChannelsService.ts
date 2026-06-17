@@ -24,32 +24,6 @@ export class ChannelsService implements IChannelsService {
     }
 
     /**
-     * Searches for the channel and does nothing if it already exists.
-     * If it doesn't, it calls ChannelsRepository to add it.
-     *
-     * @param channelId
-     *
-     * @author Kyrylo Maliuha
-     */
-    public async addChannel(channelId: string): Promise<boolean> {
-        try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (channel) {
-                return true;
-            }
-
-            await this._channelsRepository.add(channelId, new Date());
-
-            return true;
-        } catch (error) {
-            console.error(error);
-
-            return false;
-        }
-    }
-
-    /**
      * Gets current channel status (enabled or disabled) and
      * calls ChannelsRepository to change it.
      *
@@ -58,12 +32,12 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async switchChannel(channelId: string): Promise<boolean> {
-        await this.addChannel(channelId);
+        const channel: typeof channelsTable.$inferSelect =
+            await this._channelsRepository.upsert(channelId, new Date());
 
-        const isEnabled: boolean = await this.isChannelEnabled(channelId);
-        await this._channelsRepository.switch(channelId, isEnabled);
+        await this._channelsRepository.switch(channelId, channel.enabled);
 
-        return !isEnabled;
+        return !channel.enabled;
     }
 
     /**
@@ -76,11 +50,10 @@ export class ChannelsService implements IChannelsService {
      */
     public async isChannelEnabled(channelId: string): Promise<boolean> {
         try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (!channel) {
-                return false;
-            }
+            const channel = await this._channelsRepository.upsert(
+                channelId,
+                new Date(),
+            );
 
             return channel.enabled;
         } catch (error) {

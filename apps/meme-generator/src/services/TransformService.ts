@@ -24,7 +24,7 @@ export class TransformService implements ITransformService {
     ): Promise<string[]> {
         const transformedTexts: string[] = [];
 
-        for (let i = 0; amount !== transformedTexts.length; i++) {
+        while (transformedTexts.length < amount) {
             transformedTexts.push(await this.transformIntoText(texts));
         }
 

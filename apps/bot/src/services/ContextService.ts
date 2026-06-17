@@ -34,11 +34,7 @@ export class ContextService implements IContextService {
         channelId: string,
         content: string,
     ): Promise<boolean> {
-        await this._channelsService.addChannel(channelId);
-
-        const channel = await this._channelsService.getChannel(channelId);
-
-        if (!channel?.enabled) {
+        if (!(await this._channelsService.isChannelEnabled(channelId))) {
             return false;
         }
 
@@ -66,11 +62,7 @@ export class ContextService implements IContextService {
         channelId: string,
         attachments: Collection<string, Attachment>,
     ): Promise<boolean> {
-        await this._channelsService.addChannel(channelId);
-
-        const channel = await this._channelsService.getChannel(channelId);
-
-        if (!channel?.enabled) {
+        if (!(await this._channelsService.isChannelEnabled(channelId))) {
             return false;
         }
 

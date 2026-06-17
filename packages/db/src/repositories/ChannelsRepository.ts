@@ -22,6 +22,26 @@ export class ChannelsRepository implements IChannelsRepository {
         }
     }
 
+    public async upsert(
+        channelId: string,
+        addedAt: Date,
+    ): Promise<typeof channelsTable.$inferSelect> {
+        const [channel] = await db
+            .insert(channelsTable)
+            .values({ channelId, addedAt })
+            .onConflictDoUpdate({
+                target: channelsTable.channelId,
+                set: { channelId },
+            })
+            .returning();
+
+        if (!channel) {
+            throw new Error();
+        }
+
+        return channel;
+    }
+
     public async set(
         channelId: string,
         channel: typeof channelsTable.$inferSelect,
@@ -38,23 +58,6 @@ export class ChannelsRepository implements IChannelsRepository {
             console.error(error);
 
             return undefined;
-        }
-    }
-
-    public async add(channelId: string, addedAt: Date): Promise<boolean> {
-        try {
-            const channel: typeof channelsTable.$inferInsert = {
-                channelId: channelId,
-                addedAt: addedAt,
-            };
-
-            await db.insert(channelsTable).values(channel);
-
-            return true;
-        } catch (error) {
-            console.error(error);
-
-            return false;
         }
     }
 
