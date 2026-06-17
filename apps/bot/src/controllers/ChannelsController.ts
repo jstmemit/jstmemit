@@ -10,7 +10,7 @@ import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import { analytics } from "@jstmemit/analytics/index";
+import { analytics } from "@jstmemit/analytics";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;

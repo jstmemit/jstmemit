@@ -2,7 +2,7 @@ import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ButtonInteraction } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
-import { analytics } from "@jstmemit/analytics/index";
+import { analytics } from "@jstmemit/analytics";
 
 export class RatingsController implements IRatingsController {
     private readonly _ratingsService: IRatingsService;

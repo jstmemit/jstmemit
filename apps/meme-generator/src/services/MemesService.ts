@@ -11,7 +11,7 @@ import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJo
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import type { ITransformService } from "#/interfaces/ITransformService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
-import { analytics } from "@jstmemit/analytics/index";
+import { analytics } from "@jstmemit/analytics";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;

@@ -9,7 +9,7 @@ import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
-import { analytics } from "@jstmemit/analytics/index";
+import { analytics } from "@jstmemit/analytics";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;

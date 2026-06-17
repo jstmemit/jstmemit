@@ -6,6 +6,6 @@
         "@jstmemit/shared": "workspace:*"
     },
     "exports": {
-        "./*": "./src/*.ts"
+        ".": "./src/index.ts"
     }
 }

@@ -6,7 +6,7 @@ import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
-import { analytics } from "@jstmemit/analytics/index";
+import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
 
 const env = Env.parse(process.env);
