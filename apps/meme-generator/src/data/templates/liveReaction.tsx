@@ -19,7 +19,6 @@ export const liveReaction: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
             }}
         >
             <img

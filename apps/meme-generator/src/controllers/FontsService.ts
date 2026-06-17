@@ -24,6 +24,12 @@ export class FontsService implements IFontsService {
                 weight: 800,
                 style: "normal",
             },
+            {
+                name: "Comic Sans MS",
+                data: this._fontsRepository.getComicSans(),
+                weight: 400,
+                style: "normal",
+            },
         ];
     }
 }

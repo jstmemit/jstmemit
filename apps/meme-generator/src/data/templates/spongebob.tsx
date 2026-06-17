@@ -16,7 +16,7 @@ export const spongebob: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img
@@ -40,9 +40,11 @@ export const spongebob: Template = {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    fontSize: 70,
+                    fontSize: 60,
+                    paddingLeft: 15,
+                    paddingRight: 15,
                     color: "white",
-                    WebkitTextStrokeWidth: 5,
+                    WebkitTextStrokeWidth: 10,
                     WebkitTextStrokeColor: "black",
                     textAlign: "center",
                 }}
