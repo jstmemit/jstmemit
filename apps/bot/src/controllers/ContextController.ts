@@ -42,9 +42,13 @@ export class ContextController implements IContextController {
             if (content.length >= 0 || content.length < 1999) {
                 if (content.startsWith("https://tenor.com/view")) {
                     await this._contextService.saveGif(id, channelId, content);
+                } else {
+                    await this._contextService.saveContent(
+                        id,
+                        channelId,
+                        content,
+                    );
                 }
-
-                await this._contextService.saveContent(id, channelId, content);
             }
         } catch (error) {
             console.error(error);
