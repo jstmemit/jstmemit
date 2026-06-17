@@ -5,6 +5,7 @@ export const Env = z.object({
 
     DISCORD_TOKEN: z.string().min(1),
     DISCORD_CLIENT_ID: z.string().min(1),
+    DISCORD_CLIENT_ID_PRODUCTION: z.string().min(1),
 
     POSTHOG_WRITE_KEY: z.string().min(1),
 

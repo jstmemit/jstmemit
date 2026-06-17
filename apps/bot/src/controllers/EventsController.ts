@@ -7,6 +7,9 @@ import type { IEventsController } from "#/interfaces/IEventsController.ts";
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { analytics } from "@jstmemit/analytics/index";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
 
 export class EventsController implements IEventsController {
     private readonly _contextController: IContextController;
@@ -38,6 +41,14 @@ export class EventsController implements IEventsController {
      */
     public handleClientReady(readyClient: Client<true>): void {
         console.log(`Logged in as ${readyClient.user.tag}!`);
+
+        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+            analytics.capture({
+                event: "guild_count_update",
+                distinctId: "bot",
+                properties: { guildCount: readyClient.guilds.cache.size },
+            });
+        }
     }
 
     /**
@@ -145,15 +156,17 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public handleGuildCreate(guild: Guild): void {
-        analytics.capture({
-            event: "guild_joined",
-            distinctId: "bot",
-            properties: {
-                guildId: guild.id,
-                memberCount: guild.memberCount,
-                guildCount: guild.client.guilds.cache.size,
-            },
-        });
+        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+            analytics.capture({
+                event: "guild_joined",
+                distinctId: "bot",
+                properties: {
+                    guildId: guild.id,
+                    memberCount: guild.memberCount,
+                    guildCount: guild.client.guilds.cache.size,
+                },
+            });
+        }
     }
 
     /**
@@ -164,13 +177,15 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public handleGuildDelete(guild: Guild): void {
-        analytics.capture({
-            event: "guild_left",
-            distinctId: "bot",
-            properties: {
-                guildId: guild.id,
-                guildCount: guild.client.guilds.cache.size,
-            },
-        });
+        if (env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION) {
+            analytics.capture({
+                event: "guild_left",
+                distinctId: "bot",
+                properties: {
+                    guildId: guild.id,
+                    guildCount: guild.client.guilds.cache.size,
+                },
+            });
+        }
     }
 }
