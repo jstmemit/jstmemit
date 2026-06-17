@@ -8,7 +8,10 @@ export const explains: Template = {
     width: 700,
     height: 800,
     texts: [],
-    images: [{ id: 0, description: "background" }],
+    images: [
+        { id: 0, description: "content of whiteboard" },
+        { id: 1, description: "person who points on the whiteboard" },
+    ],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -36,6 +39,18 @@ export const explains: Template = {
                 width={700}
                 height={800}
                 style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[1]}
+                width={200}
+                height={200}
+                style={{
+                    position: "absolute",
+                    top: 5,
+                    right: 55,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
         </div>
     ),
