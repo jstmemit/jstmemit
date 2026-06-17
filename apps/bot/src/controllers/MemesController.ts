@@ -1,9 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import {
-    type ButtonInteraction,
-    type ContainerBuilder,
-    MessageFlags,
-} from "discord.js";
+import { type ButtonInteraction, type ContainerBuilder } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -12,6 +8,7 @@ import { type Job } from "bullmq";
 import { type Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { respond } from "#/helpers/respond.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<
@@ -98,10 +95,7 @@ export class MemesController implements IMemesController {
                     interaction.id,
                 );
 
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message],
-            });
+            await respond(interaction, [message]);
         }
     }
 }

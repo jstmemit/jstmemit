@@ -3,13 +3,13 @@ import {
     type ButtonInteraction,
     type ChatInputCommandInteraction,
     type ContainerBuilder,
-    MessageFlags,
 } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import { analytics } from "@jstmemit/analytics";
+import { respond } from "#/helpers/respond.ts";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
@@ -68,17 +68,7 @@ export class SettingsController implements ISettingsController {
                 },
             });
 
-            if (interaction.isButton()) {
-                await interaction.update({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [header, body],
-                });
-            } else {
-                await interaction.editReply({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [header, body],
-                });
-            }
+            await respond(interaction, [header, body]);
         } catch (error) {
             console.error(error);
             analytics.captureException(error, interaction.user.id, {
@@ -93,17 +83,7 @@ export class SettingsController implements ISettingsController {
                     interaction.id,
                 );
 
-            if (interaction.isButton()) {
-                await interaction.update({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message],
-                });
-            } else {
-                await interaction.editReply({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message],
-                });
-            }
+            await respond(interaction, [message]);
         }
     }
 
@@ -150,10 +130,7 @@ export class SettingsController implements ISettingsController {
                     channel.useAvatarsInMemes,
                 );
 
-            await interaction.update({
-                flags: MessageFlags.IsComponentsV2,
-                components: [header, body],
-            });
+            await respond(interaction, [header, body]);
         } catch (error) {
             console.error(error);
             analytics.captureException(error, interaction.user.id, {
@@ -168,10 +145,7 @@ export class SettingsController implements ISettingsController {
                     interaction.id,
                 );
 
-            await interaction.update({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message],
-            });
+            await respond(interaction, [message]);
         }
     }
 
@@ -218,10 +192,7 @@ export class SettingsController implements ISettingsController {
                     channel.useAvatarsInMemes,
                 );
 
-            await interaction.update({
-                flags: MessageFlags.IsComponentsV2,
-                components: [header, body],
-            });
+            await respond(interaction, [header, body]);
         } catch (error) {
             console.error(error);
             analytics.captureException(error, interaction.user.id, {
@@ -236,10 +207,7 @@ export class SettingsController implements ISettingsController {
                     interaction.id,
                 );
 
-            await interaction.update({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message],
-            });
+            await respond(interaction, [message]);
         }
     }
 }

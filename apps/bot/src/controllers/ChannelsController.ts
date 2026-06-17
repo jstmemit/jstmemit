@@ -6,11 +6,11 @@ import type {
     ChatInputCommandInteraction,
     ContainerBuilder,
 } from "discord.js";
-import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { analytics } from "@jstmemit/analytics";
+import { respond } from "#/helpers/respond.ts";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
@@ -81,17 +81,7 @@ export class ChannelsController implements IChannelsController {
             const buttons: ActionRowBuilder<ButtonBuilder> =
                 this._componentsService.getEnableButtonsComponent(isEnabled);
 
-            if (interaction.isButton()) {
-                await interaction.update({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message, buttons],
-                });
-            } else {
-                await interaction.editReply({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message, buttons],
-                });
-            }
+            await respond(interaction, [message, buttons]);
         } catch (error) {
             console.error(error);
             analytics.captureException(error, interaction.user.id, {
@@ -105,17 +95,7 @@ export class ChannelsController implements IChannelsController {
                     interaction.id,
                 );
 
-            if (interaction.isButton()) {
-                await interaction.update({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message],
-                });
-            } else {
-                await interaction.editReply({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [message],
-                });
-            }
+            await respond(interaction, [message]);
         }
     }
 }
