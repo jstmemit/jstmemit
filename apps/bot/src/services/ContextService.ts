@@ -1,6 +1,5 @@
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
@@ -8,16 +7,13 @@ import { analytics } from "@jstmemit/analytics";
 export class ContextService implements IContextService {
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
-    private readonly _channelsService: IChannelsService;
 
     public constructor(
         messagesRepository: IMessagesRepository,
         imagesRepository: IImagesRepository,
-        channelsService: IChannelsService,
     ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
-        this._channelsService = channelsService;
     }
 
     /**
@@ -35,10 +31,6 @@ export class ContextService implements IContextService {
         channelId: string,
         content: string,
     ): Promise<boolean> {
-        if (!(await this._channelsService.isChannelEnabled(channelId))) {
-            return false;
-        }
-
         return await this._messagesRepository.new(
             messageId,
             channelId,
@@ -58,20 +50,12 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveImages(
+    public saveImages(
         messageId: string,
         channelId: string,
         attachments: Collection<string, Attachment>,
-    ): Promise<boolean> {
-        if (!(await this._channelsService.isChannelEnabled(channelId))) {
-            return false;
-        }
-
+    ): boolean {
         attachments.forEach((attachment: Attachment): void => {
-            if (!attachment.contentType?.startsWith("image/")) {
-                return;
-            }
-
             const expiresAt: Date = this._getExpirationDate(
                 attachment.proxyURL,
             );
@@ -98,10 +82,6 @@ export class ContextService implements IContextService {
         channelId: string,
         content: string,
     ): Promise<boolean> {
-        if (!(await this._channelsService.isChannelEnabled(channelId))) {
-            return false;
-        }
-
         const result: string | undefined =
             await this._resolveTenorGifUrl(content);
 
@@ -118,15 +98,11 @@ export class ContextService implements IContextService {
         return true;
     }
 
-    public async saveAvatar(
+    public saveAvatar(
         messageId: string,
         channelId: string,
         avatarUrl: string,
-    ): Promise<boolean> {
-        if (!(await this._channelsService.isChannelEnabled(channelId))) {
-            return false;
-        }
-
+    ): boolean {
         avatarUrl = `${avatarUrl.replace(".webp", "")}?size=1024&format=png`;
 
         this._imagesRepository

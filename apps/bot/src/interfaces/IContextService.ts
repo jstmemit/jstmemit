@@ -11,7 +11,7 @@ export abstract class IContextService {
         messageId: string,
         channelId: string,
         attachments: Collection<string, Attachment>,
-    ): Promise<boolean>;
+    ): boolean;
 
     public abstract saveGif(
         messageId: string,
@@ -23,5 +23,5 @@ export abstract class IContextService {
         messageId: string,
         channelId: string,
         avatarUrl: string,
-    ): Promise<boolean>;
+    ): boolean;
 }

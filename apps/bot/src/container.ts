@@ -75,14 +75,15 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 const contextService: IContextService = new ContextService(
     messagesRepository,
     imagesRepository,
-    channelsService,
 );
 const contextController: IContextController = new ContextController(
     contextService,
+    channelsService,
 );
 
 // generations
-const generationsRepository: IGenerationsRepository = new GenerationsRepository();
+const generationsRepository: IGenerationsRepository =
+    new GenerationsRepository();
 
 // ratings
 const ratingsRepository: IRatingsRepository = new RatingsRepository();

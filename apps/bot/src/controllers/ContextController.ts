@@ -1,12 +1,18 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { Message } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 
 export class ContextController implements IContextController {
     private readonly _contextService: IContextService;
+    private readonly _channelsService: IChannelsService;
 
-    public constructor(contextService: IContextService) {
+    public constructor(
+        contextService: IContextService,
+        channelsService: IChannelsService,
+    ) {
         this._contextService = contextService;
+        this._channelsService = channelsService;
     }
 
     /**
@@ -25,18 +31,18 @@ export class ContextController implements IContextController {
                 return;
             }
 
+            if (!(await this._channelsService.isChannelEnabled(channelId))) {
+                return;
+            }
+
             const avatar: string | null = author.avatarURL();
 
             if (avatar) {
-                await this._contextService.saveAvatar(id, channelId, avatar);
+                this._contextService.saveAvatar(id, channelId, avatar);
             }
 
             if (attachments) {
-                await this._contextService.saveImages(
-                    id,
-                    channelId,
-                    attachments,
-                );
+                this._contextService.saveImages(id, channelId, attachments);
             }
 
             if (content.length >= 0 || content.length < 1999) {
