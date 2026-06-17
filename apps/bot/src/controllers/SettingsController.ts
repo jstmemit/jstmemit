@@ -2,7 +2,6 @@ import type { StringSelectMenuInteraction } from "discord.js";
 import {
     type ButtonInteraction,
     type ChatInputCommandInteraction,
-    type ContainerBuilder,
 } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -45,17 +44,6 @@ export class SettingsController implements ISettingsController {
                 throw new Error();
             }
 
-            const header: ContainerBuilder =
-                this._componentsService.getSettingsHeaderMessageComponent(
-                    channel.enabled,
-                );
-
-            const body: ContainerBuilder =
-                this._componentsService.getSettingsBodyMessageComponent(
-                    channel.frequency,
-                    channel.useAvatarsInMemes,
-                );
-
             // opening settings (via button in /enable or /settings)
             analytics.capture({
                 event: "settings_opened",
@@ -68,22 +56,11 @@ export class SettingsController implements ISettingsController {
                 },
             });
 
-            await respond(interaction, [header, body]);
+            await this._replyWithSettings(interaction, channel);
         } catch (error) {
-            console.error(error);
-            analytics.captureException(error, interaction.user.id, {
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId || "",
-                trigger: interaction.isCommand() ? "/settings" : "/enable",
+            await this._replyWithError(interaction, error, {
                 command: "/settings",
             });
-
-            const message: ContainerBuilder =
-                this._componentsService.getErrorMessageComponent(
-                    interaction.id,
-                );
-
-            await respond(interaction, [message]);
         }
     }
 
@@ -119,33 +96,12 @@ export class SettingsController implements ISettingsController {
                 },
             });
 
-            const header: ContainerBuilder =
-                this._componentsService.getSettingsHeaderMessageComponent(
-                    channel.enabled,
-                );
-
-            const body: ContainerBuilder =
-                this._componentsService.getSettingsBodyMessageComponent(
-                    channel.frequency,
-                    channel.useAvatarsInMemes,
-                );
-
-            await respond(interaction, [header, body]);
+            await this._replyWithSettings(interaction, channel);
         } catch (error) {
-            console.error(error);
-            analytics.captureException(error, interaction.user.id, {
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId || "",
+            await this._replyWithError(interaction, error, {
                 command: "/settings",
                 action: "frequency",
             });
-
-            const message: ContainerBuilder =
-                this._componentsService.getErrorMessageComponent(
-                    interaction.id,
-                );
-
-            await respond(interaction, [message]);
         }
     }
 
@@ -181,33 +137,50 @@ export class SettingsController implements ISettingsController {
                 },
             });
 
-            const header: ContainerBuilder =
-                this._componentsService.getSettingsHeaderMessageComponent(
-                    channel.enabled,
-                );
-
-            const body: ContainerBuilder =
-                this._componentsService.getSettingsBodyMessageComponent(
-                    channel.frequency,
-                    channel.useAvatarsInMemes,
-                );
-
-            await respond(interaction, [header, body]);
+            await this._replyWithSettings(interaction, channel);
         } catch (error) {
-            console.error(error);
-            analytics.captureException(error, interaction.user.id, {
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId || "",
+            await this._replyWithError(interaction, error, {
                 command: "/settings",
                 action: "avatar",
             });
-
-            const message: ContainerBuilder =
-                this._componentsService.getErrorMessageComponent(
-                    interaction.id,
-                );
-
-            await respond(interaction, [message]);
         }
+    }
+
+    private async _replyWithSettings(
+        interaction:
+            | ButtonInteraction
+            | ChatInputCommandInteraction
+            | StringSelectMenuInteraction,
+        channel: typeof channelsTable.$inferSelect,
+    ): Promise<void> {
+        await respond(interaction, [
+            this._componentsService.getSettingsHeaderMessageComponent(
+                channel.enabled,
+            ),
+            this._componentsService.getSettingsBodyMessageComponent(
+                channel.frequency,
+                channel.useAvatarsInMemes,
+            ),
+        ]);
+    }
+
+    private async _replyWithError(
+        interaction:
+            | ButtonInteraction
+            | ChatInputCommandInteraction
+            | StringSelectMenuInteraction,
+        error: unknown,
+        properties: Record<string, unknown>,
+    ): Promise<void> {
+        console.error(error);
+        analytics.captureException(error, interaction.user.id, {
+            channel_id: interaction.channelId,
+            guild_id: interaction.guildId || "",
+            trigger: interaction.isCommand() ? "/settings" : "/enable",
+            ...properties,
+        });
+        await respond(interaction, [
+            this._componentsService.getErrorMessageComponent(interaction.id),
+        ]);
     }
 }
