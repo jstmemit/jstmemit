@@ -1,64 +1,21 @@
 ---
 import PageLayout from "../layout/PageLayout.astro";
+import Background from "../components/Background.astro";
+import BlurredMemes from "../components/background/BlurredMemes.astro";
+
 ---
 
 <PageLayout>
-    <section
-        class="relative flex h-[80vh] flex-col items-center justify-center gap-5 overflow-hidden bg-black text-white"
-    >
-        <h1 class="z-2 mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
-            personalized memes for <span class="text-hot-fuchsia">your</span> community
-        </h1>
-        <p class="z-2 mx-auto w-[70%] text-center text-xl text-white/60 md:w-[50%] md:text-3xl">
-            Auto-generated memes from your conversations
-        </p>
-        <img
-            class="absolute z-2"
-            src="https://files.wideunits.nl/jstmemit/images/background/Highlights.png"
-            alt="background highlight"
-        />
-        <img
-            class="absolute z-1 opacity-6"
-            src="https://files.wideunits.nl/jstmemit/images/background/Noise.png"
-            alt="background noise"
-        />
-        <img class="absolute z-1" src="https://files.wideunits.nl/jstmemit/images/background/Grid.png" alt="grid" />
-
-        <div class="z-0">
-            <img
-                class="absolute top-10 right-20 w-125"
-                src="https://files.wideunits.nl/jstmemit/images/background/meme1.png"
-                alt="winnie pooh meme"
-            />
-            <img
-                class="absolute bottom-20 left-20 w-125"
-                src="https://files.wideunits.nl/jstmemit/images/background/meme2.png"
-                alt="valorant meme"
-            />
+    <Background>
+        <div slot="text" class="z-2 w-full gap-3 flex flex-col">
+            <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
+                personalized memes for <span class="text-hot-fuchsia">your</span> community
+            </h1>
+            <p class="mx-auto w-[70%] text-center text-xl text-white/60 md:w-[50%] md:text-3xl">
+                Auto-generated memes from your conversations
+            </p>
         </div>
 
-        <div class="z-0">
-            <img
-                class="absolute -right-10 -bottom-70 w-150 opacity-40 blur-md"
-                src="https://files.wideunits.nl/jstmemit/images/background/meme1.png"
-                alt="winnie pooh meme"
-            />
-            <img
-                class="absolute -top-35 -left-20 w-150 opacity-40 blur-md"
-                src="https://files.wideunits.nl/jstmemit/images/background/meme2.png"
-                alt="valorant meme"
-            />
-        </div>
-
-        <img
-            class="absolute z-1 opacity-55 brightness-0"
-            src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20memes.png"
-            alt="fog over memes"
-        />
-        <img
-            class="absolute z-1 opacity-55 brightness-0"
-            src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20blurred%20memes.png"
-            alt="fog over memes"
-        />
-    </section>
+        <BlurredMemes slot="memes" />
+    </Background>
 </PageLayout>
