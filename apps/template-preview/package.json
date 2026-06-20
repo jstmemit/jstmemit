@@ -15,8 +15,10 @@
         "@jstmemit/shared": "workspace:*"
     },
     "dependencies": {
+        "@resvg/resvg-js": "^2.6.2",
         "@tailwindcss/vite": "^4.3.1",
         "astro": "^6.4.7",
+        "satori": "^0.26.0",
         "tailwindcss": "^4.3.1"
     }
 }

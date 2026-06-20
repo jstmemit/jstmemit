@@ -321,12 +321,18 @@ importers:
 
   apps/template-preview:
     dependencies:
+      '@resvg/resvg-js':
+        specifier: ^2.6.2
+        version: 2.6.2
       '@tailwindcss/vite':
         specifier: ^4.3.1
         version: 4.3.1(vite@7.3.5(@types/node@25.9.2)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.4))
       astro:
         specifier: ^6.4.7
         version: 6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4)
+      satori:
+        specifier: ^0.26.0
+        version: 0.26.0
       tailwindcss:
         specifier: ^4.3.1
         version: 4.3.1

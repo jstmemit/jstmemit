@@ -1,13 +1,80 @@
 ---
+import satori from "satori";
+import { Resvg } from "@resvg/resvg-js";
 import Sidebar from "../components/Sidebar.astro";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 
 interface Props {
     template: Template;
 }
 
 const { template } = Astro.props;
+
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
+
+const variants: TemplateProps[] = [
+    {
+        texts: ["Cities Skylines 2", "without bicycles"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/city.png",
+            "https://files.wideunits.nl/memes/examples/markrutte.jpeg",
+        ],
+    },
+    {
+        texts: ["KFC", "at 23:59"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/chicken.png",
+            "https://files.wideunits.nl/memes/examples/lightning.png",
+        ],
+    },
+    {
+        texts: ["Game of the year"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/battlefield.png",
+            "https://files.wideunits.nl/memes/examples/hamster.png",
+        ],
+    },
+    {
+        texts: ["", "Sony Headquarters"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/siege.jpg",
+            "https://files.wideunits.nl/memes/examples/ubisoft.jpg",
+        ],
+    },
+    {
+        texts: ["LinusTechTips", "is not coming here"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/applestore.jpg",
+            "https://files.wideunits.nl/memes/examples/linus.png",
+        ],
+    },
+    {
+        texts: ["", "meow"],
+        images: [
+            "https://files.wideunits.nl/memes/examples/cat.png",
+            "https://files.wideunits.nl/memes/examples/rust.jpg",
+        ],
+    },
+];
+
+const examples: string[] = await Promise.all(
+    variants.map(async (input: TemplateProps): Promise<string> => {
+        const svg: string = await satori(template.element(input), {
+            width: template.width,
+            height: template.height,
+            fonts: fontsService.getFonts(),
+        });
+        const png: Buffer<ArrayBufferLike> = new Resvg(svg).render().asPng();
+        return `data:image/png;base64,${png.toString("base64")}`;
+    }),
+);
 ---
 
 <div class="flex gap-10">
@@ -46,23 +113,18 @@ const { template } = Astro.props;
         }
 
         <section>
-            <h2 class="mb-3 text-3xl font-bold">Texts</h2>
-            <ul>
+            <h2 class="mb-3 text-3xl font-bold">Examples</h2>
+            <ul class="flex flex-wrap gap-5">
                 {
-                    template.texts?.map((text: TemplateText) => (
+                    examples.map((src: string) => (
                         <li>
-                            <h3 class="mt-2 mb-2 border-l-2 border-white/40 pl-3 text-xl font-bold first-letter:capitalize">
-                                {text.description}
-                            </h3>
-                            <p class="ml-3 border-l-2 border-white/30 pl-4">
-                                <b>Id:</b> {text.id}
-                            </p>
-                            <p class="ml-3 border-l-2 border-white/20 pl-4">
-                                <b>Minimum length:</b> {text.minLength}
-                            </p>
-                            <p class="ml-3 border-l-2 border-white/10 pl-4">
-                                <b>Maximum length:</b> {text.maxLength}
-                            </p>
+                            <img
+                                src={src}
+                                width={template.width}
+                                height={template.height}
+                                alt={template.name}
+                                class="lg:max-w-111"
+                            />
                         </li>
                     ))
                 }
