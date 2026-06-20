@@ -1,7 +1,7 @@
-import { topBottomText } from "#/data/templates/topBottomText.tsx";
-import { liveReaction } from "#/data/templates/liveReaction.tsx";
-import { spongebob } from "#/data/templates/spongebob.tsx";
-import { explains } from "#/data/templates/explains.tsx";
+import { topBottomText } from "#/templates/topBottomText.tsx";
+import { liveReaction } from "#/templates/liveReaction.tsx";
+import { spongebob } from "#/templates/spongebob.tsx";
+import { explains } from "#/templates/explains.tsx";
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 

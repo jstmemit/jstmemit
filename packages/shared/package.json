@@ -3,9 +3,21 @@
     "private": true,
     "type": "module",
     "devDependencies": {
-        "@jstmemit/meme-generator": "workspace:*"
+        "@jstmemit/meme-generator": "workspace:*",
+        "react": "^19.2.7",
+        "satori": "^0.26.0"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
     },
     "exports": {
-        "./*": "./src/*.ts"
+        "./*.ts": "./src/*.ts",
+        "./*.tsx": "./src/*.tsx",
+        "./*": [
+            "./src/*.ts",
+            "./src/*.tsx"
+        ]
     }
 }

@@ -24,9 +24,12 @@
         "eslint": "^10.4.1",
         "globals": "^17.6.0",
         "prettier": "^3.8.3",
+        "prettier-plugin-astro": "0.14.1",
+        "prettier-plugin-tailwindcss": "0.8.0",
         "typescript-eslint": "^8.60.1"
     },
     "dependencies": {
+        "posthog-node": "^5.37.1",
         "zod": "^4.4.3"
     }
 }

@@ -207,6 +207,9 @@ importers:
 
   .:
     dependencies:
+      posthog-node:
+        specifier: ^5.37.1
+        version: 5.37.1
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -226,18 +229,27 @@ importers:
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
+      prettier-plugin-astro:
+        specifier: 0.14.1
+        version: 0.14.1
+      prettier-plugin-tailwindcss:
+        specifier: 0.8.0
+        version: 0.8.0(prettier-plugin-astro@0.14.1)(prettier@3.8.3)
       typescript-eslint:
         specifier: ^8.60.1
         version: 8.60.1(eslint@10.4.1(jiti@2.7.0))(typescript@6.0.3)
 
   apps/bot:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../../packages/analytics
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db
       '@jstmemit/meme-generator':
         specifier: workspace:*
-        version: link:../meme-generator
+        version: link:../template-preview
       '@jstmemit/queue':
         specifier: workspace:*
         version: link:../../packages/queue
@@ -246,7 +258,7 @@ importers:
         version: link:../../packages/shared
       bullmq:
         specifier: ^5.78.0
-        version: 5.78.1
+        version: 5.78.0
       discord.js:
         specifier: ^14.26.4
         version: 14.26.4
@@ -268,7 +280,7 @@ importers:
         version: 2.6.2
       bullmq:
         specifier: ^5.78.0
-        version: 5.78.1
+        version: 5.78.0
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -282,6 +294,9 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0
     devDependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../../packages/analytics
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -304,17 +319,27 @@ importers:
         specifier: ^4.22.4
         version: 4.22.4
 
-  apps/website:
+  apps/template-preview:
     dependencies:
       '@tailwindcss/vite':
-        specifier: ^4.3.0
+        specifier: ^4.3.1
         version: 4.3.1(vite@7.3.5(@types/node@25.9.2)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.4))
       astro:
-        specifier: ^6.4.5
-        version: 6.4.6(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4)
+        specifier: ^6.4.7
+        version: 6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4)
       tailwindcss:
-        specifier: ^4.3.0
+        specifier: ^4.3.1
         version: 4.3.1
+    devDependencies:
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+
+  packages/analytics:
+    dependencies:
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../shared
 
   packages/db:
     dependencies:
@@ -357,15 +382,24 @@ importers:
         version: link:../shared
       bullmq:
         specifier: ^5.78.0
-        version: 5.78.1
+        version: 5.78.0
 
   packages/shared:
     devDependencies:
       '@jstmemit/meme-generator':
         specifier: workspace:*
-        version: link:../../apps/meme-generator
+        version: link:../../apps/template-preview
+      react:
+        specifier: ^19.2.7
+        version: 19.2.7
+      satori:
+        specifier: ^0.26.0
+        version: 0.26.0
 
 packages:
+
+  '@astrojs/compiler@2.13.1':
+    resolution: {integrity: sha512-f3FN83d2G/v32ipNClRKgYv30onQlMZX1vCeZMjPsMMPl1mDpmbl0+N5BYo4S/ofzqJyS5hvwacEo0CCVDn/Qg==}
 
   '@astrojs/compiler@4.0.0':
     resolution: {integrity: sha512-eouss7G8ygdZqHuke033VMcVw5HTZUu+PXd/h06DGDUg/jt5btPYPqh66ENWw/mU78rBrf/oeC4oqoBwMtDMNA==}
@@ -1234,6 +1268,12 @@ packages:
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
+  '@posthog/core@1.32.4':
+    resolution: {integrity: sha512-xmc6JGLS+HK9gG354e3ws8wRQSQFaekI/QC/uwslokfG1csXjxW7xlGGipLS4juDJ1W1fVM6j2MeHyatmvF22w==}
+
+  '@posthog/types@1.386.4':
+    resolution: {integrity: sha512-UgE9+5+wkZg7yc2MpW5G32/6zYW8fAbXJkG8WGnrb4X8OKWzNa9cWeNCd82vKok+TSoRpM4qiYQFtBSpJS1dsw==}
+
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
     resolution: {integrity: sha512-FrJibrAk6v29eabIPgcTUMPXiEz8ssrAk7TXxsiZzww9UTQ1Z5KAbFJs+Z0Ez+VZTYgnE5IQJqBcoSiMebtPHA==}
     engines: {node: '>= 10'}
@@ -1767,8 +1807,8 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
-  astro@6.4.6:
-    resolution: {integrity: sha512-48OBTBKR9ctbf+DQxpOuxGl8ebfn59zTuNQMBzptmG/Mi/H8IdfMSbJgGuX1I/4U6g9yazG1p4BHlf4+2hWU4Q==}
+  astro@6.4.8:
+    resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1810,8 +1850,8 @@ packages:
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
 
-  bullmq@5.78.1:
-    resolution: {integrity: sha512-zD5IT+qMqbMgPFPdL9FwnZka1bz6nckM+5lXj4N0vsXqdzoVO6wizmXpwsg/4GnHmXJsL7XOKeWA64tYUdPrOA==}
+  bullmq@5.78.0:
+    resolution: {integrity: sha512-tT9jJmbobk9ueEfFc22egLmgwCcMGgOjZ5Y1cvgczBPv1JUmC7iHQVbQtqku2YBE5dE9uzdVpxIrBvL/YAjGwA==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       redis: '>=5.0.0'
@@ -2149,8 +2189,8 @@ packages:
   es-module-lexer@2.1.0:
     resolution: {integrity: sha512-n27zTYMjYu1aj4MjCWzSP7G9r75utsaoc8m61weK+W8JMBGGQybd43GstCXZ3WNmSFtGT9wi59qQTW6mhTR5LQ==}
 
-  es-toolkit@1.47.1:
-    resolution: {integrity: sha512-5RAqEwf4P4E17p+W75KLOWw/nOvKZzSQpxM32IpI2KZLaVonjTrZ0Ai5ghMaVI9eKC2p8eoQgcBdkEDgzFk6+Q==}
+  es-toolkit@1.47.0:
+    resolution: {integrity: sha512-n1GuoD0WEQZMBk5tttoZSqwgyLx01oqa5XsBmCHwPyNe1S9jPBEmtR2pSgp2kJuWE3ciFZ6yRHmY4pM4C3OOkw==}
 
   esbuild@0.25.12:
     resolution: {integrity: sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg==}
@@ -2747,8 +2787,8 @@ packages:
   msgpackr@2.0.2:
     resolution: {integrity: sha512-c5hYOXFbP79Slh6Dzd2wzk+jnV7mX1UxfMYtilnY1NmalXPqG8DGb5cYCMBrW4AsH3zekBBZd4QrKz9NhtvYLQ==}
 
-  nanoid@3.3.12:
-    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
+  nanoid@3.3.13:
+    resolution: {integrity: sha512-sPdqC6ByMVVGvF1ynvvMo0/o+oD1VX7DaHhijt1bFgjvBkHBib4t49GoNDhf2NDta4oeUNlaGbSt5K7qjZ955Q==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -2876,6 +2916,15 @@ packages:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
 
+  posthog-node@5.37.1:
+    resolution: {integrity: sha512-CU2o/FGCyvKQSCsQhc6iA3lc50xMWTqSEpKS8HINABj87YD9iefEqDQWVWJ4TABcpDo5fkbjTyRig/zMe/WNQw==}
+    engines: {node: ^20.20.0 || >=22.22.0}
+    peerDependencies:
+      rxjs: ^7.0.0
+    peerDependenciesMeta:
+      rxjs:
+        optional: true
+
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
     engines: {node: '>=10'}
@@ -2885,6 +2934,65 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prettier-plugin-astro@0.14.1:
+    resolution: {integrity: sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw==}
+    engines: {node: ^14.15.0 || >=16.0.0}
+
+  prettier-plugin-tailwindcss@0.8.0:
+    resolution: {integrity: sha512-V8ITGH87yuBDF6JpEZTOVlUz/saAwqb8f3HRgUj8Lh+tGCcrmorhsLpYqzygwFwK0PE2Ib6Mv3M7T/uE2tZV1g==}
+    engines: {node: '>=20.19'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-hermes': '*'
+      '@prettier/plugin-oxc': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      '@zackad/prettier-plugin-twig': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-multiline-arrays: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
+      prettier-plugin-svelte: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-hermes':
+        optional: true
+      '@prettier/plugin-oxc':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      '@zackad/prettier-plugin-twig':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-multiline-arrays:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
 
   prettier@3.8.3:
     resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
@@ -2992,8 +3100,14 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
+  s.color@0.0.15:
+    resolution: {integrity: sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==}
+
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+
+  sass-formatter@0.7.9:
+    resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
 
   satori@0.26.0:
     resolution: {integrity: sha512-tkMFrfIs3l2mQ2JEcyW0ADTy3zGggFRFzi6Ef8YozQSFsFKEqaSO1Y8F9wJg4//PJGQauMalHGTUEkPrFwhVPA==}
@@ -3003,8 +3117,8 @@ packages:
     resolution: {integrity: sha512-6R3J5M4AcbtLUdZmRv2SygeVaM7IhrLXu9BmnOGmmACak8fiUtOsYNWUS4uK7upbmHIBbLBeFeI//477BKLBzA==}
     engines: {node: '>=11.0.0'}
 
-  semver@7.8.1:
-    resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3064,6 +3178,9 @@ packages:
   strip-json-comments@2.0.1:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
+
+  suf-log@2.5.3:
+    resolution: {integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==}
 
   svgo@4.0.1:
     resolution: {integrity: sha512-XDpWUOPC6FEibaLzjfe0ucaV0YrOjYotGJO1WpF0Zd+n6ZGEQUsSugaoLq9QkEZtAfQIxT42UChcssDVPP3+/w==}
@@ -3374,6 +3491,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@astrojs/compiler@2.13.1': {}
 
   '@astrojs/compiler@4.0.0': {}
 
@@ -3989,6 +4108,12 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
+  '@posthog/core@1.32.4':
+    dependencies:
+      '@posthog/types': 1.386.4
+
+  '@posthog/types@1.386.4': {}
+
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
     optional: true
 
@@ -4429,7 +4554,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@6.4.6(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4):
+  astro@6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
@@ -4558,13 +4683,13 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bullmq@5.78.1:
+  bullmq@5.78.0:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.10.1
       msgpackr: 2.0.2
       node-abort-controller: 3.1.1
-      semver: 7.8.1
+      semver: 7.8.0
       tslib: 2.8.1
     transitivePeerDependencies:
       - supports-color
@@ -4769,7 +4894,7 @@ snapshots:
 
   es-module-lexer@2.1.0: {}
 
-  es-toolkit@1.47.1: {}
+  es-toolkit@1.47.0: {}
 
   esbuild@0.25.12:
     optionalDependencies:
@@ -5300,7 +5425,7 @@ snapshots:
 
   markov-strings@3.0.4:
     dependencies:
-      es-toolkit: 1.47.1
+      es-toolkit: 1.47.0
 
   mdast-util-definitions@6.0.0:
     dependencies:
@@ -5647,7 +5772,7 @@ snapshots:
     optionalDependencies:
       msgpackr-extract: 3.0.4
 
-  nanoid@3.3.12: {}
+  nanoid@3.3.13: {}
 
   napi-build-utils@2.0.0: {}
 
@@ -5768,9 +5893,13 @@ snapshots:
 
   postcss@8.5.15:
     dependencies:
-      nanoid: 3.3.12
+      nanoid: 3.3.13
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  posthog-node@5.37.1:
+    dependencies:
+      '@posthog/core': 1.32.4
 
   prebuild-install@7.1.3:
     dependencies:
@@ -5788,6 +5917,18 @@ snapshots:
       tunnel-agent: 0.6.0
 
   prelude-ls@1.2.1: {}
+
+  prettier-plugin-astro@0.14.1:
+    dependencies:
+      '@astrojs/compiler': 2.13.1
+      prettier: 3.8.3
+      sass-formatter: 0.7.9
+
+  prettier-plugin-tailwindcss@0.8.0(prettier-plugin-astro@0.14.1)(prettier@3.8.3):
+    dependencies:
+      prettier: 3.8.3
+    optionalDependencies:
+      prettier-plugin-astro: 0.14.1
 
   prettier@3.8.3: {}
 
@@ -5963,7 +6104,13 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.62.0
       fsevents: 2.3.3
 
+  s.color@0.0.15: {}
+
   safe-buffer@5.2.1: {}
+
+  sass-formatter@0.7.9:
+    dependencies:
+      suf-log: 2.5.3
 
   satori@0.26.0:
     dependencies:
@@ -5981,7 +6128,7 @@ snapshots:
 
   sax@1.6.0: {}
 
-  semver@7.8.1: {}
+  semver@7.8.0: {}
 
   semver@7.8.2: {}
 
@@ -6064,6 +6211,10 @@ snapshots:
       character-entities-legacy: 3.0.0
 
   strip-json-comments@2.0.1: {}
+
+  suf-log@2.5.3:
+    dependencies:
+      s.color: 0.0.15
 
   svgo@4.0.1:
     dependencies:

@@ -16,8 +16,10 @@ export const imagesTable = sqliteTable("images_table", {
     id: int().primaryKey({ autoIncrement: true }),
     messageId: text().notNull(),
     channelId: text().notNull(),
-    imageUrl: text().notNull(),
+    imageUrl: text().notNull().unique(),
+    source: text().notNull().default("attachment"),
     timestamp: int({ mode: "timestamp" }).notNull(),
+    expiresAt: int({ mode: "timestamp" }),
 });
 
 export const reactionsTable = sqliteTable("reactions_table", {
@@ -31,9 +33,8 @@ export const generationsTable = sqliteTable(
     "generations_table",
     {
         id: int().primaryKey({ autoIncrement: true }),
-        messageId: text().notNull().unique(),
         channelId: text().notNull(),
-        templateId: text().notNull(),
+        templateId: int().notNull(),
         createdAt: int({ mode: "timestamp" }).notNull(),
     },
     (table) => [
@@ -47,6 +48,7 @@ export const channelsTable = sqliteTable("channels_table", {
     channelId: text().notNull().unique(),
     enabled: int({ mode: "boolean" }).notNull().default(false),
     frequency: int().notNull().default(20),
+    useAvatarsInMemes: int({ mode: "boolean" }).notNull().default(true),
     addedAt: int({ mode: "timestamp" }).notNull(),
 });
 

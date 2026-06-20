@@ -4,5 +4,6 @@ export abstract class IRatingsController {
     public abstract handleRatingInteraction(
         interaction: ButtonInteraction,
         rating: "like" | "dislike",
+        generationId: number,
     ): Promise<void>;
 }

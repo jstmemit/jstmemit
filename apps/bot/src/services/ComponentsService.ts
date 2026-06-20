@@ -171,11 +171,13 @@ export class ComponentsService implements IComponentsService {
      * Returns back a message component for body of the /settings command.
      *
      * @param frequency
+     * @param useAvatarsInMemes
      *
      * @author Kyrylo Maliuha
      */
     public getSettingsBodyMessageComponent(
         frequency: number,
+        useAvatarsInMemes: boolean,
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions();
 
@@ -204,7 +206,7 @@ export class ComponentsService implements IComponentsService {
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                     new StringSelectMenuBuilder()
-                        .setCustomId("select-frequency")
+                        .setCustomId("frequency")
                         .addOptions(
                             frequencies.map((option: Frequency) =>
                                 new SelectMenuOptionBuilder()
@@ -216,6 +218,43 @@ export class ComponentsService implements IComponentsService {
                                     .setEmoji({ name: option.emoji })
                                     .setDescription(option.description),
                             ),
+                        ),
+                ),
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setSpacing(SeparatorSpacingSize.Large)
+                    .setDivider(true),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### Avatars in memes`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Include profile pictures in generated memes?`,
+                ),
+            )
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("avatar")
+                        .addOptions(
+                            new SelectMenuOptionBuilder()
+                                .setLabel("Yes")
+                                .setValue("true")
+                                .setDefault(useAvatarsInMemes)
+                                .setEmoji({ name: "✅" })
+                                .setDescription(
+                                    "Bot will use avatars for memes (recommended)",
+                                ),
+                            new SelectMenuOptionBuilder()
+                                .setLabel("No")
+                                .setValue("false")
+                                .setDefault(!useAvatarsInMemes)
+                                .setEmoji({ name: "❌" })
+                                .setDescription(
+                                    "Bot won't use avatars for memes",
+                                ),
                         ),
                 ),
             );
@@ -267,6 +306,13 @@ export class ComponentsService implements IComponentsService {
         return progressBar;
     }
 
+    /**
+     * Returns an array of meme frequency options
+     *
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _getFrequencyOptions(): Frequency[] {
         return [
             {

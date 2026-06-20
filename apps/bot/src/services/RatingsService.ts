@@ -32,11 +32,11 @@ export class RatingsService implements IRatingsService {
         userId: string,
         messageId: string,
         rating: "like" | "dislike",
-    ): Promise<void> {
+    ): Promise<boolean> {
         const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
 
         if (alreadyRated) {
-            return;
+            return false;
         }
 
         if (rating === "like") {
@@ -48,6 +48,8 @@ export class RatingsService implements IRatingsService {
         }
 
         this._ratings.get(messageId)?.add(userId);
+
+        return true;
     }
 
     /**
@@ -55,15 +57,17 @@ export class RatingsService implements IRatingsService {
      *
      * @param likes
      * @param dislikes
+     * @param generationId
      *
      * @author Kyrylo Maliuha
      */
     public constructRatingButtons(
         likes: number,
         dislikes: number,
+        generationId: number,
     ): ActionRowBuilder<ButtonBuilder> {
         const likeButton: ButtonBuilder = new ButtonBuilder()
-            .setCustomId(`like`)
+            .setCustomId(`like:${generationId}`)
             .setLabel(`👍 ${likes}`)
             .setStyle(ButtonStyle.Success);
 
@@ -73,7 +77,7 @@ export class RatingsService implements IRatingsService {
             .setStyle(ButtonStyle.Secondary);
 
         const dislikeButton: ButtonBuilder = new ButtonBuilder()
-            .setCustomId(`dislike`)
+            .setCustomId(`dislike:${generationId}`)
             .setLabel(`👎 ${dislikes}`)
             .setStyle(ButtonStyle.Danger);
 
@@ -89,11 +93,13 @@ export class RatingsService implements IRatingsService {
      * for it and updates the entire button row.
      *
      * @param interaction
+     * @param generationId
      *
      * @author Kyrylo Maliuha
      */
     public async updateRatingButtons(
         interaction: ButtonInteraction,
+        generationId: number,
     ): Promise<void> {
         const messageId: string = interaction.message.id;
 
@@ -101,7 +107,9 @@ export class RatingsService implements IRatingsService {
             await this._ratingsRepository.getMemeRatings(messageId);
 
         await interaction.update({
-            components: [this.constructRatingButtons(likes, dislikes)],
+            components: [
+                this.constructRatingButtons(likes, dislikes, generationId),
+            ],
         });
     }
 

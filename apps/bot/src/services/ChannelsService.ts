@@ -15,38 +15,12 @@ export class ChannelsService implements IChannelsService {
      *
      * @param channelId
      *
-     * @author Kyrylo Maliuha
+     * @author Jia Miao Hui
      */
     public async getChannel(
         channelId: string,
     ): Promise<typeof channelsTable.$inferSelect | undefined> {
         return await this._channelsRepository.get(channelId);
-    }
-
-    /**
-     * Searches for the channel and does nothing if it already exists.
-     * If it doesn't, it calls ChannelsRepository to add it.
-     *
-     * @param channelId
-     *
-     * @author Kyrylo Maliuha
-     */
-    public async addChannel(channelId: string): Promise<boolean> {
-        try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (channel) {
-                return true;
-            }
-
-            await this._channelsRepository.add(channelId, new Date());
-
-            return true;
-        } catch (error) {
-            console.error(error);
-
-            return false;
-        }
     }
 
     /**
@@ -58,17 +32,16 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async switchChannel(channelId: string): Promise<boolean> {
-        await this.addChannel(channelId);
+        const channel: typeof channelsTable.$inferSelect =
+            await this._channelsRepository.upsert(channelId, new Date());
 
-        const isEnabled: boolean = await this.isChannelEnabled(channelId);
-        await this._channelsRepository.switch(channelId, isEnabled);
+        await this._channelsRepository.switch(channelId, channel.enabled);
 
-        return !isEnabled;
+        return !channel.enabled;
     }
 
     /**
-     * Checks if a channel exists in the database and returns false if
-     * it doesn't. If it does, then returns current status (enabled or disabled)
+     * Upserts a channel into database and returns if it's enabled or not.
      *
      * @param channelId
      *
@@ -76,11 +49,10 @@ export class ChannelsService implements IChannelsService {
      */
     public async isChannelEnabled(channelId: string): Promise<boolean> {
         try {
-            const channel = await this._channelsRepository.get(channelId);
-
-            if (!channel) {
-                return false;
-            }
+            const channel = await this._channelsRepository.upsert(
+                channelId,
+                new Date(),
+            );
 
             return channel.enabled;
         } catch (error) {
@@ -91,25 +63,25 @@ export class ChannelsService implements IChannelsService {
     }
 
     /**
-     * Returns meme frequency of the channel
+     * Modifies fields for a channel by its id
      *
      * @param channelId
+     * @param channel
      *
      * @author Kyrylo Maliuha
      */
-    public async getFrequency(channelId: string): Promise<number> {
+    public async setChannel(
+        channelId: string,
+        channel: typeof channelsTable.$inferSelect,
+    ): Promise<boolean> {
         try {
-            const channel = await this._channelsRepository.get(channelId);
+            await this._channelsRepository.set(channelId, channel);
 
-            if (!channel) {
-                return 0;
-            }
-
-            return channel.frequency;
+            return true;
         } catch (error) {
             console.error(error);
 
-            return 0;
+            return false;
         }
     }
 }

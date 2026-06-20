@@ -1,9 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import {
-    type ButtonInteraction,
-    type ContainerBuilder,
-    MessageFlags,
-} from "discord.js";
+import { type ButtonInteraction, type ContainerBuilder } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -12,6 +8,7 @@ import { type Job } from "bullmq";
 import { type Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { respond } from "#/helpers/respond.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<
@@ -50,6 +47,8 @@ export class MemesController implements IMemesController {
         const job: Job<MemeGenerationJob, MemeGenerationResult> =
             await this._memeGenerationQueue.add("meme-generation", {
                 channelId: interaction.channelId,
+                userId: interaction.user.id,
+                trigger: interaction.isCommand() ? "command" : "regenerate",
             });
 
         try {
@@ -62,7 +61,11 @@ export class MemesController implements IMemesController {
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
                     components: [
-                        this._ratingsService.constructRatingButtons(0, 0),
+                        this._ratingsService.constructRatingButtons(
+                            0,
+                            0,
+                            jobResult.generationId,
+                        ),
                     ],
                     files: [
                         {
@@ -92,10 +95,7 @@ export class MemesController implements IMemesController {
                     interaction.id,
                 );
 
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message],
-            });
+            await respond(interaction, [message]);
         }
     }
 }

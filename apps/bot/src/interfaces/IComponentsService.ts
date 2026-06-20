@@ -17,5 +17,6 @@ export abstract class IComponentsService {
     ): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(
         frequency: number,
+        useAvatarsInMemes: boolean,
     ): ContainerBuilder;
 }

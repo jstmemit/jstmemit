@@ -9,12 +9,14 @@ export abstract class IRatingsService {
         userId: string,
         messageId: string,
         rating: "like" | "dislike",
-    ): Promise<void>;
+    ): Promise<boolean>;
     public abstract constructRatingButtons(
         likes: number,
         dislikes: number,
+        generationId: number,
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract updateRatingButtons(
         interaction: ButtonInteraction,
+        generationId: number,
     ): Promise<void>;
 }
