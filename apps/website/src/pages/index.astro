@@ -1,0 +1,21 @@
+---
+import PageLayout from "../layout/PageLayout.astro";
+import Background from "../components/Background.astro";
+import BlurredMemes from "../components/background/BlurredMemes.astro";
+
+---
+
+<PageLayout>
+    <Background>
+        <div slot="text" class="z-2 w-full gap-3 flex flex-col">
+            <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
+                personalized memes for <span class="text-hot-fuchsia">your</span> community
+            </h1>
+            <p class="mx-auto w-[70%] text-center text-xl text-white/60 md:w-[50%] md:text-3xl">
+                Auto-generated memes from your conversations
+            </p>
+        </div>
+
+        <BlurredMemes slot="memes" />
+    </Background>
+</PageLayout>

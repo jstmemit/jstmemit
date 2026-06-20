@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+    --color-neon-ice: #21F1ED;
+    --color-hot-fuchsia: #F72D55;
+    --color-dark-cyan: #159592;
+    --color-bubblegum-pink: #EC5775;
+    --color-carbon-black: #1E2124;
+    --color-carbon-gray: #3F3F3F;
+    --color-carbon-light-gray: #424242;
+    --color-discord-blue: #5865F2;
+
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+    background-image: url("https://cdn.discordapp.com/attachments/1474061648279896257/1515704205027967177/og_jstmemit_bg.png?ex=6a2ff90a&is=6a2ea78a&hm=9e40fba7c41d18ce7633378553778d7c0784f957bc908ed58b43e83bf028db3a&");
+}
