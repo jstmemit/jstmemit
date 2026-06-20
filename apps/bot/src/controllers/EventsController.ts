@@ -1,3 +1,4 @@
+import type { Guild } from "discord.js";
 import { type Client, type Interaction, type Message } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -5,6 +6,10 @@ import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
+import { analytics } from "@jstmemit/analytics";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
 
 export class EventsController implements IEventsController {
     private readonly _contextController: IContextController;
@@ -12,6 +17,8 @@ export class EventsController implements IEventsController {
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
+    private readonly _isProduction: boolean =
+        env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
         contextController: IContextController,
@@ -36,6 +43,14 @@ export class EventsController implements IEventsController {
      */
     public handleClientReady(readyClient: Client<true>): void {
         console.log(`Logged in as ${readyClient.user.tag}!`);
+
+        if (this._isProduction) {
+            analytics.capture({
+                event: "guild_count_update",
+                distinctId: "bot",
+                properties: { guildCount: readyClient.guilds.cache.size },
+            });
+        }
     }
 
     /**
@@ -86,22 +101,22 @@ export class EventsController implements IEventsController {
 
         // buttons
         if (interaction.isButton()) {
-            switch (interaction.customId) {
+            const id: string | undefined = interaction.customId.split(":")[1];
+            const customId: string =
+                interaction.customId.split(":")[0] || interaction.customId;
+
+            switch (customId) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(
                         interaction,
                     );
                     break;
                 case "like":
-                    await this._ratingsController.handleRatingInteraction(
-                        interaction,
-                        "like",
-                    );
-                    break;
                 case "dislike":
                     await this._ratingsController.handleRatingInteraction(
                         interaction,
-                        "dislike",
+                        customId,
+                        Number(id),
                     );
                     break;
                 case "enable":
@@ -116,6 +131,63 @@ export class EventsController implements IEventsController {
                     );
                     break;
             }
+        }
+
+        // string select menu
+        if (interaction.isStringSelectMenu()) {
+            switch (interaction.customId) {
+                case "frequency":
+                    await this._settingsController.handleFrequencySelect(
+                        interaction,
+                    );
+                    break;
+                case "avatar":
+                    await this._settingsController.handleUserAvatarsSelect(
+                        interaction,
+                    );
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Handles the Events.GuildCreate event from discord.js library
+     *
+     * @param guild
+     *
+     * @author Kyrylo Maliuha
+     */
+    public handleGuildCreate(guild: Guild): void {
+        if (this._isProduction) {
+            analytics.capture({
+                event: "guild_joined",
+                distinctId: "bot",
+                properties: {
+                    guildId: guild.id,
+                    memberCount: guild.memberCount,
+                    guildCount: guild.client.guilds.cache.size,
+                },
+            });
+        }
+    }
+
+    /**
+     * Handles the Events.GuildDelete event from discord.js library
+     *
+     * @param guild
+     *
+     * @author Kyrylo Maliuha
+     */
+    public handleGuildDelete(guild: Guild): void {
+        if (this._isProduction) {
+            analytics.capture({
+                event: "guild_left",
+                distinctId: "bot",
+                properties: {
+                    guildId: guild.id,
+                    guildCount: guild.client.guilds.cache.size,
+                },
+            });
         }
     }
 }

@@ -21,6 +21,8 @@ import type { ITransformService } from "#/interfaces/ITransformService.ts";
 import { TransformService } from "#/services/TransformService.ts";
 import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import { MarkovProvider } from "#/providers/MarkovProvider.ts";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
+import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepository";
 
 const env = Env.parse(process.env);
 
@@ -51,6 +53,10 @@ const transformService: ITransformService = new TransformService(
     markovProvider,
 );
 
+// generations
+const generationsRepository: IGenerationsRepository =
+    new GenerationsRepository();
+
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 export const memesService: IMemesService = new MemesService(
@@ -59,4 +65,5 @@ export const memesService: IMemesService = new MemesService(
     imagesRepository,
     templatesService,
     transformService,
+    generationsRepository,
 );

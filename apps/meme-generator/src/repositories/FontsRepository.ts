@@ -9,4 +9,8 @@ export class FontsRepository implements IFontsRepository {
     public getImpact(): Buffer {
         return readFileSync(join(here, "../data/fonts/Impact.ttf"));
     }
+
+    public getComicSans(): Buffer {
+        return readFileSync(join(here, "../data/fonts/ComicSans.ttf"));
+    }
 }

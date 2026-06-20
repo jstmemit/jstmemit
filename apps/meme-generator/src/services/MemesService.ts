@@ -10,6 +10,8 @@ import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import type { ITransformService } from "#/interfaces/ITransformService.ts";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
+import { analytics } from "@jstmemit/analytics";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;
@@ -17,6 +19,7 @@ export class MemesService implements IMemesService {
     private readonly _imagesRepository: IImagesRepository;
     private readonly _templatesService: ITemplatesService;
     private readonly _transformService: ITransformService;
+    private readonly _generationsRepository: IGenerationsRepository;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -24,12 +27,14 @@ export class MemesService implements IMemesService {
         imagesRepository: IImagesRepository,
         templatesService: ITemplatesService,
         transformService: ITransformService,
+        generationsRepository: IGenerationsRepository,
     ) {
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
         this._templatesService = templatesService;
         this._transformService = transformService;
+        this._generationsRepository = generationsRepository;
     }
 
     /**
@@ -44,6 +49,8 @@ export class MemesService implements IMemesService {
     public async generateMeme(
         data: MemeGenerationJob,
     ): Promise<MemeGenerationResult> {
+        const startTime: number = performance.now();
+
         let { template } = data;
         const { channelId } = data;
 
@@ -55,12 +62,16 @@ export class MemesService implements IMemesService {
             throw new Error();
         }
 
+        const templateTime: number = performance.now();
+
         const props: TemplateProps | undefined =
             await this.getMemeTemplateContext(template, channelId);
 
         if (!props) {
             throw new Error();
         }
+
+        const contextTime: number = performance.now();
 
         const svg: string | undefined =
             await this._memesRepository.generateMeme(template, props);
@@ -74,8 +85,43 @@ export class MemesService implements IMemesService {
             template.width,
         );
 
+        const renderTime: number = performance.now();
+
+        const generationId: number = await this._generationsRepository.add(
+            channelId,
+            template.id,
+            new Date(),
+        );
+
+        const insertTime: number = performance.now();
+
+        analytics.capture({
+            event: "meme_generated",
+            distinctId: data.userId,
+            properties: {
+                generationId: generationId,
+                templateId: template.id,
+                templateName: template.name,
+                templateWeight: template.weight,
+
+                templateMs: templateTime - startTime,
+                contextMs: contextTime - templateTime,
+                renderMs: renderTime - contextTime,
+                insertMs: insertTime - renderTime,
+                totalMs: insertTime - startTime,
+
+                textSlots: template.texts?.length ?? 0,
+                imageSlots: template.images?.length ?? 0,
+                textsFilled: props.texts.length,
+                imagesFilled: props.images.length,
+
+                trigger: data.trigger,
+            },
+        });
+
         return {
             png: png.toString("base64"),
+            generationId: generationId,
         };
     }
 

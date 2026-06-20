@@ -17,6 +17,7 @@
         "@jstmemit/db": "workspace:*",
         "@jstmemit/queue": "workspace:*",
         "@jstmemit/shared": "workspace:*",
+        "@jstmemit/analytics": "workspace:*",
         "@types/lodash": "^4.17.24",
         "@types/node": "^25.9.2",
         "@types/react": "^19.2.17",

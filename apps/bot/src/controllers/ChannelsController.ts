@@ -6,10 +6,11 @@ import type {
     ChatInputCommandInteraction,
     ContainerBuilder,
 } from "discord.js";
-import { MessageFlags } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
+import { analytics } from "@jstmemit/analytics";
+import { respond } from "#/helpers/respond.ts";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
@@ -39,7 +40,9 @@ export class ChannelsController implements IChannelsController {
     public async handleEnableInteraction(
         interaction: ChatInputCommandInteraction | ButtonInteraction,
     ): Promise<void> {
-        await interaction.deferReply();
+        if (interaction.isCommand()) {
+            await interaction.deferReply();
+        }
 
         try {
             let isEnabled: boolean =
@@ -58,6 +61,17 @@ export class ChannelsController implements IChannelsController {
                     interaction.channelId,
                 );
 
+            analytics.capture({
+                event: isEnabled ? "channel_enabled" : "channel_disabled",
+                distinctId: interaction.user.id,
+                properties: {
+                    channelId: interaction.channelId,
+                    guildId: interaction.guildId,
+                    messagesAmount: messagesAmount,
+                    enabled: isEnabled,
+                },
+            });
+
             const message: ContainerBuilder =
                 this._componentsService.getEnableMessageComponent(
                     isEnabled,
@@ -67,19 +81,21 @@ export class ChannelsController implements IChannelsController {
             const buttons: ActionRowBuilder<ButtonBuilder> =
                 this._componentsService.getEnableButtonsComponent(isEnabled);
 
-            if (interaction.isButton()) {
-                await interaction.message.delete();
-            }
-
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components: [message, buttons],
-            });
+            await respond(interaction, [message, buttons]);
         } catch (error) {
             console.error(error);
+            analytics.captureException(error, interaction.user.id, {
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId || "",
+                command: "/enable",
+            });
 
-            // TODO: needs an embed
-            await interaction.editReply("error");
+            const message: ContainerBuilder =
+                this._componentsService.getErrorMessageComponent(
+                    interaction.id,
+                );
+
+            await respond(interaction, [message]);
         }
     }
 }

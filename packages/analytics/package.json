@@ -1,0 +1,11 @@
+{
+    "name": "@jstmemit/analytics",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@jstmemit/shared": "workspace:*"
+    },
+    "exports": {
+        ".": "./src/index.ts"
+    }
+}

@@ -22,7 +22,7 @@ export class MarkovProvider implements ITransformProvider {
         minLength: number,
         maxLength: number,
     ): string {
-        const markov = new MarkovPkg.default({ stateSize: 2 });
+        const markov = new MarkovPkg.default({ stateSize: 1 });
 
         markov.addData(corpus);
 
