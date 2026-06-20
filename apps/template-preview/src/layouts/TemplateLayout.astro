@@ -9,6 +9,7 @@ import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
 
 interface Props {
     template: Template;
@@ -77,33 +78,48 @@ const examples: string[] = await Promise.all(
 );
 ---
 
-<div class="flex gap-10">
+<div class="flex flex-col gap-10 md:flex-row">
     <Sidebar />
-    <section class="flex w-full flex-col gap-7.5">
+    <hr class="text-white/20" />
+    <section class="flex w-full flex-col gap-10">
         <div class="flex flex-col gap-1">
             <h1 class="mb-2 text-4xl font-black">{template.name}</h1>
-            <p class="border-l-2 border-white/40 pl-4"><b>Width:</b> {template.width}px</p>
-            <p class="border-l-2 border-white/20 pl-4"><b>Height:</b> {template.height}px</p>
+            <p class="border-l-2 border-white/40 pl-4 tabular-nums"><b>Width:</b> {template.width}px</p>
+            <p class="border-l-2 border-white/20 pl-4 tabular-nums"><b>Height:</b> {template.height}px</p>
         </div>
 
         {
             template?.texts?.length != 0 && (
                 <section>
-                    <h2 class="mb-3 text-3xl font-bold">Texts</h2>
+                    <h2 class="mb-3 text-3xl font-bold">Text slots</h2>
                     <ul>
                         {template.texts?.map((text: TemplateText) => (
                             <li>
-                                <h3 class="mt-2 mb-2 border-l-2 border-white/40 pl-3 text-xl font-bold first-letter:capitalize">
-                                    {text.description}
+                                <h3 class="mt-2 mb-2 border-l-2 border-white/40 pl-3 tabular-nums first-letter:capitalize">
+                                    <b>#{text.id}:</b> {text.description}
                                 </h3>
-                                <p class="ml-3 border-l-2 border-white/30 pl-4">
-                                    <b>Id:</b> {text.id}
-                                </p>
-                                <p class="ml-3 border-l-2 border-white/20 pl-4">
+                                <p class="ml-3 border-l-2 border-white/30 pl-4 tabular-nums">
                                     <b>Minimum length:</b> {text.minLength}
                                 </p>
-                                <p class="ml-3 border-l-2 border-white/10 pl-4">
+                                <p class="ml-3 border-l-2 border-white/20 pl-4 tabular-nums">
                                     <b>Maximum length:</b> {text.maxLength}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )
+        }
+
+        {
+            template?.images?.length != 0 && (
+                <section>
+                    <h2 class="mb-3 text-3xl font-bold">Image slots</h2>
+                    <ul>
+                        {template.images?.map((image: TemplateImage) => (
+                            <li>
+                                <p class="border-l-2 border-white/40 pl-4 tabular-nums">
+                                    <b>#{image.id}:</b> {image.description}
                                 </p>
                             </li>
                         ))}
