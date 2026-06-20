@@ -9,8 +9,8 @@ import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepositor
 import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import { TemplatesService } from "#/services/TemplatesService.ts";
-import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
-import { TemplatesRepository } from "#/repositories/TemplatesRepository.ts";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository.ts";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository.ts";
 import type { IFontsService } from "#/interfaces/IFontsService.ts";
 import { FontsService } from "#/controllers/FontsService.ts";
 import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";

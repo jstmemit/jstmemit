@@ -1,4 +1,4 @@
-import type { Template } from "@jstmemit/shared/models/Template";
+import type { Template } from "#/models/Template.ts";
 
 export abstract class ITemplatesRepository {
     public abstract getAll(): Template[];
