@@ -1,19 +1,19 @@
 ---
 import type { BlurredMeme } from "../../models/BlurredMeme.ts";
 interface Props {
-    blurredMemes: BlurredMeme[];
+    blurredMemes?: BlurredMeme[];
 }
 
 const {
     blurredMemes = [
         {
-            class: "absolute top-10 right-20 w-125",
+            class: "absolute top-10 right-50 w-75 md:w-125",
             src: "https://files.wideunits.nl/jstmemit/images/background/meme1.png",
             alt: "winnie pooh meme",
         },
 
         {
-            class: "absolute bottom-20 left-20 w-125",
+            class: "absolute bottom-20 left-50 w-75 md:w-125",
             src: "https://files.wideunits.nl/jstmemit/images/background/meme2.png",
             alt: "valorant meme",
         },
