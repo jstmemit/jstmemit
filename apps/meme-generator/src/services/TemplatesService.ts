@@ -1,4 +1,4 @@
-import type { Template } from "#/models/Template.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 

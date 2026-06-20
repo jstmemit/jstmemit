@@ -1,5 +1,5 @@
-import type { Template } from "#/models/Template.ts";
-import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import * as React from "react";
 
 export const liveReaction: Template = {

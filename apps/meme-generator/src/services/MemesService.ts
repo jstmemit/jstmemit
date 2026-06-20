@@ -1,11 +1,11 @@
-import type { Template } from "#/models/Template.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
 import type { IMemesService } from "#/interfaces/IMemesService.ts";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
-import type { TemplateProps } from "#/models/TemplateProps.ts";
-import type { TemplateImage } from "#/models/TemplateImage.ts";
-import type { TemplateText } from "#/models/TemplateText.ts";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
+import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";

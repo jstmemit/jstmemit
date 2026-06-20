@@ -385,6 +385,9 @@ importers:
       '@jstmemit/meme-generator':
         specifier: workspace:*
         version: link:../../apps/template-preview
+      satori:
+        specifier: ^0.26.0
+        version: 0.26.0
 
 packages:
 

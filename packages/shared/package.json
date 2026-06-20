@@ -3,7 +3,8 @@
     "private": true,
     "type": "module",
     "devDependencies": {
-        "@jstmemit/meme-generator": "workspace:*"
+        "@jstmemit/meme-generator": "workspace:*",
+        "satori": "^0.26.0"
     },
     "exports": {
         "./*": "./src/*.ts"
