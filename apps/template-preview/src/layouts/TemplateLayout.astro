@@ -1,7 +1,17 @@
 ---
+import Sidebar from "../components/Sidebar.astro";
+import type { Template } from "@jstmemit/shared/models/Template";
 
+interface Props {
+    template: Template;
+}
+
+const { template } = Astro.props;
 ---
 
-<section>
-    <h2>Test</h2>
-</section>
+<div class="flex gap-10">
+    <Sidebar />
+    <section class="w-full">
+        <h2>{template.name}</h2>
+    </section>
+</div>
