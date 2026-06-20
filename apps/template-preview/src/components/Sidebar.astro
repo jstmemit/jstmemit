@@ -8,14 +8,28 @@ const templates: Template[] = templatesRepository.getAll();
 ---
 
 <nav class="min-w-60">
-    <p class="text-3xl md:text-2xl font-bold">Meme templates</p>
-    <ul class="flex flex-col gap-2 pt-3">
+    <div class="flex justify-between items-center">
+        <p class="text-3xl md:text-2xl font-bold">Meme templates</p>
+        <!--TODO: replace with some icon later-->
+        <div id="toggle" class="md:hidden rotate-180 bg-carbon-gray p-2 pt-3 pb-1 px-4 text-2xl rounded-full">^</div>
+    </div>
+    <ul id="template-list" class="hidden md:flex flex-col gap-2 pt-3">
         {
             templates.map((template: Template) => (
-                <li class="border-l-2 pl-3 border-white/50 hover:border-white/70">
+                <li class="border-l-2 pl-3 border-white/50 hover:border-white/70 mt-1 md:mt-0">
                     <a href=`/templates/${template.name}`>{template.name}</a>
                 </li>
             ))
         }
     </ul>
 </nav>
+
+<script>
+    const toggle: HTMLElement | null = document.getElementById("toggle");
+    const list: HTMLElement | null = document.getElementById("template-list");
+
+    toggle?.addEventListener("click", (): void => {
+        list?.classList.toggle("hidden");
+        toggle.classList.toggle("rotate-180");
+    });
+</script>
