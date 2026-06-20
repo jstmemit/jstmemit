@@ -1,5 +1,5 @@
 import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";
-import type { FontOptions } from "#/models/FontOptions.ts";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 import type { IFontsService } from "#/interfaces/IFontsService.ts";
 
 export class FontsService implements IFontsService {

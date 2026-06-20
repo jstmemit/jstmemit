@@ -1,9 +1,9 @@
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
-import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "#/interfaces/IFontsService.ts";
-import type { Template } from "#/models/Template.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _fontsService: IFontsService;
