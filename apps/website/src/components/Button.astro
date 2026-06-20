@@ -1,0 +1,16 @@
+---
+interface Props {
+    href: string,
+    background: string,
+    textColor: string,
+    icon: string,
+    alt: string,
+    name: string
+}
+
+const { href, background, textColor, icon, name, alt } = Astro.props
+---
+<a href={href} class=`${background} ${textColor} rounded-xl flex gap-2 justify-center items-center shadow-[0_5px_0_0_rgba(0,0,0,0.25)] py-2 px-3 font-bold text-shadow-[0_1px_0_rgba(0,0,0,0.25)] opacity-100 hover:opacity-80 hover:cursor-pointer transition-all duration-180 ease-in-out`>
+    <img src={icon} alt={alt} class="mt-0.5"/>
+    {name}
+</a>

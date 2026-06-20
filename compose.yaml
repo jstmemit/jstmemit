@@ -29,6 +29,13 @@ services:
       sqld:
         condition: service_started
 
+  website:
+      build:
+          context: .
+          dockerfile: apps/website/Dockerfile
+      restart: unless-stopped
+      ports: [ "4321:4321" ]
+
   meme-generator:
     build:
       context: .
