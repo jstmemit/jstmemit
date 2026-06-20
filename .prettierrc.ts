@@ -6,6 +6,15 @@ const config: Config = {
     semi: true,
     singleQuote: false,
     bracketSpacing: true,
+    plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+    overrides: [
+        {
+            files: "*.astro",
+            options: {
+                parser: "astro",
+            },
+        },
+    ],
 };
 
 export default config;
