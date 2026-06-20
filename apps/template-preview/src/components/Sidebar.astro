@@ -1,18 +1,21 @@
 ---
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { Template } from "@jstmemit/shared/models/Template";
 
+const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+const templates: Template[] = templatesRepository.getAll();
 ---
 
-<nav class="min-w-50">
-    <p class="text-2xl font-extrabold">Meme templates</p>
+<nav class="min-w-60">
+    <p class="text-2xl font-bold">Meme templates</p>
     <ul class="flex flex-col gap-2 pt-3">
-        <li class="border-l-2 pl-3">
-            <a href="/templates/topBottomText"> topBottomText </a>
-        </li>
-        <li class="border-l-2 pl-3">
-            <a href="/templates/topBottomText"> topBottomText </a>
-        </li>
-        <li class="border-l-2 pl-3">
-            <a href="/templates/topBottomText"> topBottomText </a>
-        </li>
+        {
+            templates.map((template: Template) => (
+                <li class="border-l-2 pl-3 border-white/50 hover:border-white/70">
+                    <a href=`/templates/${template.name}`>{template.name}</a>
+                </li>
+            ))
+        }
     </ul>
 </nav>
