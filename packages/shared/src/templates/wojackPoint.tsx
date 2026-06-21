@@ -2,7 +2,7 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 
 export const wojackPoint: Template = {
-    id: 18,
+    id: 19,
     name: "wojackPoint",
     width: 512,
     height: 512,

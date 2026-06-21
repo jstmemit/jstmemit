@@ -2,7 +2,7 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 
 export const absoluteCinema: Template = {
-    id: 19,
+    id: 20,
     name: "absoluteCinema",
     width: 1230,
     height: 1422,
