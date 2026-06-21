@@ -1,0 +1,17 @@
+---
+import Separator from "./Separator.astro";
+const texts: string[] = ["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"];
+texts.push(...texts, ...texts, ...texts);
+---
+
+<ul class="flex items-center gap-2.5 text-xs text-white/30">
+    {
+        texts.map((text: string, index: number) => (
+            <li class="flex items-center gap-2.5">
+                {text}
+
+                {index !== texts.length - 1 && <Separator />}
+            </li>
+        ))
+    }
+</ul>
