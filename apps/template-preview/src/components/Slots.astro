@@ -17,7 +17,7 @@ const { title, slots = [] } = Astro.props;
             <ul class="flex flex-col gap-1">
                 {slots.map((slot: TemplateText | TemplateImage, index: number) => (
                     <li>
-                        <h3 class=`border-l-2 border-white/${40 - (index * 20)} pl-3 tabular-nums`>
+                        <h3 class=`border-l-2 border-hot-fuchsia pl-3 tabular-nums`>
                             <b>#{slot.id}: </b> {slot.description}
                         </h3>
                     </li>

@@ -7,16 +7,16 @@ const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templates: Template[] = templatesRepository.getAll();
 ---
 
-<nav class="min-w-60">
+<nav class="min-w-60" transition:persist>
     <div class="flex justify-between items-center">
         <a href="/" class="text-3xl md:text-2xl font-bold">Meme templates</a>
         <!--TODO: replace with some icon later-->
-        <div id="toggle" class="md:hidden rotate-180 bg-carbon-gray p-2 pt-3 pb-1 px-4 text-2xl rounded-full">^</div>
+        <div id="toggle" class="md:hidden font-black rotate-180 bg-hot-fuchsia text-carbon-black p-2 pt-3 pb-1 px-4 text-2xl rounded-full">^</div>
     </div>
     <ul id="template-list" class="hidden md:flex flex-col gap-2 pt-3">
         {
             templates.map((template: Template) => (
-                <li class="border-l-2 pl-3 border-white/50 hover:border-white/70 mt-1 md:mt-0">
+                <li class="border-l-2 pl-3 border-hot-fuchsia/80 hover:border-neon-ice/70 mt-1 md:mt-0">
                     <a href=`/templates/${template.name}`>{template.name}</a>
                 </li>
             ))
