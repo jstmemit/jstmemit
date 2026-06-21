@@ -1,80 +1,15 @@
 ---
-import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
 import Sidebar from "../components/Sidebar.astro";
 import type { Template } from "@jstmemit/shared/models/Template";
-import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
-import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
-import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-import { FontsService } from "@jstmemit/shared/services/FontsService";
-import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+
 import Slots from "../components/Slots.astro";
+import Examples from "../components/Examples.astro";
 
 interface Props {
     template: Template;
 }
 
 const { template } = Astro.props;
-
-const fontsRepository: IFontsRepository = new FontsRepository();
-const fontsService: IFontsService = new FontsService(fontsRepository);
-
-const variants: TemplateProps[] = [
-    {
-        texts: ["Cities Skylines 2", "without bicycles"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/city.png",
-            "https://files.wideunits.nl/memes/examples/markrutte.jpeg",
-        ],
-    },
-    {
-        texts: ["KFC", "at 23:59"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/chicken.png",
-            "https://files.wideunits.nl/memes/examples/lightning.png",
-        ],
-    },
-    {
-        texts: ["Game of the year"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/battlefield.png",
-            "https://files.wideunits.nl/memes/examples/hamster.png",
-        ],
-    },
-    {
-        texts: ["", "Sony Headquarters"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/siege.jpg",
-            "https://files.wideunits.nl/memes/examples/ubisoft.jpg",
-        ],
-    },
-    {
-        texts: ["LinusTechTips", "is not coming here"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/applestore.jpg",
-            "https://files.wideunits.nl/memes/examples/linus.png",
-        ],
-    },
-    {
-        texts: ["", "meow"],
-        images: [
-            "https://files.wideunits.nl/memes/examples/cat.png",
-            "https://files.wideunits.nl/memes/examples/rust.jpg",
-        ],
-    },
-];
-
-const examples: string[] = await Promise.all(
-    variants.map(async (input: TemplateProps): Promise<string> => {
-        const svg: string = await satori(template.element(input), {
-            width: template.width,
-            height: template.height,
-            fonts: fontsService.getFonts(),
-        });
-        const png: Buffer<ArrayBufferLike> = new Resvg(svg).render().asPng();
-        return `data:image/png;base64,${png.toString("base64")}`;
-    }),
-);
 ---
 
 <div class="flex flex-col gap-10 md:flex-row">
@@ -90,23 +25,6 @@ const examples: string[] = await Promise.all(
         <Slots title="Text slots" slots={template.texts} />
         <Slots title="Image slots" slots={template.images} />
 
-        <section>
-            <h2 class="mb-3 text-3xl font-bold">Examples</h2>
-            <ul class="flex flex-wrap gap-5">
-                {
-                    examples.map((src: string) => (
-                        <li>
-                            <img
-                                src={src}
-                                width={template.width}
-                                height={template.height}
-                                alt={template.name}
-                                class="border-carbon-black border-4 lg:max-w-111"
-                            />
-                        </li>
-                    ))
-                }
-            </ul>
-        </section>
+        <Examples templateName={template.name} server:defer />
     </section>
 </div>

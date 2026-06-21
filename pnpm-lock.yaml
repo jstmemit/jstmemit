@@ -321,6 +321,9 @@ importers:
 
   apps/template-preview:
     dependencies:
+      '@astrojs/node':
+        specifier: ^10.1.4
+        version: 10.1.4(astro@6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4))
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2

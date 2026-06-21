@@ -5,25 +5,22 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import type { Template } from "@jstmemit/shared/models/Template";
 import TemplateLayout from "../../layouts/TemplateLayout.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { TemplatesService } from "../../services/TemplatesService.ts";
+import type { ITemplatesService } from "../../interfaces/ITemplatesService.ts";
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
     return templatesRepository.getAll().map((template: Template) => ({
-        params: { template: template.name },
+        params: { templateName: template.name },
     }));
 }) satisfies GetStaticPaths;
 
+const { templateName } = Astro.params;
+
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templates: Template[] = templatesRepository.getAll();
+const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
-const { template } = Astro.params;
-const currentTemplate: Template | undefined = templates.find(
-    (element: Template): boolean => element.name == template,
-);
-
-if (!currentTemplate) {
-    throw new Error();
-}
+const currentTemplate: Template = templatesService.getTemplateByName(templateName);
 ---
 
 <BaseLayout>

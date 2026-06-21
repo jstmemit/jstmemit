@@ -1,0 +1,60 @@
+---
+import satori from "satori";
+import { Resvg } from "@resvg/resvg-js";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import { variants } from "../../data/variants.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
+import { TemplatesService } from "../services/TemplatesService.ts";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
+
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
+
+const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
+
+interface Props {
+    templateName: string;
+}
+
+const { templateName } = Astro.props;
+
+const template: Template = templatesService.getTemplateByName(templateName);
+
+const examples: string[] = await Promise.all(
+    variants.map(async (input: TemplateProps): Promise<string> => {
+        const svg: string = await satori(template.element(input), {
+            width: template.width,
+            height: template.height,
+            fonts: fontsService.getFonts(),
+        });
+        const png: Buffer<ArrayBufferLike> = new Resvg(svg).render().asPng();
+        return `data:image/png;base64,${png.toString("base64")}`;
+    }),
+);
+---
+
+<section>
+    <h2 class="mb-3 text-3xl font-bold">Examples</h2>
+    <ul class="flex flex-wrap gap-5">
+        {
+            examples.map((src: string) => (
+                <li>
+                    <img
+                        src={src}
+                        width={template.width}
+                        height={template.height}
+                        alt={template.name}
+                        class="border-carbon-black border-4 lg:max-w-111"
+                    />
+                </li>
+            ))
+        }
+    </ul>
+</section>
