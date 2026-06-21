@@ -8,6 +8,9 @@ import { looksAtPaperAngry } from "#/templates/looksAtPaperAngry.tsx";
 import { homerHiding } from "#/templates/homerHiding.tsx";
 import { isThisAPigeon } from "#/templates/isThisAPigeon.tsx";
 import { buzz } from "#/templates/buzz.tsx";
+import { cowLookingIntoOcean } from "#/templates/cowLookingIntoOcean.tsx";
+import { manLookingUp } from "#/templates/manLookingUp.tsx";
+import { uncanny } from "#/templates/uncanny.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -16,6 +19,18 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @returns Template[]
      */
     public getAll(): Template[] {
-        return [topBottomText, liveReaction, spongebob, explains, looksAtPaperAngry, homerHiding, isThisAPigeon, buzz];
+        return [
+            topBottomText,
+            liveReaction,
+            spongebob,
+            explains,
+            looksAtPaperAngry,
+            homerHiding,
+            isThisAPigeon,
+            buzz,
+            cowLookingIntoOcean,
+            manLookingUp,
+            uncanny,
+        ];
     }
 }
