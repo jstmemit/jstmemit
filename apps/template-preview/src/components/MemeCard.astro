@@ -1,0 +1,14 @@
+---
+interface Props {
+    src?: string;
+    width?: number;
+    height?: number;
+    name?: string;
+}
+
+const { src, width, height, name } = Astro.props;
+---
+
+<li class=`bg-white w-[${width}px] h-[${height}px]`>
+    <img src={src} width={width} height={height} alt={name} class="border-carbon-black border-4 lg:max-w-111" />
+</li>

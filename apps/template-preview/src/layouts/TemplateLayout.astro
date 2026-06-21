@@ -25,6 +25,6 @@ const { template } = Astro.props;
         <Slots title="Text slots" slots={template.texts} />
         <Slots title="Image slots" slots={template.images} />
 
-        <Examples templateName={template.name} server:defer />
+        <Examples template={template} />
     </section>
 </div>
