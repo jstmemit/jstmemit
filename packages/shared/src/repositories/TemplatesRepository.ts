@@ -20,6 +20,12 @@ import { newsReporterSitting } from "#/templates/newsReporterSitting.tsx";
 import { sleepyThinking } from "#/templates/sleepyThinking.tsx";
 import { wojackPoint } from "#/templates/wojackPoint.tsx";
 import { absoluteCinema } from "#/templates/absoluteCinema.tsx";
+import { iAdopted100Dogs } from "#/templates/iAdopted100Dogs.tsx";
+import { iGotHuntedByARealBountyHunter } from "#/templates/iGotHuntedByARealBountyHunter.tsx";
+import { oneDollarPrivateIsland } from "#/templates/oneDollarPrivateIsland.tsx";
+import { spongebobHappy } from "#/templates/spongebobHappy.tsx";
+import { worldsMostDangerousTrap } from "#/templates/worldsMostDangerousTrap.tsx";
+import { connor } from "#/templates/connor.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -49,6 +55,12 @@ export class TemplatesRepository implements ITemplatesRepository {
             sleepyThinking,
             wojackPoint,
             absoluteCinema,
+            iAdopted100Dogs,
+            iGotHuntedByARealBountyHunter,
+            oneDollarPrivateIsland,
+            spongebobHappy,
+            worldsMostDangerousTrap,
+            connor,
         ];
     }
 }
