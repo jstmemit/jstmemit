@@ -1,4 +1,4 @@
-import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps.ts";
+import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 
 export const variants: TemplateProps[] = [
     {
