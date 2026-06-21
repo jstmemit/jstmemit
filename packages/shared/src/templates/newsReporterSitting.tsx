@@ -2,16 +2,16 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
-export const topBottomText: Template = {
-    id: 1,
-    name: "topBottomText",
-    width: 800,
-    height: 800,
+export const newsReporterSitting: Template = {
+    id: 24,
+    name: "newsReporterSitting",
+    width: 766,
+    height: 496,
     texts: [
         { id: 0, description: "top text", minLength: 1, maxLength: 5 },
         { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
     ],
-    images: [{ id: 0, description: "background" }],
+    images: [{ id: 0, description: "breaking news" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -20,14 +20,24 @@ export const topBottomText: Template = {
                 width: "100%",
                 height: "100%",
                 fontFamily: "Comic Sans MS",
-                backgroundColor: "#000",
             }}
         >
             <img
                 src={images[0]}
-                width={800}
-                height={800}
-                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+                width={766}
+                height={496}
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/newsreportersitting.png"
+                width={766}
+                height={496}
+                style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
                 style={{

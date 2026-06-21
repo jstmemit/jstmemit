@@ -2,16 +2,13 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
-export const topBottomText: Template = {
-    id: 1,
-    name: "topBottomText",
-    width: 800,
-    height: 800,
-    texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
-    ],
-    images: [{ id: 0, description: "background" }],
+export const sleepyThinking: Template = {
+    id: 17,
+    name: "sleepyThinking",
+    width: 885,
+    height: 900,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
+    images: [{ id: 0, description: "dream thumbnail" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -20,33 +17,25 @@ export const topBottomText: Template = {
                 width: "100%",
                 height: "100%",
                 fontFamily: "Comic Sans MS",
-                backgroundColor: "#000",
             }}
         >
             <img
                 src={images[0]}
-                width={800}
-                height={800}
-                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
-            />
-            <div
+                width={590}
+                height={300}
                 style={{
                     position: "absolute",
-                    top: 10,
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
-                    textAlign: "center",
+                    top: 0,
+                    left: 320,
+                    objectFit: "cover",
                 }}
-            >
-                {texts[0]}
-            </div>
+            />
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/sleepythinking.png"
+                width={885}
+                height={900}
+                style={{ position: "absolute", top: 0, left: 0 }}
+            />
             <div
                 style={{
                     position: "absolute",
@@ -63,7 +52,7 @@ export const topBottomText: Template = {
                     textAlign: "center",
                 }}
             >
-                {texts[1]}
+                {texts[0]}
             </div>
         </div>
     ),
