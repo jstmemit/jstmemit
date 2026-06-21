@@ -5,6 +5,9 @@ import { explains } from "#/templates/explains.tsx";
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 import { looksAtPaperAngry } from "#/templates/looksAtPaperAngry.tsx";
+import { homerHiding } from "#/templates/homerHiding.tsx";
+import { isThisAPigeon } from "#/templates/isThisAPigeon.tsx";
+import { buzz } from "#/templates/buzz.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -13,6 +16,6 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @returns Template[]
      */
     public getAll(): Template[] {
-        return [topBottomText, liveReaction, spongebob, explains, looksAtPaperAngry];
+        return [topBottomText, liveReaction, spongebob, explains, looksAtPaperAngry, homerHiding, isThisAPigeon, buzz];
     }
 }
