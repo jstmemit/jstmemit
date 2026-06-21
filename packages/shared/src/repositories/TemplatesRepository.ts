@@ -11,6 +11,8 @@ import { buzz } from "#/templates/buzz.tsx";
 import { cowLookingIntoOcean } from "#/templates/cowLookingIntoOcean.tsx";
 import { manLookingUp } from "#/templates/manLookingUp.tsx";
 import { uncanny } from "#/templates/uncanny.tsx";
+import { tf2Hahaha } from "#/templates/tf2hahaha.tsx";
+import { yesChad } from "#/templates/yesChad.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -31,6 +33,8 @@ export class TemplatesRepository implements ITemplatesRepository {
             cowLookingIntoOcean,
             manLookingUp,
             uncanny,
+            tf2Hahaha,
+            yesChad,
         ];
     }
 }

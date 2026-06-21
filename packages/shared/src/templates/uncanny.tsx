@@ -2,7 +2,7 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 
 export const uncanny: Template = {
-    id: 6,
+    id: 11,
     name: "uncanny",
     width: 950,
     height: 500,
