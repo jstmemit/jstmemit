@@ -23,6 +23,10 @@ import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import { MarkovProvider } from "#/providers/MarkovProvider.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepository";
+import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
+import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
+import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import { BanditService } from "@jstmemit/bandit/services/BanditService";
 
 const env = Env.parse(process.env);
 
@@ -49,13 +53,17 @@ const transformService: ITransformService = new TransformService(markovProvider)
 // generations
 const generationsRepository: IGenerationsRepository = new GenerationsRepository();
 
+// bandit
+const banditRepository: IBanditRepository = new BanditRepository();
+const banditService: IBanditService = new BanditService(banditRepository, templatesRepository, templatesService);
+
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 export const memesService: IMemesService = new MemesService(
     memesRepository,
     messagesRepository,
     imagesRepository,
-    templatesService,
     transformService,
     generationsRepository,
+    banditService,
 );
