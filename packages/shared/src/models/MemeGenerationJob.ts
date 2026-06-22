@@ -1,4 +1,4 @@
-import type { Template } from "@jstmemit/meme-generator/models/Template";
+import type { Template } from "@jstmemit/shared/models/Template.ts";
 
 export interface MemeGenerationJob {
     channelId: string;

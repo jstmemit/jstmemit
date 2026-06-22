@@ -1,5 +1,6 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
+import * as React from "react";
 
 export const quote: Template = {
     id: 14,
