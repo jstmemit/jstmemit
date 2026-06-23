@@ -11,4 +11,43 @@
     --color-discord-blue: #5865F2;
 
     --font-sans: "Plus Jakarta Sans", sans-serif;
+
+    --animate-marquee-right: marqueeRight 75s linear infinite;
+    --animate-marquee-right2: marqueeRight2 75s linear infinite;
+    --animate-marquee-left: marqueeLeft 75s linear infinite;
+    --animate-marquee-left2: marqueeLeft2 75s linear infinite;
+
+    @keyframes marqueeRight {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    @keyframes marqueeRight2 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes marqueeLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @keyframes marqueeLeft2 {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
 }

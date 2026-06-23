@@ -1,17 +1,39 @@
 ---
 import Separator from "./Separator.astro";
-const texts: string[] = ["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"];
+interface Props {
+    texts: string[];
+    direction?: "left" | "right";
+}
+
+const { texts, direction = "right" } = Astro.props;
 texts.push(...texts, ...texts, ...texts);
 ---
 
-<ul class="flex items-center gap-2.5 text-xs text-white/30">
-    {
-        texts.map((text: string, index: number) => (
-            <li class="flex items-center gap-2.5">
-                {text}
+<div class="relative">
+    <ul
+        class=`${direction === "right" ? "animate-marquee-right" : "animate-marquee-left"} absolute top-0 flex items-center gap-2.5 text-xs text-white/30`
+    >
+        {
+            texts.map((text: string, index: number) => (
+                <li class="flex items-center gap-2.5">
+                    {text}
 
-                {index !== texts.length - 1 && <Separator />}
-            </li>
-        ))
-    }
-</ul>
+                    {index !== texts.length - 1 && <Separator />}
+                </li>
+            ))
+        }
+    </ul>
+    <ul
+        class=`${direction === "right" ? "animate-marquee-right2" : "animate-marquee-left2"} flex items-center gap-2.5 text-xs text-white/30`
+    >
+        {
+            texts.map((text: string, index: number) => (
+                <li class="flex items-center gap-2.5">
+                    {text}
+
+                    {index !== texts.length - 1 && <Separator />}
+                </li>
+            ))
+        }
+    </ul>
+</div>
