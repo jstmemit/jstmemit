@@ -25,15 +25,8 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableMessageComponent(
-        isEnabled: boolean,
-        messagesAmount: number,
-    ): ContainerBuilder {
-        const progressBar: string = this._createProgressBar(
-            messagesAmount,
-            30,
-            10,
-        );
+    public getEnableMessageComponent(isEnabled: boolean, messagesAmount: number): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
 
         return new ContainerBuilder()
             .addTextDisplayComponents(
@@ -57,9 +50,7 @@ export class ComponentsService implements IComponentsService {
                         : `Messages in memory: **${messagesAmount}**`,
                 ),
             )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${progressBar}`),
-            );
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${progressBar}`));
     }
 
     /**
@@ -69,15 +60,11 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableButtonsComponent(
-        isEnabled: boolean,
-    ): ActionRowBuilder<ButtonBuilder> {
+    public getEnableButtonsComponent(isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
-                    .setStyle(
-                        isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
-                    )
+                    .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
                     .setLabel(`${isEnabled ? `Turn off` : `Turn on`}`)
                     .setCustomId(`${isEnabled ? "disable" : "enable"}`),
             )
@@ -98,21 +85,31 @@ export class ComponentsService implements IComponentsService {
      */
     public getErrorMessageComponent(interactionId: string): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# 🔴 Something went wrong!`,
-                ),
-            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔴 Something went wrong!`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.`,
                 ),
             )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+    }
+
+    /**
+     * Returns back a message component for a "not enough context" error
+     *
+     * @param interactionId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getNotEnoughContextMessageComponent(interactionId: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🤔 Not enough context yet`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `**Error ID:** ${interactionId}`,
+                    `Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs. If this error persists, please contact support.`,
                 ),
-            );
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
     }
 
     /**
@@ -122,40 +119,26 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getSettingsHeaderMessageComponent(
-        isEnabled: boolean,
-    ): ContainerBuilder {
+    public getSettingsHeaderMessageComponent(isEnabled: boolean): ContainerBuilder {
         return new ContainerBuilder()
             .addSectionComponents(
                 new SectionBuilder()
                     .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL(
-                            "https://files.wideunits.nl/jstmemit/images/logos/logo.png",
-                        ),
+                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
                     )
                     .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(
-                            `# ❓ About this bot`,
-                        ),
+                        new TextDisplayBuilder().setContent(`# ❓ About this bot`),
                         new TextDisplayBuilder().setContent(
                             `A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that. ${isEnabled ? `` : `Enable Jstmemit below to start!`}`,
                         ),
                     ),
             )
-            .addSeparatorComponents(
-                new SeparatorBuilder()
-                    .setSpacing(SeparatorSpacingSize.Large)
-                    .setDivider(true),
-            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addSectionComponents(
                 new SectionBuilder()
                     .setButtonAccessory(
                         new ButtonBuilder()
-                            .setStyle(
-                                isEnabled
-                                    ? ButtonStyle.Secondary
-                                    : ButtonStyle.Success,
-                            )
+                            .setStyle(isEnabled ? ButtonStyle.Secondary : ButtonStyle.Success)
                             .setLabel(`${isEnabled ? `Disable` : `Enable`}`)
                             .setCustomId(`${isEnabled ? "disable" : "enable"}`),
                     )
@@ -175,29 +158,18 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getSettingsBodyMessageComponent(
-        frequency: number,
-        useAvatarsInMemes: boolean,
-    ): ContainerBuilder {
+    public getSettingsBodyMessageComponent(frequency: number, useAvatarsInMemes: boolean): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions();
 
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# 💬 Meme settings`),
-            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 Meme settings`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     "You can control how often the bot is going to send memes and what's on them",
                 ),
             )
-            .addSeparatorComponents(
-                new SeparatorBuilder()
-                    .setSpacing(SeparatorSpacingSize.Large)
-                    .setDivider(true),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### Frequency`),
-            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Frequency`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `How often should the bot send a random meme in the chat without being asked to?`,
@@ -205,34 +177,22 @@ export class ComponentsService implements IComponentsService {
             )
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-                    new StringSelectMenuBuilder()
-                        .setCustomId("frequency")
-                        .addOptions(
-                            frequencies.map((option: Frequency) =>
-                                new SelectMenuOptionBuilder()
-                                    .setLabel(option.label)
-                                    .setValue(option.value)
-                                    .setDefault(
-                                        frequency === Number(option.value),
-                                    )
-                                    .setEmoji({ name: option.emoji })
-                                    .setDescription(option.description),
-                            ),
+                    new StringSelectMenuBuilder().setCustomId("frequency").addOptions(
+                        frequencies.map((option: Frequency) =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.label)
+                                .setValue(option.value)
+                                .setDefault(frequency === Number(option.value))
+                                .setEmoji({ name: option.emoji })
+                                .setDescription(option.description),
                         ),
+                    ),
                 ),
             )
-            .addSeparatorComponents(
-                new SeparatorBuilder()
-                    .setSpacing(SeparatorSpacingSize.Large)
-                    .setDivider(true),
-            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Avatars in memes`))
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### Avatars in memes`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `Include profile pictures in generated memes?`,
-                ),
+                new TextDisplayBuilder().setContent(`Include profile pictures in generated memes?`),
             )
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
@@ -244,17 +204,13 @@ export class ComponentsService implements IComponentsService {
                                 .setValue("true")
                                 .setDefault(useAvatarsInMemes)
                                 .setEmoji({ name: "✅" })
-                                .setDescription(
-                                    "Bot will use avatars for memes (recommended)",
-                                ),
+                                .setDescription("Bot will use avatars for memes (recommended)"),
                             new SelectMenuOptionBuilder()
                                 .setLabel("No")
                                 .setValue("false")
                                 .setDefault(!useAvatarsInMemes)
                                 .setEmoji({ name: "❌" })
-                                .setDescription(
-                                    "Bot won't use avatars for memes",
-                                ),
+                                .setDescription("Bot won't use avatars for memes"),
                         ),
                 ),
             );
@@ -270,11 +226,7 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    private _createProgressBar(
-        value: number,
-        max: number,
-        segments: number,
-    ): string {
+    private _createProgressBar(value: number, max: number, segments: number): string {
         const clamped: number = Math.max(0, Math.min(value, max));
 
         const percentage: number = clamped / max;
@@ -318,8 +270,7 @@ export class ComponentsService implements IComponentsService {
             {
                 label: "Never",
                 value: "0",
-                description:
-                    "Don't send memes, unless requested via a /meme command",
+                description: "Don't send memes, unless requested via a /meme command",
                 emoji: "⬛",
             },
             {
