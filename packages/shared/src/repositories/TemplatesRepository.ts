@@ -36,6 +36,7 @@ import { oneDollarPrivateIsland } from "#/templates/oneDollarPrivateIsland.tsx";
 import { spongebobHappy } from "#/templates/spongebobHappy.tsx";
 import { worldsMostDangerousTrap } from "#/templates/worldsMostDangerousTrap.tsx";
 import { connor } from "#/templates/connor.tsx";
+import { dogeWithGlasses } from "#/templates/dogeWithGlasses.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -81,6 +82,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             spongebobHappy,
             worldsMostDangerousTrap,
             connor,
+            dogeWithGlasses,
         ];
     }
 }
