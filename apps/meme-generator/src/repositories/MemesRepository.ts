@@ -2,7 +2,7 @@ import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import type { IFontsService } from "#/interfaces/IFontsService.ts";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
 
 export class MemesRepository implements IMemesRepository {
@@ -21,10 +21,7 @@ export class MemesRepository implements IMemesRepository {
      *
      * @author Kyrylo Maliuha
      */
-    public async generateMeme(
-        template: Template,
-        props: TemplateProps,
-    ): Promise<string | undefined> {
+    public async generateMeme(template: Template, props: TemplateProps): Promise<string | undefined> {
         try {
             return await satori(template.element(props), {
                 width: template.width,

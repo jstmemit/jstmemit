@@ -11,10 +11,10 @@ import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import { TemplatesService } from "#/services/TemplatesService.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository.ts";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository.ts";
-import type { IFontsService } from "#/interfaces/IFontsService.ts";
-import { FontsService } from "#/controllers/FontsService.ts";
-import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";
-import { FontsRepository } from "#/repositories/FontsRepository.ts";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import { FontsService } from "@jstmemit/shared/services/FontsService";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import { createRedisConnection } from "@jstmemit/queue/connection";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import type { ITransformService } from "#/interfaces/ITransformService.ts";
@@ -26,10 +26,7 @@ import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepo
 
 const env = Env.parse(process.env);
 
-export const redisConnection: ConnectionOptions = createRedisConnection(
-    env.REDIS_HOST,
-    env.REDIS_PORT,
-);
+export const redisConnection: ConnectionOptions = createRedisConnection(env.REDIS_HOST, env.REDIS_PORT);
 
 // fonts
 const fontsRepository: IFontsRepository = new FontsRepository();
@@ -43,19 +40,14 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // templates
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templatesService: ITemplatesService = new TemplatesService(
-    templatesRepository,
-);
+const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
 // transform
 const markovProvider: ITransformProvider = new MarkovProvider();
-const transformService: ITransformService = new TransformService(
-    markovProvider,
-);
+const transformService: ITransformService = new TransformService(markovProvider);
 
 // generations
-const generationsRepository: IGenerationsRepository =
-    new GenerationsRepository();
+const generationsRepository: IGenerationsRepository = new GenerationsRepository();
 
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);

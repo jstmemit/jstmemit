@@ -13,3 +13,7 @@
 
     --font-sans: "Plus Jakarta Sans", sans-serif;
 }
+
+img:not([src]) {
+    opacity: 0;
+}

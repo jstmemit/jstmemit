@@ -1,4 +1,4 @@
-import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
+import type { FontOptions } from "#/models/FontOptions.ts";
 
 export abstract class IFontsService {
     public abstract getFonts(): FontOptions[];

@@ -1,18 +1,42 @@
 ---
+import ClientRouter from "astro/components/ClientRouter.astro";
 import "../styles/global.css";
 ---
 
-<head>
-    <title>Template preview</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-        rel="stylesheet"
-    />
-</head>
-<body class="bg-carbon-black">
-    <main class="mx-auto max-w-444 px-8 py-12 text-white">
-        <slot />
-    </main>
-</body>
+<html lang="en" class="scrollbar-thumb-hot-fuchsia/50 scrollbar-thin scrollbar-track-transparent">
+    <head>
+        <title>Template preview</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+            rel="stylesheet"
+        />
+        <ClientRouter />
+    </head>
+    <body class="bg-black">
+        <main class="relative z-4 mx-auto max-w-444 px-8 py-12 text-white">
+            <slot />
+        </main>
+        <div class="fixed inset-0" transition:persist>
+            <img
+                class="absolute inset-0 z-0 h-full w-full opacity-50"
+                src="https://files.wideunits.nl/jstmemit/images/background/Grid.png"
+                alt="grid"
+            />
+            <img
+                class="absolute inset-0 z-10 h-full w-full opacity-30"
+                src="https://files.wideunits.nl/jstmemit/images/background/Highlights.png"
+                alt="background highlight"
+            />
+            <img
+                class="absolute inset-0 z-20 h-full w-full opacity-10"
+                src="https://files.wideunits.nl/jstmemit/images/background/Noise.png"
+                alt="background noise"
+            />
+        </div>
+    </body>
+</html>

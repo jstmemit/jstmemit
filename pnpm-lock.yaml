@@ -321,12 +321,24 @@ importers:
 
   apps/template-preview:
     dependencies:
+      '@astrojs/node':
+        specifier: ^10.1.4
+        version: 10.1.4(astro@6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4))
+      '@resvg/resvg-js':
+        specifier: ^2.6.2
+        version: 2.6.2
       '@tailwindcss/vite':
         specifier: ^4.3.1
         version: 4.3.1(vite@7.3.5(@types/node@25.9.2)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.4))
       astro:
         specifier: ^6.4.7
         version: 6.4.8(@types/node@25.9.2)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(tsx@4.22.4)
+      lodash:
+        specifier: ^4.18.1
+        version: 4.18.1
+      satori:
+        specifier: ^0.26.0
+        version: 0.26.0
       tailwindcss:
         specifier: ^4.3.1
         version: 4.3.1
@@ -334,6 +346,9 @@ importers:
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@types/lodash':
+        specifier: ^4.17.24
+        version: 4.17.24
 
   apps/website:
     dependencies:

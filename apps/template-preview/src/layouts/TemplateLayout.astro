@@ -2,6 +2,9 @@
 import Sidebar from "../components/Sidebar.astro";
 import type { Template } from "@jstmemit/shared/models/Template";
 
+import Slots from "../components/Slots.astro";
+import Examples from "../components/Examples.astro";
+
 interface Props {
     template: Template;
 }
@@ -9,9 +12,19 @@ interface Props {
 const { template } = Astro.props;
 ---
 
-<div class="flex gap-10">
+<div class="flex flex-col gap-10 md:flex-row">
     <Sidebar />
-    <section class="w-full">
-        <h2>{template.name}</h2>
+    <hr class="text-neon-ice/25" />
+    <section class="flex w-full flex-col gap-10">
+        <div class="flex flex-col gap-1">
+            <h1 class="mb-2 text-3xl font-black md:text-4xl">{template.name}</h1>
+            <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums"><b>Width:</b> {template.width}px</p>
+            <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums"><b>Height:</b> {template.height}px</p>
+        </div>
+
+        <Slots title="Text slots" slots={template.texts} />
+        <Slots title="Image slots" slots={template.images} />
+
+        <Examples template={template} />
     </section>
 </div>
