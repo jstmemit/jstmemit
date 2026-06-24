@@ -8,8 +8,8 @@ export const cowLookingIntoOcean: Template = {
     width: 403,
     height: 352,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
-    images: [],
-    element: ({ texts }: TemplateProps) => (
+    images: [{ id: 0, description: "people in the ocean" }],
+    element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -24,6 +24,42 @@ export const cowLookingIntoOcean: Template = {
                 width={403}
                 height={352}
                 style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={50}
+                height={50}
+                style={{
+                    position: "absolute",
+                    top: 180,
+                    left: 140,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[0]}
+                width={50}
+                height={50}
+                style={{
+                    position: "absolute",
+                    top: 200,
+                    left: 40,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[0]}
+                width={50}
+                height={50}
+                style={{
+                    position: "absolute",
+                    top: 140,
+                    left: 90,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
             <div
                 style={{
