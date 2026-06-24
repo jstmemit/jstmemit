@@ -1,4 +1,4 @@
-import type { Guild } from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
 import { type Client, type Interaction, type Message } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -85,9 +85,7 @@ export class EventsController implements IEventsController {
                     break;
             }
 
-            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
-                await respondMissingPermissions(interaction);
-
+            if (await this._checkForMissingPermissions(interaction)) {
                 return;
             }
 
@@ -118,9 +116,7 @@ export class EventsController implements IEventsController {
                     break;
             }
 
-            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
-                await respondMissingPermissions(interaction);
-
+            if (await this._checkForMissingPermissions(interaction)) {
                 return;
             }
 
@@ -151,9 +147,7 @@ export class EventsController implements IEventsController {
 
         // string select menu
         if (interaction.isStringSelectMenu()) {
-            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
-                await respondMissingPermissions(interaction);
-
+            if (await this._checkForMissingPermissions(interaction)) {
                 return;
             }
 
@@ -206,6 +200,30 @@ export class EventsController implements IEventsController {
                     guildCount: guild.client.guilds.cache.size,
                 },
             });
+        }
+    }
+
+    /**
+     * Checks if a user is missing Manage Server or Manage Channels permissions, then if
+     * he does it will send an error message and return true.
+     *
+     * @param interaction
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async _checkForMissingPermissions(
+        interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction,
+    ): Promise<boolean> {
+        if (
+            interaction?.memberPermissions?.has("ManageChannels", true) ||
+            interaction?.memberPermissions?.has("ManageGuild", true)
+        ) {
+            return false;
+        } else {
+            await respondMissingPermissions(interaction);
+
+            return true;
         }
     }
 }

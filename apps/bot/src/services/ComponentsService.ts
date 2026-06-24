@@ -122,7 +122,7 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔒 You don't have permission for that`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `Only members with the **Manage Server** permission can change Jstmemit's settings. Ask a server admin if you need this changed.`,
+                    `Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.`,
                 ),
             );
     }
