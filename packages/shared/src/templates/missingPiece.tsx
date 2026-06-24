@@ -2,7 +2,7 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 
 export const missingPiece: Template = {
-    id: 16,
+    id: 21,
     name: "missingPiece",
     width: 783,
     height: 581,

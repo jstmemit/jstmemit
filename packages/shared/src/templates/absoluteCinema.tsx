@@ -3,7 +3,7 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const absoluteCinema: Template = {
-    id: 20,
+    id: 25,
     name: "absoluteCinema",
     width: 1230,
     height: 1422,
