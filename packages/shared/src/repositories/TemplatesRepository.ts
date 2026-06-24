@@ -1,9 +1,9 @@
-import { topBottomText } from "#/templates/topBottomText.tsx";
-import { liveReaction } from "#/templates/liveReaction.tsx";
-import { spongebob } from "#/templates/spongebob.tsx";
-import { explains } from "#/templates/explains.tsx";
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
+import { topBottomText } from "#/templates/topBottomText.tsx";
+import { explains } from "#/templates/explains.tsx";
+import { liveReaction } from "#/templates/liveReaction.tsx";
+import { spongebob } from "#/templates/spongebob.tsx";
 import { looksAtPaperAngry } from "#/templates/looksAtPaperAngry.tsx";
 import { homerHiding } from "#/templates/homerHiding.tsx";
 import { isThisAPigeon } from "#/templates/isThisAPigeon.tsx";
@@ -16,11 +16,20 @@ import { yesChad } from "#/templates/yesChad.tsx";
 import { quote } from "#/templates/quote.tsx";
 import { stonks } from "#/templates/stonks.tsx";
 import { stonks1 } from "#/templates/stonks1.tsx";
+import { disappointedGuy } from "#/templates/disappointedGuy.tsx";
+import { disappointedGuy1 } from "#/templates/disappointedGuy1.tsx";
+import { disasterGirl } from "#/templates/disasterGirl.tsx";
+import { dogAndTeblet } from "#/templates/dogAndTeblet.tsx";
 import { missingPiece } from "#/templates/missingPiece.tsx";
 import { newsReporterSitting } from "#/templates/newsReporterSitting.tsx";
 import { sleepyThinking } from "#/templates/sleepyThinking.tsx";
 import { wojackPoint } from "#/templates/wojackPoint.tsx";
 import { absoluteCinema } from "#/templates/absoluteCinema.tsx";
+import { bearArrest } from "#/templates/bearArrest.tsx";
+import { awkwardLookMonkey } from "#/templates/awkwardLookMonkey.tsx";
+import { crowdFromAngryToHappy } from "#/templates/crowdFromAngryToHappy.tsx";
+import { diagramIQ } from "#/templates/diagramIQ.tsx";
+import { blooInBed } from "#/templates/blooInBed.tsx";
 import { iAdopted100Dogs } from "#/templates/iAdopted100Dogs.tsx";
 import { iGotHuntedByARealBountyHunter } from "#/templates/iGotHuntedByARealBountyHunter.tsx";
 import { oneDollarPrivateIsland } from "#/templates/oneDollarPrivateIsland.tsx";
@@ -52,11 +61,20 @@ export class TemplatesRepository implements ITemplatesRepository {
             quote,
             stonks,
             stonks1,
+            disappointedGuy,
+            disappointedGuy1,
+            disasterGirl,
+            dogAndTeblet,
             missingPiece,
             newsReporterSitting,
             sleepyThinking,
             wojackPoint,
             absoluteCinema,
+            bearArrest,
+            awkwardLookMonkey,
+            crowdFromAngryToHappy,
+            diagramIQ,
+            blooInBed,
             iAdopted100Dogs,
             iGotHuntedByARealBountyHunter,
             oneDollarPrivateIsland,
