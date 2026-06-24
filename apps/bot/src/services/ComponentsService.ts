@@ -128,6 +128,21 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component that is sent after data deletion is done
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDeleteDataSuccessMessageComponent(): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ✅ Data deleted!`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with `/enable` if you wish to stop using it.",
+                ),
+            );
+    }
+
+    /**
      * Returns back a row with cancel and delete data buttons
      *
      * @author Kyrylo Maliuha
@@ -138,10 +153,7 @@ export class ComponentsService implements IComponentsService {
                 new ButtonBuilder().setStyle(ButtonStyle.Secondary).setLabel(`Cancel`).setCustomId(`settings`),
             )
             .addComponents(
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Danger)
-                    .setLabel(`Delete all data`)
-                    .setCustomId(`delete-data-confirm`),
+                new ButtonBuilder().setStyle(ButtonStyle.Danger).setLabel(`Delete all data`).setCustomId(`delete-data`),
             );
     }
 
@@ -261,7 +273,7 @@ export class ComponentsService implements IComponentsService {
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Danger)
                         .setLabel(`Delete all data`)
-                        .setCustomId(`delete-data`),
+                        .setCustomId(`open-delete-data-confirmation`),
                 )
                 .addTextDisplayComponents(
                     new TextDisplayBuilder().setContent("Want to remove all message data about this channel?"),

@@ -66,7 +66,7 @@ export class SettingsController implements ISettingsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleDeleteDataInteraction(interaction: ButtonInteraction): Promise<void> {
+    public async handleOpenDeleteDataConfirmationInteraction(interaction: ButtonInteraction): Promise<void> {
         try {
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
@@ -87,6 +87,43 @@ export class SettingsController implements ISettingsController {
             });
 
             await this._replyWithDeleteDataConfirmation(interaction);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+            });
+        }
+    }
+
+    /**
+     * Handles "Delete all data" button press in the confirmation message
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleDeleteDataInteraction(interaction: ButtonInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            await this._channelsService.deleteChannelData(interaction.channelId);
+
+            analytics.capture({
+                event: "delete_data_confirmation_pressed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    command: "/settings",
+                    ...channel,
+                },
+            });
+
+            await this._replyWithDeleteDataSuccess(interaction);
         } catch (error) {
             await this._replyWithError(interaction, error, {
                 command: "/settings",
@@ -218,6 +255,18 @@ export class SettingsController implements ISettingsController {
             this._componentsService.getDeleteDataConfirmationMessageComponent(),
             this._componentsService.getDeleteDataButtonsComponent(),
         ]);
+    }
+
+    /**
+     * Responds with a success message after deleting saved data
+     *
+     * @param interaction
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async _replyWithDeleteDataSuccess(interaction: ButtonInteraction): Promise<void> {
+        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent()]);
     }
 
     /**

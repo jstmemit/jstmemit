@@ -110,6 +110,9 @@ export class EventsController implements IEventsController {
                 case "settings":
                     await this._settingsController.handleSettingsInteraction(interaction);
                     break;
+                case "open-delete-data-confirmation":
+                    await this._settingsController.handleOpenDeleteDataConfirmationInteraction(interaction);
+                    break;
                 case "delete-data":
                     await this._settingsController.handleDeleteDataInteraction(interaction);
                     break;

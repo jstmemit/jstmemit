@@ -58,7 +58,7 @@ const componentsService: IComponentsService = new ComponentsService();
 
 // channels
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
-const channelsService: IChannelsService = new ChannelsService(channelsRepository);
+const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
 const channelsController: IChannelsController = new ChannelsController(
     channelsService,
     componentsService,
