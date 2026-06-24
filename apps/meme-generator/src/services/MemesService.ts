@@ -91,7 +91,6 @@ export class MemesService implements IMemesService {
                 generationId: generationId,
                 templateId: template.id,
                 templateName: template.name,
-                templateWeight: template.weight,
 
                 templateMs: templateTime - startTime,
                 contextMs: contextTime - templateTime,
