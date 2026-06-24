@@ -1,8 +1,5 @@
 import type { StringSelectMenuInteraction } from "discord.js";
-import {
-    type ButtonInteraction,
-    type ChatInputCommandInteraction,
-} from "discord.js";
+import { type ButtonInteraction, type ChatInputCommandInteraction } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
@@ -14,10 +11,7 @@ export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
     private readonly _componentsService: IComponentsService;
 
-    public constructor(
-        channelsService: IChannelsService,
-        componentsService: IComponentsService,
-    ) {
+    public constructor(channelsService: IChannelsService, componentsService: IComponentsService) {
         this._channelsService = channelsService;
         this._componentsService = componentsService;
     }
@@ -37,8 +31,9 @@ export class SettingsController implements ISettingsController {
         }
 
         try {
-            const channel: typeof channelsTable.$inferSelect | undefined =
-                await this._channelsService.getChannel(interaction.channelId);
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
 
             if (!channel) {
                 throw new Error();
@@ -72,12 +67,11 @@ export class SettingsController implements ISettingsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleFrequencySelect(
-        interaction: StringSelectMenuInteraction,
-    ): Promise<void> {
+    public async handleFrequencySelect(interaction: StringSelectMenuInteraction): Promise<void> {
         try {
-            const channel: typeof channelsTable.$inferSelect | undefined =
-                await this._channelsService.getChannel(interaction.channelId);
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
 
             if (!channel) {
                 throw new Error();
@@ -86,10 +80,7 @@ export class SettingsController implements ISettingsController {
             const old: number = channel.frequency;
             channel.frequency = Number(interaction.values[0]);
 
-            await this._channelsService.setChannel(
-                interaction.channelId,
-                channel,
-            );
+            await this._channelsService.setChannel(interaction.channelId, channel);
 
             // memes in chat frequency
             analytics.capture({
@@ -121,12 +112,11 @@ export class SettingsController implements ISettingsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleUserAvatarsSelect(
-        interaction: StringSelectMenuInteraction,
-    ): Promise<void> {
+    public async handleUserAvatarsSelect(interaction: StringSelectMenuInteraction): Promise<void> {
         try {
-            const channel: typeof channelsTable.$inferSelect | undefined =
-                await this._channelsService.getChannel(interaction.channelId);
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
 
             if (!channel) {
                 throw new Error();
@@ -135,10 +125,7 @@ export class SettingsController implements ISettingsController {
             const old: boolean = channel.useAvatarsInMemes;
             channel.useAvatarsInMemes = interaction.values[0] === "true";
 
-            await this._channelsService.setChannel(
-                interaction.channelId,
-                channel,
-            );
+            await this._channelsService.setChannel(interaction.channelId, channel);
 
             // enable/disable using avatars in memes
             analytics.capture({
@@ -173,20 +160,13 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithSettings(
-        interaction:
-            | ButtonInteraction
-            | ChatInputCommandInteraction
-            | StringSelectMenuInteraction,
+        interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction,
         channel: typeof channelsTable.$inferSelect,
     ): Promise<void> {
         await respond(interaction, [
-            this._componentsService.getSettingsHeaderMessageComponent(
-                channel.enabled,
-            ),
-            this._componentsService.getSettingsBodyMessageComponent(
-                channel.frequency,
-                channel.useAvatarsInMemes,
-            ),
+            this._componentsService.getSettingsHeaderMessageComponent(channel.enabled),
+            this._componentsService.getSettingsBodyMessageComponent(channel.frequency, channel.useAvatarsInMemes),
+            this._componentsService.getSettingsFooterMessageComponent(),
         ]);
     }
 
@@ -202,10 +182,7 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithError(
-        interaction:
-            | ButtonInteraction
-            | ChatInputCommandInteraction
-            | StringSelectMenuInteraction,
+        interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction,
         error: unknown,
         properties: Record<string, unknown>,
     ): Promise<void> {
@@ -216,8 +193,6 @@ export class SettingsController implements ISettingsController {
             trigger: interaction.isCommand() ? "/settings" : "/enable",
             ...properties,
         });
-        await respond(interaction, [
-            this._componentsService.getErrorMessageComponent(interaction.id),
-        ]);
+        await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
     }
 }

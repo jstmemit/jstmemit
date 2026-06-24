@@ -8,4 +8,5 @@ export abstract class IComponentsService {
     public abstract getNotEnoughContextMessageComponent(interactionId: string): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(frequency: number, useAvatarsInMemes: boolean): ContainerBuilder;
+    public abstract getSettingsFooterMessageComponent(): ContainerBuilder;
 }

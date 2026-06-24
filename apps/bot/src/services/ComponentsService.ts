@@ -217,6 +217,26 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for footer of the /settings command.
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsFooterMessageComponent(): ContainerBuilder {
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setButtonAccessory(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Danger)
+                        .setLabel(`Delete all data`)
+                        .setCustomId(`delete-data`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent("Want to remove all message data about this channel?"),
+                ),
+        );
+    }
+
+    /**
      * Makes a progress bar with emojis
      *
      * @param value
