@@ -3,7 +3,7 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const worldsMostDangerousTrap: Template = {
-    id: 22,
+    id: 35,
     name: "worldsMostDangerousTrap",
     width: 621,
     height: 426,
