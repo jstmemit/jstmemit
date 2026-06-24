@@ -3,17 +3,21 @@ import type { ButtonInteraction } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
+import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 
 export class RatingsController implements IRatingsController {
     private readonly _ratingsService: IRatingsService;
     private readonly _generationsRepository: IGenerationsRepository;
+    private readonly _banditService: IBanditService;
 
     public constructor(
         ratingsService: IRatingsService,
         generationsRepository: IGenerationsRepository,
+        banditService: IBanditService,
     ) {
         this._ratingsService = ratingsService;
         this._generationsRepository = generationsRepository;
+        this._banditService = banditService;
     }
 
     /**
@@ -38,10 +42,16 @@ export class RatingsController implements IRatingsController {
                 rating,
             );
 
-            const generation =
-                await this._generationsRepository.get(generationId);
+            const generation = await this._generationsRepository.get(generationId);
 
             if (generation && success) {
+                await this._banditService.recordRating(
+                    generation.channelId,
+                    generation.templateId,
+                    rating,
+                    interaction.user.id,
+                );
+
                 analytics.capture({
                     event: `meme_${rating}`,
                     distinctId: interaction.user.id,
@@ -53,10 +63,7 @@ export class RatingsController implements IRatingsController {
                 });
             }
 
-            await this._ratingsService.updateRatingButtons(
-                interaction,
-                generationId,
-            );
+            await this._ratingsService.updateRatingButtons(interaction, generationId);
         } catch (error) {
             console.error(error);
         }

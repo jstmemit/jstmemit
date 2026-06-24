@@ -6,35 +6,35 @@ import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepositor
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
-import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import type { ITransformService } from "#/interfaces/ITransformService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
+import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
-    private readonly _templatesService: ITemplatesService;
     private readonly _transformService: ITransformService;
     private readonly _generationsRepository: IGenerationsRepository;
+    private readonly _banditService: IBanditService;
 
     public constructor(
         memesRepository: IMemesRepository,
         messagesRepository: IMessagesRepository,
         imagesRepository: IImagesRepository,
-        templatesService: ITemplatesService,
         transformService: ITransformService,
         generationsRepository: IGenerationsRepository,
+        banditService: IBanditService,
     ) {
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
-        this._templatesService = templatesService;
         this._transformService = transformService;
         this._generationsRepository = generationsRepository;
+        this._banditService = banditService;
     }
 
     /**
@@ -46,16 +46,14 @@ export class MemesService implements IMemesService {
      *
      * @author Kyrylo Maliuha
      */
-    public async generateMeme(
-        data: MemeGenerationJob,
-    ): Promise<MemeGenerationResult> {
+    public async generateMeme(data: MemeGenerationJob): Promise<MemeGenerationResult> {
         const startTime: number = performance.now();
 
         let { template } = data;
-        const { channelId } = data;
+        const { channelId, userId } = data;
 
         if (!template) {
-            template = this._templatesService.getRandomTemplate();
+            template = await this._banditService.selectTemplate(channelId, userId);
         }
 
         if (!template) {
@@ -64,8 +62,7 @@ export class MemesService implements IMemesService {
 
         const templateTime: number = performance.now();
 
-        const props: TemplateProps | undefined =
-            await this.getMemeTemplateContext(template, channelId);
+        const props: TemplateProps | undefined = await this.getMemeTemplateContext(template, channelId);
 
         if (!props) {
             throw new Error();
@@ -73,36 +70,27 @@ export class MemesService implements IMemesService {
 
         const contextTime: number = performance.now();
 
-        const svg: string | undefined =
-            await this._memesRepository.generateMeme(template, props);
+        const svg: string | undefined = await this._memesRepository.generateMeme(template, props);
 
         if (!svg) {
             throw new Error();
         }
 
-        const png: Buffer = this._memesRepository.convertIntoBuffer(
-            svg,
-            template.width,
-        );
+        const png: Buffer = this._memesRepository.convertIntoBuffer(svg, template.width);
 
         const renderTime: number = performance.now();
 
-        const generationId: number = await this._generationsRepository.add(
-            channelId,
-            template.id,
-            new Date(),
-        );
+        const generationId: number = await this._generationsRepository.add(channelId, template.id, new Date());
 
         const insertTime: number = performance.now();
 
         analytics.capture({
             event: "meme_generated",
-            distinctId: data.userId,
+            distinctId: userId,
             properties: {
                 generationId: generationId,
                 templateId: template.id,
                 templateName: template.name,
-                templateWeight: template.weight,
 
                 templateMs: templateTime - startTime,
                 contextMs: contextTime - templateTime,
@@ -135,23 +123,13 @@ export class MemesService implements IMemesService {
      *
      * @author Kyrylo Maliuha
      */
-    public async getMemeTemplateContext(
-        template: Template,
-        channelId: string,
-    ): Promise<TemplateProps | undefined> {
+    public async getMemeTemplateContext(template: Template, channelId: string): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
 
-        const channelTexts: string[] =
-            await this._messagesRepository.getMessagesContentByChannelId(
-                channelId,
-            );
+        const channelTexts: string[] = await this._messagesRepository.getMessagesContentByChannelId(channelId);
 
-        const channelImages: string[] =
-            await this._imagesRepository.getImagesByChannelId(
-                channelId,
-                new Date(),
-            );
+        const channelImages: string[] = await this._imagesRepository.getImagesByChannelId(channelId, new Date());
 
         if (!templateImages || !templateTexts) {
             return undefined;
@@ -163,10 +141,7 @@ export class MemesService implements IMemesService {
 
         return {
             images: channelImages.slice(0, templateImages.length),
-            texts: await this._transformService.transformIntoMultipleTexts(
-                channelTexts,
-                templateTexts.length,
-            ),
+            texts: await this._transformService.transformIntoMultipleTexts(channelTexts, templateTexts.length),
         };
     }
 }
