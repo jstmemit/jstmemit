@@ -30,6 +30,18 @@ export const tf2Hahaha: Template = {
             />
             <img
                 src={images[0]}
+                width={500}
+                height={500}
+                style={{
+                    position: "absolute",
+                    top: 50,
+                    left: 400,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[1]}
                 width={350}
                 height={350}
                 style={{
@@ -41,7 +53,7 @@ export const tf2Hahaha: Template = {
                 }}
             />
             <img
-                src={images[1]}
+                src={images[0]}
                 width={350}
                 height={350}
                 style={{
@@ -55,10 +67,11 @@ export const tf2Hahaha: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 953,
-                    top: 87,
-                    width: 520,
-                    height: 693,
+                    right: 0,
+                    top: 0,
+                    width: "40%",
+                    height: "50%",
+                    margin: "10px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
