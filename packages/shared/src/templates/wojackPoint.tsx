@@ -39,10 +39,12 @@ export const wojackPoint: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 164,
-                    top: 358,
-                    width: 205,
-                    height: 128,
+                    left: "55%",
+                    bottom: 0,
+                    transform: "translateX(-50%)",
+                    padding: "15px",
+                    width: "40%",
+                    height: "auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

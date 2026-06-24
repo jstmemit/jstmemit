@@ -8,8 +8,8 @@ export const disappointedGuy: Template = {
     width: 775,
     height: 500,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 12 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 12 },
+        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
+        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -33,7 +33,7 @@ export const disappointedGuy: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    width: "50%",
+                    width: "60%",
                     height: "50%",
                     padding: "15px",
                     display: "flex",
@@ -53,7 +53,7 @@ export const disappointedGuy: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    width: "50%",
+                    width: "60%",
                     height: "50%",
                     padding: "15px",
                     display: "flex",

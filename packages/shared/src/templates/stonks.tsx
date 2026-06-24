@@ -39,10 +39,11 @@ export const stonks: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 205,
-                    top: 85,
-                    width: 154,
-                    height: 58,
+                    right: 0,
+                    bottom: "60%",
+                    width: "50%",
+                    padding: "15px",
+                    height: "auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

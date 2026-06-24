@@ -34,10 +34,11 @@ export const buzz: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 80,
-                    top: 408,
-                    width: 640,
-                    height: 136,
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -64,10 +64,11 @@ export const cowLookingIntoOcean: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 40,
-                    top: 246,
-                    width: 322,
-                    height: 88,
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -49,7 +49,7 @@ export const bearArrest: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    textAlign: "center",
+                    textAlign: "start",
                     fontFamily: "Comic Sans MS",
                     fontSize: 40,
                     lineHeight: 1.05,
