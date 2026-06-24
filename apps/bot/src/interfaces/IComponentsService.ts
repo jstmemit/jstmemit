@@ -9,4 +9,6 @@ export abstract class IComponentsService {
     public abstract getSettingsHeaderMessageComponent(isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(frequency: number, useAvatarsInMemes: boolean): ContainerBuilder;
     public abstract getSettingsFooterMessageComponent(): ContainerBuilder;
+    public abstract getDeleteDataButtonsComponent(): ActionRowBuilder<ButtonBuilder>;
+    public abstract getDeleteDataConfirmationMessageComponent(): ContainerBuilder;
 }

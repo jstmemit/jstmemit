@@ -17,8 +17,7 @@ export class EventsController implements IEventsController {
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
-    private readonly _isProduction: boolean =
-        env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
+    private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
         contextController: IContextController,
@@ -75,26 +74,18 @@ export class EventsController implements IEventsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleInteractionCreate(
-        interaction: Interaction,
-    ): Promise<void> {
+    public async handleInteractionCreate(interaction: Interaction): Promise<void> {
         // chat commands
         if (interaction.isChatInputCommand()) {
             switch (interaction.commandName) {
                 case "meme":
-                    await this._memesController.handleMemeInteraction(
-                        interaction,
-                    );
+                    await this._memesController.handleMemeInteraction(interaction);
                     break;
                 case "enable":
-                    await this._channelsController.handleEnableInteraction(
-                        interaction,
-                    );
+                    await this._channelsController.handleEnableInteraction(interaction);
                     break;
                 case "settings":
-                    await this._settingsController.handleSettingsInteraction(
-                        interaction,
-                    );
+                    await this._settingsController.handleSettingsInteraction(interaction);
                     break;
             }
         }
@@ -102,33 +93,25 @@ export class EventsController implements IEventsController {
         // buttons
         if (interaction.isButton()) {
             const id: string | undefined = interaction.customId.split(":")[1];
-            const customId: string =
-                interaction.customId.split(":")[0] || interaction.customId;
+            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
 
             switch (customId) {
                 case "meme":
-                    await this._memesController.handleMemeInteraction(
-                        interaction,
-                    );
+                    await this._memesController.handleMemeInteraction(interaction);
                     break;
                 case "like":
                 case "dislike":
-                    await this._ratingsController.handleRatingInteraction(
-                        interaction,
-                        customId,
-                        Number(id),
-                    );
+                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
                     break;
                 case "enable":
                 case "disable":
-                    await this._channelsController.handleEnableInteraction(
-                        interaction,
-                    );
+                    await this._channelsController.handleEnableInteraction(interaction);
                     break;
                 case "settings":
-                    await this._settingsController.handleSettingsInteraction(
-                        interaction,
-                    );
+                    await this._settingsController.handleSettingsInteraction(interaction);
+                    break;
+                case "delete-data":
+                    await this._settingsController.handleDeleteDataInteraction(interaction);
                     break;
             }
         }
@@ -137,14 +120,10 @@ export class EventsController implements IEventsController {
         if (interaction.isStringSelectMenu()) {
             switch (interaction.customId) {
                 case "frequency":
-                    await this._settingsController.handleFrequencySelect(
-                        interaction,
-                    );
+                    await this._settingsController.handleFrequencySelect(interaction);
                     break;
                 case "avatar":
-                    await this._settingsController.handleUserAvatarsSelect(
-                        interaction,
-                    );
+                    await this._settingsController.handleUserAvatarsSelect(interaction);
                     break;
             }
         }

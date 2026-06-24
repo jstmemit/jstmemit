@@ -113,6 +113,39 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for confirming deleting all data
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDeleteDataConfirmationMessageComponent(): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🗑️ Delete all data for this channel?`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",
+                ),
+            );
+    }
+
+    /**
+     * Returns back a row with cancel and delete data buttons
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDeleteDataButtonsComponent(): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder().setStyle(ButtonStyle.Secondary).setLabel(`Cancel`).setCustomId(`settings`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Danger)
+                    .setLabel(`Delete all data`)
+                    .setCustomId(`delete-data-confirm`),
+            );
+    }
+
+    /**
      * Returns back a message component for header of the /settings command.
      *
      * @param isEnabled
