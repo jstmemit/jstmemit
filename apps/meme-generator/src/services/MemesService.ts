@@ -62,7 +62,7 @@ export class MemesService implements IMemesService {
         }
 
         if (!template) {
-            throw new Error();
+            throw new Error("No template");
         }
 
         const templateTime: number = performance.now();
@@ -70,7 +70,7 @@ export class MemesService implements IMemesService {
         const props: TemplateProps | undefined = await this.getMemeTemplateContext(template, channelId);
 
         if (!props) {
-            throw new Error();
+            throw new Error("No props");
         }
 
         const contextTime: number = performance.now();
@@ -78,7 +78,7 @@ export class MemesService implements IMemesService {
         const svg: string | undefined = await this._memesRepository.generateMeme(template, props);
 
         if (!svg) {
-            throw new Error();
+            throw new Error("No svg");
         }
 
         const png: Buffer = this._memesRepository.convertIntoBuffer(svg, template.width);
