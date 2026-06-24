@@ -7,8 +7,6 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
-import type { ITemplatesService } from "#/interfaces/ITemplatesService.ts";
-import { TemplatesService } from "#/services/TemplatesService.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository.ts";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository.ts";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
@@ -44,7 +42,6 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // templates
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
 // transform
 const markovProvider: ITransformProvider = new MarkovProvider();
@@ -54,8 +51,8 @@ const transformService: ITransformService = new TransformService(markovProvider)
 const generationsRepository: IGenerationsRepository = new GenerationsRepository();
 
 // bandit
-const banditRepository: IBanditRepository = new BanditRepository();
-const banditService: IBanditService = new BanditService(banditRepository, templatesRepository, templatesService);
+export const banditRepository: IBanditRepository = new BanditRepository();
+const banditService: IBanditService = new BanditService(banditRepository, templatesRepository);
 
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);

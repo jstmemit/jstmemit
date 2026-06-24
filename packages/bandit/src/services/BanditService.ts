@@ -1,6 +1,5 @@
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IBanditService } from "#/interfaces/IBanditService.ts";
-import type { ITemplatesService } from "@jstmemit/meme-generator/interfaces/ITemplatesService";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
 import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
@@ -9,20 +8,14 @@ import type { RatingKind } from "@jstmemit/shared/models/RatingKind";
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
     private readonly _templatesRepository: ITemplatesRepository;
-    private readonly _templatesService: ITemplatesService;
 
     private readonly priorStrength: number = 4;
     private readonly likeWeight: number = 1;
     private readonly dislikeWeight: number = 1;
 
-    public constructor(
-        banditRepository: IBanditRepository,
-        templatesRepository: ITemplatesRepository,
-        templatesService: ITemplatesService,
-    ) {
+    public constructor(banditRepository: IBanditRepository, templatesRepository: ITemplatesRepository) {
         this._banditRepository = banditRepository;
         this._templatesRepository = templatesRepository;
-        this._templatesService = templatesService;
     }
 
     public async selectTemplate(channelId: string, userId?: string): Promise<Template | undefined> {
@@ -74,7 +67,8 @@ export class BanditService implements IBanditService {
         } catch (error) {
             console.error(error);
 
-            return this._templatesService.getRandomTemplate();
+            const templates: Template[] = this._templatesRepository.getAll();
+            return templates[0];
         }
     }
 
