@@ -2,13 +2,13 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const isThisAPigeon: Template = {
-    id: 7,
-    name: "isThisAPigeon",
-    width: 1587,
-    height: 1425,
-    texts: [{ id: 0, description: "question", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "the thing in place of the butterfly" }],
+export const stonks1: Template = {
+    id: 15,
+    name: "stonks1",
+    width: 512,
+    height: 386,
+    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 5 }],
+    images: [{ id: 0, description: "stonks guy`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -16,37 +16,38 @@ export const isThisAPigeon: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/isthisapigeon.png"
-                width={1587}
-                height={1425}
+                src="https://files.wideunits.nl/jstmemit/images/templates/stonks-without-stonks.jpg"
+                width={512}
+                height={386}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={600}
-                height={600}
-                style={{ position: "absolute", top: 120, right: 15, borderRadius: "100%", objectFit: "cover" }}
+                width={150}
+                height={150}
+                style={{ position: "absolute", top: 20, left: 40, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 159,
-                    top: 1069,
-                    width: 1270,
-                    height: 356,
+                    right: 0,
+                    bottom: 0,
+                    width: "50%",
+                    height: "50%",
+                    margin: "10px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 150,
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 26,
                     lineHeight: 1.05,
                     color: "#ffffff",
-                    WebkitTextStrokeWidth: 10,
+                    WebkitTextStrokeWidth: 4,
                     WebkitTextStrokeColor: "#000000",
                 }}
             >

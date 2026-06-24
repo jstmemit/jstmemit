@@ -15,6 +15,7 @@ import { tf2Hahaha } from "#/templates/tf2Hahaha.tsx";
 import { yesChad } from "#/templates/yesChad.tsx";
 import { quote } from "#/templates/quote.tsx";
 import { stonks } from "#/templates/stonks.tsx";
+import { stonks1 } from "#/templates/stonks1.tsx";
 import { missingPiece } from "#/templates/missingPiece.tsx";
 import { newsReporterSitting } from "#/templates/newsReporterSitting.tsx";
 import { sleepyThinking } from "#/templates/sleepyThinking.tsx";
@@ -50,6 +51,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             yesChad,
             quote,
             stonks,
+            stonks1,
             missingPiece,
             newsReporterSitting,
             sleepyThinking,
