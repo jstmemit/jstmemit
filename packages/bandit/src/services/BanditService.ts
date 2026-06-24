@@ -1,5 +1,5 @@
 import type { Template } from "@jstmemit/shared/models/Template";
-import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import type { IBanditService } from "#/interfaces/IBanditService.ts";
 import type { ITemplatesService } from "@jstmemit/meme-generator/interfaces/ITemplatesService";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
@@ -52,16 +52,16 @@ export class BanditService implements IBanditService {
             let bestSample: number = -1;
 
             for (const template of templates) {
-                const g: BanditStat = globalById.get(template.id) ?? this._zero(template.id);
-                const c: BanditStat = channelById.get(template.id) ?? this._zero(template.id);
-                const u: BanditStat | undefined = userById.get(template.id);
+                const global: BanditStat = globalById.get(template.id) ?? this._zero(template.id);
+                const channel: BanditStat = channelById.get(template.id) ?? this._zero(template.id);
+                const user: BanditStat | undefined = userById.get(template.id);
 
-                const globalMean: number = (1 + g.successes) / (2 + g.successes + g.failures);
+                const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
 
                 const k: number = this.priorStrength;
 
-                const alpha: number = 1 + k * globalMean + c.successes + (u?.successes ?? 0);
-                const beta: number = 1 + k * (1 - globalMean) + c.failures + (u?.failures ?? 0);
+                const alpha: number = 1 + k * globalMean + channel.successes + (user?.successes ?? 0);
+                const beta: number = 1 + k * (1 - globalMean) + channel.failures + (user?.failures ?? 0);
 
                 const sample: number = this._sampleBeta(alpha, beta);
 
