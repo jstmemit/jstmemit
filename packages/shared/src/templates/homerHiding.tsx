@@ -27,23 +27,35 @@ export const homerHiding: Template = {
             />
             <img
                 src={images[0]}
-                width={120}
-                height={120}
-                style={{ position: "absolute", top: 35, left: 120, borderRadius: "100%", objectFit: "cover" }}
+                width={130}
+                height={130}
+                style={{ position: "absolute", top: 35, left: 110, borderRadius: "100%", objectFit: "cover" }}
             />
             <img
                 src={images[0]}
                 width={120}
                 height={120}
-                style={{ position: "absolute", top: 40, left: 430, borderRadius: "100%", objectFit: "cover" }}
+                style={{ position: "absolute", top: 40, left: 425, borderRadius: "100%", objectFit: "cover" }}
+            />
+            <img
+                src={images[0]}
+                width={120}
+                height={120}
+                style={{ position: "absolute", bottom: 110, left: 120, borderRadius: "100%", objectFit: "cover" }}
+            />
+            <img
+                src={images[0]}
+                width={100}
+                height={100}
+                style={{ position: "absolute", bottom: 110, left: 425, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 60,
-                    top: 450,
-                    width: 480,
-                    height: 120,
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
