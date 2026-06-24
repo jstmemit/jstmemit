@@ -51,16 +51,16 @@ export class BanditService implements IBanditService {
             let bestSample: number = -1;
 
             for (const template of templates) {
-                const global: BanditStat = globalById.get(template.id) ?? this._zero(template.id);
-                const channel: BanditStat = channelById.get(template.id) ?? this._zero(template.id);
-                const user: BanditStat | undefined = userById.get(template.id);
+                const global: BanditStat = globalById.get(template.id) || this._zero(template.id);
+                const channel: BanditStat = channelById.get(template.id) || this._zero(template.id);
+                const user: BanditStat = userById.get(template.id) || this._zero(template.id);
 
+                // how popular the template is overall
                 const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
 
-                const k: number = this.priorStrength;
-
-                const alpha: number = 1 + k * globalMean + channel.successes + (user?.successes ?? 0);
-                const beta: number = 1 + k * (1 - globalMean) + channel.failures + (user?.failures ?? 0);
+                // alpha value for positive activity, beta for negative
+                const alpha: number = 1 + this.priorStrength * globalMean + channel.successes + user.successes;
+                const beta: number = 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures;
 
                 const sample: number = this._sampleBeta(alpha, beta);
 
@@ -98,11 +98,13 @@ export class BanditService implements IBanditService {
         userId?: string,
     ): Promise<void> {
         try {
+            // always adds activity to global and channel scope
             const writes: Promise<boolean>[] = [
                 this._banditRepository.addReward("global", "*", templateId, deltaSuccess, deltaFailure),
                 this._banditRepository.addReward("channel", channelId, templateId, deltaSuccess, deltaFailure),
             ];
 
+            // if userId is provided then also adds it for the user
             if (userId) {
                 writes.push(this._banditRepository.addReward("user", userId, templateId, deltaSuccess, deltaFailure));
             }
