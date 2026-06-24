@@ -10,6 +10,4 @@ export abstract class IBanditService {
         rating: RatingKind,
         userId?: string,
     ): Promise<void>;
-
-    public abstract recordRegenerate(channelId: string, templateId: number, userId?: string): Promise<void>;
 }

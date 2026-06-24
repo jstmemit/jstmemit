@@ -14,7 +14,6 @@ export class BanditService implements IBanditService {
     private readonly priorStrength: number = 4;
     private readonly likeWeight: number = 1;
     private readonly dislikeWeight: number = 1;
-    private readonly regenerateWeight: number = 1;
 
     public constructor(
         banditRepository: IBanditRepository,
@@ -89,14 +88,6 @@ export class BanditService implements IBanditService {
         const failure: number = rating === "dislike" ? this.dislikeWeight : 0;
 
         await this._writeAllScopes(channelId, templateId, success, failure, userId);
-    }
-
-    public async recordRegenerate(channelId: string, templateId: number, userId?: string): Promise<void> {
-        if (this.regenerateWeight <= 0) {
-            return;
-        }
-
-        await this._writeAllScopes(channelId, templateId, this.regenerateWeight, 0, userId);
     }
 
     private async _writeAllScopes(

@@ -43,10 +43,6 @@ export class MemesController implements IMemesController {
     public async handleMemeInteraction(interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> {
         await interaction.deferReply();
 
-        // if (interaction.isButton()) {
-        //     await this._banditService.recordRegenerate(interaction.channelId, , interaction.user.id);
-        // }
-
         const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
             "meme-generation",
             {
