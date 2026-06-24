@@ -113,6 +113,21 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for a "missing permissions" error
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMissingPermissionsMessageComponent(): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔒 You don't have permission for that`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Only members with the **Manage Server** permission can change Jstmemit's settings. Ask a server admin if you need this changed.`,
+                ),
+            );
+    }
+
+    /**
      * Returns back a message component for confirming deleting all data
      *
      * @author Kyrylo Maliuha

@@ -8,6 +8,7 @@ import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
+import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
 
 const env = Env.parse(process.env);
 
@@ -77,10 +78,21 @@ export class EventsController implements IEventsController {
     public async handleInteractionCreate(interaction: Interaction): Promise<void> {
         // chat commands
         if (interaction.isChatInputCommand()) {
+            // without permissions
             switch (interaction.commandName) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
                     break;
+            }
+
+            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
+                await respondMissingPermissions(interaction);
+
+                return;
+            }
+
+            // only with permissions
+            switch (interaction.commandName) {
                 case "enable":
                     await this._channelsController.handleEnableInteraction(interaction);
                     break;
@@ -95,6 +107,24 @@ export class EventsController implements IEventsController {
             const id: string | undefined = interaction.customId.split(":")[1];
             const customId: string = interaction.customId.split(":")[0] || interaction.customId;
 
+            // without permissions
+            switch (customId) {
+                case "meme":
+                    await this._memesController.handleMemeInteraction(interaction);
+                    break;
+                case "like":
+                case "dislike":
+                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
+                    break;
+            }
+
+            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
+                await respondMissingPermissions(interaction);
+
+                return;
+            }
+
+            // only with permissions
             switch (customId) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
@@ -121,6 +151,12 @@ export class EventsController implements IEventsController {
 
         // string select menu
         if (interaction.isStringSelectMenu()) {
+            if (interaction?.memberPermissions?.missing("ManageChannels", true)) {
+                await respondMissingPermissions(interaction);
+
+                return;
+            }
+
             switch (interaction.customId) {
                 case "frequency":
                     await this._settingsController.handleFrequencySelect(interaction);
