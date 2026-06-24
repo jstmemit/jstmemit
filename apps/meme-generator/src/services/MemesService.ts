@@ -153,7 +153,7 @@ export class MemesService implements IMemesService {
 
         return {
             images: channelImages.slice(0, templateImages.length),
-            texts: await this._transformService.transformIntoMultipleTexts(channelTexts, templateTexts.length),
+            texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         };
     }
 }
