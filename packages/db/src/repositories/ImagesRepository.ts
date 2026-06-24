@@ -56,4 +56,26 @@ export class ImagesRepository extends IImagesRepository {
             return [];
         }
     }
+
+    public async getAvatarsByChannelId(channelId: string, timestamp: Date, limit: number = 100): Promise<string[]> {
+        try {
+            const avatars = await db
+                .select()
+                .from(imagesTable)
+                .where(
+                    and(
+                        eq(imagesTable.channelId, channelId),
+                        eq(imagesTable.source, "avatar"),
+                        or(isNull(imagesTable.expiresAt), gt(imagesTable.expiresAt, timestamp)),
+                    ),
+                )
+                .orderBy(sql`random()`)
+                .limit(limit);
+
+            return avatars.map((avatar) => avatar.imageUrl);
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
 }

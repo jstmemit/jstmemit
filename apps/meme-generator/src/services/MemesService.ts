@@ -12,6 +12,8 @@ import type { ITransformService } from "#/interfaces/ITransformService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
+import type { channelsTable } from "@jstmemit/db/schema.ts";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;
@@ -20,6 +22,7 @@ export class MemesService implements IMemesService {
     private readonly _transformService: ITransformService;
     private readonly _generationsRepository: IGenerationsRepository;
     private readonly _banditService: IBanditService;
+    private readonly _channelsRepository: IChannelsRepository;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -28,6 +31,7 @@ export class MemesService implements IMemesService {
         transformService: ITransformService,
         generationsRepository: IGenerationsRepository,
         banditService: IBanditService,
+        channelsRepository: IChannelsRepository,
     ) {
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
@@ -35,6 +39,7 @@ export class MemesService implements IMemesService {
         this._transformService = transformService;
         this._generationsRepository = generationsRepository;
         this._banditService = banditService;
+        this._channelsRepository = channelsRepository;
     }
 
     /**
@@ -126,10 +131,17 @@ export class MemesService implements IMemesService {
     public async getMemeTemplateContext(template: Template, channelId: string): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
+        const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsRepository.get(channelId);
 
         const channelTexts: string[] = await this._messagesRepository.getMessagesContentByChannelId(channelId);
 
         const channelImages: string[] = await this._imagesRepository.getImagesByChannelId(channelId, new Date());
+
+        if (channel && channel?.useAvatarsInMemes) {
+            const avatars: string[] = await this._imagesRepository.getAvatarsByChannelId(channelId, new Date());
+
+            channelImages.push(...avatars);
+        }
 
         if (!templateImages || !templateTexts) {
             return undefined;
