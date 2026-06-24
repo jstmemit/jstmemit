@@ -1,7 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
+import { and, eq, gt, isNull, ne, or, sql } from "drizzle-orm";
 
 export class ImagesRepository extends IImagesRepository {
     public async new(
@@ -35,11 +35,7 @@ export class ImagesRepository extends IImagesRepository {
         }
     }
 
-    public async getImagesByChannelId(
-        channelId: string,
-        timestamp: Date,
-        limit: number = 100,
-    ): Promise<string[]> {
+    public async getImagesByChannelId(channelId: string, timestamp: Date, limit: number = 100): Promise<string[]> {
         try {
             const images = await db
                 .select()
@@ -47,10 +43,8 @@ export class ImagesRepository extends IImagesRepository {
                 .where(
                     and(
                         eq(imagesTable.channelId, channelId),
-                        or(
-                            isNull(imagesTable.expiresAt),
-                            gt(imagesTable.expiresAt, timestamp),
-                        ),
+                        ne(imagesTable.source, "avatar"),
+                        or(isNull(imagesTable.expiresAt), gt(imagesTable.expiresAt, timestamp)),
                     ),
                 )
                 .orderBy(sql`random()`)
