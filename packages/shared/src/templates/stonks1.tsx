@@ -5,9 +5,9 @@ import * as React from "react";
 export const stonks1: Template = {
     id: 15,
     name: "stonks1",
-    width: 512,
-    height: 386,
-    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 5 }],
+    width: 1858,
+    height: 1304,
+    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "stonks guy`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -21,15 +21,15 @@ export const stonks1: Template = {
         >
             <img
                 src="https://files.wideunits.nl/jstmemit/images/templates/stonks-without-stonks.jpg"
-                width={512}
-                height={386}
+                width={1858}
+                height={1304}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={150}
-                height={150}
-                style={{ position: "absolute", top: 20, left: 40, borderRadius: "100%", objectFit: "cover" }}
+                width={500}
+                height={500}
+                style={{ position: "absolute", top: 60, left: 160, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
@@ -44,7 +44,7 @@ export const stonks1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     fontFamily: "Comic Sans MS",
-                    fontSize: 26,
+                    fontSize: 100,
                     lineHeight: 1.05,
                     color: "#ffffff",
                     WebkitTextStrokeWidth: 4,
