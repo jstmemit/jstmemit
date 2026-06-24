@@ -29,7 +29,7 @@ export const isThisAPigeon: Template = {
                 src={images[0]}
                 width={600}
                 height={600}
-                style={{ position: "absolute", top: 130, left: 1000, borderRadius: "100%", objectFit: "cover" }}
+                style={{ position: "absolute", top: 120, right: 15, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
