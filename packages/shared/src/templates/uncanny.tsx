@@ -31,11 +31,12 @@ export const uncanny: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 95,
-                    top: 350,
-                    width: 250,
-                    height: 125,
+                    left: 0,
+                    bottom: 0,
+                    width: "50%",
+                    height: "auto",
                     display: "flex",
+                    padding: "15px",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
@@ -52,10 +53,11 @@ export const uncanny: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 608,
-                    top: 350,
-                    width: 250,
-                    height: 125,
+                    left: "50%",
+                    bottom: 0,
+                    width: "50%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

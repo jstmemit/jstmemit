@@ -39,10 +39,10 @@ export const missingPiece: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 500,
-                    top: 225,
-                    width: 205,
-                    height: 128,
+                    right: 0,
+                    bottom: "40%",
+                    width: "40%",
+                    height: "auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

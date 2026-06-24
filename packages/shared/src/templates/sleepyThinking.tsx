@@ -39,7 +39,8 @@ export const sleepyThinking: Template = {
             <div
                 style={{
                     position: "absolute",
-                    bottom: 20,
+                    bottom: 0,
+                    padding: "15px",
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",

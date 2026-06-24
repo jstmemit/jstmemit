@@ -42,8 +42,10 @@ export const newsReporterSitting: Template = {
             <div
                 style={{
                     position: "absolute",
-                    top: 10,
+                    top: 0,
+                    padding: "15px",
                     width: "100%",
+                    height: "auto",
                     display: "flex",
                     justifyContent: "center",
                     fontSize: 60,
@@ -60,8 +62,10 @@ export const newsReporterSitting: Template = {
             <div
                 style={{
                     position: "absolute",
-                    bottom: 20,
+                    bottom: 0,
+                    padding: "15px",
                     width: "100%",
+                    height: "auto",
                     display: "flex",
                     justifyContent: "center",
                     fontSize: 60,

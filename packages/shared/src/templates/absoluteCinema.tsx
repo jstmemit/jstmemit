@@ -7,7 +7,7 @@ export const absoluteCinema: Template = {
     name: "absoluteCinema",
     width: 1230,
     height: 1422,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 3 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
     images: [{ id: 0, description: "background" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -43,6 +43,7 @@ export const absoluteCinema: Template = {
                     position: "absolute",
                     left: 0,
                     top: 100,
+                    padding: "15px",
                     width: "100%",
                     height: "auto",
                     display: "flex",

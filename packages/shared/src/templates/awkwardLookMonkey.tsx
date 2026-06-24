@@ -7,7 +7,7 @@ export const awkwardLookMonkey: Template = {
     name: "awkwardLookMonkey",
     width: 750,
     height: 750,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
         <div

@@ -34,10 +34,11 @@ export const yesChad: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 150,
-                    top: 550,
-                    width: 420,
-                    height: 183,
+                    left: 0,
+                    bottom: 0,
+                    width: "50%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

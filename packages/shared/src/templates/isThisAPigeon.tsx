@@ -7,7 +7,7 @@ export const isThisAPigeon: Template = {
     name: "isThisAPigeon",
     width: 1587,
     height: 1425,
-    texts: [{ id: 0, description: "question", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "question", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "the thing in place of the butterfly" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -34,16 +34,17 @@ export const isThisAPigeon: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 159,
-                    top: 1069,
-                    width: 1270,
-                    height: 356,
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     fontFamily: "Impact",
-                    fontSize: 150,
+                    fontSize: 100,
                     lineHeight: 1.05,
                     color: "#ffffff",
                     WebkitTextStrokeWidth: 10,

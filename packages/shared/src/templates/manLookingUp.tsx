@@ -28,10 +28,11 @@ export const manLookingUp: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 66,
-                    top: 270,
-                    width: 529,
-                    height: 93,
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "auto",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

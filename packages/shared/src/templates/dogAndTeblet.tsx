@@ -41,9 +41,9 @@ export const dogAndTeblet: Template = {
                 style={{
                     position: "absolute",
                     left: "50%",
-                    top: 100,
+                    bottom: "30%",
                     width: "30%",
-                    height: "50%",
+                    height: "auto",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
