@@ -1,4 +1,4 @@
-# Jstmemit 🤖
+<h1 align="center">Jstmemit 🤖</h1>
 
 <p align="center">
     Discord bot that makes memes about whatever you're chatting about.<br>Talk about your failed boss raid, then get fresh memes about it, how fun is that?
