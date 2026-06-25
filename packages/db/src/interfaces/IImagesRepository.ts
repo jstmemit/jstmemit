@@ -8,9 +8,7 @@ export abstract class IImagesRepository {
         expiresAt?: Date,
     ): Promise<boolean>;
 
-    public abstract getImagesByChannelId(
-        channelId: string,
-        timestamp: Date,
-        limit?: number,
-    ): Promise<string[]>;
+    public abstract getImagesByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
+
+    public abstract getAvatarsByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
 }

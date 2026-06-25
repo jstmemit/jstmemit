@@ -4,12 +4,7 @@ import { and, count, eq, gte, lte, sql } from "drizzle-orm";
 import { db } from "../index.ts";
 
 export class MessagesRepository implements IMessagesRepository {
-    public async new(
-        messageId: string,
-        channelId: string,
-        content: string,
-        timestamp: Date,
-    ): Promise<boolean> {
+    public async new(messageId: string, channelId: string, content: string, timestamp: Date): Promise<boolean> {
         try {
             const message: typeof messagesTable.$inferInsert = {
                 messageId: messageId,
@@ -28,9 +23,7 @@ export class MessagesRepository implements IMessagesRepository {
         }
     }
 
-    public async getMessagesAmountByChannelId(
-        channelId: string,
-    ): Promise<number> {
+    public async getMessagesAmountByChannelId(channelId: string): Promise<number> {
         try {
             const messages = await db
                 .select({ amount: count(messagesTable.content) })
@@ -58,18 +51,8 @@ export class MessagesRepository implements IMessagesRepository {
                 .where(
                     and(
                         eq(messagesTable.channelId, channelId),
-                        minLength !== undefined
-                            ? gte(
-                                  sql`length(${messagesTable.content})`,
-                                  minLength,
-                              )
-                            : undefined,
-                        maxLength !== undefined
-                            ? lte(
-                                  sql`length(${messagesTable.content})`,
-                                  maxLength,
-                              )
-                            : undefined,
+                        minLength !== undefined ? gte(sql`length(${messagesTable.content})`, minLength) : undefined,
+                        maxLength !== undefined ? lte(sql`length(${messagesTable.content})`, maxLength) : undefined,
                     ),
                 )
                 .orderBy(sql`random()`)
@@ -80,6 +63,18 @@ export class MessagesRepository implements IMessagesRepository {
             console.error(error);
 
             return [];
+        }
+    }
+
+    public async deleteAllByChannelId(channelId: string): Promise<boolean> {
+        try {
+            await db.delete(messagesTable).where(eq(messagesTable.channelId, channelId));
+
+            return true;
+        } catch (error) {
+            console.error(error);
+
+            return false;
         }
     }
 }

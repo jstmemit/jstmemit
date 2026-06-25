@@ -81,8 +81,17 @@ export class MemesController implements IMemesController {
             //     },
             //   ],
             // });
-        } catch {
-            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(interaction.id);
+        } catch (error) {
+            let message: ContainerBuilder;
+            const reason: string = error instanceof Error ? error.message : "";
+
+            switch (reason) {
+                case "No props":
+                    message = this._componentsService.getNotEnoughContextMessageComponent(interaction.id);
+                    break;
+                default:
+                    message = this._componentsService.getErrorMessageComponent(interaction.id);
+            }
 
             await respond(interaction, [message]);
         }
