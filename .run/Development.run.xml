@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Generate (database)" type="js.build_tools.npm">
+  <configuration default="false" name="Development" type="js.build_tools.npm" folderName="Website">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="db:generate" />
+      <script value="website:dev" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Studio (database)" type="js.build_tools.npm">
+  <configuration default="false" name="Build" type="js.build_tools.npm" folderName="Website">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="db:studio" />
+      <script value="website:build" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

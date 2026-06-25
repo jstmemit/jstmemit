@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Migrate (database)" type="js.build_tools.npm">
+  <configuration default="false" name="Studio" type="js.build_tools.npm" folderName="Database">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="db:migrate" />
+      <script value="db:studio" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
