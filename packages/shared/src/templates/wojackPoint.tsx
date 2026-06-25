@@ -3,7 +3,7 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const wojackPoint: Template = {
-    id: 19,
+    id: 24,
     name: "wojackPoint",
     width: 512,
     height: 512,
@@ -39,10 +39,12 @@ export const wojackPoint: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 164,
-                    top: 358,
-                    width: 205,
-                    height: 128,
+                    left: "55%",
+                    bottom: 0,
+                    transform: "translateX(-50%)",
+                    padding: "15px",
+                    width: "40%",
+                    height: "auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

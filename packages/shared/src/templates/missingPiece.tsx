@@ -2,7 +2,7 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 
 export const missingPiece: Template = {
-    id: 16,
+    id: 21,
     name: "missingPiece",
     width: 783,
     height: 581,
@@ -39,10 +39,10 @@ export const missingPiece: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 500,
-                    top: 225,
-                    width: 205,
-                    height: 128,
+                    right: 0,
+                    bottom: "40%",
+                    width: "40%",
+                    height: "auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

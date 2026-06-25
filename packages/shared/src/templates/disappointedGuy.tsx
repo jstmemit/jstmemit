@@ -2,14 +2,14 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const uncanny: Template = {
-    id: 11,
-    name: "uncanny",
-    width: 950,
+export const disappointedGuy: Template = {
+    id: 17,
+    name: "disappointedGuy",
+    width: 775,
     height: 500,
     texts: [
-        { id: 0, description: "left caption", minLength: 1, maxLength: 4 },
-        { id: 1, description: "right caption", minLength: 1, maxLength: 4 },
+        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
+        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -23,8 +23,8 @@ export const uncanny: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
-                width={950}
+                src="https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy.jpg"
+                width={775}
                 height={500}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
@@ -32,20 +32,18 @@ export const uncanny: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
-                    width: "50%",
-                    height: "auto",
-                    display: "flex",
+                    top: 0,
+                    width: "60%",
+                    height: "50%",
                     padding: "15px",
+                    display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
                     lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    color: "#000000",
                 }}
             >
                 {texts[0]}
@@ -53,21 +51,19 @@ export const uncanny: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "50%",
+                    left: 0,
                     bottom: 0,
-                    width: "50%",
-                    height: "auto",
+                    width: "60%",
+                    height: "50%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
                     lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    color: "#000000",
                 }}
             >
                 {texts[1]}

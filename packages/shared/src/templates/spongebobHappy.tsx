@@ -3,7 +3,7 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const spongebobHappy: Template = {
-    id: 25,
+    id: 34,
     name: "spongebobHappy",
     width: 1199,
     height: 918,

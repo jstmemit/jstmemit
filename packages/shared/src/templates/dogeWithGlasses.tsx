@@ -2,12 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const manLookingUp: Template = {
-    id: 10,
-    name: "manLookingUp",
-    width: 661,
-    height: 372,
-    texts: [{ id: 0, description: "whispered phrase", minLength: 1, maxLength: 5 }],
+export const dogeWithGlasses: Template = {
+    id: 37,
+    name: "dogeWithGlasses",
+    width: 1024,
+    height: 777,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 16 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
         <div
@@ -16,33 +16,31 @@ export const manLookingUp: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: "Impact",
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/manlookingup.png"
-                width={661}
-                height={372}
+                src="https://files.wideunits.nl/jstmemit/images/templates/dogeWithGlasses.png"
+                width={1024}
+                height={777}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "100%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "20%",
+                    padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     fontFamily: "Comic Sans MS",
-                    fontSize: 50,
+                    fontSize: 40,
                     lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    color: "#000000",
                 }}
             >
                 {texts[0]}
