@@ -37,6 +37,28 @@ import { spongebobHappy } from "#/templates/spongebobHappy.tsx";
 import { worldsMostDangerousTrap } from "#/templates/worldsMostDangerousTrap.tsx";
 import { connor } from "#/templates/connor.tsx";
 import { dogeWithGlasses } from "#/templates/dogeWithGlasses.tsx";
+import { expandingBrain } from "#/templates/expandingBrain.tsx";
+import { expandingBrain1 } from "#/templates/expandingBrain1.tsx";
+import { explainingWhiteboard } from "#/templates/explainingWhiteboard.tsx";
+import { grokTwit } from "#/templates/grokTwit.tsx";
+import { iSteppedInShit } from "#/templates/iSteppedInShit.tsx";
+import { lookAtThis } from "#/templates/lookAtThis.tsx";
+import { moneyTonyStark } from "#/templates/moneyTonyStark.tsx";
+import { monkeyThinking } from "#/templates/monkeyThinking.tsx";
+import { mrMcMahonReaction } from "#/templates/mrMcMahonReaction.tsx";
+import { myHeartBlank } from "#/templates/myHeartBlank.tsx";
+import { myHonestReaction } from "#/templates/myHonestReaction.tsx";
+import { nerdDog } from "#/templates/nerdDog.tsx";
+import { owlStareAtYou } from "#/templates/owlStareAtYou.tsx";
+import { sadMan } from "#/templates/sadMan.tsx";
+import { spiderManDouble } from "#/templates/spiderManDouble.tsx";
+import { starTrekThinking } from "#/templates/starTrekThinking.tsx";
+import { tf2ScoutTalk } from "#/templates/tf2ScoutTalk.tsx";
+import { tryingToExplain } from "#/templates/tryingToExplain.tsx";
+import { willSmith } from "#/templates/willSmith.tsx";
+import { winnieThePooh } from "#/templates/winnieThePooh.tsx";
+import { winnieThePooh1 } from "#/templates/winnieThePooh1.tsx";
+import { womanYellingAtACat } from "#/templates/womanYellingAtACat.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -83,6 +105,28 @@ export class TemplatesRepository implements ITemplatesRepository {
             worldsMostDangerousTrap,
             connor,
             dogeWithGlasses,
+            expandingBrain,
+            expandingBrain1,
+            explainingWhiteboard,
+            grokTwit,
+            iSteppedInShit,
+            lookAtThis,
+            moneyTonyStark,
+            monkeyThinking,
+            mrMcMahonReaction,
+            myHeartBlank,
+            myHonestReaction,
+            nerdDog,
+            owlStareAtYou,
+            sadMan,
+            spiderManDouble,
+            starTrekThinking,
+            tf2ScoutTalk,
+            tryingToExplain,
+            willSmith,
+            winnieThePooh,
+            winnieThePooh1,
+            womanYellingAtACat,
         ];
     }
 }
