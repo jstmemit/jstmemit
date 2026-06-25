@@ -2,15 +2,16 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const disappointedGuy1: Template = {
-    id: 18,
-    name: "disappointedGuy1",
-    width: 850,
-    height: 1097,
+export const mrMcMahonReaction: Template = {
+    id: 46,
+    name: "mrMcMahonReaction",
+    width: 1000,
+    height: 1500,
     texts: [
         { id: 0, description: "text1", minLength: 1, maxLength: 8 },
         { id: 1, description: "text2", minLength: 1, maxLength: 8 },
         { id: 2, description: "text3", minLength: 1, maxLength: 8 },
+        { id: 3, description: "text4", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -24,9 +25,9 @@ export const disappointedGuy1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
-                width={850}
-                height={1097}
+                src="https://files.wideunits.nl/jstmemit/images/templates/mrMcMahonReaction.png"
+                width={1000}
+                height={1500}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
@@ -34,8 +35,8 @@ export const disappointedGuy1: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    width: "49%",
-                    height: "33%",
+                    width: "50%",
+                    height: "22%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
@@ -53,9 +54,9 @@ export const disappointedGuy1: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "33%",
-                    width: "49%",
-                    height: "33%",
+                    top: "22%",
+                    width: "50%",
+                    height: "25%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
@@ -73,9 +74,9 @@ export const disappointedGuy1: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "66%",
-                    width: "49%",
-                    height: "34%",
+                    top: "47%",
+                    width: "50%",
+                    height: "26%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
@@ -88,6 +89,26 @@ export const disappointedGuy1: Template = {
                 }}
             >
                 {texts[2]}
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "72%",
+                    width: "50%",
+                    height: "28%",
+                    padding: "15px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
+                    lineHeight: 1.05,
+                    color: "#000000",
+                }}
+            >
+                {texts[3]}
             </div>
         </div>
     ),

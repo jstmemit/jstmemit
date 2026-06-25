@@ -2,15 +2,15 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const disappointedGuy1: Template = {
-    id: 18,
-    name: "disappointedGuy1",
-    width: 850,
-    height: 1097,
+export const winnieThePooh1: Template = {
+    id: 58,
+    name: "winnieThePooh1",
+    width: 640,
+    height: 731,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
-        { id: 2, description: "text3", minLength: 1, maxLength: 8 },
+        { id: 0, description: "text1", minLength: 1, maxLength: 6 },
+        { id: 1, description: "text2", minLength: 1, maxLength: 6 },
+        { id: 2, description: "text3", minLength: 1, maxLength: 6 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -24,17 +24,17 @@ export const disappointedGuy1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
-                width={850}
-                height={1097}
+                src="https://files.wideunits.nl/jstmemit/images/templates/winnieThePooh1.jpg"
+                width={640}
+                height={731}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
+                    right: 0,
                     top: 0,
-                    width: "49%",
+                    width: "50%",
                     height: "33%",
                     padding: "15px",
                     display: "flex",
@@ -52,10 +52,10 @@ export const disappointedGuy1: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
+                    right: 0,
                     top: "33%",
-                    width: "49%",
-                    height: "33%",
+                    width: "50%",
+                    height: "35%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
@@ -72,10 +72,10 @@ export const disappointedGuy1: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
-                    top: "66%",
-                    width: "49%",
-                    height: "34%",
+                    right: 0,
+                    bottom: 0,
+                    width: "50%",
+                    height: "32%",
                     padding: "15px",
                     display: "flex",
                     alignItems: "center",
