@@ -15,8 +15,10 @@
 - <a href="#jstmemit-">Introduction</a>
 - <a href="#about-project">About project</a>
 - <a href="#how-to-run">How to run?</a>
+    - <a href="#using-docker-compose">Using docker compose</a>
 - <a href="#contribution">Contribution</a>
     - <a href="#setting-up-your-editor">Setting up your editor</a>
+        - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
 - <a href="#alternatives">Alternatives</a>
 - <a href="#questions-or-feedback">Questions or feedback?</a>
@@ -68,6 +70,35 @@ REDIS_PORT= # 6379
 docker compose up
 ```
 
+## Contribution
+
+Your meme templates and features are very welcome in this project, open a Pull Request with your changes to get them reviewed and merged.
+
+### Setting up your editor
+
+We recommend using [Webstorm](https://www.jetbrains.com/webstorm/) (or any other IDE) from [JetBrains](https://www.jetbrains.com/). This way all configuration scripts are already set to improve your development experience. However, you are free to use any code editor you like if it runs ESLint (with `--fix` on save) and Prettier.
+
+#### JetBrains/Webstorm
+
+Make sure your Code Quality Tools settings are as follows:
+
+**Settings:**
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint -> Automatic ESLint configuration
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint -> Run `eslint --fix` on save
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> JSHint -> Disable
+- Languages & Frameworks -> JavaScript -> Prettier -> Automatic Prettier configuration
+- Languages & Frameworks -> JavaScript -> Prettier -> Run on save
+- Languages & Frameworks -> JavaScript -> Prettier -> Run on paste
+- Languages & Frameworks -> JavaScript -> Prettier -> Prefer Prettier configuration to IDE code style
+
+There are also some useful extensions if you plan on contributing to more than meme templates:
+
+**Extensions:**
+- Astro
+- Rainbow Brackets
+- Tailwind Fold
+- Tailwind CSS Smart Completions
+- Docker
 
 ## License
 
