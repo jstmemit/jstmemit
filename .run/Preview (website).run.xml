@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Preview" type="js.build_tools.npm" folderName="Website">
+  <configuration default="false" name="Preview (website)" type="js.build_tools.npm" folderName="Website">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>

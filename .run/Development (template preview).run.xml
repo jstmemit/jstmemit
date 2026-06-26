@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build" type="js.build_tools.npm" folderName="Website">
+  <configuration default="false" name="Development (template preview)" type="js.build_tools.npm" folderName="Template preview">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="website:build" />
+      <script value="template-preview:dev" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
