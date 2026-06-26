@@ -20,8 +20,15 @@
     - <a href="#setting-up-your-editor">Setting up your editor</a>
         - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
+        - <a href="#textsimages">Texts/images</a>
+        - <a href="#render">Render</a>
+        - <a href="#fonts">Fonts</a>
+        - <a href="#layout">Layout</a>
+        - <a href="#test-your-template">Test your template</a>
+        - <a href="#done">Done!</a>
 - <a href="#alternatives">Alternatives</a>
 - <a href="#questions-or-feedback">Questions or feedback?</a>
+- <a href="#license">License</a>
 
 ## About project
 
@@ -99,6 +106,152 @@ There are also some useful extensions if you plan on contributing to more than m
 - Tailwind Fold
 - Tailwind CSS Smart Completions
 - Docker
+
+### Making new meme templates
+
+All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
+
+#### Texts/images
+
+Each template must say which slots it has inside. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
+```ts
+texts: [
+    { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+    { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+],
+images: [{ id: 0, description: "background" }]
+```
+
+Minimum and maximum length is set in amount of words.
+
+After that you can use them in your layout:
+```jsx
+<img
+    src={images[0]}
+    width={800}
+    height={800}
+    style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+/>
+```
+
+```jsx
+<div>{texts[0]}</div>
+```
+
+`element()` function will be always called with exact amount of texts and images as specified in the template.
+
+#### Render
+
+Your layout will be rendered into an image using [Satori](https://github.com/vercel/satori). This means that some of the CSS is not supported (such as `z-index`), each element needs to have its styles inline and `flex` is the only option for making layouts.
+
+#### Fonts
+
+Only Impact and Comic Sans MS are available.
+
+#### Layout
+
+**topBottomText.tsx**
+```ts
+import type { Template } from "#/models/Template.ts";
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import * as React from "react";
+
+export const topBottomText: Template = {
+    id: 1, // make sure this id is not taken
+    name: "topBottomText",
+    width: 800,
+    height: 800,
+    texts: [
+        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+    ],
+    images: [{ id: 0, description: "background" }],
+    element: ({ texts, images }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Comic Sans MS",
+                backgroundColor: "#000",
+            }}
+        >
+            <img
+                src={images[0]}
+                width={800}
+                height={800}
+                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    top: 10,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: 60,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    color: "white",
+                    WebkitTextStrokeWidth: 10,
+                    WebkitTextStrokeColor: "black",
+                    textAlign: "center",
+                }}
+            >
+                {texts[0]}
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: 20,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: 60,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    color: "white",
+                    WebkitTextStrokeWidth: 10,
+                    WebkitTextStrokeColor: "black",
+                    textAlign: "center",
+                }}
+            >
+                {texts[1]}
+            </div>
+        </div>
+    ),
+};
+```
+
+**TemplateRepository.ts**
+```ts
+// import your new template
+import { topBottomText } from "#/templates/topBottomText.tsx";
+
+public getAll(): Template[] {
+    return [
+        // return it together with others
+        topBottomText,
+    ]
+}
+```
+
+#### Test your template
+
+You can now check how your meme template behaves with different kinds of images and texts on the template preview website without starting up the bot.
+
+1. Start the development server
+```bash
+pnpm run template-preview:dev
+```
+
+2. Look at your template
+   <img width="450" alt="template preview" src="https://github.com/user-attachments/assets/5de59994-971b-4fd7-955b-9d6bd63d68c1" />
+
+#### Done!
+
+<img width="300" height="300" alt="meme" src="https://github.com/user-attachments/assets/644036eb-d15f-45fe-bb55-b39cf4d9bbfa" />
 
 ## License
 
