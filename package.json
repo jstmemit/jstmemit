@@ -11,7 +11,10 @@
         "meme-generator:start": "cd apps/meme-generator && pnpm start",
         "website:dev": "cd apps/website && pnpm run dev",
         "website:build": "cd apps/website && pnpm run build",
-        "website:run-build": "node ./apps/website/dist/server/entry.mjs"
+        "website:run-build": "node ./apps/website/dist/server/entry.mjs",
+        "template-preview:dev": "cd apps/template-preview && pnpm run dev",
+        "template-preview:build": "cd apps/template-preview && pnpm run build",
+        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs"
     },
     "devEngines": {
         "packageManager": {
