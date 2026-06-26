@@ -253,6 +253,14 @@ pnpm run template-preview:dev
 
 <img width="300" height="300" alt="meme" src="https://github.com/user-attachments/assets/644036eb-d15f-45fe-bb55-b39cf4d9bbfa" />
 
+## Alternatives
+
+Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages. It is really great and fun to have on your server.
+
+## Questions or feedback?
+
+If you have any questions or feedback please share them in our <a href="https://discord.gg/THRnn8fhkZ">Support server</a> or send via email to <a href="mailto:contact@jstmemit.com">contact@jstmemit.com</a>.
+
 ## License
 
 This project is licensed under the MIT License.
