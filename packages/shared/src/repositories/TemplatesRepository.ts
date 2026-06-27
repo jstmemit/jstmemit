@@ -59,6 +59,7 @@ import { willSmith } from "#/templates/willSmith.tsx";
 import { winnieThePooh } from "#/templates/winnieThePooh.tsx";
 import { winnieThePooh1 } from "#/templates/winnieThePooh1.tsx";
 import { womanYellingAtACat } from "#/templates/womanYellingAtACat.tsx";
+import { iInterviewedAnimals } from "#/templates/iInterviewedAnimals.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -127,6 +128,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             winnieThePooh,
             winnieThePooh1,
             womanYellingAtACat,
+            iInterviewedAnimals,
         ];
     }
 }
