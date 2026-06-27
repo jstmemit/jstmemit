@@ -60,6 +60,10 @@ import { winnieThePooh } from "#/templates/winnieThePooh.tsx";
 import { winnieThePooh1 } from "#/templates/winnieThePooh1.tsx";
 import { womanYellingAtACat } from "#/templates/womanYellingAtACat.tsx";
 import { iInterviewedAnimals } from "#/templates/iInterviewedAnimals.tsx";
+import { catIsCalling } from "#/templates/catIsCalling.tsx";
+import { spongebobShowsSign } from "#/templates/spongebobShowsSign.tsx";
+import { post } from "#/templates/post.tsx";
+import { fuckMyChudLife } from "#/templates/fuckMyChudLife.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -129,6 +133,10 @@ export class TemplatesRepository implements ITemplatesRepository {
             winnieThePooh1,
             womanYellingAtACat,
             iInterviewedAnimals,
+            catIsCalling,
+            spongebobShowsSign,
+            post,
+            fuckMyChudLife,
         ];
     }
 }
