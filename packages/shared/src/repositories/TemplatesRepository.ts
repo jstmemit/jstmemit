@@ -64,6 +64,11 @@ import { catIsCalling } from "#/templates/catIsCalling.tsx";
 import { spongebobShowsSign } from "#/templates/spongebobShowsSign.tsx";
 import { post } from "#/templates/post.tsx";
 import { fuckMyChudLife } from "#/templates/fuckMyChudLife.tsx";
+import { ukGovernmentToBanPeople } from "#/templates/ukGovernmentToBanPeople.tsx";
+import { bernieSandersLive } from "#/templates/bernieSandersLive.tsx";
+import { theyAllGoIntoSquareHole } from "#/templates/theyAllGoIntoSquareHole.tsx";
+import { purestCookie } from "#/templates/purestCookie.tsx";
+import { applyingForJobsWithFunnyPfp } from "#/templates/applyingForJobsWithFunnyPfp.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -137,6 +142,11 @@ export class TemplatesRepository implements ITemplatesRepository {
             spongebobShowsSign,
             post,
             fuckMyChudLife,
+            ukGovernmentToBanPeople,
+            bernieSandersLive,
+            theyAllGoIntoSquareHole,
+            purestCookie,
+            applyingForJobsWithFunnyPfp,
         ];
     }
 }
