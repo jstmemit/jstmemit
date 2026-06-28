@@ -25,6 +25,8 @@ import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepositor
 import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import { BanditService } from "@jstmemit/bandit/services/BanditService";
+import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
+import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
 
 const env = Env.parse(process.env);
 
@@ -54,6 +56,9 @@ const generationsRepository: IGenerationsRepository = new GenerationsRepository(
 export const banditRepository: IBanditRepository = new BanditRepository();
 const banditService: IBanditService = new BanditService(banditRepository, templatesRepository);
 
+// channels
+const channelsRepository: IChannelsRepository = new ChannelsRepository();
+
 // memes
 const memesRepository: IMemesRepository = new MemesRepository(fontsService);
 export const memesService: IMemesService = new MemesService(
@@ -63,4 +68,5 @@ export const memesService: IMemesService = new MemesService(
     transformService,
     generationsRepository,
     banditService,
+    channelsRepository,
 );

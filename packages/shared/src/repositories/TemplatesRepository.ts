@@ -59,6 +59,16 @@ import { willSmith } from "#/templates/willSmith.tsx";
 import { winnieThePooh } from "#/templates/winnieThePooh.tsx";
 import { winnieThePooh1 } from "#/templates/winnieThePooh1.tsx";
 import { womanYellingAtACat } from "#/templates/womanYellingAtACat.tsx";
+import { iInterviewedAnimals } from "#/templates/iInterviewedAnimals.tsx";
+import { catIsCalling } from "#/templates/catIsCalling.tsx";
+import { spongebobShowsSign } from "#/templates/spongebobShowsSign.tsx";
+import { post } from "#/templates/post.tsx";
+import { fuckMyChudLife } from "#/templates/fuckMyChudLife.tsx";
+import { ukGovernmentToBanPeople } from "#/templates/ukGovernmentToBanPeople.tsx";
+import { bernieSandersLive } from "#/templates/bernieSandersLive.tsx";
+import { theyAllGoIntoSquareHole } from "#/templates/theyAllGoIntoSquareHole.tsx";
+import { purestCookie } from "#/templates/purestCookie.tsx";
+import { applyingForJobsWithFunnyPfp } from "#/templates/applyingForJobsWithFunnyPfp.tsx";
 import { boykisserEnergy } from "#/templates/boykisserEnergy.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
@@ -128,6 +138,16 @@ export class TemplatesRepository implements ITemplatesRepository {
             winnieThePooh,
             winnieThePooh1,
             womanYellingAtACat,
+            iInterviewedAnimals,
+            catIsCalling,
+            spongebobShowsSign,
+            post,
+            fuckMyChudLife,
+            ukGovernmentToBanPeople,
+            bernieSandersLive,
+            theyAllGoIntoSquareHole,
+            purestCookie,
+            applyingForJobsWithFunnyPfp,
             boykisserEnergy,
         ];
     }

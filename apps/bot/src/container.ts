@@ -54,11 +54,11 @@ const memeGenerationQueueEvents: QueueEvents = new QueueEvents("meme-generation"
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 
 // components
-const componentsService: IComponentsService = new ComponentsService();
+export const componentsService: IComponentsService = new ComponentsService();
 
 // channels
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
-const channelsService: IChannelsService = new ChannelsService(channelsRepository);
+const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
 const channelsController: IChannelsController = new ChannelsController(
     channelsService,
     componentsService,

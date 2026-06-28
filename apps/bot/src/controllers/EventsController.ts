@@ -1,4 +1,4 @@
-import type { Guild } from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
 import { type Client, type Interaction, type Message } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -8,6 +8,7 @@ import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
+import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
 
 const env = Env.parse(process.env);
 
@@ -17,8 +18,7 @@ export class EventsController implements IEventsController {
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
-    private readonly _isProduction: boolean =
-        env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
+    private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
         contextController: IContextController,
@@ -75,26 +75,27 @@ export class EventsController implements IEventsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleInteractionCreate(
-        interaction: Interaction,
-    ): Promise<void> {
+    public async handleInteractionCreate(interaction: Interaction): Promise<void> {
         // chat commands
         if (interaction.isChatInputCommand()) {
+            // without permissions
             switch (interaction.commandName) {
                 case "meme":
-                    await this._memesController.handleMemeInteraction(
-                        interaction,
-                    );
+                    await this._memesController.handleMemeInteraction(interaction);
                     break;
+            }
+
+            if (await this._checkForMissingPermissions(interaction)) {
+                return;
+            }
+
+            // only with permissions
+            switch (interaction.commandName) {
                 case "enable":
-                    await this._channelsController.handleEnableInteraction(
-                        interaction,
-                    );
+                    await this._channelsController.handleEnableInteraction(interaction);
                     break;
                 case "settings":
-                    await this._settingsController.handleSettingsInteraction(
-                        interaction,
-                    );
+                    await this._settingsController.handleSettingsInteraction(interaction);
                     break;
             }
         }
@@ -102,49 +103,60 @@ export class EventsController implements IEventsController {
         // buttons
         if (interaction.isButton()) {
             const id: string | undefined = interaction.customId.split(":")[1];
-            const customId: string =
-                interaction.customId.split(":")[0] || interaction.customId;
+            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
 
+            // without permissions
             switch (customId) {
                 case "meme":
-                    await this._memesController.handleMemeInteraction(
-                        interaction,
-                    );
+                    await this._memesController.handleMemeInteraction(interaction);
                     break;
                 case "like":
                 case "dislike":
-                    await this._ratingsController.handleRatingInteraction(
-                        interaction,
-                        customId,
-                        Number(id),
-                    );
+                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
+                    break;
+            }
+
+            if (await this._checkForMissingPermissions(interaction)) {
+                return;
+            }
+
+            // only with permissions
+            switch (customId) {
+                case "meme":
+                    await this._memesController.handleMemeInteraction(interaction);
+                    break;
+                case "like":
+                case "dislike":
+                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
                     break;
                 case "enable":
                 case "disable":
-                    await this._channelsController.handleEnableInteraction(
-                        interaction,
-                    );
+                    await this._channelsController.handleEnableInteraction(interaction);
                     break;
                 case "settings":
-                    await this._settingsController.handleSettingsInteraction(
-                        interaction,
-                    );
+                    await this._settingsController.handleSettingsInteraction(interaction);
+                    break;
+                case "open-delete-data-confirmation":
+                    await this._settingsController.handleOpenDeleteDataConfirmationInteraction(interaction);
+                    break;
+                case "delete-data":
+                    await this._settingsController.handleDeleteDataInteraction(interaction);
                     break;
             }
         }
 
         // string select menu
         if (interaction.isStringSelectMenu()) {
+            if (await this._checkForMissingPermissions(interaction)) {
+                return;
+            }
+
             switch (interaction.customId) {
                 case "frequency":
-                    await this._settingsController.handleFrequencySelect(
-                        interaction,
-                    );
+                    await this._settingsController.handleFrequencySelect(interaction);
                     break;
                 case "avatar":
-                    await this._settingsController.handleUserAvatarsSelect(
-                        interaction,
-                    );
+                    await this._settingsController.handleUserAvatarsSelect(interaction);
                     break;
             }
         }
@@ -188,6 +200,30 @@ export class EventsController implements IEventsController {
                     guildCount: guild.client.guilds.cache.size,
                 },
             });
+        }
+    }
+
+    /**
+     * Checks if a user is missing Manage Server or Manage Channels permissions, then if
+     * he does it will send an error message and return true.
+     *
+     * @param interaction
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async _checkForMissingPermissions(
+        interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction,
+    ): Promise<boolean> {
+        if (
+            interaction?.memberPermissions?.has("ManageChannels", true) ||
+            interaction?.memberPermissions?.has("ManageGuild", true)
+        ) {
+            return false;
+        } else {
+            await respondMissingPermissions(interaction);
+
+            return true;
         }
     }
 }
