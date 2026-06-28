@@ -58,10 +58,10 @@ export const banditStatsTable = sqliteTable(
         id: int().primaryKey({ autoIncrement: true }),
         scope: text({ enum: ["global", "channel", "user"] }).notNull(),
         scopeId: text().notNull(),
-        templateId: int().notNull(),
+        templateName: text().notNull(),
         successes: real().notNull().default(0),
         failures: real().notNull().default(0),
         updatedAt: int({ mode: "timestamp" }).notNull(),
     },
-    (table) => [uniqueIndex("bandit_scope_template_idx").on(table.scope, table.scopeId, table.templateId)],
+    (table) => [uniqueIndex("bandit_scope_template_idx").on(table.scope, table.scopeId, table.templateName)],
 );
