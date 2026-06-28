@@ -73,6 +73,9 @@ import { boykisserEnergy } from "#/templates/boykisserEnergy.tsx";
 import { creativeMetaphor } from "#/templates/creativeMetaphor.tsx";
 import { britishCuisine } from "#/templates/britishCuisine.tsx";
 import { soGladIGrewUpWithThis } from "#/templates/soGladIGrewUpWithThis.tsx";
+import { bumperSticker } from "#/templates/bumperSticker.tsx";
+import { falklandWolf } from "#/templates/falklandWolf.tsx";
+import { pleaseBePatient } from "#/templates/pleaseBePatient.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -155,6 +158,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             creativeMetaphor,
             britishCuisine,
             soGladIGrewUpWithThis,
+            bumperSticker,
+            falklandWolf,
+            pleaseBePatient,
         ];
     }
 }
