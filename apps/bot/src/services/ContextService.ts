@@ -42,6 +42,10 @@ export class ContextService implements IContextService {
         attachments.forEach((attachment: Attachment): void => {
             const expiresAt: Date = this._getExpirationDate(attachment.proxyURL);
 
+            if (attachment.proxyURL.includes(".webp")) {
+                return;
+            }
+
             this._imagesRepository
                 .new(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
                 .catch((error): void => {
