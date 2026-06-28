@@ -7,7 +7,7 @@ export const britishCuisine: Template = {
     width: 883,
     height: 1025,
     texts: [
-        { id: 0, description: "Tag of the guy who said about British cuisine", minLength: 1, maxLength: 2 },
+        { id: 0, description: "Tag of the guy who said about British cuisine", minLength: 1, maxLength: 3 },
         {
             id: 1,
             description: "Tag of the guy who posted about the worst takeaway order of all times",
