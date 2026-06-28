@@ -13,7 +13,7 @@ const { template } = Astro.props;
 ---
 
 <div class="flex flex-col gap-10 md:flex-row">
-    <Sidebar />
+    <Sidebar currentTemplateName={template.name} />
     <hr class="text-neon-ice/25" />
     <section class="flex w-full flex-col gap-10">
         <div class="flex flex-col gap-1">
