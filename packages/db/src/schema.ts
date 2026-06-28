@@ -27,12 +27,12 @@ export const generationsTable = sqliteTable(
     {
         id: int().primaryKey({ autoIncrement: true }),
         channelId: text().notNull(),
-        templateId: int().notNull(),
+        templateName: text().notNull(),
         createdAt: int({ mode: "timestamp" }).notNull(),
     },
     (table) => [
         index("generations_channel_idx").on(table.channelId),
-        index("generations_template_idx").on(table.templateId),
+        index("generations_template_idx").on(table.templateName),
     ],
 );
 

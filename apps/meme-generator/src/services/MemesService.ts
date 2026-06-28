@@ -85,7 +85,7 @@ export class MemesService implements IMemesService {
 
         const renderTime: number = performance.now();
 
-        const generationId: number = await this._generationsRepository.add(channelId, template.id, new Date());
+        const generationId: number = await this._generationsRepository.add(channelId, template.name, new Date());
 
         const insertTime: number = performance.now();
 
@@ -94,7 +94,6 @@ export class MemesService implements IMemesService {
             distinctId: userId,
             properties: {
                 generationId: generationId,
-                templateId: template.id,
                 templateName: template.name,
 
                 templateMs: templateTime - startTime,
