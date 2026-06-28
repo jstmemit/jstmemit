@@ -6,7 +6,7 @@ export abstract class IBanditService {
 
     public abstract recordRating(
         channelId: string,
-        templateId: number,
+        templateName: string,
         rating: RatingKind,
         userId?: string,
     ): Promise<void>;

@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const post: Template = {
-    id: 63,
     name: "post",
     width: 1108,
     height: 772,

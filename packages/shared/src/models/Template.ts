@@ -4,7 +4,6 @@ import type { TemplateImage } from "./TemplateImage.ts";
 import type { TemplateProps } from "./TemplateProps.ts";
 
 export interface Template {
-    id: number;
     name: string;
     element: (props: TemplateProps) => ReactNode;
     width: number;

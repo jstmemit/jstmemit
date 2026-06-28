@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const liveReaction: Template = {
-    id: 3,
     name: "liveReaction",
     width: 800,
     height: 800,

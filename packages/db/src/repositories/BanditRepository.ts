@@ -6,15 +6,15 @@ import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { BanditScope } from "@jstmemit/shared/models/BanditScope";
 
 export class BanditRepository implements IBanditRepository {
-    public async getStats(scope: BanditScope, scopeId: string, templateIds: number[]): Promise<BanditStat[]> {
+    public async getStats(scope: BanditScope, scopeId: string, templateNames: string[]): Promise<BanditStat[]> {
         try {
-            if (templateIds.length === 0) {
+            if (templateNames.length === 0) {
                 return [];
             }
 
             const rows = await db
                 .select({
-                    templateId: banditStatsTable.templateId,
+                    templateName: banditStatsTable.templateName,
                     successes: banditStatsTable.successes,
                     failures: banditStatsTable.failures,
                 })
@@ -23,16 +23,16 @@ export class BanditRepository implements IBanditRepository {
                     and(
                         eq(banditStatsTable.scope, scope),
                         eq(banditStatsTable.scopeId, scopeId),
-                        inArray(banditStatsTable.templateId, templateIds),
+                        inArray(banditStatsTable.templateName, templateNames),
                     ),
                 );
 
-            const byTemplate: Map<number, BanditStat> = new Map(rows.map((row) => [row.templateId, row]));
+            const byTemplate: Map<string, BanditStat> = new Map(rows.map((row) => [row.templateName, row]));
 
-            return templateIds.map(
-                (templateId: number): BanditStat =>
-                    byTemplate.get(templateId) ?? {
-                        templateId: templateId,
+            return templateNames.map(
+                (templateName: string): BanditStat =>
+                    byTemplate.get(templateName) ?? {
+                        templateName: templateName,
                         successes: 0,
                         failures: 0,
                     },
@@ -40,8 +40,8 @@ export class BanditRepository implements IBanditRepository {
         } catch (error) {
             console.error(error);
 
-            return templateIds.map((templateId: number) => ({
-                templateId: templateId,
+            return templateNames.map((templateName: string) => ({
+                templateName: templateName,
                 successes: 0,
                 failures: 0,
             }));
@@ -51,7 +51,7 @@ export class BanditRepository implements IBanditRepository {
     public async addReward(
         scope: BanditScope,
         scopeId: string,
-        templateId: number,
+        templateName: string,
         deltaSuccess: number,
         deltaFailure: number,
     ): Promise<boolean> {
@@ -61,13 +61,13 @@ export class BanditRepository implements IBanditRepository {
                 .values({
                     scope: scope,
                     scopeId: scopeId,
-                    templateId: templateId,
+                    templateName: templateName,
                     successes: deltaSuccess,
                     failures: deltaFailure,
                     updatedAt: new Date(),
                 })
                 .onConflictDoUpdate({
-                    target: [banditStatsTable.scope, banditStatsTable.scopeId, banditStatsTable.templateId],
+                    target: [banditStatsTable.scope, banditStatsTable.scopeId, banditStatsTable.templateName],
                     set: {
                         successes: sql`${banditStatsTable.successes} + ${deltaSuccess}`,
                         failures: sql`${banditStatsTable.failures} + ${deltaFailure}`,

@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const theyAllGoIntoSquareHole: Template = {
-    id: 67,
     name: "theyAllGoIntoSquareHole",
     width: 854,
     height: 1042,

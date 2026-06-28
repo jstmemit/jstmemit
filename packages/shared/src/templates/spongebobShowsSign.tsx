@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const spongebobShowsSign: Template = {
-    id: 62,
     name: "spongebobShowsSign",
     width: 657,
     height: 493,

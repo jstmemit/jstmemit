@@ -26,27 +26,27 @@ export class BanditService implements IBanditService {
                 return undefined;
             }
 
-            const templateIds: number[] = templates.map((template: Template): number => template.id);
+            const templateNames: string[] = templates.map((template: Template): string => template.name);
 
             const [global, channel, user] = await Promise.all([
-                this._banditRepository.getStats("global", "*", templateIds),
-                this._banditRepository.getStats("channel", channelId, templateIds),
+                this._banditRepository.getStats("global", "*", templateNames),
+                this._banditRepository.getStats("channel", channelId, templateNames),
                 userId
-                    ? this._banditRepository.getStats("user", userId, templateIds)
+                    ? this._banditRepository.getStats("user", userId, templateNames)
                     : Promise.resolve<BanditStat[]>([]),
             ]);
 
-            const globalById: Map<number, BanditStat> = this._index(global);
-            const channelById: Map<number, BanditStat> = this._index(channel);
-            const userById: Map<number, BanditStat> = this._index(user);
+            const globalByName: Map<string, BanditStat> = this._index(global);
+            const channelByName: Map<string, BanditStat> = this._index(channel);
+            const userByName: Map<string, BanditStat> = this._index(user);
 
             let bestTemplate: Template | undefined;
             let bestSample: number = -1;
 
             for (const template of templates) {
-                const global: BanditStat = globalById.get(template.id) || this._zero(template.id);
-                const channel: BanditStat = channelById.get(template.id) || this._zero(template.id);
-                const user: BanditStat = userById.get(template.id) || this._zero(template.id);
+                const global: BanditStat = globalByName.get(template.name) || this._zero(template.name);
+                const channel: BanditStat = channelByName.get(template.name) || this._zero(template.name);
+                const user: BanditStat = userByName.get(template.name) || this._zero(template.name);
 
                 // how popular the template is overall
                 const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
@@ -74,19 +74,19 @@ export class BanditService implements IBanditService {
 
     public async recordRating(
         channelId: string,
-        templateId: number,
+        templateName: string,
         rating: RatingKind,
         userId?: string,
     ): Promise<void> {
         const success: number = rating === "like" ? this.likeWeight : 0;
         const failure: number = rating === "dislike" ? this.dislikeWeight : 0;
 
-        await this._writeAllScopes(channelId, templateId, success, failure, userId);
+        await this._writeAllScopes(channelId, templateName, success, failure, userId);
     }
 
     private async _writeAllScopes(
         channelId: string,
-        templateId: number,
+        templateName: string,
         deltaSuccess: number,
         deltaFailure: number,
         userId?: string,
@@ -94,13 +94,13 @@ export class BanditService implements IBanditService {
         try {
             // always adds activity to global and channel scope
             const writes: Promise<boolean>[] = [
-                this._banditRepository.addReward("global", "*", templateId, deltaSuccess, deltaFailure),
-                this._banditRepository.addReward("channel", channelId, templateId, deltaSuccess, deltaFailure),
+                this._banditRepository.addReward("global", "*", templateName, deltaSuccess, deltaFailure),
+                this._banditRepository.addReward("channel", channelId, templateName, deltaSuccess, deltaFailure),
             ];
 
             // if userId is provided then also adds it for the user
             if (userId) {
-                writes.push(this._banditRepository.addReward("user", userId, templateId, deltaSuccess, deltaFailure));
+                writes.push(this._banditRepository.addReward("user", userId, templateName, deltaSuccess, deltaFailure));
             }
 
             await Promise.all(writes);
@@ -109,12 +109,12 @@ export class BanditService implements IBanditService {
         }
     }
 
-    private _index(stats: BanditStat[]): Map<number, BanditStat> {
-        return new Map(stats.map((stat: BanditStat): [number, BanditStat] => [stat.templateId, stat]));
+    private _index(stats: BanditStat[]): Map<string, BanditStat> {
+        return new Map(stats.map((stat: BanditStat): [string, BanditStat] => [stat.templateName, stat]));
     }
 
-    private _zero(templateId: number): BanditStat {
-        return { templateId: templateId, successes: 0, failures: 0 };
+    private _zero(templateName: string): BanditStat {
+        return { templateName: templateName, successes: 0, failures: 0 };
     }
 
     private _sampleBeta(alpha: number, beta: number): number {

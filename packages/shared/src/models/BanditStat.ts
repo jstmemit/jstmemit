@@ -1,5 +1,5 @@
 export interface BanditStat {
-    templateId: number;
+    templateName: string;
     successes: number;
     failures: number;
 }

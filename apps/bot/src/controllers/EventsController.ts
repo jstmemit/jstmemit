@@ -109,11 +109,11 @@ export class EventsController implements IEventsController {
             switch (customId) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
-                    break;
+                    return;
                 case "like":
                 case "dislike":
                     await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
-                    break;
+                    return;
             }
 
             if (await this._checkForMissingPermissions(interaction)) {
@@ -124,24 +124,24 @@ export class EventsController implements IEventsController {
             switch (customId) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
-                    break;
+                    return;
                 case "like":
                 case "dislike":
                     await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
-                    break;
+                    return;
                 case "enable":
                 case "disable":
                     await this._channelsController.handleEnableInteraction(interaction);
-                    break;
+                    return;
                 case "settings":
                     await this._settingsController.handleSettingsInteraction(interaction);
-                    break;
+                    return;
                 case "open-delete-data-confirmation":
                     await this._settingsController.handleOpenDeleteDataConfirmationInteraction(interaction);
-                    break;
+                    return;
                 case "delete-data":
                     await this._settingsController.handleDeleteDataInteraction(interaction);
-                    break;
+                    return;
             }
         }
 
@@ -154,10 +154,10 @@ export class EventsController implements IEventsController {
             switch (interaction.customId) {
                 case "frequency":
                     await this._settingsController.handleFrequencySelect(interaction);
-                    break;
+                    return;
                 case "avatar":
                     await this._settingsController.handleUserAvatarsSelect(interaction);
-                    break;
+                    return;
             }
         }
     }
