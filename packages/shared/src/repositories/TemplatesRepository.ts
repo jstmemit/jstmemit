@@ -70,6 +70,9 @@ import { theyAllGoIntoSquareHole } from "#/templates/theyAllGoIntoSquareHole.tsx
 import { purestCookie } from "#/templates/purestCookie.tsx";
 import { applyingForJobsWithFunnyPfp } from "#/templates/applyingForJobsWithFunnyPfp.tsx";
 import { boykisserEnergy } from "#/templates/boykisserEnergy.tsx";
+import { creativeMetaphor } from "#/templates/creativeMetaphor.tsx";
+import { britishCuisine } from "#/templates/britishCuisine.tsx";
+import { soGladIGrewUpWithThis } from "#/templates/soGladIGrewUpWithThis.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -149,6 +152,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             purestCookie,
             applyingForJobsWithFunnyPfp,
             boykisserEnergy,
+            creativeMetaphor,
+            britishCuisine,
+            soGladIGrewUpWithThis,
         ];
     }
 }
