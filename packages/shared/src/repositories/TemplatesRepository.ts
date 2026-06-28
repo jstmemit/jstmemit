@@ -40,7 +40,7 @@ import { dogeWithGlasses } from "#/templates/dogeWithGlasses.tsx";
 import { expandingBrain } from "#/templates/expandingBrain.tsx";
 import { expandingBrain1 } from "#/templates/expandingBrain1.tsx";
 import { explainingWhiteboard } from "#/templates/explainingWhiteboard.tsx";
-import { grokTwit } from "#/templates/grokTwit.tsx";
+import { grokTweet } from "#/templates/grokTweet.tsx";
 import { iSteppedInShit } from "#/templates/iSteppedInShit.tsx";
 import { lookAtThis } from "#/templates/lookAtThis.tsx";
 import { moneyTonyStark } from "#/templates/moneyTonyStark.tsx";
@@ -119,7 +119,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             expandingBrain,
             expandingBrain1,
             explainingWhiteboard,
-            grokTwit,
+            grokTweet,
             iSteppedInShit,
             lookAtThis,
             moneyTonyStark,
