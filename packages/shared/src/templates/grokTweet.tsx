@@ -2,8 +2,8 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const grokTwit: Template = {
-    name: "grokTwit",
+export const grokTweet: Template = {
+    name: "grokTweet",
     width: 1280,
     height: 1146,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
@@ -19,7 +19,7 @@ export const grokTwit: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/grokTwit.jpg"
+                src="https://files.wideunits.nl/jstmemit/images/templates/grokTweet.jpg"
                 width={1280}
                 height={1146}
                 style={{ position: "absolute", top: 0, left: 0 }}
