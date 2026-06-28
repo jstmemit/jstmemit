@@ -42,12 +42,12 @@ const { currentTemplateName } = Astro.props;
 
 <script>
     function syncMenuState() {
-        const toggle = document.getElementById("toggle");
-        const list = document.getElementById("template-list");
+        const toggle: HTMLElement | null = document.getElementById("toggle");
+        const list: HTMLElement | null = document.getElementById("template-list");
 
         if (!toggle || !list) return;
 
-        const isMenuOpen = localStorage.getItem("menu-expanded") === "true";
+        const isMenuOpen: boolean = localStorage.getItem("menu-expanded") === "true";
 
         if (isMenuOpen) {
             list.classList.remove("hidden");
@@ -58,10 +58,10 @@ const { currentTemplateName } = Astro.props;
         }
 
         toggle.replaceWith(toggle.cloneNode(true));
-        const activeToggle = document.getElementById("toggle");
+        const activeToggle: HTMLElement | null = document.getElementById("toggle");
 
         activeToggle?.addEventListener("click", () => {
-            const willBeHidden = list.classList.toggle("hidden");
+            const willBeHidden: boolean = list.classList.toggle("hidden");
             activeToggle.classList.toggle("rotate-180");
 
             localStorage.setItem("menu-expanded", (!willBeHidden).toString());
@@ -69,22 +69,24 @@ const { currentTemplateName } = Astro.props;
     }
 
     function checkNewTemplates() {
-        const liElements = document.querySelectorAll("#template-list li[template-name]");
-        const savedTemplatesRaw = localStorage.getItem("known-templates");
+        const liElements: NodeListOf<Element> = document.querySelectorAll("#template-list li[template-name]");
+        const savedTemplatesRaw: string | null = localStorage.getItem("known-templates");
 
         if (savedTemplatesRaw) {
             const knownNames: string[] = JSON.parse(savedTemplatesRaw);
 
-            liElements.forEach((li) => {
-                const name = li.getAttribute("template-name") || "";
+            liElements.forEach((li: Element) => {
+                const name: string = li.getAttribute("template-name") || "";
                 if (!knownNames.includes(name)) {
-                    const badge = li.querySelector(".new-badge");
+                    const badge: Element | null = li.querySelector(".new-badge");
                     badge?.classList.remove("hidden");
                 }
             });
         }
 
-        const currentNames = Array.from(liElements).map((li) => li.getAttribute("template-name") || "");
+        const currentNames: string[] = Array.from(liElements).map(
+            (li: Element) => li.getAttribute("template-name") || "",
+        );
 
         localStorage.setItem("known-templates", JSON.stringify(currentNames));
     }
