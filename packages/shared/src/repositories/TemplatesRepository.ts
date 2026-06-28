@@ -76,6 +76,22 @@ import { soGladIGrewUpWithThis } from "#/templates/soGladIGrewUpWithThis.tsx";
 import { bumperSticker } from "#/templates/bumperSticker.tsx";
 import { falklandWolf } from "#/templates/falklandWolf.tsx";
 import { pleaseBePatient } from "#/templates/pleaseBePatient.tsx";
+import { bbCooking } from "#/templates/bbCooking.tsx";
+import { bbLetsCook } from "#/templates/bbLetsCook.tsx";
+import { bbSayMyName } from "#/templates/bbSayMyName.tsx";
+import { futuramaNotSureIfFry } from "#/templates/futuramaNotSureIfFry.tsx";
+import { futuramaShutUpAndTakeMyMoney } from "#/templates/futuramaShutUpAndTakeMyMoney.tsx";
+import { griffinsElephantAndPenguin } from "#/templates/griffinsElephantAndPenguin.tsx";
+import { griffinsPeterGriffinRunningAway } from "#/templates/griffinsPeterGriffinRunningAway.tsx";
+import { griffinsPeterGriffinThinking } from "#/templates/griffinsPeterGriffinThinking.tsx";
+import { griffinsPeterWaitingForSomething } from "#/templates/griffinsPeterWaitingForSomething.tsx";
+import { monaLisa } from "#/templates/monaLisa.tsx";
+import { mrBeanWaiting } from "#/templates/mrBeanWaiting.tsx";
+import { mrBeanWaiting1 } from "#/templates/mrBeanWaiting1.tsx";
+import { pfAllToghether } from "#/templates/pfAllToghether.tsx";
+import { pfCoffeeScene } from "#/templates/pfCoffeeScene.tsx";
+import { pfConfusedTravolta } from "#/templates/pfConfusedTravolta.tsx";
+import { pfSayWhatOneMoreTime } from "#/templates/pfSayWhatOneMoreTime.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -161,6 +177,22 @@ export class TemplatesRepository implements ITemplatesRepository {
             bumperSticker,
             falklandWolf,
             pleaseBePatient,
+            bbCooking,
+            bbLetsCook,
+            bbSayMyName,
+            futuramaNotSureIfFry,
+            futuramaShutUpAndTakeMyMoney,
+            griffinsElephantAndPenguin,
+            griffinsPeterGriffinRunningAway,
+            griffinsPeterGriffinThinking,
+            griffinsPeterWaitingForSomething,
+            monaLisa,
+            mrBeanWaiting,
+            mrBeanWaiting1,
+            pfAllToghether,
+            pfCoffeeScene,
+            pfConfusedTravolta,
+            pfSayWhatOneMoreTime,
         ];
     }
 }
