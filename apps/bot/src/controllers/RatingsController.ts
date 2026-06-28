@@ -47,7 +47,7 @@ export class RatingsController implements IRatingsController {
             if (generation && success) {
                 await this._banditService.recordRating(
                     generation.channelId,
-                    generation.templateId,
+                    generation.templateName,
                     rating,
                     interaction.user.id,
                 );
