@@ -82,7 +82,7 @@ export class EventsController implements IEventsController {
             switch (interaction.commandName) {
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
-                    break;
+                    return;
             }
 
             if (await this._checkForMissingPermissions(interaction)) {
@@ -93,10 +93,10 @@ export class EventsController implements IEventsController {
             switch (interaction.commandName) {
                 case "enable":
                     await this._channelsController.handleEnableInteraction(interaction);
-                    break;
+                    return;
                 case "settings":
                     await this._settingsController.handleSettingsInteraction(interaction);
-                    break;
+                    return;
             }
         }
 
