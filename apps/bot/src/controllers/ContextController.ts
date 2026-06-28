@@ -7,10 +7,7 @@ export class ContextController implements IContextController {
     private readonly _contextService: IContextService;
     private readonly _channelsService: IChannelsService;
 
-    public constructor(
-        contextService: IContextService,
-        channelsService: IChannelsService,
-    ) {
+    public constructor(contextService: IContextService, channelsService: IChannelsService) {
         this._contextService = contextService;
         this._channelsService = channelsService;
     }
@@ -46,18 +43,18 @@ export class ContextController implements IContextController {
             }
 
             if (content.length > 0 && content.length < 2000) {
-                if (content.startsWith("https://tenor.com/view")) {
+                if (this._checkIfLinkToGif(content)) {
                     await this._contextService.saveGif(id, channelId, content);
                 } else {
-                    await this._contextService.saveContent(
-                        id,
-                        channelId,
-                        content,
-                    );
+                    await this._contextService.saveContent(id, channelId, content);
                 }
             }
         } catch (error) {
             console.error(error);
         }
+    }
+
+    private _checkIfLinkToGif(text: string): boolean {
+        return text.startsWith("https://tenor.com/view") || text.startsWith("https://media3.giphy.com/");
     }
 }
