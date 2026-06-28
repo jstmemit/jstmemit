@@ -92,6 +92,8 @@ import { pfAllToghether } from "#/templates/pfAllToghether.tsx";
 import { pfCoffeeScene } from "#/templates/pfCoffeeScene.tsx";
 import { pfConfusedTravolta } from "#/templates/pfConfusedTravolta.tsx";
 import { pfSayWhatOneMoreTime } from "#/templates/pfSayWhatOneMoreTime.tsx";
+import { pfTwoGangsterWithGuns } from "#/templates/pfTwoGangsterWithGuns.tsx";
+import { saltBae } from "#/templates/saltBae.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -193,6 +195,8 @@ export class TemplatesRepository implements ITemplatesRepository {
             pfCoffeeScene,
             pfConfusedTravolta,
             pfSayWhatOneMoreTime,
+            pfTwoGangsterWithGuns,
+            saltBae,
         ];
     }
 }
