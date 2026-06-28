@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const applyingForJobsWithFunnyPfp: Template = {
-    id: 69,
     name: "applyingForJobsWithFunnyPfp",
     width: 933,
     height: 1051,

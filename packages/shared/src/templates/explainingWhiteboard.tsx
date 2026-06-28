@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const explainingWhiteboard: Template = {
-    id: 40,
     name: "explainingWhiteboard",
     width: 1280,
     height: 900,

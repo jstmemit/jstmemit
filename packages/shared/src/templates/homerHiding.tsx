@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const homerHiding: Template = {
-    id: 6,
     name: "homerHiding",
     width: 600,
     height: 600,

@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const tf2ScoutTalk: Template = {
-    id: 54,
     name: "tf2ScoutTalk",
     width: 640,
     height: 857,

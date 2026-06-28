@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const spongebob: Template = {
-    id: 4,
     name: "spongebob",
     width: 622,
     height: 727,
@@ -19,16 +18,9 @@ export const spongebob: Template = {
                 fontFamily: "Comic Sans MS",
             }}
         >
+            <img src={images[0]} width={195} height={275} style={{ position: "absolute", top: 50, left: 45 }} />
             <img
-                src={images[0]}
-                width={195}
-                height={275}
-                style={{ position: "absolute", top: 50, left: 45 }}
-            />
-            <img
-                src={
-                    "https://files.wideunits.nl/jstmemit/images/templates/spongebob.png"
-                }
+                src={"https://files.wideunits.nl/jstmemit/images/templates/spongebob.png"}
                 width={622}
                 height={727}
                 style={{ position: "absolute", top: 0, left: 0 }}

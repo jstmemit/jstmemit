@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const diagramIQ: Template = {
-    id: 29,
     name: "diagramIQ",
     width: 1272,
     height: 843,

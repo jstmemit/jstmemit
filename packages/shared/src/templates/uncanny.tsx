@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const uncanny: Template = {
-    id: 11,
     name: "uncanny",
     width: 950,
     height: 500,

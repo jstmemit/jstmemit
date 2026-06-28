@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const topBottomText: Template = {
-    id: 1,
     name: "topBottomText",
     width: 800,
     height: 800,

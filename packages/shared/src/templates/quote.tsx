@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const quote: Template = {
-    id: 14,
     name: "quote",
     width: 800,
     height: 800,

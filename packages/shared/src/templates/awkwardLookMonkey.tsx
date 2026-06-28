@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const awkwardLookMonkey: Template = {
-    id: 27,
     name: "awkwardLookMonkey",
     width: 750,
     height: 750,

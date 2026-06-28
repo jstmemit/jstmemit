@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const purestCookie: Template = {
-    id: 68,
     name: "purestCookie",
     width: 1067,
     height: 591,

@@ -3,7 +3,6 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
 export const owlStareAtYou: Template = {
-    id: 50,
     name: "owlStareAtYou",
     width: 1600,
     height: 1600,
