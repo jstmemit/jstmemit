@@ -1,5 +1,6 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
+import * as React from "react";
 
 export const iAdopted100Dogs: Template = {
     id: 31,
