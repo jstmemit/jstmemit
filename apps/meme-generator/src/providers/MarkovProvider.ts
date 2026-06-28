@@ -24,7 +24,7 @@ export class MarkovProvider implements ITransformProvider {
         markov.addData(corpus);
 
         return markov.generate({
-            maxTries: 1000,
+            maxTries: 20000,
             filter: (result) => {
                 return result.string.split(" ").length >= minLength && result.string.split(" ").length <= maxLength;
             },
