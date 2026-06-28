@@ -2,13 +2,13 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
-export const iAdopted100Dogs: Template = {
-    id: 31,
-    name: "iAdopted100Dogs",
-    width: 621,
-    height: 426,
+export const purestCookie: Template = {
+    id: 68,
+    name: "purestCookie",
+    width: 1067,
+    height: 591,
     texts: [],
-    images: [{ id: 0, description: "the thumbnail subject" }],
+    images: [{ id: 0, description: "Purest cookies" }],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -16,24 +16,22 @@ export const iAdopted100Dogs: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
             }}
         >
             <img
                 src={images[0]}
-                width={621}
-                height={300}
+                width={500}
+                height={500}
                 style={{
                     position: "absolute",
-                    top: 0,
-                    left: 0,
-                    objectFit: "cover",
+                    top: 80,
+                    left: 300,
                 }}
             />
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail2.png"
-                width={621}
-                height={426}
+                src="https://files.wideunits.nl/jstmemit/images/templates/purestCookie.png"
+                width={1067}
+                height={591}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
         </div>

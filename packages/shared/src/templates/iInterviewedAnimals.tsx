@@ -2,13 +2,13 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
-export const missingPiece: Template = {
-    id: 21,
-    name: "missingPiece",
-    width: 783,
-    height: 581,
-    texts: [{ id: 0, description: "text on the puzzle", minLength: 1, maxLength: 6 }],
-    images: [{ id: 0, description: "person who is missing puzzle" }],
+export const iInterviewedAnimals: Template = {
+    id: 60,
+    name: "iInterviewedAnimals",
+    width: 621,
+    height: 426,
+    texts: [{ id: 0, description: "what the animal says", minLength: 1, maxLength: 2 }],
+    images: [{ id: 0, description: "the thumbnail subject" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -16,34 +16,33 @@ export const missingPiece: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/missingpiece.png"
-                width={783}
-                height={581}
-                style={{ position: "absolute", top: 0, left: 0 }}
-            />
-            <img
                 src={images[0]}
-                width={300}
-                height={300}
+                width={621}
+                height={340}
                 style={{
                     position: "absolute",
-                    top: 115,
-                    left: 135,
-                    borderRadius: "100%",
+                    top: 0,
+                    left: 0,
                     objectFit: "cover",
                 }}
+            />
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/iInterviewedAnimals.png"
+                width={621}
+                height={426}
+                style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
-                    bottom: "40%",
-                    width: "40%",
-                    height: "auto",
+                    right: 50,
+                    bottom: 150,
+                    width: "25%",
+                    height: "33%",
+                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -51,12 +50,12 @@ export const missingPiece: Template = {
                     fontFamily: "Comic Sans MS",
                     fontSize: 40,
                     lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 4,
-                    WebkitTextStrokeColor: "#ffffff",
+                    color: "#fff",
+                    WebkitTextStrokeWidth: 6,
+                    WebkitTextStrokeColor: "black",
                 }}
             >
-                {texts[0]}
+                "{texts[0]}"
             </div>
         </div>
     ),
