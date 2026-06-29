@@ -68,10 +68,6 @@ const channelsController: IChannelsController = new ChannelsController(
 // images
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
-// context
-const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
-const contextController: IContextController = new ContextController(contextService, channelsService);
-
 // generations
 const generationsRepository: IGenerationsRepository = new GenerationsRepository();
 
@@ -100,6 +96,10 @@ const memesController: IMemesController = new MemesController(
     componentsService,
     banditService,
 );
+
+// context
+const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
+const contextController: IContextController = new ContextController(contextService, channelsService, memesController);
 
 // settings
 const settingsController: ISettingsController = new SettingsController(channelsService, componentsService);

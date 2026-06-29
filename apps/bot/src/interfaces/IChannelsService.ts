@@ -10,4 +10,6 @@ export abstract class IChannelsService {
     public abstract setChannel(channelId: string, channel: typeof channelsTable.$inferSelect): Promise<boolean>;
 
     public abstract deleteChannelData(channelId: string): Promise<boolean>;
+
+    public abstract rollChannelFrequency(channelId: string): Promise<boolean>;
 }

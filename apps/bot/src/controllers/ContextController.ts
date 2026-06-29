@@ -2,14 +2,21 @@ import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { Message } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
 
 export class ContextController implements IContextController {
     private readonly _contextService: IContextService;
     private readonly _channelsService: IChannelsService;
+    private readonly _memesController: IMemesController;
 
-    public constructor(contextService: IContextService, channelsService: IChannelsService) {
+    public constructor(
+        contextService: IContextService,
+        channelsService: IChannelsService,
+        memesController: IMemesController,
+    ) {
         this._contextService = contextService;
         this._channelsService = channelsService;
+        this._memesController = memesController;
     }
 
     /**
@@ -48,6 +55,10 @@ export class ContextController implements IContextController {
                 } else {
                     await this._contextService.saveContent(id, channelId, content);
                 }
+            }
+
+            if (await this._channelsService.rollChannelFrequency(channelId)) {
+                await this._memesController.handleMemeInteraction(message);
             }
         } catch (error) {
             console.error(error);
