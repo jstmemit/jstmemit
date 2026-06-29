@@ -55,6 +55,7 @@ export const saltBae: Template = {
                     fontSize: 80,
                     lineHeight: 1.05,
                     color: "#ffffff",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                     WebkitTextStrokeWidth: 6,
                     WebkitTextStrokeColor: "#000000",
                 }}
