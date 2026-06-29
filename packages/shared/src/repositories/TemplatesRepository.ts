@@ -94,6 +94,14 @@ import { pfConfusedTravolta } from "#/templates/pfConfusedTravolta.tsx";
 import { pfSayWhatOneMoreTime } from "#/templates/pfSayWhatOneMoreTime.tsx";
 import { pfTwoGangsterWithGuns } from "#/templates/pfTwoGangsterWithGuns.tsx";
 import { saltBae } from "#/templates/saltBae.tsx";
+import { sdFredUnmaskingGhost } from "#/templates/sdFredUnmaskingGhost.tsx";
+import { simpsonsLIsaShowPresentation } from "#/templates/simpsonsLIsaShowPresentation.tsx";
+import { simpsonsRalphImInDanger } from "#/templates/simpsonsRalphImInDanger.tsx";
+import { spidermanPeterDance } from "#/templates/spidermanPeterDance.tsx";
+import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterParkerWearingGlasses.tsx";
+import { spongeBobBeggingVsTuxedo } from "#/templates/spongeBobBeggingVsTuxedo.tsx";
+import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
+import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -197,6 +205,14 @@ export class TemplatesRepository implements ITemplatesRepository {
             pfSayWhatOneMoreTime,
             pfTwoGangsterWithGuns,
             saltBae,
+            sdFredUnmaskingGhost,
+            simpsonsLIsaShowPresentation,
+            simpsonsRalphImInDanger,
+            spidermanPeterDance,
+            spidermanPeterParkerWearingGlasses,
+            spongeBobBeggingVsTuxedo,
+            dhGirlWithHandOverMouth,
+            griffinsLoisInBed,
         ];
     }
 }
