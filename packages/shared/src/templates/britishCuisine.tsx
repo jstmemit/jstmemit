@@ -7,12 +7,12 @@ export const britishCuisine: Template = {
     width: 883,
     height: 1025,
     texts: [
-        { id: 0, description: "Tag of the guy who said about British cuisine", minLength: 1, maxLength: 2 },
+        { id: 0, description: "Tag of the guy who said about British cuisine", minLength: 1, maxLength: 5 },
         {
             id: 1,
             description: "Tag of the guy who posted about the worst takeaway order of all times",
             minLength: 1,
-            maxLength: 2,
+            maxLength: 5,
         },
     ],
     images: [
@@ -72,7 +72,8 @@ export const britishCuisine: Template = {
                     position: "absolute",
                     left: 75,
                     top: 0,
-                    width: "60%",
+                    width: "100%",
+                    maxWidth: "60%",
                     padding: "10px",
                     textAlign: "left",
                     justifyContent: "flex-start",
@@ -81,6 +82,9 @@ export const britishCuisine: Template = {
                     fontSize: 30,
                     lineHeight: 1.05,
                     color: "#808080",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 @{texts[0]}
@@ -90,7 +94,8 @@ export const britishCuisine: Template = {
                     position: "absolute",
                     left: 145,
                     top: 115,
-                    width: "60%",
+                    width: "100%",
+                    maxWidth: "60%",
                     padding: "10px",
                     textAlign: "left",
                     justifyContent: "flex-start",
@@ -99,6 +104,9 @@ export const britishCuisine: Template = {
                     fontSize: 25,
                     lineHeight: 1.05,
                     color: "#808080",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 @{texts[1]}

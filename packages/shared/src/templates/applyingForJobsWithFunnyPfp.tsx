@@ -23,11 +23,12 @@ export const applyingForJobsWithFunnyPfp: Template = {
             <img
                 src={images[0]}
                 width={750}
-                height={700}
+                height={750}
                 style={{
                     position: "absolute",
-                    top: 350,
-                    left: 100,
+                    bottom: 0,
+                    left: "50%",
+                    transform: "translateX(-50%)",
                 }}
             />
             <img
@@ -41,7 +42,8 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     position: "absolute",
                     left: 110,
                     top: 0,
-                    width: "60%",
+                    width: "100%",
+                    maxWidth: "59%",
                     padding: "10px",
                     textAlign: "left",
                     justifyContent: "flex-start",
@@ -50,6 +52,9 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     fontSize: 40,
                     lineHeight: 1.05,
                     color: "#fff",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 {texts[0]}
@@ -59,7 +64,8 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     position: "absolute",
                     left: 110,
                     top: 55,
-                    width: "60%",
+                    width: "100%",
+                    maxWidth: "60%",
                     padding: "10px",
                     textAlign: "left",
                     justifyContent: "flex-start",
@@ -68,6 +74,9 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     fontSize: 35,
                     lineHeight: 1.05,
                     color: "#808080",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 @{texts[1]}

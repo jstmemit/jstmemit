@@ -7,8 +7,8 @@ export const cinemaGuys: Template = {
     width: 1280,
     height: 947,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 20 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 20 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -32,7 +32,6 @@ export const cinemaGuys: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "50%",
                     height: "100%",
                     maxHeight: "50%",
@@ -41,37 +40,57 @@ export const cinemaGuys: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 8,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
+
             <div
                 style={{
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "50%",
                     height: "100%",
-                    maxHeight: "49%",
+                    maxHeight: "50%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 8,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),
