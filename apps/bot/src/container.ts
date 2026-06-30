@@ -35,33 +35,30 @@ import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { SettingsController } from "#/controllers/SettingsController.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepository";
+import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
+import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
+import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import { BanditService } from "@jstmemit/bandit/services/BanditService";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
-const redisConnection: ConnectionOptions = createRedisConnection(
-    env.REDIS_HOST,
-    env.REDIS_PORT,
-);
-const memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult> =
-    createMemeGenerationQueue(redisConnection);
-const memeGenerationQueueEvents: QueueEvents = new QueueEvents(
-    "meme-generation",
-    {
-        connection: redisConnection,
-    },
-);
+const redisConnection: ConnectionOptions = createRedisConnection(env.REDIS_HOST, env.REDIS_PORT);
+const memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult> = createMemeGenerationQueue(redisConnection);
+const memeGenerationQueueEvents: QueueEvents = new QueueEvents("meme-generation", {
+    connection: redisConnection,
+});
 
 // messages
 const messagesRepository: IMessagesRepository = new MessagesRepository();
 
 // components
-const componentsService: IComponentsService = new ComponentsService();
+export const componentsService: IComponentsService = new ComponentsService();
 
 // channels
 const channelsRepository: IChannelsRepository = new ChannelsRepository();
-const channelsService: IChannelsService = new ChannelsService(
-    channelsRepository,
-);
+const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
 const channelsController: IChannelsController = new ChannelsController(
     channelsService,
     componentsService,
@@ -72,18 +69,19 @@ const channelsController: IChannelsController = new ChannelsController(
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // context
-const contextService: IContextService = new ContextService(
-    messagesRepository,
-    imagesRepository,
-);
-const contextController: IContextController = new ContextController(
-    contextService,
-    channelsService,
-);
+const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
+const contextController: IContextController = new ContextController(contextService, channelsService);
 
 // generations
-const generationsRepository: IGenerationsRepository =
-    new GenerationsRepository();
+const generationsRepository: IGenerationsRepository = new GenerationsRepository();
+
+// templates
+
+const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+
+// bandit
+const banditRepository: IBanditRepository = new BanditRepository();
+const banditService: IBanditService = new BanditService(banditRepository, templatesRepository);
 
 // ratings
 const ratingsRepository: IRatingsRepository = new RatingsRepository();
@@ -91,6 +89,7 @@ const ratingsService: IRatingsService = new RatingsService(ratingsRepository);
 const ratingsController: IRatingsController = new RatingsController(
     ratingsService,
     generationsRepository,
+    banditService,
 );
 
 // memes
@@ -99,13 +98,11 @@ const memesController: IMemesController = new MemesController(
     memeGenerationQueueEvents,
     ratingsService,
     componentsService,
+    banditService,
 );
 
 // settings
-const settingsController: ISettingsController = new SettingsController(
-    channelsService,
-    componentsService,
-);
+const settingsController: ISettingsController = new SettingsController(channelsService, componentsService);
 
 // events
 export const eventsController: IEventsController = new EventsController(

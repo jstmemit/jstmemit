@@ -1,4 +1,4 @@
-import { index, int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { index, int, real, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const messagesTable = sqliteTable(
     "messages_table",
@@ -22,24 +22,17 @@ export const imagesTable = sqliteTable("images_table", {
     expiresAt: int({ mode: "timestamp" }),
 });
 
-export const reactionsTable = sqliteTable("reactions_table", {
-    id: int().primaryKey({ autoIncrement: true }),
-    messageId: text().notNull(),
-    userId: text().notNull(),
-    emoji: text().notNull(),
-});
-
 export const generationsTable = sqliteTable(
     "generations_table",
     {
         id: int().primaryKey({ autoIncrement: true }),
         channelId: text().notNull(),
-        templateId: int().notNull(),
+        templateName: text().notNull(),
         createdAt: int({ mode: "timestamp" }).notNull(),
     },
     (table) => [
         index("generations_channel_idx").on(table.channelId),
-        index("generations_template_idx").on(table.templateId),
+        index("generations_template_idx").on(table.templateName),
     ],
 );
 
@@ -58,3 +51,17 @@ export const ratingsTable = sqliteTable("ratings_table", {
     likes: int().notNull().default(0),
     dislikes: int().notNull().default(0),
 });
+
+export const banditStatsTable = sqliteTable(
+    "bandit_stats_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        scope: text({ enum: ["global", "channel", "user"] }).notNull(),
+        scopeId: text().notNull(),
+        templateName: text().notNull(),
+        successes: real().notNull().default(0),
+        failures: real().notNull().default(0),
+        updatedAt: int({ mode: "timestamp" }).notNull(),
+    },
+    (table) => [uniqueIndex("bandit_scope_template_idx").on(table.scope, table.scopeId, table.templateName)],
+);

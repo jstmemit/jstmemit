@@ -4,15 +4,11 @@ import type { IGenerationsRepository } from "../interfaces/IGenerationsRepositor
 import { eq } from "drizzle-orm";
 
 export class GenerationsRepository implements IGenerationsRepository {
-    public async add(
-        channelId: string,
-        templateId: number,
-        date: Date,
-    ): Promise<number> {
+    public async add(channelId: string, templateName: string, date: Date): Promise<number> {
         try {
             const generation = {
                 channelId: channelId,
-                templateId: templateId,
+                templateName: templateName,
                 createdAt: date,
             };
 
@@ -26,9 +22,7 @@ export class GenerationsRepository implements IGenerationsRepository {
         }
     }
 
-    public async get(
-        generationId: number,
-    ): Promise<typeof generationsTable.$inferSelect | undefined> {
+    public async get(generationId: number): Promise<typeof generationsTable.$inferSelect | undefined> {
         try {
             const generations = await db
                 .select()

@@ -1,9 +1,10 @@
 import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import MarkovPkg from "markov-strings";
+import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class MarkovProvider implements ITransformProvider {
-    public async getTransformedText(texts: string[]): Promise<string> {
-        return await Promise.resolve(this._generateText(texts, 1, 5));
+    public async getTransformedText(text: TemplateText, context: string[]): Promise<string> {
+        return await Promise.resolve(this._generateText(context, text.minLength, text.maxLength));
     }
 
     /**
@@ -17,11 +18,7 @@ export class MarkovProvider implements ITransformProvider {
      *
      * @author Kyrylo Maliuha
      */
-    private _generateText(
-        corpus: string[],
-        minLength: number,
-        maxLength: number,
-    ): string {
+    private _generateText(corpus: string[], minLength: number, maxLength: number): string {
         const markov = new MarkovPkg.default({ stateSize: 1 });
 
         markov.addData(corpus);
@@ -29,10 +26,7 @@ export class MarkovProvider implements ITransformProvider {
         return markov.generate({
             maxTries: 1000,
             filter: (result) => {
-                return (
-                    result.string.split(" ").length >= minLength &&
-                    result.string.split(" ").length <= maxLength
-                );
+                return result.string.split(" ").length >= minLength && result.string.split(" ").length <= maxLength;
             },
         }).string;
     }

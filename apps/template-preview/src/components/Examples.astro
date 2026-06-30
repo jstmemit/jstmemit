@@ -1,0 +1,21 @@
+---
+import MemeGrid from "./MemeGrid.astro";
+import { variants } from "../data/variants.ts";
+import type { Template } from "@jstmemit/shared/models/Template";
+import MemeCard from "./MemeCard.astro";
+
+interface Props {
+    template: Template;
+}
+
+const { template } = Astro.props;
+---
+
+<section>
+    <h2 class="mb-3 text-3xl font-bold">Meme examples</h2>
+    <MemeGrid templateName={template.name} server:defer>
+        <ul class="box-border flex flex-wrap gap-5" slot="fallback">
+            {variants.map(() => <MemeCard width={template.width} height={template.height} />)}
+        </ul>
+    </MemeGrid>
+</section>

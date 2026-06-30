@@ -1,25 +1,265 @@
-# Jstmemit 🤖
+<h1 align="center">Jstmemit 🤖</h1>
 
-Discord bot that makes memes about whatever you're chatting about. Talk about your failed boss raid, then get fresh memes about it, how fun is that?
+<p align="center">
+    Discord bot that makes memes about whatever you're chatting about.<br>Talk about your failed boss raid, then get fresh memes about it, how fun is that?
+</p>
+<p align="center">
+    <a href="#about-project">About project</a> / <a href="#table-of-contents">Table of contents</a> / <a href="https://discord.com/oauth2/authorize?client_id=1375836467745783990">Invite to your server</a> / <a href="https://discord.gg/THRnn8fhkZ">Support server</a> / <a href="#license">License</a>
+</p>
+<p align="center">
+    <img width="600" alt="personalized memes banner" src="https://github.com/user-attachments/assets/6af07cf1-a0b8-420f-ba20-6f1dd80e297b" />
+</p>
 
-<img width="480" alt="personalized memes banner" src="https://github.com/user-attachments/assets/6af07cf1-a0b8-420f-ba20-6f1dd80e297b" />
+## Table of contents
 
-## Navigation
-
-- [About project](#about-project)
-- [License](#license)
+- <a href="#jstmemit-">Introduction</a>
+- <a href="#about-project">About project</a>
+- <a href="#how-to-run">How to run?</a>
+    - <a href="#using-docker-compose">Using docker compose</a>
+- <a href="#contribution">Contribution</a>
+    - <a href="#setting-up-your-editor">Setting up your editor</a>
+        - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
+    - <a href="#making-new-meme-templates">Making new meme templates</a>
+        - <a href="#textsimages">Texts/images</a>
+        - <a href="#render">Render</a>
+        - <a href="#fonts">Fonts</a>
+        - <a href="#layout">Layout</a>
+        - <a href="#test-your-template">Test your template</a>
+        - <a href="#done">Done!</a>
+- <a href="#alternatives">Alternatives</a>
+- <a href="#questions-or-feedback">Questions or feedback?</a>
+- <a href="#license">License</a>
 
 ## About project
 
-This bot makes it much simpler to get memes about situations that happened in your server. Every **X** amount of messages bot will choose a meme template, fill it with channel specific context and send it. 
+This bot makes it much simpler to get memes about situations that happened in your server. Every **X** amount of messages bot will choose a meme template, fill it with channel specific context and send it.
 
-Each generated meme has Like/Dislike buttons that allow it to understand if it was good or bad. By using those ratings Jstmemit will know which meme templates worked and try to generate more of them.
+Each generated meme has Like/Dislike buttons that allow the bot to understand if it was good or bad. By using those ratings Jstmemit will know which meme templates worked and try to generate more of them.
 
 It's possible to set frequency and other options in settings to configure it exactly for your server size and prevent flooding.
 
 **By default this bot is turned off in every channel for your privacy, you need to specify where you want to use it with `/enable`**
 
 [<img width="200" alt="add to your server button" src="https://github.com/user-attachments/assets/5dfd16a9-9267-4fc8-8daa-ecf37ca844fa" />](https://discord.com/oauth2/authorize?client_id=1375836467745783990)
+
+## How to run?
+
+### Using docker compose
+
+Before following this instruction please make sure that you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed on your computer.
+
+1. Clone the repository
+```bash
+git clone https://github.com/jstmemit/jstmemit.git
+```
+
+2. Navigate into its directory
+```bash
+cd jstmemit
+```
+
+3. Create `.env` and `.env.docker` files by using the template inside `.env.example`
+```env
+DB_URL= # http://sqld:8080
+
+DISCORD_TOKEN= # discord bot token
+DISCORD_CLIENT_ID= # application id for the development bot
+DISCORD_CLIENT_ID_PRODUCTION= # application id for the public bot
+
+POSTHOG_WRITE_KEY= # starts with phc, used for analytics
+
+REDIS_HOST= # redis
+REDIS_PORT= # 6379
+```
+
+4. Launch docker compose
+```bash
+docker compose up
+```
+
+## Contribution
+
+Your meme templates and features are very welcome in this project, open a Pull Request with your changes to get them reviewed and merged.
+
+### Setting up your editor
+
+We recommend using [Webstorm](https://www.jetbrains.com/webstorm/) (or any other IDE) from [JetBrains](https://www.jetbrains.com/). This way all configuration scripts are already set to improve your development experience. However, you are free to use any code editor you like if it runs ESLint (with `--fix` on save) and Prettier.
+
+#### JetBrains/Webstorm
+
+Make sure your Code Quality Tools settings are as follows:
+
+**Settings:**
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint -> Automatic ESLint configuration
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint -> Run `eslint --fix` on save
+- Languages & Frameworks -> JavaScript -> Code Quality Tools -> JSHint -> Disable
+- Languages & Frameworks -> JavaScript -> Prettier -> Automatic Prettier configuration
+- Languages & Frameworks -> JavaScript -> Prettier -> Run on save
+- Languages & Frameworks -> JavaScript -> Prettier -> Run on paste
+- Languages & Frameworks -> JavaScript -> Prettier -> Prefer Prettier configuration to IDE code style
+
+There are also some useful extensions if you plan on contributing to more than meme templates:
+
+**Extensions:**
+- Astro
+- Rainbow Brackets
+- Tailwind Fold
+- Tailwind CSS Smart Completions
+- Docker
+
+### Making new meme templates
+
+All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
+
+#### Texts/images
+
+Each template must say which slots it has inside. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
+```ts
+texts: [
+    { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+    { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+],
+images: [{ id: 0, description: "background" }]
+```
+
+Minimum and maximum length is set in amount of words.
+
+After that you can use them in your layout:
+```jsx
+<img
+    src={images[0]}
+    width={800}
+    height={800}
+    style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+/>
+```
+
+```jsx
+<div>{texts[0]}</div>
+```
+
+`element()` function will be always called with exact amount of texts and images as specified in the template.
+
+#### Render
+
+Your layout will be rendered into an image using [Satori](https://github.com/vercel/satori). This means that some of the CSS is not supported (such as `z-index`), each element needs to have its styles inline and `flex` is the only option for making layouts.
+
+#### Fonts
+
+Only Impact and Comic Sans MS are available.
+
+#### Layout
+
+**topBottomText.tsx**
+```ts
+import type { Template } from "#/models/Template.ts";
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import * as React from "react";
+
+export const topBottomText: Template = {
+    id: 1, // make sure this id is not taken
+    name: "topBottomText",
+    width: 800,
+    height: 800,
+    texts: [
+        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+    ],
+    images: [{ id: 0, description: "background" }],
+    element: ({ texts, images }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Comic Sans MS",
+                backgroundColor: "#000",
+            }}
+        >
+            <img
+                src={images[0]}
+                width={800}
+                height={800}
+                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    top: 10,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: 60,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    color: "white",
+                    WebkitTextStrokeWidth: 10,
+                    WebkitTextStrokeColor: "black",
+                    textAlign: "center",
+                }}
+            >
+                {texts[0]}
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: 20,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: 60,
+                    paddingLeft: 15,
+                    paddingRight: 15,
+                    color: "white",
+                    WebkitTextStrokeWidth: 10,
+                    WebkitTextStrokeColor: "black",
+                    textAlign: "center",
+                }}
+            >
+                {texts[1]}
+            </div>
+        </div>
+    ),
+};
+```
+
+**TemplateRepository.ts**
+```ts
+// import your new template
+import { topBottomText } from "#/templates/topBottomText.tsx";
+
+public getAll(): Template[] {
+    return [
+        // return it together with others
+        topBottomText,
+    ]
+}
+```
+
+#### Test your template
+
+You can now check how your meme template behaves with different kinds of images and texts on the template preview website without starting up the bot.
+
+1. Start the development server
+```bash
+pnpm run template-preview:dev
+```
+
+2. Look at your template
+   <img width="450" alt="template preview" src="https://github.com/user-attachments/assets/5de59994-971b-4fd7-955b-9d6bd63d68c1" />
+
+#### Done!
+
+<img width="300" height="300" alt="meme" src="https://github.com/user-attachments/assets/644036eb-d15f-45fe-bb55-b39cf4d9bbfa" />
+
+## Alternatives
+
+Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages. It is really great and fun to have on your server.
+
+## Questions or feedback?
+
+If you have any questions or feedback please share them in our <a href="https://discord.gg/THRnn8fhkZ">Support server</a> or send via email to <a href="mailto:contact@jstmemit.com">contact@jstmemit.com</a>.
 
 ## License
 

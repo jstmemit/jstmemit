@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { ITransformService } from "#/interfaces/ITransformService.ts";
 import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
+import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class TransformService implements ITransformService {
     private readonly _markovProvider: ITransformProvider;
@@ -10,22 +11,19 @@ export class TransformService implements ITransformService {
     }
 
     /**
-     * Transforms raw strings into a specific amount of transformed
-     * strings.
+     * Transforms raw strings into a specific amount of template
+     * texts
      *
      * @param texts
-     * @param amount
+     * @param context
      *
      * @author Kyrylo Maliuha
      */
-    public async transformIntoMultipleTexts(
-        texts: string[],
-        amount: number,
-    ): Promise<string[]> {
+    public async transformIntoMultipleTexts(texts: TemplateText[], context: string[]): Promise<string[]> {
         const transformedTexts: string[] = [];
 
-        while (transformedTexts.length < amount) {
-            transformedTexts.push(await this.transformIntoText(texts));
+        for (let i: number = 0; i < texts.length; i++) {
+            transformedTexts.push(await this.transformIntoText(texts[i]!, context));
         }
 
         return transformedTexts;
@@ -36,21 +34,22 @@ export class TransformService implements ITransformService {
      * raw strings available. If zero, then returns an empty string. If less than 30,
      * then returns a random one. If more, transforms by using MarkovProvider class
      *
-     * @param texts
+     * @param text
+     * @param context
      *
      * @author Kyrylo Maliuha
      */
-    public async transformIntoText(texts: string[]): Promise<string> {
+    public async transformIntoText(text: TemplateText, context: string[]): Promise<string> {
         try {
-            if (!texts || texts.length < 1) {
+            if (!context || context.length < 1) {
                 return "";
             }
 
-            if (texts.length < 30) {
-                return _.sample(texts) || "";
+            if (context.length < 30) {
+                return _.sample(context) || "";
             }
 
-            return await this._markovProvider.getTransformedText(texts);
+            return await this._markovProvider.getTransformedText(text, context);
         } catch (error) {
             console.error(error);
             return "";

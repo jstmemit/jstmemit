@@ -1,0 +1,135 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+
+export const diagramIQ: Template = {
+    name: "diagramIQ",
+    width: 1272,
+    height: 843,
+    texts: [
+        { id: 0, description: "stupid text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "normal text", minLength: 1, maxLength: 5 },
+        { id: 2, description: "clever text", minLength: 1, maxLength: 5 },
+    ],
+    images: [
+        { id: 0, description: "stupid face" },
+        { id: 0, description: "normal face" },
+        { id: 0, description: "clever face" },
+    ],
+    element: ({ texts, images }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Impact",
+            }}
+        >
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
+                width={1272}
+                height={843}
+                style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={200}
+                height={200}
+                style={{
+                    position: "absolute",
+                    bottom: 150,
+                    left: 160,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[1]}
+                width={200}
+                height={200}
+                style={{
+                    position: "absolute",
+                    top: 140,
+                    left: 520,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[2]}
+                width={150}
+                height={150}
+                style={{
+                    position: "absolute",
+                    bottom: 190,
+                    right: 250,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 60,
+                    bottom: 400,
+                    width: "400px",
+                    height: "200px",
+                    padding: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
+                    lineHeight: 1.05,
+                    color: "#000000",
+                }}
+            >
+                {texts[0]}
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: 0,
+                    transform: "translateX(-50%)",
+                    width: "50%",
+                    height: "15%",
+                    padding: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
+                    lineHeight: 1.05,
+                    color: "#000000",
+                }}
+            >
+                {texts[1]}
+            </div>
+
+            <div
+                style={{
+                    position: "absolute",
+                    right: 60,
+                    bottom: 400,
+                    width: "400px",
+                    height: "200px",
+                    padding: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 40,
+                    lineHeight: 1.05,
+                    color: "#000000",
+                }}
+            >
+                {texts[2]}
+            </div>
+        </div>
+    ),
+};

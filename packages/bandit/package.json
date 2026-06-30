@@ -1,0 +1,21 @@
+{
+    "name": "@jstmemit/bandit",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "@jstmemit/db": "workspace:*",
+        "@jstmemit/meme-generator": "workspace:*"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*.ts": "./src/*.ts",
+        "./*": [
+            "./src/*.ts"
+        ]
+    }
+}

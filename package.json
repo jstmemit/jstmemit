@@ -7,10 +7,14 @@
         "db:studio": "cd packages/db && pnpm drizzle-kit studio",
         "db:push": "cd packages/db && pnpm drizzle-kit push",
         "db:generate": "cd packages/db && pnpm drizzle-kit generate",
+        "db:migrate": "cd packages/db && pnpm drizzle-kit migrate",
         "meme-generator:start": "cd apps/meme-generator && pnpm start",
         "website:dev": "cd apps/website && pnpm run dev",
         "website:build": "cd apps/website && pnpm run build",
-        "website:run-build": "node ./apps/website/dist/server/entry.mjs"
+        "website:run-build": "node ./apps/website/dist/server/entry.mjs",
+        "template-preview:dev": "cd apps/template-preview && pnpm run dev",
+        "template-preview:build": "cd apps/template-preview && pnpm run build",
+        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs"
     },
     "devEngines": {
         "packageManager": {
@@ -21,17 +25,17 @@
     },
     "type": "module",
     "devDependencies": {
-        "@types/node": "^25.9.2",
+        "@types/node": "^25.9.4",
         "@types/react": "^19.2.17",
-        "eslint": "^10.4.1",
+        "eslint": "^10.5.0",
         "globals": "^17.6.0",
-        "prettier": "^3.8.3",
+        "prettier": "^3.8.4",
         "prettier-plugin-astro": "0.14.1",
         "prettier-plugin-tailwindcss": "0.8.0",
-        "typescript-eslint": "^8.60.1"
+        "typescript-eslint": "^8.61.1"
     },
     "dependencies": {
-        "posthog-node": "^5.37.1",
+        "posthog-node": "^5.38.2",
         "zod": "^4.4.3"
     }
 }

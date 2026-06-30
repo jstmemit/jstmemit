@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const topBottomText: Template = {
-    id: 1,
     name: "topBottomText",
     width: 800,
     height: 800,
@@ -32,7 +31,7 @@ export const topBottomText: Template = {
             <div
                 style={{
                     position: "absolute",
-                    top: 20,
+                    top: 10,
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",

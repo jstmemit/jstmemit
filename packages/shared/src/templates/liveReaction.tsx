@@ -3,7 +3,6 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 
 export const liveReaction: Template = {
-    id: 3,
     name: "liveReaction",
     width: 800,
     height: 800,
@@ -21,16 +20,9 @@ export const liveReaction: Template = {
                 height: "100%",
             }}
         >
+            <img src={images[0]} width={768} height={615} style={{ position: "absolute", top: 185, left: 17 }} />
             <img
-                src={images[0]}
-                width={800}
-                height={800}
-                style={{ position: "absolute", top: 0, left: 0 }}
-            />
-            <img
-                src={
-                    "https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"
-                }
+                src={"https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"}
                 width={800}
                 height={800}
                 style={{ position: "absolute", top: 0, left: 0 }}
