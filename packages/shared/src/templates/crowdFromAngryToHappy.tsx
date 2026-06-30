@@ -56,40 +56,58 @@ export const crowdFromAngryToHappy: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    width: "50%",
+                    width: "100%",
+                    maxWidth: "50%",
                     height: "15%",
                     padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
                 }}
             >
-                {texts[0]}
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[0]}
+                </span>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
                     top: "50%",
-                    width: "50%",
+                    width: "100%",
+                    maxWidth: "50%",
                     height: "15%",
                     padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
                 }}
             >
-                {texts[1]}
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[1]}
+                </span>
             </div>
         </div>
     ),

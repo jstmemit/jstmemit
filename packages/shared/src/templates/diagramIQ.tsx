@@ -8,7 +8,7 @@ export const diagramIQ: Template = {
     height: 843,
     texts: [
         { id: 0, description: "stupid text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "normal text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "normal text", minLength: 1, maxLength: 7 },
         { id: 2, description: "clever text", minLength: 1, maxLength: 5 },
     ],
     images: [
@@ -79,14 +79,23 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
                 }}
             >
-                {texts[0]}
+                <span
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[0]}
+                </span>
             </div>
             <div
                 style={{
@@ -100,16 +109,24 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
                 }}
             >
-                {texts[1]}
+                <span
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[1]}
+                </span>
             </div>
-
             <div
                 style={{
                     position: "absolute",
@@ -121,14 +138,23 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
                 }}
             >
-                {texts[2]}
+                <span
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[2]}
+                </span>
             </div>
         </div>
     ),

@@ -7,8 +7,8 @@ export const creativeMetaphor: Template = {
     width: 1202,
     height: 1028,
     texts: [
-        { id: 0, description: "Name of the person who posted a creative metaphor", minLength: 1, maxLength: 2 },
-        { id: 1, description: "Creative metaphor", minLength: 2, maxLength: 6 },
+        { id: 0, description: "Name of the person who posted a creative metaphor", minLength: 1, maxLength: 5 },
+        { id: 1, description: "Creative metaphor", minLength: 1, maxLength: 5 },
     ],
     images: [{ id: 0, description: "Person who posted a creative metaphor" }],
     element: ({ texts, images }: TemplateProps) => (
@@ -30,26 +30,9 @@ export const creativeMetaphor: Template = {
                 style={{
                     position: "absolute",
                     left: 160,
-                    bottom: 200,
-                    width: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
-                    display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 48,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                }}
-            >
-                {texts[1]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 160,
                     bottom: 270,
-                    width: "60%",
+                    width: "100%",
+                    maxWidth: "60%",
                     padding: "10px",
                     textAlign: "left",
                     justifyContent: "flex-start",
@@ -58,9 +41,34 @@ export const creativeMetaphor: Template = {
                     fontSize: 43,
                     lineHeight: 1.05,
                     color: "#808080",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 @{texts[0]}
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    left: 160,
+                    bottom: 200,
+                    width: "100%",
+                    maxWidth: "60%",
+                    padding: "10px",
+                    textAlign: "left",
+                    justifyContent: "flex-start",
+                    display: "flex",
+                    fontFamily: "Comic Sans MS",
+                    fontSize: 48,
+                    lineHeight: 1.05,
+                    color: "#fff",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                }}
+            >
+                {texts[1]}
             </div>
             <img
                 src={images[0]}

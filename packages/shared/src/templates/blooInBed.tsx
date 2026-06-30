@@ -59,7 +59,6 @@ export const blooInBed: Template = {
                     {texts[0]}
                 </div>
             </div>
-
             <div
                 style={{
                     position: "absolute",

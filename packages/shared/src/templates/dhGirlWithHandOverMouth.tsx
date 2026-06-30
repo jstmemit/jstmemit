@@ -6,7 +6,7 @@ export const dhGirlWithHandOverMouth: Template = {
     name: "dhGirlWithHandOverMouth",
     width: 718,
     height: 1131,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "doctor House`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -41,7 +41,6 @@ export const dhGirlWithHandOverMouth: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "100%",
                     maxHeight: "13%",
@@ -50,14 +49,24 @@ export const dhGirlWithHandOverMouth: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),
