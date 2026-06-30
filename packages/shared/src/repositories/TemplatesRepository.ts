@@ -102,6 +102,7 @@ import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterPa
 import { spongeBobBeggingVsTuxedo } from "#/templates/spongeBobBeggingVsTuxedo.tsx";
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
 import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
+import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -213,6 +214,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             spongeBobBeggingVsTuxedo,
             dhGirlWithHandOverMouth,
             griffinsLoisInBed,
+            cinemaGuys,
         ];
     }
 }
