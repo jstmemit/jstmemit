@@ -8,10 +8,7 @@ export class ContextService implements IContextService {
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
 
-    public constructor(
-        messagesRepository: IMessagesRepository,
-        imagesRepository: IImagesRepository,
-    ) {
+    public constructor(messagesRepository: IMessagesRepository, imagesRepository: IImagesRepository) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
     }
@@ -26,17 +23,8 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveContent(
-        messageId: string,
-        channelId: string,
-        content: string,
-    ): Promise<boolean> {
-        return await this._messagesRepository.new(
-            messageId,
-            channelId,
-            content,
-            new Date(),
-        );
+    public async saveContent(messageId: string, channelId: string, content: string): Promise<boolean> {
+        return await this._messagesRepository.new(messageId, channelId, content, new Date());
     }
 
     /**
@@ -50,25 +38,16 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveImages(
-        messageId: string,
-        channelId: string,
-        attachments: Collection<string, Attachment>,
-    ): boolean {
+    public saveImages(messageId: string, channelId: string, attachments: Collection<string, Attachment>): boolean {
         attachments.forEach((attachment: Attachment): void => {
-            const expiresAt: Date = this._getExpirationDate(
-                attachment.proxyURL,
-            );
+            const expiresAt: Date = this._getExpirationDate(attachment.proxyURL);
+
+            if (attachment.proxyURL.includes(".webp")) {
+                return;
+            }
 
             this._imagesRepository
-                .new(
-                    messageId,
-                    channelId,
-                    attachment.proxyURL,
-                    "attachment",
-                    new Date(),
-                    expiresAt,
-                )
+                .new(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
                 .catch((error): void => {
                     console.error(error);
                 });
@@ -78,7 +57,7 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Finds a source link to the Tenor GIF and then calls
+     * Finds a source link to the Tenor or Giphy GIF and then calls
      * ImagesRepository to save it into the database
      *
      * @param messageId
@@ -87,23 +66,24 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveGif(
-        messageId: string,
-        channelId: string,
-        content: string,
-    ): Promise<boolean> {
-        const result: string | undefined =
-            await this._resolveTenorGifUrl(content);
+    public async saveGif(messageId: string, channelId: string, content: string): Promise<boolean> {
+        let result: string | undefined = "";
+
+        if (content.includes("tenor")) {
+            result = await this._resolveTenorGifUrl(content);
+        }
+
+        if (content.includes("giphy")) {
+            result = await this._resolveGiphyGifUrl(content);
+        }
 
         if (!result) {
             return false;
         }
 
-        this._imagesRepository
-            .new(messageId, channelId, result, "gif", new Date())
-            .catch((error): void => {
-                console.error(error);
-            });
+        this._imagesRepository.new(messageId, channelId, result, "gif", new Date()).catch((error): void => {
+            console.error(error);
+        });
 
         return true;
     }
@@ -118,18 +98,12 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveAvatar(
-        messageId: string,
-        channelId: string,
-        avatarUrl: string,
-    ): boolean {
+    public saveAvatar(messageId: string, channelId: string, avatarUrl: string): boolean {
         avatarUrl = `${avatarUrl.replace(".webp", "")}?size=1024&format=png`;
 
-        this._imagesRepository
-            .new(messageId, channelId, avatarUrl, "avatar", new Date())
-            .catch((error): void => {
-                console.error(error);
-            });
+        this._imagesRepository.new(messageId, channelId, avatarUrl, "avatar", new Date()).catch((error): void => {
+            console.error(error);
+        });
 
         return true;
     }
@@ -143,9 +117,7 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    private async _resolveTenorGifUrl(
-        tenorUrl: string,
-    ): Promise<string | undefined> {
+    private async _resolveTenorGifUrl(tenorUrl: string): Promise<string | undefined> {
         const response: Response = await fetch(tenorUrl);
 
         if (!response.ok) {
@@ -153,9 +125,20 @@ export class ContextService implements IContextService {
         }
 
         const html: string = await response.text();
-        const match: RegExpMatchArray | null = html.match(
-            /<link[^>]+rel="image_src"[^>]+href="([^"]+)"/i,
-        );
+        const match: RegExpMatchArray | null = html.match(/<link[^>]+rel="image_src"[^>]+href="([^"]+)"/i);
+
+        return match?.[1];
+    }
+
+    private async _resolveGiphyGifUrl(tenorUrl: string): Promise<string | undefined> {
+        const response: Response = await fetch(tenorUrl);
+
+        if (!response.ok) {
+            return undefined;
+        }
+
+        const html: string = await response.text();
+        const match: RegExpMatchArray | null = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i);
 
         return match?.[1];
     }
@@ -170,13 +153,9 @@ export class ContextService implements IContextService {
      */
     private _getExpirationDate(attachmentUrl: string): Date {
         try {
-            const expiration: string | null = new URL(
-                attachmentUrl,
-            ).searchParams.get("ex");
+            const expiration: string | null = new URL(attachmentUrl).searchParams.get("ex");
 
-            return expiration
-                ? new Date(parseInt(expiration, 16) * 1000)
-                : new Date(Date.now() + 24 * 60 * 60 * 1000);
+            return expiration ? new Date(parseInt(expiration, 16) * 1000) : new Date(Date.now() + 24 * 60 * 60 * 1000);
         } catch (error) {
             console.error(error);
 

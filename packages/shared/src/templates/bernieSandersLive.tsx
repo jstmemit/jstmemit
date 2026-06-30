@@ -7,8 +7,8 @@ export const bernieSandersLive: Template = {
     width: 981,
     height: 1038,
     texts: [
-        { id: 0, description: "person's speech", minLength: 1, maxLength: 2 },
-        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 2 },
+        { id: 0, description: "person's speech", minLength: 1, maxLength: 3 },
+        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 3 },
     ],
     images: [{ id: 0, description: "Person who is debating with Bernie Sanders on his live stream" }],
     element: ({ texts, images }: TemplateProps) => (
