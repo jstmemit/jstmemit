@@ -1,0 +1,15 @@
+---
+interface Props {
+    text: string;
+    icon?: string;
+    alt?: string;
+    classes?: string;
+}
+
+const { text, icon, alt, classes } = Astro.props;
+---
+
+<li class=`relative flex max-w-13 flex-col items-center gap-1 md:max-w-18 ${classes}`>
+    <img src={icon} alt={alt} />
+    <h3 class="text-lg">{text}</h3>
+</li>

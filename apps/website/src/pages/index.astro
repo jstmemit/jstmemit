@@ -1,13 +1,15 @@
 ---
 import PageLayout from "#/layout/PageLayout.astro";
 import Button from "#/components/Button.astro";
-import Section from "#/components/Section.astro";
+import Section from "#/components/ui/Section.astro";
 import Marquee from "#/components/ui/Marquee.astro";
 import type { MarqueeItem } from "#/models/MarqueeItem.ts";
 import Explainer from "#/components/ui/Explainer.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Badge from "#/components/ui/Badge.astro";
+import List from "#/components/ui/List.astro";
+import Block from "#/components/ui/Block.astro";
 
 const marqueeItems: MarqueeItem[] = [
     {
@@ -86,27 +88,31 @@ const marqueeItems: MarqueeItem[] = [
                 /> buttons that improve the quality of future memes by helping the bot to understand what was funny.
             </Paragraph>
 
-            <ul class="mt-2.5 flex items-center gap-2.5 text-2xl font-bold md:mt-5 md:gap-5">
-                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
-                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/template.png" alt="Layout icon" />
-                    <h3 class="text-lg">Template</h3>
-                </li>
+            <List>
+                <Block
+                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/template.png"
+                    alt="Layout icon"
+                    text="Template"
+                />
                 <li class="mb-8">+</li>
-                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
-                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png" alt="Text icon" />
-                    <h3 class="text-lg">Chats</h3>
-                </li>
+                <Block
+                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png"
+                    alt="Text icon"
+                    text="Chats"
+                />
                 <li class="mb-8">+</li>
-                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
-                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png" alt="4 images icon" />
-                    <h3 class="text-lg">Images</h3>
-                </li>
+                <Block
+                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png"
+                    alt="4 images icon"
+                    text="Images"
+                />
                 <li class="mb-8">=</li>
-                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
-                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png" alt="Trophy icon" />
-                    <h3 class="text-lg">Meme</h3>
-                </li>
-            </ul>
+                <Block
+                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png"
+                    alt="Trophy icon"
+                    text="Meme"
+                />
+            </List>
         </div>
     </Section>
 </PageLayout>
