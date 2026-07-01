@@ -40,7 +40,7 @@ const marqueeItems: MarqueeItem[] = [
 ---
 
 <PageLayout>
-    <Section variant="gradient" classes="h-[80vh] justify-center md:h-[70vh]">
+    <Section variant="gradient" classes="h-[80vh] justify-center md:h-[70vh] items-center">
         <div slot="text" class="z-2 flex w-full flex-col items-center gap-3">
             <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
                 personalized memes for <span class="text-hot-fuchsia">your</span> community
@@ -62,4 +62,49 @@ const marqueeItems: MarqueeItem[] = [
     <section class="-mt-12">
         <Marquee variant="hero" texts={marqueeItems} />
     </section>
+
+    <Section variant="dark">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <p class="text-white/25 uppercase">
+                <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
+            </p>
+            <h2 class="text-3xl font-bold uppercase">
+                Chat and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
+            </h2>
+            <p class="text-pretty text-white/75 md:max-w-160">
+                Just talk like you normally would. Once every few dozen of messages Jstmemit picks a meme template,
+                takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a
+                template, write captions, worry about image formats.
+            </p>
+            <p class="text-pretty text-white/75 md:max-w-160">
+                Oh, and each generated meme has <span class="bg-carbon-black rounded-full p-1 px-2 font-bold text-white"
+                    >👍 Like</span
+                >, <span class="bg-carbon-black rounded-full p-1 px-3 font-bold text-white">🔁 Regenerate</span> and <span
+                    class="bg-carbon-black rounded-full p-1 px-3 font-bold text-white">👎 Dislike</span
+                > buttons that improve the quality of future memes by helping the bot to understand what was funny.
+            </p>
+
+            <ul class="mt-2.5 flex items-center gap-2.5 text-2xl font-bold md:mt-5 md:gap-5">
+                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
+                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/template.png" alt="Layout icon" />
+                    <h3 class="text-lg">Template</h3>
+                </li>
+                <li class="mb-8">+</li>
+                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
+                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png" alt="Text icon" />
+                    <h3 class="text-lg">Chats</h3>
+                </li>
+                <li class="mb-8">+</li>
+                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
+                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png" alt="4 images icon" />
+                    <h3 class="text-lg">Images</h3>
+                </li>
+                <li class="mb-8">=</li>
+                <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
+                    <img src="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png" alt="Trophy icon" />
+                    <h3 class="text-lg">Meme</h3>
+                </li>
+            </ul>
+        </div>
+    </Section>
 </PageLayout>
