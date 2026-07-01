@@ -1,0 +1,50 @@
+---
+import List from "#/components/ui/List.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Explainer from "#/components/ui/Explainer.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Block from "#/components/ui/Block.astro";
+import Badge from "#/components/ui/Badge.astro";
+import Message from "#/components/ui/Message.astro";
+---
+
+<Section variant="light">
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+        <Heading>
+            How <em class="text-bubblegum-pink not-italic">exactly</em> does that <em
+                class="text-bubblegum-pink not-italic">work?</em
+            >
+        </Heading>
+        <Paragraph>
+            To generate memes the bot stores a short memory of your channel. This includes text contents and links to
+            GIFs and Images.
+        </Paragraph>
+        <Paragraph>
+            During each meme generation the bot runs a Markov chain algorithm and filters results so that mixed text
+            fits on the meme. This stitching multiple messages together is the thing that makes it chaotic and funny.
+        </Paragraph>
+        <Paragraph>
+            And if a meme requires images, Jstmemit will pick random ones out of a pool of avatars, attachments and
+            GIFs.
+        </Paragraph>
+
+        <List>
+            <Message heading="Message #1" color="text-bubblegum-pink">our base is raided</Message>
+            <li class="mt-7">
+                <img src="https://files.wideunits.nl/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
+            </li>
+            <Message heading="Message #2" color="text-dark-cyan">bruh this weapon is so trash</Message>
+            <li class="mt-7">
+                <img src="https://files.wideunits.nl/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
+            </li>
+            <Message heading="Meme text" color="hidden">
+                <em class="text-bubblegum-pink not-italic">[[</em>our base<em class="text-bubblegum-pink not-italic"
+                    >]]</em
+                >
+                {" "}is{" "}
+                <em class="text-dark-cyan not-italic">[[</em>so trash<em class="text-dark-cyan not-italic">]]</em>
+            </Message>
+        </List>
+    </div>
+</Section>
