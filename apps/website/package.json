@@ -11,6 +11,11 @@
         "preview": "astro preview",
         "astro": "astro"
     },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
     "dependencies": {
         "@astrojs/node": "^10.1.4",
         "@tailwindcss/vite": "^4.3.0",
