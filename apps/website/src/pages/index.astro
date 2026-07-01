@@ -4,6 +4,10 @@ import Button from "#/components/Button.astro";
 import Section from "#/components/Section.astro";
 import Marquee from "#/components/ui/Marquee.astro";
 import type { MarqueeItem } from "#/models/MarqueeItem.ts";
+import Explainer from "#/components/ui/Explainer.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Badge from "#/components/ui/Badge.astro";
 
 const marqueeItems: MarqueeItem[] = [
     {
@@ -65,24 +69,22 @@ const marqueeItems: MarqueeItem[] = [
 
     <Section variant="dark">
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
-            <p class="text-white/25 uppercase">
+            <Explainer>
                 <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
-            </p>
-            <h2 class="text-3xl font-bold uppercase">
+            </Explainer>
+            <Heading>
                 Chat and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
-            </h2>
-            <p class="text-pretty text-white/75 md:max-w-160">
+            </Heading>
+            <Paragraph>
                 Just talk like you normally would. Once every few dozen of messages Jstmemit picks a meme template,
                 takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a
                 template, write captions, worry about image formats.
-            </p>
-            <p class="text-pretty text-white/75 md:max-w-160">
-                Oh, and each generated meme has <span class="bg-carbon-black rounded-full p-1 px-2 font-bold text-white"
-                    >👍 Like</span
-                >, <span class="bg-carbon-black rounded-full p-1 px-3 font-bold text-white">🔁 Regenerate</span> and <span
-                    class="bg-carbon-black rounded-full p-1 px-3 font-bold text-white">👎 Dislike</span
-                > buttons that improve the quality of future memes by helping the bot to understand what was funny.
-            </p>
+            </Paragraph>
+            <Paragraph>
+                Oh, and each generated meme has <Badge text="👍 Like" />, <Badge text="🔁 Regenerate" /> and <Badge
+                    text="👎 Dislike"
+                /> buttons that improve the quality of future memes by helping the bot to understand what was funny.
+            </Paragraph>
 
             <ul class="mt-2.5 flex items-center gap-2.5 text-2xl font-bold md:mt-5 md:gap-5">
                 <li class="relative flex max-w-13 flex-col items-center gap-1 md:max-w-18">
