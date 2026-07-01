@@ -1,48 +1,13 @@
 ---
-import Marquee from "./ui/Marquee.astro";
+import BlurredMemes from "./background/decorations/BlurredMemes.astro";
+import GradientBackground from "./background/variants/GradientBackground.astro";
 ---
 
 <section
     class="relative flex h-[80vh] flex-col items-center justify-center gap-5 overflow-hidden bg-black text-white md:h-[70vh]"
 >
     <slot name="text" />
-    <img
-        class="pointer-events-none absolute z-2 h-[80vh] w-full select-none xl:h-auto"
-        src="https://files.wideunits.nl/jstmemit/images/background/Highlights.png"
-        alt="background highlight"
-    />
-    <img
-        class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-6 select-none xl:h-auto"
-        src="https://files.wideunits.nl/jstmemit/images/background/Noise.png"
-        alt="background noise"
-    />
-    <img
-        class="pointer-events-none absolute z-1 h-[80vh] w-full select-none xl:h-auto"
-        src="https://files.wideunits.nl/jstmemit/images/background/Grid.png"
-        alt="grid"
-    />
-
-    <div class="absolute inset-0 mx-auto max-w-[1920px]">
-        <slot name="memes" />
-    </div>
-
-    <img
-        class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-90 brightness-0 select-none md:opacity-55 xl:h-auto"
-        src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20memes.png"
-        alt="fog over memes"
-    />
-    <img
-        class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-90 brightness-0 select-none md:opacity-55 xl:h-auto"
-        src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20blurred%20memes.png"
-        alt="fog over memes"
-    />
-    <div class="absolute -right-55 bottom-35 -rotate-25">
-        <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} />
-    </div>
-    <div class="absolute bottom-15 -left-55 rotate-10">
-        <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} />
-    </div>
-    <div class="absolute top-10 -left-45 -rotate-5">
-        <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} direction="left" />
-    </div>
+    <GradientBackground>
+        <BlurredMemes slot="decorations" />
+    </GradientBackground>
 </section>
