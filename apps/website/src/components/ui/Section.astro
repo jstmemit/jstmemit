@@ -16,6 +16,16 @@ const { variant, classes } = Astro.props;
     <slot name="text" />
 
     {
+        variant !== "gradient" && (
+            <img
+                class="pointer-events-none absolute top-0 left-0 z-1 h-full w-full object-cover opacity-6 select-none"
+                src="https://files.wideunits.nl/jstmemit/images/background/Noise.png"
+                alt="background noise"
+            />
+        )
+    }
+
+    {
         variant === "gradient" && (
             <GradientBackground>
                 <BlurredMemes slot="decorations" />
