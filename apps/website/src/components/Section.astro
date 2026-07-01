@@ -1,0 +1,25 @@
+---
+import BlurredMemes from "./background/decorations/BlurredMemes.astro";
+import GradientBackground from "./background/variants/GradientBackground.astro";
+
+interface Props {
+    variant: "light" | "dark" | "gradient";
+    classes?: string;
+}
+
+const { variant, classes } = Astro.props;
+---
+
+<section
+    class=`${classes} relative flex flex-col items-center gap-5 overflow-hidden ${variant === "gradient" && "bg-black"} ${variant === "light" && "bg-ash-black"} ${variant === "light" && "bg-ash-black"} ${variant === "dark" && "bg-void-black"} text-white py-20`
+>
+    <slot name="text" />
+
+    {
+        variant === "gradient" && (
+            <GradientBackground>
+                <BlurredMemes slot="decorations" />
+            </GradientBackground>
+        )
+    }
+</section>
