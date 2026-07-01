@@ -1,0 +1,56 @@
+---
+import List from "#/components/ui/List.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Explainer from "#/components/ui/Explainer.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Block from "#/components/ui/Block.astro";
+import Badge from "#/components/ui/Badge.astro";
+---
+
+<Section variant="dark">
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+        <Explainer>
+            <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
+        </Explainer>
+        <Heading>
+            Chat and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
+        </Heading>
+        <Paragraph>
+            Just talk like you normally would. Once every few dozen of messages Jstmemit picks a meme template, takes
+            some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template,
+            write captions, worry about image formats.
+        </Paragraph>
+        <Paragraph>
+            Oh, and each generated meme has <Badge text="👍 Like" />, <Badge text="🔁 Regenerate" /> and <Badge
+                text="👎 Dislike"
+            /> buttons that improve the quality of future memes by helping the bot to understand what was funny.
+        </Paragraph>
+
+        <List>
+            <Block
+                icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/template.png"
+                alt="Layout icon"
+                text="Template"
+            />
+            <li class="mb-8">+</li>
+            <Block
+                icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png"
+                alt="Text icon"
+                text="Chats"
+            />
+            <li class="mb-8">+</li>
+            <Block
+                icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png"
+                alt="4 images icon"
+                text="Images"
+            />
+            <li class="mb-8">=</li>
+            <Block
+                icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png"
+                alt="Trophy icon"
+                text="Meme"
+            />
+        </List>
+    </div>
+</Section>

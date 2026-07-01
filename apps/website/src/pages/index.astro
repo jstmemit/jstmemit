@@ -3,116 +3,20 @@ import PageLayout from "#/layout/PageLayout.astro";
 import Button from "#/components/Button.astro";
 import Section from "#/components/ui/Section.astro";
 import Marquee from "#/components/ui/Marquee.astro";
-import type { MarqueeItem } from "#/models/MarqueeItem.ts";
 import Explainer from "#/components/ui/Explainer.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Badge from "#/components/ui/Badge.astro";
 import List from "#/components/ui/List.astro";
 import Block from "#/components/ui/Block.astro";
-
-const marqueeItems: MarqueeItem[] = [
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/yourContext.svg",
-        text: "Your context",
-        alt: "Laughing smile icon",
-    },
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/memeTemplates.svg",
-        text: "125 meme templates",
-        alt: "Picture icon",
-    },
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/customizable.svg",
-        text: "Customizable",
-        alt: "Settings gear icon",
-    },
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/free.svg",
-        text: "Free",
-        alt: "Crossed dollar icon",
-    },
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/openSource.svg",
-        text: "Open source",
-        alt: "Code block icon",
-    },
-    {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/privacyFriendly.svg",
-        text: "Privacy friendly",
-        alt: "Shield icon",
-    },
-];
+import ChatAndJstmemitWillMakeMemes from "#/components/sections/ChatAndJstmemitWillMakeMemesSection.astro";
+import ChatAndJstmemitWillMakeMemesSection from "#/components/sections/ChatAndJstmemitWillMakeMemesSection.astro";
+import HeroSection from "#/components/sections/HeroSection.astro";
+import FeatureMarqueeSection from "#/components/sections/FeatureMarqueeSection.astro";
 ---
 
 <PageLayout>
-    <Section variant="gradient" classes="h-[80vh] justify-center md:h-[70vh] items-center">
-        <div slot="text" class="z-2 flex w-full flex-col items-center gap-3">
-            <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
-                personalized memes for <span class="text-hot-fuchsia">your</span> community
-            </h1>
-            <p class="mx-auto my-5 w-[70%] text-center text-xl text-gray-300 md:w-[50%] md:text-3xl">
-                Auto-generated memes from your conversations
-            </p>
-            <Button
-                href="https://discord.com/oauth2/authorize?client_id=1375836467745783990"
-                background="bg-discord-blue"
-                textColor="text-white"
-                icon="https://files.wideunits.nl/jstmemit/images/discord.svg"
-                alt="discord logo"
-                name="Add to your server"
-            />
-        </div>
-    </Section>
-
-    <section class="-mt-12">
-        <Marquee variant="hero" texts={marqueeItems} />
-    </section>
-
-    <Section variant="dark">
-        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
-            <Explainer>
-                <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
-            </Explainer>
-            <Heading>
-                Chat and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
-            </Heading>
-            <Paragraph>
-                Just talk like you normally would. Once every few dozen of messages Jstmemit picks a meme template,
-                takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a
-                template, write captions, worry about image formats.
-            </Paragraph>
-            <Paragraph>
-                Oh, and each generated meme has <Badge text="👍 Like" />, <Badge text="🔁 Regenerate" /> and <Badge
-                    text="👎 Dislike"
-                /> buttons that improve the quality of future memes by helping the bot to understand what was funny.
-            </Paragraph>
-
-            <List>
-                <Block
-                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/template.png"
-                    alt="Layout icon"
-                    text="Template"
-                />
-                <li class="mb-8">+</li>
-                <Block
-                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png"
-                    alt="Text icon"
-                    text="Chats"
-                />
-                <li class="mb-8">+</li>
-                <Block
-                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png"
-                    alt="4 images icon"
-                    text="Images"
-                />
-                <li class="mb-8">=</li>
-                <Block
-                    icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png"
-                    alt="Trophy icon"
-                    text="Meme"
-                />
-            </List>
-        </div>
-    </Section>
+    <HeroSection />
+    <FeatureMarqueeSection />
+    <ChatAndJstmemitWillMakeMemesSection />
 </PageLayout>

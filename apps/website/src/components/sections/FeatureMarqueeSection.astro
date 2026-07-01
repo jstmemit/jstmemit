@@ -1,0 +1,42 @@
+---
+import ChatAndJstmemitWillMakeMemesSection from "#/components/sections/ChatAndJstmemitWillMakeMemesSection.astro";
+import Marquee from "#/components/ui/Marquee.astro";
+import type { MarqueeItem } from "#/models/MarqueeItem.ts";
+
+const marqueeItems: MarqueeItem[] = [
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/yourContext.svg",
+        text: "Your context",
+        alt: "Laughing smile icon",
+    },
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/memeTemplates.svg",
+        text: "125 meme templates",
+        alt: "Picture icon",
+    },
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/customizable.svg",
+        text: "Customizable",
+        alt: "Settings gear icon",
+    },
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/free.svg",
+        text: "Free",
+        alt: "Crossed dollar icon",
+    },
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/openSource.svg",
+        text: "Open source",
+        alt: "Code block icon",
+    },
+    {
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/privacyFriendly.svg",
+        text: "Privacy friendly",
+        alt: "Shield icon",
+    },
+];
+---
+
+<section class="-mt-12">
+    <Marquee variant="hero" texts={marqueeItems} />
+</section>
