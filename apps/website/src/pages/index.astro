@@ -13,11 +13,16 @@ import HowExactlyDoesThatWorkSection from "#/components/sections/HowExactlyDoesT
 import ChatAndJstmemitWillMakeMemesSection from "#/components/sections/ChatAndJstmemitWillMakeMemesSection.astro";
 import HeroSection from "#/components/sections/HeroSection.astro";
 import FeatureMarqueeSection from "#/components/sections/FeatureMarqueeSection.astro";
+import MemeGrid from "#/components/MemeGrid.astro";
 ---
 
 <PageLayout>
     <HeroSection />
     <FeatureMarqueeSection />
-    <ChatAndJstmemitWillMakeMemesSection />
-    <HowExactlyDoesThatWorkSection />
+
+    <div class="relative overflow-hidden">
+        <ChatAndJstmemitWillMakeMemesSection />
+        <HowExactlyDoesThatWorkSection />
+        <MemeGrid />
+    </div>
 </PageLayout>
