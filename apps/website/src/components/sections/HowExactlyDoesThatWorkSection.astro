@@ -7,6 +7,7 @@ import Heading from "#/components/ui/Heading.astro";
 import Block from "#/components/ui/Block.astro";
 import Badge from "#/components/ui/Badge.astro";
 import Message from "#/components/ui/Message.astro";
+import Separator from "#/components/ui/Separator.astro";
 ---
 
 <Section variant="light">
@@ -31,13 +32,9 @@ import Message from "#/components/ui/Message.astro";
 
         <List>
             <Message heading="Message #1" color="text-bubblegum-pink">our base is raided</Message>
-            <li class="mt-7">
-                <img src="https://files.wideunits.nl/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
-            </li>
+            <Separator variant="arrow" classes="mt-6" />
             <Message heading="Message #2" color="text-dark-cyan">bruh this weapon is so trash</Message>
-            <li class="mt-7">
-                <img src="https://files.wideunits.nl/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
-            </li>
+            <Separator variant="arrow" classes="mt-6" />
             <Message heading="Meme text" color="hidden">
                 <em class="text-bubblegum-pink not-italic">[[</em>our base<em class="text-bubblegum-pink not-italic"
                     >]]</em

@@ -6,6 +6,7 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Block from "#/components/ui/Block.astro";
 import Badge from "#/components/ui/Badge.astro";
+import Separator from "#/components/ui/Separator.astro";
 ---
 
 <Section variant="dark">
@@ -33,19 +34,19 @@ import Badge from "#/components/ui/Badge.astro";
                 alt="Layout icon"
                 text="Template"
             />
-            <li class="mb-8">+</li>
+            <Separator variant="text" text="+" classes="mb-8" />
             <Block
                 icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/chats.png"
                 alt="Text icon"
                 text="Chats"
             />
-            <li class="mb-8">+</li>
+            <Separator variant="text" text="+" classes="mb-8" />
             <Block
                 icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/images.png"
                 alt="4 images icon"
                 text="Images"
             />
-            <li class="mb-8">=</li>
+            <Separator variant="text" text="+" classes="mb-8" />
             <Block
                 icon="https://files.wideunits.nl/jstmemit/images/icons/blocks/meme.png"
                 alt="Trophy icon"

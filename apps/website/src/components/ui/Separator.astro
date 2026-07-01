@@ -1,5 +1,33 @@
 ---
+interface Props {
+    variant?: "dot" | "arrow" | "text";
+    classes?: string;
+    text?: string;
+}
 
+const { variant = "dot", classes, text } = Astro.props;
 ---
 
-<div class="size-1 rounded-full bg-white/20"></div>
+{
+    variant === "dot" && (
+        <li class={`${classes}`}>
+            <div class="size-1 rounded-full bg-white/20" />
+        </li>
+    )
+}
+
+{
+    variant === "arrow" && (
+        <li class={`${classes}`}>
+            <img src="https://files.wideunits.nl/jstmemit/images/icons/arrow.svg" alt="Arrow pointing right" />
+        </li>
+    )
+}
+
+{
+    variant === "text" && (
+        <li class={`${classes}`}>
+            <span>{text}</span>
+        </li>
+    )
+}
