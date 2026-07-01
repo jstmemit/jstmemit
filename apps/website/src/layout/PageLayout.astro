@@ -3,7 +3,10 @@ import Navbar from "../components/Navbar.astro";
 import "#/styles/global.css";
 ---
 
-<html lang="en" class="box-border overflow-x-hidden">
+<html
+    lang="en"
+    class="scrollbar-thumb-bubblegum-pink scrollbar-track-carbon-black box-border scrollbar-thin overflow-x-hidden"
+>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -18,7 +21,7 @@ import "#/styles/global.css";
         />
         <!--<title>{pageTitle}</title>-->
     </head>
-    <body class="bg-carbon-black overflow-x-hidden">
+    <body class="bg-carbon-black relative overflow-x-hidden">
         <div class="fixed top-0 z-15 w-full px-6 md:px-10">
             <Navbar />
         </div>
