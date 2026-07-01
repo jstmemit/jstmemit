@@ -1,5 +1,18 @@
 ---
 import Marquee from "#/components/ui/Marquee.astro";
+import type { MarqueeItem } from "#/models/MarqueeItem.ts";
+
+const marqueeItems: MarqueeItem[] = [
+    {
+        text: "EASY TO SETUP",
+    },
+    {
+        text: "MEME GENERATOR",
+    },
+    {
+        text: "ALGORITHM",
+    },
+];
 ---
 
 <img
@@ -32,12 +45,13 @@ import Marquee from "#/components/ui/Marquee.astro";
     src="https://files.wideunits.nl/jstmemit/images/background/Fog%20over%20blurred%20memes.png"
     alt="fog over memes"
 />
+
 <div class="absolute -right-55 bottom-35 -rotate-25">
-    <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} />
+    <Marquee texts={marqueeItems} />
 </div>
 <div class="absolute bottom-15 -left-55 rotate-10">
-    <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} />
+    <Marquee texts={marqueeItems} />
 </div>
 <div class="absolute top-10 -left-45 -rotate-5">
-    <Marquee texts={["EASY TO SETUP", "MEME GENERATOR", "ALGORITHM"]} direction="left" />
+    <Marquee texts={marqueeItems} direction="left" />
 </div>
