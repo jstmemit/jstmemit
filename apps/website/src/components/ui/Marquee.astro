@@ -40,3 +40,32 @@ texts.push(...texts);
         </div>
     )
 }
+
+{
+    variant === "hero" && (
+        <div class="relative z-1 flex bg-black/50 py-6 backdrop-blur-md md:w-screen">
+            <ul
+                class={`${direction === "right" ? "animate-marquee-right" : "animate-marquee-left"} absolute top-2 flex items-center gap-15 text-2xl font-bold text-white uppercase`}
+            >
+                {texts.map((item: MarqueeItem, index: number) => (
+                    <li class="flex items-center gap-2.5 whitespace-nowrap">
+                        <img src={item.icon} alt={item.alt} />
+
+                        {item.text}
+                    </li>
+                ))}
+            </ul>
+            <ul
+                class={`${direction === "right" ? "animate-marquee-right2" : "animate-marquee-left2"} absolute top-2 left-12 flex items-center gap-15 text-2xl font-bold text-white uppercase`}
+            >
+                {texts.map((item: MarqueeItem, index: number) => (
+                    <li class="flex items-center gap-2.5 whitespace-nowrap">
+                        <img src={item.icon} alt={item.alt} />
+
+                        {item.text}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
