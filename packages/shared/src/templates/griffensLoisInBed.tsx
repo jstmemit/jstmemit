@@ -6,7 +6,7 @@ export const griffinsLoisInBed: Template = {
     name: "griffinsLoisInBed",
     width: 735,
     height: 479,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
     images: [
         { id: 0, description: "Lois`s face" },
         { id: 1, description: "Peter`s face" },
@@ -56,23 +56,31 @@ export const griffinsLoisInBed: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "50%",
-                    height: "100%",
-                    maxHeight: "50%",
+                    height: "50%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

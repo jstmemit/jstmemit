@@ -6,7 +6,7 @@ export const simpsonsLIsaShowPresentation: Template = {
     name: "simpsonsLIsaShowPresentation",
     width: 736,
     height: 551,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 25 }],
     images: [{ id: 0, description: "Lisa`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -41,23 +41,31 @@ export const simpsonsLIsaShowPresentation: Template = {
                     position: "absolute",
                     left: "20%",
                     top: "10%",
-                    padding: "15px",
                     width: "65%",
-                    height: "100%",
-                    maxHeight: "45%",
+                    height: "45%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 7,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

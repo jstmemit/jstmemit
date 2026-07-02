@@ -6,7 +6,7 @@ export const sdFredUnmaskingGhost: Template = {
     name: "sdFredUnmaskingGhost",
     width: 474,
     height: 632,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "Fred`s face" },
         { id: 1, description: "Villain`s face" },
@@ -68,26 +68,34 @@ export const sdFredUnmaskingGhost: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "20%",
+                    height: "20%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontWeight: "bold",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

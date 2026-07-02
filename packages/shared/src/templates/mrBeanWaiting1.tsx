@@ -7,7 +7,7 @@ export const mrBeanWaiting1: Template = {
     width: 736,
     height: 617,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Mr Bean`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -76,26 +76,34 @@ export const mrBeanWaiting1: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    padding: "15px",
+                    bottom: 0,
                     width: "100%",
                     height: "100%",
-                    maxHeight: "20%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "lightgoldenrodyellow",
+                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

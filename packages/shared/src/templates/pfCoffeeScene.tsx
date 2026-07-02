@@ -6,7 +6,7 @@ export const pfCoffeeScene: Template = {
     name: "pfCoffeeScene",
     width: 600,
     height: 386,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "first person`s face" },
         { id: 1, description: "second person`s face " },
@@ -55,23 +55,32 @@ export const pfCoffeeScene: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
-                    padding: "15px",
+                    top: 0,
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "22%",
+                    height: "22%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

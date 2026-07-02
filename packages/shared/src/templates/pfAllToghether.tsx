@@ -6,7 +6,7 @@ export const pfAllToghether: Template = {
     name: "pfAllToghether",
     width: 950,
     height: 632,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "Jules's face (left)" },
         { id: 1, description: "Vincent's face (center left)" },
@@ -82,25 +82,34 @@ export const pfAllToghether: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "20%",
+                    height: "20%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#000000",
-                    backgroundColor: "#000000",
+                    padding: "15px",
+                    backgroundColor: "#ffffff",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#ffffff",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

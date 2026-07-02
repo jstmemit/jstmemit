@@ -6,7 +6,7 @@ export const pfSayWhatOneMoreTime: Template = {
     name: "pfSayWhatOneMoreTime",
     width: 1920,
     height: 1317,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [
         { id: 0, description: "face of the person with a gun" },
         { id: 1, description: "face of the person in the corner" },
@@ -69,22 +69,31 @@ export const pfSayWhatOneMoreTime: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "18%",
+                    height: "18%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 70,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 70,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

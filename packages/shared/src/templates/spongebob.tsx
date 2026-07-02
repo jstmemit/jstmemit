@@ -6,7 +6,7 @@ export const spongebob: Template = {
     name: "spongebob",
     width: 622,
     height: 727,
-    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 6 }],
     images: [{ id: 0, description: "image that gets burned down" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -28,20 +28,36 @@ export const spongebob: Template = {
             <div
                 style={{
                     position: "absolute",
-                    bottom: 20,
+                    left: 0,
+                    bottom: 0,
                     width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
                     textAlign: "center",
+                    padding: "15px",
+                    // backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

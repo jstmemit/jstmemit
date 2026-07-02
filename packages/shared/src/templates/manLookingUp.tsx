@@ -28,23 +28,37 @@ export const manLookingUp: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "100%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "25%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 35,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid deserunt itaque nam officia
+                    officiis?
+                    {/*{texts[0]}*/}
+                </div>
             </div>
         </div>
     ),

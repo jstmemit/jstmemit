@@ -6,7 +6,7 @@ export const griffinsElephantAndPenguin: Template = {
     name: "griffinsElephantAndPenguin",
     width: 450,
     height: 371,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "person`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -41,22 +41,31 @@ export const griffinsElephantAndPenguin: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "20%",
+                    height: "20%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

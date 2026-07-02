@@ -41,20 +41,31 @@ export const nerdDog: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "16%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),
