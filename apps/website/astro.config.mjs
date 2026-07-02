@@ -5,8 +5,13 @@ import node from "@astrojs/node";
 import compress from "astro-compress";
 import critters from "astro-critters";
 
+import sitemap from "@astrojs/sitemap";
+
+import robotsTxt from "astro-robots-txt";
+
 // https://astro.build/config
 export default defineConfig({
+    site: "https://jstmemit.com",
     vite: {
         plugins: [tailwindcss()],
     },
@@ -17,6 +22,10 @@ export default defineConfig({
 
     integrations: [
         critters(),
+        sitemap(),
+        robotsTxt({
+            host: true,
+        }),
         compress({
             CSS: false,
         }),
