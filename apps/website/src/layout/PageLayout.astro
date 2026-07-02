@@ -1,6 +1,8 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import "#/styles/global.css";
+import "@fontsource-variable/plus-jakarta-sans";
+import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2";
 ---
 
 <html
@@ -13,13 +15,7 @@ import "#/styles/global.css";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-            rel="stylesheet"
-        />
-        <!--<title>{pageTitle}</title>-->
+        <link rel="preload" as="font" type="font/woff2" href={plusJakartaSansWoff2} crossorigin />
     </head>
     <body class="bg-carbon-black relative overflow-x-hidden">
         <div class="fixed top-0 z-15 w-full px-6 md:px-10">

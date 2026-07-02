@@ -12,7 +12,7 @@
     --color-carbon-light-gray: #424242;
     --color-discord-blue: #5865F2;
 
-    --font-sans: "Plus Jakarta Sans", sans-serif;
+    --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
 
     --animate-marquee-right: marqueeRight 75s linear infinite;
     --animate-marquee-right2: marqueeRight2 75s linear infinite;
