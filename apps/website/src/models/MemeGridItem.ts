@@ -1,5 +1,5 @@
 export interface MemeGridItem {
-    span: number;
+    span: string;
     height: string;
     border?: boolean;
     image?: string;

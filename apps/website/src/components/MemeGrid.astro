@@ -9,14 +9,14 @@ const { classes } = Astro.props;
 
 // TODO: replace with s3 meme links
 const tiles: MemeGridItem[] = [
-    { span: 4, height: "h-90", image: "https://media.discordapp.net/attachments/1253438746133528630/1520816346856689785/meme.png?ex=6a45ddd8&is=6a448c58&hm=768f0a4be169cdcb99f4965d74629aa6b7a3c78de8b476a162fea368418f0f62&=&format=webp&quality=lossless&width=400&height=350", alt: "" },
-    { span: 5, height: "h-90", border: true, image: "https://media.discordapp.net/attachments/1253438746133528630/1520816316313763900/meme.png?ex=6a45ddd1&is=6a448c51&hm=fbfc924026e002b41ac1ca865712f607c6568b3f59ecbf626add75d28f6b2601&=&format=webp&quality=lossless", alt: "" },
-    { span: 5, height: "h-80", image: "https://media.discordapp.net/attachments/1253438746133528630/1520815451527970966/meme.png?ex=6a45dd03&is=6a448b83&hm=7668c79370f880866da203c829cceb31a7f1057b4f95fdbb016a56be9578dd45&=&format=webp&quality=lossless", alt: "" },
-    { span: 4, height: "h-80", border: true, image: "https://media.discordapp.net/attachments/1253438746133528630/1520815416468045884/meme.png?ex=6a45dcfa&is=6a448b7a&hm=1ca482f6eef3af33c8a52ea090bfa3712cc787c05af4a9b59c3f18bcb4afb742&=&format=webp&quality=lossless", alt: "" },
-    { span: 3, height: "h-60", border: true, image: "https://media.discordapp.net/attachments/1253438746133528630/1520815374466289834/meme.png?ex=6a45dcf0&is=6a448b70&hm=9b73de80f647513a5f1da0041e9bea647bae7fc9b42d0b4f9fd7702c9293e7e9&=&format=webp&quality=lossless", alt: "" },
-    { span: 6, height: "h-60", image: "https://media.discordapp.net/attachments/1253438746133528630/1520726387084890132/meme.png?ex=6a4632d0&is=6a44e150&hm=3b6da3209fbca6293af863f8766733b46964b33b9627251ec9f76b6d36f92792&=&format=webp&quality=lossless&width=1320&height=1320", alt: "" },
-    { span: 4, height: "h-90", image: "https://media.discordapp.net/attachments/1253438746133528630/1520541152896614461/meme.png?ex=6a462f0d&is=6a44dd8d&hm=2a90db8dfd5f761246c97c76ef4a53c17cbf9073db7ecf08ad388c1ae89a7d72&=&format=webp&quality=lossless", alt: "" },
-    { span: 5, height: "h-90", border: true, image: "https://media.discordapp.net/attachments/1253438746133528630/1520541074731565136/meme.png?ex=6a462efa&is=6a44dd7a&hm=80d90021b4d240380e8458c9f3cd03625b78fc2d5d196c42ea6ec551a1651aac&=&format=webp&quality=lossless", alt: "" },
+    { span: "col-span-4", height: "h-90", image: "https://files.wideunits.nl/jstmemit/images/templates/bbCooking.jpg", alt: "" },
+    { span: "col-span-5", height: "h-90", border: true, image: "https://files.wideunits.nl/jstmemit/images/templates/cowlookingintoocean.png", alt: "" },
+    { span: "col-span-5", height: "h-80", image: "https://files.wideunits.nl/jstmemit/images/templates/buzz.png", alt: "" },
+    { span: "col-span-4", height: "h-80", border: true, image: "https://files.wideunits.nl/jstmemit/images/templates/iSteppedInShit.jpg", alt: "" },
+    { span: "col-span-3", height: "h-60", border: true, image: "https://files.wideunits.nl/jstmemit/images/templates/homerhiding.jpg", alt: "" },
+    { span: "col-span-6", height: "h-60", image: "https://files.wideunits.nl/jstmemit/images/templates/futuramaNotSureIfFry.jpg", alt: "" },
+    { span: "col-span-4", height: "h-90", image: "https://files.wideunits.nl/jstmemit/images/templates/grokTweet.jpg", alt: "" },
+    { span: "col-span-5", height: "h-90", border: true, image: "https://files.wideunits.nl/jstmemit/images/templates/isthisapigeon.png", alt: "" },
 ];
 ---
 
@@ -28,7 +28,7 @@ const tiles: MemeGridItem[] = [
             <img
                 src={meme.image}
                 alt={meme.alt}
-                class=`bg-carbon-black col-span-${meme.span} ${meme.height} w-full rounded-2xl ${meme.border ? "border-bubblegum-pink" : "border-carbon-black"} border-4 shadow-[0_10px_0_0_rgba(0,0,0,0.25)]`
+                class=`bg-carbon-black ${meme.span} ${meme.height} w-full rounded-2xl ${meme.border ? "border-bubblegum-pink" : "border-carbon-black"} border-4 shadow-[0_10px_0_0_rgba(0,0,0,0.25)]`
             />
         ))
     }
