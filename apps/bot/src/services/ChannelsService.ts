@@ -97,4 +97,19 @@ export class ChannelsService implements IChannelsService {
             return false;
         }
     }
+
+    /**
+     * Roll channel's frequency
+     *
+     * @param channelId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async rollChannelFrequency(channelId: string): Promise<boolean> {
+        const channel = await this._channelsRepository.upsert(channelId, new Date());
+
+        const roll: number = Math.floor(Math.random() * channel.frequency);
+
+        return roll === 0;
+    }
 }

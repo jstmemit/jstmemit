@@ -46,7 +46,7 @@ export class TransformService implements ITransformService {
             }
 
             if (context.length < 30) {
-                return _.sample(context) || "";
+                return this._transformToRequiredMaxLength(_.sample(context) || "", text.maxLength);
             }
 
             return await this._markovProvider.getTransformedText(text, context);
@@ -54,5 +54,9 @@ export class TransformService implements ITransformService {
             console.error(error);
             return "";
         }
+    }
+
+    private _transformToRequiredMaxLength(text: string, maxLength: number): string {
+        return text.split(" ").slice(0, maxLength).join(" ");
     }
 }
