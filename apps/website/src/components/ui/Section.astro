@@ -11,7 +11,7 @@ const { variant, classes } = Astro.props;
 ---
 
 <section
-    class=`${classes} relative flex flex-col gap-5 px-8 overflow-hidden ${variant === "gradient" && "bg-black"} ${variant === "light" && "bg-ash-black"} ${variant === "light" && "bg-ash-black"} ${variant === "dark" && "bg-void-black"} text-white py-20`
+    class=`${classes} relative flex flex-col gap-5 px-8 overflow-hidden ${variant === "gradient" && "bg-black"} ${variant === "light" && "bg-ash-black"} ${variant === "light" && "bg-ash-black"} ${variant === "dark" && "bg-void-black"} text-white py-10 xl:py-20`
 >
     <slot name="text" />
 
