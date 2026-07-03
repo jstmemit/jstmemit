@@ -6,7 +6,7 @@ export const explainingWhiteboard: Template = {
     name: "explainingWhiteboard",
     width: 1280,
     height: 900,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "person`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -41,20 +41,31 @@ export const explainingWhiteboard: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "20%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 90,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 70,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

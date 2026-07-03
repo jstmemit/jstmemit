@@ -1,5 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import { type ButtonInteraction, type ContainerBuilder } from "discord.js";
+import { Message, type ButtonInteraction, type ContainerBuilder } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -40,21 +40,55 @@ export class MemesController implements IMemesController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleMemeInteraction(interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> {
-        await interaction.deferReply();
+    public async handleMemeInteraction(
+        interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
+    ): Promise<void> {
+        const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
+        const userId: MemeGenerationJob["userId"] =
+            interaction instanceof Message ? interaction.author.id : interaction.user.id;
+
+        let trigger: MemeGenerationJob["trigger"];
+
+        if (!(interaction instanceof Message)) {
+            await interaction.deferReply();
+        }
+
+        if (interaction instanceof Message) {
+            trigger = "auto";
+        } else if (interaction.isButton()) {
+            trigger = "regenerate";
+        } else {
+            trigger = "command";
+        }
 
         const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
             "meme-generation",
             {
-                channelId: interaction.channelId,
-                userId: interaction.user.id,
-                trigger: interaction.isCommand() ? "command" : "regenerate",
+                channelId,
+                userId,
+                trigger,
             },
         );
 
         try {
             const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
 
+            // if bot sent the meme without being prompted to do so
+            if (interaction instanceof Message) {
+                await interaction.reply({
+                    components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
+                    files: [
+                        {
+                            attachment: Buffer.from(jobResult.png, "base64"),
+                            name: "meme.png",
+                        },
+                    ],
+                });
+
+                return;
+            }
+
+            // if bot sent the meme because of /meme or regenerate button
             if (interaction.isChatInputCommand() || interaction.isButton()) {
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
@@ -67,20 +101,6 @@ export class MemesController implements IMemesController {
                     ],
                 });
             }
-
-            // interaction.channel?.isSendable()
-
-            // await interaction.channel.send({
-            //   components: [
-            //     this._ratingsService.constructRatingButtons(interaction.id, 0, 0),
-            //   ],
-            //   files: [
-            //     {
-            //       attachment: Buffer.from(jobResult.png, "base64"),
-            //       name: "meme.png",
-            //     },
-            //   ],
-            // });
         } catch (error) {
             let message: ContainerBuilder;
             const reason: string = error instanceof Error ? error.message : "";

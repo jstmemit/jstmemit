@@ -1,12 +1,6 @@
-import type {
-    ChatInputCommandInteraction,
-    StringSelectMenuInteraction,
-} from "discord.js";
-import {
-    type BaseMessageOptions,
-    type ButtonInteraction,
-    MessageFlags,
-} from "discord.js";
+import { Message } from "discord.js";
+import { type ChatInputCommandInteraction, type StringSelectMenuInteraction } from "discord.js";
+import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "discord.js";
 
 /**
  * Sends a new message by modifying the deferred interaction if
@@ -23,12 +17,18 @@ import {
  * @author Kyrylo Maliuha
  */
 export const respond = async (
-    interaction:
-        | ButtonInteraction
-        | ChatInputCommandInteraction
-        | StringSelectMenuInteraction,
+    interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction | Message,
     components: BaseMessageOptions["components"],
 ): Promise<void> => {
+    if (interaction instanceof Message) {
+        await interaction.reply({
+            flags: MessageFlags.IsComponentsV2,
+            components,
+        });
+
+        return;
+    }
+
     if (interaction.isChatInputCommand()) {
         await interaction.editReply({
             flags: MessageFlags.IsComponentsV2,

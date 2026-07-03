@@ -6,7 +6,7 @@ export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
     width: 776,
     height: 999,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "meal image that would be posted on r/kitchencels" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -28,21 +28,34 @@ export const fuckMyChudLife: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 10,
+                    bottom: 0,
                     width: "100%",
-                    padding: "20px",
-                    textAlign: "center",
-                    justifyContent: "center",
+                    height: "20%",
+                    overflow: "hidden",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 55,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 55,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

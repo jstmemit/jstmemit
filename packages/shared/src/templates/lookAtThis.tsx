@@ -6,7 +6,7 @@ export const lookAtThis: Template = {
     name: "lookAtThis",
     width: 480,
     height: 380,
-    texts: [{ id: 0, description: "text1", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
     images: [{ id: 0, description: "object of interest" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -24,27 +24,6 @@ export const lookAtThis: Template = {
                 height={380}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
-            <div
-                style={{
-                    position: "absolute",
-                    left: "52%",
-                    bottom: 0,
-                    transform: "translateX(-50%)",
-                    width: "45%",
-                    height: "auto",
-                    padding: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                }}
-            >
-                {texts[0]}
-            </div>
             <img
                 src={images[0]}
                 width={100}
@@ -58,6 +37,37 @@ export const lookAtThis: Template = {
                     objectFit: "cover",
                 }}
             />
+            <div
+                style={{
+                    position: "absolute",
+                    left: "31%",
+                    bottom: 0,
+                    width: "45%",
+                    height: "30%",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 25,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
         </div>
     ),
 };

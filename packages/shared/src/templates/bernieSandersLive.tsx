@@ -7,8 +7,8 @@ export const bernieSandersLive: Template = {
     width: 981,
     height: 1038,
     texts: [
-        { id: 0, description: "person's speech", minLength: 1, maxLength: 2 },
-        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 2 },
+        { id: 0, description: "person's speech", minLength: 1, maxLength: 3 },
+        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 3 },
     ],
     images: [{ id: 0, description: "Person who is debating with Bernie Sanders on his live stream" }],
     element: ({ texts, images }: TemplateProps) => (
@@ -41,42 +41,61 @@ export const bernieSandersLive: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 20,
-                    bottom: 525,
-                    width: "50%",
+                    left: "5%",
+                    bottom: 500,
+                    width: "45%",
                     padding: "20px",
-                    textAlign: "center",
-                    justifyContent: "center",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
+                    justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
-                {texts[0]}!
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#fff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[0]}!
+                </span>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: "50%",
-                    bottom: 525,
-                    width: "50%",
+                    bottom: 500,
+                    width: "46%",
+                    maxWidth: "46%",
                     padding: "20px",
-                    textAlign: "center",
-                    justifyContent: "center",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
+                    justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
-                *{texts[1]}*
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    *{texts[1]}*
+                </span>
             </div>
         </div>
     ),

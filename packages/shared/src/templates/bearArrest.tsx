@@ -6,7 +6,7 @@ export const bearArrest: Template = {
     name: "bearArrest",
     width: 640,
     height: 434,
-    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 6 }],
+    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "arrested person" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -42,9 +42,9 @@ export const bearArrest: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
+                    padding: "15px",
                     width: "100%",
                     height: "20%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
@@ -53,6 +53,9 @@ export const bearArrest: Template = {
                     fontSize: 40,
                     lineHeight: 1.05,
                     color: "#000000",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                 }}
             >
                 {texts[0]}

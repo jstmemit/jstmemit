@@ -6,7 +6,7 @@ export const spongebobShowsSign: Template = {
     name: "spongebobShowsSign",
     width: 657,
     height: 493,
-    texts: [{ id: 0, description: "what spongebob says while holding the sign", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "what spongebob says while holding the sign", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "image on the sign" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -32,22 +32,35 @@ export const spongebobShowsSign: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 10,
-                    top: 100,
-                    width: "50%",
-                    padding: "10px",
-                    textAlign: "center",
-                    justifyContent: "center",
+                    left: 0,
+                    top: 0,
+                    width: "45%",
+                    height: "55%",
+                    overflow: "hidden",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 7,
-                    WebkitTextStrokeColor: "black",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 7,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

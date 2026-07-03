@@ -6,7 +6,7 @@ export const dogAndTeblet: Template = {
     name: "dogAndTeblet",
     width: 1000,
     height: 572,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "dog`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -39,22 +39,33 @@ export const dogAndTeblet: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "50%",
+                    left: "45%",
                     bottom: "30%",
-                    width: "30%",
-                    height: "auto",
-                    padding: "15px",
+                    width: "40%",
+                    height: "60%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 5,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

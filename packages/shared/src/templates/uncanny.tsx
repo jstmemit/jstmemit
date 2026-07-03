@@ -5,10 +5,10 @@ import * as React from "react";
 export const uncanny: Template = {
     name: "uncanny",
     width: 950,
-    height: 500,
+    height: 600,
     texts: [
-        { id: 0, description: "left caption", minLength: 1, maxLength: 4 },
-        { id: 1, description: "right caption", minLength: 1, maxLength: 4 },
+        { id: 0, description: "left caption", minLength: 1, maxLength: 6 },
+        { id: 1, description: "right caption", minLength: 1, maxLength: 6 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -25,51 +25,73 @@ export const uncanny: Template = {
                 src="https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
                 width={950}
                 height={500}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "50%",
-                    height: "auto",
+                    height: "100px",
+                    overflow: "hidden",
                     display: "flex",
-                    padding: "15px",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundColor: "white",
+                    borderRight: "4px solid black",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
-                    left: "50%",
-                    bottom: 0,
+                    right: 0,
+                    top: 0,
                     width: "50%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "100px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundColor: "white",
+                    borderLeft: "4px solid black",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

@@ -70,20 +70,32 @@ export const tf2Hahaha: Template = {
                     top: 0,
                     width: "40%",
                     height: "50%",
-                    margin: "10px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 85,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 7,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 85,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),
