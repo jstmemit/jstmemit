@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --color-neon-ice: #21F1ED;
     --color-hot-fuchsia: #F72D55;
@@ -10,9 +18,11 @@
     --color-void-black: #090A0B;
     --color-carbon-gray: #3F3F3F;
     --color-carbon-light-gray: #424242;
+    --color-golden: #FFAB25;
     --color-discord-blue: #5865F2;
 
     --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 
     --animate-marquee-right: marqueeRight 75s linear infinite;
     --animate-marquee-right2: marqueeRight2 75s linear infinite;

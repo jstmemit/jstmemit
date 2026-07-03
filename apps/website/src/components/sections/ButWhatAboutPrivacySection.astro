@@ -7,43 +7,81 @@ import IconText from "#/components/ui/IconText.astro";
 ---
 
 <Section variant="light">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
-        <Heading>
-            But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
-        </Heading>
-        <Paragraph>
-            Texts are stripped out of all information except for their content (which is the only thing that this bot
-            needs for making memes). This means that usernames and other identifying information is not stored. Saved
-            messages are not used for training of AI models or any other purpose rather than to keep the bot functional.
-        </Paragraph>
-        <Paragraph>
-            For GIFs and Images we store their link sources, actual files themselves are never saved to <b>Jstmemit</b> servers.
-        </Paragraph>
-        <Paragraph>
-            By default the bot is turned off in every channel and will only work in the one where you enable it using
-            <b>/enable</b>.
-        </Paragraph>
-        <Paragraph>
-            Saved data is automatically deleted after a period of time, however you can always delete yours at any
-            moment if you wish to do so using the <b>/settings</b> command
-        </Paragraph>
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3 xl:flex-row">
+        <div class="flex flex-col gap-3">
+            <Heading>
+                But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
+            </Heading>
+            <Paragraph>
+                Texts are stripped out of all information except for their content (which is the only thing that this
+                bot needs for making memes). This means that usernames and other identifying information is not stored.
+                Saved messages are not used for training of AI models or any other purpose rather than to keep the bot
+                functional.
+            </Paragraph>
+            <Paragraph>
+                For GIFs and Images we store their link sources, actual files themselves are never saved to <b
+                    >Jstmemit</b
+                > servers.
+            </Paragraph>
+            <Paragraph>
+                By default the bot is turned off in every channel and will only work in the one where you enable it
+                using
+                <b> /enable</b>.
+            </Paragraph>
+            <Paragraph>
+                Saved data is automatically deleted after a period of time, however you can always delete yours at any
+                moment if you wish to do so using the <b> /settings</b> command
+            </Paragraph>
 
-        <List>
-            <IconText
-                icon="https://files.wideunits.nl/jstmemit/images/emojis/gif.svg"
-                alt="gif logo icon"
-                text="GIFs: 90 days"
-            />
-            <IconText
-                icon="https://files.wideunits.nl/jstmemit/images/emojis/chats.svg"
-                alt="texts icon"
-                text="Texts: 30 days"
-            />
-            <IconText
-                icon="https://files.wideunits.nl/jstmemit/images/emojis/image.svg"
-                alt="image icon"
-                text="Images: 1 day"
-            />
-        </List>
+            <List>
+                <IconText
+                    icon="https://files.wideunits.nl/jstmemit/images/emojis/gif.svg"
+                    alt="gif logo icon"
+                    text="GIFs: 90 days"
+                />
+                <IconText
+                    icon="https://files.wideunits.nl/jstmemit/images/emojis/chats.svg"
+                    alt="texts icon"
+                    text="Texts: 30 days"
+                />
+                <IconText
+                    icon="https://files.wideunits.nl/jstmemit/images/emojis/image.svg"
+                    alt="image icon"
+                    text="Images: 1 day"
+                />
+            </List>
+        </div>
+
+        <div>
+            <ul class="relative flex flex-col gap-10">
+                <li class="bg-carbon-black absolute min-h-auto min-w-90 rounded-2xl p-4 pt-5 pl-0">
+                    <span class="bg-bubblegum-pink absolute -top-5 -left-5 rounded-xl p-1 px-2 text-lg font-extrabold"
+                        >Discord</span
+                    >
+                    <img
+                        class="w-90"
+                        src="https://files.wideunits.nl/jstmemit/images/cocaColaBetterThanPepsi.png"
+                        alt="A discord message saying that cola is better than pepsi, has an avatar, username, tag"
+                    />
+                </li>
+                <li class="absolute top-40 left-25 z-10 min-h-auto min-w-50">
+                    <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
+                </li>
+                <li class="bg-carbon-black absolute top-45 left-60 rounded-2xl p-6">
+                    <span class="bg-bubblegum-pink absolute -top-5 -left-5 rounded-xl p-1 px-2 text-lg font-extrabold"
+                        >Stored</span
+                    >
+                    <pre
+                        class="font-mono text-sm">
+                            <span class="text-golden">{`{`}</span>
+                            <span class="text-hot-fuchsia">[</span>
+                            <span class="text-dark-cyan">"<span class="text-white">Coca cola is better than pepsi</span>"</span>,
+                            <span class="text-dark-cyan">"<span class="text-white">and fanta</span>"</span>
+                            <span class="text-hot-fuchsia">]</span>
+                            <span class="text-golden">{`}`}</span>
+                    </pre>
+                </li>
+            </ul>
+        </div>
     </div>
 </Section>
