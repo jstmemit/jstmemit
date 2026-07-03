@@ -7,8 +7,8 @@ import IconText from "#/components/ui/IconText.astro";
 ---
 
 <Section variant="light">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3 xl:flex-row">
-        <div class="flex flex-col gap-3">
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-15">
+        <div class="2xl:w-unset flex flex-col gap-3 xl:w-[45%] xl:pt-2">
             <Heading>
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
             </Heading>
@@ -64,8 +64,14 @@ import IconText from "#/components/ui/IconText.astro";
                         alt="A discord message saying that cola is better than pepsi, has an avatar, username, tag"
                     />
                 </li>
+                <li class="absolute top-10 left-100 text-lg font-bold whitespace-nowrap">
+                    <p>Your message<br />in Discord</p>
+                </li>
                 <li class="absolute top-40 left-25 z-10 min-h-auto min-w-50">
                     <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
+                </li>
+                <li class="absolute top-70 left-10 text-lg font-bold whitespace-nowrap">
+                    <p>Only text content, <br />no usernames</p>
                 </li>
                 <li class="bg-carbon-black absolute top-45 left-60 rounded-2xl p-6">
                     <span class="bg-bubblegum-pink absolute -top-5 -left-5 rounded-xl p-1 px-2 text-lg font-extrabold"
@@ -79,6 +85,9 @@ import IconText from "#/components/ui/IconText.astro";
         <span class="text-dark-cyan">"<span class="text-white">and fanta</span>"</span>
     <span class="text-hot-fuchsia">]</span>
 <span class="text-golden">{`}`}</span></pre>
+                </li>
+                <li class="absolute top-95 left-105 text-lg font-bold whitespace-nowrap">
+                    <p>Only used for memes <br />in the same channel</p>
                 </li>
             </ul>
         </div>
