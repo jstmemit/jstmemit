@@ -6,7 +6,7 @@ export const dogeWithGlasses: Template = {
     name: "dogeWithGlasses",
     width: 1024,
     height: 777,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 16 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
         <div
@@ -31,18 +31,29 @@ export const dogeWithGlasses: Template = {
                     top: 0,
                     width: "100%",
                     height: "20%",
-                    padding: "50px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

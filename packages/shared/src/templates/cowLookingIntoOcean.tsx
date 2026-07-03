@@ -6,7 +6,7 @@ export const cowLookingIntoOcean: Template = {
     name: "cowLookingIntoOcean",
     width: 403,
     height: 352,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "people in the ocean" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -66,21 +66,33 @@ export const cowLookingIntoOcean: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "25%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 26,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 4,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 26,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -42,23 +42,35 @@ export const quote: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 80,
-                    top: 300,
-                    width: 640,
-                    height: 200,
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 44,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
                 }}
             >
-                "{texts[0]}"
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 5,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 44,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {`"${texts[0]}"`}
+                </div>
             </div>
         </div>
     ),

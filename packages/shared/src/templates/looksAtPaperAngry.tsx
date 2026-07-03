@@ -66,27 +66,37 @@ export const looksAtPaperAngry: Template = {
                     objectFit: "cover",
                 }}
             />
-
             <div
                 style={{
                     position: "absolute",
-                    left: 370,
-                    top: 436,
-                    width: 180,
-                    height: 182,
+                    left: "48%",
+                    bottom: "18%",
+                    width: "25%",
+                    height: "20%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "black",
-                    WebkitTextStrokeWidth: 3,
-                    WebkitTextStrokeColor: "white",
+                    padding: "15px",
+                    transform: "rotate(27deg)",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

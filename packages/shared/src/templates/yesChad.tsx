@@ -6,7 +6,7 @@ export const yesChad: Template = {
     name: "yesChad",
     width: 1400,
     height: 733,
-    texts: [{ id: 0, description: "what chad approves of", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "what chad approves of", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "the chad's face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -36,21 +36,30 @@ export const yesChad: Template = {
                     left: 0,
                     bottom: 0,
                     width: "50%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "25%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 70,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#ffffff",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 80,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

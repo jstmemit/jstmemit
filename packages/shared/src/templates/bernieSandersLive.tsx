@@ -41,42 +41,61 @@ export const bernieSandersLive: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 20,
-                    bottom: 525,
-                    width: "50%",
+                    left: "5%",
+                    bottom: 500,
+                    width: "45%",
                     padding: "20px",
-                    textAlign: "center",
-                    justifyContent: "center",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
+                    justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
-                {texts[0]}!
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#fff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    {texts[0]}!
+                </span>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: "50%",
-                    bottom: 525,
-                    width: "50%",
+                    bottom: 500,
+                    width: "46%",
+                    maxWidth: "46%",
                     padding: "20px",
-                    textAlign: "center",
-                    justifyContent: "center",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#fff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
+                    justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
-                *{texts[1]}*
+                <span
+                    style={{
+                        textAlign: "center",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                    }}
+                >
+                    *{texts[1]}*
+                </span>
             </div>
         </div>
     ),

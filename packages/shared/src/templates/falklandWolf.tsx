@@ -6,7 +6,7 @@ export const falklandWolf: Template = {
     name: "falklandWolf",
     width: 814,
     height: 691,
-    texts: [{ id: 0, description: "Phrase that wolf says", minLength: 1, maxLength: 2 }],
+    texts: [{ id: 0, description: "Phrase that wolf says", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Image of the wolf" },
         { id: 1, description: "Profile picture of the guy who tweets about it" },
@@ -49,22 +49,35 @@ export const falklandWolf: Template = {
             <div
                 style={{
                     position: "absolute",
-                    bottom: 65,
-                    left: "15%",
+                    right: "2.5%",
+                    bottom: "5%",
                     width: "85%",
+                    height: "20%",
+                    overflow: "hidden",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 40,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
+                    padding: "15px",
                 }}
             >
-                "{texts[0]}"
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

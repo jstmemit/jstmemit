@@ -11,7 +11,7 @@ export const pleaseBePatient: Template = {
             id: 0,
             description: "Phrase that a person with 'please be patient' blue cap says",
             minLength: 1,
-            maxLength: 6,
+            maxLength: 15,
         },
     ],
     images: [{ id: 0, description: "Person with 'please be patient' blue cap" }],
@@ -46,20 +46,33 @@ export const pleaseBePatient: Template = {
             <div
                 style={{
                     position: "absolute",
-                    top: 460,
-                    right: 150,
-                    width: "30%",
+                    top: 250,
+                    right: 125,
+                    width: "35%",
+                    height: "55%",
+                    overflow: "hidden",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 50,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "black",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
+                    padding: "15px",
                 }}
             >
-                "{texts[0]}"
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 10,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {`"${texts[0]}"`}
+                </div>
             </div>
         </div>
     ),

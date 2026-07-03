@@ -6,7 +6,7 @@ export const catIsCalling: Template = {
     name: "catIsCalling",
     width: 1498,
     height: 936,
-    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
         <div
@@ -26,20 +26,35 @@ export const catIsCalling: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "10%",
-                    top: 180,
-                    width: "80%",
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "45%",
+                    overflow: "hidden",
                     display: "flex",
-                    textAlign: "left",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 100,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 7,
-                    WebkitTextStrokeColor: "#fd9da8",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 100,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        WebkitTextStrokeWidth: 7,
+                        WebkitTextStrokeColor: "#fd9da8",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

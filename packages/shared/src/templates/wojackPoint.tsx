@@ -38,24 +38,35 @@ export const wojackPoint: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "55%",
+                    left: "30%",
                     bottom: 0,
-                    transform: "translateX(-50%)",
-                    padding: "15px",
-                    width: "40%",
-                    height: "auto",
+                    width: "45%",
+                    height: "30%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontSize: 35,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 4,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -6,7 +6,7 @@ export const absoluteCinema: Template = {
     name: "absoluteCinema",
     width: 1230,
     height: 1422,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "background" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -41,23 +41,34 @@ export const absoluteCinema: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 100,
-                    padding: "15px",
+                    top: 0,
                     width: "100%",
-                    height: "auto",
+                    height: "27%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 90,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 90,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 6,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

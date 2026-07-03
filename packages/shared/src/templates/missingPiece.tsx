@@ -6,7 +6,7 @@ export const missingPiece: Template = {
     name: "missingPiece",
     width: 783,
     height: 581,
-    texts: [{ id: 0, description: "text on the puzzle", minLength: 1, maxLength: 6 }],
+    texts: [{ id: 0, description: "text on the puzzle", minLength: 1, maxLength: 15 }],
     images: [{ id: 0, description: "person who is missing puzzle" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -42,20 +42,32 @@ export const missingPiece: Template = {
                     right: 0,
                     bottom: "40%",
                     width: "40%",
-                    height: "auto",
+                    maxHeight: "60%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 4,
-                    WebkitTextStrokeColor: "#ffffff",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 8,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeColor: "#ffffff",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -7,8 +7,8 @@ export const post: Template = {
     width: 1108,
     height: 772,
     texts: [
-        { id: 0, description: "post author's name", minLength: 1, maxLength: 2 },
-        { id: 1, description: "post text", minLength: 5, maxLength: 15 },
+        { id: 0, description: "post author's name", minLength: 1, maxLength: 4 },
+        { id: 1, description: "post text", minLength: 5, maxLength: 20 },
     ],
     images: [{ id: 0, description: "post author's profile picture" }],
     element: ({ texts, images }: TemplateProps) => (
@@ -42,38 +42,68 @@ export const post: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 170,
-                    top: 40,
-                    width: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
+                    left: "15%",
+                    top: "5%",
+                    width: "70%",
+                    height: "10%",
+                    overflow: "hidden",
                     display: "flex",
-                    fontFamily: "Impact",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#fff",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "left",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 1,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 200,
+                    bottom: 0,
                     width: "100%",
-                    padding: "40px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
+                    height: "75%",
+                    overflow: "hidden",
                     display: "flex",
-                    fontFamily: "Impact",
-                    fontSize: 80,
-                    lineHeight: 1.05,
-                    color: "#fff",
+                    alignItems: "flex-start",
+                    justifyContent: "flex-start",
+                    textAlign: "left",
+                    padding: "15px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Impact",
+                        fontSize: 85,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

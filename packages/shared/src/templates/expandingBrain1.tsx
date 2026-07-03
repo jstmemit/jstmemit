@@ -7,10 +7,10 @@ export const expandingBrain1: Template = {
     width: 857,
     height: 1202,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
-        { id: 2, description: "text3", minLength: 1, maxLength: 8 },
-        { id: 3, description: "text4", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
+        { id: 2, description: "third reaction", minLength: 1, maxLength: 12 },
+        { id: 3, description: "fourth reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -34,80 +34,124 @@ export const expandingBrain1: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    width: "50%",
+                    width: "49%",
                     height: "25%",
-                    padding: "15px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
                     top: "25%",
-                    width: "50%",
+                    width: "49%",
                     height: "25%",
-                    padding: "15px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "50%",
-                    width: "50%",
-                    height: "25%",
-                    padding: "15px",
+                    bottom: "27%",
+                    width: "49%",
+                    height: "22%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[2]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[2]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "75%",
-                    width: "50%",
-                    height: "25%",
-                    padding: "15px",
+                    bottom: 0,
+                    width: "49%",
+                    height: "26%",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[3]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[3]}
+                </div>
             </div>
         </div>
     ),

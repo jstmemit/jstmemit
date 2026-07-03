@@ -7,9 +7,9 @@ export const myHeartBlank: Template = {
     width: 680,
     height: 602,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
-        { id: 2, description: "text3", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 10 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 10 },
+        { id: 2, description: "third reaction", minLength: 1, maxLength: 10 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -35,18 +35,29 @@ export const myHeartBlank: Template = {
                     bottom: "57%",
                     width: "51%",
                     height: "29%",
-                    padding: "15px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
@@ -55,18 +66,29 @@ export const myHeartBlank: Template = {
                     bottom: "27%",
                     width: "51%",
                     height: "30%",
-                    padding: "15px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
             <div
                 style={{
@@ -75,18 +97,29 @@ export const myHeartBlank: Template = {
                     bottom: 0,
                     width: "51%",
                     height: "27%",
-                    padding: "15px",
+                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[2]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[2]}
+                </div>
             </div>
         </div>
     ),
