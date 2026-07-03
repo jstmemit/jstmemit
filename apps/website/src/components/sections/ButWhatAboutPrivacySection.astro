@@ -8,6 +8,7 @@ import Block from "#/components/ui/Block.astro";
 import Badge from "#/components/ui/Badge.astro";
 import Message from "#/components/ui/Message.astro";
 import Separator from "#/components/ui/Separator.astro";
+import IconText from "#/components/ui/IconText.astro";
 ---
 
 <Section variant="light">
@@ -33,30 +34,21 @@ import Separator from "#/components/ui/Separator.astro";
         </Paragraph>
 
         <List>
-            <li class="flex items-center gap-3 whitespace-nowrap">
-                <img
-                    class="size-6"
-                    src="https://files.wideunits.nl/jstmemit/images/emojis/gif.svg"
-                    alt="gif logo icon"
-                />
-                <h3 class="mb-0.5 text-xl">GIFs: 90 days</h3>
-            </li>
-            <li class="flex items-center gap-3 whitespace-nowrap">
-                <img
-                    class="size-6"
-                    src="https://files.wideunits.nl/jstmemit/images/emojis/chats.svg"
-                    alt="texts icon"
-                />
-                <h3 class="mb-0.5 text-xl">Texts: 30 days</h3>
-            </li>
-            <li class="flex items-center gap-3 whitespace-nowrap">
-                <img
-                    class="size-6"
-                    src="https://files.wideunits.nl/jstmemit/images/emojis/image.svg"
-                    alt="image icon"
-                />
-                <h3 class="mb-0.5 text-xl">Images: 1 day</h3>
-            </li>
+            <IconText
+                icon="https://files.wideunits.nl/jstmemit/images/emojis/gif.svg"
+                alt="gif logo icon"
+                text="GIFs: 90 days"
+            />
+            <IconText
+                icon="https://files.wideunits.nl/jstmemit/images/emojis/chats.svg"
+                alt="texts icon"
+                text="Texts: 30 days"
+            />
+            <IconText
+                icon="https://files.wideunits.nl/jstmemit/images/emojis/image.svg"
+                alt="image icon"
+                text="Images: 1 day"
+            />
         </List>
     </div>
 </Section>
