@@ -7,8 +7,8 @@ export const topBottomText: Template = {
     width: 800,
     height: 800,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 10 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
     ],
     images: [{ id: 0, description: "background" }],
     element: ({ texts, images }: TemplateProps) => (
@@ -25,44 +25,72 @@ export const topBottomText: Template = {
             <img
                 src={images[0]}
                 width={800}
-                height={800}
-                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+                height={600}
+                style={{ position: "absolute", top: 100, left: 0, opacity: 0.6 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    top: 10,
+                    left: 0,
+                    top: 0,
                     width: "100%",
+                    height: "100px",
+                    overflow: "hidden",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
                     textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
-                    bottom: 20,
+                    left: 0,
+                    bottom: 0,
                     width: "100%",
+                    height: "100px",
+                    overflow: "hidden",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
                     textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

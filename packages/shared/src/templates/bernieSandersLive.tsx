@@ -43,11 +43,11 @@ export const bernieSandersLive: Template = {
                     position: "absolute",
                     left: "5%",
                     bottom: 500,
-                    width: "100%",
-                    maxWidth: "45%",
+                    width: "45%",
                     padding: "20px",
                     display: "flex",
                     justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <span
@@ -57,7 +57,6 @@ export const bernieSandersLive: Template = {
                         fontSize: 40,
                         lineHeight: 1.05,
                         color: "#fff",
-                        backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                         WebkitTextStrokeWidth: 6,
                         WebkitTextStrokeColor: "#000000",
                         whiteSpace: "nowrap",
@@ -73,11 +72,12 @@ export const bernieSandersLive: Template = {
                     position: "absolute",
                     left: "50%",
                     bottom: 500,
-                    width: "100%",
+                    width: "46%",
                     maxWidth: "46%",
                     padding: "20px",
                     display: "flex",
                     justifyContent: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <span
@@ -87,7 +87,6 @@ export const bernieSandersLive: Template = {
                         fontSize: 40,
                         lineHeight: 1.05,
                         color: "#ffffff",
-                        backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                         WebkitTextStrokeWidth: 6,
                         WebkitTextStrokeColor: "#000000",
                         whiteSpace: "nowrap",

@@ -66,15 +66,14 @@ export const cowLookingIntoOcean: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100%",
-                    maxHeight: "25%",
+                    height: "25%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
                 <div
@@ -88,7 +87,7 @@ export const cowLookingIntoOcean: Template = {
                         fontSize: 26,
                         lineHeight: 1.05,
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 4,
+                        WebkitTextStrokeWidth: 3,
                         WebkitTextStrokeColor: "#000000",
                     }}
                 >

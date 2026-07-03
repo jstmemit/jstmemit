@@ -6,7 +6,7 @@ export const futuramaShutUpAndTakeMyMoney: Template = {
     name: "futuramaShutUpAndTakeMyMoney",
     width: 735,
     height: 414,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "Fry`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -42,14 +42,13 @@ export const futuramaShutUpAndTakeMyMoney: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "16%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
                 <div
@@ -60,11 +59,9 @@ export const futuramaShutUpAndTakeMyMoney: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 40,
+                        fontSize: 30,
                         lineHeight: 1.05,
-                        color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

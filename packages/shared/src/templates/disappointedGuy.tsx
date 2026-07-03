@@ -7,8 +7,8 @@ export const disappointedGuy: Template = {
     width: 775,
     height: 500,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 12 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (

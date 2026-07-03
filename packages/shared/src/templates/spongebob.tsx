@@ -38,7 +38,6 @@ export const spongebob: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    // backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
                 <div
