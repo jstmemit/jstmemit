@@ -4,14 +4,14 @@ import type { MarqueeItem } from "#/models/MarqueeItem.ts";
 
 const marqueeItems: MarqueeItem[] = [
     {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/yourContext.svg",
-        text: "Your context",
-        alt: "Laughing smile icon",
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/privacyFriendly.svg",
+        text: "Privacy friendly",
+        alt: "Shield icon",
     },
     {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/memeTemplates.svg",
-        text: "125 meme templates",
-        alt: "Picture icon",
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/openSource.svg",
+        text: "Open source",
+        alt: "Code block icon",
     },
     {
         icon: "https://files.wideunits.nl/jstmemit/images/emojis/customizable.svg",
@@ -24,18 +24,18 @@ const marqueeItems: MarqueeItem[] = [
         alt: "Crossed dollar icon",
     },
     {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/openSource.svg",
-        text: "Open source",
-        alt: "Code block icon",
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/yourContext.svg",
+        text: "Your context",
+        alt: "Laughing smile icon",
     },
     {
-        icon: "https://files.wideunits.nl/jstmemit/images/emojis/privacyFriendly.svg",
-        text: "Privacy friendly",
-        alt: "Shield icon",
+        icon: "https://files.wideunits.nl/jstmemit/images/emojis/memeTemplates.svg",
+        text: "125 meme templates",
+        alt: "Picture icon",
     },
 ];
 ---
 
-<section class="-mt-12">
+<section class="-mt-12 md:hidden">
     <Marquee freeze={true} variant="hero" texts={marqueeItems} />
 </section>
