@@ -14,7 +14,7 @@ const { href, background, textColor, icon, name, alt } = Astro.props;
 <a
     href={href}
     class:list={[
-        "flex max-w-fit items-center justify-center gap-2 rounded-xl px-3 py-2 font-bold opacity-100 shadow-(--shadow-5) transition-all duration-180 ease-in-out select-none text-shadow-(--text-shadow-1) hover:cursor-pointer hover:opacity-80",
+        "flex max-w-fit items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold opacity-100 shadow-(--shadow-5) transition-all duration-180 ease-in-out select-none text-shadow-(--text-shadow-1) hover:cursor-pointer hover:opacity-80 sm:text-base",
         background,
         textColor,
     ]}
