@@ -8,9 +8,9 @@ interface Props {
 const { heading, color, classes } = Astro.props;
 ---
 
-<li class={classes}>
+<li class:list={[classes]}>
     <p class="text-sm text-white/25 uppercase">{heading}</p>
     <p class="text-base">
-        <em class=`${color} not-italic`>“</em><slot /><em class=`${color} not-italic`>“</em>
+        <em class:list={["not-italic", color]}>“</em><slot /><em class:list={["not-italic", color]}>“</em>
     </p>
 </li>

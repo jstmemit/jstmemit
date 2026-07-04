@@ -9,7 +9,7 @@ interface Props {
 const { text, icon, alt, classes } = Astro.props;
 ---
 
-<li class=`relative flex max-w-13 flex-col items-center gap-1 md:max-w-18 ${classes}`>
-    <img src={icon} alt={alt} />
+<li class:list={["relative flex max-w-13 flex-col items-center gap-1 md:max-w-18", classes]}>
+    <img src={icon} alt={alt} loading="lazy" decoding="async" fetchpriority="low" />
     <p class="text-lg">{text}</p>
 </li>

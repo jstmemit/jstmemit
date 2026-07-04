@@ -6,6 +6,6 @@ interface Props {
 const { classes } = Astro.props;
 ---
 
-<p class=`${classes} text-pretty text-white/75 xl:max-w-160`>
+<p class:list={["text-pretty text-white/75 xl:max-w-160", classes]}>
     <slot />
 </p>

@@ -10,10 +10,17 @@ const { label, classes, color = "bg-bubblegum-pink", border = "border-bubblegum-
 ---
 
 <div
-    class=`bg-carbon-black w-full text-white relative rounded-2xl rounded-t-none shadow-(--shadow-10) ${classes} ${border}`
+    class:list={[
+        "bg-carbon-black relative w-full rounded-2xl rounded-t-none text-white shadow-(--shadow-10)",
+        classes,
+        border,
+    ]}
 >
     <span
-        class=`${color} absolute -top-7 -right-1 -left-1 rounded-xl rounded-b-none p-1 px-2 text-lg uppercase truncate font-extrabold`
+        class:list={[
+            "absolute -top-7 -right-1 -left-1 truncate rounded-xl rounded-b-none p-1 px-2 text-lg font-extrabold uppercase",
+            color,
+        ]}
     >
         {label}
     </span>

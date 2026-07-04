@@ -17,7 +17,10 @@ texts.push(...texts);
     variant === "bg" && (
         <div class="relative">
             <ul
-                class={`${direction === "right" ? "animate-marquee-right" : "animate-marquee-left"} absolute top-0 flex items-center gap-2.5 text-xs text-white/30`}
+                class:list={[
+                    "absolute top-0 flex items-center gap-2.5 text-xs text-white/30",
+                    direction === "right" ? "animate-marquee-right" : "animate-marquee-left",
+                ]}
             >
                 {texts.map((item: MarqueeItem, index: number) => (
                     <li class="flex items-center gap-2.5 whitespace-nowrap">
@@ -28,7 +31,10 @@ texts.push(...texts);
                 ))}
             </ul>
             <ul
-                class={`${direction === "right" ? "animate-marquee-right2" : "animate-marquee-left2"} flex items-center gap-2.5 text-xs text-white/30`}
+                class:list={[
+                    "flex items-center gap-2.5 text-xs text-white/30",
+                    direction === "right" ? "animate-marquee-right2" : "animate-marquee-left2",
+                ]}
             >
                 {texts.map((item: MarqueeItem, index: number) => (
                     <li class="flex items-center gap-2.5 whitespace-nowrap">
@@ -49,7 +55,11 @@ texts.push(...texts);
             <div class="absolute top-0 right-0 z-2 h-full w-18 bg-linear-to-l from-black to-transparent" />
 
             <ul
-                class={`${direction === "right" ? "animate-marquee-right" : "animate-marquee-left"} ${freeze && "ml-8 md:animate-none"} absolute top-1.5 flex items-center gap-10 font-bold text-white uppercase italic md:text-2xl`}
+                class:list={[
+                    direction === "right" ? "animate-marquee-right" : "animate-marquee-left",
+                    freeze && "ml-8 md:animate-none",
+                    "absolute top-1.5 flex items-center gap-10 font-bold text-white uppercase italic md:text-2xl",
+                ]}
             >
                 {texts.map((item: MarqueeItem) => (
                     <li class="flex items-center gap-2.5 whitespace-nowrap">

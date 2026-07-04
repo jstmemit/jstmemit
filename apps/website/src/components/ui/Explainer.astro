@@ -6,6 +6,6 @@ interface Props {
 const { classes } = Astro.props;
 ---
 
-<p class=`text-white/25 uppercase ${classes}`>
+<p class:list={["text-white/25 uppercase", classes]}>
     <slot />
 </p>

@@ -7,4 +7,6 @@ interface Props {
 const { text, classes } = Astro.props;
 ---
 
-<span class=`bg-carbon-black rounded-full p-1 px-3 font-bold text-white whitespace-nowrap ${classes}`>{text}</span>
+<span class:list={["bg-carbon-black rounded-full p-1 px-3 font-bold whitespace-nowrap text-white", classes]}
+    >{text}</span
+>
