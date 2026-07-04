@@ -382,6 +382,9 @@ importers:
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
+      astro-swiper:
+        specifier: ^2.7.1
+        version: 2.7.1
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.1
@@ -2187,6 +2190,10 @@ packages:
   astro-robots-txt@1.0.0:
     resolution: {integrity: sha512-6JQSLid4gMhoWjOm85UHLkgrw0+hHIjnJVIUqxjU2D6feKlVyYukMNYjH44ZDZBK1P8hNxd33PgWlHzCASvedA==}
 
+  astro-swiper@2.7.1:
+    resolution: {integrity: sha512-emUShiQ6VH1DJloDtiPYsZqvnsQFtaQU4TitlplYta4t3VmtYGZktSBH3m+pBJplVG6d6RjiQ1/lF0t8Ldk4fw==}
+    engines: {node: '>=18', npm: '>=9.6.5', pnpm: '>=7.1.0'}
+
   astro@6.4.8:
     resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
@@ -3789,6 +3796,10 @@ packages:
     resolution: {integrity: sha512-XDpWUOPC6FEibaLzjfe0ucaV0YrOjYotGJO1WpF0Zd+n6ZGEQUsSugaoLq9QkEZtAfQIxT42UChcssDVPP3+/w==}
     engines: {node: '>=16'}
     hasBin: true
+
+  swiper@12.2.0:
+    resolution: {integrity: sha512-K8uXsBZU6ME97Ia3xbBge8IRCnR1lOmIILzvY/jGVic7dSTQ530s3uO8RvXbPUtkkXLWIwmZLRPbtDxRWVAFdg==}
+    engines: {node: '>= 4.7.0'}
 
   tailwindcss@4.3.1:
     resolution: {integrity: sha512-hk+TB1m+K8CYNrP6rjQaq/Y+4Zylwpa87mLYBKCunwnnQ9p+fHb7kmSfGqyEJoxF/O6CDyABWVFEafNSYKll+Q==}
@@ -5590,6 +5601,10 @@ snapshots:
     dependencies:
       valid-filename: 4.0.0
       zod: 3.25.76
+
+  astro-swiper@2.7.1:
+    dependencies:
+      swiper: 12.2.0
 
   astro@6.4.8(@types/node@26.0.0)(ioredis@5.10.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.62.0)(terser@5.46.1)(tsx@4.22.4):
     dependencies:
@@ -7603,6 +7618,8 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
       sax: 1.6.0
+
+  swiper@12.2.0: {}
 
   tailwindcss@4.3.1: {}
 

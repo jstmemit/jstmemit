@@ -68,3 +68,8 @@
         }
     }
 }
+
+astro-swiper {
+    display: block;
+    width: 100%;
+}

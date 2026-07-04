@@ -14,12 +14,12 @@ import Anchor from "#/components/ui/Anchor.astro";
     <HeroSection />
     <FeatureMarqueeSection />
 
-    <div class="relative overflow-hidden">
+    <div class="relative flex flex-col overflow-hidden">
         <Anchor id="content" classes="-top-50" />
 
         <ChatAndJstmemitWillMakeMemesSection />
-        <HowExactlyDoesThatWorkSection />
-        <MemeGrid />
+        <HowExactlyDoesThatWorkSection classes="order-1 xl:order-0" />
+        <MemeGrid classes="order-0" />
     </div>
 
     <BannerSection />

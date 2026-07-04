@@ -5,9 +5,15 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Message from "#/components/ui/Message.astro";
 import Separator from "#/components/ui/Separator.astro";
+
+interface Props {
+    classes?: string;
+}
+
+const { classes } = Astro.props;
 ---
 
-<Section variant="light">
+<Section classes={classes} variant="light">
     <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
         <Heading>
             How <em class="text-bubblegum-pink not-italic">exactly</em> does that <em

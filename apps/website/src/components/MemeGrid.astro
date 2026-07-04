@@ -1,6 +1,10 @@
 ---
 import type { MemeGridItem } from "#/models/MemeGridItem.ts";
-import Card from "./ui/Card.astro";
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperButtonPrev, SwiperButtonNext } from "astro-swiper";
+import type { AstroSwiperType } from "astro-swiper";
+import Card from "#/components/ui/Card.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
 
 interface Props {
     classes?: string;
@@ -19,6 +23,61 @@ const tiles: MemeGridItem[] = [
     { span: "col-span-5", height: "h-90", border: true, image: "https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=40,slow-connection-quality=22,width=768/https://files.wideunits.nl/jstmemit/images/templates/isthisapigeon.png", alt: "" },
 ];
 ---
+
+<div class="xl:hidden">
+    <div class="px-8 pt-8 flex flex-col gap-3">
+        <Heading>
+            This is what you <em class="text-bubblegum-pink not-italic">get</em>
+        </Heading>
+        <Paragraph>
+            Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them relatable and funnier than these examples.
+        </Paragraph>
+    </div>
+    <Swiper
+        options={{
+            loop: true,
+            effect: "creative",
+            creativeEffect: {
+                prev: {
+                    shadow: true,
+                    translate: ["-125%", 0, -800],
+                    rotate: [0, 0, -90],
+                },
+                next: {
+                    shadow: true,
+                    translate: ["125%", 0, -800],
+                    rotate: [0, 0, 90],
+                },
+            },
+        }}
+    >
+        <SwiperWrapper
+        class="pt-6 py-8 scale-90"
+        >
+            {
+                tiles.map((meme: MemeGridItem) => (
+                    <SwiperSlide>
+                        <Card
+                            label={meme.image.split("/").pop() || "meme.png"}
+                            color={meme.color}
+                            classes="h-80 sm:h-160 w-full object-cover mt-7"
+                            border=`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`
+                        >
+                            <img
+                                src={meme.image}
+                                alt={meme.alt}
+                                fetchpriority="low"
+                                loading="lazy"
+                                class=`bg-carbon-black rounded-t-none rounded-xl w-full h-full object-fill`
+                            />
+                        </Card>
+                    </SwiperSlide>
+                ))
+            }
+        </SwiperWrapper>
+    </Swiper>
+</div>
+
 
 <ul
     class=`bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180 ${classes}`
