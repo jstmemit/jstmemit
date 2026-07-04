@@ -2,15 +2,18 @@
 interface Props {
     label: string;
     color?: string;
+    border?: string;
     classes?: string;
 }
 
-const { label, classes, color = "bg-bubblegum-pink" } = Astro.props;
+const { label, classes, color = "bg-bubblegum-pink", border = "border-bubblegum-pink border-4" } = Astro.props;
 ---
 
-<div class=`bg-carbon-black w-full text-white relative rounded-2xl rounded-t-none ${classes}`>
+<div
+    class=`bg-carbon-black w-full text-white relative rounded-2xl rounded-t-none shadow-(--shadow-10) ${classes} ${border}`
+>
     <span
-        class=`${color} absolute -top-7 right-0 left-0 rounded-xl rounded-b-none p-1 px-2 text-lg uppercase truncate font-extrabold`
+        class=`${color} absolute -top-7 -right-1 -left-1 rounded-xl rounded-b-none p-1 px-2 text-lg uppercase truncate font-extrabold`
     >
         {label}
     </span>

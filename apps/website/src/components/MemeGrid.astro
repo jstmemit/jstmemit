@@ -21,7 +21,7 @@ const tiles: MemeGridItem[] = [
 ---
 
 <ul
-    class=`bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180 ${classes} shadow-(--shadow-10)`
+    class=`bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180 ${classes}`
 >
     {
         tiles.map((meme: MemeGridItem) => (
@@ -29,13 +29,14 @@ const tiles: MemeGridItem[] = [
                 label={meme.image.split("/").pop() || "meme.png"}
                 color={meme.color}
                 classes=`${meme.span} ${meme.height}`
+                border=`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`
             >
                 <img
                     src={meme.image}
                     alt={meme.alt}
                     fetchpriority="low"
                     loading="lazy"
-                    class=`bg-carbon-black ${meme.span} ${meme.height} w-full rounded-t-none rounded-2xl ${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-8 shadow-(--shadow-10)`
+                    class=`bg-carbon-black ${meme.span} ${meme.height} w-full rounded-t-none rounded-xl h-full`
                 />
             </Card>
 
