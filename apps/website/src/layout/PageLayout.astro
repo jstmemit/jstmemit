@@ -5,6 +5,7 @@ import "@fontsource-variable/plus-jakarta-sans";
 import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2";
 import jetBrainsMono from "#/fonts/JetBrainsMono-Regular.woff2";
 import Posthog from "#/components/Posthog.astro";
+import Footer from "#/components/Footer.astro";
 ---
 
 <html
@@ -96,6 +97,10 @@ import Posthog from "#/components/Posthog.astro";
         <main role="main">
             <slot />
         </main>
+
+        <footer>
+            <Footer />
+        </footer>
 
         <div class="fixed bottom-0 z-3 h-10 w-screen bg-linear-to-b from-transparent to-black/20" aria-hidden="true">
         </div>
