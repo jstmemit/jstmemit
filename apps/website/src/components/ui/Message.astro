@@ -9,7 +9,7 @@ const { heading, color, classes } = Astro.props;
 ---
 
 <li class={classes}>
-    <h3 class="text-sm text-white/25 uppercase">{heading}</h3>
+    <p class="text-sm text-white/25 uppercase">{heading}</p>
     <p class="text-base">
         <em class=`${color} not-italic`>“</em><slot /><em class=`${color} not-italic`>“</em>
     </p>
