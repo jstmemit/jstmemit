@@ -8,7 +8,7 @@ import Card from "#/components/ui/Card.astro";
 ---
 
 <Section variant="light">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-25 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-7 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
         <div class="2xl:w-unset flex flex-col gap-3 xl:w-[45%] xl:pt-2">
             <Heading>
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
@@ -53,8 +53,11 @@ import Card from "#/components/ui/Card.astro";
             </List>
         </div>
 
-        <div class="ml-2 h-110 md:h-auto md:w-auto xl:ml-0">
+        <div class="ml-2 md:w-auto xl:ml-0">
             <ul class="relative flex flex-col gap-10">
+                <li class="mb-1 text-lg font-bold whitespace-nowrap md:absolute md:top-10 md:left-105">
+                    <p>Your message<br class="hidden md:block" /> in Discord</p>
+                </li>
                 <li>
                     <Card label="Discord">
                         <img
@@ -64,23 +67,17 @@ import Card from "#/components/ui/Card.astro";
                         />
                     </Card>
                 </li>
-                <li class="absolute -top-17 left-0 text-lg font-bold whitespace-nowrap md:top-10 md:left-105">
-                    <p>Your message<br class="hidden md:block" /> in Discord</p>
-                </li>
-                <li class="absolute top-40 right-0 z-10 hidden min-h-auto min-w-50 md:left-25 md:block">
-                    <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
-                </li>
                 <li
-                    class="absolute top-35 right-0 z-10 size-15 min-h-auto -scale-x-100 -rotate-40 transform md:left-25 md:min-w-50 md:scale-x-0"
+                    class="absolute top-53 right-0 z-10 size-15 min-h-auto -scale-x-100 -rotate-40 transform md:top-40 md:right-auto md:left-25 md:size-auto md:min-w-50 md:scale-x-100 md:rotate-0"
                 >
                     <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
                 </li>
 
-                <li class="absolute top-42 left-0 text-lg font-bold whitespace-nowrap md:top-70 md:left-8">
+                <li class="mt-4 mb-1 text-lg font-bold whitespace-nowrap md:absolute md:top-70 md:left-8 md:mt-0">
                     <p>Only text content, <br class="hidden md:block" />no usernames</p>
                 </li>
 
-                <li class="absolute top-60 left-0 md:top-49 md:left-55">
+                <li class="md:absolute md:top-49 md:left-55">
                     <Card label="Stored">
                         <pre
                             class="min-h-auto w-[73vw] font-mono text-xs md:w-auto md:text-sm">
@@ -92,8 +89,10 @@ import Card from "#/components/ui/Card.astro";
 <span class="text-golden">{`}`}</span></pre>
                     </Card>
                 </li>
-                <li class="absolute top-95 left-100 hidden text-lg font-bold whitespace-nowrap md:block">
-                    <p>Only used for memes <br />in the same channel</p>
+                <li
+                    class="top-95 left-100 mx-auto -mt-6 w-[70%] text-center text-lg font-bold md:absolute md:-mt-3 md:w-full md:text-left md:whitespace-nowrap"
+                >
+                    <p>Only used for memes <br class="hidden md:block" />in the same channel</p>
                 </li>
             </ul>
         </div>
