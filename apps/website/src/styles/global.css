@@ -21,6 +21,11 @@
     --color-golden: #FFAB25;
     --color-discord-blue: #5865F2;
 
+    --text-shadow-1: 0 1px 0 rgba(0,0,0,0.25);
+
+    --shadow-5: 0 5px 0 0 rgba(0,0,0,0.25);
+    --shadow-10: 0 10px 0 0 rgba(0,0,0,0.25);
+
     --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
