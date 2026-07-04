@@ -9,6 +9,8 @@ import sitemap from "@astrojs/sitemap";
 
 import robotsTxt from "astro-robots-txt";
 
+import og from "astro-og";
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://jstmemit.com",
@@ -23,6 +25,7 @@ export default defineConfig({
     integrations: [
         critters(),
         sitemap(),
+        og(),
         robotsTxt({
             host: true,
         }),

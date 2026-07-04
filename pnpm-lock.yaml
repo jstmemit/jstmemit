@@ -379,6 +379,9 @@ importers:
       astro-critters:
         specifier: ^2.2.1
         version: 2.2.1(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(ioredis@5.10.1)(jiti@2.7.0)(rollup@4.62.0)(terser@5.46.1)(tsx@4.22.4)
+      astro-og:
+        specifier: ^0.3.2
+        version: 0.3.2(astro@7.0.4(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(ioredis@5.10.1)(jiti@2.7.0)(rollup@4.62.0)(terser@5.46.1)(tsx@4.22.4))
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
@@ -2187,6 +2190,11 @@ packages:
   astro-critters@2.2.1:
     resolution: {integrity: sha512-C9wYbSWEqvBZ65/tarpR56GjuxH7psILuzwtV3MCHWfT5rfI3ESo8DfxQab1bTAjinBDla0ohAtM7GdXo/OJKQ==}
 
+  astro-og@0.3.2:
+    resolution: {integrity: sha512-87soXn7bSVzcY+9YyG5xQt/F4J4hsZ6ZKXAfRzBwqiQ2FF+esRLpQU62v6IKQHnlvzkQvmbUmeAKaEP0W1SM2g==}
+    peerDependencies:
+      astro: '>=5.0.0'
+
   astro-robots-txt@1.0.0:
     resolution: {integrity: sha512-6JQSLid4gMhoWjOm85UHLkgrw0+hHIjnJVIUqxjU2D6feKlVyYukMNYjH44ZDZBK1P8hNxd33PgWlHzCASvedA==}
 
@@ -3466,6 +3474,9 @@ packages:
     peerDependenciesMeta:
       rxjs:
         optional: true
+
+  preact@10.28.2:
+    resolution: {integrity: sha512-lbteaWGzGHdlIuiJ0l2Jq454m6kcpI1zNje6d8MlGAFlYvP2GO4ibnat7P74Esfz4sPTdM6UxtTwh/d3pwM9JA==}
 
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
@@ -5597,6 +5608,11 @@ snapshots:
       - uploadthing
       - yaml
 
+  astro-og@0.3.2(astro@7.0.4(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(ioredis@5.10.1)(jiti@2.7.0)(rollup@4.62.0)(terser@5.46.1)(tsx@4.22.4)):
+    dependencies:
+      astro: 7.0.4(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(ioredis@5.10.1)(jiti@2.7.0)(rollup@4.62.0)(terser@5.46.1)(tsx@4.22.4)
+      preact: 10.28.2
+
   astro-robots-txt@1.0.0:
     dependencies:
       valid-filename: 4.0.0
@@ -7198,6 +7214,8 @@ snapshots:
   posthog-node@5.38.2:
     dependencies:
       '@posthog/core': 1.35.3
+
+  preact@10.28.2: {}
 
   prebuild-install@7.1.3:
     dependencies:
