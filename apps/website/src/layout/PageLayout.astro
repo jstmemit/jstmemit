@@ -6,6 +6,13 @@ import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/p
 import jetBrainsMono from "#/fonts/JetBrainsMono-Regular.woff2";
 import Posthog from "#/components/Posthog.astro";
 import Footer from "#/components/Footer.astro";
+
+interface Props {
+    title: string;
+    canonical: string;
+}
+
+const { title, canonical } = Astro.props;
 ---
 
 <html
@@ -23,7 +30,7 @@ import Footer from "#/components/Footer.astro";
         <link rel="preload" as="font" type="font/woff2" href={jetBrainsMono} crossorigin />
 
         <meta property="og:site_name" content="Jstmemit" />
-        <meta property="og:title" content="Jstmemit // Discord bot that makes memes about your server" />
+        <meta property="og:title" content={title} />
         <meta
             property="og:description"
             content="Automatically generates memes from your server's own messages and images. Free, open source and off by default until you /enable it."
@@ -43,7 +50,7 @@ import Footer from "#/components/Footer.astro";
         <meta property="og:locale" content="en_US" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Jstmemit // Discord bot that makes memes about your server" />
+        <meta name="twitter:title" content={title} />
         <meta
             name="twitter:description"
             content="Automatically generates memes from your server's own messages and images. Free, open source and off by default."
@@ -62,7 +69,7 @@ import Footer from "#/components/Footer.astro";
             name="description"
             content="Automatically generates memes from your server's own messages and images. Free, open source and off by default."
         />
-        <link rel="canonical" href="https://jstmemit.com" />
+        <link rel="canonical" href={canonical} />
 
         <meta name="theme-color" content="#EC5775" />
 
