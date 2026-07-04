@@ -1,5 +1,5 @@
 ---
-import Navbar from "../components/Navbar.astro";
+import Navbar from "#/components/Navbar.astro";
 import "#/styles/global.css";
 import "@fontsource-variable/plus-jakarta-sans";
 import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2";
@@ -19,6 +19,69 @@ import jetBrainsMono from "#/fonts/JetBrainsMono-Regular.woff2";
 
         <link rel="preload" as="font" type="font/woff2" href={plusJakartaSansWoff2} crossorigin />
         <link rel="preload" as="font" type="font/woff2" href={jetBrainsMono} crossorigin />
+
+        <meta property="og:site_name" content="Jstmemit" />
+        <meta property="og:title" content="Jstmemit // Discord bot that makes memes about your server" />
+        <meta
+            property="og:description"
+            content="Automatically generates memes from your server's own messages and images. Free, open source and off by default until you /enable it."
+        />
+        <meta
+            property="og:image"
+            content="https://jstmemit.com/cdn-cgi/image/format=auto,fit=cover,metadata=none,sharpen=1,onerror=redirect,quality=90,slow-connection-quality=30,width=1200,height=630/https://files.jstmemit.com/jstmemit/images/og.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="Two blurred example memes, heading 'Personalized memes for your community' and 'auto-generate memes from your conversations' subtext"
+        />
+        <meta property="og:url" content="https://jstmemit.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Jstmemit // Discord bot that makes memes about your server" />
+        <meta
+            name="twitter:description"
+            content="Automatically generates memes from your server's own messages and images. Free, open source and off by default."
+        />
+        <meta
+            name="twitter:image"
+            content="https://jstmemit.com/cdn-cgi/image/format=auto,fit=cover,metadata=none,sharpen=1,onerror=redirect,quality=90,slow-connection-quality=30,width=1200,height=630/https://files.jstmemit.com/jstmemit/images/og.png"
+        />
+        <meta
+            name="twitter:image:alt"
+            content="Two blurred example memes, heading 'Personalized memes for your community' and 'auto-generate memes from your conversations' subtext"
+        />
+
+        <title>Jstmemit // Discord bot that makes memes about your server</title>
+        <meta
+            name="description"
+            content="Automatically generates memes from your server's own messages and images. Free, open source and off by default."
+        />
+        <link rel="canonical" href="https://jstmemit.com" />
+
+        <meta name="theme-color" content="#EC5775" />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Jstmemit",
+                "url": "https://jstmemit.com",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Discord",
+                "description": "Discord bot that automatically generates memes from your server's own messages and images.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "EUR"
+                },
+                "image": "https://files.jstmemit.com/jstmemit/images/og.png",
+                "sameAs": ["https://github.com/jstmemit/jstmemit"]
+            }
+        </script>
     </head>
     <body class="bg-carbon-black relative overflow-x-hidden leading-8 tracking-wide sm:leading-7">
         <div class="fixed top-0 z-15 w-full px-6 md:px-10">
