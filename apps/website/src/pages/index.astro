@@ -7,6 +7,7 @@ import FeatureMarqueeSection from "#/components/sections/FeatureMarqueeSection.a
 import MemeGrid from "#/components/MemeGrid.astro";
 import BannerSection from "#/components/sections/BannerSection.astro";
 import ButWhatAboutPrivacySection from "#/components/sections/ButWhatAboutPrivacySection.astro";
+import Anchor from "#/components/ui/Anchor.astro";
 ---
 
 <PageLayout>
@@ -14,6 +15,8 @@ import ButWhatAboutPrivacySection from "#/components/sections/ButWhatAboutPrivac
     <FeatureMarqueeSection />
 
     <div class="relative overflow-hidden">
+        <Anchor id="content" classes="-top-50" />
+
         <ChatAndJstmemitWillMakeMemesSection />
         <HowExactlyDoesThatWorkSection />
         <MemeGrid />
