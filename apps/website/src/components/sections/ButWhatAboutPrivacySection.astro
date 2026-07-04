@@ -8,7 +8,10 @@ import Card from "#/components/ui/Card.astro";
 ---
 
 <Section variant="light">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-7 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
+    <div
+        slot="text"
+        class="mx-auto flex w-full max-w-333 flex-col gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25"
+    >
         <div class="2xl:w-unset flex flex-col gap-3 xl:w-[45%] xl:pt-2">
             <Heading>
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
@@ -53,34 +56,34 @@ import Card from "#/components/ui/Card.astro";
             </List>
         </div>
 
-        <div class="ml-2 md:w-auto xl:ml-0">
-            <ul class="relative flex flex-col gap-10">
-                <li class="mb-1 text-lg font-bold whitespace-nowrap md:absolute md:top-10 md:left-105">
-                    <p>Your message<br class="hidden md:block" /> in Discord</p>
+        <div class="ml-2 xl:mt-14 xl:ml-0">
+            <ul class="lg:min-h-none relative flex flex-col gap-10 sm:min-h-100">
+                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-10 sm:left-105 lg:text-lg">
+                    <p>Your message<br class="hidden sm:block" /> in Discord</p>
                 </li>
+
                 <li>
                     <Card label="Discord">
                         <img
-                            class="w-[70vw] md:w-90"
+                            class="h-22.5 w-auto sm:h-auto sm:w-90"
                             src="https://files.wideunits.nl/jstmemit/images/cocaColaBetterThanPepsi.png"
                             alt="A discord message saying that cola is better than pepsi, has an avatar, username, tag"
                         />
                     </Card>
                 </li>
-                <li
-                    class="absolute top-53 right-0 z-10 size-15 min-h-auto -scale-x-100 -rotate-40 transform md:top-40 md:right-auto md:left-25 md:size-auto md:min-w-50 md:scale-x-100 md:rotate-0"
-                >
+
+                <li class="absolute top-40 left-10 z-10 hidden min-w-50 sm:block lg:left-23">
                     <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
                 </li>
 
-                <li class="mt-4 mb-1 text-lg font-bold whitespace-nowrap md:absolute md:top-70 md:left-8 md:mt-0">
-                    <p>Only text content, <br class="hidden md:block" />no usernames</p>
+                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-70 sm:left-0 lg:left-8 lg:text-lg">
+                    <p>Only text content, <br class="hidden sm:block" />no usernames</p>
                 </li>
 
-                <li class="md:absolute md:top-49 md:left-55">
+                <li class="sm:absolute sm:top-49 sm:left-40 lg:left-55">
                     <Card label="Stored">
                         <pre
-                            class="min-h-auto w-[73vw] font-mono text-xs md:w-auto md:text-sm">
+                            class="min-h-auto font-mono text-xs sm:w-auto sm:text-sm">
 <span class="text-golden">{`{`}</span>
     <span class="text-hot-fuchsia">[</span>
         <span class="text-dark-cyan">"<span class="text-white">Coca cola is better than pepsi</span>"</span>,
@@ -88,11 +91,15 @@ import Card from "#/components/ui/Card.astro";
     <span class="text-hot-fuchsia">]</span>
 <span class="text-golden">{`}`}</span></pre>
                     </Card>
+                    <p class="mx-auto mt-4 mr-4 text-center font-medium sm:hidden">
+                        Used for memes in <br class="hidden sm:block" />the same channel
+                    </p>
                 </li>
+
                 <li
-                    class="top-95 left-100 mx-auto -mt-6 w-[70%] text-center text-lg font-bold md:absolute md:-mt-3 md:w-full md:text-left md:whitespace-nowrap"
+                    class="absolute top-95 left-90 -mt-3 hidden w-full font-bold whitespace-nowrap sm:block lg:left-100 lg:text-lg"
                 >
-                    <p>Only used for memes <br class="hidden md:block" />in the same channel</p>
+                    <p>Used for memes in <br />the same channel</p>
                 </li>
             </ul>
         </div>
