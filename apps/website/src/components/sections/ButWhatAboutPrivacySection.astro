@@ -12,29 +12,19 @@ import Card from "#/components/ui/Card.astro";
         slot="text"
         class="mx-auto flex w-full max-w-333 flex-col gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25"
     >
-        <div class="2xl:w-unset flex flex-col gap-3 xl:w-[45%] xl:pt-2">
+        <div class="2xl:w-unset flex flex-col gap-3 xl:mt-12 xl:w-[45%] xl:pt-2">
             <Heading>
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
             </Heading>
             <Paragraph>
-                Texts are stripped out of all information except for their content (which is the only thing that this
-                bot needs for making memes). This means that usernames and other identifying information is not stored.
-                Saved messages are not used for training of AI models or any other purpose rather than to keep the bot
-                functional.
+                The bot keeps just enough recent chat to make memes, such as the messages themselves and links to
+                attachments like GIFs, but not who sent them. This data gets automatically purged on schedule, but you
+                can also remove it at any moment in <b>/settings</b>
             </Paragraph>
             <Paragraph>
-                For GIFs and Images we store their link sources, actual files themselves are never saved to <b
-                    >Jstmemit</b
-                > servers.
-            </Paragraph>
-            <Paragraph>
-                By default the bot is turned off in every channel and will only work in the one where you enable it
-                using
-                <b> /enable</b>.
-            </Paragraph>
-            <Paragraph>
-                Saved data is automatically deleted after a period of time, however you can always delete yours at any
-                moment if you wish to do so using the <b> /settings</b> command
+                Oh, and Jstmemit is turned off everywhere by default and needs to be enabled per channel using <b
+                    >/enable</b
+                >
             </Paragraph>
 
             <List classes="justify-center md:justify-start">
@@ -56,8 +46,8 @@ import Card from "#/components/ui/Card.astro";
             </List>
         </div>
 
-        <div class="xl:mt-14">
-            <ul class="lg:min-h-none relative flex flex-col gap-10 sm:min-h-110">
+        <div>
+            <ul class="lg:min-h-none relative flex flex-col gap-10 sm:min-h-95">
                 <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-10 sm:left-105 lg:text-lg">
                     <p>Your message<br class="hidden sm:block" /> in Discord</p>
                 </li>
@@ -76,8 +66,8 @@ import Card from "#/components/ui/Card.astro";
                     <img src="https://files.wideunits.nl/jstmemit/images/arrowBent.svg" alt="pink arrow" />
                 </li>
 
-                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-70 sm:left-0 lg:left-8 lg:text-lg">
-                    <p>Only text content, <br class="hidden sm:block" />no usernames</p>
+                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-70 sm:left-0 lg:left-5 lg:text-lg">
+                    <p>Anonymous text<br class="hidden sm:block" /> content for memes</p>
                 </li>
 
                 <li class="sm:absolute sm:top-49 sm:left-40 lg:left-55">
