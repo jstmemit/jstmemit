@@ -14,6 +14,8 @@ const links: NavbarLink[] = [
     {
         href: "https://discord.gg/THRnn8fhkZ",
         name: "Support",
+        target: "_blank",
+        rel: "noopener noreferrer",
     },
 ];
 ---
@@ -32,7 +34,7 @@ const links: NavbarLink[] = [
             <a href="/" class="mb-1 ml-1 text-2xl font-extrabold text-white">jstmemit</a>
         </div>
         <ul class="-mt-0.5 flex flex-col gap-2 text-white/90 select-none sm:flex-row">
-            {links.map((link) => <Link href={link.href} name={link.name} />)}
+            {links.map((link) => <Link href={link.href} name={link.name} target={link.target} rel={link.rel} />)}
         </ul>
     </div>
     <img
