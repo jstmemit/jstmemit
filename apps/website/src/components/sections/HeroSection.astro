@@ -3,12 +3,17 @@ import Section from "#/components/ui/Section.astro";
 import Button from "#/components/ui/Button.astro";
 ---
 
-<Section variant="gradient" classes="h-[80vh] justify-center md:h-[70vh] items-center">
+<Section
+    variant="gradient"
+    headingId="heroHeading"
+    descriptionId="heroDescription"
+    classes="h-[80vh] justify-center md:h-[70vh] items-center"
+>
     <div slot="text" class="z-2 flex w-full flex-col items-center gap-3">
-        <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
+        <h1 id="heroHeading" class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
             personalized memes for <span class="text-hot-fuchsia">your</span> community
         </h1>
-        <p class="mx-auto my-5 w-[70%] text-center text-xl text-gray-300 md:w-[50%] md:text-3xl">
+        <p id="heroDescription" class="mx-auto my-5 w-[70%] text-center text-xl text-gray-300 md:w-[50%] md:text-3xl">
             Auto-generated memes from your conversations
         </p>
         <Button

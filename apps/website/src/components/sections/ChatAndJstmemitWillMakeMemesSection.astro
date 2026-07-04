@@ -9,15 +9,15 @@ import Badge from "#/components/ui/Badge.astro";
 import Separator from "#/components/ui/Separator.astro";
 ---
 
-<Section variant="dark">
+<Section variant="dark" headingId="chatAndJstmemitHeading" descriptionId="chatAndJstmemitDescription">
     <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
         <Explainer>
             <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
         </Explainer>
-        <Heading>
+        <Heading id="chatAndJstmemitHeading">
             Talk and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
         </Heading>
-        <Paragraph>
+        <Paragraph id="chatAndJstmemitDescription">
             Just chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some
             images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write
             captions, worry about image formats.

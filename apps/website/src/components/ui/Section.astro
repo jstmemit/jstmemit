@@ -4,13 +4,17 @@ import GradientBackground from "#/components/background/variants/GradientBackgro
 
 interface Props {
     variant: "light" | "dark" | "gradient";
+    headingId: string;
+    descriptionId: string;
     classes?: string;
 }
 
-const { variant, classes } = Astro.props;
+const { variant, classes, headingId, descriptionId } = Astro.props;
 ---
 
 <section
+    aria-labelledby={headingId}
+    aria-describedby={descriptionId}
     class:list={[
         "relative flex flex-col gap-5 overflow-hidden px-8 py-10 text-white xl:py-20",
         classes,

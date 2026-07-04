@@ -7,16 +7,16 @@ import IconText from "#/components/ui/IconText.astro";
 import Card from "#/components/ui/Card.astro";
 ---
 
-<Section variant="light">
+<Section headingId="butWhatAboutPrivacyHeading" descriptionId="butWhatAboutPrivacyDescription" variant="light">
     <div
         slot="text"
         class="mx-auto flex w-full max-w-333 flex-col gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25"
     >
         <div class="2xl:w-unset flex flex-col gap-3 xl:mt-12 xl:w-[45%] xl:pt-2">
-            <Heading>
+            <Heading id="butWhatAboutPrivacyHeading">
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
             </Heading>
-            <Paragraph>
+            <Paragraph id="butWhatAboutPrivacyDescription">
                 The bot keeps just enough recent chat to make memes, such as the messages themselves and links to
                 attachments like GIFs, but not who sent them. This data gets automatically purged on schedule, but you
                 can also remove it at any moment in <b>/settings</b>

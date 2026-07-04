@@ -23,12 +23,12 @@ const tiles: MemeGridItem[] = [
 ];
 ---
 
-<div class="xl:hidden">
+<section aria-labelledby="thisIsWhatYouGetHeading" aria-describedby="thisIsWhatYouGetDescription" class="xl:hidden">
     <div class="px-8 pt-8 flex flex-col gap-3">
-        <Heading>
+        <Heading id="thisIsWhatYouGetHeading">
             This is what you <em class="text-bubblegum-pink not-italic">get</em>
         </Heading>
-        <Paragraph>
+        <Paragraph id="thisIsWhatYouGetDescription">
             Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them relatable and funnier than these examples.
         </Paragraph>
     </div>
@@ -84,11 +84,12 @@ const tiles: MemeGridItem[] = [
             <SwiperPagination />
         </SwiperWrapper>
     </Swiper>
-</div>
+</section>
 
 
 <ul
-    class=`bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180 ${classes}`
+    aria-label="Grid of meme examples"
+    class:list={["bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180", classes]}
 >
     {
         tiles.map((meme: MemeGridItem) => (
@@ -103,7 +104,7 @@ const tiles: MemeGridItem[] = [
                     alt={meme.alt}
                     fetchpriority="low"
                     loading="lazy"
-                    class=`bg-carbon-black ${meme.span} ${meme.height} w-full rounded-t-none rounded-xl h-full`
+                    class:list={["bg-carbon-black w-full rounded-t-none rounded-xl h-full", meme.span, meme.height]}
                 />
             </Card>
 
