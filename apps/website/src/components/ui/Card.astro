@@ -1,10 +1,16 @@
 ---
-const { label, classes } = Astro.props;
+interface Props {
+    label: string;
+    color?: string;
+    classes?: string;
+}
+
+const { label, classes, color = "bg-bubblegum-pink" } = Astro.props;
 ---
 
-<div class=`bg-carbon-black w-full max-w-fit relative rounded-2xl rounded-t-none p-4 pt-5 ${classes}`>
+<div class=`bg-carbon-black w-full text-white relative rounded-2xl rounded-t-none ${classes}`>
     <span
-        class="bg-bubblegum-pink absolute -top-7 right-0 left-0 rounded-xl rounded-b-none p-1 px-2 text-lg font-extrabold"
+        class=`${color} absolute -top-7 right-0 left-0 rounded-xl rounded-b-none p-1 px-2 text-lg uppercase truncate font-extrabold`
     >
         {label}
     </span>
