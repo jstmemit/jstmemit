@@ -1,7 +1,6 @@
 ---
 import type { MemeGridItem } from "#/models/MemeGridItem.ts";
-import { Swiper, SwiperWrapper, SwiperSlide, SwiperButtonPrev, SwiperButtonNext } from "astro-swiper";
-import type { AstroSwiperType } from "astro-swiper";
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperPagination } from "astro-swiper";
 import Card from "#/components/ui/Card.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
@@ -37,6 +36,10 @@ const tiles: MemeGridItem[] = [
         options={{
             loop: true,
             effect: "creative",
+            grabCursor: true,
+            pagination: {
+                el: ".swiper-pagination",
+            },
             creativeEffect: {
                 prev: {
                     shadow: true,
@@ -52,7 +55,7 @@ const tiles: MemeGridItem[] = [
         }}
     >
         <SwiperWrapper
-        class="pt-6 py-8 scale-90"
+        class="pt-6 py-12 scale-90"
         >
             {
                 tiles.map((meme: MemeGridItem) => (
@@ -74,6 +77,7 @@ const tiles: MemeGridItem[] = [
                     </SwiperSlide>
                 ))
             }
+            <SwiperPagination />
         </SwiperWrapper>
     </Swiper>
 </div>
