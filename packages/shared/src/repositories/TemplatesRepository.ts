@@ -99,7 +99,7 @@ import { simpsonsLIsaShowPresentation } from "#/templates/simpsonsLIsaShowPresen
 import { simpsonsRalphImInDanger } from "#/templates/simpsonsRalphImInDanger.tsx";
 import { spidermanPeterDance } from "#/templates/spidermanPeterDance.tsx";
 import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterParkerWearingGlasses.tsx";
-import { spongeBobBeggingVsTuxedo } from "#/templates/spongeBobBeggingVsTuxedo.tsx";
+import { spongebobBeggingVsTuxedo } from "#/templates/spongebobBeggingVsTuxedo.tsx";
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
 import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
 import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
@@ -214,7 +214,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             simpsonsRalphImInDanger,
             spidermanPeterDance,
             spidermanPeterParkerWearingGlasses,
-            spongeBobBeggingVsTuxedo,
+            spongebobBeggingVsTuxedo,
             dhGirlWithHandOverMouth,
             griffinsLoisInBed,
             cinemaGuys,

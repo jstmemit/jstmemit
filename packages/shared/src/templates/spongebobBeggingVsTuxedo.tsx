@@ -2,8 +2,8 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const spongeBobBeggingVsTuxedo: Template = {
-    name: "spongeBobBeggingVsTuxedo",
+export const spongebobBeggingVsTuxedo: Template = {
+    name: "spongebobBeggingVsTuxedo",
     width: 755,
     height: 601,
     texts: [
