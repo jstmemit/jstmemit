@@ -11,6 +11,8 @@ import robotsTxt from "astro-robots-txt";
 
 import og from "astro-og";
 
+import favicons from "astro-favicons";
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://jstmemit.com",
@@ -25,6 +27,7 @@ export default defineConfig({
     integrations: [
         critters(),
         sitemap(),
+        favicons(),
         og(),
         robotsTxt({
             host: true,
