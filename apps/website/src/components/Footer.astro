@@ -22,18 +22,18 @@ const links: NavbarLink[] = [
 
 <nav class="bg-carbon-black relative w-full overflow-hidden px-8 py-12">
     <div class="mx-auto flex w-full max-w-333 flex-col justify-between gap-5 sm:flex-row sm:items-center">
-        <div class="flex items-center gap-5">
+        <a href="/" class="flex items-center gap-5">
             <img
-                src="https://files.jstmemit.com/jstmemit/images/logos/logoFooter.png"
+                src="https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=70,slow-connection-quality=30,width=120/https://files.jstmemit.com/jstmemit/images/logos/logoFooter.png"
                 class="h-15 w-auto"
                 loading="lazy"
                 fetchpriority="low"
                 decoding="async"
                 alt="rounded logo with a red outline"
             />
-            <a href="/" class="mb-1 ml-1 text-2xl font-extrabold text-white">jstmemit</a>
-        </div>
-        <ul class="-mt-0.5 flex flex-col gap-2 text-white/90 select-none sm:flex-row">
+            <p class="mb-1 ml-1 text-2xl font-extrabold text-white">jstmemit</p>
+        </a>
+        <ul class="-mt-0.5 flex flex-col gap-2 text-white/90 select-none sm:flex-row sm:gap-6">
             {links.map((link) => <Link href={link.href} name={link.name} target={link.target} rel={link.rel} />)}
         </ul>
     </div>
