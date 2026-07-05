@@ -96,6 +96,15 @@ const { title, canonical } = Astro.props;
             }
         </script>
 
+        <script is:inline type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "url": "https://jstmemit.com",
+                "primaryImageOfPage": "https://files.jstmemit.com/jstmemit/images/og.png"
+            }
+        </script>
+
         <Posthog />
     </head>
     <body class="bg-carbon-black relative overflow-x-hidden leading-8 tracking-wide sm:leading-7">
