@@ -4,6 +4,7 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Explainer from "#/components/ui/Explainer.astro";
+import Link from "#/components/Link.astro";
 ---
 
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
@@ -15,29 +16,34 @@ import Explainer from "#/components/ui/Explainer.astro";
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
                 gets purged regularly.
             </Paragraph>
-            <Paragraph>Your information is never sold or shared and it is not used for AI models training.</Paragraph>
+            <Paragraph
+                >Your information is never sold, and we never share it with third parties for their own purposes. We do
+                use a small number of service providers who process data on our behalf under a data processing agreement
+                (see section 4). Your data is not used to train AI models.
+            </Paragraph>
         </div>
     </Section>
     <Section variant="light" headingId="introductionHeading" descriptionId="introductionDescription">
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="introductionHeading"> 1. Introduction </Heading>
             <Paragraph id="introductionDescription">
-                At Jstmemit (or "bot" / "our bot" / "we") we genuinely care about your privacy. This policy explains how
-                our website (<a class="text-bubblegum-pink" href="https://jstmemit.com">https://jstmemit.com</a>) and
-                the bot handle your data.
+                At <b>Jstmemit</b> (or "bot" / "our bot" / "we") we genuinely care about your privacy. This policy explains
+                how our website (<a class="text-bubblegum-pink" href="https://jstmemit.com">https://jstmemit.com</a>)
+                and the bot handle your data.
             </Paragraph>
         </div>
     </Section>
     <Section variant="dark" headingId="dontCollectDataHeading" descriptionId="dontCollectDataDescription">
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
-            <Heading id="dontCollectDataHeading"> 2. No training data by default </Heading>
+            <Heading id="dontCollectDataHeading"> 2. No collecting data by default </Heading>
             <Paragraph id="dontCollectDataDescription">
-                Here's the important part: <b>our Bot doesn't collect any data when you first add it to your server.</b> It's
-                completely privacy-friendly out of the box.
+                Here's the important part: <b
+                    >our Bot doesn't collect any messages or GIFs when you first add it to your server.</b
+                > It's completely privacy-friendly out of the box.
             </Paragraph>
             <Paragraph>
-                Jstmemit only starts collecting training data when someone with the right permissions explicitly turns
-                on this feature for a specific text channel.
+                <b>Jstmemit</b> only starts collecting them when someone with the "Manage Server" or "Manage Channels" explicitly
+                turns the bot on for a specific text channel.
             </Paragraph>
         </div>
     </Section>
@@ -48,9 +54,224 @@ import Explainer from "#/components/ui/Explainer.astro";
                 When Jstmemit is added to server:<br />
                 <b>guildId, memberCount</b>
             </Paragraph>
+            <Paragraph id="whatWeCollectDescription">
+                They are used for analytics and understanding how different templates are perceived in
+                small/medium/large servers
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+
+            <Paragraph>
+                When a channel is enabled using <b>/enable</b> command:<br />
+                <b>channelId, addedAt, enabled</b>
+            </Paragraph>
+            <Paragraph>
+                Channel ID is used to read any channel specific settings from <b>/settings</b> command. Date when channel
+                was enabled is used for analytics purposes.
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+            <Paragraph>
+                When a setting was changed using <b>/settings</b> command:<br />
+                <b>frequency, useAvatarsInMemes</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to change bot's behaviour based on set settings. For example, if a server owner disables
+                usage of avatars in memes, then this will be saved so that bot can enforce it.
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+
             <Paragraph>
                 Each message in the enabled channel:<br />
                 <b>messageId, channelId, content, timestamp</b>
+            </Paragraph>
+            <Paragraph>
+                They are used as text content when applied to meme templates. Timestamp is used to find and delete saved
+                information after 30 days.
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+
+            <Paragraph>
+                Links to images and GIFs posted in the enabled channel:<br />
+                <b>messageId, channelId, imageUrl, source, timestamp, expiresAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used on meme templates. Only the <b>link</b> to the file is saved and the actual files are never
+                downloaded or stored on our servers.
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+
+            <Paragraph>
+                Each time a meme is generated:<br />
+                <b>channelId, templateName, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to count of how many times a meme template was picked by the bot in a particular channel.
+            </Paragraph>
+
+            <hr class="my-5 text-white/50" />
+
+            <Paragraph>
+                When a meme is liked or disliked:<br />
+                <b>scope (global / channel / user), scopeId, templateName, successes, failures, updatedAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to help the bot learn which meme templates work well globally, in a specific channel and
+                for a specific user.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="analyticsHeading" descriptionId="analyticsDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="analyticsHeading"> 4. Analytics and service providers </Heading>
+            <Paragraph id="analyticsDescription">
+                We use <b>PostHog EU</b> for analytics on this website and inside the bot.
+            </Paragraph>
+            <Paragraph>
+                The bot sends an analytics event when: <ul class="list-[lower-alpha] pl-10 text-white/75">
+                    <li>it is added to or removed from a server</li>
+                    <li>a channel is enabled or disabled</li>
+                    <li>settings are opened or changed</li>
+                    <li>a meme is generated</li>
+                    <li>a meme is rated</li>
+                    <li>data deletion is done via /settings command</li>
+                </ul>
+            </Paragraph>
+            <Paragraph>
+                These events include the Discord user ID of the person who performed the action, together with technical
+                details like the setting values that changed, how long meme generation took, etc.
+            </Paragraph>
+            <Paragraph>
+                In addition to this information some of events include Discord's interaction ID, that is also displayed
+                to the user in case of any errors. It's used to investigate any errors that happen.
+            </Paragraph>
+            <Paragraph>
+                <b>Message content is never sent to analytics</b>, and neither are the generated memes themselves. We
+                use these events to understand which features are used and how the bot performs.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="retentionHeading" descriptionId="retentionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="retentionHeading"> 5. How long we keep your data </Heading>
+            <Paragraph id="retentionDescription"> Saved data is purged automatically on a fixed schedule. </Paragraph>
+            <Paragraph>
+                <b>Messages</b> - deleted after 30 days.<br />
+                <b>Links to images</b> - deleted after 24 hours.<br />
+                <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
+            </Paragraph>
+            <Paragraph>
+                <b>Session replays</b> - deleted after 90 days.<br />
+                <b>Analytics events</b> - deleted after 7 years.<br />
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="storageHeading" descriptionId="storageDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="storageHeading"> 6. Where your data is stored </Heading>
+            <Paragraph id="storageDescription">
+                All received data is stored within the <b> European Union.</b>
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="deletionHeading" descriptionId="deletionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="deletionHeading"> 7. Deleting your data </Heading>
+            <Paragraph id="deletionDescription">
+                If you are a server owner or have "Server Manage" permissions, you can use the <b>/settings</b> command to
+                delete all message data the bot has saved for a channel.</Paragraph
+            >
+            <Paragraph>
+                However, it's also possible to disable a channel via <b>/enable</b>. This stops the bot from saving
+                anything new. Saved data is not wiped instantly, but the purge schedule keeps running, so remaining
+                messages disappear within 30 days at the latest (image links within 24 hours, GIF links within 90 days).
+            </Paragraph>
+            <Paragraph>
+                Kicking the bot from your server also stops all collection. Stored data continues to expire on the
+                schedules described in section 5.
+            </Paragraph>
+            <Paragraph>
+                You can also email <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
+                    >privacy@jstmemit.com</a
+                >
+                and we will delete data relating to you manually, including analytics events.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="legalBasisHeading" descriptionId="legalBasisDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="legalBasisHeading"> 8. Legal basis for processing </Heading>
+            <Paragraph id="legalBasisDescription"> We process data for these purposes: </Paragraph>
+            <Paragraph>
+                <b>Generating memes</b> - is done with the explicit consent that is given to <b>Jstmemit</b> when <b
+                    >/enable{" "}</b
+                >
+                command is used.
+            </Paragraph>
+            <Paragraph>
+                <b>Analytics</b> - we have a legitimate interest in understanding how the bot is used, which templates are
+                doing well, tracking errors and how we can keep it working.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="controllerHeading" descriptionId="controllerDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="controllerHeading"> 9. Who we are </Heading>
+            <Paragraph id="controllerDescription">
+                Jstmemit is operated by <b>Wide Units</b>, registered in the Netherlands with the Dutch Chamber of
+                Commerce (KVK) under number <b>97552887</b>.
+            </Paragraph>
+            <Paragraph>
+                General questions: <a class="text-bubblegum-pink" href="mailto:contact@jstmemit.com"
+                    >contact@jstmemit.com</a
+                ><br />
+                Privacy and GDPR requests: <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
+                    >privacy@jstmemit.com</a
+                >
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="rightsHeading" descriptionId="rightsDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="rightsHeading"> 10. Your rights </Heading>
+            <Paragraph id="rightsDescription">
+                Under the GDPR you have the right to access the data we hold about you, to have it corrected or deleted,
+                to restrict or object to its processing, and to receive a copy of it in a portable format.
+            </Paragraph>
+            <Paragraph>
+                To exercise any of these rights, email{" "}
+                <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com">privacy@jstmemit.com</a>. We will try
+                our best to respond as fast as possible, but depending on the request it can take up to a month.
+            </Paragraph>
+            <Paragraph>
+                If you believe we are handling your data unlawfully, you also have the right to lodge a complaint with
+                the Dutch Data Protection Authority (Autoriteit Persoonsgegevens) or the authority in your own EU
+                country.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="changesHeading" descriptionId="changesDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="changesHeading"> 11. Changes to this policy </Heading>
+            <Paragraph id="changesDescription">
+                There can be changes to this policy in the future. "Last updates" date at the top of this page shows the
+                current version. Significant changes will be announced on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                > before they take effect.
             </Paragraph>
         </div>
     </Section>
