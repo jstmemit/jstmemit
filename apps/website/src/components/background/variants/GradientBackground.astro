@@ -1,0 +1,72 @@
+---
+import Marquee from "#/components/ui/Marquee.astro";
+import type { MarqueeItem } from "#/models/MarqueeItem.ts";
+
+const marqueeItems: MarqueeItem[] = [
+    {
+        text: "EASY TO SETUP",
+    },
+    {
+        text: "MEME GENERATOR",
+    },
+    {
+        text: "ALGORITHM",
+    },
+];
+---
+
+<img
+    class="pointer-events-none absolute z-2 h-[80vh] w-full select-none xl:h-auto"
+    fetchpriority="high"
+    loading="eager"
+    src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=60,slow-connection-quality=30,width=1920/https://files.jstmemit.com/jstmemit/images/background/Highlights.png"
+    alt="background highlight"
+    aria-hidden="true"
+/>
+<img
+    class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-6 select-none xl:h-auto"
+    fetchpriority="high"
+    loading="eager"
+    src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=40,slow-connection-quality=30,width=1600/https://files.jstmemit.com/jstmemit/images/background/Noise.png"
+    alt="background noise"
+    aria-hidden="true"
+/>
+<img
+    class="pointer-events-none absolute z-1 h-[80vh] w-full select-none xl:h-auto"
+    fetchpriority="high"
+    loading="eager"
+    src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=60,slow-connection-quality=30,width=1920/https://files.jstmemit.com/jstmemit/images/background/Grid.png"
+    alt="grid"
+    aria-hidden="true"
+/>
+
+<div class="absolute inset-0 mx-auto max-w-[1920px]">
+    <slot name="decorations" />
+</div>
+
+<img
+    class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-90 brightness-0 select-none md:opacity-55 xl:h-auto"
+    fetchpriority="high"
+    loading="eager"
+    src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=60,slow-connection-quality=30,width=1920/https://files.jstmemit.com/jstmemit/images/background/Fog%20over%20memes.png"
+    alt="fog over memes"
+    aria-hidden="true"
+/>
+<img
+    class="pointer-events-none absolute z-1 h-[80vh] w-full opacity-90 brightness-0 select-none md:opacity-55 xl:h-auto"
+    fetchpriority="high"
+    loading="eager"
+    src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=60,slow-connection-quality=30,width=1920/https://files.jstmemit.com/jstmemit/images/background/Fog%20over%20blurred%20memes.png"
+    alt="fog over memes"
+    aria-hidden="true"
+/>
+
+<div class="absolute top-40 -right-55 -rotate-25 sm:top-auto sm:bottom-35" aria-hidden="true">
+    <Marquee texts={marqueeItems} />
+</div>
+<div class="absolute bottom-15 -left-55 rotate-10" aria-hidden="true">
+    <Marquee texts={marqueeItems} />
+</div>
+<div class="absolute top-10 -left-45 -rotate-5" aria-hidden="true">
+    <Marquee texts={marqueeItems} direction="left" />
+</div>

@@ -1,0 +1,25 @@
+---
+interface Props {
+    classes?: string;
+    id: string;
+    variant?: "h1" | "h2";
+}
+
+const { classes, id, variant = "h2" } = Astro.props;
+---
+
+{
+    variant === "h1" && (
+        <h1 id={id} class:list={["text-3xl font-black tracking-tight text-white uppercase", classes]}>
+            <slot />
+        </h1>
+    )
+}
+
+{
+    variant === "h2" && (
+        <h2 id={id} class:list={["text-3xl font-black tracking-tight text-white uppercase", classes]}>
+            <slot />
+        </h2>
+    )
+}
