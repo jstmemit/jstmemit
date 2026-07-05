@@ -20,13 +20,15 @@ const { title, canonical } = Astro.props;
     class="scrollbar-thumb-bubblegum-pink scrollbar-track-carbon-black box-border scrollbar-thin overflow-x-hidden scroll-smooth"
 >
     <head>
+        <meta
+            http-equiv="Delegate-CH"
+            content="sec-ch-dpr https://jstmemit.com; sec-ch-viewport-width https://jstmemit.com"
+        />
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <meta name="generator" content={Astro.generator} />
-
-        <meta http-equiv="Delegate-CH" content="sec-ch-dpr {ZONE}; sec-ch-viewport-width {ZONE}" />
 
         <link rel="preload" as="font" type="font/woff2" href={plusJakartaSansWoff2} crossorigin />
         <link rel="preload" as="font" type="font/woff2" href={jetBrainsMono} crossorigin />
