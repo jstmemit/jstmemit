@@ -1,0 +1,57 @@
+---
+import PageLayout from "#/layout/PageLayout.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Explainer from "#/components/ui/Explainer.astro";
+---
+
+<PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
+    <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
+        <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
+            <Explainer>Last updated: 5th June, 2026</Explainer>
+            <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
+            <Paragraph id="privacyPolicyDescription">
+                <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
+                gets purged regularly.
+            </Paragraph>
+            <Paragraph>Your information is never sold or shared and it is not used for AI models training.</Paragraph>
+        </div>
+    </Section>
+    <Section variant="light" headingId="introductionHeading" descriptionId="introductionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="introductionHeading"> 1. Introduction </Heading>
+            <Paragraph id="introductionDescription">
+                At Jstmemit (or "bot" / "our bot" / "we") we genuinely care about your privacy. This policy explains how
+                our website (<a class="text-bubblegum-pink" href="https://jstmemit.com">https://jstmemit.com</a>) and
+                the bot handle your data.
+            </Paragraph>
+        </div>
+    </Section>
+    <Section variant="dark" headingId="dontCollectDataHeading" descriptionId="dontCollectDataDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="dontCollectDataHeading"> 2. No training data by default </Heading>
+            <Paragraph id="dontCollectDataDescription">
+                Here's the important part: <b>our Bot doesn't collect any data when you first add it to your server.</b> It's
+                completely privacy-friendly out of the box.
+            </Paragraph>
+            <Paragraph>
+                Jstmemit only starts collecting training data when someone with the right permissions explicitly turns
+                on this feature for a specific text channel.
+            </Paragraph>
+        </div>
+    </Section>
+    <Section variant="light" headingId="whatWeCollectHeading" descriptionId="whatWeCollectDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="whatWeCollectHeading"> 3. What we collect and why </Heading>
+            <Paragraph id="whatWeCollectDescription">
+                When Jstmemit is added to server:<br />
+                <b>guildId, memberCount</b>
+            </Paragraph>
+            <Paragraph>
+                Each message in the enabled channel:<br />
+                <b>messageId, channelId, content, timestamp</b>
+            </Paragraph>
+        </div>
+    </Section>
+</PageLayout>
