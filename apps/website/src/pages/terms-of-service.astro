@@ -1,0 +1,197 @@
+---
+import PageLayout from "#/layout/PageLayout.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Explainer from "#/components/ui/Explainer.astro";
+import Link from "#/components/Link.astro";
+---
+
+<PageLayout title="Jstmemit // Terms of service" canonical="https://jstmemit.com/terms">
+    <Section variant="dark" headingId="termsHeading" descriptionId="termsDescription">
+        <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
+            <Explainer>Last updated: 5th July, 2026</Explainer>
+            <Heading variant="h1" id="termsHeading"> Terms of service </Heading>
+            <Paragraph id="termsDescription">
+                <b>TL;DR:</b> Jstmemit turns your channel's chats into memes. Memes are auto-generated, so they won't always
+                make sense. Use it for fun, don't use it to cause harm.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="basicsHeading" descriptionId="basicsDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="basicsHeading"> 1. The basics </Heading>
+            <Paragraph id="basicsDescription">
+                By adding <b>Jstmemit</b> to your server, using the bot, or visiting our website (<a
+                    class="text-bubblegum-pink"
+                    href="https://jstmemit.com">https://jstmemit.com</a
+                >), you're agreeing to these terms and to our <a class="text-bubblegum-pink" href="/privacy"
+                    >Privacy policy</a
+                >.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="whatItDoesHeading" descriptionId="whatItDoesDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="whatItDoesHeading"> 2. What Jstmemit actually does </Heading>
+            <Paragraph id="whatItDoesDescription">
+                <b>Jstmemit</b> is a Discord bot that makes memes out of your community's conversations. Once it's enabled
+                in a channel, it keeps a short memory of recent messages, images and GIFs, and every so often mixes them on
+                a meme template.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="whoCanUseHeading" descriptionId="whoCanUseDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="whoCanUseHeading"> 3. Who can use it </Heading>
+            <Paragraph id="whoCanUseDescription">
+                To use Jstmemit you need to meet Discord's own minimum age requirement (13 in most places, higher in
+                some countries) and be allowed to use Discord where you live.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="enablingHeading" descriptionId="enablingDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="enablingHeading"> 4. Enabling the bot </Heading>
+            <Paragraph id="enablingDescription">
+                Jstmemit does nothing until someone with the "Manage Server" or "Manage Channels" permission runs <b
+                    >/enable</b
+                > in a channel. If that someone is you, you're confirming you're allowed to turn it on for that server, and
+                you're responsible for letting your members know the channel's messages will be used to make memes.
+            </Paragraph>
+            <Paragraph>
+                You can turn it back off with <b>/enable</b> whenever you want, and delete stored data with <b
+                    >/settings</b
+                >. If you wish to know more about what data we store and our retention policy, please have a look at the <a
+                    class="text-bubblegum-pink"
+                    href="/privacy">Privacy policy</a
+                >.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="yourContentHeading" descriptionId="yourContentDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="yourContentHeading"> 5. Your content </Heading>
+            <Paragraph id="yourContentDescription">
+                Jstmemit only works because it can read the messages, images and GIFs in an enabled channel. So by using
+                it, you give us permission (non-exclusive, royalty-free licence) to store and use that content for the
+                purpose of generating memes.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="prohibitedHeading" descriptionId="prohibitedDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="prohibitedHeading"> 6. What you can't do </Heading>
+            <Paragraph id="prohibitedDescription">
+                Please do not: <ul class="list-[lower-alpha] pl-10 text-white/75">
+                    <li>use the bot to make or spread content that's illegal, hateful, harassing or threatening</li>
+                    <li>use it to deliberately target, harm or humiliate specific people</li>
+                    <li>try to break, overload or gain unauthorized access to the bot or the systems behind it</li>
+                    <li>abuse the bot to spam channels</li>
+                </ul>
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="reportingHeading" descriptionId="reportingDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="reportingHeading"> 7. Reporting a problem </Heading>
+            <Paragraph id="reportingDescription">
+                If you believe a meme is offensive, infringes someone's rights, or you've just found a bug, tell us on
+                our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                > or email <a class="text-bubblegum-pink" href="mailto:contact@jstmemit.com">contact@jstmemit.com</a>.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="noGuaranteesHeading" descriptionId="noGuaranteesDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="noGuaranteesHeading"> 8. No guarantees </Heading>
+            <Paragraph id="noGuaranteesDescription">
+                Jstmemit is provided "as is". We can't promise that the bot will always be online, work without bugs, or
+                that every meme will be funny, accurate or appropriate. The bot builds memes from whatever your channel
+                feeds it, so weird or nonsensical results are part of the deal. We do not review or endorse them.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="liabilityHeading" descriptionId="liabilityDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="liabilityHeading"> 9. Liability </Heading>
+            <Paragraph id="liabilityDescription">
+                To the maximum extent the law allows, Wide Units and everyone working on Jstmemit aren't liable for any
+                damage or loss that comes from using, or not being able to use, the bot or the website, including things
+                like lost data or downtime.
+            </Paragraph>
+            <Paragraph> If you're a consumer in the EU, you keep all the protections the law gives you. </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="terminationHeading" descriptionId="terminationDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="terminationHeading"> 10. Suspending or ending access </Heading>
+            <Paragraph id="terminationDescription">
+                We can suspend or remove access to the bot or website, for a whole server or a single person, if these
+                terms are being broken or if something's harming other users, us, or third parties.
+            </Paragraph>
+            <Paragraph>
+                It's as easy for you to stop using the bot. Disable the bot with <b>/enable</b> or kick it from your server
+                whenever you like.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="changesHeading" descriptionId="changesDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="changesHeading"> 11. Changes to these terms </Heading>
+            <Paragraph id="changesDescription">
+                We may update these terms every now and then. The "Last updated" date at the top of this page always
+                shows the current version, and we'll announce anything significant on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                > before it takes effect. Using the bot after a change means you agree with the new terms.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="whoWeAreHeading" descriptionId="whoWeAreDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="controllerHeading"> 12. Who we are </Heading>
+            <Paragraph id="controllerDescription">
+                Jstmemit is operated by <b>Wide Units</b>, registered in the Netherlands with the Dutch Chamber of
+                Commerce (KVK) under number <b>97552887</b>.
+            </Paragraph>
+            <Paragraph>
+                General questions: <a class="text-bubblegum-pink" href="mailto:contact@jstmemit.com"
+                    >contact@jstmemit.com</a
+                ><br />
+                Privacy and GDPR requests: <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
+                    >privacy@jstmemit.com</a
+                >
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="lawHeading" descriptionId="lawDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="lawHeading"> 13. Which laws apply </Heading>
+            <Paragraph id="lawDescription">
+                These terms are governed by Dutch law, and any disputes go to the Dutch courts, except where the law
+                lets a consumer rely on the rules of their own country. Nothing here takes away the mandatory rights you
+                have as a consumer in the EU.
+            </Paragraph>
+        </div>
+    </Section>
+</PageLayout>
