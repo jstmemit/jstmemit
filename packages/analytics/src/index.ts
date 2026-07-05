@@ -3,7 +3,7 @@ import { Env } from "@jstmemit/shared/schemas/Env";
 
 const env = Env.parse(process.env);
 
-export const analytics = new PostHog(env.POSTHOG_WRITE_KEY, {
+export const analytics = new PostHog(env.POSTHOG_READ_KEY, {
     host: "https://eu.i.posthog.com",
     enableExceptionAutocapture: true,
 });
