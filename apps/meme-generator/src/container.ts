@@ -37,10 +37,10 @@ const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
 
 // messages
-const messagesRepository: IMessagesRepository = new MessagesRepository();
+export const messagesRepository: IMessagesRepository = new MessagesRepository();
 
 // images
-const imagesRepository: IImagesRepository = new ImagesRepository();
+export const imagesRepository: IImagesRepository = new ImagesRepository();
 
 // templates
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();

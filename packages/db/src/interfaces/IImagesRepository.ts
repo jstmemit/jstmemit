@@ -11,4 +11,6 @@ export abstract class IImagesRepository {
     public abstract getImagesByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
 
     public abstract getAvatarsByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
+
+    public abstract deleteAllExpiredOrOld(days?: number): Promise<boolean>;
 }
