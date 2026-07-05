@@ -103,6 +103,9 @@ import { spongeBobBeggingVsTuxedo } from "#/templates/spongeBobBeggingVsTuxedo.t
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
 import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
 import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
+import { incomingCall } from "#/templates/incomingCall.tsx";
+import { spongebobSacredTextBook } from "#/templates/spongebobSacredTextBook.tsx";
+import { griffinsPeterSkinColor } from "#/templates/griffinsPeterSkinColor.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -215,6 +218,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             dhGirlWithHandOverMouth,
             griffinsLoisInBed,
             cinemaGuys,
+            incomingCall,
+            spongebobSacredTextBook,
+            griffinsPeterSkinColor,
         ];
     }
 }
