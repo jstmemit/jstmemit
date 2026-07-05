@@ -38,12 +38,12 @@ import Link from "#/components/Link.astro";
             <Heading id="dontCollectDataHeading"> 2. No collecting data by default </Heading>
             <Paragraph id="dontCollectDataDescription">
                 Here's the important part: <b
-                    >our Bot doesn't collect any messages or GIFs when you first add it to your server.</b
+                    >our bot doesn't collect any messages or GIFs when you first add it to your server.</b
                 > It's completely privacy-friendly out of the box.
             </Paragraph>
             <Paragraph>
-                <b>Jstmemit</b> only starts collecting them when someone with the "Manage Server" or "Manage Channels" explicitly
-                turns the bot on for a specific text channel.
+                <b>Jstmemit</b> only starts collecting them when someone with the "Manage Server" or "Manage Channels" permission
+                explicitly turns the bot on for a specific text channel.
             </Paragraph>
         </div>
     </Section>
@@ -51,7 +51,7 @@ import Link from "#/components/Link.astro";
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="whatWeCollectHeading"> 3. What we collect and why </Heading>
             <Paragraph id="whatWeCollectDescription">
-                When Jstmemit is added to server:<br />
+                When Jstmemit is added to a server:<br />
                 <b>guildId, memberCount</b>
             </Paragraph>
             <Paragraph id="whatWeCollectDescription">
@@ -66,7 +66,7 @@ import Link from "#/components/Link.astro";
                 <b>channelId, addedAt, enabled</b>
             </Paragraph>
             <Paragraph>
-                Channel ID is used to read any channel specific settings from <b>/settings</b> command. Date when channel
+                Channel ID is used to read any channel specific settings from <b>/settings</b> command. The date when channel
                 was enabled is used for analytics purposes.
             </Paragraph>
 
@@ -76,8 +76,8 @@ import Link from "#/components/Link.astro";
                 <b>frequency, useAvatarsInMemes</b>
             </Paragraph>
             <Paragraph>
-                They are used to change bot's behaviour based on set settings. For example, if a server owner disables
-                usage of avatars in memes, then this will be saved so that bot can enforce it.
+                They are used to change the bot's behaviour based on set settings. For example, if a server owner
+                disables usage of avatars in memes, then this will be saved so that bot can enforce it.
             </Paragraph>
 
             <hr class="my-5 text-white/50" />
@@ -109,7 +109,7 @@ import Link from "#/components/Link.astro";
                 <b>channelId, templateName, createdAt</b>
             </Paragraph>
             <Paragraph>
-                They are used to count of how many times a meme template was picked by the bot in a particular channel.
+                They are used to count how many times a meme template was picked by the bot in a particular channel.
             </Paragraph>
 
             <hr class="my-5 text-white/50" />
@@ -138,7 +138,7 @@ import Link from "#/components/Link.astro";
                     <li>settings are opened or changed</li>
                     <li>a meme is generated</li>
                     <li>a meme is rated</li>
-                    <li>data deletion is done via /settings command</li>
+                    <li>data deletion is done via the /settings command</li>
                 </ul>
             </Paragraph>
             <Paragraph>
@@ -146,8 +146,8 @@ import Link from "#/components/Link.astro";
                 details like the setting values that changed, how long meme generation took, etc.
             </Paragraph>
             <Paragraph>
-                In addition to this information some of events include Discord's interaction ID, that is also displayed
-                to the user in case of any errors. It's used to investigate any errors that happen.
+                In addition to this information some of these events include Discord's interaction ID, which is also
+                shown to you if an error occurs. It's used to investigate any errors that happen.
             </Paragraph>
             <Paragraph>
                 <b>Message content is never sent to analytics</b>, and neither are the generated memes themselves. We
@@ -185,8 +185,9 @@ import Link from "#/components/Link.astro";
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="deletionHeading"> 7. Deleting your data </Heading>
             <Paragraph id="deletionDescription">
-                If you are a server owner or have "Server Manage" permissions, you can use the <b>/settings</b> command to
-                delete all message data the bot has saved for a channel.</Paragraph
+                If you are a server owner or have "Manage Server" / "Manage Channels" permissions, you can use the <b
+                    >/settings</b
+                > command to delete all message data the bot has saved for a channel.</Paragraph
             >
             <Paragraph>
                 However, it's also possible to disable a channel via <b>/enable</b>. This stops the bot from saving
@@ -265,7 +266,7 @@ import Link from "#/components/Link.astro";
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="changesHeading"> 11. Changes to this policy </Heading>
             <Paragraph id="changesDescription">
-                There can be changes to this policy in the future. "Last updates" date at the top of this page shows the
+                There can be changes to this policy in the future. "Last updated" date at the top of this page shows the
                 current version. Significant changes will be announced on our <a
                     href="https://discord.gg/THRnn8fhkZ"
                     target="_blank"
