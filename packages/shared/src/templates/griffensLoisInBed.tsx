@@ -71,6 +71,7 @@ export const griffinsLoisInBed: Template = {
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 6,
+                        wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",

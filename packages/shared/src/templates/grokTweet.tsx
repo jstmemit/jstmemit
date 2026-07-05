@@ -52,6 +52,7 @@ export const grokTweet: Template = {
                     fontSize: 90,
                     lineHeight: 1.05,
                     color: "#ffffff",
+                    wordBreak: "break-word",
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",

@@ -56,6 +56,7 @@ export const willSmith: Template = {
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 13,
+                        wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",

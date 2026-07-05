@@ -56,6 +56,7 @@ export const missingPiece: Template = {
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 8,
+                        wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
