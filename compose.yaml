@@ -4,6 +4,23 @@ services:
     ports: [ "8080:8080" ]
     volumes: [ "sqld-data:/var/lib/sqld" ]
     restart: unless-stopped
+    healthcheck:
+        test: [ "CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080" ]
+        interval: 5s
+        timeout: 3s
+        retries: 10
+        start_period: 5s
+
+  migrate:
+      build:
+          context: .
+          dockerfile: packages/db/Dockerfile
+      env_file:
+          - ".env.docker"
+      depends_on:
+          sqld:
+              condition: service_healthy
+      restart: "no"
 
   redis:
     image: redis:alpine

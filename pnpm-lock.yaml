@@ -430,6 +430,9 @@ importers:
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
+      drizzle-kit:
+        specifier: 1.0.0-rc.3
+        version: 1.0.0-rc.3
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -437,9 +440,6 @@ importers:
       '@types/node':
         specifier: ^25.9.2
         version: 25.9.2
-      drizzle-kit:
-        specifier: 1.0.0-rc.3
-        version: 1.0.0-rc.3
       drizzle-orm:
         specifier: 1.0.0-rc.3
         version: 1.0.0-rc.3(@libsql/client@0.17.3)(@tursodatabase/database-common@0.6.1)(@tursodatabase/database@0.6.1)(better-sqlite3@12.10.0)(zod@4.4.3)
