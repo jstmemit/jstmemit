@@ -1,6 +1,6 @@
 ---
 interface Props {
-    variant?: "dot" | "arrow" | "text";
+    variant?: "dot" | "arrow" | "text" | "hr";
     classes?: string;
     text?: string;
 }
@@ -31,3 +31,5 @@ const { variant = "dot", classes, text } = Astro.props;
         </li>
     )
 }
+
+{variant === "hr" && <hr class:list={["my-5 border-t-1 border-dashed border-white/50 text-transparent", classes]} />}

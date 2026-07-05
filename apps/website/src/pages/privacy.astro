@@ -5,6 +5,7 @@ import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Explainer from "#/components/ui/Explainer.astro";
 import Link from "#/components/Link.astro";
+import Separator from "#/components/ui/Separator.astro";
 ---
 
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
@@ -59,7 +60,7 @@ import Link from "#/components/Link.astro";
                 small/medium/large servers
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
 
             <Paragraph>
                 When a channel is enabled using <b>/enable</b> command:<br />
@@ -70,7 +71,8 @@ import Link from "#/components/Link.astro";
                 was enabled is used for analytics purposes.
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
+
             <Paragraph>
                 When a setting was changed using <b>/settings</b> command:<br />
                 <b>frequency, useAvatarsInMemes</b>
@@ -80,7 +82,7 @@ import Link from "#/components/Link.astro";
                 disables usage of avatars in memes, then this will be saved so that bot can enforce it.
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
 
             <Paragraph>
                 Each message in the enabled channel:<br />
@@ -91,7 +93,7 @@ import Link from "#/components/Link.astro";
                 information after 30 days.
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
 
             <Paragraph>
                 Links to images and GIFs posted in the enabled channel:<br />
@@ -102,7 +104,7 @@ import Link from "#/components/Link.astro";
                 downloaded or stored on our servers.
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
 
             <Paragraph>
                 Each time a meme is generated:<br />
@@ -112,7 +114,7 @@ import Link from "#/components/Link.astro";
                 They are used to count how many times a meme template was picked by the bot in a particular channel.
             </Paragraph>
 
-            <hr class="my-5 text-white/50" />
+            <Separator variant="hr" />
 
             <Paragraph>
                 When a meme is liked or disliked:<br />
