@@ -1,7 +1,6 @@
 services:
   sqld:
     image: ghcr.io/tursodatabase/libsql-server:latest
-    ports: [ "8080:8080" ]
     volumes: [ "sqld-data:/var/lib/sqld" ]
     restart: unless-stopped
     healthcheck:
