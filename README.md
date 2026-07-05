@@ -66,7 +66,7 @@ DISCORD_TOKEN= # discord bot token
 DISCORD_CLIENT_ID= # application id for the development bot
 DISCORD_CLIENT_ID_PRODUCTION= # application id for the public bot
 
-POSTHOG_WRITE_KEY= # starts with phc, used for analytics
+POSTHOG_READ_KEY= # starts with phc, used for analytics
 
 REDIS_HOST= # redis
 REDIS_PORT= # 6379

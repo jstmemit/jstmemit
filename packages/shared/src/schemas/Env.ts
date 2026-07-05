@@ -7,7 +7,7 @@ export const Env = z.object({
     DISCORD_CLIENT_ID: z.string().min(1),
     DISCORD_CLIENT_ID_PRODUCTION: z.string().min(1),
 
-    POSTHOG_WRITE_KEY: z.string().min(1),
+    POSTHOG_READ_KEY: z.string().min(1),
 
     REDIS_HOST: z.string().min(1),
     REDIS_PORT: z.coerce.number().min(1),
