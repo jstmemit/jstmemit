@@ -2,9 +2,9 @@ import type { Queue } from "bullmq";
 import { createBanditDecayQueue } from "@jstmemit/queue/jobs/banditDecay";
 import { redisConnection } from "#/container.ts";
 
-const memeGenerationQueue: Queue = createBanditDecayQueue(redisConnection);
+const banditDecayQueue: Queue = createBanditDecayQueue(redisConnection);
 
-await memeGenerationQueue.upsertJobScheduler(
+await banditDecayQueue.upsertJobScheduler(
     "bandit-decay-daily",
     { pattern: "0 0 1 * * *", tz: "Europe/Amsterdam" },
     {
