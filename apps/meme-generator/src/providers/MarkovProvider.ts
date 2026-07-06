@@ -3,8 +3,6 @@ import MarkovPkg from "markov-strings";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class MarkovProvider implements ITransformProvider {
-    private readonly _linkRegex: RegExp = /https?:\/\/\S+|www\.\S+/i;
-
     public async getTransformedText(text: TemplateText, context: string[]): Promise<string> {
         return await Promise.resolve(this._generateText(context, text.minLength, text.maxLength));
     }
@@ -28,11 +26,7 @@ export class MarkovProvider implements ITransformProvider {
         return markov.generate({
             maxTries: 20000,
             filter: (result) => {
-                return (
-                    result.string.split(" ").length >= minLength &&
-                    result.string.split(" ").length <= maxLength &&
-                    !this._linkRegex.test(result.string)
-                );
+                return result.string.split(" ").length >= minLength && result.string.split(" ").length <= maxLength;
             },
         }).string;
     }

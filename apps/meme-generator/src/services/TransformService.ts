@@ -4,6 +4,7 @@ import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class TransformService implements ITransformService {
+    private readonly _linkRegex: RegExp = /https?:\/\/\S+|www\.\S+/gi;
     private readonly _markovProvider: ITransformProvider;
 
     public constructor(markovProvider: ITransformProvider) {
@@ -21,6 +22,7 @@ export class TransformService implements ITransformService {
      */
     public async transformIntoMultipleTexts(texts: TemplateText[], context: string[]): Promise<string[]> {
         const transformedTexts: string[] = [];
+        context = this._filterOutLinks(context);
 
         for (let i: number = 0; i < texts.length; i++) {
             transformedTexts.push(await this.transformIntoText(texts[i]!, context));
@@ -41,7 +43,7 @@ export class TransformService implements ITransformService {
      */
     public async transformIntoText(text: TemplateText, context: string[]): Promise<string> {
         try {
-            if (!context || context.length < 1) {
+            if (context.length < 1) {
                 return "";
             }
 
@@ -54,6 +56,17 @@ export class TransformService implements ITransformService {
             console.error(error);
             return "";
         }
+    }
+
+    private _filterOutLinks(context: string[]): string[] {
+        return context
+            .map((text: string): string =>
+                text
+                    .replace(this._linkRegex, "")
+                    .replace(/\s{2,}/g, " ")
+                    .trim(),
+            )
+            .filter((text: string): boolean => text.length > 0);
     }
 
     private _transformToRequiredMaxLength(text: string, maxLength: number): string {
