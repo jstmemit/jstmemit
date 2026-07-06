@@ -50,6 +50,7 @@ export const iInterviewedAnimals: Template = {
                     fontSize: 40,
                     lineHeight: 1.05,
                     color: "#fff",
+                    wordBreak: "break-word",
                     WebkitTextStrokeWidth: 6,
                     WebkitTextStrokeColor: "black",
                 }}
