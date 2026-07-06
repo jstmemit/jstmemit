@@ -2,6 +2,7 @@ import { Worker } from "bullmq";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import { memesService, banditRepository, redisConnection, messagesRepository, imagesRepository } from "#/container.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGenerationResult>(
     "meme-generation",
@@ -11,6 +12,14 @@ export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGeneration
         concurrency: 5,
     },
 );
+
+memeGenerationWorker.on("failed", (job, error) => {
+    analytics.captureException(error, job?.data.userId, {
+        channelId: job?.data.channelId,
+        trigger: job?.data.trigger,
+        templateName: job?.data.template?.name,
+    });
+});
 
 export const banditDecayWorker = new Worker("bandit-decay", async () => banditRepository.decayAll(0.99), {
     connection: redisConnection,
