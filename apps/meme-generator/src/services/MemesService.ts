@@ -14,6 +14,7 @@ import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
+import sharp from "sharp";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;
@@ -150,9 +151,29 @@ export class MemesService implements IMemesService {
             return undefined;
         }
 
+        const selected: string[] = channelImages.slice(0, templateImages.length);
+
+        const images: string[] = (
+            await Promise.all(selected.map((url): Promise<string | undefined> => this._toPngDataUri(url)))
+        ).filter((uri: string | undefined): uri is string => uri !== undefined);
+
         return {
-            images: channelImages.slice(0, templateImages.length),
+            images,
             texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         };
+    }
+
+    private async _toPngDataUri(url: string): Promise<string | undefined> {
+        try {
+            const res: Response = await fetch(url);
+            if (!res.ok) return undefined;
+
+            const input: Buffer = Buffer.from(await res.arrayBuffer());
+            const png: Buffer = await sharp(input).png().toBuffer();
+
+            return `data:image/png;base64,${png.toString("base64")}`;
+        } catch {
+            return undefined;
+        }
     }
 }
