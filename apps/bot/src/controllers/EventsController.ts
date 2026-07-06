@@ -1,5 +1,5 @@
 import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
-import { type Client, type Interaction, type Message } from "discord.js";
+import { type Client, type Interaction, type Message, ActivityType } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
@@ -43,6 +43,10 @@ export class EventsController implements IEventsController {
      */
     public handleClientReady(readyClient: Client<true>): void {
         console.log(`Logged in as ${readyClient.user.tag}!`);
+
+        readyClient.user.setActivity("how to make memes", {
+            type: ActivityType.Watching,
+        });
 
         if (this._isProduction) {
             analytics.capture({
