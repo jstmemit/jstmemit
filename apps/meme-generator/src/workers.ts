@@ -15,9 +15,9 @@ export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGeneration
 
 memeGenerationWorker.on("failed", (job, error) => {
     analytics.captureException(error, job?.data.userId, {
-        channelId: job?.data.channelId,
+        channel_id: job?.data.channelId,
         trigger: job?.data.trigger,
-        templateName: job?.data.template?.name,
+        template_name: job?.data.template?.name,
     });
 });
 
