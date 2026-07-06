@@ -1,7 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, eq, gt, isNull, ne, or, sql } from "drizzle-orm";
+import { and, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
 
 export class ImagesRepository extends IImagesRepository {
     public async new(
@@ -76,6 +76,29 @@ export class ImagesRepository extends IImagesRepository {
         } catch (error) {
             console.error(error);
             return [];
+        }
+    }
+
+    public async deleteAllExpiredOrOld(days: number = 90): Promise<boolean> {
+        try {
+            const now = new Date();
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - days);
+
+            await db
+                .delete(imagesTable)
+                .where(
+                    or(
+                        and(isNotNull(imagesTable.expiresAt), lt(imagesTable.expiresAt, now)),
+                        and(isNull(imagesTable.expiresAt), lt(imagesTable.timestamp, cutoff)),
+                    ),
+                );
+
+            return true;
+        } catch (error) {
+            console.error(error);
+
+            return false;
         }
     }
 }

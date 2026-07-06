@@ -11,4 +11,6 @@ export abstract class IMessagesRepository {
     ): Promise<string[]>;
 
     public abstract deleteAllByChannelId(channelId: string): Promise<boolean>;
+
+    public abstract deleteAllOlderThan(days?: number): Promise<boolean>;
 }

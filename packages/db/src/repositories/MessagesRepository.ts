@@ -1,6 +1,6 @@
 import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
-import { and, count, eq, gte, lte, sql } from "drizzle-orm";
+import { and, count, eq, gte, lte, sql, lt } from "drizzle-orm";
 import { db } from "../index.ts";
 
 export class MessagesRepository implements IMessagesRepository {
@@ -69,6 +69,21 @@ export class MessagesRepository implements IMessagesRepository {
     public async deleteAllByChannelId(channelId: string): Promise<boolean> {
         try {
             await db.delete(messagesTable).where(eq(messagesTable.channelId, channelId));
+
+            return true;
+        } catch (error) {
+            console.error(error);
+
+            return false;
+        }
+    }
+
+    public async deleteAllOlderThan(days: number = 30): Promise<boolean> {
+        try {
+            const expiration = new Date();
+            expiration.setDate(expiration.getDate() - days);
+
+            await db.delete(messagesTable).where(lt(messagesTable.timestamp, expiration));
 
             return true;
         } catch (error) {
