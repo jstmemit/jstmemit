@@ -99,10 +99,27 @@ import { simpsonsLIsaShowPresentation } from "#/templates/simpsonsLIsaShowPresen
 import { simpsonsRalphImInDanger } from "#/templates/simpsonsRalphImInDanger.tsx";
 import { spidermanPeterDance } from "#/templates/spidermanPeterDance.tsx";
 import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterParkerWearingGlasses.tsx";
-import { spongeBobBeggingVsTuxedo } from "#/templates/spongeBobBeggingVsTuxedo.tsx";
+import { spongebobBeggingVsTuxedo } from "#/templates/spongebobBeggingVsTuxedo.tsx";
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
 import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
 import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
+import { incomingCall } from "#/templates/incomingCall.tsx";
+import { spongebobSacredTextBook } from "#/templates/spongebobSacredTextBook.tsx";
+import { griffinsPeterSkinColor } from "#/templates/griffinsPeterSkinColor.tsx";
+import { spongebobLongTodoList } from "#/templates/spongebobLongTodoList.tsx";
+import { spongebobRainbow } from "#/templates/spongebobRainbow.tsx";
+import { spongebobCaveman } from "#/templates/spongebobCaveman.tsx";
+import { spongebobMonolith } from "#/templates/spongebobMonolith.tsx";
+import { spongebobGrin } from "#/templates/spongebobGrin.tsx";
+import { simpsonsHomerReadingBook } from "#/templates/simpsonsHomerReadingBook.tsx";
+import { simpsonsMoeKickingOutBarney } from "#/templates/simpsonsMoeKickingOutBarney.tsx";
+import { simpsonsThatsAPaddlin } from "#/templates/simpsonsThatsAPaddlin.tsx";
+import { simpsonsTheWorstDayOfYourLifeSoFar } from "#/templates/simpsonsTheWorstDayOfYourLifeSoFar.tsx";
+import { simpsonsHomerInLesbianBar } from "#/templates/simpsonsHomerInLesbianBar.tsx";
+import { simpsonsMonkeyInHomerHead } from "#/templates/simpsonsMonkeyInHomerHead.tsx";
+import { simpsonsScaryNews } from "#/templates/simpsonsScaryNews.tsx";
+import { simpsonsAdultLisaAndBart } from "#/templates/simpsonsAdultLisaAndBart.tsx";
+import { simpsonsMoeHoldingGunToHead } from "#/templates/simpsonsMoeHoldingGunToHead.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -211,10 +228,27 @@ export class TemplatesRepository implements ITemplatesRepository {
             simpsonsRalphImInDanger,
             spidermanPeterDance,
             spidermanPeterParkerWearingGlasses,
-            spongeBobBeggingVsTuxedo,
+            spongebobBeggingVsTuxedo,
             dhGirlWithHandOverMouth,
             griffinsLoisInBed,
             cinemaGuys,
+            incomingCall,
+            spongebobSacredTextBook,
+            griffinsPeterSkinColor,
+            spongebobLongTodoList,
+            spongebobRainbow,
+            spongebobCaveman,
+            spongebobMonolith,
+            spongebobGrin,
+            simpsonsHomerReadingBook,
+            simpsonsMoeKickingOutBarney,
+            simpsonsThatsAPaddlin,
+            simpsonsTheWorstDayOfYourLifeSoFar,
+            simpsonsHomerInLesbianBar,
+            simpsonsMonkeyInHomerHead,
+            simpsonsScaryNews,
+            simpsonsAdultLisaAndBart,
+            simpsonsMoeHoldingGunToHead,
         ];
     }
 }

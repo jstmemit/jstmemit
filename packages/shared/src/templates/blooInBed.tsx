@@ -78,6 +78,7 @@ export const blooInBed: Template = {
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 9,
+                        wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",

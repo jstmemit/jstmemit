@@ -32,7 +32,6 @@ export const myHonestReaction: Template = {
                     position: "absolute",
                     bottom: 0,
                     left: 0,
-                    // borderRadius: "100%",
                     objectFit: "cover",
                 }}
             />

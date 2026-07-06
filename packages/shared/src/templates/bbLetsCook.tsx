@@ -71,6 +71,7 @@ export const bbLetsCook: Template = {
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 2,
+                        wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
