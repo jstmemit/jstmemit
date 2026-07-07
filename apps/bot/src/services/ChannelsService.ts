@@ -21,7 +21,7 @@ export class ChannelsService implements IChannelsService {
      * @author Jia Miao Hui
      */
     public async getChannel(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
-        return await this._channelsRepository.get(channelId);
+        return await this._channelsRepository.upsert(channelId, new Date());
     }
 
     /**
