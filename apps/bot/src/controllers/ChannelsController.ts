@@ -37,29 +37,21 @@ export class ChannelsController implements IChannelsController {
      *
      * @author Kyrylo Maliuha
      */
-    public async handleEnableInteraction(
-        interaction: ChatInputCommandInteraction | ButtonInteraction,
-    ): Promise<void> {
+    public async handleEnableInteraction(interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> {
         if (interaction.isCommand()) {
             await interaction.deferReply();
         }
 
         try {
-            let isEnabled: boolean =
-                await this._channelsService.isChannelEnabled(
-                    interaction.channelId,
-                );
+            let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
 
             if (!isEnabled || interaction.isButton()) {
-                isEnabled = await this._channelsService.switchChannel(
-                    interaction.channelId,
-                );
+                isEnabled = await this._channelsService.switchChannel(interaction.channelId);
             }
 
-            const messagesAmount: number =
-                await this._messagesRepository.getMessagesAmountByChannelId(
-                    interaction.channelId,
-                );
+            const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
+                interaction.channelId,
+            );
 
             analytics.capture({
                 event: isEnabled ? "channel_enabled" : "channel_disabled",
@@ -72,11 +64,10 @@ export class ChannelsController implements IChannelsController {
                 },
             });
 
-            const message: ContainerBuilder =
-                this._componentsService.getEnableMessageComponent(
-                    isEnabled,
-                    messagesAmount,
-                );
+            const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
+                isEnabled,
+                messagesAmount,
+            );
 
             const buttons: ActionRowBuilder<ButtonBuilder> =
                 this._componentsService.getEnableButtonsComponent(isEnabled);
@@ -85,15 +76,12 @@ export class ChannelsController implements IChannelsController {
         } catch (error) {
             console.error(error);
             analytics.captureException(error, interaction.user.id, {
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId || "",
+                channelId: interaction.channelId,
+                guildId: interaction?.guildId || "",
                 command: "/enable",
             });
 
-            const message: ContainerBuilder =
-                this._componentsService.getErrorMessageComponent(
-                    interaction.id,
-                );
+            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(interaction.id);
 
             await respond(interaction, [message]);
         }
