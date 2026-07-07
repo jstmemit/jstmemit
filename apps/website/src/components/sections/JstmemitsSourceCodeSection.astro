@@ -20,48 +20,79 @@ const { classes } = Astro.props;
     headingId="jstmemitsSourceCodeHeading"
     descriptionId="jstmemitsSourceCodeDescription"
 >
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
-        <Heading id="jstmemitsSourceCodeHeading">
-            <em class="text-bubblegum-pink not-italic">Jstmemit's</em> source code is <em
-                class="text-bubblegum-pink not-italic">public</em
-            >
-        </Heading>
-        <Paragraph id="jstmemitsSourceCodeDescription">
-            If you are that kind of person, then feel welcome to deploy your own version of <b>Jstmemit</b>. Even
-            better, it’s MIT licensed which means you can fork it, change it and do whatever you want with the result.
-        </Paragraph>
-        <Paragraph>
-            However, if you just want to add the bot, then you can use our always online, free version of the bot. This
-            way you do not need to host anything and can immediately start using <b>Jstmemit</b>.
-        </Paragraph>
+    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col items-center gap-3 lg:flex-row lg:gap-10">
+        <div class="flex flex-col gap-3 xl:w-[45%]">
+            <Heading id="jstmemitsSourceCodeHeading">
+                <em class="text-bubblegum-pink not-italic">Jstmemit's</em> source code is <em
+                    class="text-bubblegum-pink not-italic">public</em
+                >
+            </Heading>
+            <Paragraph id="jstmemitsSourceCodeDescription">
+                If you are that kind of person, then feel welcome to deploy your own version of <b>Jstmemit</b>. Even
+                better, it’s MIT licensed which means you can fork it, change it and do whatever you want with the
+                result.
+            </Paragraph>
+            <Paragraph>
+                However, if you just want to add the bot, then you can use our always online, free version of the bot.
+                This way you do not need to host anything and can immediately start using <b>Jstmemit</b>.
+            </Paragraph>
 
-        <List classes="flex-col sm:flex-row ml-0 sm:ml-auto gap-5">
-            <li class="flex flex-col gap-3">
-                <p class="text-base font-bold uppercase">Host your own:</p>
-                <Button
-                    href="https://github.com/jstmemit/jstmemit"
-                    background="bg-carbon-black"
-                    textColor="text-white"
-                    icon="https://files.jstmemit.com/jstmemit/images/icons/github.svg"
-                    alt="github logo"
-                    name="View source code"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                />
-            </li>
-            <li class="flex flex-col gap-3">
-                <p class="text-base font-bold uppercase">Start using now:</p>
-                <Button
-                    href="https://discord.com/oauth2/authorize?client_id=1375836467745783990"
-                    background="bg-discord-blue"
-                    textColor="text-white"
-                    icon="https://files.jstmemit.com/jstmemit/images/discord.svg"
-                    alt="discord logo"
-                    name="Add to your server"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                />
-            </li>
-        </List>
+            <List classes="flex-col sm:flex-row ml-0 sm:ml-auto gap-5">
+                <li class="flex flex-col gap-3">
+                    <p class="text-base font-bold uppercase">Host your own:</p>
+                    <Button
+                        href="https://github.com/jstmemit/jstmemit"
+                        background="bg-carbon-black"
+                        textColor="text-white"
+                        icon="https://files.jstmemit.com/jstmemit/images/icons/github.svg"
+                        alt="github logo"
+                        name="View source code"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    />
+                </li>
+                <li class="flex flex-col gap-3">
+                    <p class="text-base font-bold uppercase">Start using now:</p>
+                    <Button
+                        href="https://discord.com/oauth2/authorize?client_id=1375836467745783990"
+                        background="bg-discord-blue"
+                        textColor="text-white"
+                        icon="https://files.jstmemit.com/jstmemit/images/discord.svg"
+                        alt="discord logo"
+                        name="Add to your server"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    />
+                </li>
+            </List>
+        </div>
+
+        <div class="mt-5 ml-auto w-full truncate xl:-mt-7 xl:w-1/2">
+            <div class="border-bubblegum-pink rounded-2xl border-5 bg-black p-4">
+                <pre
+                    class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
+<span class="text-hot-fuchsia font-medium"># Clone the project</span>
+git clone https://github.com/<br class="sm:hidden" />jstmemit/jstmemit.git
+
+<span class="text-hot-fuchsia font-medium"># Navigate into its directory</span>
+cd jstmemit
+
+<span class="text-hot-fuchsia font-medium"># Create a .env.docker file</span>
+                </pre>
+                <div class="bg-carbon-black -mt-2 rounded-lg p-3">
+                    <pre
+                        class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
+<span class="text-golden">DB_URL</span><span class="text-bubblegum-pink">=</span>http://sqld:8080
+
+<span class="text-golden">DISCORD_TOKEN</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># discord bot<br class="sm:hidden" /> token, get it <a target="_blank" rel="noopener noreferrer" href="https://discord.com/developers/home" class="text-bubblegum-pink">here</a></span>
+<span class="text-golden">DISCORD_CLIENT_ID</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># discord<br class="sm:hidden" /> application id</span>
+
+<span class="text-golden">POSTHOG_READ_KEY</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># analytics</span>
+
+<span class="text-golden">REDIS_HOST</span><span class="text-bubblegum-pink">=</span>redis
+<span class="text-golden">REDIS_PORT</span><span class="text-bubblegum-pink">=</span>6379</pre>
+                </div>
+            </div>
+        </div>
     </div>
 </Section>
