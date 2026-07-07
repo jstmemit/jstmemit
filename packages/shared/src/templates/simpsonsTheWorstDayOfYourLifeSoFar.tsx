@@ -21,7 +21,7 @@ export const simpsonsTheWorstDayOfYourLifeSoFar: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img

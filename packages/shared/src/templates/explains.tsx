@@ -15,7 +15,7 @@ export const explains: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img src={images[0]} width={455} height={360} style={{ position: "absolute", top: 20, left: 0 }} />

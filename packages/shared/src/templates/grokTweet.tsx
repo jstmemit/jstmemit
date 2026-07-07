@@ -15,7 +15,7 @@ export const grokTweet: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img
@@ -48,7 +48,7 @@ export const grokTweet: Template = {
                     alignItems: "center",
                     justifyContent: "flex-start",
                     textAlign: "center",
-                    fontFamily: "Impact",
+                    fontFamily: "Comic Sans MS",
                     fontSize: 90,
                     lineHeight: 1.05,
                     color: "#ffffff",
