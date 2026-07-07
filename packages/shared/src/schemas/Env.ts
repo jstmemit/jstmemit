@@ -8,7 +8,7 @@ export const Env = z.object({
     DISCORD_CLIENT_ID_PRODUCTION: z.string().min(1),
 
     POSTHOG_READ_KEY: z.string().min(1),
-    TOPGG_TOKEN: z.string().min(1).nullable(),
+    TOPGG_TOKEN: z.string().min(1).optional(),
 
     REDIS_HOST: z.string().min(1),
     REDIS_PORT: z.coerce.number().min(1),
