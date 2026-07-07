@@ -4,6 +4,7 @@ import Paragraph from "#/components/ui/Paragraph.astro";
 import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Button from "#/components/ui/Button.astro";
+import Card from "#/components/ui/Card.astro";
 
 interface Props {
     classes?: string;
@@ -65,8 +66,8 @@ const { classes } = Astro.props;
             </List>
         </div>
 
-        <div class="mt-5 ml-auto w-full truncate xl:-mt-7 xl:w-1/2">
-            <div class="border-bubblegum-pink relative rounded-2xl border-5 bg-black p-4">
+        <div class="mt-5 ml-auto w-full truncate lg:mt-0 xl:w-1/2">
+            <Card label="Terminal" background="bg-black" classes="mt-6 pt-5 relative p-4">
                 <pre
                     class="relative min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
 <span class="text-hot-fuchsia font-medium"># Clone the project</span>
@@ -99,7 +100,7 @@ nano .env.docker
                     class="relative mt-5 min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
 <span class="text-hot-fuchsia font-medium"># Build and launch docker compose</span>
 docker compose up --build</pre>
-            </div>
+            </Card>
         </div>
     </div>
 </Section>
