@@ -3,8 +3,6 @@ import List from "#/components/ui/List.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
-import Message from "#/components/ui/Message.astro";
-import Separator from "#/components/ui/Separator.astro";
 import Button from "#/components/ui/Button.astro";
 
 interface Props {
@@ -68,9 +66,9 @@ const { classes } = Astro.props;
         </div>
 
         <div class="mt-5 ml-auto w-full truncate xl:-mt-7 xl:w-1/2">
-            <div class="border-bubblegum-pink rounded-2xl border-5 bg-black p-4">
+            <div class="border-bubblegum-pink relative rounded-2xl border-5 bg-black p-4">
                 <pre
-                    class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
+                    class="relative min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
 <span class="text-hot-fuchsia font-medium"># Clone the project</span>
 git clone https://github.com/<br class="sm:hidden" />jstmemit/jstmemit.git
 
@@ -78,7 +76,11 @@ git clone https://github.com/<br class="sm:hidden" />jstmemit/jstmemit.git
 cd jstmemit
 
 <span class="text-hot-fuchsia font-medium"># Create a .env.docker file</span>
+nano .env.docker
                 </pre>
+
+                <span class="absolute top-[42.5%] right-8 text-white/50">.env.docker</span>
+
                 <div class="bg-carbon-black -mt-2 rounded-lg p-3">
                     <pre
                         class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
@@ -92,6 +94,11 @@ cd jstmemit
 <span class="text-golden">REDIS_HOST</span><span class="text-bubblegum-pink">=</span>redis
 <span class="text-golden">REDIS_PORT</span><span class="text-bubblegum-pink">=</span>6379</pre>
                 </div>
+
+                <pre
+                    class="relative mt-5 min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
+<span class="text-hot-fuchsia font-medium"># Build and launch docker compose</span>
+docker compose up --build</pre>
             </div>
         </div>
     </div>
