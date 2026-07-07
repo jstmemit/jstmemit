@@ -2,8 +2,8 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 
-export const quoteCenterText: Template = {
-    name: "quoteCenterText",
+export const quote: Template = {
+    name: "quote",
     width: 800,
     height: 800,
     texts: [{ id: 0, description: "quote", minLength: 1, maxLength: 20 }],
