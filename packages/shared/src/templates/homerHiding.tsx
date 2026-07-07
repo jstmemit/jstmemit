@@ -52,15 +52,16 @@ export const homerHiding: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
+                    bottom: 0,
                     width: "100%",
-                    height: "100%",
+                    height: "100px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
                 <div
@@ -72,7 +73,7 @@ export const homerHiding: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 44,
+                        fontSize: 35,
                         lineHeight: 1.05,
                         color: "#ffffff",
                         WebkitTextStrokeWidth: 3,

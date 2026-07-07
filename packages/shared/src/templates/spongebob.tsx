@@ -6,7 +6,7 @@ export const spongebob: Template = {
     name: "spongebob",
     width: 622,
     height: 727,
-    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 6 }],
+    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "image that gets burned down" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -29,15 +29,16 @@ export const spongebob: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: "340px",
                     width: "100%",
-                    height: "100%",
+                    height: "100px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    background: "white",
                 }}
             >
                 <div
@@ -49,11 +50,9 @@ export const spongebob: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 50,
+                        fontSize: 40,
                         lineHeight: 1.05,
-                        color: "#ffffff",
-                        WebkitTextStrokeWidth: 4,
-                        WebkitTextStrokeColor: "#000000",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}
