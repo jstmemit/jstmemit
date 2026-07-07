@@ -95,6 +95,7 @@ const memesController: IMemesController = new MemesController(
     ratingsService,
     componentsService,
     banditService,
+    channelsService,
 );
 
 // context

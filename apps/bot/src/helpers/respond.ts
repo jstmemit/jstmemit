@@ -43,10 +43,17 @@ export const respond = async (
         }
     } catch {
         if (!(interaction instanceof Message)) {
-            await interaction.editReply({
-                flags: MessageFlags.IsComponentsV2,
-                components,
-            });
+            if (interaction.isChatInputCommand()) {
+                await interaction.reply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            }
         }
     }
 };
