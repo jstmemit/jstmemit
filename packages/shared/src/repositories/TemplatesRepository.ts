@@ -13,7 +13,7 @@ import { manLookingUp } from "#/templates/manLookingUp.tsx";
 import { uncanny } from "#/templates/uncanny.tsx";
 import { tf2Hahaha } from "#/templates/tf2Hahaha.tsx";
 import { yesChad } from "#/templates/yesChad.tsx";
-import { quote } from "#/templates/quote.tsx";
+import { quoteCenterText } from "#/templates/quoteCenterText.tsx";
 import { stonks } from "#/templates/stonks.tsx";
 import { stonks1 } from "#/templates/stonks1.tsx";
 import { disappointedGuy } from "#/templates/disappointedGuy.tsx";
@@ -142,7 +142,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             uncanny,
             tf2Hahaha,
             yesChad,
-            quote,
+            quoteCenterText,
             stonks,
             stonks1,
             disappointedGuy,
