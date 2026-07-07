@@ -15,7 +15,7 @@ export const spongebobLongTodoList: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img
@@ -48,7 +48,7 @@ export const spongebobLongTodoList: Template = {
                         wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
-                        fontFamily: "Impact",
+                        fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
                         color: "#000000",

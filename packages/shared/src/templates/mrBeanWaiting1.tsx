@@ -15,7 +15,7 @@ export const mrBeanWaiting1: Template = {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: "Comic Sans MS",
             }}
         >
             <img
@@ -76,15 +76,16 @@ export const mrBeanWaiting1: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    bottom: "250px",
                     width: "100%",
-                    height: "100%",
+                    height: "100px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -98,9 +99,7 @@ export const mrBeanWaiting1: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        color: "lightgoldenrodyellow",
-                        WebkitTextStrokeWidth: 4,
-                        WebkitTextStrokeColor: "#000000",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

@@ -6,9 +6,9 @@ export const spongebobHappy: Template = {
     name: "spongebobHappy",
     width: 1199,
     height: 918,
-    texts: [],
+    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Squidward's face" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -36,6 +36,41 @@ export const spongebobHappy: Template = {
                     borderRadius: "100%",
                 }}
             />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "30%",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        wordBreak: "break-word",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 80,
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        WebkitTextStrokeWidth: 3,
+                        WebkitTextStrokeColor: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
         </div>
     ),
 };

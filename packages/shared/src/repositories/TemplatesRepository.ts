@@ -13,7 +13,7 @@ import { manLookingUp } from "#/templates/manLookingUp.tsx";
 import { uncanny } from "#/templates/uncanny.tsx";
 import { tf2Hahaha } from "#/templates/tf2Hahaha.tsx";
 import { yesChad } from "#/templates/yesChad.tsx";
-import { quote } from "#/templates/quote.tsx";
+import { quoteCenterText } from "#/templates/quoteCenterText.tsx";
 import { stonks } from "#/templates/stonks.tsx";
 import { stonks1 } from "#/templates/stonks1.tsx";
 import { disappointedGuy } from "#/templates/disappointedGuy.tsx";
@@ -120,6 +120,33 @@ import { simpsonsMonkeyInHomerHead } from "#/templates/simpsonsMonkeyInHomerHead
 import { simpsonsScaryNews } from "#/templates/simpsonsScaryNews.tsx";
 import { simpsonsAdultLisaAndBart } from "#/templates/simpsonsAdultLisaAndBart.tsx";
 import { simpsonsMoeHoldingGunToHead } from "#/templates/simpsonsMoeHoldingGunToHead.tsx";
+import { spongebobProud } from "#/templates/spongebobProud.tsx";
+import { simpsonsWhatIsInHomersHead } from "#/templates/simpsonsWhatIsInHomersHead.tsx";
+import { simpsonsWhatIsInHomersHead1 } from "#/templates/simpsonsWhatIsInHomersHead1.tsx";
+import { quoteBottomText } from "#/templates/quoteBottomText.tsx";
+import { quoteTopText } from "#/templates/quoteTopText.tsx";
+import { simpsonsBartHitsHomerWithChair } from "#/templates/simpsonsBartHitsHomerWithChair.tsx";
+import { griffinsPaddedWalls } from "#/templates/griffinsPaddedWalls.tsx";
+import { griffinsPeterHurtsHisKnee } from "#/templates/griffinsPeterHurtsHisKnee.tsx";
+import { futuramaFryReadingLetter } from "#/templates/futuramaFryReadingLetter.tsx";
+import { futuramaBenderCaptcha } from "#/templates/futuramaBenderCaptcha.tsx";
+import { futuramaBenderScared } from "#/templates/futuramaBenderScared.tsx";
+import { futuramaZeroDaysSinceLast } from "#/templates/futuramaZeroDaysSinceLast.tsx";
+import { simpsonsLemmyThinking } from "#/templates/simpsonsLemmyThinking.tsx";
+import { simpsonsTwoSidesOfMrBurns } from "#/templates/simpsonsTwoSidesOfMrBurns.tsx";
+import { simpsonsWhyYouLittle } from "#/templates/simpsonsWhyYouLittle.tsx";
+import { futuramaFrySleeplessInsomnia } from "#/templates/futuramaFrySleeplessInsomnia.tsx";
+import { futuramaZappBranniganAsDrake } from "#/templates/futuramaZappBranniganAsDrake.tsx";
+import { futuramaBenderAsDrake } from "#/templates/futuramaBenderAsDrake.tsx";
+import { futuramaSkeletons } from "#/templates/futuramaSkeletons.tsx";
+import { futuramaToasterBoo } from "#/templates/futuramaToasterBoo.tsx";
+import { spongebobHandsomeFace } from "#/templates/spongebobHandsomeFace.tsx";
+import { griffinsPeterPickingADonkey } from "#/templates/griffinsPeterPickingADonkey.tsx";
+import { griffinsPeterWriteALetter } from "#/templates/griffinsPeterWriteALetter.tsx";
+import { griffinsPeterVsChicken } from "#/templates/griffinsPeterVsChicken.tsx";
+import { simpsonsAtLeastYouTried } from "#/templates/simpsonsAtLeastYouTried.tsx";
+import { simpsonsLisaStaring } from "#/templates/simpsonsLisaStaring.tsx";
+import { simpsonsNotMyBoyfriendShirt } from "#/templates/simpsonsNotMyBoyfriendShirt.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -142,7 +169,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             uncanny,
             tf2Hahaha,
             yesChad,
-            quote,
+            quoteCenterText,
             stonks,
             stonks1,
             disappointedGuy,
@@ -249,6 +276,33 @@ export class TemplatesRepository implements ITemplatesRepository {
             simpsonsScaryNews,
             simpsonsAdultLisaAndBart,
             simpsonsMoeHoldingGunToHead,
+            spongebobProud,
+            simpsonsWhatIsInHomersHead,
+            simpsonsWhatIsInHomersHead1,
+            quoteBottomText,
+            quoteTopText,
+            simpsonsBartHitsHomerWithChair,
+            griffinsPaddedWalls,
+            griffinsPeterHurtsHisKnee,
+            futuramaFryReadingLetter,
+            futuramaBenderCaptcha,
+            futuramaBenderScared,
+            futuramaZeroDaysSinceLast,
+            simpsonsLemmyThinking,
+            simpsonsTwoSidesOfMrBurns,
+            simpsonsWhyYouLittle,
+            futuramaFrySleeplessInsomnia,
+            futuramaZappBranniganAsDrake,
+            futuramaBenderAsDrake,
+            futuramaSkeletons,
+            futuramaToasterBoo,
+            spongebobHandsomeFace,
+            griffinsPeterPickingADonkey,
+            griffinsPeterWriteALetter,
+            griffinsPeterVsChicken,
+            simpsonsAtLeastYouTried,
+            simpsonsLisaStaring,
+            simpsonsNotMyBoyfriendShirt,
         ];
     }
 }

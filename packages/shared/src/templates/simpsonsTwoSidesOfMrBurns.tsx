@@ -1,0 +1,98 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+
+export const simpsonsTwoSidesOfMrBurns: Template = {
+    name: "simpsonsTwoSidesOfMrBurns",
+    width: 1200,
+    height: 855,
+    texts: [
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
+    ],
+    images: [],
+    element: ({ texts }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Comic Sans MS",
+            }}
+        >
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/simpsonsTwoSidesOfMrBurns.png"
+                width={1200}
+                height={655}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "50%",
+                    height: "200px",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "#ffffff",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        wordBreak: "break-word",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                    width: "50%",
+                    height: "200px",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "#ffffff",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 3,
+                        wordBreak: "break-word",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 50,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
+            </div>
+        </div>
+    ),
+};
