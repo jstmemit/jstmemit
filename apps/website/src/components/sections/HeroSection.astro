@@ -1,6 +1,8 @@
 ---
 import Section from "#/components/ui/Section.astro";
 import Button from "#/components/ui/Button.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+import Heading from "#/components/ui/Heading.astro";
 ---
 
 <Section
@@ -10,9 +12,13 @@ import Button from "#/components/ui/Button.astro";
     classes="h-[80vh] justify-center md:h-[70vh] items-center"
 >
     <div slot="text" class="z-2 flex w-full flex-col items-center gap-3">
-        <h1 id="heroHeading" class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
-            personalized memes for <span class="text-hot-fuchsia">your</span> community
-        </h1>
+        <Heading
+            id="heroHeading"
+            variant="h1"
+            classes="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl"
+        >
+            personalized memes for <Highlight color="text-hot-fuchsia">your</Highlight> community
+        </Heading>
         <p id="heroDescription" class="mx-auto my-5 w-[70%] text-center text-xl text-gray-300 md:w-[50%] md:text-3xl">
             Auto-generated memes from your conversations
         </p>

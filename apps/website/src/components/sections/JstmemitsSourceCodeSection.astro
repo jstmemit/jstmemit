@@ -5,6 +5,8 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Button from "#/components/ui/Button.astro";
 import Card from "#/components/ui/Card.astro";
+import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
 
 interface Props {
     classes?: string;
@@ -19,11 +21,11 @@ const { classes } = Astro.props;
     headingId="jstmemitsSourceCodeHeading"
     descriptionId="jstmemitsSourceCodeDescription"
 >
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col items-center gap-3 lg:flex-row lg:gap-10">
+    <Content slot="text" classes="items-center lg:flex-row lg:gap-10">
         <div class="flex flex-col gap-3 xl:w-[45%]">
             <Heading id="jstmemitsSourceCodeHeading">
-                <em class="text-bubblegum-pink not-italic">Jstmemit's</em> source code is <em
-                    class="text-bubblegum-pink not-italic">public</em
+                <Highlight color="text-bubblegum-pink">Jstmemit's</Highlight> source code is <Highlight
+                    color="text-bubblegum-pink">public</Highlight
                 >
             </Heading>
             <Paragraph id="jstmemitsSourceCodeDescription">
@@ -70,13 +72,13 @@ const { classes } = Astro.props;
             <Card label="Terminal" background="bg-black" classes="mt-6 pt-5 relative p-4">
                 <pre
                     class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
-<span class="text-hot-fuchsia font-medium"># Clone the project</span>
+<Highlight color="text-hot-fuchsia" classes="font-medium"># Clone the project</Highlight>
 git clone https://github.com/<br class="sm:hidden" />jstmemit/jstmemit.git
 
-<span class="text-hot-fuchsia font-medium"># Navigate into its directory</span>
+<Highlight color="text-hot-fuchsia" classes="font-medium"># Navigate into its directory</Highlight>
 cd jstmemit
 
-<span class="text-hot-fuchsia font-medium"># Create a .env.docker file</span>
+<Highlight color="text-hot-fuchsia" classes="font-medium"># Create a .env.docker file</Highlight>
 nano .env.docker
                 </pre>
 
@@ -84,22 +86,22 @@ nano .env.docker
                     <span class="absolute top-2 right-4 text-white/50 sm:top-3">.env.docker</span>
                     <pre
                         class="min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
-<span class="text-golden">DB_URL</span><span class="text-bubblegum-pink">=</span>http://sqld:8080
+<Highlight color="text-golden">DB_URL</Highlight><Highlight color="text-bubblegum-pink">=</Highlight>http://sqld:8080
 
-<span class="text-golden">DISCORD_TOKEN</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># discord bot<br class="sm:hidden" /> token, you can get it <a target="_blank" rel="noopener noreferrer" href="https://discord.com/developers/home" class="text-bubblegum-pink">here</a></span>
-<span class="text-golden">DISCORD_CLIENT_ID</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># discord<br class="sm:hidden" /> application id</span>
+<Highlight color="text-golden">DISCORD_TOKEN</Highlight><Highlight color="text-bubblegum-pink">=</Highlight> <Highlight color="text-white/50"># discord bot<br class="sm:hidden" /> token, you can get it <a target="_blank" rel="noopener noreferrer" href="https://discord.com/developers/home" class="text-bubblegum-pink">here</a></Highlight>
+<Highlight color="text-golden">DISCORD_CLIENT_ID</Highlight><Highlight color="text-bubblegum-pink">=</Highlight> <Highlight color="text-white/50"># discord<br class="sm:hidden" /> application id</Highlight>
 
-<span class="text-golden">POSTHOG_READ_KEY</span><span class="text-bubblegum-pink">=</span> <span class="text-white/50"># analytics</span>
+<Highlight color="text-golden">POSTHOG_READ_KEY</Highlight><Highlight color="text-bubblegum-pink">=</Highlight> <Highlight color="text-white/50"># analytics</Highlight>
 
-<span class="text-golden">REDIS_HOST</span><span class="text-bubblegum-pink">=</span>redis
-<span class="text-golden">REDIS_PORT</span><span class="text-bubblegum-pink">=</span>6379</pre>
+<Highlight color="text-golden">REDIS_HOST</Highlight><Highlight color="text-bubblegum-pink">=</Highlight>redis
+<Highlight color="text-golden">REDIS_PORT</Highlight><Highlight color="text-bubblegum-pink">=</Highlight>6379</pre>
                 </div>
 
                 <pre
                     class="relative mt-5 min-h-auto font-mono text-xs font-normal text-white sm:w-auto sm:text-sm">
-<span class="text-hot-fuchsia font-medium"># Build and launch docker compose</span>
+<Highlight color="text-hot-fuchsia" classes="font-medium"># Build and launch docker compose</Highlight>
 docker compose up --build</pre>
             </Card>
         </div>
-    </div>
+    </Content>
 </Section>
