@@ -1,9 +1,9 @@
 ---
 import type { MemeGridItem } from "#/models/MemeGridItem.ts";
-import { Swiper, SwiperWrapper, SwiperSlide, SwiperPagination } from "astro-swiper";
 import Card from "#/components/ui/Card.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
+import MemeSwiper from "#/components/ui/MemeSwiper.astro";
 
 interface Props {
     classes?: string;
@@ -32,58 +32,7 @@ const tiles: MemeGridItem[] = [
             Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them relatable and funnier than these examples.
         </Paragraph>
     </div>
-    <Swiper
-        options={{
-            loop: true,
-            effect: "creative",
-            grabCursor: true,
-            pagination: {
-                el: ".swiper-pagination",
-            },
-            autoplay: {
-                delay: 1500,
-                disableOnInteraction: true,
-            },
-            creativeEffect: {
-                prev: {
-                    shadow: true,
-                    translate: ["-125%", 0, -800],
-                    rotate: [0, 0, -90],
-                },
-                next: {
-                    shadow: true,
-                    translate: ["125%", 0, -800],
-                    rotate: [0, 0, 90],
-                },
-            },
-        }}
-    >
-        <SwiperWrapper
-        class="pt-6 py-12 scale-90"
-        >
-            {
-                tiles.map((meme: MemeGridItem) => (
-                    <SwiperSlide>
-                        <Card
-                            label={meme.image.split("/").pop() || "meme.png"}
-                            color={meme.color}
-                            classes="h-120 sm:h-160 w-full object-cover mt-7"
-                            border=`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`
-                        >
-                            <img
-                                src={meme.image}
-                                alt={meme.alt}
-                                fetchpriority="low"
-                                loading="lazy"
-                                class=`bg-carbon-black rounded-t-none rounded-xl w-full h-full object-cover`
-                            />
-                        </Card>
-                    </SwiperSlide>
-                ))
-            }
-            <SwiperPagination />
-        </SwiperWrapper>
-    </Swiper>
+    <MemeSwiper memes={tiles} height="h-120" />
 </section>
 
 
