@@ -5,6 +5,7 @@ import Paragraph from "#/components/ui/Paragraph.astro";
 import Content from "#/components/ui/Content.astro";
 import Highlight from "#/components/ui/Highlight.astro";
 import FaqItem from "#/components/ui/FaqItem.astro";
+import FaqGrid from "#/components/ui/FaqGrid.astro";
 ---
 
 <Section variant="light" headingId="faqHeading" descriptionId="faqDescription">
@@ -18,7 +19,7 @@ import FaqItem from "#/components/ui/FaqItem.astro";
                 rel="noopener noreferrer">Support server</a
             >
         </Paragraph>
-        <ul class="mt-3 grid grid-cols-1 gap-5 gap-x-7 lg:grid-cols-2">
+        <FaqGrid>
             <FaqItem headingId="iAddedTheBotWhatNowHeading" descriptionId="iAddedTheBotWhatNowDescription">
                 <Heading variant="h3" id="iAddedTheBotWhatNowHeading">I added the bot, what now?</Heading>
                 <Paragraph classes="text-base font-medium" id="iAddedTheBotWhatNowDescription">
@@ -56,6 +57,6 @@ import FaqItem from "#/components/ui/FaqItem.astro";
                     press the "Delete all data" button to delete everything that the bot stored for the channel.
                 </Paragraph>
             </FaqItem>
-        </ul>
+        </FaqGrid>
     </Content>
 </Section>
