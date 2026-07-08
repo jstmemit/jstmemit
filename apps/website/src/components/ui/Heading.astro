@@ -2,15 +2,17 @@
 interface Props {
     classes?: string;
     id: string;
-    variant?: "h1" | "h2";
+    variant?: "h1" | "h2" | "h3";
 }
+
+const defaults: string = "text-3xl font-black tracking-tight text-white uppercase";
 
 const { classes, id, variant = "h2" } = Astro.props;
 ---
 
 {
     variant === "h1" && (
-        <h1 id={id} class:list={["text-3xl font-black tracking-tight text-white uppercase", classes]}>
+        <h1 id={id} class:list={[defaults, classes]}>
             <slot />
         </h1>
     )
@@ -18,8 +20,16 @@ const { classes, id, variant = "h2" } = Astro.props;
 
 {
     variant === "h2" && (
-        <h2 id={id} class:list={["text-3xl font-black tracking-tight text-white uppercase", classes]}>
+        <h2 id={id} class:list={[defaults, classes]}>
             <slot />
         </h2>
+    )
+}
+
+{
+    variant === "h3" && (
+        <h3 id={id} class:list={[defaults, classes]}>
+            <slot />
+        </h3>
     )
 }
