@@ -5,13 +5,11 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import IconText from "#/components/ui/IconText.astro";
 import Card from "#/components/ui/Card.astro";
+import Content from "#/components/ui/Content.astro";
 ---
 
 <Section headingId="butWhatAboutPrivacyHeading" descriptionId="butWhatAboutPrivacyDescription" variant="light">
-    <div
-        slot="text"
-        class="mx-auto flex w-full max-w-333 flex-col gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25"
-    >
+    <Content slot="text" classes="gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
         <div class="2xl:w-unset flex flex-col gap-3 xl:mt-12 xl:w-[45%] xl:pt-2">
             <Heading id="butWhatAboutPrivacyHeading">
                 But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
@@ -97,5 +95,5 @@ import Card from "#/components/ui/Card.astro";
                 </li>
             </ul>
         </div>
-    </div>
+    </Content>
 </Section>

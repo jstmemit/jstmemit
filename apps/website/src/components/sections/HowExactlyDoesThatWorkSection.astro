@@ -5,6 +5,7 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Message from "#/components/ui/Message.astro";
 import Separator from "#/components/ui/Separator.astro";
+import Content from "#/components/ui/Content.astro";
 
 interface Props {
     classes?: string;
@@ -19,7 +20,7 @@ const { classes } = Astro.props;
     headingId="howExactlyDoesThatWorkHeading"
     descriptionId="howExactlyDoesThatWorkDescription"
 >
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+    <Content slot="text">
         <Heading id="howExactlyDoesThatWorkHeading">
             How <em class="text-bubblegum-pink not-italic">exactly</em> does that <em
                 class="text-bubblegum-pink not-italic">work?</em
@@ -51,5 +52,5 @@ const { classes } = Astro.props;
                 <em class="text-dark-cyan not-italic">[[</em>so trash<em class="text-dark-cyan not-italic">]]</em>
             </Message>
         </List>
-    </div>
+    </Content>
 </Section>

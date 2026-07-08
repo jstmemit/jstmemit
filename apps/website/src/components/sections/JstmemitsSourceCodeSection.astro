@@ -5,6 +5,7 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Button from "#/components/ui/Button.astro";
 import Card from "#/components/ui/Card.astro";
+import Content from "#/components/ui/Content.astro";
 
 interface Props {
     classes?: string;
@@ -19,7 +20,7 @@ const { classes } = Astro.props;
     headingId="jstmemitsSourceCodeHeading"
     descriptionId="jstmemitsSourceCodeDescription"
 >
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col items-center gap-3 lg:flex-row lg:gap-10">
+    <Content slot="text" classes="items-center lg:flex-row lg:gap-10">
         <div class="flex flex-col gap-3 xl:w-[45%]">
             <Heading id="jstmemitsSourceCodeHeading">
                 <em class="text-bubblegum-pink not-italic">Jstmemit's</em> source code is <em
@@ -101,5 +102,5 @@ nano .env.docker
 docker compose up --build</pre>
             </Card>
         </div>
-    </div>
+    </Content>
 </Section>

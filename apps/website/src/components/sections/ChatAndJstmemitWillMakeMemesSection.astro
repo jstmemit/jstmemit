@@ -7,10 +7,11 @@ import Heading from "#/components/ui/Heading.astro";
 import Block from "#/components/ui/Block.astro";
 import Badge from "#/components/ui/Badge.astro";
 import Separator from "#/components/ui/Separator.astro";
+import Content from "#/components/ui/Content.astro";
 ---
 
 <Section variant="dark" headingId="chatAndJstmemitHeading" descriptionId="chatAndJstmemitDescription">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+    <Content slot="text">
         <Explainer>
             <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
         </Explainer>
@@ -53,5 +54,5 @@ import Separator from "#/components/ui/Separator.astro";
                 text="Meme"
             />
         </List>
-    </div>
+    </Content>
 </Section>
