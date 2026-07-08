@@ -6,13 +6,14 @@ import Heading from "#/components/ui/Heading.astro";
 import IconText from "#/components/ui/IconText.astro";
 import Card from "#/components/ui/Card.astro";
 import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
 ---
 
 <Section headingId="butWhatAboutPrivacyHeading" descriptionId="butWhatAboutPrivacyDescription" variant="light">
     <Content slot="text" classes="gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
         <div class="2xl:w-unset flex flex-col gap-3 xl:mt-12 xl:w-[45%] xl:pt-2">
             <Heading id="butWhatAboutPrivacyHeading">
-                But what about <em class="text-bubblegum-pink not-italic">privacy?</em>
+                But what about <Highlight color="text-bubblegum-pink">privacy?</Highlight>
             </Heading>
             <Paragraph id="butWhatAboutPrivacyDescription">
                 The bot keeps just enough recent chat to make memes, such as the messages themselves and links to

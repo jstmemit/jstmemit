@@ -6,6 +6,7 @@ import Heading from "#/components/ui/Heading.astro";
 import Message from "#/components/ui/Message.astro";
 import Separator from "#/components/ui/Separator.astro";
 import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
 
 interface Props {
     classes?: string;
@@ -22,8 +23,8 @@ const { classes } = Astro.props;
 >
     <Content slot="text">
         <Heading id="howExactlyDoesThatWorkHeading">
-            How <em class="text-bubblegum-pink not-italic">exactly</em> does that <em
-                class="text-bubblegum-pink not-italic">work?</em
+            How <Highlight color="text-bubblegum-pink">exactly</Highlight> does that <Highlight
+                color="text-bubblegum-pink">work?</Highlight
             >
         </Heading>
         <Paragraph id="howExactlyDoesThatWorkDescription">
@@ -45,11 +46,11 @@ const { classes } = Astro.props;
             <Message heading="Message #2" color="text-dark-cyan">bruh this weapon is so trash</Message>
             <Separator variant="arrow" classes="mt-6" />
             <Message heading="Meme text" color="hidden">
-                <em class="text-bubblegum-pink not-italic">[[</em>our base<em class="text-bubblegum-pink not-italic"
-                    >]]</em
+                <Highlight color="text-bubblegum-pink">[[</Highlight>our base<Highlight color="text-bubblegum-pink"
+                    >]]</Highlight
                 >
                 {" "}is{" "}
-                <em class="text-dark-cyan not-italic">[[</em>so trash<em class="text-dark-cyan not-italic">]]</em>
+                <Highlight color="text-dark-cyan">[[</Highlight>so trash<Highlight color="text-dark-cyan">]]</Highlight>
             </Message>
         </List>
     </Content>
