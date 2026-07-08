@@ -1,0 +1,149 @@
+---
+import Content from "#/components/ui/Content.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Card from "#/components/ui/Card.astro";
+import type { MemeGridItem } from "#/models/MemeGridItem.ts";
+import { Swiper, SwiperPagination, SwiperSlide, SwiperWrapper } from "astro-swiper";
+
+const moreMemes: MemeGridItem[] = [
+    {
+        span: "sm:col-span-2",
+        height: "sm:h-85",
+        border: true,
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/buzz.png",
+        alt: "Buzz telling Woody that his rent goes up 50% next week",
+    },
+    {
+        span: "sm:col-span-3",
+        height: "sm:h-85",
+        color: "bg-dark-cyan",
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/pure.png",
+        alt: "Scientist shows that he made a 100% pure sphere with Ohnepixel's face plastered all over it",
+    },
+    {
+        span: "sm:col-span-3",
+        height: "sm:h-100 xl:h-131",
+        color: "bg-dark-cyan",
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/ukGovernmentToBanPeople.png",
+        alt: "A twitter post saying that 'UK government has agreed to ban people born after 2009' that has a Valorant logo attached",
+    },
+    {
+        span: "sm:col-span-2",
+        border: true,
+        excludeMobile: true,
+        height: "sm:h-100 xl:h-131",
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/tryingToExplain.png",
+        alt: "Office scene with a man trying to explain something really hard and '2000 hours on deadlock' caption",
+    },
+    {
+        span: "sm:col-span-2",
+        height: "sm:h-80 lg:h-110",
+        border: true,
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/moneyTonyStark.png",
+        alt: "Tony Stark scene with cluster bombs test, but Linus Tech Tips face is overlayed with 'best player' caption",
+    },
+    {
+        span: "sm:col-span-3",
+        height: "sm:h-80 lg:h-110",
+        color: "bg-dark-cyan",
+        image: "https://files.jstmemit.com/jstmemit/images/topgg/bumperSticker.png",
+        alt: "A twitter post about a bumper sticker with Rock's face on it",
+    },
+];
+---
+
+<Section headingId="okayButShowMeSomeMemesHeading" descriptionId="okayButShowMeSomeMemesDescription" variant="light">
+    <Content slot="text" classes="px-0">
+        <Heading id="okayButShowMeSomeMemesHeading"
+            ><span class="hidden lg:block"
+                >Okay, but show me some <Highlight color="text-bubblegum-pink">memes</Highlight></span
+            >
+            <span class="block lg:hidden"
+                >Okay, now show me more <Highlight color="text-bubblegum-pink">memes</Highlight></span
+            >
+        </Heading>
+        <Paragraph id="okayButShowMeSomeMemesDescription">
+            Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them more
+            relatable and funnier than these examples below.
+        </Paragraph>
+        <div class="sm:hidden">
+            <Swiper
+                options={{
+                    loop: true,
+                    effect: "creative",
+                    grabCursor: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                    },
+                    autoplay: {
+                        delay: 1500,
+                        disableOnInteraction: true,
+                    },
+                    creativeEffect: {
+                        prev: {
+                            shadow: true,
+                            translate: ["-125%", 0, -800],
+                            rotate: [0, 0, -90],
+                        },
+                        next: {
+                            shadow: true,
+                            translate: ["125%", 0, -800],
+                            rotate: [0, 0, 90],
+                        },
+                    },
+                }}
+            >
+                <SwiperWrapper
+                    class="pt-6 py-12 scale-90"
+                >
+                    {
+                        moreMemes.filter((meme) => !meme.excludeMobile)
+                            .map((meme: MemeGridItem) => (
+                                <SwiperSlide>
+                                    <Card
+                                        label={meme.image.split("/").pop() || "meme.png"}
+                                        color={meme.color}
+                                        classes="h-80 sm:h-160 w-full object-cover mt-7"
+                                        border=`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`
+                                    >
+                                        <img
+                                            src={meme.image}
+                                            alt={meme.alt}
+                                            fetchpriority="low"
+                                            loading="lazy"
+                                            class=`bg-carbon-black rounded-t-none rounded-xl w-full h-full object-cover`
+                                        />
+                                    </Card>
+                                </SwiperSlide>
+                            ))
+                    }
+                    <SwiperPagination />
+                </SwiperWrapper>
+            </Swiper>
+        </div>
+        <ul class="mt-12 hidden sm:grid grid-cols-1 gap-8 gap-y-15 sm:grid-cols-5">
+            {
+                moreMemes.map((meme: MemeGridItem) => (
+                    <li class:list={[meme.span]}>
+                        <Card
+                            label={meme.image.split("/").pop() || "meme.png"}
+                            color={meme.color}
+                            border={meme.color ? "border-dark-cyan border-4" : "border-bubblegum-pink border-4"}
+                        >
+                            <img
+                                src={meme.image}
+                                alt={meme.alt}
+                                fetchpriority="low"
+                                loading="lazy"
+                                class:list={[meme.height, "bg-carbon-black h-full w-full rounded-xl rounded-t-none"]}
+                            />
+                        </Card>
+                    </li>
+                ))
+            }
+        </ul>
+    </Content>
+</Section>

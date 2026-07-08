@@ -11,7 +11,7 @@ import type { FaqQuestion } from "#/models/FaqQuestion.ts";
 import { getFaqJsonLd } from "#/helpers/jsonLd/getFaqJsonLd.ts";
 ---
 
-<Section variant="light" headingId="faqHeading" descriptionId="faqDescription">
+<Section variant="dark" headingId="faqHeading" descriptionId="faqDescription">
     <Content slot="text">
         <script is:inline type="application/ld+json" set:html={JSON.stringify(getFaqJsonLd(questions))} />
 
