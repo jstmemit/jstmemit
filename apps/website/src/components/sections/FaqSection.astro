@@ -8,10 +8,13 @@ import FaqItem from "#/components/ui/FaqItem.astro";
 import FaqGrid from "#/components/ui/FaqGrid.astro";
 import { questions } from "#/data/questions.ts";
 import type { FaqQuestion } from "#/models/FaqQuestion.ts";
+import { getFaqJsonLd } from "#/helpers/jsonLd/getFaqJsonLd.ts";
 ---
 
 <Section variant="light" headingId="faqHeading" descriptionId="faqDescription">
     <Content slot="text">
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(getFaqJsonLd(questions))} />
+
         <Heading id="faqHeading"> Frequently asked questions </Heading>
         <Paragraph id="faqDescription"
             >Can't find your answer? We can help you in the <a
