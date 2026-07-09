@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const mrMcMahonReaction: Template = {
     name: "mrMcMahonReaction",
+    topics: [Topic.Reaction],
     width: 1000,
     height: 1500,
     texts: [

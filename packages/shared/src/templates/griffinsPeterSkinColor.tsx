@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const griffinsPeterSkinColor: Template = {
     name: "griffinsPeterSkinColor",
+    topics: [Topic.Griffins, Topic.Cartoons],
     width: 1000,
     height: 539,
     texts: [

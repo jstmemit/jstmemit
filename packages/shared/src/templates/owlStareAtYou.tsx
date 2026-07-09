@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const owlStareAtYou: Template = {
     name: "owlStareAtYou",
+    topics: [Topic.Animals],
     width: 1600,
     height: 1600,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

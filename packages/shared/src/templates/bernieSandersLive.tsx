@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const bernieSandersLive: Template = {
     name: "bernieSandersLive",
+    topics: [Topic.YouTube],
     width: 981,
     height: 1038,
     texts: [

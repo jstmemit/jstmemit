@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const iInterviewedAnimals: Template = {
     name: "iInterviewedAnimals",
+    topics: [Topic.YouTube, Topic.Animals],
     width: 621,
     height: 426,
     texts: [{ id: 0, description: "what the animal says", minLength: 1, maxLength: 2 }],

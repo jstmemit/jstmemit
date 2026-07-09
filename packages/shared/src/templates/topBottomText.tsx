@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const topBottomText: Template = {
     name: "topBottomText",
+    topics: [Topic.Misc],
     width: 800,
     height: 800,
     texts: [
