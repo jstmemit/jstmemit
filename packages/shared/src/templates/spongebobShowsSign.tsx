@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const spongebobShowsSign: Template = {
     name: "spongebobShowsSign",
+    topics: [Topic.SpongeBob, Topic.Cartoons],
     width: 657,
     height: 493,
     texts: [{ id: 0, description: "what spongebob says while holding the sign", minLength: 1, maxLength: 12 }],

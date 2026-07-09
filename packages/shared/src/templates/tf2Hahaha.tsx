@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const tf2Hahaha: Template = {
     name: "tf2Hahaha",
+    topics: [Topic.TeamFortress2, Topic.Games, Topic.Reaction],
     width: 1732,
     height: 1732,
     texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 12 }],

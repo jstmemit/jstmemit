@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const soGladIGrewUpWithThis: Template = {
     name: "soGladIGrewUpWithThis",
+    topics: [Topic.Misc],
     width: 1313,
     height: 790,
     texts: [],

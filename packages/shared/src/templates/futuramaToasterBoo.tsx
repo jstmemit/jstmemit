@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const futuramaToasterBoo: Template = {
     name: "futuramaToasterBoo",
+    topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     width: 539,
     height: 1214,
     texts: [

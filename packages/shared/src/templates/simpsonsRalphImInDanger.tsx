@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const simpsonsRalphImInDanger: Template = {
     name: "simpsonsRalphImInDanger",
+    topics: [Topic.Simpsons, Topic.Cartoons],
     width: 1024,
     height: 581,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

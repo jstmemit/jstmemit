@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const griffinsPeterPickingADonkey: Template = {
     name: "griffinsPeterPickingADonkey",
+    topics: [Topic.Griffins, Topic.Cartoons],
     width: 1355,
     height: 914,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

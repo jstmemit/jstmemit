@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const theyAllGoIntoSquareHole: Template = {
     name: "theyAllGoIntoSquareHole",
+    topics: [Topic.Misc],
     width: 854,
     height: 1042,
     texts: [],

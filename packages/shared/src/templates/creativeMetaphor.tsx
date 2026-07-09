@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const creativeMetaphor: Template = {
     name: "creativeMetaphor",
+    topics: [Topic.SocialPost],
     width: 1202,
     height: 1028,
     texts: [

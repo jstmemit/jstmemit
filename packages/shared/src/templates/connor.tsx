@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const connor: Template = {
     name: "connor",
+    topics: [Topic.Games, Topic.Misc],
     width: 960,
     height: 1211,
     texts: [
