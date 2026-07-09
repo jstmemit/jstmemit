@@ -20,24 +20,40 @@ export const respond = async (
     interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction | Message,
     components: BaseMessageOptions["components"],
 ): Promise<void> => {
-    if (interaction instanceof Message) {
-        await interaction.reply({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-        });
+    try {
+        if (interaction instanceof Message) {
+            await interaction.reply({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
 
-        return;
-    }
+            return;
+        }
 
-    if (interaction.isChatInputCommand()) {
-        await interaction.editReply({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-        });
-    } else {
-        await interaction.update({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-        });
+        if (interaction.isChatInputCommand()) {
+            await interaction.editReply({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
+        } else {
+            await interaction.update({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
+        }
+    } catch {
+        if (!(interaction instanceof Message)) {
+            if (interaction.isChatInputCommand()) {
+                await interaction.reply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            } else {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            }
+        }
     }
 };

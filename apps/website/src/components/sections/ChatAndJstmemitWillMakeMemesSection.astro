@@ -7,15 +7,17 @@ import Heading from "#/components/ui/Heading.astro";
 import Block from "#/components/ui/Block.astro";
 import Badge from "#/components/ui/Badge.astro";
 import Separator from "#/components/ui/Separator.astro";
+import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
 ---
 
 <Section variant="dark" headingId="chatAndJstmemitHeading" descriptionId="chatAndJstmemitDescription">
-    <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+    <Content slot="text">
         <Explainer>
             <b>TL;DR:</b> it fills in meme templates with your images, gifs and messages
         </Explainer>
         <Heading id="chatAndJstmemitHeading">
-            Talk and <em class="text-bubblegum-pink not-italic">jstmemit</em> will make memes
+            Talk and <Highlight color="text-bubblegum-pink">jstmemit</Highlight> will make memes
         </Heading>
         <Paragraph id="chatAndJstmemitDescription">
             Just chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some
@@ -53,5 +55,5 @@ import Separator from "#/components/ui/Separator.astro";
                 text="Meme"
             />
         </List>
-    </div>
+    </Content>
 </Section>

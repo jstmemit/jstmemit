@@ -9,6 +9,7 @@ import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
+import { AutoPoster } from "topgg-autoposter";
 
 const env = Env.parse(process.env);
 
@@ -48,11 +49,17 @@ export class EventsController implements IEventsController {
             type: ActivityType.Watching,
         });
 
-        if (this._isProduction) {
-            analytics.capture({
-                event: "guild_count_update",
-                distinctId: "bot",
-                properties: { guildCount: readyClient.guilds.cache.size },
+        if (this._isProduction && env.TOPGG_TOKEN) {
+            const poster = AutoPoster(env.TOPGG_TOKEN, readyClient);
+
+            poster.on("posted", (stats) => {
+                analytics.capture({
+                    distinctId: `bot`,
+                    event: "topgg_stats_posted",
+                    properties: {
+                        ...stats,
+                    },
+                });
             });
         }
     }

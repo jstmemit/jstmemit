@@ -4,14 +4,22 @@ interface Props {
     color?: string;
     border?: string;
     classes?: string;
+    background?: string;
 }
 
-const { label, classes, color = "bg-bubblegum-pink", border = "border-bubblegum-pink border-4" } = Astro.props;
+const {
+    label,
+    classes,
+    background = "bg-carbon-black",
+    color = "bg-bubblegum-pink",
+    border = "border-bubblegum-pink border-4",
+} = Astro.props;
 ---
 
 <div
     class:list={[
-        "bg-carbon-black relative w-full rounded-2xl rounded-t-none text-white shadow-(--shadow-10)",
+        "relative w-full rounded-2xl rounded-t-none text-white shadow-(--shadow-10)",
+        background,
         classes,
         border,
     ]}

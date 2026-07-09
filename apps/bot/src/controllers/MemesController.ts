@@ -1,5 +1,11 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import { Message, type ButtonInteraction, type ContainerBuilder } from "discord.js";
+import {
+    Message,
+    type ButtonInteraction,
+    type ContainerBuilder,
+    type ActionRowBuilder,
+    type ButtonBuilder,
+} from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -10,6 +16,7 @@ import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -17,6 +24,7 @@ export class MemesController implements IMemesController {
     private readonly _ratingsService: IRatingsService;
     private readonly _componentsService: IComponentsService;
     private readonly _banditService: IBanditService;
+    private readonly _channelsService: IChannelsService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -24,12 +32,14 @@ export class MemesController implements IMemesController {
         ratingsService: IRatingsService,
         componentsService: IComponentsService,
         banditService: IBanditService,
+        channelsService: IChannelsService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
         this._ratingsService = ratingsService;
         this._componentsService = componentsService;
         this._banditService = banditService;
+        this._channelsService = channelsService;
     }
 
     /**
@@ -48,6 +58,20 @@ export class MemesController implements IMemesController {
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
 
         let trigger: MemeGenerationJob["trigger"];
+
+        const channel = await this._channelsService.getChannel(channelId);
+
+        if (!channel?.enabled) {
+            const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
+                channel?.enabled || false,
+            );
+            const notEnabledButtons: ActionRowBuilder<ButtonBuilder> =
+                this._componentsService.getEnableButtonsComponent(channel?.enabled || false);
+
+            await respond(interaction, [notEnabledComponent, notEnabledButtons]);
+
+            return;
+        }
 
         if (!(interaction instanceof Message)) {
             await interaction.deferReply();

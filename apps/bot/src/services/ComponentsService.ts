@@ -25,7 +25,7 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableMessageComponent(isEnabled: boolean, messagesAmount: number): ContainerBuilder {
+    public getEnableMessageComponent(isEnabled: boolean, messagesAmount: number = 0): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
 
         return new ContainerBuilder()
