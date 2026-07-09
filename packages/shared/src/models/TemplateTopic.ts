@@ -1,7 +1,7 @@
 export const Topic = {
     Reaction: "reaction",
-    SocialPost: "social_post",
-    BreakingBad: "breaking_bad",
+    SocialPost: "socialPost",
+    BreakingBad: "breakingBad",
     News: "news",
     YouTube: "youtube",
     Misc: "misc",
@@ -12,13 +12,13 @@ export const Topic = {
     Simpsons: "simpsons",
     Movies: "movies",
     Art: "art",
-    PulpFiction: "pulp_fiction",
+    PulpFiction: "pulpFiction",
     Anime: "anime",
-    TeamFortress2: "tf2",
+    TeamFortress2: "teamFortress2",
     Games: "games",
-    SpongeBob: "sponge_bob",
-    SpiderMan: "spider_man",
-    StarTrek: "star_trek",
+    SpongeBob: "spongeBob",
+    SpiderMan: "spiderMan",
+    StarTrek: "starTrek",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
