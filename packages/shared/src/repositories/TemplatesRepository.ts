@@ -147,6 +147,9 @@ import { griffinsPeterVsChicken } from "#/templates/griffinsPeterVsChicken.tsx";
 import { simpsonsAtLeastYouTried } from "#/templates/simpsonsAtLeastYouTried.tsx";
 import { simpsonsLisaStaring } from "#/templates/simpsonsLisaStaring.tsx";
 import { simpsonsNotMyBoyfriendShirt } from "#/templates/simpsonsNotMyBoyfriendShirt.tsx";
+import { parrotBarber } from "#/templates/parrotBarber.tsx";
+import { parrotBarber1 } from "#/templates/parrotBarber1.tsx";
+import { parrotBarber2 } from "#/templates/parrotBarber2.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -303,6 +306,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             simpsonsAtLeastYouTried,
             simpsonsLisaStaring,
             simpsonsNotMyBoyfriendShirt,
+            parrotBarber,
+            parrotBarber1,
+            parrotBarber2,
         ];
     }
 }
