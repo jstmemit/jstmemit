@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const spongebob: Template = {
-    name: "spongebob",
+    name: Topic.SpongeBob,
+    topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     width: 622,
     height: 727,
     texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],

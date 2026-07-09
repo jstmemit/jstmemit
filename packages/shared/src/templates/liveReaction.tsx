@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const liveReaction: Template = {
     name: "liveReaction",
+    topics: [Topic.Reaction],
     width: 800,
     height: 800,
     texts: [],

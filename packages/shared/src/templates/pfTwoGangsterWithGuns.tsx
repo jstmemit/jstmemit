@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const pfTwoGangsterWithGuns: Template = {
     name: "pfTwoGangsterWithGuns",
+    topics: [Topic.PulpFiction, Topic.Movies],
     width: 1461,
     height: 822,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

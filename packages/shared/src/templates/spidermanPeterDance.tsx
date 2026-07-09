@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const spidermanPeterDance: Template = {
     name: "spidermanPeterDance",
+    topics: [Topic.SpiderMan, Topic.Movies],
     width: 735,
     height: 479,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

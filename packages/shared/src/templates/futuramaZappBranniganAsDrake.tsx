@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const futuramaZappBranniganAsDrake: Template = {
     name: "futuramaZappBranniganAsDrake",
+    topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     width: 2048,
     height: 1368,
     texts: [

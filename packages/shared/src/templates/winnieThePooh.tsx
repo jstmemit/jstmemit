@@ -1,9 +1,11 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const winnieThePooh: Template = {
     name: "winnieThePooh",
+    topics: [Topic.Cartoons, Topic.Reaction],
     width: 600,
     height: 600,
     texts: [

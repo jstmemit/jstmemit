@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
+    topics: [Topic.SocialPost],
     width: 776,
     height: 999,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

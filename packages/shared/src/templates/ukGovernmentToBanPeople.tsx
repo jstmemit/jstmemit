@@ -1,9 +1,11 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
 
 export const ukGovernmentToBanPeople: Template = {
     name: "ukGovernmentToBanPeople",
+    topics: [Topic.SocialPost],
     width: 1468,
     height: 1038,
     texts: [],
