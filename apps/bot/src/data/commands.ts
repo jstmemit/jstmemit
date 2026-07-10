@@ -16,6 +16,7 @@ export const commands = [
         },
         contexts: [0],
         dm_permission: false,
+        integration_types: [0],
     },
     {
         name: "enable",
@@ -37,6 +38,7 @@ export const commands = [
             pl: "Włącz lub wyłącz generowanie memów na tym kanale",
         },
         contexts: [0],
+        integration_types: [0],
         dm_permission: false,
     },
     {
@@ -59,6 +61,21 @@ export const commands = [
             pl: "Zmień ustawienia bota dla tego kanału",
         },
         contexts: [0],
+        integration_types: [0],
         dm_permission: false,
+    },
+    {
+        name: "custom",
+        name_localizations: {
+            ru: "своймем",
+            uk: "свіймем",
+        },
+        description: "Generate a meme with custom text/images on it",
+        description_localizations: {
+            ru: "Сгенерировать случайный мем",
+            uk: "Згенерувати рандомний мем",
+        },
+        contexts: [0, 1, 2],
+        integration_types: [0, 1],
     },
 ];
