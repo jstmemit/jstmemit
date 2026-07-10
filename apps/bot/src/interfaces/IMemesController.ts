@@ -10,4 +10,5 @@ export abstract class IMemesController {
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
     ): Promise<void>;
     public abstract handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void>;
+    public abstract handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void>;
 }

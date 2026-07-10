@@ -1,4 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import type { ModalBuilder } from "discord.js";
 import {
     Message,
     type ButtonInteraction,
@@ -19,6 +20,7 @@ import { respond } from "#/helpers/respond.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
+import type { IModalsService } from "#/interfaces/IModalsService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -27,6 +29,7 @@ export class MemesController implements IMemesController {
     private readonly _componentsService: IComponentsService;
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
+    private readonly _modalsService: IModalsService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -35,6 +38,7 @@ export class MemesController implements IMemesController {
         componentsService: IComponentsService,
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
+        modalsService: IModalsService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -42,6 +46,7 @@ export class MemesController implements IMemesController {
         this._componentsService = componentsService;
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
+        this._modalsService = modalsService;
     }
 
     /**
@@ -141,6 +146,25 @@ export class MemesController implements IMemesController {
 
             await respond(interaction, [message]);
         }
+    }
+
+    public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
+        const templateName: string = interaction.options.getString("template", true);
+        const template: Template | undefined = this._templatesRepository
+            .getAll()
+            .find((template: Template): boolean => template.name === templateName);
+
+        if (!template) {
+            await interaction.reply({
+                content: "Unknown template. Please pick one from the suggestions.",
+                ephemeral: true,
+            });
+            return;
+        }
+
+        const modal: ModalBuilder = this._modalsService.getGenerateCustomMemeModal(template?.texts, template?.images);
+
+        await interaction.showModal(modal);
     }
 
     /**

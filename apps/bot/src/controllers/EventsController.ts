@@ -101,6 +101,9 @@ export class EventsController implements IEventsController {
         if (interaction.isChatInputCommand()) {
             // without permissions
             switch (interaction.commandName) {
+                case "custom":
+                    await this._memesController.handleGenerateCustomMemeInteraction(interaction);
+                    break;
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
                     return;

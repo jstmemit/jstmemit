@@ -1,0 +1,10 @@
+import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
+import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
+import type { ModalBuilder } from "discord.js";
+
+export abstract class IModalsService {
+    public abstract getGenerateCustomMemeModal(
+        texts: TemplateText[] | undefined,
+        images: TemplateImage[] | undefined,
+    ): ModalBuilder;
+}
