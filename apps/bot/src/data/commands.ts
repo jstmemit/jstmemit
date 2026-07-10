@@ -123,7 +123,25 @@ export const commands = [
         contexts: [0, 1, 2],
         name_localizations: {
             ru: "Превратить в цитату",
-            uk: "Зробити цитату",
+            uk: "Переробити у цитату",
+        },
+    },
+    {
+        name: "Make it a Post",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Превратить в пост",
+            uk: "Переробити у пост",
+        },
+    },
+    {
+        name: "Make it a Grok tweet",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Превратить в твит от Grok",
+            uk: "Переробити у твіт від Grok",
         },
     },
 ];

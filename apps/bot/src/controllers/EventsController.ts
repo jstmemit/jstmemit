@@ -114,6 +114,12 @@ export class EventsController implements IEventsController {
                 case "Make it a Quote":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
                     return;
+                case "Make it a Post":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "post");
+                    return;
+                case "Make it a Grok tweet":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
+                    return;
             }
             return;
         }

@@ -272,9 +272,14 @@ export class MemesController implements IMemesController {
 
         const texts: Record<string, string> = {};
         const images: Record<string, string> = {};
+        const slots: TemplateText[] = template.texts ?? [];
+        const [first, second] = slots;
 
-        if (template.texts?.[0]) {
-            texts[template.texts[0].id] = message.content;
+        if (first && !second) {
+            texts[first.id] = message.content;
+        } else if (first && second) {
+            texts[first.id] = message.author.displayName;
+            texts[second.id] = message.content;
         }
 
         if (template.images?.[0]) {
