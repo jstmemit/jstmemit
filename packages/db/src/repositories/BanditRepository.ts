@@ -14,7 +14,7 @@ export class BanditRepository implements IBanditRepository {
 
             const rows = await db
                 .select({
-                    templateName: banditStatsTable.templateName,
+                    name: banditStatsTable.templateName,
                     successes: banditStatsTable.successes,
                     failures: banditStatsTable.failures,
                 })
@@ -27,12 +27,12 @@ export class BanditRepository implements IBanditRepository {
                     ),
                 );
 
-            const byTemplate: Map<string, BanditStat> = new Map(rows.map((row) => [row.templateName, row]));
+            const byTemplate: Map<string, BanditStat> = new Map(rows.map((row) => [row.name, row]));
 
             return templateNames.map(
                 (templateName: string): BanditStat =>
                     byTemplate.get(templateName) ?? {
-                        templateName: templateName,
+                        name: templateName,
                         successes: 0,
                         failures: 0,
                     },
@@ -41,7 +41,7 @@ export class BanditRepository implements IBanditRepository {
             console.error(error);
 
             return templateNames.map((templateName: string) => ({
-                templateName: templateName,
+                name: templateName,
                 successes: 0,
                 failures: 0,
             }));
