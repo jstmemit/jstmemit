@@ -21,6 +21,7 @@
         - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
         - <a href="#textsimages">Topics</a>
+        - <a href="#textsimages">Types</a>
         - <a href="#textsimages">Texts/images</a>
         - <a href="#render">Render</a>
         - <a href="#fonts">Fonts</a>
@@ -110,13 +111,13 @@ There are also some useful extensions if you plan on contributing to more than m
 
 ### Making new meme templates
 
-All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
+All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
 
 #### Topics
 
-Each template must have topics, that describe it. For example, if you have a template with SpongeBob, than you must add `Topic.SpongeBob` topic for this template. Topics field is an array, therefore you can add as many topics as you needed:
+Each template must have topics that describe it. For example, if you have a template with `SpongeBob`, then you must add the `Topic.spongebob` topic to this template. The topics field is an array, allowing you to add as many topics as needed:
 ```tsx
-import { Topic } from "#/models/TemplateTopic.ts";  //don`t forget to import Topic enum
+import { Topic } from "#/models/TemplateTopic.ts";  //don`t forget to import `Topic` enum
 
 ...
 
@@ -145,6 +146,42 @@ export const Topic = {
     SpongeBob: "spongeBob",
     SpiderMan: "spiderMan",
     StarTrek: "starTrek",
+} as const;
+```
+
+#### Types
+
+Each template must have types that describe its structure and layout components. The types field is an array, allowing you to combine as many structural tags as needed to fully represent its structure:
+```tsx
+import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
+
+...
+
+types: [Type.faceImage, Type.textBottom]
+```
+Types list:
+```ts
+export const Type = {
+    textTop: "textTop",
+    textBottom: "textBottom",
+    textLeft: "textLeft",
+    textRight: "textRight",
+    textCenter: "textCenter",
+    textTopWithBackground: "textTopWithBackground",
+    textBottomWithBackground: "textBottomWithBackground",
+    textLeftWithBackground: "textLeftWithBackground",
+    textRightWithBackground: "textRightWithBackground",
+    textCenterWithBackground: "textCenterWithBackground",
+    textName: "textName",
+    textPost: "textPost",
+    defaultText: "defaultText",
+    avatarImage: "avatarImage",
+    faceImage: "faceImage",
+    objectImage: "objectImage",
+    backgroundImage: "backgroundImage",
+    twoOption: "twoOption",
+    threeOption: "threeOption",
+    fourOption: "fourOption",
 } as const;
 ```
 
@@ -193,10 +230,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const topBottomText: Template = {
     name: "topBottomText", // make sure this name is not taken
     topics: [Topic.Misc],
+    types: [Type.faceImage, Type.textTopWithBackground],
     width: 800,
     height: 800,
     texts: [
