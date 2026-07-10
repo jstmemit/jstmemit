@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const incomingCall: Template = {
     name: "incomingCall",
     topics: [Topic.Misc],
+    types: [Type.avatarImage, Type.textCenter],
     width: 640,
     height: 1055,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],

@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const sdFredUnmaskingGhost: Template = {
     name: "sdFredUnmaskingGhost",
     topics: [Topic.Cartoons],
+    types: [Type.faceImage, Type.textBottom, Type.twoOption],
     width: 474,
     height: 632,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const expandingBrain: Template = {
     name: "expandingBrain",
     topics: [Topic.Reaction],
+    types: [Type.textLeftWithBackground, Type.threeOption],
     width: 1440,
     height: 1403,
     texts: [

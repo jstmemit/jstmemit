@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const iSteppedInShit: Template = {
     name: "iSteppedInShit",
     topics: [Topic.Cartoons],
+    types: [Type.faceImage, Type.defaultText],
     width: 636,
     height: 900,
     texts: [],

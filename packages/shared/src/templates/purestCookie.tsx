@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const purestCookie: Template = {
     name: "purestCookie",
     topics: [Topic.Misc, Topic.Reaction],
+    types: [Type.defaultText, Type.objectImage],
     width: 1067,
     height: 591,
     texts: [],

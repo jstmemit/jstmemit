@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const pfSayWhatOneMoreTime: Template = {
     name: "pfSayWhatOneMoreTime",
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
+    types: [Type.textTopWithBackground, Type.faceImage],
     width: 1920,
     height: 1317,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
