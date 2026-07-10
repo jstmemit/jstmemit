@@ -1,4 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import type { MessageContextMenuCommandInteraction } from "discord.js";
 import { type Attachment, MessageFlags, type ModalSubmitInteraction } from "discord.js";
 import { type ModalBuilder } from "discord.js";
 import {
@@ -248,6 +249,71 @@ export class MemesController implements IMemesController {
         }
     }
 
+    public async handleGenerateViaContextMenuInteraction(
+        interaction: MessageContextMenuCommandInteraction,
+        templateName: string,
+    ): Promise<void> {
+        const template: Template | undefined = this._templatesRepository
+            .getAll()
+            .find((template: Template): boolean => template.name === templateName);
+
+        if (!template) {
+            await interaction.reply({
+                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
+                ephemeral: true,
+            });
+            return;
+        }
+
+        await interaction.deferReply();
+
+        const message: Message = interaction.targetMessage;
+
+        const texts: Record<string, string> = {};
+        const images: Record<string, string> = {};
+
+        if (template.texts?.[0]) {
+            texts[template.texts[0].id] = message.content;
+        }
+
+        if (template.images?.[0]) {
+            images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+        }
+
+        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
+            "meme-generation",
+            {
+                channelId: interaction.channelId,
+                userId: interaction.user.id,
+                trigger: "context",
+                templateName,
+                texts,
+                images,
+            },
+        );
+
+        try {
+            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+
+            await interaction.editReply({
+                content: `<@${interaction.user.id}>`,
+                files: [
+                    {
+                        attachment: Buffer.from(jobResult.png, "base64"),
+                        name: "meme.png",
+                    },
+                ],
+            });
+        } catch (e) {
+            console.error(e);
+            await interaction.editReply({
+                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
+            });
+        }
+    }
+
     public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
         const templateName: string = interaction.options.getString("template", true);
         const template: Template | undefined = this._templatesRepository
@@ -257,6 +323,7 @@ export class MemesController implements IMemesController {
         if (!template) {
             await interaction.reply({
                 components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
                 ephemeral: true,
             });
             return;

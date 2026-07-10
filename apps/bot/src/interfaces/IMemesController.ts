@@ -4,6 +4,7 @@ import {
     type Message,
     type AutocompleteInteraction,
     type ModalSubmitInteraction,
+    type MessageContextMenuCommandInteraction,
 } from "discord.js";
 
 export abstract class IMemesController {
@@ -13,4 +14,8 @@ export abstract class IMemesController {
     public abstract handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void>;
     public abstract handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void>;
     public abstract handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void>;
+    public abstract handleGenerateViaContextMenuInteraction(
+        interaction: MessageContextMenuCommandInteraction,
+        templateName: string,
+    ): Promise<void>;
 }

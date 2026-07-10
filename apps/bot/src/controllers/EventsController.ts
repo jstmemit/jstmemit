@@ -108,6 +108,16 @@ export class EventsController implements IEventsController {
             }
         }
 
+        // context menus
+        if (interaction.isMessageContextMenuCommand()) {
+            switch (interaction.commandName) {
+                case "Make it a Quote":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
+                    return;
+            }
+            return;
+        }
+
         // chat commands
         if (interaction.isChatInputCommand()) {
             // without permissions

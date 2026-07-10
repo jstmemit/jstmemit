@@ -117,4 +117,13 @@ export const commands = [
             },
         ],
     },
+    {
+        name: "Make it a Quote",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Превратить в цитату",
+            uk: "Зробити цитату",
+        },
+    },
 ];

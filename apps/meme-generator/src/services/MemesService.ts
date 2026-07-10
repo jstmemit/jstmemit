@@ -76,7 +76,7 @@ export class MemesService implements IMemesService {
         const templateTime: number = performance.now();
 
         const props: TemplateProps | undefined =
-            data.trigger === "custom"
+            data.texts || data.images
                 ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {})
                 : await this.getMemeTemplateContext(template, channelId);
 
