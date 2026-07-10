@@ -77,5 +77,24 @@ export const commands = [
         },
         contexts: [0, 1, 2],
         integration_types: [0, 1],
+        options: [
+            {
+                type: 3,
+                name: "template",
+                name_localizations: {
+                    ru: "шаблон",
+                    uk: "шаблон",
+                },
+                description:
+                    "Meme template (tip: there are over 140+ templates, type anything and the Bot probably has it)",
+                description_localizations: {
+                    ru: "Шаблон мема",
+                    uk: "Шаблон мема",
+                },
+                required: true,
+                autocomplete: true,
+                max_length: 100,
+            },
+        ],
     },
 ];

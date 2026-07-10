@@ -5,6 +5,7 @@ import {
     type ContainerBuilder,
     type ActionRowBuilder,
     type ButtonBuilder,
+    type AutocompleteInteraction,
 } from "discord.js";
 import { type ChatInputCommandInteraction } from "discord.js";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
@@ -15,31 +16,32 @@ import { type Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
-import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import type { Template } from "@jstmemit/shared/models/Template";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
     private readonly _memeGenerationQueueEvents: QueueEvents;
     private readonly _ratingsService: IRatingsService;
     private readonly _componentsService: IComponentsService;
-    private readonly _banditService: IBanditService;
     private readonly _channelsService: IChannelsService;
+    private readonly _templatesRepository: ITemplatesRepository;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
         memeGenerationQueueEvents: QueueEvents,
         ratingsService: IRatingsService,
         componentsService: IComponentsService,
-        banditService: IBanditService,
         channelsService: IChannelsService,
+        templatesRepository: ITemplatesRepository,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
         this._ratingsService = ratingsService;
         this._componentsService = componentsService;
-        this._banditService = banditService;
         this._channelsService = channelsService;
+        this._templatesRepository = templatesRepository;
     }
 
     /**
@@ -139,5 +141,26 @@ export class MemesController implements IMemesController {
 
             await respond(interaction, [message]);
         }
+    }
+
+    /**
+     * Searches for templates with a given text in their name
+     * and sends them back to autocomplete
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void> {
+        const templates: Template[] = this._templatesRepository.getAll();
+
+        const focused: string = interaction.options.getFocused().toLowerCase();
+
+        const matches = templates
+            .filter((template: Template): boolean => template.name.toLowerCase().includes(focused))
+            .slice(0, 25)
+            .map((template: Template) => ({ name: template.name, value: template.name }));
+
+        await interaction.respond(matches);
     }
 }

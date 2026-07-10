@@ -94,8 +94,8 @@ const memesController: IMemesController = new MemesController(
     memeGenerationQueueEvents,
     ratingsService,
     componentsService,
-    banditService,
     channelsService,
+    templatesRepository,
 );
 
 // context

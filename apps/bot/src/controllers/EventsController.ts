@@ -87,6 +87,16 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public async handleInteractionCreate(interaction: Interaction): Promise<void> {
+        // autocomplete
+        if (interaction.isAutocomplete()) {
+            switch (interaction.commandName) {
+                case "custom":
+                    await this._memesController.handleTemplateAutocompleteInteraction(interaction);
+                    return;
+            }
+            return;
+        }
+
         // chat commands
         if (interaction.isChatInputCommand()) {
             // without permissions
