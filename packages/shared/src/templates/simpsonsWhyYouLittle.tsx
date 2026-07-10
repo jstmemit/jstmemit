@@ -59,7 +59,7 @@ export const simpsonsWhyYouLittle: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "100px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",

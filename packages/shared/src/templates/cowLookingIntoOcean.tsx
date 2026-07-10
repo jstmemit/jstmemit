@@ -28,36 +28,12 @@ export const cowLookingIntoOcean: Template = {
             />
             <img
                 src={images[0]}
-                width={50}
-                height={50}
+                width={80}
+                height={80}
                 style={{
                     position: "absolute",
-                    top: 180,
-                    left: 140,
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                }}
-            />
-            <img
-                src={images[0]}
-                width={50}
-                height={50}
-                style={{
-                    position: "absolute",
-                    top: 200,
-                    left: 40,
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                }}
-            />
-            <img
-                src={images[0]}
-                width={50}
-                height={50}
-                style={{
-                    position: "absolute",
-                    top: 140,
-                    left: 90,
+                    right: "38%",
+                    top: "30%",
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}

@@ -10,8 +10,8 @@ export const tf2Hahaha: Template = {
     height: 1732,
     texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 12 }],
     images: [
-        { id: 1, description: "person who says the phrase" },
-        { id: 2, description: "person who reacts" },
+        { id: 0, description: "person who says the phrase" },
+        { id: 1, description: "person who reacts" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div

@@ -15,8 +15,8 @@ export const diagramIQ: Template = {
     ],
     images: [
         { id: 0, description: "stupid face" },
-        { id: 0, description: "normal face" },
-        { id: 0, description: "clever face" },
+        { id: 1, description: "normal face" },
+        { id: 2, description: "clever face" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div
