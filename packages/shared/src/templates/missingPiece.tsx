@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const missingPiece: Template = {
     name: "missingPiece",
     topics: [Topic.Misc],
+    types: [Type.textRight, Type.faceImage],
     width: 783,
     height: 581,
     texts: [{ id: 0, description: "text on the puzzle", minLength: 1, maxLength: 15 }],

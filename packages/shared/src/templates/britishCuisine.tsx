@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const britishCuisine: Template = {
     name: "britishCuisine",
     topics: [Topic.SocialPost],
+    types: [Type.textName, Type.avatarImage, Type.objectImage, Type.defaultText],
     width: 883,
     height: 1025,
     texts: [

@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const tf2ScoutTalk: Template = {
     name: "tf2ScoutTalk",
     topics: [Topic.TeamFortress2, Topic.Games],
+    types: [Type.faceImage, Type.textTopWithBackground],
     width: 640,
     height: 857,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],

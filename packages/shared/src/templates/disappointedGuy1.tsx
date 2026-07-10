@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const disappointedGuy1: Template = {
     name: "disappointedGuy1",
     topics: [Topic.Reaction],
+    types: [Type.textLeftWithBackground, Type.threeOption],
     width: 850,
     height: 1097,
     texts: [

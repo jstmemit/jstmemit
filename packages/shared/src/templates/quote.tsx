@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const quote: Template = {
     name: "quote",
     topics: [Topic.Misc],
+    types: [Type.backgroundImage, Type.textCenterWithBackground],
     width: 800,
     height: 800,
     texts: [{ id: 0, description: "quote", minLength: 1, maxLength: 20 }],

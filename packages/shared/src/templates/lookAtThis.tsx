@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const lookAtThis: Template = {
     name: "lookAtThis",
     topics: [Topic.Reaction],
+    types: [Type.textBottom, Type.objectImage],
     width: 480,
     height: 380,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],

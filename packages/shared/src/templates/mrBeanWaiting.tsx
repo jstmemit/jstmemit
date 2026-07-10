@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const mrBeanWaiting: Template = {
     name: "mrBeanWaiting",
     topics: [Topic.Movies],
+    types: [Type.textBottom, Type.faceImage, Type.fourOption],
     width: 640,
     height: 640,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const sleepyThinking: Template = {
     name: "sleepyThinking",
     topics: [Topic.Misc],
+    types: [Type.textBottom, Type.objectImage],
     width: 885,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

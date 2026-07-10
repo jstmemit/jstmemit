@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsNotMyBoyfriendShirt: Template = {
     name: "simpsonsNotMyBoyfriendShirt",
     topics: [Topic.Simpsons, Topic.Cartoons],
+    types: [Type.faceImage, Type.defaultText],
     width: 493,
     height: 750,
     texts: [],

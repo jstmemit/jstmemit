@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const monaLisa: Template = {
     name: "monaLisa",
     topics: [Topic.Art],
+    types: [Type.textBottom, Type.faceImage],
     width: 960,
     height: 1431,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 30 }],

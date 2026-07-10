@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const crowdFromAngryToHappy: Template = {
     name: "crowdFromAngryToHappy",
     topics: [Topic.Reaction, Topic.Cartoons],
+    types: [Type.twoOption, Type.textLeft, Type.faceImage],
     width: 716,
     height: 700,
     texts: [

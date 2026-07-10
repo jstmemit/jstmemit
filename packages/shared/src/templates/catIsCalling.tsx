@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const catIsCalling: Template = {
     name: "catIsCalling",
     topics: [Topic.Misc],
+    types: [Type.textTop],
     width: 1498,
     height: 936,
     texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
