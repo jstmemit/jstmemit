@@ -4,6 +4,8 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
 import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { RatingKind } from "@jstmemit/shared/models/RatingKind";
+import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import type { ScopedStats } from "@jstmemit/shared/models/ScopedStats";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
@@ -25,10 +27,11 @@ export class BanditService implements IBanditService {
             if (templates.length === 0) {
                 return undefined;
             }
-
+            const templatesByTopic: Map<TemplateTopic, Template[]> = this._groupByTopic(templates);
+            const topics: TemplateTopic[] = [...templatesByTopic.keys()];
             const templateNames: string[] = templates.map((template: Template): string => template.name);
 
-            const [global, channel, user] = await Promise.all([
+            const [globalTemplate, channelTemplate, userTemplate] = await Promise.all([
                 this._banditRepository.getStats("global", "*", templateNames),
                 this._banditRepository.getStats("channel", channelId, templateNames),
                 userId
@@ -36,34 +39,34 @@ export class BanditService implements IBanditService {
                     : Promise.resolve<BanditStat[]>([]),
             ]);
 
-            const globalByName: Map<string, BanditStat> = this._index(global);
-            const channelByName: Map<string, BanditStat> = this._index(channel);
-            const userByName: Map<string, BanditStat> = this._index(user);
+            const templateStats: ScopedStats<BanditStat> = {
+                global: this._index(globalTemplate),
+                channel: this._index(channelTemplate),
+                user: this._index(userTemplate),
+            };
 
-            let bestTemplate: Template | undefined;
-            let bestSample: number = -1;
+            const topicStats: ScopedStats<BanditStat> = {
+                global: this._aggregateTopicStats(topics, templatesByTopic, templateStats.global),
+                channel: this._aggregateTopicStats(topics, templatesByTopic, templateStats.channel),
+                user: this._aggregateTopicStats(topics, templatesByTopic, templateStats.user),
+            };
 
-            for (const template of templates) {
-                const global: BanditStat = globalByName.get(template.name) || this._zero(template.name);
-                const channel: BanditStat = channelByName.get(template.name) || this._zero(template.name);
-                const user: BanditStat = userByName.get(template.name) || this._zero(template.name);
+            const bestTopic: TemplateTopic | undefined = this._selectBest(topics, (name: string): number =>
+                this._sampleForName(name, topicStats),
+            );
 
-                // how popular the template is overall
-                const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
-
-                // alpha value for positive activity, beta for negative
-                const alpha: number = 1 + this.priorStrength * globalMean + channel.successes + user.successes;
-                const beta: number = 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures;
-
-                const sample: number = this._sampleBeta(alpha, beta);
-
-                if (sample > bestSample) {
-                    bestSample = sample;
-                    bestTemplate = template;
-                }
+            if (bestTopic === undefined) {
+                return undefined;
             }
 
-            return bestTemplate;
+            const candidates: Template[] = templatesByTopic.get(bestTopic) ?? [];
+
+            const bestTemplateName: string | undefined = this._selectBest(
+                candidates.map((template: Template): string => template.name),
+                (name: string): number => this._sampleForName(name, templateStats),
+            );
+
+            return candidates.find((template: Template): boolean => template.name === bestTemplateName);
         } catch (error) {
             console.error(error);
 
@@ -109,12 +112,92 @@ export class BanditService implements IBanditService {
         }
     }
 
-    private _index(stats: BanditStat[]): Map<string, BanditStat> {
-        return new Map(stats.map((stat: BanditStat): [string, BanditStat] => [stat.templateName, stat]));
+    private _groupByTopic(templates: Template[]): Map<TemplateTopic, Template[]> {
+        const map: Map<TemplateTopic, Template[]> = new Map();
+
+        for (const template of templates) {
+            for (const topic of template.topics) {
+                const bucket: Template[] | undefined = map.get(topic);
+
+                if (bucket) {
+                    bucket.push(template);
+                } else {
+                    map.set(topic, [template]);
+                }
+            }
+        }
+
+        return map;
     }
 
-    private _zero(templateName: string): BanditStat {
-        return { templateName: templateName, successes: 0, failures: 0 };
+    private _aggregateTopicStats(
+        topics: TemplateTopic[],
+        templatesByTopic: Map<TemplateTopic, Template[]>,
+        templateStatsByName: Map<string, BanditStat>,
+    ): Map<TemplateTopic, BanditStat> {
+        const map: Map<TemplateTopic, BanditStat> = new Map();
+
+        for (const topic of topics) {
+            const templates: Template[] = templatesByTopic.get(topic) ?? [];
+
+            let successes: number = 0;
+            let failures: number = 0;
+
+            for (const template of templates) {
+                const stat: BanditStat = templateStatsByName.get(template.name) || this._zero(template.name);
+                successes += stat.successes;
+                failures += stat.failures;
+            }
+
+            const templatesCount: number = templates.length || 1;
+
+            map.set(topic, {
+                name: topic,
+                successes: successes / templatesCount,
+                failures: failures / templatesCount,
+            });
+        }
+
+        return map;
+    }
+
+    private _selectBest<T extends string>(names: T[], sample: (name: T) => number): T | undefined {
+        let bestName: T | undefined;
+        let bestSample: number = -1;
+
+        for (const name of names) {
+            const value: number = sample(name);
+
+            if (value > bestSample) {
+                bestSample = value;
+                bestName = name;
+            }
+        }
+
+        return bestName;
+    }
+
+    private _sampleForName(name: string, stats: ScopedStats<BanditStat>): number {
+        const global: BanditStat = stats.global.get(name) || this._zero(name);
+        const channel: BanditStat = stats.channel.get(name) || this._zero(name);
+        const user: BanditStat = stats.user.get(name) || this._zero(name);
+
+        // how popular this node is overall
+        const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
+
+        // alpha value for positive activity, beta for negative
+        const alpha: number = 1 + this.priorStrength * globalMean + channel.successes + user.successes;
+        const beta: number = 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures;
+
+        return this._sampleBeta(alpha, beta);
+    }
+
+    private _index(stats: BanditStat[]): Map<string, BanditStat> {
+        return new Map(stats.map((stat: BanditStat): [string, BanditStat] => [stat.name, stat]));
+    }
+
+    private _zero(name: string): BanditStat {
+        return { name: name, successes: 0, failures: 0 };
     }
 
     private _sampleBeta(alpha: number, beta: number): number {
