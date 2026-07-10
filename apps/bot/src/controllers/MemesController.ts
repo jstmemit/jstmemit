@@ -1,5 +1,5 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { Attachment, ModalSubmitInteraction } from "discord.js";
+import { type Attachment, MessageFlags, type ModalSubmitInteraction } from "discord.js";
 import { type ModalBuilder } from "discord.js";
 import {
     Message,
@@ -166,7 +166,8 @@ export class MemesController implements IMemesController {
 
         if (!template) {
             await interaction.reply({
-                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
                 ephemeral: true,
             });
             return;
@@ -175,6 +176,7 @@ export class MemesController implements IMemesController {
         if (!interaction.channelId) {
             await interaction.reply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
                 ephemeral: true,
             });
             return;
@@ -204,7 +206,10 @@ export class MemesController implements IMemesController {
 
             if (!attachment.contentType?.startsWith("image/")) {
                 await interaction.editReply({
-                    content: `The file for "${image.description}" is not an image. Please try again with a PNG/JPEG/AVIF/WebP.`,
+                    components: [
+                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
+                    ],
+                    flags: MessageFlags.IsComponentsV2,
                 });
                 return;
             }
@@ -238,7 +243,7 @@ export class MemesController implements IMemesController {
             });
         } catch {
             await interaction.editReply({
-                components: [this._componentsService.getErrorMessageComponent(interaction.id).toJSON()],
+                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
             });
         }
     }
@@ -251,7 +256,7 @@ export class MemesController implements IMemesController {
 
         if (!template) {
             await interaction.reply({
-                content: "Unknown template. Please pick one from the suggestions.",
+                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
                 ephemeral: true,
             });
             return;
