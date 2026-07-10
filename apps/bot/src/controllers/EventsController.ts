@@ -87,10 +87,34 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public async handleInteractionCreate(interaction: Interaction): Promise<void> {
+        // autocomplete
+        if (interaction.isAutocomplete()) {
+            switch (interaction.commandName) {
+                case "custom":
+                    await this._memesController.handleTemplateAutocompleteInteraction(interaction);
+                    return;
+            }
+            return;
+        }
+
+        // modals
+        if (interaction.isModalSubmit()) {
+            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
+
+            switch (customId) {
+                case "custom-meme":
+                    await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
+                    return;
+            }
+        }
+
         // chat commands
         if (interaction.isChatInputCommand()) {
             // without permissions
             switch (interaction.commandName) {
+                case "custom":
+                    await this._memesController.handleGenerateCustomMemeInteraction(interaction);
+                    break;
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
                     return;

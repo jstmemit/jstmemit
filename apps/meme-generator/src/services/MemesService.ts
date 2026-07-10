@@ -15,6 +15,7 @@ import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService"
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import sharp from "sharp";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 
 export class MemesService implements IMemesService {
     private readonly _memesRepository: IMemesRepository;
@@ -24,6 +25,7 @@ export class MemesService implements IMemesService {
     private readonly _generationsRepository: IGenerationsRepository;
     private readonly _banditService: IBanditService;
     private readonly _channelsRepository: IChannelsRepository;
+    private readonly _templatesRepository: ITemplatesRepository;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -33,6 +35,7 @@ export class MemesService implements IMemesService {
         generationsRepository: IGenerationsRepository,
         banditService: IBanditService,
         channelsRepository: IChannelsRepository,
+        templatesRepository: ITemplatesRepository,
     ) {
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
@@ -41,6 +44,7 @@ export class MemesService implements IMemesService {
         this._generationsRepository = generationsRepository;
         this._banditService = banditService;
         this._channelsRepository = channelsRepository;
+        this._templatesRepository = templatesRepository;
     }
 
     /**
@@ -55,8 +59,11 @@ export class MemesService implements IMemesService {
     public async generateMeme(data: MemeGenerationJob): Promise<MemeGenerationResult> {
         const startTime: number = performance.now();
 
-        let { template } = data;
-        const { channelId, userId } = data;
+        const { channelId, userId, templateName } = data;
+
+        let template: Template | undefined = templateName
+            ? this._templatesRepository.getAll().find((template: Template): boolean => template.name === templateName)
+            : undefined;
 
         if (!template) {
             template = await this._banditService.selectTemplate(channelId, userId);
@@ -68,7 +75,10 @@ export class MemesService implements IMemesService {
 
         const templateTime: number = performance.now();
 
-        const props: TemplateProps | undefined = await this.getMemeTemplateContext(template, channelId);
+        const props: TemplateProps | undefined =
+            data.trigger === "custom"
+                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {})
+                : await this.getMemeTemplateContext(template, channelId);
 
         if (!props) {
             throw new Error("No props");
@@ -175,5 +185,22 @@ export class MemesService implements IMemesService {
         } catch {
             return undefined;
         }
+    }
+
+    private async _getCustomMemeProps(
+        template: Template,
+        texts: Record<string, string>,
+        images: Record<string, string>,
+    ): Promise<TemplateProps> {
+        const orderedTexts: string[] = (template.texts ?? []).map((text: TemplateText): string => texts[text.id] ?? "");
+
+        const orderedImages: string[] = await Promise.all(
+            (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
+                const url: string | undefined = images[image.id];
+                return (url && (await this._toPngDataUri(url))) || "";
+            }),
+        );
+
+        return { texts: orderedTexts, images: orderedImages };
     }
 }

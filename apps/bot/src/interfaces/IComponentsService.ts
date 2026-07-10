@@ -13,4 +13,6 @@ export abstract class IComponentsService {
     public abstract getDeleteDataButtonsComponent(): ActionRowBuilder<ButtonBuilder>;
     public abstract getDeleteDataConfirmationMessageComponent(): ContainerBuilder;
     public abstract getDeleteDataSuccessMessageComponent(): ContainerBuilder;
+    public abstract getUnknownTemplateMessageComponent(interactionId: string): ContainerBuilder;
+    public abstract getWrongFileFormatMessageComponent(interactionId: string, file: string): ContainerBuilder;
 }

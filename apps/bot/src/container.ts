@@ -41,6 +41,8 @@ import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService"
 import { BanditService } from "@jstmemit/bandit/services/BanditService";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { IModalsService } from "#/interfaces/IModalsService.ts";
+import { ModalsService } from "#/services/ModalsService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -88,14 +90,18 @@ const ratingsController: IRatingsController = new RatingsController(
     banditService,
 );
 
+// models
+const modalsService: IModalsService = new ModalsService();
+
 // memes
 const memesController: IMemesController = new MemesController(
     memeGenerationQueue,
     memeGenerationQueueEvents,
     ratingsService,
     componentsService,
-    banditService,
     channelsService,
+    templatesRepository,
+    modalsService,
 );
 
 // context

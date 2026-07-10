@@ -113,6 +113,43 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for the "unknown template" error
+     *
+     * @param interactionId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getUnknownTemplateMessageComponent(interactionId: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🤔 I don't know such template`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Make sure to select one of the autocomplete options when choosing a template in \`/custom\``,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+    }
+
+    /**
+     * Returns back a message component for the "wrong file format" error
+     *
+     * @param interactionId
+     * @param file
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getWrongFileFormatMessageComponent(interactionId: string, file: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🤔 Unknown image file format`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `The file for "${file}" is not an image. Please try again with a PNG/JPEG/AVIF/WebP.`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+    }
+
+    /**
      * Returns back a message component for a "missing permissions" error
      *
      * @author Kyrylo Maliuha

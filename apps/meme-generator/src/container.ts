@@ -69,4 +69,5 @@ export const memesService: IMemesService = new MemesService(
     generationsRepository,
     banditService,
     channelsRepository,
+    templatesRepository,
 );
