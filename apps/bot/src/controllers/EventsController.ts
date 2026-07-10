@@ -97,6 +97,17 @@ export class EventsController implements IEventsController {
             return;
         }
 
+        // modals
+        if (interaction.isModalSubmit()) {
+            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
+
+            switch (customId) {
+                case "custom-meme":
+                    await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
+                    return;
+            }
+        }
+
         // chat commands
         if (interaction.isChatInputCommand()) {
             // without permissions

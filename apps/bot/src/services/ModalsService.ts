@@ -5,10 +5,13 @@ import { FileUploadBuilder, LabelBuilder, ModalBuilder, TextInputBuilder, TextIn
 
 export class ModalsService implements IModalsService {
     public getGenerateCustomMemeModal(
+        templateName: string,
         texts: TemplateText[] | undefined,
         images: TemplateImage[] | undefined,
     ): ModalBuilder {
-        const modal: ModalBuilder = new ModalBuilder().setCustomId("meme").setTitle("Generate a custom meme");
+        const modal: ModalBuilder = new ModalBuilder()
+            .setCustomId(`custom-meme:${templateName}`)
+            .setTitle("Generate a custom meme");
 
         texts?.forEach((text: TemplateText): void => {
             const label: LabelBuilder = new LabelBuilder()

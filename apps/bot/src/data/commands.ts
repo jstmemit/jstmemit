@@ -86,7 +86,7 @@ export const commands = [
                     uk: "шаблон",
                 },
                 description:
-                    "Meme template (tip: there are over 140+ templates, type anything and the Bot probably has it)",
+                    "Meme template (tip: there are over 140+ templates, type anything and Jstmemit probably has it)",
                 description_localizations: {
                     ru: "Шаблон мема",
                     uk: "Шаблон мема",
