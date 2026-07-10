@@ -13,7 +13,7 @@ export const spongebobMonolith: Template = {
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Monolith`s face" },
-        { id: 0, description: "SpongeBob`s face" },
+        { id: 1, description: "SpongeBob`s face" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div

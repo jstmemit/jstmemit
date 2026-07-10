@@ -8,8 +8,8 @@ export const myHonestReaction: Template = {
     name: "myHonestReaction",
     topics: [Topic.Reaction],
     types: [Type.defaultText, Type.faceImage],
-    width: 736,
-    height: 677,
+    width: 900,
+    height: 1000,
     texts: [],
     images: [{ id: 0, description: "person`s face" }],
     element: ({ images }: TemplateProps) => (
@@ -23,15 +23,9 @@ export const myHonestReaction: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/myHonestReaction.jpg"
-                width={736}
-                height={677}
-                style={{ position: "absolute", top: 0, left: 0 }}
-            />
-            <img
                 src={images[0]}
-                width={"100%"}
-                height={"92%"}
+                width={900}
+                height={900}
                 style={{
                     position: "absolute",
                     bottom: 0,
@@ -39,6 +33,39 @@ export const myHonestReaction: Template = {
                     objectFit: "cover",
                 }}
             />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "100px",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "white",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 1,
+                        wordBreak: "break-word",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 60,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    MY HONEST REACTION
+                </div>
+            </div>
         </div>
     ),
 };

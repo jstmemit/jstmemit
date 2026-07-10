@@ -11,8 +11,8 @@ export const tf2ScoutTalk: Template = {
     width: 640,
     height: 857,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
-    images: [],
-    element: ({ texts }: TemplateProps) => (
+    images: [{ id: 0, description: "Scout`s face" }],
+    element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -27,6 +27,18 @@ export const tf2ScoutTalk: Template = {
                 width={640}
                 height={857}
                 style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={250}
+                height={250}
+                style={{
+                    position: "absolute",
+                    top: 300,
+                    left: 200,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
             <div
                 style={{
