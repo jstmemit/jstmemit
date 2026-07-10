@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const cinemaGuys: Template = {
     name: "cinemaGuys",
     topics: [Topic.Reaction, Topic.Movies],
+    types: [Type.textLeftWithBackground, Type.twoOption],
     width: 1280,
     height: 947,
     texts: [

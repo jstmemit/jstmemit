@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const dhGirlWithHandOverMouth: Template = {
     name: "dhGirlWithHandOverMouth",
     topics: [Topic.Misc],
+    types: [Type.textTopWithBackground, Type.faceImage],
     width: 718,
     height: 1131,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

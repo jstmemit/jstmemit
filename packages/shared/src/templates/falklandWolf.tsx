@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const falklandWolf: Template = {
     name: "falklandWolf",
     topics: [Topic.SocialPost],
+    types: [Type.avatarImage, Type.defaultText, Type.objectImage, Type.textBottom],
     width: 814,
     height: 691,
     texts: [{ id: 0, description: "Phrase that wolf says", minLength: 1, maxLength: 8 }],

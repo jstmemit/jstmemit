@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const bearArrest: Template = {
     name: "bearArrest",
     topics: [Topic.News, Topic.Animals],
+    types: [Type.faceImage, Type.textBottomWithBackground],
     width: 640,
     height: 434,
     texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],

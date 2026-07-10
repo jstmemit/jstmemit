@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterVsChicken: Template = {
     name: "griffinsPeterVsChicken",
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Animals],
+    types: [Type.textBottomWithBackground, Type.faceImage],
     width: 2000,
     height: 1350,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

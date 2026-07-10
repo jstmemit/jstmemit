@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const yesChad: Template = {
     name: "yesChad",
     topics: [Topic.Misc],
+    types: [Type.faceImage, Type.textBottom],
     width: 1400,
     height: 733,
     texts: [{ id: 0, description: "what chad approves of", minLength: 1, maxLength: 5 }],

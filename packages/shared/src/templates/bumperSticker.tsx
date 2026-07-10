@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const bumperSticker: Template = {
     name: "bumperSticker",
     topics: [Topic.SocialPost],
+    types: [Type.avatarImage, Type.objectImage],
     width: 814,
     height: 691,
     texts: [],

@@ -20,6 +20,8 @@
     - <a href="#setting-up-your-editor">Setting up your editor</a>
         - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
+        - <a href="#textsimages">Topics</a>
+        - <a href="#textsimages">Types</a>
         - <a href="#textsimages">Texts/images</a>
         - <a href="#render">Render</a>
         - <a href="#fonts">Fonts</a>
@@ -109,7 +111,79 @@ There are also some useful extensions if you plan on contributing to more than m
 
 ### Making new meme templates
 
-All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
+All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
+
+#### Topics
+
+Each template must have topics that describe it. For example, if you have a template with `SpongeBob`, then you must add the `Topic.spongebob` topic to this template. The topics field is an array, allowing you to add as many topics as needed:
+```tsx
+import { Topic } from "#/models/TemplateTopic.ts";  //don`t forget to import `Topic` enum
+
+...
+
+topics: [Topic.Reaction, Topic.Movies]
+```
+Topics list:
+```ts
+export const Topic = {
+    Reaction: "reaction",
+    SocialPost: "socialPost",
+    BreakingBad: "breakingBad",
+    News: "news",
+    YouTube: "youtube",
+    Misc: "misc",
+    Cartoons: "cartoons",
+    Animals: "animals",
+    Futurama: "futurama",
+    Griffins: "griffins",
+    Simpsons: "simpsons",
+    Movies: "movies",
+    Art: "art",
+    PulpFiction: "pulpFiction",
+    Anime: "anime",
+    TeamFortress2: "teamFortress2",
+    Games: "games",
+    SpongeBob: "spongeBob",
+    SpiderMan: "spiderMan",
+    StarTrek: "starTrek",
+} as const;
+```
+
+#### Types
+
+Each template must have types that describe its structure and layout components. The types field is an array, allowing you to combine as many structural tags as needed to fully represent its structure:
+```tsx
+import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
+
+...
+
+types: [Type.faceImage, Type.textBottom]
+```
+Types list:
+```ts
+export const Type = {
+    textTop: "textTop",
+    textBottom: "textBottom",
+    textLeft: "textLeft",
+    textRight: "textRight",
+    textCenter: "textCenter",
+    textTopWithBackground: "textTopWithBackground",
+    textBottomWithBackground: "textBottomWithBackground",
+    textLeftWithBackground: "textLeftWithBackground",
+    textRightWithBackground: "textRightWithBackground",
+    textCenterWithBackground: "textCenterWithBackground",
+    textName: "textName",
+    textPost: "textPost",
+    defaultText: "defaultText",
+    avatarImage: "avatarImage",
+    faceImage: "faceImage",
+    objectImage: "objectImage",
+    backgroundImage: "backgroundImage",
+    twoOption: "twoOption",
+    threeOption: "threeOption",
+    fourOption: "fourOption",
+} as const;
+```
 
 #### Texts/images
 
@@ -151,75 +225,108 @@ Only Impact and Comic Sans MS are available.
 #### Layout
 
 **topBottomText.tsx**
-```ts
+```tsx
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const topBottomText: Template = {
-    id: 1, // make sure this id is not taken
-    name: "topBottomText",
+    name: "topBottomText", // make sure this name is not taken
+    topics: [Topic.Misc],
+    types: [Type.faceImage, Type.textTopWithBackground],
     width: 800,
     height: 800,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 10 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
     ],
     images: [{ id: 0, description: "background" }],
     element: ({ texts, images }: TemplateProps) => (
-        <div
-            style={{
-                display: "flex",
-                position: "relative",
-                width: "100%",
-                height: "100%",
-                fontFamily: "Comic Sans MS",
-                backgroundColor: "#000",
-            }}
-        >
-            <img
-                src={images[0]}
-                width={800}
-                height={800}
-                style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
-            />
             <div
-                style={{
-                    position: "absolute",
-                    top: 10,
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
-                    textAlign: "center",
-                }}
+                    style={{
+                        display: "flex",
+                        position: "relative",
+                        width: "100%",
+                        height: "100%",
+                        fontFamily: "Comic Sans MS",
+                        backgroundColor: "#000",
+                    }}
             >
-                {texts[0]}
+                <img
+                        src={images[0]}
+                        width={800}
+                        height={600}
+                        style={{ position: "absolute", top: 100, left: 0, opacity: 0.6 }}
+                />
+                <div
+                        style={{
+                            position: "absolute",
+                            left: 0,
+                            top: 0,
+                            width: "100%",
+                            height: "100px",
+                            overflow: "hidden",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            padding: "15px",
+                            backgroundColor: "white",
+                        }}
+                >
+                    <div
+                            style={{
+                                display: "-webkit-box",
+                                WebkitBoxOrient: "vertical",
+                                WebkitLineClamp: 2,
+                                wordBreak: "break-word",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                fontFamily: "Comic Sans MS",
+                                fontSize: 40,
+                                lineHeight: 1.05,
+                                color: "#000000",
+                            }}
+                    >
+                        {texts[0]}
+                    </div>
+                </div>
+                <div
+                        style={{
+                            position: "absolute",
+                            left: 0,
+                            bottom: 0,
+                            width: "100%",
+                            height: "100px",
+                            overflow: "hidden",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            padding: "15px",
+                            backgroundColor: "white",
+                        }}
+                >
+                    <div
+                            style={{
+                                display: "-webkit-box",
+                                WebkitBoxOrient: "vertical",
+                                WebkitLineClamp: 2,
+                                wordBreak: "break-word",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                fontFamily: "Comic Sans MS",
+                                fontSize: 40,
+                                lineHeight: 1.05,
+                                color: "#000000",
+                            }}
+                    >
+                        {texts[1]}
+                    </div>
+                </div>
             </div>
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: 20,
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
-                    textAlign: "center",
-                }}
-            >
-                {texts[1]}
-            </div>
-        </div>
     ),
 };
 ```

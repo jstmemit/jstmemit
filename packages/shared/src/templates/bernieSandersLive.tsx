@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const bernieSandersLive: Template = {
     name: "bernieSandersLive",
     topics: [Topic.YouTube],
+    types: [Type.faceImage, Type.textCenter],
     width: 981,
     height: 1038,
     texts: [

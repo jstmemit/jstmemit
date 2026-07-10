@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const liveReaction: Template = {
     name: "liveReaction",
     topics: [Topic.Reaction],
+    types: [Type.defaultText, Type.faceImage],
     width: 800,
     height: 800,
     texts: [],

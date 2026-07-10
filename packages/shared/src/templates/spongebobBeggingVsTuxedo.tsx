@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobBeggingVsTuxedo: Template = {
     name: "spongebobBeggingVsTuxedo",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
+    types: [Type.textLeftWithBackground, Type.twoOption],
     width: 755,
     height: 601,
     texts: [

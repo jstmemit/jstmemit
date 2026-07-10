@@ -2,10 +2,12 @@ import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const applyingForJobsWithFunnyPfp: Template = {
     name: "applyingForJobsWithFunnyPfp",
     topics: [Topic.SocialPost],
+    types: [Type.textName, Type.textPost, Type.objectImage, Type.avatarImage],
     width: 933,
     height: 1051,
     texts: [

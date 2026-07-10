@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const myHonestReaction: Template = {
     name: "myHonestReaction",
     topics: [Topic.Reaction],
+    types: [Type.defaultText, Type.faceImage],
     width: 900,
     height: 1000,
     texts: [],

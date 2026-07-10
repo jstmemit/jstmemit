@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const diagramIQ: Template = {
     name: "diagramIQ",
     topics: [Topic.Misc],
+    types: [Type.textTop, Type.textLeft, Type.textRight, Type.faceImage, Type.threeOption],
     width: 1272,
     height: 843,
     texts: [

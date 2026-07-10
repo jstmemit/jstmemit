@@ -2,10 +2,12 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobRainbow: Template = {
     name: "spongebobRainbow",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
+    types: [Type.faceImage, Type.textBottomWithBackground],
     width: 1920,
     height: 1400,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
