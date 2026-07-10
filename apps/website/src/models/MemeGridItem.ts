@@ -3,6 +3,7 @@ export interface MemeGridItem {
     height: string;
     color?: string;
     border?: boolean;
+    excludeMobile?: boolean;
     image: string;
     alt: string;
 }

@@ -1,0 +1,52 @@
+---
+import Content from "#/components/ui/Content.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Card from "#/components/ui/Card.astro";
+import type { MemeGridItem } from "#/models/MemeGridItem.ts";
+import MemeSwiper from "#/components/ui/MemeSwiper.astro";
+import { moreMemes } from "#/data/moreMemes.ts";
+---
+
+<Section headingId="okayButShowMeSomeMemesHeading" descriptionId="okayButShowMeSomeMemesDescription" variant="light">
+    <Content slot="text" classes="px-0">
+        <Heading id="okayButShowMeSomeMemesHeading"
+            ><span class="hidden lg:block"
+                >Okay, but show me some <Highlight color="text-bubblegum-pink">memes</Highlight></span
+            >
+            <span class="block lg:hidden"
+                >Okay, now show me more <Highlight color="text-bubblegum-pink">memes</Highlight></span
+            >
+        </Heading>
+        <Paragraph id="okayButShowMeSomeMemesDescription">
+            Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them more
+            relatable and funnier than these examples below.
+        </Paragraph>
+        <div class="sm:hidden">
+            <MemeSwiper memes={moreMemes} />
+        </div>
+        <ul class="mt-12 hidden grid-cols-1 gap-8 gap-y-15 sm:grid sm:grid-cols-5">
+            {
+                moreMemes.map((meme: MemeGridItem) => (
+                    <li class:list={[meme.span]}>
+                        <Card
+                            label={meme.image.split("/").pop() || "meme.png"}
+                            color={meme.color}
+                            border={meme.color ? "border-dark-cyan border-4" : "border-bubblegum-pink border-4"}
+                        >
+                            <img
+                                src={meme.image}
+                                alt={meme.alt}
+                                fetchpriority="low"
+                                loading="lazy"
+                                class:list={[meme.height, "bg-carbon-black h-full w-full rounded-xl rounded-t-none"]}
+                            />
+                        </Card>
+                    </li>
+                ))
+            }
+        </ul>
+    </Content>
+</Section>

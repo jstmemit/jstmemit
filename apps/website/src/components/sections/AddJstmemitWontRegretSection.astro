@@ -1,0 +1,44 @@
+---
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+import Card from "#/components/ui/Card.astro";
+import Button from "#/components/ui/Button.astro";
+---
+
+<Section variant="light" headingId="readyToInviteHeading" descriptionId="readyToInviteDescription">
+    <Content slot="text" classes="sm:flex-row gap-15 justify-between items-center">
+        <div class="flex flex-col gap-3">
+            <Heading id="readyToInviteHeading"
+                >Are you ready to invite <Highlight color="text-bubblegum-pink">Jstmemit?</Highlight>
+            </Heading>
+            <Paragraph id="readyToInviteDescription"
+                >Bot genuinely doesn't understand what's on memes. <br class="hidden md:block" /> They will be chaotic and
+                your server will like that.</Paragraph
+            >
+            <Button
+                href="https://discord.com/oauth2/authorize?client_id=1375836467745783990"
+                background="bg-discord-blue"
+                textColor="text-white"
+                icon="https://files.jstmemit.com/jstmemit/images/discord.svg"
+                alt="discord logo"
+                name="Add to your server"
+                target="_blank"
+                rel="noopener noreferrer"
+                classes="mt-2"
+            />
+        </div>
+        <Card classes="max-h-128 max-w-128" label="jstmemit roasting you">
+            <img
+                src={"https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=40,slow-connection-quality=22,width=768/https://files.jstmemit.com/jstmemit/images/templates/damnYourMinecraftHouse.png"}
+                alt={"Buzz telling Woody that his Minecraft base is ugly"}
+                decoding="async"
+                fetchpriority="low"
+                loading="lazy"
+                class=`bg-carbon-black rounded-t-none rounded-xl w-full h-full object-cover`
+            />
+        </Card>
+    </Content>
+</Section>
