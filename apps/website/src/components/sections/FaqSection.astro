@@ -6,10 +6,15 @@ import Content from "#/components/ui/Content.astro";
 import Highlight from "#/components/ui/Highlight.astro";
 import FaqItem from "#/components/ui/FaqItem.astro";
 import FaqGrid from "#/components/ui/FaqGrid.astro";
+import { questions } from "#/data/questions.ts";
+import type { FaqQuestion } from "#/models/FaqQuestion.ts";
+import { getFaqJsonLd } from "#/helpers/jsonLd/getFaqJsonLd.ts";
 ---
 
-<Section variant="light" headingId="faqHeading" descriptionId="faqDescription">
+<Section variant="dark" headingId="faqHeading" descriptionId="faqDescription">
     <Content slot="text">
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(getFaqJsonLd(questions))} />
+
         <Heading id="faqHeading"> Frequently asked questions </Heading>
         <Paragraph id="faqDescription"
             >Can't find your answer? We can help you in the <a
@@ -20,43 +25,19 @@ import FaqGrid from "#/components/ui/FaqGrid.astro";
             >
         </Paragraph>
         <FaqGrid>
-            <FaqItem headingId="iAddedTheBotWhatNowHeading" descriptionId="iAddedTheBotWhatNowDescription">
-                <Heading variant="h3" id="iAddedTheBotWhatNowHeading">I added the bot, what now?</Heading>
-                <Paragraph classes="text-base font-medium" id="iAddedTheBotWhatNowDescription">
-                    <Highlight color="text-bubblegum-pink font-bold">Run /enable in a channel.</Highlight> The bot will start
-                    learning from new messages there. After chatting for a bit run /meme to generate a meme. Memes will also
-                    come automatically when the channel is active and there is a conversation ongoing. You can change frequency
-                    for those in /settings.
-                </Paragraph>
-            </FaqItem>
-            <FaqItem headingId="canIHaveDifferentSettingsHeading" descriptionId="canIHaveDifferentSettingsDescription">
-                <Heading variant="h3" id="canIHaveDifferentSettingsHeading"
-                    >Can I have different settings for every channel?</Heading
-                >
-                <Paragraph classes="text-base font-medium" id="canIHaveDifferentSettingsDescription">
-                    <Highlight color="text-bubblegum-pink font-bold">Yes!</Highlight> All channel information, such as data
-                    for memes, frequency and other settings are stored separately for each channel. Nothing stops you from
-                    having very low meme frequency in your main chat, but also set it to high in your flood channel.
-                </Paragraph>
-            </FaqItem>
-            <FaqItem headingId="isThereALimitOnMemesHeading" descriptionId="isThereALimitOnMemesDescription">
-                <Heading variant="h3" id="isThereALimitOnMemesHeading"
-                    >Is there a limit on how many memes the bot can make daily?</Heading
-                >
-                <Paragraph classes="text-base font-medium" id="isThereALimitOnMemesDescription">
-                    <Highlight color="text-bubblegum-pink font-bold">No, there are no limits.</Highlight> You can run /meme
-                    as many times a day as you want. And it's free, because each generation only takes milliseconds to finish.
-                </Paragraph>
-            </FaqItem>
-            <FaqItem headingId="canIDeleteStoredDataHeading" descriptionId="canIDeleteStoredDataDescription">
-                <Heading variant="h3" id="canIDeleteStoredDataHeading"
-                    >Can I delete stored meme generation data?</Heading
-                >
-                <Paragraph classes="text-base font-medium" id="canIDeleteStoredDataDescription">
-                    <Highlight color="text-bubblegum-pink font-bold">Yes, at any time.</Highlight> Run /settings and then
-                    press the "Delete all data" button to delete everything that the bot stored for the channel.
-                </Paragraph>
-            </FaqItem>
+            {
+                questions.map((question: FaqQuestion) => (
+                    <FaqItem headingId={`${question.id}Heading`} descriptionId={`${question.id}Description`}>
+                        <Heading variant="h3" id={`${question.id}Heading`}>
+                            {question.question}
+                        </Heading>
+                        <Paragraph classes="text-base font-medium" id={`${question.id}Description`}>
+                            <Highlight color="text-bubblegum-pink font-bold">{question.highlight}</Highlight>{" "}
+                            {question.answer}
+                        </Paragraph>
+                    </FaqItem>
+                ))
+            }
         </FaqGrid>
     </Content>
 </Section>
