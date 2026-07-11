@@ -174,37 +174,11 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = {};
+        const texts: Record<string, string> = this._getModalTexts(template, interaction);
+        const images: Record<string, string> | undefined = await this._getModalImages(template, interaction);
 
-        template.texts?.forEach((text: TemplateText): void => {
-            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
-
-            if (value.length > 0) {
-                texts[text.id] = value;
-            }
-        });
-
-        const images: Record<string, string> = {};
-
-        for (const image of template.images ?? []) {
-            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
-            const attachment: Attachment | undefined = files?.first();
-
-            if (!attachment) {
-                continue;
-            }
-
-            if (!attachment.contentType?.startsWith("image/")) {
-                await interaction.editReply({
-                    components: [
-                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
-                    ],
-                    flags: MessageFlags.IsComponentsV2,
-                });
-                return;
-            }
-
-            images[image.id] = attachment.url;
+        if (!images) {
+            return;
         }
 
         try {
@@ -379,6 +353,50 @@ export class MemesController implements IMemesController {
         }
 
         return images;
+    }
+
+    private async _getModalImages(
+        template: Template,
+        interaction: ModalSubmitInteraction,
+    ): Promise<Record<string, string> | undefined> {
+        const images: Record<string, string> = {};
+
+        for (const image of template.images ?? []) {
+            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
+            const attachment: Attachment | undefined = files?.first();
+
+            if (!attachment) {
+                continue;
+            }
+
+            if (!attachment.contentType?.startsWith("image/")) {
+                await interaction.editReply({
+                    components: [
+                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
+                    ],
+                    flags: MessageFlags.IsComponentsV2,
+                });
+                return;
+            }
+
+            images[image.id] = attachment.url;
+        }
+
+        return images;
+    }
+
+    private _getModalTexts(template: Template, interaction: ModalSubmitInteraction): Record<string, string> {
+        const texts: Record<string, string> = {};
+
+        template.texts?.forEach((text: TemplateText): void => {
+            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
+
+            if (value.length > 0) {
+                texts[text.id] = value;
+            }
+        });
+
+        return texts;
     }
 
     private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
