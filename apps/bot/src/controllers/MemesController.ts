@@ -166,8 +166,7 @@ export class MemesController implements IMemesController {
         if (!interaction.channelId) {
             await interaction.reply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
             });
             return;
         }
@@ -302,8 +301,7 @@ export class MemesController implements IMemesController {
         if (!template) {
             await interaction.reply({
                 components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
             });
         }
 
