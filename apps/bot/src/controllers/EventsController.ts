@@ -10,6 +10,7 @@ import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
 import { AutoPoster } from "topgg-autoposter";
+import _ from "lodash";
 
 const env = Env.parse(process.env);
 
@@ -106,6 +107,48 @@ export class EventsController implements IEventsController {
                     await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
                     return;
             }
+        }
+
+        // message context menus
+        if (interaction.isMessageContextMenuCommand()) {
+            switch (interaction.commandName) {
+                case "Make it a Quote":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
+                    return;
+                case "Make it a Post":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "post");
+                    return;
+                case "Make it a Grok tweet":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
+                    return;
+                case "Make an Explain meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "explainingWhiteboard",
+                    );
+                    return;
+                case "Make a Chad meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
+                    return;
+            }
+            return;
+        }
+
+        // user context menus
+        if (interaction.isUserContextMenuCommand()) {
+            switch (interaction.commandName) {
+                case "Put avatar on YT thumbnail":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        // TODO: use topics when they are ready instead of this
+                        _.sample(["iInterviewedAnimals", "iGotHuntedByARealBountyHunter", "iAdopted100Dogs"]),
+                    );
+                    return;
+                case "Make an Incoming Call meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "incomingCall");
+                    return;
+            }
+            return;
         }
 
         // chat commands

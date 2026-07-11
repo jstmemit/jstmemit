@@ -1,20 +1,22 @@
-import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import { type Attachment, MessageFlags, type ModalSubmitInteraction } from "discord.js";
-import { type ModalBuilder } from "discord.js";
-import {
-    Message,
-    type ButtonInteraction,
-    type ContainerBuilder,
-    type ActionRowBuilder,
-    type ButtonBuilder,
-    type AutocompleteInteraction,
+import type {
+    User,
+    UserContextMenuCommandInteraction,
+    MessageContextMenuCommandInteraction,
+    ModalSubmitInteraction,
+    Attachment,
+    ModalBuilder,
+    ButtonInteraction,
+    ContainerBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    AutocompleteInteraction,
+    ChatInputCommandInteraction,
 } from "discord.js";
-import { type ChatInputCommandInteraction } from "discord.js";
+import { MessageFlags, Message } from "discord.js";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
-import type { QueueEvents } from "bullmq";
-import { type Job } from "bullmq";
-import { type Queue } from "bullmq";
+import type { QueueEvents, Job, Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
@@ -94,17 +96,12 @@ export class MemesController implements IMemesController {
             trigger = "command";
         }
 
-        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
-            "meme-generation",
-            {
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId,
                 userId,
                 trigger,
-            },
-        );
-
-        try {
-            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+            });
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
@@ -160,77 +157,38 @@ export class MemesController implements IMemesController {
      */
     public async handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void> {
         const templateName: string | undefined = interaction.customId.split(":")[1];
-        const template: Template | undefined = this._templatesRepository
-            .getAll()
-            .find((template: Template): boolean => template.name === templateName);
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
-            await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
-            });
             return;
         }
 
         if (!interaction.channelId) {
             await interaction.reply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
             });
             return;
         }
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = {};
+        const texts: Record<string, string> = this._getModalTexts(template, interaction);
+        const images: Record<string, string> | undefined = await this._getModalImages(template, interaction);
 
-        template.texts?.forEach((text: TemplateText): void => {
-            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
-
-            if (value.length > 0) {
-                texts[text.id] = value;
-            }
-        });
-
-        const images: Record<string, string> = {};
-
-        for (const image of template.images ?? []) {
-            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
-            const attachment: Attachment | undefined = files?.first();
-
-            if (!attachment) {
-                continue;
-            }
-
-            if (!attachment.contentType?.startsWith("image/")) {
-                await interaction.editReply({
-                    components: [
-                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
-                    ],
-                    flags: MessageFlags.IsComponentsV2,
-                });
-                return;
-            }
-
-            images[image.id] = attachment.url;
+        if (!images) {
+            return;
         }
 
-        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
-            "meme-generation",
-            {
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
                 userId: interaction.user.id,
                 trigger: "custom",
                 templateName: templateName,
                 texts,
                 images,
-            },
-        );
-
-        try {
-            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+            });
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
@@ -248,17 +206,53 @@ export class MemesController implements IMemesController {
         }
     }
 
-    public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
-        const templateName: string = interaction.options.getString("template", true);
-        const template: Template | undefined = this._templatesRepository
-            .getAll()
-            .find((template: Template): boolean => template.name === templateName);
+    public async handleGenerateViaContextMenuInteraction(
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
+        templateName: string,
+    ): Promise<void> {
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
-            await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                ephemeral: true,
+            return;
+        }
+
+        await interaction.deferReply();
+
+        const texts: Record<string, string> = this._getContextMenuTexts(template, interaction);
+        const images: Record<string, string> = this._getContextMenuImage(template, interaction);
+
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
+                channelId: interaction.channelId,
+                userId: interaction.user.id,
+                trigger: "context",
+                templateName,
+                texts,
+                images,
             });
+
+            await interaction.editReply({
+                content: `<@${interaction.user.id}>`,
+                files: [
+                    {
+                        attachment: Buffer.from(jobResult.png, "base64"),
+                        name: "meme.png",
+                    },
+                ],
+            });
+        } catch {
+            await interaction.editReply({
+                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
+            });
+        }
+    }
+
+    public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
+        const templateName: string = interaction.options.getString("template", true);
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
+
+        if (!template) {
             return;
         }
 
@@ -290,5 +284,132 @@ export class MemesController implements IMemesController {
             .map((template: Template) => ({ name: template.name, value: template.name }));
 
         await interaction.respond(matches);
+    }
+
+    private async _getTemplate(
+        interaction:
+            | ModalSubmitInteraction
+            | MessageContextMenuCommandInteraction
+            | ChatInputCommandInteraction
+            | UserContextMenuCommandInteraction,
+        templateName: string | undefined,
+    ): Promise<Template | undefined> {
+        const template: Template = this._templatesRepository
+            .getAll()
+            .find((template: Template): boolean => template.name === templateName);
+
+        if (!template) {
+            await interaction.reply({
+                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
+            });
+        }
+
+        return template;
+    }
+
+    private _getContextMenuTexts(
+        template: Template,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
+    ): Record<string, string> {
+        const texts: Record<string, string> = {};
+        const slots: TemplateText[] = template.texts ?? [];
+        const [first, second] = slots;
+
+        if (interaction.isMessageContextMenuCommand()) {
+            const message: Message = interaction.targetMessage;
+
+            if (first && !second) {
+                texts[first.id] = message.content;
+            } else if (first && second) {
+                texts[first.id] = message.author.displayName;
+                texts[second.id] = message.content;
+            }
+        }
+
+        if (interaction.isUserContextMenuCommand()) {
+            const user: User = interaction.targetUser;
+
+            if (first) {
+                texts[first.id] = user.displayName;
+            }
+        }
+
+        return texts;
+    }
+
+    private _getContextMenuImage(
+        template: Template,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
+    ): Record<string, string> {
+        const images: Record<string, string> = {};
+
+        if (template.images?.[0]) {
+            if (interaction.isMessageContextMenuCommand()) {
+                const message: Message = interaction.targetMessage;
+
+                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+            }
+
+            if (interaction.isUserContextMenuCommand()) {
+                const user: User = interaction.targetUser;
+
+                images[template.images[0].id] = user.displayAvatarURL({ extension: "png", size: 512 });
+            }
+        }
+
+        return images;
+    }
+
+    private async _getModalImages(
+        template: Template,
+        interaction: ModalSubmitInteraction,
+    ): Promise<Record<string, string> | undefined> {
+        const images: Record<string, string> = {};
+
+        for (const image of template.images ?? []) {
+            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
+            const attachment: Attachment | undefined = files?.first();
+
+            if (!attachment) {
+                continue;
+            }
+
+            if (!attachment.contentType?.startsWith("image/")) {
+                await interaction.editReply({
+                    components: [
+                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
+                    ],
+                    flags: MessageFlags.IsComponentsV2,
+                });
+                return;
+            }
+
+            images[image.id] = attachment.url;
+        }
+
+        return images;
+    }
+
+    private _getModalTexts(template: Template, interaction: ModalSubmitInteraction): Record<string, string> {
+        const texts: Record<string, string> = {};
+
+        template.texts?.forEach((text: TemplateText): void => {
+            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
+
+            if (value.length > 0) {
+                texts[text.id] = value;
+            }
+        });
+
+        return texts;
+    }
+
+    private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
+        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
+            "meme-generation",
+            data,
+        );
+        return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
     }
 }
