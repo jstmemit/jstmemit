@@ -245,21 +245,8 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = {};
+        const texts: Record<string, string> = this._getContextMenuTexts(template, interaction);
         const images: Record<string, string> = this._getContextMenuImage(template, interaction);
-        const slots: TemplateText[] = template.texts ?? [];
-        const [first, second] = slots;
-
-        if (interaction.isMessageContextMenuCommand()) {
-            const message: Message = interaction.targetMessage;
-
-            if (first && !second) {
-                texts[first.id] = message.content;
-            } else if (first && second) {
-                texts[first.id] = message.author.displayName;
-                texts[second.id] = message.content;
-            }
-        }
 
         try {
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
@@ -347,6 +334,28 @@ export class MemesController implements IMemesController {
         }
 
         return template;
+    }
+
+    private _getContextMenuTexts(
+        template: Template,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
+    ): Record<string, string> {
+        const texts: Record<string, string> = {};
+        const slots: TemplateText[] = template.texts ?? [];
+        const [first, second] = slots;
+
+        if (interaction.isMessageContextMenuCommand()) {
+            const message: Message = interaction.targetMessage;
+
+            if (first && !second) {
+                texts[first.id] = message.content;
+            } else if (first && second) {
+                texts[first.id] = message.author.displayName;
+                texts[second.id] = message.content;
+            }
+        }
+
+        return texts;
     }
 
     private _getContextMenuImage(
