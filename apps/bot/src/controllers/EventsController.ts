@@ -120,6 +120,15 @@ export class EventsController implements IEventsController {
                 case "Make it a Grok tweet":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
                     return;
+                case "Make an Explain meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "explainingWhiteboard",
+                    );
+                    return;
+                case "Make a Chad meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
+                    return;
             }
             return;
         }
