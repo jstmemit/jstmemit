@@ -4,6 +4,7 @@ import type { IFontsService } from "../interfaces/IFontsService.ts";
 
 export class FontsService implements IFontsService {
     private readonly _fontsRepository: IFontsRepository;
+    private _fonts?: FontOptions[];
 
     public constructor(fontsRepository: IFontsRepository) {
         this._fontsRepository = fontsRepository;
@@ -17,7 +18,7 @@ export class FontsService implements IFontsService {
      * @author Kyrylo Maliuha
      */
     public getFonts(): FontOptions[] {
-        return [
+        this._fonts ||= [
             {
                 name: "Impact",
                 data: this._fontsRepository.getImpact(),
@@ -30,6 +31,37 @@ export class FontsService implements IFontsService {
                 weight: 400,
                 style: "normal",
             },
+            {
+                name: "Noto Sans SC",
+                data: this._fontsRepository.getNotoSansSc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans TC",
+                data: this._fontsRepository.getNotoSansTc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans HK",
+                data: this._fontsRepository.getNotoSansHk(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans JP",
+                data: this._fontsRepository.getNotoSansJp(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans KR",
+                data: this._fontsRepository.getNotoSansKr(),
+                weight: 500,
+                style: "normal",
+            },
         ];
+        return this._fonts;
     }
 }
