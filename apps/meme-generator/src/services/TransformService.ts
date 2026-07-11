@@ -5,6 +5,7 @@ import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class TransformService implements ITransformService {
     private readonly _linkRegex: RegExp = /https?:\/\/\S+|www\.\S+/gi;
+    private readonly _mentionRegex: RegExp = /<@[!&]?\d+>|<#\d+>/g;
     private readonly _markovProvider: ITransformProvider;
 
     public constructor(markovProvider: ITransformProvider) {
@@ -73,6 +74,7 @@ export class TransformService implements ITransformService {
             .map((text: string): string =>
                 text
                     .replace(this._linkRegex, "")
+                    .replace(this._mentionRegex, "")
                     .replace(/\s{2,}/g, " ")
                     .trim(),
             )
