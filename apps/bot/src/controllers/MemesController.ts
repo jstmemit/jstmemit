@@ -327,6 +327,14 @@ export class MemesController implements IMemesController {
             }
         }
 
+        if (interaction.isUserContextMenuCommand()) {
+            const user: User = interaction.targetUser;
+
+            if (first) {
+                texts[first.id] = user.displayName;
+            }
+        }
+
         return texts;
     }
 

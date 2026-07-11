@@ -144,6 +144,9 @@ export class EventsController implements IEventsController {
                         _.sample(["iInterviewedAnimals", "iGotHuntedByARealBountyHunter", "iAdopted100Dogs"]),
                     );
                     return;
+                case "Make an Incoming Call meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "incomingCall");
+                    return;
             }
             return;
         }
