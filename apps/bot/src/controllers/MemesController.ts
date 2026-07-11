@@ -161,16 +161,9 @@ export class MemesController implements IMemesController {
      */
     public async handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void> {
         const templateName: string | undefined = interaction.customId.split(":")[1];
-        const template: Template | undefined = this._templatesRepository
-            .getAll()
-            .find((template: Template): boolean => template.name === templateName);
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
-            await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
-            });
             return;
         }
 
@@ -253,16 +246,9 @@ export class MemesController implements IMemesController {
         interaction: MessageContextMenuCommandInteraction,
         templateName: string,
     ): Promise<void> {
-        const template: Template | undefined = this._templatesRepository
-            .getAll()
-            .find((template: Template): boolean => template.name === templateName);
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
-            await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
-            });
             return;
         }
 
@@ -321,16 +307,9 @@ export class MemesController implements IMemesController {
 
     public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
         const templateName: string = interaction.options.getString("template", true);
-        const template: Template | undefined = this._templatesRepository
-            .getAll()
-            .find((template: Template): boolean => template.name === templateName);
+        const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
-            await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
-                flags: MessageFlags.IsComponentsV2,
-                ephemeral: true,
-            });
             return;
         }
 
@@ -362,5 +341,24 @@ export class MemesController implements IMemesController {
             .map((template: Template) => ({ name: template.name, value: template.name }));
 
         await interaction.respond(matches);
+    }
+
+    private async _getTemplate(
+        interaction: ModalSubmitInteraction | MessageContextMenuCommandInteraction | ChatInputCommandInteraction,
+        templateName: string | undefined,
+    ): Promise<Template | undefined> {
+        const template: Template = this._templatesRepository
+            .getAll()
+            .find((template: Template): boolean => template.name === templateName);
+
+        if (!template) {
+            await interaction.reply({
+                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                flags: MessageFlags.IsComponentsV2,
+                ephemeral: true,
+            });
+        }
+
+        return template;
     }
 }
