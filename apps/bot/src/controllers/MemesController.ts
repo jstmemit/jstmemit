@@ -95,17 +95,12 @@ export class MemesController implements IMemesController {
             trigger = "command";
         }
 
-        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
-            "meme-generation",
-            {
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId,
                 userId,
                 trigger,
-            },
-        );
-
-        try {
-            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+            });
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
@@ -211,20 +206,15 @@ export class MemesController implements IMemesController {
             images[image.id] = attachment.url;
         }
 
-        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
-            "meme-generation",
-            {
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
                 userId: interaction.user.id,
                 trigger: "custom",
                 templateName: templateName,
                 texts,
                 images,
-            },
-        );
-
-        try {
-            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+            });
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
@@ -272,20 +262,15 @@ export class MemesController implements IMemesController {
             images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
         }
 
-        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
-            "meme-generation",
-            {
+        try {
+            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
                 userId: interaction.user.id,
                 trigger: "context",
                 templateName,
                 texts,
                 images,
-            },
-        );
-
-        try {
-            const jobResult: MemeGenerationResult = await job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+            });
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
@@ -296,8 +281,7 @@ export class MemesController implements IMemesController {
                     },
                 ],
             });
-        } catch (e) {
-            console.error(e);
+        } catch {
             await interaction.editReply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.id)],
                 flags: MessageFlags.IsComponentsV2,
@@ -360,5 +344,13 @@ export class MemesController implements IMemesController {
         }
 
         return template;
+    }
+
+    private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
+        const job: Job<MemeGenerationJob, MemeGenerationResult> = await this._memeGenerationQueue.add(
+            "meme-generation",
+            data,
+        );
+        return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
     }
 }
