@@ -1,22 +1,22 @@
-import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { User, UserContextMenuCommandInteraction } from "discord.js";
-import { type MessageContextMenuCommandInteraction } from "discord.js";
-import { type Attachment, MessageFlags, type ModalSubmitInteraction } from "discord.js";
-import { type ModalBuilder } from "discord.js";
-import {
-    Message,
-    type ButtonInteraction,
-    type ContainerBuilder,
-    type ActionRowBuilder,
-    type ButtonBuilder,
-    type AutocompleteInteraction,
+import type {
+    User,
+    UserContextMenuCommandInteraction,
+    MessageContextMenuCommandInteraction,
+    ModalSubmitInteraction,
+    Attachment,
+    ModalBuilder,
+    ButtonInteraction,
+    ContainerBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    AutocompleteInteraction,
+    ChatInputCommandInteraction,
 } from "discord.js";
-import { type ChatInputCommandInteraction } from "discord.js";
+import { MessageFlags, Message } from "discord.js";
+import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
-import type { QueueEvents } from "bullmq";
-import { type Job } from "bullmq";
-import { type Queue } from "bullmq";
+import type { QueueEvents, Job, Queue } from "bullmq";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
