@@ -1,3 +1,4 @@
+import type { UserContextMenuCommandInteraction } from "discord.js";
 import {
     type ButtonInteraction,
     type ChatInputCommandInteraction,
@@ -15,7 +16,7 @@ export abstract class IMemesController {
     public abstract handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void>;
     public abstract handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void>;
     public abstract handleGenerateViaContextMenuInteraction(
-        interaction: MessageContextMenuCommandInteraction,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
         templateName: string,
     ): Promise<void>;
 }

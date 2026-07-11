@@ -10,6 +10,7 @@ import { analytics } from "@jstmemit/analytics";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
 import { AutoPoster } from "topgg-autoposter";
+import _ from "lodash";
 
 const env = Env.parse(process.env);
 
@@ -108,7 +109,7 @@ export class EventsController implements IEventsController {
             }
         }
 
-        // context menus
+        // message context menus
         if (interaction.isMessageContextMenuCommand()) {
             switch (interaction.commandName) {
                 case "Make it a Quote":
@@ -128,6 +129,20 @@ export class EventsController implements IEventsController {
                     return;
                 case "Make a Chad meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
+                    return;
+            }
+            return;
+        }
+
+        // user context menus
+        if (interaction.isUserContextMenuCommand()) {
+            switch (interaction.commandName) {
+                case "Put avatar on YT thumbnail":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        // TODO: use topics when they are ready instead of this
+                        _.sample(["iInterviewedAnimals", "iGotHuntedByARealBountyHunter", "iAdopted100Dogs"]),
+                    );
                     return;
             }
             return;

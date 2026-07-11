@@ -1,5 +1,6 @@
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { MessageContextMenuCommandInteraction } from "discord.js";
+import type { User, UserContextMenuCommandInteraction } from "discord.js";
+import { type MessageContextMenuCommandInteraction } from "discord.js";
 import { type Attachment, MessageFlags, type ModalSubmitInteraction } from "discord.js";
 import { type ModalBuilder } from "discord.js";
 import {
@@ -233,7 +234,7 @@ export class MemesController implements IMemesController {
     }
 
     public async handleGenerateViaContextMenuInteraction(
-        interaction: MessageContextMenuCommandInteraction,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
         templateName: string,
     ): Promise<void> {
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
@@ -244,22 +245,32 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const message: Message = interaction.targetMessage;
-
         const texts: Record<string, string> = {};
         const images: Record<string, string> = {};
         const slots: TemplateText[] = template.texts ?? [];
         const [first, second] = slots;
 
-        if (first && !second) {
-            texts[first.id] = message.content;
-        } else if (first && second) {
-            texts[first.id] = message.author.displayName;
-            texts[second.id] = message.content;
+        if (interaction.isMessageContextMenuCommand()) {
+            const message: Message = interaction.targetMessage;
+
+            if (first && !second) {
+                texts[first.id] = message.content;
+            } else if (first && second) {
+                texts[first.id] = message.author.displayName;
+                texts[second.id] = message.content;
+            }
+
+            if (template.images?.[0]) {
+                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+            }
         }
 
-        if (template.images?.[0]) {
-            images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+        if (interaction.isUserContextMenuCommand()) {
+            if (template.images?.[0]) {
+                const user: User = interaction.targetUser;
+
+                images[template.images[0].id] = user.displayAvatarURL({ extension: "png", size: 512 });
+            }
         }
 
         try {
@@ -328,7 +339,11 @@ export class MemesController implements IMemesController {
     }
 
     private async _getTemplate(
-        interaction: ModalSubmitInteraction | MessageContextMenuCommandInteraction | ChatInputCommandInteraction,
+        interaction:
+            | ModalSubmitInteraction
+            | MessageContextMenuCommandInteraction
+            | ChatInputCommandInteraction
+            | UserContextMenuCommandInteraction,
         templateName: string | undefined,
     ): Promise<Template | undefined> {
         const template: Template = this._templatesRepository
