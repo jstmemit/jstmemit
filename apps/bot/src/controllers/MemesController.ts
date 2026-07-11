@@ -246,7 +246,7 @@ export class MemesController implements IMemesController {
         await interaction.deferReply();
 
         const texts: Record<string, string> = {};
-        const images: Record<string, string> = {};
+        const images: Record<string, string> = this._getContextMenuImage(template, interaction);
         const slots: TemplateText[] = template.texts ?? [];
         const [first, second] = slots;
 
@@ -258,18 +258,6 @@ export class MemesController implements IMemesController {
             } else if (first && second) {
                 texts[first.id] = message.author.displayName;
                 texts[second.id] = message.content;
-            }
-
-            if (template.images?.[0]) {
-                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
-            }
-        }
-
-        if (interaction.isUserContextMenuCommand()) {
-            if (template.images?.[0]) {
-                const user: User = interaction.targetUser;
-
-                images[template.images[0].id] = user.displayAvatarURL({ extension: "png", size: 512 });
             }
         }
 
@@ -359,6 +347,29 @@ export class MemesController implements IMemesController {
         }
 
         return template;
+    }
+
+    private _getContextMenuImage(
+        template: Template,
+        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
+    ): Record<string, string> {
+        const images: Record<string, string> = {};
+
+        if (template.images?.[0]) {
+            if (interaction.isMessageContextMenuCommand()) {
+                const message: Message = interaction.targetMessage;
+
+                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+            }
+
+            if (interaction.isUserContextMenuCommand()) {
+                const user: User = interaction.targetUser;
+
+                images[template.images[0].id] = user.displayAvatarURL({ extension: "png", size: 512 });
+            }
+        }
+
+        return images;
     }
 
     private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
