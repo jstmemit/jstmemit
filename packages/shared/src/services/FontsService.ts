@@ -30,6 +30,36 @@ export class FontsService implements IFontsService {
                 weight: 400,
                 style: "normal",
             },
+            {
+                name: "Noto Sans SC",
+                data: this._fontsRepository.getNotoSansSc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans TC",
+                data: this._fontsRepository.getNotoSansTc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans HK",
+                data: this._fontsRepository.getNotoSansHk(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans JP",
+                data: this._fontsRepository.getNotoSansJp(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans KR",
+                data: this._fontsRepository.getNotoSansKr(),
+                weight: 500,
+                style: "normal",
+            },
         ];
     }
 }
