@@ -4,6 +4,7 @@ import type { IFontsService } from "../interfaces/IFontsService.ts";
 
 export class FontsService implements IFontsService {
     private readonly _fontsRepository: IFontsRepository;
+    private _fonts?: FontOptions[];
 
     public constructor(fontsRepository: IFontsRepository) {
         this._fontsRepository = fontsRepository;
@@ -17,7 +18,7 @@ export class FontsService implements IFontsService {
      * @author Kyrylo Maliuha
      */
     public getFonts(): FontOptions[] {
-        return [
+        this._fonts ||= [
             {
                 name: "Impact",
                 data: this._fontsRepository.getImpact(),
@@ -61,5 +62,6 @@ export class FontsService implements IFontsService {
                 style: "normal",
             },
         ];
+        return this._fonts;
     }
 }
