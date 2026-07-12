@@ -58,15 +58,6 @@ const messagesRepository: IMessagesRepository = new MessagesRepository();
 // components
 export const componentsService: IComponentsService = new ComponentsService();
 
-// channels
-const channelsRepository: IChannelsRepository = new ChannelsRepository();
-const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
-const channelsController: IChannelsController = new ChannelsController(
-    channelsService,
-    componentsService,
-    messagesRepository,
-);
-
 // images
 const imagesRepository: IImagesRepository = new ImagesRepository();
 
@@ -74,7 +65,6 @@ const imagesRepository: IImagesRepository = new ImagesRepository();
 const generationsRepository: IGenerationsRepository = new GenerationsRepository();
 
 // templates
-
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 
 // bandit
@@ -93,6 +83,19 @@ const ratingsController: IRatingsController = new RatingsController(
 // models
 const modalsService: IModalsService = new ModalsService();
 
+// context
+const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
+
+// channels
+const channelsRepository: IChannelsRepository = new ChannelsRepository();
+const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
+const channelsController: IChannelsController = new ChannelsController(
+    channelsService,
+    componentsService,
+    messagesRepository,
+    contextService,
+);
+
 // memes
 const memesController: IMemesController = new MemesController(
     memeGenerationQueue,
@@ -105,7 +108,6 @@ const memesController: IMemesController = new MemesController(
 );
 
 // context
-const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
 const contextController: IContextController = new ContextController(contextService, channelsService, memesController);
 
 // settings
