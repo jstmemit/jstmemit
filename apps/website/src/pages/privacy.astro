@@ -4,14 +4,13 @@ import Section from "#/components/ui/Section.astro";
 import Heading from "#/components/ui/Heading.astro";
 import Paragraph from "#/components/ui/Paragraph.astro";
 import Explainer from "#/components/ui/Explainer.astro";
-import Link from "#/components/Link.astro";
 import Separator from "#/components/ui/Separator.astro";
 ---
 
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
     <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
         <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
-            <Explainer>Last updated: 5th June, 2026</Explainer>
+            <Explainer>Last updated: 12th July, 2026</Explainer>
             <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
             <Paragraph id="privacyPolicyDescription">
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
@@ -45,6 +44,10 @@ import Separator from "#/components/ui/Separator.astro";
             <Paragraph>
                 <b>Jstmemit</b> only starts collecting them when someone with the "Manage Server" or "Manage Channels" permission
                 explicitly turns the bot on for a specific text channel.
+            </Paragraph>
+            <Paragraph>
+                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then in that case it will
+                not collect any messages, profile pictures or GIFs at all.
             </Paragraph>
         </div>
     </Section>
@@ -167,11 +170,12 @@ import Separator from "#/components/ui/Separator.astro";
             <Paragraph>
                 <b>Messages</b> - deleted after 30 days.<br />
                 <b>Links to images</b> - deleted after 24 hours.<br />
+                <b>Links to (server) avatars</b> - deleted after 30 days.<br />
                 <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
             </Paragraph>
             <Paragraph>
                 <b>Session replays</b> - deleted after 90 days.<br />
-                <b>Analytics events</b> - deleted after 7 years.<br />
+                <b>Analytics events</b> - deleted after 1 year.<br />
             </Paragraph>
         </div>
     </Section>
