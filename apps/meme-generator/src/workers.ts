@@ -17,7 +17,7 @@ memeGenerationWorker.on("failed", (job, error) => {
     analytics.captureException(error, job?.data.userId, {
         channelId: job?.data.channelId,
         trigger: job?.data.trigger,
-        templateName: job?.data.template?.name,
+        templateName: job?.data.templateName,
     });
 });
 

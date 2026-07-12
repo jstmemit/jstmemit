@@ -120,6 +120,10 @@ export class MemesService implements IMemesService {
                 imagesFilled: props.images.length,
 
                 trigger: data.trigger,
+                topics: template.topics,
+                types: template.types,
+                selectedTopic: template?.selectedTopic,
+                selectedType: template?.selectedType,
             },
         });
 

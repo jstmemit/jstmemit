@@ -14,4 +14,6 @@ export interface Template {
     height: number;
     images?: TemplateImage[];
     texts?: TemplateText[];
+    selectedTopic?: TemplateTopic;
+    selectedType?: TemplateType;
 }

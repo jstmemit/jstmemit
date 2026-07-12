@@ -72,7 +72,16 @@ export class BanditService implements IBanditService {
                 (name: string): number => this._sampleForName(name, templateStats),
             );
 
-            return candidates.find((template: Template): boolean => template.name === bestTemplateName);
+            const candidate = candidates.find((template: Template): boolean => template.name === bestTemplateName);
+
+            if (!candidate) {
+                return;
+            }
+
+            candidate.selectedTopic = topicBest;
+            candidate.selectedType = typeBest;
+
+            return candidate;
         } catch (error) {
             console.error(error);
 
