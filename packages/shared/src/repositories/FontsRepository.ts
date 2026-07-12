@@ -14,6 +14,10 @@ export class FontsRepository implements IFontsRepository {
         return readFileSync(join(here, "../fonts/ComicSans.ttf"));
     }
 
+    public getNotoSansMath(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansMath.ttf"));
+    }
+
     public getNotoSansHk(): Buffer {
         return readFileSync(join(here, "../fonts/NotoSansHK.otf"));
     }
