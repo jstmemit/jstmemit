@@ -27,7 +27,10 @@ export class BanditService implements IBanditService {
             if (templates.length === 0) {
                 return undefined;
             }
-            const templatesByTopic: Map<TemplateTopic, Template[]> = this._groupByTopic(templates);
+            const templatesByTopic: Map<TemplateTopic, Template[]> = this._templatesRepository.getAllByFieldMap(
+                templates,
+                "topics",
+            );
             const topics: TemplateTopic[] = [...templatesByTopic.keys()];
             const templateNames: string[] = templates.map((template: Template): string => template.name);
 
@@ -46,9 +49,24 @@ export class BanditService implements IBanditService {
             };
 
             const topicStats: ScopedStats<BanditStat> = {
-                global: this._aggregateTopicStats(topics, templatesByTopic, templateStats.global),
-                channel: this._aggregateTopicStats(topics, templatesByTopic, templateStats.channel),
-                user: this._aggregateTopicStats(topics, templatesByTopic, templateStats.user),
+                global: this._aggregateStats(
+                    templatesByTopic,
+                    templateStats.global,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
+                channel: this._aggregateStats(
+                    templatesByTopic,
+                    templateStats.channel,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
+                user: this._aggregateStats(
+                    templatesByTopic,
+                    templateStats.user,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
             };
 
             const bestTopic: TemplateTopic | undefined = this._selectBest(topics, (name: string): number =>
@@ -112,49 +130,32 @@ export class BanditService implements IBanditService {
         }
     }
 
-    private _groupByTopic(templates: Template[]): Map<TemplateTopic, Template[]> {
-        const map: Map<TemplateTopic, Template[]> = new Map();
+    private _aggregateStats<K, T>(
+        groupedByKey: Map<K, T[]>,
+        statsByName: Map<string, BanditStat>,
+        getName: (item: T) => string,
+        zero: (name: string) => BanditStat,
+    ): Map<K, BanditStat> {
+        const map: Map<K, BanditStat> = new Map();
 
-        for (const template of templates) {
-            for (const topic of template.topics) {
-                const bucket: Template[] | undefined = map.get(topic);
-
-                if (bucket) {
-                    bucket.push(template);
-                } else {
-                    map.set(topic, [template]);
-                }
-            }
-        }
-
-        return map;
-    }
-
-    private _aggregateTopicStats(
-        topics: TemplateTopic[],
-        templatesByTopic: Map<TemplateTopic, Template[]>,
-        templateStatsByName: Map<string, BanditStat>,
-    ): Map<TemplateTopic, BanditStat> {
-        const map: Map<TemplateTopic, BanditStat> = new Map();
-
-        for (const topic of topics) {
-            const templates: Template[] = templatesByTopic.get(topic) ?? [];
-
+        for (const [key, items] of groupedByKey) {
             let successes: number = 0;
             let failures: number = 0;
 
-            for (const template of templates) {
-                const stat: BanditStat = templateStatsByName.get(template.name) || this._zero(template.name);
+            for (const item of items) {
+                const name: string = getName(item);
+                const stat: BanditStat = statsByName.get(name) || zero(name);
+
                 successes += stat.successes;
                 failures += stat.failures;
             }
 
-            const templatesCount: number = templates.length || 1;
+            const count: number = items.length || 1;
 
-            map.set(topic, {
-                name: topic,
-                successes: successes / templatesCount,
-                failures: failures / templatesCount,
+            map.set(key, {
+                name: String(key),
+                successes: successes / count,
+                failures: failures / count,
             });
         }
 
