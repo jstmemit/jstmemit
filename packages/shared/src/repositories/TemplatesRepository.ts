@@ -1,5 +1,6 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
+import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -310,5 +311,50 @@ export class TemplatesRepository implements ITemplatesRepository {
             parrotBarber1,
             parrotBarber2,
         ];
+    }
+
+    public getAllByFieldMap<K extends keyof Template>(
+        templates: Template[],
+        fieldName: K,
+    ): Map<TemplateMapKey<Template, K>, Template[]> {
+        type Key = TemplateMapKey<Template, K>;
+
+        const map: Map<Key, Template[]> = new Map();
+
+        const addToMap = (template: Template, key: Key): void => {
+            const bucket: Template[] | undefined = map.get(key);
+
+            if (bucket) {
+                bucket.push(template);
+            } else {
+                map.set(key, [template]);
+            }
+        };
+
+        for (const template of templates) {
+            const value: Template[K] = template[fieldName];
+
+            if (Array.isArray(value)) {
+                for (const element of value as Key[]) {
+                    addToMap(template, element);
+                }
+            } else if (value !== undefined && value !== null) {
+                addToMap(template, value as Key);
+            }
+        }
+
+        return map;
+    }
+
+    public getAllByField<K extends keyof Template>(fieldName: K, value: TemplateMapKey<Template, K>): Template[] {
+        return this.getAll().filter((template: Template): boolean => {
+            const fieldValue: Template[K] = template[fieldName];
+
+            if (Array.isArray(fieldValue)) {
+                return (fieldValue as (typeof value)[]).includes(value);
+            }
+
+            return fieldValue === value;
+        });
     }
 }

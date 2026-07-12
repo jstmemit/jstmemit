@@ -1,5 +1,5 @@
-export interface ScopedStats<T> {
-    global: Map<string, T>;
-    channel: Map<string, T>;
-    user: Map<string, T>;
+export interface ScopedStats<T, K = string> {
+    global: Map<K, T>;
+    channel: Map<K, T>;
+    user: Map<K, T>;
 }
