@@ -18,6 +18,7 @@ import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 
 export class MemesService implements IMemesService {
+    private readonly _transparentImage: string = "https://files.jstmemit.com/jstmemit/images/transparent.png";
     private readonly _memesRepository: IMemesRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
@@ -197,7 +198,7 @@ export class MemesService implements IMemesService {
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return (await this._toPngDataUri(url)) ?? "https://files.jstmemit.com/jstmemit/images/transparent.png";
+                return (await this._toPngDataUri(url)) ?? this._transparentImage;
             }),
         );
 
