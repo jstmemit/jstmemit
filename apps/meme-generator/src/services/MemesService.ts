@@ -196,8 +196,8 @@ export class MemesService implements IMemesService {
 
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
-                const url: string | undefined = images[image.id];
-                return (url && (await this._toPngDataUri(url))) || "";
+                const url: string = images[image.id] ?? "";
+                return (await this._toPngDataUri(url)) ?? "https://files.jstmemit.com/jstmemit/images/transparent.png";
             }),
         );
 
