@@ -25,4 +25,16 @@ export const questions: FaqQuestion[] = [
         highlight: "Yes, at any time.",
         answer: 'Run /settings and then press the "Delete all data" button to delete everything that the bot stored for the channel.',
     },
+    {
+        id: "canIUseItInGroupChats",
+        question: 'Can I add the bot to "My Apps" and use it anywhere?',
+        highlight: "Yes, but without all features.",
+        answer: 'You\'ll be able to use /custom and right-click actions (like "Make it a Quote" or "Make it a News Report") everywhere on Discord. But memes from chat won\'t work that way for privacy reasons.',
+    },
+    {
+        id: "iReallyWantToMakeACustomMeme",
+        question: "What if I want to make a custom meme with specific text and/or image?",
+        highlight: "Use /custom!",
+        answer: "It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
+    },
 ];
