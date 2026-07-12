@@ -345,7 +345,7 @@ export class ComponentsService implements IComponentsService {
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 New feedback message`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Message:** ${message}`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Author ID:** ${userId}`));
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Author ID:** ${userId} | <@${userId}>`));
     }
 
     /**
