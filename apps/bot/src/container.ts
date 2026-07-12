@@ -43,6 +43,8 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import { ModalsService } from "#/services/ModalsService.ts";
+import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
+import { FeedbackController } from "#/controllers/FeedbackController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -111,6 +113,13 @@ const contextController: IContextController = new ContextController(contextServi
 // settings
 const settingsController: ISettingsController = new SettingsController(channelsService, componentsService);
 
+// feedback
+const feedbackController: IFeedbackController = new FeedbackController(
+    modalsService,
+    componentsService,
+    channelsService,
+);
+
 // events
 export const eventsController: IEventsController = new EventsController(
     contextController,
@@ -118,4 +127,5 @@ export const eventsController: IEventsController = new EventsController(
     memesController,
     ratingsController,
     settingsController,
+    feedbackController,
 );
