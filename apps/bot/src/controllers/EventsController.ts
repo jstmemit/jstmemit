@@ -128,6 +128,15 @@ export class EventsController implements IEventsController {
                 case "Make it a Grok tweet":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
                     return;
+                case "Make it a News Report":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
+                    return;
+                case "Make it a Comment":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "creativeMetaphor",
+                    );
+                    return;
                 case "Make an Explain meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(
                         interaction,
@@ -136,6 +145,30 @@ export class EventsController implements IEventsController {
                     return;
                 case "Make a Chad meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
+                    return;
+                case "Make a Stonks meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "stonks");
+                    return;
+                case "Make a Team Fortress 2 meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "tf2Hahaha");
+                    return;
+                case "Make a News Report meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
+                    return;
+                case "Make an Absolute Cinema meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "absoluteCinema");
+                    return;
+                case "Make a Missing Piece meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "missingPiece");
+                    return;
+                case "Make a Drinking Coffee meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "pfCoffeeScene");
+                    return;
+                case "Make a Two Gangsters meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "pfTwoGangsterWithGuns",
+                    );
                     return;
             }
             return;
@@ -159,6 +192,21 @@ export class EventsController implements IEventsController {
                     return;
                 case "Make an Incoming Call meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "incomingCall");
+                    return;
+                case "Make a Look At This meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "lookAtThis");
+                    return;
+                case "Make a Psych Ward meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "griffinsPaddedWalls",
+                    );
+                    return;
+                case "Make a Running Away meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "griffinsPeterGriffinRunningAway",
+                    );
                     return;
             }
             return;

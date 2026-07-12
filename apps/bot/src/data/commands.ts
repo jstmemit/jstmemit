@@ -314,6 +314,24 @@ export const commands = [
         },
     },
     {
+        name: "Make it a News Report",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Превратить в срочные новости",
+            uk: "Переробити у гарячі новини",
+        },
+    },
+    {
+        name: "Make it a Comment",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Превратить в комментарий",
+            uk: "Переробити у коментар",
+        },
+    },
+    {
         name: "Make a Chad meme",
         type: 3,
         contexts: [0, 1, 2],
@@ -360,6 +378,60 @@ export const commands = [
         },
     },
     {
+        name: "Make a Team Fortress 2 meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать Team Fortress 2 мем",
+            uk: "Зробити Team Fortress 2 мем",
+        },
+    },
+    {
+        name: "Make a Stonks meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать стонкс мем",
+            uk: "Зробити стонкс мем",
+        },
+    },
+    {
+        name: "Make an Absolute Cinema meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать Absolute Cinema мем",
+            uk: "Зробити Absolute Cinema мем",
+        },
+    },
+    {
+        name: "Make a Missing Piece meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать последний пазл мем",
+            uk: "Зробити останній пазл мем",
+        },
+    },
+    {
+        name: "Make a Drinking Coffee meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем про кофе",
+            uk: "Зробити мем про каву",
+        },
+    },
+    {
+        name: "Make a Two Gangsters meme",
+        type: 3,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем про двух гангстеров",
+            uk: "Зробити мем про двух гангстерів",
+        },
+    },
+    {
         name: "Put avatar on YT thumbnail",
         type: 2,
         contexts: [0, 1, 2],
@@ -403,6 +475,33 @@ export const commands = [
             ja: "着信画面ミームにする",
             ko: "전화 오는 밈 만들기",
             "zh-CN": "做成来电梗图",
+        },
+    },
+    {
+        name: "Make a Look At This meme",
+        type: 2,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: 'Сделать мем "Посмотри на это!"',
+            uk: 'Зробити мем "Подиви на це!"',
+        },
+    },
+    {
+        name: "Make a Psych Ward meme",
+        type: 2,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем про психушку",
+            uk: "Зробити мем про психушку",
+        },
+    },
+    {
+        name: "Make a Running Away meme",
+        type: 2,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем про погоню",
+            uk: "Зробити мем про погоню",
         },
     },
 ];
