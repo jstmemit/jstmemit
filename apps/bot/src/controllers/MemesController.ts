@@ -1,16 +1,17 @@
-import type {
-    User,
-    UserContextMenuCommandInteraction,
-    MessageContextMenuCommandInteraction,
-    ModalSubmitInteraction,
-    Attachment,
-    ModalBuilder,
-    ButtonInteraction,
-    ContainerBuilder,
-    ActionRowBuilder,
-    ButtonBuilder,
-    AutocompleteInteraction,
-    ChatInputCommandInteraction,
+import {
+    type User,
+    type UserContextMenuCommandInteraction,
+    type MessageContextMenuCommandInteraction,
+    type ModalSubmitInteraction,
+    type Attachment,
+    type ModalBuilder,
+    type ButtonInteraction,
+    type ContainerBuilder,
+    type ActionRowBuilder,
+    type ButtonBuilder,
+    type AutocompleteInteraction,
+    type ChatInputCommandInteraction,
+    Locale,
 } from "discord.js";
 import { MessageFlags, Message } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -69,15 +70,21 @@ export class MemesController implements IMemesController {
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
 
         let trigger: MemeGenerationJob["trigger"];
+        let locale: Locale = Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
 
+        if (!(interaction instanceof Message)) {
+            locale = interaction.locale;
+        }
+
         if (!channel?.enabled) {
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
+                locale,
                 channel?.enabled || false,
             );
             const notEnabledButtons: ActionRowBuilder<ButtonBuilder> =
-                this._componentsService.getEnableButtonsComponent(channel?.enabled || false);
+                this._componentsService.getEnableButtonsComponent(locale, channel?.enabled || false);
 
             await respond(interaction, [notEnabledComponent, notEnabledButtons]);
 
@@ -137,10 +144,10 @@ export class MemesController implements IMemesController {
 
             switch (reason) {
                 case "No props":
-                    message = this._componentsService.getNotEnoughContextMessageComponent(interaction.id);
+                    message = this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id);
                     break;
                 default:
-                    message = this._componentsService.getErrorMessageComponent(interaction.id);
+                    message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
             }
 
             await respond(interaction, [message]);
@@ -165,7 +172,7 @@ export class MemesController implements IMemesController {
 
         if (!interaction.channelId) {
             await interaction.reply({
-                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
                 flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
             });
             return;
@@ -201,7 +208,7 @@ export class MemesController implements IMemesController {
             });
         } catch {
             await interaction.editReply({
-                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
             });
         }
     }
@@ -242,7 +249,7 @@ export class MemesController implements IMemesController {
             });
         } catch {
             await interaction.editReply({
-                components: [this._componentsService.getErrorMessageComponent(interaction.id)],
+                components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
                 flags: MessageFlags.IsComponentsV2,
             });
         }
@@ -300,7 +307,9 @@ export class MemesController implements IMemesController {
 
         if (!template) {
             await interaction.reply({
-                components: [this._componentsService.getUnknownTemplateMessageComponent(interaction.id)],
+                components: [
+                    this._componentsService.getUnknownTemplateMessageComponent(interaction.locale, interaction.id),
+                ],
                 flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
             });
         }
@@ -383,7 +392,11 @@ export class MemesController implements IMemesController {
             if (!attachment.contentType?.startsWith("image/")) {
                 await interaction.editReply({
                     components: [
-                        this._componentsService.getWrongFileFormatMessageComponent(interaction.id, image.description),
+                        this._componentsService.getWrongFileFormatMessageComponent(
+                            interaction.locale,
+                            interaction.id,
+                            image.description,
+                        ),
                     ],
                     flags: MessageFlags.IsComponentsV2,
                 });

@@ -236,9 +236,13 @@ export class SettingsController implements ISettingsController {
         channel: typeof channelsTable.$inferSelect,
     ): Promise<void> {
         await respond(interaction, [
-            this._componentsService.getSettingsHeaderMessageComponent(channel.enabled),
-            this._componentsService.getSettingsBodyMessageComponent(channel.frequency, channel.useAvatarsInMemes),
-            this._componentsService.getSettingsFooterMessageComponent(),
+            this._componentsService.getSettingsHeaderMessageComponent(interaction.locale, channel.enabled),
+            this._componentsService.getSettingsBodyMessageComponent(
+                interaction.locale,
+                channel.frequency,
+                channel.useAvatarsInMemes,
+            ),
+            this._componentsService.getSettingsFooterMessageComponent(interaction.locale),
         ]);
     }
 
@@ -252,8 +256,8 @@ export class SettingsController implements ISettingsController {
      */
     private async _replyWithDeleteDataConfirmation(interaction: ButtonInteraction): Promise<void> {
         await respond(interaction, [
-            this._componentsService.getDeleteDataConfirmationMessageComponent(),
-            this._componentsService.getDeleteDataButtonsComponent(),
+            this._componentsService.getDeleteDataConfirmationMessageComponent(interaction.locale),
+            this._componentsService.getDeleteDataButtonsComponent(interaction.locale),
         ]);
     }
 
@@ -266,7 +270,7 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithDeleteDataSuccess(interaction: ButtonInteraction): Promise<void> {
-        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent()]);
+        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale)]);
     }
 
     /**
@@ -292,6 +296,8 @@ export class SettingsController implements ISettingsController {
             trigger: interaction.isCommand() ? "/settings" : "/enable",
             ...properties,
         });
-        await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
+        await respond(interaction, [
+            this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+        ]);
     }
 }
