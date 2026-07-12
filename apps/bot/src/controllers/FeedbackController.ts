@@ -9,6 +9,7 @@ import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export class FeedbackController implements IFeedbackController {
     private readonly _feedbackChannelId: string = "1525814003425874032";
@@ -29,12 +30,30 @@ export class FeedbackController implements IFeedbackController {
     public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void> {
         const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.user.id);
 
+        analytics.capture({
+            event: "feedback_modal_opened",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+            },
+        });
+
         await interaction.showModal(modal);
     }
 
     public async handleNewFeedbackSubmit(interaction: ModalSubmitInteraction): Promise<void> {
         const userId: string | undefined = interaction.customId.split(":")[1];
         const message: string | undefined = interaction.fields.getTextInputValue(`text`);
+
+        analytics.capture({
+            event: "feedback_modal_failed",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+            },
+        });
 
         if (!message || !userId) {
             await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
@@ -52,6 +71,15 @@ export class FeedbackController implements IFeedbackController {
         await interaction.editReply({
             components: [this._componentsService.getFeedbackMessageSubmitComponent(interaction.id, message)],
             flags: MessageFlags.IsComponentsV2,
+        });
+
+        analytics.capture({
+            event: "feedback_modal_submitted",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+            },
         });
     }
 }
