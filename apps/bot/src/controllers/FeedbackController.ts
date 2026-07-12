@@ -50,7 +50,8 @@ export class FeedbackController implements IFeedbackController {
         ]);
 
         await interaction.editReply({
-            content: "form submitted",
+            components: [this._componentsService.getFeedbackMessageSubmitComponent(interaction.id, message)],
+            flags: MessageFlags.IsComponentsV2,
         });
     }
 }

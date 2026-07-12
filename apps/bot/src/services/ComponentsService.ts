@@ -349,6 +349,26 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for submitting a feedback message
+     *
+     * @param interactionId
+     * @param message
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFeedbackMessageSubmitComponent(interactionId: string, message: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 Feedback submitted!`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `Thank you very much for your message, our team has received it and will look into it. If you'd like to discuss it further feel free to join our [Support server](https://discord.gg/THRnn8fhkZ), this way we can send our reply to you.`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Your message:`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(message));
+    }
+
+    /**
      * Makes a progress bar with emojis
      *
      * @param value

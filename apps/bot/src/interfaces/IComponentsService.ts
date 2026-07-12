@@ -16,4 +16,5 @@ export abstract class IComponentsService {
     public abstract getUnknownTemplateMessageComponent(interactionId: string): ContainerBuilder;
     public abstract getWrongFileFormatMessageComponent(interactionId: string, file: string): ContainerBuilder;
     public abstract getFeedbackMessageComponent(userId: string, message: string): ContainerBuilder;
+    public abstract getFeedbackMessageSubmitComponent(interactionId: string, message: string): ContainerBuilder;
 }
