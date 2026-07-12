@@ -148,7 +148,13 @@ export class EventsController implements IEventsController {
                     await this._memesController.handleGenerateViaContextMenuInteraction(
                         interaction,
                         // TODO: use topics when they are ready instead of this
-                        _.sample(["iInterviewedAnimals", "iGotHuntedByARealBountyHunter", "iAdopted100Dogs"]),
+                        _.sample([
+                            "iInterviewedAnimals",
+                            "iGotHuntedByARealBountyHunter",
+                            "iAdopted100Dogs",
+                            "oneDollarPrivateIsland",
+                            "worldsMostDangerousTrap",
+                        ]),
                     );
                     return;
                 case "Make an Incoming Call meme":
