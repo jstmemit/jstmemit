@@ -3,7 +3,9 @@
     "private": true,
     "type": "module",
     "devDependencies": {
+        "@jstmemit/i18n": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",
+        "discord.js": "^14.26.4",
         "react": "^19.2.7",
         "satori": "^0.26.0"
     },
