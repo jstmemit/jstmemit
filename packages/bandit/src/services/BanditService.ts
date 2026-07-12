@@ -4,9 +4,8 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
 import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { RatingKind } from "@jstmemit/shared/models/RatingKind";
-import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
 import type { ScopedStats } from "@jstmemit/shared/models/ScopedStats";
-import type { TemplateType } from "@jstmemit/shared/models/TemplateType";
+import type { TemplateMapStringKey } from "@jstmemit/shared/models/TemplateMapKey";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
@@ -28,11 +27,6 @@ export class BanditService implements IBanditService {
             if (templates.length === 0) {
                 return undefined;
             }
-            const templatesByTopic: Map<TemplateTopic, Template[]> = this._templatesRepository.getAllByFieldMap(
-                templates,
-                "topics",
-            );
-            const topics: TemplateTopic[] = [...templatesByTopic.keys()];
             const templateNames: string[] = templates.map((template: Template): string => template.name);
 
             const [globalTemplate, channelTemplate, userTemplate] = await Promise.all([
@@ -49,71 +43,29 @@ export class BanditService implements IBanditService {
                 user: this._index(userTemplate),
             };
 
-            const topicStats: ScopedStats<BanditStat> = {
-                global: this._aggregateStats(
-                    templatesByTopic,
-                    templateStats.global,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-                channel: this._aggregateStats(
-                    templatesByTopic,
-                    templateStats.channel,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-                user: this._aggregateStats(
-                    templatesByTopic,
-                    templateStats.user,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-            };
-
-            const bestTopic: TemplateTopic | undefined = this._selectBest(topics, (name: string): number =>
-                this._sampleForName(name, topicStats),
+            const { grouped: topicGrouped, best: topicBest } = this._selectBestGroup(
+                templates,
+                "topics",
+                templateStats,
             );
 
-            if (bestTopic === undefined) {
+            if (topicBest === undefined) {
                 return undefined;
             }
 
-            const templatesByType: Map<TemplateType, Template[]> = this._templatesRepository.getAllByFieldMap(
-                templatesByTopic.get(bestTopic) ?? [],
+            const topicTemplates: Template[] = topicGrouped.get(topicBest) ?? [];
+
+            const { grouped: typeGrouped, best: typeBest } = this._selectBestGroup(
+                topicTemplates,
                 "types",
-            );
-            const types: TemplateType[] = [...templatesByType.keys()];
-
-            const typesStats: ScopedStats<BanditStat> = {
-                global: this._aggregateStats(
-                    templatesByType,
-                    templateStats.global,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-                channel: this._aggregateStats(
-                    templatesByType,
-                    templateStats.channel,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-                user: this._aggregateStats(
-                    templatesByType,
-                    templateStats.user,
-                    (t: Template) => t.name,
-                    (name: string) => this._zero(name),
-                ),
-            };
-
-            const bestType: TemplateType | undefined = this._selectBest(types, (name: string): number =>
-                this._sampleForName(name, typesStats),
+                templateStats,
             );
 
-            if (bestType === undefined) {
+            if (typeBest === undefined) {
                 return undefined;
             }
 
-            const candidates: Template[] = templatesByType.get(bestType) ?? [];
+            const candidates: Template[] = typeGrouped.get(typeBest) ?? [];
 
             const bestTemplateName: string | undefined = this._selectBest(
                 candidates.map((template: Template): string => template.name),
@@ -166,7 +118,7 @@ export class BanditService implements IBanditService {
         }
     }
 
-    private _aggregateStats<K, T>(
+    private _aggregateStats<K extends string, T>(
         groupedByKey: Map<K, T[]>,
         statsByName: Map<string, BanditStat>,
         getName: (item: T) => string,
@@ -198,6 +150,48 @@ export class BanditService implements IBanditService {
         return map;
     }
 
+    private _selectBestGroup<K extends keyof Template>(
+        templates: Template[],
+        fieldName: K,
+        templateStats: ScopedStats<BanditStat>,
+    ): {
+        grouped: Map<TemplateMapStringKey<Template, K>, Template[]>;
+        best: TemplateMapStringKey<Template, K> | undefined;
+    } {
+        type Key = TemplateMapStringKey<Template, K>;
+
+        const grouped: Map<Key, Template[]> = this._templatesRepository.getAllByFieldMap(templates, fieldName) as Map<
+            Key,
+            Template[]
+        >;
+        const keys: Key[] = [...grouped.keys()];
+
+        const stats: ScopedStats<BanditStat, Key> = {
+            global: this._aggregateStats(
+                grouped,
+                templateStats.global,
+                (t: Template) => t.name,
+                (name: string) => this._zero(name),
+            ),
+            channel: this._aggregateStats(
+                grouped,
+                templateStats.channel,
+                (t: Template) => t.name,
+                (name: string) => this._zero(name),
+            ),
+            user: this._aggregateStats(
+                grouped,
+                templateStats.user,
+                (t: Template) => t.name,
+                (name: string) => this._zero(name),
+            ),
+        };
+
+        const best: Key | undefined = this._selectBest(keys, (name: Key): number => this._sampleForName(name, stats));
+
+        return { grouped, best };
+    }
+
     private _selectBest<T extends string>(names: T[], sample: (name: T) => number): T | undefined {
         let bestName: T | undefined;
         let bestSample: number = -1;
@@ -214,7 +208,7 @@ export class BanditService implements IBanditService {
         return bestName;
     }
 
-    private _sampleForName(name: string, stats: ScopedStats<BanditStat>): number {
+    private _sampleForName<K extends string>(name: K, stats: ScopedStats<BanditStat, K>): number {
         const global: BanditStat = stats.global.get(name) || this._zero(name);
         const channel: BanditStat = stats.channel.get(name) || this._zero(name);
         const user: BanditStat = stats.user.get(name) || this._zero(name);
