@@ -358,6 +358,10 @@ export class MemesController implements IMemesController {
             }
         }
 
+        if (template.images?.[1]) {
+            images[template.images[1].id] = interaction.user.displayAvatarURL({ extension: "png", size: 512 });
+        }
+
         return images;
     }
 
