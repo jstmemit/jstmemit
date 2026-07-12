@@ -376,6 +376,7 @@ export class MemesController implements IMemesController {
             const attachment: Attachment | undefined = files?.first();
 
             if (!attachment) {
+                images[image.id] = "";
                 continue;
             }
 
