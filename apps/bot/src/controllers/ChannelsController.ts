@@ -11,20 +11,24 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { analytics } from "@jstmemit/analytics";
 import { respond } from "#/helpers/respond.ts";
+import type { IContextService } from "#/interfaces/IContextService.ts";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
     private readonly _componentsService: IComponentsService;
     private readonly _messagesRepository: IMessagesRepository;
+    private readonly _contextService: IContextService;
 
     public constructor(
         channelsService: IChannelsService,
         componentsService: IComponentsService,
         messagesRepository: IMessagesRepository,
+        contextService: IContextService,
     ) {
         this._channelsService = channelsService;
         this._componentsService = componentsService;
         this._messagesRepository = messagesRepository;
+        this._contextService = contextService;
     }
 
     /**
@@ -63,6 +67,14 @@ export class ChannelsController implements IChannelsController {
                     enabled: isEnabled,
                 },
             });
+
+            if (interaction.inGuild() && interaction?.guild?.iconURL()) {
+                const serverIcon: string | null = interaction.guild.iconURL();
+
+                if (serverIcon) {
+                    this._contextService.saveAvatar(interaction.id, interaction.channelId, serverIcon);
+                }
+            }
 
             const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 isEnabled,

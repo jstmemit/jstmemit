@@ -5,6 +5,7 @@ import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepositor
 import { analytics } from "@jstmemit/analytics";
 
 export class ContextService implements IContextService {
+    private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
 
@@ -99,9 +100,10 @@ export class ContextService implements IContextService {
      * @author Kyrylo Maliuha
      */
     public saveAvatar(messageId: string, channelId: string, avatarUrl: string): boolean {
-        avatarUrl = `${avatarUrl.replace(".webp", "")}?size=1024&format=png`;
+        const url: URL = new URL(`${avatarUrl.replace(".webp", "")}?size=1024&format=png`);
+        url.searchParams.set("channel", channelId);
 
-        this._imagesRepository.new(messageId, channelId, avatarUrl, "avatar", new Date()).catch((error): void => {
+        this._imagesRepository.new(messageId, channelId, url.toString(), "avatar", new Date()).catch((error): void => {
             console.error(error);
         });
 
@@ -155,7 +157,7 @@ export class ContextService implements IContextService {
         try {
             const expiration: string | null = new URL(attachmentUrl).searchParams.get("ex");
 
-            return expiration ? new Date(parseInt(expiration, 16) * 1000) : new Date(Date.now() + 24 * 60 * 60 * 1000);
+            return expiration ? new Date(parseInt(expiration, 16) * 1000) : new Date(Date.now() + this._expiration);
         } catch (error) {
             console.error(error);
 
@@ -163,7 +165,7 @@ export class ContextService implements IContextService {
                 attachmentUrl,
             });
 
-            return new Date(Date.now() + 24 * 60 * 60 * 1000);
+            return new Date(Date.now() + this._expiration);
         }
     }
 }
