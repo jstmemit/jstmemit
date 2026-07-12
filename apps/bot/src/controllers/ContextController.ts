@@ -3,6 +3,9 @@ import type { Message } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
+import { Env } from "@jstmemit/shared/schemas/Env";
+
+const env = Env.parse(process.env);
 
 export class ContextController implements IContextController {
     private readonly _contextService: IContextService;
@@ -29,10 +32,16 @@ export class ContextController implements IContextController {
      */
     public async handleNewMessage(message: Message): Promise<void> {
         try {
+            let mentioned: boolean = false;
             const { id, content, channelId, attachments, author } = message;
 
             if (!channelId) {
                 return;
+            }
+
+            if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`)) {
+                await this._memesController.handleMemeInteraction(message);
+                mentioned = true;
             }
 
             if (!(await this._channelsService.isChannelEnabled(channelId))) {
@@ -57,7 +66,7 @@ export class ContextController implements IContextController {
                 }
             }
 
-            if (await this._channelsService.rollChannelFrequency(channelId)) {
+            if ((await this._channelsService.rollChannelFrequency(channelId)) && !mentioned) {
                 await this._memesController.handleMemeInteraction(message);
             }
         } catch (error) {
