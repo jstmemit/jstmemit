@@ -28,7 +28,7 @@ export class FeedbackController implements IFeedbackController {
     }
 
     public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void> {
-        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.user.id);
+        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.locale, interaction.user.id);
 
         analytics.capture({
             event: "feedback_modal_opened",

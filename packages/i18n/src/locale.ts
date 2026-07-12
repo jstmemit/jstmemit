@@ -77,7 +77,17 @@ export const locale: Partial<TranslationString> = {
         "feedback.submit.body":
             "Thank you very much for your message, our team has received it and will look into it. If you'd like to discuss it further feel free to join our [Support server](https://discord.gg/THRnn8fhkZ), this way we can send our reply to you.",
         "feedback.submit.yourMessage": "Your message:",
+
+        "modal.customMeme.title": "Generate a custom meme",
+        "modal.customMeme.text.label": "Text #{{id}}",
+        "modal.customMeme.text.placeholder": "Something funny here",
+        "modal.customMeme.image.label": "Image #{{id}}",
+        "modal.feedback.title": "Send feedback",
+        "modal.feedback.label": "Your message",
+        "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
+        "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
     },
+
     [Locale.Russian]: {
         "enable.heading.enabled": "🎉 Бот готов к работе!",
         "enable.heading.disabled": "🔴 Jstmemit выключен в этом канале",
@@ -153,5 +163,14 @@ export const locale: Partial<TranslationString> = {
         "feedback.submit.body":
             "Большое спасибо за ваше сообщение, наша команда получила его и рассмотрит. Если хотите обсудить его подробнее, присоединяйтесь к нашему [серверу поддержки](https://discord.gg/THRnn8fhkZ), так мы сможем отправить вам ответ.",
         "feedback.submit.yourMessage": "Ваше сообщение:",
+
+        "modal.customMeme.title": "Сделать свой мем",
+        "modal.customMeme.text.label": "Текст #{{id}}",
+        "modal.customMeme.text.placeholder": "Что-нибудь смешное",
+        "modal.customMeme.image.label": "Картинка #{{id}}",
+        "modal.feedback.title": "Отправить отзыв",
+        "modal.feedback.label": "Ваше сообщение",
+        "modal.feedback.description": "Сообщите о баге, предложите идею или просто напишите что думаете",
+        "modal.feedback.placeholder": "Привет, добавьте пожалуйста шаблон мема ...",
     },
 };

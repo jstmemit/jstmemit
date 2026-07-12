@@ -264,6 +264,7 @@ export class MemesController implements IMemesController {
         }
 
         const modal: ModalBuilder = this._modalsService.getGenerateCustomMemeModal(
+            interaction.locale,
             templateName,
             template?.texts,
             template?.images,
