@@ -11,6 +11,7 @@ import { Env } from "@jstmemit/shared/schemas/Env";
 import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.ts";
 import { AutoPoster } from "topgg-autoposter";
 import _ from "lodash";
+import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
 
 const env = Env.parse(process.env);
 
@@ -20,6 +21,7 @@ export class EventsController implements IEventsController {
     private readonly _memesController: IMemesController;
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
+    private readonly _feedbackController: IFeedbackController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -28,12 +30,14 @@ export class EventsController implements IEventsController {
         memesController: IMemesController,
         ratingsController: IRatingsController,
         settingsController: ISettingsController,
+        feedbackController: IFeedbackController,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
         this._memesController = memesController;
         this._ratingsController = ratingsController;
         this._settingsController = settingsController;
+        this._feedbackController = feedbackController;
     }
 
     /**
@@ -160,6 +164,9 @@ export class EventsController implements IEventsController {
                     break;
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
+                    return;
+                case "feedback":
+                    await this._feedbackController.handleOpenFeedbackModal(interaction);
                     return;
             }
 

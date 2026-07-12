@@ -203,6 +203,16 @@ export const commands = [
         ],
     },
     {
+        name: "feedback",
+        name_localizations: {
+            ru: "идеи",
+            uk: "ідеі",
+        },
+        description: "Report a bug, suggest a feature or tell us what you think",
+        contexts: [0, 1, 2],
+        integration_types: [0, 1],
+    },
+    {
         name: "Make it a Quote",
         type: 3,
         contexts: [0, 1, 2],

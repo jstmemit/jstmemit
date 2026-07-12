@@ -46,4 +46,24 @@ export class ModalsService implements IModalsService {
 
         return modal;
     }
+
+    public getSendFeedbackModal(userId: string): ModalBuilder {
+        const modal: ModalBuilder = new ModalBuilder().setCustomId(`feedback:${userId}`).setTitle("Send feedback");
+
+        const input: LabelBuilder = new LabelBuilder()
+            .setLabel(`Your message`)
+            .setDescription("Report a bug, suggest a feature or tell us what you think")
+            .setTextInputComponent(
+                new TextInputBuilder()
+                    .setCustomId(`text`)
+                    .setStyle(TextInputStyle.Paragraph)
+                    .setRequired(true)
+                    .setPlaceholder("Hello, could you please add ... meme template?")
+                    .setMaxLength(1000),
+            );
+
+        modal.addLabelComponents(input);
+
+        return modal;
+    }
 }

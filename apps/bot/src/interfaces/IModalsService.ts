@@ -8,4 +8,5 @@ export abstract class IModalsService {
         texts: TemplateText[] | undefined,
         images: TemplateImage[] | undefined,
     ): ModalBuilder;
+    public abstract getSendFeedbackModal(userId: string): ModalBuilder;
 }
