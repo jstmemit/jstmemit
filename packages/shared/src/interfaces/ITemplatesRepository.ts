@@ -1,14 +1,14 @@
 import type { Template } from "#/models/Template.ts";
-import type { ArrayElement } from "#/models/ArrayElement.ts";
+import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
 
 export abstract class ITemplatesRepository {
     public abstract getAll(): Template[];
-    public abstract getAllByFieldMap<T, K extends keyof T>(
-        items: T[],
+    public abstract getAllByFieldMap<K extends keyof Template>(
+        templates: Template[],
         fieldName: K,
-    ): Map<NonNullable<ArrayElement<T[K]>>, T[]>;
+    ): Map<TemplateMapKey<Template, K>, Template[]>;
     public abstract getAllByField<K extends keyof Template>(
         fieldName: K,
-        value: NonNullable<ArrayElement<Template[K]>>,
+        value: TemplateMapKey<Template, K>,
     ): Template[];
 }

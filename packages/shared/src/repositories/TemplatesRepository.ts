@@ -1,6 +1,6 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
-import type { ArrayElement } from "#/models/ArrayElement.ts";
+import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -313,40 +313,40 @@ export class TemplatesRepository implements ITemplatesRepository {
         ];
     }
 
-    public getAllByFieldMap<T, K extends keyof T>(items: T[], fieldName: K): Map<NonNullable<ArrayElement<T[K]>>, T[]> {
-        type Key = NonNullable<ArrayElement<T[K]>>;
+    public getAllByFieldMap<K extends keyof Template>(
+        templates: Template[],
+        fieldName: K,
+    ): Map<TemplateMapKey<Template, K>, Template[]> {
+        type Key = TemplateMapKey<Template, K>;
 
-        const map: Map<Key, T[]> = new Map();
+        const map: Map<Key, Template[]> = new Map();
 
-        const addToMap = (item: T, key: Key): void => {
-            const bucket: T[] | undefined = map.get(key);
+        const addToMap = (template: Template, key: Key): void => {
+            const bucket: Template[] | undefined = map.get(key);
 
             if (bucket) {
-                bucket.push(item);
+                bucket.push(template);
             } else {
-                map.set(key, [item]);
+                map.set(key, [template]);
             }
         };
 
-        for (const item of items) {
-            const value: T[K] = item[fieldName];
+        for (const template of templates) {
+            const value: Template[K] = template[fieldName];
 
             if (Array.isArray(value)) {
                 for (const element of value as Key[]) {
-                    addToMap(item, element);
+                    addToMap(template, element);
                 }
             } else if (value !== undefined && value !== null) {
-                addToMap(item, value as Key);
+                addToMap(template, value as Key);
             }
         }
 
         return map;
     }
 
-    public getAllByField<K extends keyof Template>(
-        fieldName: K,
-        value: NonNullable<ArrayElement<Template[K]>>,
-    ): Template[] {
+    public getAllByField<K extends keyof Template>(fieldName: K, value: TemplateMapKey<Template, K>): Template[] {
         return this.getAll().filter((template: Template): boolean => {
             const fieldValue: Template[K] = template[fieldName];
 
