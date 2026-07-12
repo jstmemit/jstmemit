@@ -11,7 +11,7 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
 
 export class FeedbackController implements IFeedbackController {
-    private readonly _feedbackChannelId: string = "1525768926317776946";
+    private readonly _feedbackChannelId: string = "1525814003425874032";
     private readonly _modalsService: IModalsService;
     private readonly _componentsService: IComponentsService;
     private readonly _channelsService: IChannelsService;
