@@ -2,6 +2,8 @@ import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
+import { client } from "#/bot.ts";
+import { type BaseMessageOptions, type Channel, MessageFlags } from "discord.js";
 
 export class ChannelsService implements IChannelsService {
     private readonly _channelsRepository: IChannelsRepository;
@@ -111,5 +113,23 @@ export class ChannelsService implements IChannelsService {
         const roll: number = Math.floor(Math.random() * channel.frequency);
 
         return roll === 0;
+    }
+
+    /**
+     * Sends message components to a channel
+     *
+     * @param channelId
+     * @param components
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async sendMessage(channelId: string, components: BaseMessageOptions["components"]): Promise<void> {
+        const channel: Channel | undefined = client.channels.cache.get(channelId);
+        if (channel && channel.isSendable()) {
+            await channel.send({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
+        }
     }
 }

@@ -334,6 +334,21 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a message component for received feedback messages
+     *
+     * @param userId
+     * @param message
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFeedbackMessageComponent(userId: string, message: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 New feedback message`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Message:** ${message}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Author ID:** ${userId}`));
+    }
+
+    /**
      * Makes a progress bar with emojis
      *
      * @param value

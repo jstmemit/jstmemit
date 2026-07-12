@@ -1,4 +1,4 @@
-import type { ChatInputCommandInteraction, ModalBuilder, ModalSubmitInteraction } from "discord.js";
+import type { ChatInputCommandInteraction, ModalSubmitInteraction } from "discord.js";
 
 export abstract class IFeedbackController {
     public abstract handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void>;

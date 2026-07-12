@@ -114,7 +114,11 @@ const contextController: IContextController = new ContextController(contextServi
 const settingsController: ISettingsController = new SettingsController(channelsService, componentsService);
 
 // feedback
-const feedbackController: IFeedbackController = new FeedbackController(modalsService);
+const feedbackController: IFeedbackController = new FeedbackController(
+    modalsService,
+    componentsService,
+    channelsService,
+);
 
 // events
 export const eventsController: IEventsController = new EventsController(

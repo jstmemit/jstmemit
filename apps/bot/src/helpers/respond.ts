@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { Message, type ModalSubmitInteraction } from "discord.js";
 import { type ChatInputCommandInteraction, type StringSelectMenuInteraction } from "discord.js";
 import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "discord.js";
 
@@ -17,7 +17,12 @@ import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "d
  * @author Kyrylo Maliuha
  */
 export const respond = async (
-    interaction: ButtonInteraction | ChatInputCommandInteraction | StringSelectMenuInteraction | Message,
+    interaction:
+        | ButtonInteraction
+        | ChatInputCommandInteraction
+        | StringSelectMenuInteraction
+        | Message
+        | ModalSubmitInteraction,
     components: BaseMessageOptions["components"],
 ): Promise<void> => {
     try {
@@ -35,7 +40,7 @@ export const respond = async (
                 flags: MessageFlags.IsComponentsV2,
                 components,
             });
-        } else {
+        } else if (!interaction.isModalSubmit()) {
             await interaction.update({
                 flags: MessageFlags.IsComponentsV2,
                 components,

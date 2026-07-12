@@ -110,6 +110,9 @@ export class EventsController implements IEventsController {
                 case "custom-meme":
                     await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
                     return;
+                case "feedback":
+                    await this._feedbackController.handleNewFeedbackSubmit(interaction);
+                    return;
             }
         }
 
