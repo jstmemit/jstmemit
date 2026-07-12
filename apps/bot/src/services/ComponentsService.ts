@@ -1,3 +1,4 @@
+import type { Locale } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -14,40 +15,46 @@ import {
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 import type { Frequency } from "#/models/Frequency.ts";
+import { t } from "@jstmemit/i18n";
 
 export class ComponentsService implements IComponentsService {
     /**
      * Returns back a message component for /enable command with a progress bar
      * showing passed messages amount in the channel
      *
+     * @param language
      * @param isEnabled
      * @param messagesAmount
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableMessageComponent(isEnabled: boolean, messagesAmount: number = 0): ContainerBuilder {
+    public getEnableMessageComponent(
+        language: Locale,
+        isEnabled: boolean,
+        messagesAmount: number = 0,
+    ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
 
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Jstmemit is off in this channel`}`,
+                    `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     isEnabled
-                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.`
+                        ? t("enable.body.enabled", language)
                         : messagesAmount >= 30
-                          ? `You already have over **${messagesAmount} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.`
-                          : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
+                          ? t("enable.body.disabled.enable", language, { messagesAmount: String(messagesAmount) })
+                          : t("enable.body.disabled.notenable", language),
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
-                        ? `Messages in memory: **${messagesAmount}/30**`
-                        : `Messages in memory: **${messagesAmount}**`,
+                        ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
+                        : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
                 ),
             )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${progressBar}`));
@@ -56,22 +63,25 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a row with enable/disable and open settings buttons
      *
+     * @param language
      * @param isEnabled
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableButtonsComponent(isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
+    public getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
-                    .setLabel(`${isEnabled ? `Turn off` : `Turn on`}`)
+                    .setLabel(
+                        `${isEnabled ? t("enable.button.turnOff", language) : t("enable.button.turnOn", language)}`,
+                    )
                     .setCustomId(`${isEnabled ? "disable" : "enable"}`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`⚙️ Open settings`)
+                    .setLabel(t("enable.button.settings", language))
                     .setCustomId(`settings`),
             );
     }
@@ -79,19 +89,16 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a message component for an unknown error
      *
+     * @param language
      * @param interactionId
      *
      * @author Kyrylo Maliuha
      */
-    public getErrorMessageComponent(interactionId: string): ContainerBuilder {
+    public getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔴 Something went wrong!`))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.`,
-                ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.body", language)))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
     }
 
     /**

@@ -6,6 +6,11 @@
         "@jstmemit/shared": "workspace:*",
         "discord.js": "^14.26.4"
     },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
     "exports": {
         ".": "./src/index.ts",
         "./*.ts": "./src/*.ts",

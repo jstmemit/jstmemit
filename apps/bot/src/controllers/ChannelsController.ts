@@ -77,12 +77,15 @@ export class ChannelsController implements IChannelsController {
             }
 
             const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
+                interaction.locale,
                 isEnabled,
                 messagesAmount,
             );
 
-            const buttons: ActionRowBuilder<ButtonBuilder> =
-                this._componentsService.getEnableButtonsComponent(isEnabled);
+            const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
+                interaction.locale,
+                isEnabled,
+            );
 
             await respond(interaction, [message, buttons]);
         } catch (error) {
@@ -93,7 +96,10 @@ export class ChannelsController implements IChannelsController {
                 command: "/enable",
             });
 
-            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(interaction.id);
+            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(
+                interaction.locale,
+                interaction.id,
+            );
 
             await respond(interaction, [message]);
         }

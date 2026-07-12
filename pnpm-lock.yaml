@@ -250,6 +250,9 @@ importers:
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@jstmemit/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
       '@jstmemit/meme-generator':
         specifier: workspace:*
         version: link:../meme-generator
