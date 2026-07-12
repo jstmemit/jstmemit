@@ -32,6 +32,12 @@ export class FontsService implements IFontsService {
                 style: "normal",
             },
             {
+                name: "Noto Sans Math",
+                data: this._fontsRepository.getNotoSansMath(),
+                weight: 400,
+                style: "normal",
+            },
+            {
                 name: "Noto Sans SC",
                 data: this._fontsRepository.getNotoSansSc(),
                 weight: 500,
