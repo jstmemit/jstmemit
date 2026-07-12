@@ -504,4 +504,22 @@ export const commands = [
             uk: "Зробити мем про погоню",
         },
     },
+    {
+        name: "Make a Thinking meme",
+        type: 2,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем размышление",
+            uk: "Зробити мем про роздум",
+        },
+    },
+    {
+        name: "Make a Hurt Knee meme",
+        type: 2,
+        contexts: [0, 1, 2],
+        name_localizations: {
+            ru: "Сделать мем про колено",
+            uk: "Зробити мем про коліно",
+        },
+    },
 ];

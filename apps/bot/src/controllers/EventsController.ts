@@ -208,6 +208,18 @@ export class EventsController implements IEventsController {
                         "griffinsPeterGriffinRunningAway",
                     );
                     return;
+                case "Make a Thinking meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "griffinsPeterGriffinThinking",
+                    );
+                    return;
+                case "Make a Hurt Knee meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(
+                        interaction,
+                        "griffinsPeterHurtsHisKnee",
+                    );
+                    return;
             }
             return;
         }
