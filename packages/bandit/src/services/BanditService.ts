@@ -6,6 +6,7 @@ import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { RatingKind } from "@jstmemit/shared/models/RatingKind";
 import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
 import type { ScopedStats } from "@jstmemit/shared/models/ScopedStats";
+import type { TemplateType } from "@jstmemit/shared/models/TemplateType";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
@@ -77,7 +78,42 @@ export class BanditService implements IBanditService {
                 return undefined;
             }
 
-            const candidates: Template[] = templatesByTopic.get(bestTopic) ?? [];
+            const templatesByType: Map<TemplateType, Template[]> = this._templatesRepository.getAllByFieldMap(
+                templatesByTopic.get(bestTopic) ?? [],
+                "types",
+            );
+            const types: TemplateType[] = [...templatesByType.keys()];
+
+            const typesStats: ScopedStats<BanditStat> = {
+                global: this._aggregateStats(
+                    templatesByType,
+                    templateStats.global,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
+                channel: this._aggregateStats(
+                    templatesByType,
+                    templateStats.channel,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
+                user: this._aggregateStats(
+                    templatesByType,
+                    templateStats.user,
+                    (t: Template) => t.name,
+                    (name: string) => this._zero(name),
+                ),
+            };
+
+            const bestType: TemplateType | undefined = this._selectBest(types, (name: string): number =>
+                this._sampleForName(name, typesStats),
+            );
+
+            if (bestType === undefined) {
+                return undefined;
+            }
+
+            const candidates: Template[] = templatesByType.get(bestType) ?? [];
 
             const bestTemplateName: string | undefined = this._selectBest(
                 candidates.map((template: Template): string => template.name),
