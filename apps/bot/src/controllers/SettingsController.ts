@@ -47,6 +47,7 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     trigger: interaction.isCommand() ? "/settings" : "/enable",
                     command: "/settings",
+                    language: interaction.locale,
                     ...channel,
                 },
             });
@@ -82,6 +83,7 @@ export class SettingsController implements ISettingsController {
                 properties: {
                     guildId: interaction.guildId,
                     command: "/settings",
+                    language: interaction.locale,
                     ...channel,
                 },
             });
@@ -119,6 +121,7 @@ export class SettingsController implements ISettingsController {
                 properties: {
                     guildId: interaction.guildId,
                     command: "/settings",
+                    language: interaction.locale,
                     ...channel,
                 },
             });
@@ -162,6 +165,7 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     channelId: interaction.channelId,
                     command: "/settings",
+                    language: interaction.locale,
                     old: old,
                     new: channel.frequency,
                 },
@@ -207,6 +211,7 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     channelId: interaction.channelId,
                     command: "/settings",
+                    language: interaction.locale,
                     old: old,
                     new: channel.useAvatarsInMemes,
                 },
@@ -290,6 +295,7 @@ export class SettingsController implements ISettingsController {
             channel_id: interaction.channelId,
             guild_id: interaction.guildId || "",
             trigger: interaction.isCommand() ? "/settings" : "/enable",
+            language: interaction.locale,
             ...properties,
         });
         await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
