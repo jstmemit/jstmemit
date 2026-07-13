@@ -45,6 +45,8 @@ import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import { ModalsService } from "#/services/ModalsService.ts";
 import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
 import { FeedbackController } from "#/controllers/FeedbackController.ts";
+import type { IHelpController } from "#/interfaces/IHelpController.ts";
+import { HelpController } from "#/controllers/HelpController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -122,6 +124,9 @@ const feedbackController: IFeedbackController = new FeedbackController(
     channelsService,
 );
 
+// help
+const helpController: IHelpController = new HelpController(componentsService, channelsService);
+
 // events
 export const eventsController: IEventsController = new EventsController(
     contextController,
@@ -130,5 +135,6 @@ export const eventsController: IEventsController = new EventsController(
     ratingsController,
     settingsController,
     feedbackController,
+    helpController,
     templatesRepository,
 );

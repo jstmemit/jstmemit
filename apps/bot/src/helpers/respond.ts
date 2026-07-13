@@ -9,6 +9,7 @@ import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "d
  *
  * @param interaction
  * @param components
+ * @param ephemeral
  *
  * @remarks .editReply() would make a new message in button or
  * select menu interactions and .update() doesn't exist for
@@ -24,7 +25,14 @@ export const respond = async (
         | Message
         | ModalSubmitInteraction,
     components: BaseMessageOptions["components"],
+    ephemeral: boolean = false,
 ): Promise<void> => {
+    const flags: (MessageFlags.IsComponentsV2 | MessageFlags.Ephemeral)[] = [MessageFlags.IsComponentsV2];
+
+    if (ephemeral) {
+        flags.push(MessageFlags.Ephemeral);
+    }
+
     try {
         if (interaction instanceof Message) {
             await interaction.reply({
@@ -50,7 +58,7 @@ export const respond = async (
         if (!(interaction instanceof Message)) {
             if (interaction.isChatInputCommand()) {
                 await interaction.reply({
-                    flags: MessageFlags.IsComponentsV2,
+                    flags,
                     components,
                 });
             } else {

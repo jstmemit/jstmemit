@@ -1,0 +1,1631 @@
+import { Locale } from "discord.js";
+import type { TranslationString } from "@jstmemit/shared/models/TranslationString";
+
+export const locale: Partial<TranslationString> = {
+    [Locale.EnglishUS]: {
+        "enable.heading.enabled": "🎉 Bot is ready!",
+        "enable.heading.disabled": "🔴 Jstmemit is off in this channel",
+        "enable.body.enabled":
+            "Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.",
+        "enable.body.disabled.ready":
+            "You already have over **{{messagesAmount}} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.",
+        "enable.body.disabled.notReady":
+            "Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.",
+        "enable.memory.progress": "Messages in memory: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Messages in memory: **{{messagesAmount}}**",
+
+        "enable.button.turnOff": "Turn off",
+        "enable.button.turnOn": "Turn on",
+        "enable.button.settings": "⚙️ Open settings",
+        "error.heading": "🔴 Something went wrong!",
+
+        "error.body":
+            "Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.",
+        "error.id": "**Error ID:** {{interactionId}}",
+
+        "notEnoughContext.heading": "🤔 Not enough context yet",
+        "notEnoughContext.body":
+            "Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs. If this error persists, please contact support.",
+        "unknownTemplate.heading": "🤔 I don't know such template",
+        "unknownTemplate.body":
+            "Make sure to select one of the autocomplete options when choosing a template in `/custom`",
+        "wrongFileFormat.heading": "🤔 Unknown image file format",
+        "wrongFileFormat.body": 'The file for "{{file}}" is not an image. Please try again with a PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 You don't have permission for that",
+        "missingPermissions.body":
+            "Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.",
+        "deleteData.confirm.heading": "🗑️ Delete all data for this channel?",
+        "deleteData.confirm.body":
+            "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",
+        "deleteData.success.heading": "✅ Data deleted!",
+        "deleteData.success.body":
+            "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with `/enable` if you wish to stop using it.",
+        "deleteData.button.cancel": "Cancel",
+        "deleteData.button.delete": "Delete all data",
+
+        "settings.about.heading": "❓ About this bot",
+        "settings.about.body":
+            "A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that.",
+        "settings.about.enablePrompt": "Enable Jstmemit below to start!",
+        "settings.button.disable": "Disable",
+        "settings.button.enable": "Enable",
+        "settings.status.enabled": "**✅ Jstmemit is turned on in this channel!**",
+        "settings.status.disabled": "**⚠️ Jstmemit needs to be enabled to make memes here!**",
+        "settings.meme.heading": "💬 Meme settings",
+        "settings.meme.body": "You can control how often the bot is going to send memes and what's on them",
+        "settings.frequency.heading": "Frequency",
+        "settings.frequency.body": "How often should the bot send a random meme in the chat without being asked to?",
+        "settings.frequency.never.label": "Never",
+        "settings.frequency.never.description": "Don't send memes, unless requested via a /meme command",
+        "settings.frequency.rarely.label": "Rarely",
+        "settings.frequency.rarely.description": "Once every ~100 messages",
+        "settings.frequency.sometimes.label": "Sometimes",
+        "settings.frequency.sometimes.description": "Once every ~50 messages (for bigger servers)",
+        "settings.frequency.often.label": "Often",
+        "settings.frequency.often.description": "Once every ~20 messages (for smaller servers)",
+        "settings.frequency.veryOften.label": "Very often",
+        "settings.frequency.veryOften.description": "Once every ~10 messages (can produce spam)",
+        "settings.avatars.heading": "Avatars in memes",
+        "settings.avatars.body": "Include profile pictures in generated memes?",
+        "settings.avatars.yes.label": "Yes",
+        "settings.avatars.yes.description": "Bot will use avatars for memes (recommended)",
+        "settings.avatars.no.label": "No",
+        "settings.avatars.no.description": "Bot won't use avatars for memes",
+        "settings.footer.body": "Want to remove all message data about this channel?",
+        "settings.footer.deleteButton": "Delete all data",
+        "feedback.submit.heading": "💬 Feedback submitted!",
+        "feedback.submit.body":
+            "Thank you very much for your message, our team has received it and will look into it. If you'd like to discuss it further feel free to join our [Support server](https://discord.gg/THRnn8fhkZ), this way we can send our reply to you.",
+        "feedback.submit.yourMessage": "Your message:",
+
+        "modal.customMeme.title": "Generate a custom meme",
+        "modal.customMeme.text.label": "Text #{{id}}",
+        "modal.customMeme.text.placeholder": "Something funny here",
+        "modal.customMeme.image.label": "Image #{{id}}",
+        "modal.feedback.title": "Send feedback",
+        "modal.feedback.label": "Your message",
+        "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
+        "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Just talk and it will make memes",
+        "help.autoMemes.tldr": "**It basically puts your images, GIFs and messages on meme templates**",
+        "help.autoMemes.description":
+            "Chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
+        "help.autoMemes.algorithm":
+            "Oh, and each generated meme has **`👍 Like`**, **`🔁 Regenerate`** and **`👎 Dislike`** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+        "help.faq.heading": "## ❓ Frequently asked questions",
+        "help.faq.description":
+            "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "I added the bot, what now?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Run /enable in a channel.** The bot will start learning from new messages there. After chatting for a bit run /meme to generate a meme. Memes will also come automatically when the channel is active and there is a conversation ongoing. You can change frequency for those in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Can I have different settings for every channel?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Yes!** All channel information, such as data for memes, frequency and other settings are stored separately for each channel. Nothing stops you from having very low meme frequency in your main chat, and setting it to high in your spam channel.",
+        "help.faq.isThereALimit.question": "Is there a limit on how many memes the bot can make daily?",
+        "help.faq.isThereALimit.answer":
+            "**No, there are no limits.** You can run `/meme` as many times a day as you want. And it's free, because each generation only takes milliseconds to finish. There are also no watermarks on memes so that they look cleaner than if they were made with other meme generators.",
+        "help.faq.canIDeleteStoredData.question": "Can I delete stored meme generation data?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Yes, at any time.** Run `/settings` and then press the "Delete all data" button to delete everything that the bot stored for the channel.',
+        "help.faq.addBotToMyApps.question": 'Can I add the bot to "My Apps" and use it anywhere?',
+        "help.faq.addBotToMyApps.answer":
+            '**Yes, but without some features.** You\'ll be able to use `/custom` and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work for privacy reasons.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "What if I want to make a custom meme with specific text and/or image?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
+        "help.button.addJstmemit": "🔗 Add Jstmemit",
+        "help.button.website": "🌐 Website",
+    },
+
+    [Locale.Russian]: {
+        "enable.heading.enabled": "🎉 Бот готов к работе!",
+        "enable.heading.disabled": "🔴 Jstmemit выключен в этом канале",
+        "enable.body.enabled":
+            "Jstmemit теперь активен и будет генерировать мемы во время общения тут. Качество улучшается по мере того, как бот изучает ваш канал, и результаты станут заметно лучше, когда в памяти будет около **~30 сообщений**.",
+        "enable.body.disabled.ready":
+            "У вас уже более **{{messagesAmount}} сообщений** в памяти, так что Jstmemit готов делать мемы. Просто включите бота обратно, и он начнёт генерировать их во время активных чатов.",
+        "enable.body.disabled.notReady":
+            "Бот не может делать мемы тут, пока вы не включите его для этого канала. Включите его, и он начнёт генерировать мемы во время активного общения.",
+        "enable.memory.progress": "Сообщений в памяти: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Сообщений в памяти: **{{messagesAmount}}**",
+
+        "enable.button.turnOff": "Выключить",
+        "enable.button.turnOn": "Включить",
+        "enable.button.settings": "⚙️ Открыть настройки",
+
+        "error.heading": "🔴 Что-то пошло не так!",
+        "error.body":
+            "Бот не смог ответить на ваш запрос из-за неизвестной ошибки. Попробуйте ещё раз, и если это происходит часто, обратитесь в поддержку.",
+        "error.id": "**Ошибка:** {{interactionId}}",
+
+        "notEnoughContext.heading": "🤔 Пока недостаточно контекста",
+        "notEnoughContext.body":
+            "Jstmemit нужно больше времени, чтобы изучить ваш канал, прежде чем он сможет сделать мем. Пообщайтесь ещё немного и отправьте пару GIF. Если ошибка повторяется, обратитесь в поддержку.",
+        "unknownTemplate.heading": "🤔 Я не знаю такой шаблон",
+        "unknownTemplate.body": "Обязательно выберите один из вариантов автодополнения при выборе шаблона в `/custom`",
+        "wrongFileFormat.heading": "🤔 Неизвестный формат изображения",
+        "wrongFileFormat.body":
+            'Файл для "{{file}}" не является изображением. Попробуйте ещё раз с PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 У вас нет прав для этого",
+        "missingPermissions.body":
+            "Только участники с правом **Управлять сервером** или **Управлять каналами** могут менять настройки Jstmemit. Обратитесь к администратору сервера, если вам нужно это изменить.",
+        "deleteData.confirm.heading": "🗑️ Удалить все данные для этого канала?",
+        "deleteData.confirm.body":
+            "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот останется включённым и начнёт обучаться заново на новых сообщениях. Если после этого вы хотите полностью его остановить, выключите его через `/enable`.",
+        "deleteData.success.heading": "✅ Данные удалены!",
+        "deleteData.success.body":
+            "Все сохранённые сообщения и ссылки на изображения для этого канала были удалены. Бот всё ещё включён и начнёт обучаться заново на новых сообщениях. Выключите его через `/enable`, если больше не хотите им пользоваться.",
+        "deleteData.button.cancel": "Отмена",
+        "deleteData.button.delete": "Удалить все данные",
+
+        "settings.about.heading": "❓ Об этом боте",
+        "settings.about.body":
+            "Jstmemit это бот который генерирует мемы на основе сообщений и картинок в чате. Обсуждаете рейд чей-то базы в расте? Бот сделает про это мемы.",
+        "settings.about.enablePrompt": "Включите Jstmemit чтобы начать!",
+        "settings.button.disable": "Выключить",
+        "settings.button.enable": "Включить",
+        "settings.status.enabled": "**✅ Jstmemit включён в этом канале!**",
+        "settings.status.disabled": "**⚠️ Чтобы делать мемы в этом канале нужно включить Jstmemit!**",
+        "settings.meme.heading": "💬 Настройки мемов",
+        "settings.meme.body": "Вы можете настроить, как часто бот будет отправлять мемы и что на них будет",
+        "settings.frequency.heading": "Редкость",
+        "settings.frequency.body": "Как часто бот должен отправлять случайный мем в чат без запроса?",
+        "settings.frequency.never.label": "Никогда",
+        "settings.frequency.never.description": "Не отправлять мемы, кроме запросов через команду /meme",
+        "settings.frequency.rarely.label": "Редко",
+        "settings.frequency.rarely.description": "Раз в ~100 сообщений",
+        "settings.frequency.sometimes.label": "Иногда",
+        "settings.frequency.sometimes.description": "Раз в ~50 сообщений (для больших серверов)",
+        "settings.frequency.often.label": "Часто",
+        "settings.frequency.often.description": "Раз в ~20 сообщений (для небольших серверов)",
+        "settings.frequency.veryOften.label": "Очень часто",
+        "settings.frequency.veryOften.description": "Раз в ~10 сообщений (может делать спам)",
+        "settings.avatars.heading": "Аватары в мемах",
+        "settings.avatars.body": "Использовать аватары в сгенерированных мемах?",
+        "settings.avatars.yes.label": "Да",
+        "settings.avatars.yes.description": "Бот будет использовать аватары для мемов (рекомендуется)",
+        "settings.avatars.no.label": "Нет",
+        "settings.avatars.no.description": "Бот не будет использовать аватары для мемов",
+        "settings.footer.body": "Хотите удалить все данные сообщений этого канала?",
+        "settings.footer.deleteButton": "Удалить все данные",
+        "feedback.submit.heading": "💬 Идея отправлена!",
+        "feedback.submit.body":
+            "Большое спасибо за ваше сообщение, наша команда получила его и рассмотрит. Если хотите обсудить его подробнее, присоединяйтесь к нашему [серверу поддержки](https://discord.gg/THRnn8fhkZ), так мы сможем отправить вам ответ.",
+        "feedback.submit.yourMessage": "Ваше сообщение:",
+
+        "modal.customMeme.title": "Сделать свой мем",
+        "modal.customMeme.text.label": "Текст #{{id}}",
+        "modal.customMeme.text.placeholder": "Что-нибудь смешное",
+        "modal.customMeme.image.label": "Картинка #{{id}}",
+        "modal.feedback.title": "Отправить отзыв",
+        "modal.feedback.label": "Ваше сообщение",
+        "modal.feedback.description": "Сообщите о баге, предложите идею или просто напишите что думаете",
+        "modal.feedback.placeholder": "Привет, добавьте пожалуйста шаблон мема ...",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Просто общайтесь, а он будет делать мемы",
+        "help.autoMemes.tldr": "**По сути он ставит ваши картинки, GIF и сообщения на шаблоны мемов**",
+        "help.autoMemes.description":
+            "Общайтесь как обычно. Раз в несколько десятков сообщений Jstmemit выбирает шаблон мема, берёт картинки/гифки/сообщения из этого канала и смешивает всё вместе. Вам не нужно выбирать шаблон, писать подписи или думать о форматах картинок.",
+        "help.autoMemes.algorithm":
+            "И да, у каждого сгенерированного мема есть кнопки **`👍 Нравится`**, **`🔁 Заново`** и **`👎 Не нравится`**. Они улучшают качество будущих мемов, помогая боту понять, что было смешно.",
+        "help.faq.heading": "## ❓ Частые вопросы",
+        "help.faq.description":
+            "Не нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Я добавил бота, что дальше?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Запустите /enable в канале.** Бот начнёт учиться на новых сообщениях там. Пообщайтесь немного и запустите /meme, чтобы сгенерировать мем. Мемы также будут приходить сами, когда канал активен и идёт разговор. Частоту таких мемов можно поменять в /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Можно сделать разные настройки для каждого канала?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Да!** Вся информация о канале, например данные для мемов, частота и другие настройки, хранится отдельно для каждого канала. Ничто не мешает поставить очень низкую частоту мемов в основном чате, а во флудилке выкрутить её на максимум.",
+        "help.faq.isThereALimit.question": "Есть ли лимит на количество мемов в день?",
+        "help.faq.isThereALimit.answer":
+            "**Нет, никаких лимитов.** Можете запускать `/meme` сколько угодно раз в день. И это бесплатно, потому что каждая генерация занимает лишь миллисекунды. А ещё на мемах нет водяных знаков, поэтому они выглядят чище, чем сделанные в других генераторах мемов.",
+        "help.faq.canIDeleteStoredData.question": "Можно удалить сохранённые данные для генерации мемов?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Да, в любой момент.** Запустите `/settings` и нажмите кнопку «Удалить все данные», чтобы стереть всё, что бот сохранил для канала.",
+        "help.faq.addBotToMyApps.question": "Можно добавить бота в «Мои приложения» и использовать его где угодно?",
+        "help.faq.addBotToMyApps.answer":
+            "**Да, но без части функций.** Вы сможете использовать `/custom` и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут из соображений приватности.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "А если я хочу сделать свой мем с конкретным текстом и/или картинкой?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Используйте `/custom`!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
+        "help.button.addJstmemit": "🔗 Добавить Jstmemit",
+        "help.button.website": "🌐 Сайт",
+    },
+    [Locale.Ukrainian]: {
+        "enable.heading.enabled": "🎉 Бот готовий до роботи!",
+        "enable.heading.disabled": "🔴 Jstmemit вимкнено у цьому каналі",
+        "enable.body.enabled":
+            "Jstmemit тепер активний і буде генерувати меми під час спілкування тут. Якість покращується у міру того, як бот вивчає ваш канал, і результати стануть помітно кращими, коли у пам'яті буде близько **~30 повідомлень**.",
+        "enable.body.disabled.ready":
+            "У вас вже понад **{{messagesAmount}} повідомлень** у пам'яті, тож Jstmemit готовий робити меми. Просто увімкніть бота знову, і він почне генерувати їх під час активного спілкування.",
+        "enable.body.disabled.notReady":
+            "Бот не може робити меми тут, поки ви не увімкнете його для цього каналу. Увімкніть його, і він почне генерувати меми під час активного спілкування.",
+        "enable.memory.progress": "Повідомлень у пам'яті: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Повідомлень у пам'яті: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Вимкнути",
+        "enable.button.turnOn": "Увімкнути",
+        "enable.button.settings": "⚙️ Відкрити налаштування",
+        "error.heading": "🔴 Щось пішло не так!",
+        "error.body":
+            "Бот не зміг відповісти на ваш запит через невідому помилку. Спробуйте ще раз, і якщо це трапляється часто, зверніться до підтримки.",
+        "error.id": "**Помилка:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Поки що недостатньо контексту",
+        "notEnoughContext.body":
+            "Jstmemit потрібно більше часу, щоб вивчити ваш канал, перш ніж він зможе зробити мем. Поспілкуйтеся ще трохи і надішліть кілька GIF. Якщо помилка повторюється, зверніться до підтримки.",
+        "unknownTemplate.heading": "🤔 Я не знаю такого шаблону",
+        "unknownTemplate.body": "Обов'язково оберіть один з варіантів автодоповнення при виборі шаблону в `/custom`",
+        "wrongFileFormat.heading": "🤔 Невідомий формат зображення",
+        "wrongFileFormat.body": 'Файл для "{{file}}" не є зображенням. Спробуйте ще раз із PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 У вас немає прав для цього",
+        "missingPermissions.body":
+            "Тільки учасники з правом **Керувати сервером** або **Керувати каналами** можуть змінювати налаштування Jstmemit. Зверніться до адміністратора сервера, якщо вам потрібно це змінити.",
+        "deleteData.confirm.heading": "🗑️ Видалити всі дані для цього каналу?",
+        "deleteData.confirm.body":
+            "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот залишиться увімкненим і почне навчатися заново на нових повідомленнях. Якщо після цього ви хочете повністю його зупинити, вимкніть його через `/enable`.",
+        "deleteData.success.heading": "✅ Дані видалено!",
+        "deleteData.success.body":
+            "Усі збережені повідомлення та посилання на зображення для цього каналу було видалено. Бот все ще увімкнений і почне навчатися заново на нових повідомленнях. Вимкніть його через `/enable`, якщо більше не хочете ним користуватися.",
+        "deleteData.button.cancel": "Скасувати",
+        "deleteData.button.delete": "Видалити всі дані",
+        "settings.about.heading": "❓ Про цього бота",
+        "settings.about.body":
+            "Jstmemit це бот, який генерує меми на основі повідомлень і картинок у чаті. Обговорюєте рейд чиєїсь бази у расті? Бот зробить про це меми.",
+        "settings.about.enablePrompt": "Увімкніть Jstmemit щоб почати!",
+        "settings.button.disable": "Вимкнути",
+        "settings.button.enable": "Увімкнути",
+        "settings.status.enabled": "**✅ Jstmemit увімкнено у цьому каналі!**",
+        "settings.status.disabled": "**⚠️ Щоб робити меми у цьому каналі, потрібно увімкнути Jstmemit!**",
+        "settings.meme.heading": "💬 Налаштування мемів",
+        "settings.meme.body": "Ви можете налаштувати, як часто бот буде надсилати меми і що на них буде",
+        "settings.frequency.heading": "Частота",
+        "settings.frequency.body": "Як часто бот має надсилати випадковий мем у чат без запиту?",
+        "settings.frequency.never.label": "Ніколи",
+        "settings.frequency.never.description": "Не надсилати меми, окрім запитів через команду /meme",
+        "settings.frequency.rarely.label": "Рідко",
+        "settings.frequency.rarely.description": "Раз на ~100 повідомлень",
+        "settings.frequency.sometimes.label": "Іноді",
+        "settings.frequency.sometimes.description": "Раз на ~50 повідомлень (для великих серверів)",
+        "settings.frequency.often.label": "Часто",
+        "settings.frequency.often.description": "Раз на ~20 повідомлень (для невеликих серверів)",
+        "settings.frequency.veryOften.label": "Дуже часто",
+        "settings.frequency.veryOften.description": "Раз на ~10 повідомлень (може робити спам)",
+        "settings.avatars.heading": "Аватари у мемах",
+        "settings.avatars.body": "Використовувати аватари у згенерованих мемах?",
+        "settings.avatars.yes.label": "Так",
+        "settings.avatars.yes.description": "Бот буде використовувати аватари для мемів (рекомендовано)",
+        "settings.avatars.no.label": "Ні",
+        "settings.avatars.no.description": "Бот не буде використовувати аватари для мемів",
+        "settings.footer.body": "Хочете видалити всі дані повідомлень цього каналу?",
+        "settings.footer.deleteButton": "Видалити всі дані",
+        "feedback.submit.heading": "💬 Ідею відправлено!",
+        "feedback.submit.body":
+            "Дуже дякуємо за ваше повідомлення, наша команда отримала його і розгляне. Якщо хочете обговорити його детальніше, приєднуйтесь до нашого [сервера підтримки](https://discord.gg/THRnn8fhkZ), так ми зможемо надіслати вам відповідь.",
+        "feedback.submit.yourMessage": "Ваше повідомлення:",
+        "modal.customMeme.title": "Зробити свій мем",
+        "modal.customMeme.text.label": "Текст #{{id}}",
+        "modal.customMeme.text.placeholder": "Щось смішне сюди",
+        "modal.customMeme.image.label": "Картинка #{{id}}",
+        "modal.feedback.title": "Відправити ідею",
+        "modal.feedback.label": "Ваше повідомлення",
+        "modal.feedback.description": "Повідомте про баг, запропонуйте ідею або просто напишіть, що думаєте",
+        "modal.feedback.placeholder": "Привіт, додайте будь ласка шаблон мема ...",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Просто спілкуйтесь, а він робитиме меми",
+        "help.autoMemes.tldr": "**По суті він ставить ваші картинки, GIF та повідомлення на шаблони мемів**",
+        "help.autoMemes.description":
+            "Спілкуйтесь як зазвичай. Раз на кілька десятків повідомлень Jstmemit обирає шаблон мема, бере картинки/гіфки/повідомлення з цього каналу та змішує все разом. Вам не треба обирати шаблон, писати підписи чи думати про формати картинок.",
+        "help.autoMemes.algorithm":
+            "І так, у кожного згенерованого мема є кнопки **`👍 Подобається`**, **`🔁 Заново`** та **`👎 Не подобається`**. Вони покращують якість майбутніх мемів, допомагаючи боту зрозуміти, що було смішно.",
+        "help.faq.heading": "## ❓ Часті питання",
+        "help.faq.description":
+            "Не знайшли відповідь на своє питання? Ми допоможемо вам на [сервері підтримки](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Я додав бота, що далі?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Запустіть /enable у каналі.** Бот почне вчитися на нових повідомленнях там. Поспілкуйтесь трохи і запустіть /meme, щоб згенерувати мем. Меми також з'являтимуться самі, коли канал активний і триває розмова. Частоту таких мемів можна змінити в /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Чи можна зробити різні налаштування для кожного каналу?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Так!** Уся інформація про канал, наприклад дані для мемів, частота та інші налаштування, зберігається окремо для кожного каналу. Ніщо не заважає поставити дуже низьку частоту мемів в основному чаті, а у флудилці викрутити її на максимум.",
+        "help.faq.isThereALimit.question": "Чи є ліміт на кількість мемів на день?",
+        "help.faq.isThereALimit.answer":
+            "**Ні, жодних лімітів.** Можете запускати `/meme` скільки завгодно разів на день. І це безкоштовно, бо кожна генерація займає лише мілісекунди. До того ж на мемах немає водяних знаків, тому вони виглядають чистіше, ніж зроблені в інших генераторах мемів.",
+        "help.faq.canIDeleteStoredData.question": "Чи можна видалити збережені дані для генерації мемів?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Так, будь-коли.** Запустіть `/settings` і натисніть кнопку «Видалити всі дані», щоб стерти все, що бот зберіг для каналу.",
+        "help.faq.addBotToMyApps.question": "Чи можна додати бота в «Мої застосунки» і користуватися ним будь-де?",
+        "help.faq.addBotToMyApps.answer":
+            "**Так, але без частини функцій.** Ви зможете використовувати `/custom` та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть з міркувань приватності.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "А якщо я хочу зробити власний мем з конкретним текстом та/або картинкою?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Використовуйте `/custom`!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
+        "help.button.addJstmemit": "🔗 Додати Jstmemit",
+        "help.button.website": "🌐 Сайт",
+    },
+    [Locale.Dutch]: {
+        "enable.heading.enabled": "🎉 De bot is er klaar voor!",
+        "enable.heading.disabled": "🔴 Jstmemit staat uit in dit kanaal",
+        "enable.body.enabled":
+            "Jstmemit is nu actief en gaat memes maken tijdens gesprekken hier. De kwaliteit wordt beter naarmate de bot je kanaal leert kennen, met veel betere resultaten zodra er zo'n **~30 berichten** in het geheugen zitten.",
+        "enable.body.disabled.ready":
+            "Je hebt al meer dan **{{messagesAmount}} berichten** in het geheugen, dus Jstmemit is klaar om memes te maken. Zet de bot gewoon weer aan en hij begint ze te maken tijdens actieve gesprekken.",
+        "enable.body.disabled.notReady":
+            "De bot kan hier geen memes maken totdat je hem inschakelt voor dit kanaal. Zet hem aan en hij begint memes te maken tijdens actieve gesprekken.",
+        "enable.memory.progress": "Berichten in geheugen: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Berichten in geheugen: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Uitzetten",
+        "enable.button.turnOn": "Aanzetten",
+        "enable.button.settings": "⚙️ Instellingen openen",
+        "error.heading": "🔴 Er ging iets mis!",
+        "error.body":
+            "De bot kon je verzoek niet beantwoorden door een onbekende fout. Probeer het opnieuw en neem contact op met support als dit vaak gebeurt.",
+        "error.id": "**Fout:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Nog niet genoeg context",
+        "notEnoughContext.body":
+            "Jstmemit heeft meer tijd nodig om je kanaal te leren kennen voordat hij een meme kan maken. Chat nog wat verder en stuur een paar GIF's. Blijft deze fout terugkomen, neem dan contact op met support.",
+        "unknownTemplate.heading": "🤔 Die template ken ik niet",
+        "unknownTemplate.body":
+            "Kies zeker een van de autocomplete opties bij het kiezen van een template in `/custom`",
+        "wrongFileFormat.heading": "🤔 Onbekend afbeeldingsformaat",
+        "wrongFileFormat.body":
+            'Het bestand voor "{{file}}" is geen afbeelding. Probeer het opnieuw met een PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Daar heb je geen rechten voor",
+        "missingPermissions.body":
+            "Alleen leden met de permissie **Server beheren** of **Kanalen beheren** kunnen de instellingen van Jstmemit aanpassen. Vraag een serveradmin als je dit wilt veranderen.",
+        "deleteData.confirm.heading": "🗑️ Alle data van dit kanaal verwijderen?",
+        "deleteData.confirm.body":
+            "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot blijft ingeschakeld en begint opnieuw te leren van nieuwe berichten. Wil je hem daarna helemaal stoppen, zet hem dan uit met `/enable`.",
+        "deleteData.success.heading": "✅ Data verwijderd!",
+        "deleteData.success.body":
+            "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd. De bot staat nog aan en begint opnieuw te leren van nieuwe berichten. Zet hem uit met `/enable` als je hem niet meer wilt gebruiken.",
+        "deleteData.button.cancel": "Annuleren",
+        "deleteData.button.delete": "Alle data verwijderen",
+        "settings.about.heading": "❓ Over deze bot",
+        "settings.about.body":
+            "Jstmemit is een bot die memes maakt op basis van berichten en afbeeldingen in de chat. Praten jullie over een raid op iemands base in Rust? Dan maakt de bot daar memes over.",
+        "settings.about.enablePrompt": "Schakel Jstmemit in om te beginnen!",
+        "settings.button.disable": "Uitschakelen",
+        "settings.button.enable": "Inschakelen",
+        "settings.status.enabled": "**✅ Jstmemit staat aan in dit kanaal!**",
+        "settings.status.disabled": "**⚠️ Om memes te maken in dit kanaal moet Jstmemit ingeschakeld zijn!**",
+        "settings.meme.heading": "💬 Meme instellingen",
+        "settings.meme.body": "Je kunt instellen hoe vaak de bot memes stuurt en wat erop staat",
+        "settings.frequency.heading": "Frequentie",
+        "settings.frequency.body": "Hoe vaak moet de bot ongevraagd een random meme in de chat sturen?",
+        "settings.frequency.never.label": "Nooit",
+        "settings.frequency.never.description": "Geen memes sturen, behalve via een /meme commando",
+        "settings.frequency.rarely.label": "Zelden",
+        "settings.frequency.rarely.description": "Eén per ~100 berichten",
+        "settings.frequency.sometimes.label": "Soms",
+        "settings.frequency.sometimes.description": "Eén per ~50 berichten (voor grotere servers)",
+        "settings.frequency.often.label": "Vaak",
+        "settings.frequency.often.description": "Eén per ~20 berichten (voor kleinere servers)",
+        "settings.frequency.veryOften.label": "Heel vaak",
+        "settings.frequency.veryOften.description": "Eén per ~10 berichten (kan spam opleveren)",
+        "settings.avatars.heading": "Avatars in memes",
+        "settings.avatars.body": "Profielfoto's gebruiken in gegenereerde memes?",
+        "settings.avatars.yes.label": "Ja",
+        "settings.avatars.yes.description": "De bot gebruikt avatars voor memes (aanbevolen)",
+        "settings.avatars.no.label": "Nee",
+        "settings.avatars.no.description": "De bot gebruikt geen avatars voor memes",
+        "settings.footer.body": "Wil je alle berichtdata van dit kanaal verwijderen?",
+        "settings.footer.deleteButton": "Alle data verwijderen",
+        "feedback.submit.heading": "💬 Feedback verstuurd!",
+        "feedback.submit.body":
+            "Heel erg bedankt voor je bericht, ons team heeft het ontvangen en gaat ernaar kijken. Wil je er verder over praten, kom dan gerust naar onze [Support server](https://discord.gg/THRnn8fhkZ), zo kunnen we je een antwoord sturen.",
+        "feedback.submit.yourMessage": "Jouw bericht:",
+        "modal.customMeme.title": "Maak je eigen meme",
+        "modal.customMeme.text.label": "Tekst #{{id}}",
+        "modal.customMeme.text.placeholder": "Iets grappigs hier",
+        "modal.customMeme.image.label": "Afbeelding #{{id}}",
+        "modal.feedback.title": "Feedback versturen",
+        "modal.feedback.label": "Jouw bericht",
+        "modal.feedback.description": "Meld een bug, stel een feature voor of laat weten wat je vindt",
+        "modal.feedback.placeholder": "Hoi, kunnen jullie het ... meme template toevoegen?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Gewoon kletsen en hij maakt memes",
+        "help.autoMemes.tldr": "**Hij plakt eigenlijk je afbeeldingen, GIF's en berichten op meme templates**",
+        "help.autoMemes.description":
+            "Chat zoals je normaal doet. Eens per paar dozijn berichten kiest Jstmemit een meme template, pakt wat afbeeldingen/gifs/berichten uit dit kanaal en gooit alles door elkaar. Je hoeft geen template te kiezen, geen teksten te schrijven en je niet druk te maken om bestandsformaten.",
+        "help.autoMemes.algorithm":
+            "O ja, elke gegenereerde meme heeft **`👍 Like`**, **`🔁 Opnieuw`** en **`👎 Dislike`** knoppen die de kwaliteit van toekomstige memes verbeteren door de bot te laten snappen wat grappig was.",
+        "help.faq.heading": "## ❓ Veelgestelde vragen",
+        "help.faq.description":
+            "Kun je het antwoord op je vraag niet vinden? We helpen je graag in de [Support server](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ik heb de bot toegevoegd, wat nu?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Voer /enable uit in een kanaal.** De bot begint daar te leren van nieuwe berichten. Chat even en voer dan /meme uit om een meme te maken. Memes komen ook vanzelf wanneer het kanaal actief is en er een gesprek gaande is. De frequentie daarvan kun je aanpassen in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Kan ik per kanaal andere instellingen hebben?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ja!** Alle kanaalinformatie, zoals data voor memes, frequentie en andere instellingen, wordt per kanaal apart opgeslagen. Niets houdt je tegen om een hele lage meme frequentie in je hoofdchat te hebben en hem in je spamkanaal juist hoog te zetten.",
+        "help.faq.isThereALimit.question": "Zit er een limiet op hoeveel memes de bot per dag kan maken?",
+        "help.faq.isThereALimit.answer":
+            "**Nee, er zijn geen limieten.** Je kunt `/meme` zo vaak per dag uitvoeren als je wilt. En het is gratis, want elke generatie duurt maar milliseconden. Er staan ook geen watermerken op de memes, dus ze zien er strakker uit dan bij andere meme generators.",
+        "help.faq.canIDeleteStoredData.question": "Kan ik opgeslagen data voor het genereren van memes verwijderen?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Ja, op elk moment.** Voer `/settings` uit en druk op de knop "Alle data verwijderen" om alles te wissen wat de bot voor het kanaal heeft opgeslagen.',
+        "help.faq.addBotToMyApps.question": 'Kan ik de bot toevoegen aan "Mijn apps" en hem overal gebruiken?',
+        "help.faq.addBotToMyApps.answer":
+            '**Ja, maar zonder sommige functies.** Je kunt `/custom` en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, vanwege privacy.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Wat als ik een eigen meme wil maken met specifieke tekst en/of afbeelding?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Gebruik `/custom`!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
+        "help.button.addJstmemit": "🔗 Jstmemit toevoegen",
+        "help.button.website": "🌐 Website",
+    },
+    [Locale.French]: {
+        "enable.heading.enabled": "🎉 Le bot est prêt !",
+        "enable.heading.disabled": "🔴 Jstmemit est désactivé dans ce salon",
+        "enable.body.enabled":
+            "Jstmemit est maintenant actif et va générer des mèmes pendant les discussions ici. La qualité s'améliore au fur et à mesure qu'il apprend à connaître votre salon, avec de bien meilleurs résultats une fois qu'il a environ **~30 messages** en mémoire.",
+        "enable.body.disabled.ready":
+            "Vous avez déjà plus de **{{messagesAmount}} messages** en mémoire, donc Jstmemit est prêt à faire des mèmes. Réactivez simplement le bot et il commencera à en générer pendant les discussions actives.",
+        "enable.body.disabled.notReady":
+            "Le bot ne peut pas faire de mèmes ici tant que vous ne l'avez pas activé pour ce salon. Activez-le et il commencera à générer des mèmes pendant les discussions actives.",
+        "enable.memory.progress": "Messages en mémoire : **{{messagesAmount}}/30**",
+        "enable.memory.full": "Messages en mémoire : **{{messagesAmount}}**",
+        "enable.button.turnOff": "Désactiver",
+        "enable.button.turnOn": "Activer",
+        "enable.button.settings": "⚙️ Ouvrir les paramètres",
+        "error.heading": "🔴 Quelque chose s'est mal passé !",
+        "error.body":
+            "Le bot n'a pas pu répondre à votre demande à cause d'une erreur inconnue. Réessayez et si cela arrive souvent, contactez le support.",
+        "error.id": "**Erreur :** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Pas encore assez de contexte",
+        "notEnoughContext.body":
+            "Jstmemit a besoin de plus de temps pour apprendre à connaître votre salon avant de pouvoir faire un mème. Discutez encore un peu et envoyez quelques GIF. Si cette erreur persiste, contactez le support.",
+        "unknownTemplate.heading": "🤔 Je ne connais pas ce modèle",
+        "unknownTemplate.body":
+            "Veillez à sélectionner une des options d'autocomplétion en choisissant un modèle dans `/custom`",
+        "wrongFileFormat.heading": "🤔 Format d'image inconnu",
+        "wrongFileFormat.body":
+            'Le fichier pour "{{file}}" n\'est pas une image. Réessayez avec un PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Vous n'avez pas la permission pour ça",
+        "missingPermissions.body":
+            "Seuls les membres avec la permission **Gérer le serveur** ou **Gérer les salons** peuvent modifier les paramètres de Jstmemit. Demandez à un admin du serveur si vous voulez changer cela.",
+        "deleteData.confirm.heading": "🗑️ Supprimer toutes les données de ce salon ?",
+        "deleteData.confirm.body":
+            "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot reste activé et recommencera à apprendre avec les nouveaux messages. Si vous voulez l'arrêter complètement ensuite, désactivez-le avec `/enable`.",
+        "deleteData.success.heading": "✅ Données supprimées !",
+        "deleteData.success.body":
+            "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés. Le bot est toujours actif et recommencera à apprendre avec les nouveaux messages. Désactivez-le avec `/enable` si vous ne voulez plus l'utiliser.",
+        "deleteData.button.cancel": "Annuler",
+        "deleteData.button.delete": "Supprimer toutes les données",
+        "settings.about.heading": "❓ À propos de ce bot",
+        "settings.about.body":
+            "Jstmemit est un bot qui génère des mèmes à partir des messages et images du chat. Vous parlez d'un raid sur la base de quelqu'un dans Rust ? Le bot en fera des mèmes.",
+        "settings.about.enablePrompt": "Activez Jstmemit pour commencer !",
+        "settings.button.disable": "Désactiver",
+        "settings.button.enable": "Activer",
+        "settings.status.enabled": "**✅ Jstmemit est activé dans ce salon !**",
+        "settings.status.disabled": "**⚠️ Pour faire des mèmes dans ce salon, il faut activer Jstmemit !**",
+        "settings.meme.heading": "💬 Paramètres des mèmes",
+        "settings.meme.body": "Vous pouvez contrôler la fréquence d'envoi des mèmes et ce qu'ils contiennent",
+        "settings.frequency.heading": "Fréquence",
+        "settings.frequency.body":
+            "À quelle fréquence le bot doit-il envoyer un mème aléatoire dans le chat sans qu'on lui demande ?",
+        "settings.frequency.never.label": "Jamais",
+        "settings.frequency.never.description": "Ne pas envoyer de mèmes, sauf via la commande /meme",
+        "settings.frequency.rarely.label": "Rarement",
+        "settings.frequency.rarely.description": "Un tous les ~100 messages",
+        "settings.frequency.sometimes.label": "Parfois",
+        "settings.frequency.sometimes.description": "Un tous les ~50 messages (pour les grands serveurs)",
+        "settings.frequency.often.label": "Souvent",
+        "settings.frequency.often.description": "Un tous les ~20 messages (pour les petits serveurs)",
+        "settings.frequency.veryOften.label": "Très souvent",
+        "settings.frequency.veryOften.description": "Un tous les ~10 messages (peut produire du spam)",
+        "settings.avatars.heading": "Avatars dans les mèmes",
+        "settings.avatars.body": "Inclure les photos de profil dans les mèmes générés ?",
+        "settings.avatars.yes.label": "Oui",
+        "settings.avatars.yes.description": "Le bot utilisera les avatars pour les mèmes (recommandé)",
+        "settings.avatars.no.label": "Non",
+        "settings.avatars.no.description": "Le bot n'utilisera pas les avatars pour les mèmes",
+        "settings.footer.body": "Vous voulez supprimer toutes les données de messages de ce salon ?",
+        "settings.footer.deleteButton": "Supprimer toutes les données",
+        "feedback.submit.heading": "💬 Avis envoyé !",
+        "feedback.submit.body":
+            "Merci beaucoup pour votre message, notre équipe l'a bien reçu et va l'examiner. Si vous voulez en discuter davantage, rejoignez notre [serveur de support](https://discord.gg/THRnn8fhkZ), on pourra ainsi vous répondre.",
+        "feedback.submit.yourMessage": "Votre message :",
+        "modal.customMeme.title": "Générer un mème perso",
+        "modal.customMeme.text.label": "Texte #{{id}}",
+        "modal.customMeme.text.placeholder": "Quelque chose de drôle ici",
+        "modal.customMeme.image.label": "Image #{{id}}",
+        "modal.feedback.title": "Envoyer un avis",
+        "modal.feedback.label": "Votre message",
+        "modal.feedback.description": "Signalez un bug, proposez une fonctionnalité ou donnez votre avis",
+        "modal.feedback.placeholder": "Bonjour, pourriez-vous ajouter le modèle de mème ... ?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Discutez, il s'occupe des mèmes",
+        "help.autoMemes.tldr": "**En gros, il colle vos images, GIF et messages sur des modèles de mèmes**",
+        "help.autoMemes.description":
+            "Discutez comme d'habitude. Toutes les quelques dizaines de messages, Jstmemit choisit un modèle de mème, prend des images/gifs/messages de ce salon et mélange le tout. Pas besoin de choisir un modèle, d'écrire des légendes ou de vous soucier des formats d'image.",
+        "help.autoMemes.algorithm":
+            "Ah, et chaque mème généré a des boutons **`👍 J'aime`**, **`🔁 Regénérer`** et **`👎 Je n'aime pas`** qui améliorent la qualité des futurs mèmes en aidant le bot à comprendre ce qui était drôle.",
+        "help.faq.heading": "## ❓ Questions fréquentes",
+        "help.faq.description":
+            "Vous ne trouvez pas la réponse à votre question ? On peut vous aider sur le [serveur de support](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "J'ai ajouté le bot, et maintenant ?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Lancez /enable dans un salon.** Le bot commencera à apprendre des nouveaux messages là-bas. Après avoir discuté un peu, lancez /meme pour générer un mème. Les mèmes arriveront aussi tout seuls quand le salon est actif et qu'une conversation est en cours. Vous pouvez régler leur fréquence dans /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Puis-je avoir des paramètres différents pour chaque salon ?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Oui !** Toutes les informations du salon, comme les données pour les mèmes, la fréquence et les autres paramètres, sont stockées séparément pour chaque salon. Rien ne vous empêche d'avoir une fréquence très basse dans votre chat principal et de la mettre au maximum dans votre salon de flood.",
+        "help.faq.isThereALimit.question": "Y a-t-il une limite au nombre de mèmes par jour ?",
+        "help.faq.isThereALimit.answer":
+            "**Non, aucune limite.** Vous pouvez lancer `/meme` autant de fois par jour que vous voulez. Et c'est gratuit, car chaque génération ne prend que quelques millisecondes. Il n'y a pas non plus de filigrane sur les mèmes, donc ils sont plus propres que ceux faits avec d'autres générateurs.",
+        "help.faq.canIDeleteStoredData.question":
+            "Puis-je supprimer les données stockées pour la génération de mèmes ?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Oui, à tout moment.** Lancez `/settings` puis appuyez sur le bouton « Supprimer toutes les données » pour effacer tout ce que le bot a stocké pour le salon.",
+        "help.faq.addBotToMyApps.question": "Puis-je ajouter le bot à « Mes applications » et l'utiliser partout ?",
+        "help.faq.addBotToMyApps.answer":
+            "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser `/custom` et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, pour des raisons de confidentialité.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Et si je veux faire un mème perso avec un texte et/ou une image en particulier ?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Utilisez `/custom` !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
+        "help.button.addJstmemit": "🔗 Ajouter Jstmemit",
+        "help.button.website": "🌐 Site web",
+    },
+    [Locale.German]: {
+        "enable.heading.enabled": "🎉 Der Bot ist bereit!",
+        "enable.heading.disabled": "🔴 Jstmemit ist in diesem Kanal deaktiviert",
+        "enable.body.enabled":
+            "Jstmemit ist jetzt aktiv und wird während der Chats hier Memes erstellen. Die Qualität wird besser, je mehr der Bot deinen Kanal kennenlernt, mit deutlich besseren Ergebnissen sobald etwa **~30 Nachrichten** im Speicher sind.",
+        "enable.body.disabled.ready":
+            "Du hast bereits über **{{messagesAmount}} Nachrichten** im Speicher, also ist Jstmemit bereit, Memes zu machen. Schalte den Bot einfach wieder ein und er fängt an, sie während aktiver Chats zu erstellen.",
+        "enable.body.disabled.notReady":
+            "Der Bot kann hier keine Memes machen, bis du ihn für diesen Kanal aktivierst. Schalte ihn ein und er beginnt, während aktiver Chats Memes zu erstellen.",
+        "enable.memory.progress": "Nachrichten im Speicher: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Nachrichten im Speicher: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Ausschalten",
+        "enable.button.turnOn": "Einschalten",
+        "enable.button.settings": "⚙️ Einstellungen öffnen",
+        "error.heading": "🔴 Etwas ist schiefgelaufen!",
+        "error.body":
+            "Der Bot konnte deine Anfrage wegen eines unbekannten Fehlers nicht beantworten. Versuche es erneut und wenn das öfter passiert, wende dich an den Support.",
+        "error.id": "**Fehler:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Noch nicht genug Kontext",
+        "notEnoughContext.body":
+            "Jstmemit braucht mehr Zeit, um deinen Kanal kennenzulernen, bevor er ein Meme machen kann. Chattet noch ein bisschen und schickt ein paar GIFs. Wenn dieser Fehler weiterhin auftritt, wende dich an den Support.",
+        "unknownTemplate.heading": "🤔 Diese Vorlage kenne ich nicht",
+        "unknownTemplate.body":
+            "Wähle unbedingt eine der Autovervollständigungs-Optionen, wenn du eine Vorlage in `/custom` auswählst",
+        "wrongFileFormat.heading": "🤔 Unbekanntes Bildformat",
+        "wrongFileFormat.body":
+            'Die Datei für "{{file}}" ist kein Bild. Versuche es erneut mit einem PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Dafür hast du keine Berechtigung",
+        "missingPermissions.body":
+            "Nur Mitglieder mit der Berechtigung **Server verwalten** oder **Kanäle verwalten** können die Einstellungen von Jstmemit ändern. Frag einen Server-Admin, wenn du das ändern möchtest.",
+        "deleteData.confirm.heading": "🗑️ Alle Daten für diesen Kanal löschen?",
+        "deleteData.confirm.body":
+            "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot bleibt aktiviert und beginnt, aus neuen Nachrichten neu zu lernen. Wenn du ihn danach komplett stoppen willst, schalte ihn mit `/enable` aus.",
+        "deleteData.success.heading": "✅ Daten gelöscht!",
+        "deleteData.success.body":
+            "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht. Der Bot ist noch an und beginnt, aus neuen Nachrichten neu zu lernen. Schalte ihn mit `/enable` aus, wenn du ihn nicht mehr nutzen möchtest.",
+        "deleteData.button.cancel": "Abbrechen",
+        "deleteData.button.delete": "Alle Daten löschen",
+        "settings.about.heading": "❓ Über diesen Bot",
+        "settings.about.body":
+            "Jstmemit ist ein Bot, der Memes basierend auf Nachrichten und Bildern im Chat erstellt. Ihr redet über einen Raid auf jemandes Base in Rust? Der Bot macht Memes darüber.",
+        "settings.about.enablePrompt": "Aktiviere Jstmemit, um loszulegen!",
+        "settings.button.disable": "Deaktivieren",
+        "settings.button.enable": "Aktivieren",
+        "settings.status.enabled": "**✅ Jstmemit ist in diesem Kanal eingeschaltet!**",
+        "settings.status.disabled": "**⚠️ Um in diesem Kanal Memes zu machen, muss Jstmemit aktiviert werden!**",
+        "settings.meme.heading": "💬 Meme-Einstellungen",
+        "settings.meme.body": "Du kannst steuern, wie oft der Bot Memes schickt und was darauf zu sehen ist",
+        "settings.frequency.heading": "Häufigkeit",
+        "settings.frequency.body": "Wie oft soll der Bot ungefragt ein zufälliges Meme in den Chat schicken?",
+        "settings.frequency.never.label": "Nie",
+        "settings.frequency.never.description": "Keine Memes schicken, außer über den /meme Befehl",
+        "settings.frequency.rarely.label": "Selten",
+        "settings.frequency.rarely.description": "Eins pro ~100 Nachrichten",
+        "settings.frequency.sometimes.label": "Manchmal",
+        "settings.frequency.sometimes.description": "Eins pro ~50 Nachrichten (für größere Server)",
+        "settings.frequency.often.label": "Oft",
+        "settings.frequency.often.description": "Eins pro ~20 Nachrichten (für kleinere Server)",
+        "settings.frequency.veryOften.label": "Sehr oft",
+        "settings.frequency.veryOften.description": "Eins pro ~10 Nachrichten (kann Spam erzeugen)",
+        "settings.avatars.heading": "Avatare in Memes",
+        "settings.avatars.body": "Profilbilder in generierten Memes verwenden?",
+        "settings.avatars.yes.label": "Ja",
+        "settings.avatars.yes.description": "Der Bot verwendet Avatare für Memes (empfohlen)",
+        "settings.avatars.no.label": "Nein",
+        "settings.avatars.no.description": "Der Bot verwendet keine Avatare für Memes",
+        "settings.footer.body": "Möchtest du alle Nachrichtendaten dieses Kanals entfernen?",
+        "settings.footer.deleteButton": "Alle Daten löschen",
+        "feedback.submit.heading": "💬 Feedback abgeschickt!",
+        "feedback.submit.body":
+            "Vielen Dank für deine Nachricht, unser Team hat sie erhalten und wird sie sich ansehen. Wenn du weiter darüber sprechen möchtest, komm gerne auf unseren [Support-Server](https://discord.gg/THRnn8fhkZ), so können wir dir antworten.",
+        "feedback.submit.yourMessage": "Deine Nachricht:",
+        "modal.customMeme.title": "Eigenes Meme erstellen",
+        "modal.customMeme.text.label": "Text #{{id}}",
+        "modal.customMeme.text.placeholder": "Etwas Lustiges hier",
+        "modal.customMeme.image.label": "Bild #{{id}}",
+        "modal.feedback.title": "Feedback senden",
+        "modal.feedback.label": "Deine Nachricht",
+        "modal.feedback.description": "Melde einen Bug, schlag ein Feature vor oder sag uns deine Meinung",
+        "modal.feedback.placeholder": "Hallo, könnt ihr bitte die Meme-Vorlage ... hinzufügen?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Einfach quatschen, er macht die Memes",
+        "help.autoMemes.tldr": "**Im Grunde packt er eure Bilder, GIFs und Nachrichten auf Meme-Vorlagen**",
+        "help.autoMemes.description":
+            "Chattet einfach wie immer. Alle paar Dutzend Nachrichten sucht Jstmemit eine Meme-Vorlage aus, nimmt ein paar Bilder/GIFs/Nachrichten aus diesem Kanal und mischt alles zusammen. Ihr müsst keine Vorlage aussuchen, keine Texte schreiben und euch nicht um Bildformate kümmern.",
+        "help.autoMemes.algorithm":
+            "Ach ja, jedes generierte Meme hat **`👍 Gefällt mir`**, **`🔁 Nochmal`** und **`👎 Gefällt mir nicht`** Buttons, die die Qualität zukünftiger Memes verbessern, weil der Bot dadurch versteht, was lustig war.",
+        "help.faq.heading": "## ❓ Häufige Fragen",
+        "help.faq.description":
+            "Keine Antwort auf deine Frage gefunden? Wir helfen dir auf dem [Support-Server](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ich habe den Bot hinzugefügt, was jetzt?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Führe /enable in einem Kanal aus.** Der Bot fängt dort an, aus neuen Nachrichten zu lernen. Chattet ein bisschen und führe dann /meme aus, um ein Meme zu generieren. Memes kommen auch von selbst, wenn der Kanal aktiv ist und gerade eine Unterhaltung läuft. Die Häufigkeit dafür kannst du in /settings ändern.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Kann ich für jeden Kanal andere Einstellungen haben?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ja!** Alle Kanalinformationen, wie Daten für Memes, Häufigkeit und andere Einstellungen, werden für jeden Kanal separat gespeichert. Nichts hält dich davon ab, im Hauptchat eine sehr niedrige Meme-Häufigkeit zu haben und sie im Spam-Kanal hochzudrehen.",
+        "help.faq.isThereALimit.question": "Gibt es ein Limit, wie viele Memes der Bot pro Tag machen kann?",
+        "help.faq.isThereALimit.answer":
+            "**Nein, es gibt keine Limits.** Du kannst `/meme` so oft am Tag ausführen, wie du willst. Und es ist kostenlos, weil jede Generierung nur Millisekunden dauert. Auf den Memes sind auch keine Wasserzeichen, dadurch sehen sie sauberer aus als bei anderen Meme-Generatoren.",
+        "help.faq.canIDeleteStoredData.question": "Kann ich gespeicherte Daten für die Meme-Generierung löschen?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Ja, jederzeit.** Führe `/settings` aus und drücke den Button "Alle Daten löschen", um alles zu löschen, was der Bot für den Kanal gespeichert hat.',
+        "help.faq.addBotToMyApps.question": 'Kann ich den Bot zu "Meine Apps" hinzufügen und überall nutzen?',
+        "help.faq.addBotToMyApps.answer":
+            '**Ja, aber ohne manche Funktionen.** Du kannst `/custom` und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, aus Datenschutzgründen.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Was, wenn ich ein eigenes Meme mit bestimmtem Text und/oder Bild machen will?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Nutze `/custom`!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
+        "help.button.addJstmemit": "🔗 Jstmemit hinzufügen",
+        "help.button.website": "🌐 Website",
+    },
+    [Locale.Polish]: {
+        "enable.heading.enabled": "🎉 Bot jest gotowy!",
+        "enable.heading.disabled": "🔴 Jstmemit jest wyłączony na tym kanale",
+        "enable.body.enabled":
+            "Jstmemit jest teraz aktywny i będzie generować memy podczas rozmów tutaj. Jakość poprawia się w miarę jak bot poznaje twój kanał, a wyniki będą znacznie lepsze, gdy w pamięci znajdzie się około **~30 wiadomości**.",
+        "enable.body.disabled.ready":
+            "Masz już ponad **{{messagesAmount}} wiadomości** w pamięci, więc Jstmemit jest gotowy do robienia memów. Po prostu włącz bota z powrotem, a zacznie je generować podczas aktywnych rozmów.",
+        "enable.body.disabled.notReady":
+            "Bot nie może robić memów tutaj, dopóki nie włączysz go dla tego kanału. Włącz go, a zacznie generować memy podczas aktywnych rozmów.",
+        "enable.memory.progress": "Wiadomości w pamięci: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Wiadomości w pamięci: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Wyłącz",
+        "enable.button.turnOn": "Włącz",
+        "enable.button.settings": "⚙️ Otwórz ustawienia",
+        "error.heading": "🔴 Coś poszło nie tak!",
+        "error.body":
+            "Bot nie mógł odpowiedzieć na twoje żądanie z powodu nieznanego błędu. Spróbuj ponownie, a jeśli to się często zdarza, skontaktuj się z supportem.",
+        "error.id": "**Błąd:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Jeszcze za mało kontekstu",
+        "notEnoughContext.body":
+            "Jstmemit potrzebuje więcej czasu, żeby poznać twój kanał, zanim będzie mógł zrobić mema. Porozmawiajcie jeszcze trochę i wyślijcie kilka GIF-ów. Jeśli ten błąd się powtarza, skontaktuj się z supportem.",
+        "unknownTemplate.heading": "🤔 Nie znam takiego szablonu",
+        "unknownTemplate.body": "Koniecznie wybierz jedną z opcji autouzupełniania przy wyborze szablonu w `/custom`",
+        "wrongFileFormat.heading": "🤔 Nieznany format obrazka",
+        "wrongFileFormat.body": 'Plik dla "{{file}}" nie jest obrazkiem. Spróbuj ponownie z PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Nie masz do tego uprawnień",
+        "missingPermissions.body":
+            "Tylko członkowie z uprawnieniem **Zarządzanie serwerem** lub **Zarządzanie kanałami** mogą zmieniać ustawienia Jstmemit. Poproś admina serwera, jeśli chcesz to zmienić.",
+        "deleteData.confirm.heading": "🗑️ Usunąć wszystkie dane tego kanału?",
+        "deleteData.confirm.body":
+            "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot pozostanie włączony i zacznie uczyć się od nowa z nowych wiadomości. Jeśli potem chcesz go całkowicie zatrzymać, wyłącz go przez `/enable`.",
+        "deleteData.success.heading": "✅ Dane usunięte!",
+        "deleteData.success.body":
+            "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte. Bot jest nadal włączony i zacznie uczyć się od nowa z nowych wiadomości. Wyłącz go przez `/enable`, jeśli nie chcesz już z niego korzystać.",
+        "deleteData.button.cancel": "Anuluj",
+        "deleteData.button.delete": "Usuń wszystkie dane",
+        "settings.about.heading": "❓ O tym bocie",
+        "settings.about.body":
+            "Jstmemit to bot, który generuje memy na podstawie wiadomości i obrazków na czacie. Rozmawiacie o raidzie czyjejś bazy w Ruście? Bot zrobi o tym memy.",
+        "settings.about.enablePrompt": "Włącz Jstmemit, żeby zacząć!",
+        "settings.button.disable": "Wyłącz",
+        "settings.button.enable": "Włącz",
+        "settings.status.enabled": "**✅ Jstmemit jest włączony na tym kanale!**",
+        "settings.status.disabled": "**⚠️ Żeby robić memy na tym kanale, trzeba włączyć Jstmemit!**",
+        "settings.meme.heading": "💬 Ustawienia memów",
+        "settings.meme.body": "Możesz kontrolować, jak często bot będzie wysyłać memy i co na nich będzie",
+        "settings.frequency.heading": "Częstotliwość",
+        "settings.frequency.body": "Jak często bot ma wysyłać losowego mema na czat bez pytania?",
+        "settings.frequency.never.label": "Nigdy",
+        "settings.frequency.never.description": "Nie wysyłaj memów, chyba że przez komendę /meme",
+        "settings.frequency.rarely.label": "Rzadko",
+        "settings.frequency.rarely.description": "Raz na ~100 wiadomości",
+        "settings.frequency.sometimes.label": "Czasami",
+        "settings.frequency.sometimes.description": "Raz na ~50 wiadomości (dla większych serwerów)",
+        "settings.frequency.often.label": "Często",
+        "settings.frequency.often.description": "Raz na ~20 wiadomości (dla mniejszych serwerów)",
+        "settings.frequency.veryOften.label": "Bardzo często",
+        "settings.frequency.veryOften.description": "Raz na ~10 wiadomości (może robić spam)",
+        "settings.avatars.heading": "Awatary w memach",
+        "settings.avatars.body": "Używać zdjęć profilowych w generowanych memach?",
+        "settings.avatars.yes.label": "Tak",
+        "settings.avatars.yes.description": "Bot będzie używać awatarów do memów (zalecane)",
+        "settings.avatars.no.label": "Nie",
+        "settings.avatars.no.description": "Bot nie będzie używać awatarów do memów",
+        "settings.footer.body": "Chcesz usunąć wszystkie dane wiadomości tego kanału?",
+        "settings.footer.deleteButton": "Usuń wszystkie dane",
+        "feedback.submit.heading": "💬 Opinia wysłana!",
+        "feedback.submit.body":
+            "Bardzo dziękujemy za wiadomość, nasz zespół ją otrzymał i się nią zajmie. Jeśli chcesz porozmawiać o niej więcej, dołącz do naszego [serwera supportu](https://discord.gg/THRnn8fhkZ), dzięki temu będziemy mogli ci odpowiedzieć.",
+        "feedback.submit.yourMessage": "Twoja wiadomość:",
+        "modal.customMeme.title": "Zrób własnego mema",
+        "modal.customMeme.text.label": "Tekst #{{id}}",
+        "modal.customMeme.text.placeholder": "Coś śmiesznego tutaj",
+        "modal.customMeme.image.label": "Obrazek #{{id}}",
+        "modal.feedback.title": "Wyślij opinię",
+        "modal.feedback.label": "Twoja wiadomość",
+        "modal.feedback.description": "Zgłoś błąd, zaproponuj funkcję lub podziel się opinią",
+        "modal.feedback.placeholder": "Cześć, moglibyście dodać szablon mema ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Po prostu gadajcie, a on zrobi memy",
+        "help.autoMemes.tldr": "**W skrócie: wkleja wasze obrazki, GIF-y i wiadomości na szablony memów**",
+        "help.autoMemes.description":
+            "Piszcie tak jak zawsze. Raz na kilkadziesiąt wiadomości Jstmemit wybiera szablon mema, bierze trochę obrazków/gifów/wiadomości z tego kanału i miesza wszystko razem. Nie musisz wybierać szablonu, pisać podpisów ani martwić się o formaty obrazków.",
+        "help.autoMemes.algorithm":
+            "A, i każdy wygenerowany mem ma przyciski **`👍 Lubię to`**, **`🔁 Jeszcze raz`** i **`👎 Nie lubię`**, które poprawiają jakość przyszłych memów, pomagając botowi zrozumieć, co było śmieszne.",
+        "help.faq.heading": "## ❓ Częste pytania",
+        "help.faq.description":
+            "Nie możesz znaleźć odpowiedzi na swoje pytanie? Pomożemy ci na [serwerze supportu](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Dodałem bota, co dalej?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Uruchom /enable na kanale.** Bot zacznie się tam uczyć z nowych wiadomości. Po chwili rozmowy uruchom /meme, żeby wygenerować mema. Memy będą też pojawiać się same, gdy kanał jest aktywny i trwa rozmowa. Ich częstotliwość możesz zmienić w /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Czy mogę mieć różne ustawienia dla każdego kanału?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Tak!** Wszystkie informacje o kanale, takie jak dane do memów, częstotliwość i inne ustawienia, są przechowywane osobno dla każdego kanału. Nic nie stoi na przeszkodzie, żeby mieć bardzo niską częstotliwość memów na głównym czacie, a na spamie wykręcić ją na maksa.",
+        "help.faq.isThereALimit.question": "Czy jest limit memów, które bot może zrobić dziennie?",
+        "help.faq.isThereALimit.answer":
+            "**Nie, nie ma żadnych limitów.** Możesz uruchamiać `/meme` ile razy dziennie chcesz. I to za darmo, bo każda generacja trwa tylko milisekundy. Na memach nie ma też znaków wodnych, więc wyglądają czyściej niż te zrobione w innych generatorach memów.",
+        "help.faq.canIDeleteStoredData.question": "Czy mogę usunąć zapisane dane do generowania memów?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Tak, w każdej chwili.** Uruchom `/settings` i naciśnij przycisk „Usuń wszystkie dane”, żeby skasować wszystko, co bot zapisał dla kanału.",
+        "help.faq.addBotToMyApps.question": "Czy mogę dodać bota do „Moich aplikacji” i używać go wszędzie?",
+        "help.faq.addBotToMyApps.answer":
+            "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać `/custom` i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać ze względu na prywatność.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "A co, jeśli chcę zrobić własnego mema z konkretnym tekstem i/lub obrazkiem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Użyj `/custom`!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
+        "help.button.addJstmemit": "🔗 Dodaj Jstmemit",
+        "help.button.website": "🌐 Strona",
+    },
+    [Locale.SpanishES]: {
+        "enable.heading.enabled": "🎉 ¡El bot está listo!",
+        "enable.heading.disabled": "🔴 Jstmemit está desactivado en este canal",
+        "enable.body.enabled":
+            "Jstmemit ya está activo y generará memes durante las conversaciones aquí. La calidad mejora a medida que conoce tu canal, con resultados mucho mejores cuando tenga unos **~30 mensajes** en memoria.",
+        "enable.body.disabled.ready":
+            "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
+        "enable.body.disabled.notReady":
+            "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
+        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Desactivar",
+        "enable.button.turnOn": "Activar",
+        "enable.button.settings": "⚙️ Abrir ajustes",
+        "error.heading": "🔴 ¡Algo ha salido mal!",
+        "error.body":
+            "El bot no pudo responder a tu solicitud por un error desconocido. Inténtalo de nuevo y si pasa a menudo, contacta con soporte.",
+        "error.id": "**Error:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Aún no hay suficiente contexto",
+        "notEnoughContext.body":
+            "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chatead un poco más y enviad un par de GIFs. Si este error persiste, contacta con soporte.",
+        "unknownTemplate.heading": "🤔 No conozco esa plantilla",
+        "unknownTemplate.body":
+            "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en `/custom`",
+        "wrongFileFormat.heading": "🤔 Formato de imagen desconocido",
+        "wrongFileFormat.body":
+            'El archivo de "{{file}}" no es una imagen. Inténtalo de nuevo con un PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 No tienes permiso para eso",
+        "missingPermissions.body":
+            "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar los ajustes de Jstmemit. Pídeselo a un admin del servidor si necesitas cambiarlo.",
+        "deleteData.confirm.heading": "🗑️ ¿Borrar todos los datos de este canal?",
+        "deleteData.confirm.body":
+            "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
+        "deleteData.success.heading": "✅ ¡Datos borrados!",
+        "deleteData.success.body":
+            "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
+        "deleteData.button.cancel": "Cancelar",
+        "deleteData.button.delete": "Borrar todos los datos",
+        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.body":
+            "Jstmemit es un bot que genera memes basados en los mensajes e imágenes del chat. ¿Estáis hablando de un raid a la base de alguien en Rust? El bot hará memes sobre eso.",
+        "settings.about.enablePrompt": "¡Activa Jstmemit para empezar!",
+        "settings.button.disable": "Desactivar",
+        "settings.button.enable": "Activar",
+        "settings.status.enabled": "**✅ ¡Jstmemit está activado en este canal!**",
+        "settings.status.disabled": "**⚠️ ¡Para hacer memes en este canal hay que activar Jstmemit!**",
+        "settings.meme.heading": "💬 Ajustes de memes",
+        "settings.meme.body": "Puedes controlar con qué frecuencia el bot enviará memes y qué aparece en ellos",
+        "settings.frequency.heading": "Frecuencia",
+        "settings.frequency.body":
+            "¿Con qué frecuencia debe el bot enviar un meme aleatorio al chat sin que se lo pidan?",
+        "settings.frequency.never.label": "Nunca",
+        "settings.frequency.never.description": "No enviar memes, salvo que se pidan con el comando /meme",
+        "settings.frequency.rarely.label": "Rara vez",
+        "settings.frequency.rarely.description": "Uno cada ~100 mensajes",
+        "settings.frequency.sometimes.label": "A veces",
+        "settings.frequency.sometimes.description": "Uno cada ~50 mensajes (para servidores grandes)",
+        "settings.frequency.often.label": "A menudo",
+        "settings.frequency.often.description": "Uno cada ~20 mensajes (para servidores pequeños)",
+        "settings.frequency.veryOften.label": "Muy a menudo",
+        "settings.frequency.veryOften.description": "Uno cada ~10 mensajes (puede generar spam)",
+        "settings.avatars.heading": "Avatares en los memes",
+        "settings.avatars.body": "¿Incluir fotos de perfil en los memes generados?",
+        "settings.avatars.yes.label": "Sí",
+        "settings.avatars.yes.description": "El bot usará avatares para los memes (recomendado)",
+        "settings.avatars.no.label": "No",
+        "settings.avatars.no.description": "El bot no usará avatares para los memes",
+        "settings.footer.body": "¿Quieres eliminar todos los datos de mensajes de este canal?",
+        "settings.footer.deleteButton": "Borrar todos los datos",
+        "feedback.submit.heading": "💬 ¡Sugerencia enviada!",
+        "feedback.submit.body":
+            "Muchas gracias por tu mensaje, nuestro equipo lo ha recibido y lo revisará. Si quieres comentarlo más a fondo, únete a nuestro [servidor de soporte](https://discord.gg/THRnn8fhkZ), así podremos enviarte una respuesta.",
+        "feedback.submit.yourMessage": "Tu mensaje:",
+        "modal.customMeme.title": "Generar mi meme",
+        "modal.customMeme.text.label": "Texto #{{id}}",
+        "modal.customMeme.text.placeholder": "Algo gracioso aquí",
+        "modal.customMeme.image.label": "Imagen #{{id}}",
+        "modal.feedback.title": "Enviar sugerencia",
+        "modal.feedback.label": "Tu mensaje",
+        "modal.feedback.description": "Informa de un error, sugiere una función o dinos qué opinas",
+        "modal.feedback.placeholder": "Hola, ¿podríais añadir la plantilla de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Vosotros habláis y él hace los memes",
+        "help.autoMemes.tldr": "**Básicamente pone vuestras imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.autoMemes.description":
+            "Chatead como siempre. Una vez cada varias docenas de mensajes, Jstmemit elige una plantilla de meme, coge imágenes/gifs/mensajes de este canal y lo mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
+        "help.autoMemes.algorithm":
+            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué tuvo gracia.",
+        "help.faq.heading": "## ❓ Preguntas frecuentes",
+        "help.faq.description":
+            "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ya he añadido el bot, ¿y ahora qué?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Ejecuta /enable en un canal.** El bot empezará a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también llegarán solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "¿Puedo tener ajustes distintos para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**¡Sí!** Toda la información del canal, como los datos para memes, la frecuencia y demás ajustes, se guarda por separado para cada canal. Nada te impide tener una frecuencia muy baja en el chat principal y ponerla al máximo en el canal de spam.",
+        "help.faq.isThereALimit.question": "¿Hay un límite de memes que el bot puede hacer al día?",
+        "help.faq.isThereALimit.answer":
+            "**No, no hay límites.** Puedes ejecutar `/meme` tantas veces al día como quieras. Y es gratis, porque cada generación solo tarda milisegundos. Además los memes no llevan marca de agua, así que quedan más limpios que los hechos con otros generadores de memes.",
+        "help.faq.canIDeleteStoredData.question": "¿Puedo borrar los datos guardados para generar memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Sí, en cualquier momento.** Ejecuta `/settings` y pulsa el botón «Borrar todos los datos» para eliminar todo lo que el bot ha guardado del canal.",
+        "help.faq.addBotToMyApps.question": "¿Puedo añadir el bot a «Mis aplicaciones» y usarlo en cualquier parte?",
+        "help.faq.addBotToMyApps.answer":
+            "**Sí, pero sin algunas funciones.** Podrás usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, por privacidad.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "¿Y si quiero hacer un meme con un texto y/o imagen concretos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
+        "help.button.addJstmemit": "🔗 Añadir Jstmemit",
+        "help.button.website": "🌐 Web",
+    },
+    [Locale.SpanishLATAM]: {
+        "enable.heading.enabled": "🎉 ¡El bot está listo!",
+        "enable.heading.disabled": "🔴 Jstmemit está desactivado en este canal",
+        "enable.body.enabled":
+            "Jstmemit ya está activo y generará memes durante las conversaciones aquí. La calidad mejora a medida que conoce tu canal, con resultados mucho mejores cuando tenga unos **~30 mensajes** en memoria.",
+        "enable.body.disabled.ready":
+            "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
+        "enable.body.disabled.notReady":
+            "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
+        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Desactivar",
+        "enable.button.turnOn": "Activar",
+        "enable.button.settings": "⚙️ Abrir configuración",
+        "error.heading": "🔴 ¡Algo salió mal!",
+        "error.body":
+            "El bot no pudo responder a tu solicitud por un error desconocido. Intenta de nuevo y si pasa seguido, contacta a soporte.",
+        "error.id": "**Error:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Todavía no hay suficiente contexto",
+        "notEnoughContext.body":
+            "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chateen un poco más y manden un par de GIFs. Si este error persiste, contacta a soporte.",
+        "unknownTemplate.heading": "🤔 No conozco esa plantilla",
+        "unknownTemplate.body":
+            "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en `/custom`",
+        "wrongFileFormat.heading": "🤔 Formato de imagen desconocido",
+        "wrongFileFormat.body":
+            'El archivo de "{{file}}" no es una imagen. Intenta de nuevo con un PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 No tienes permiso para eso",
+        "missingPermissions.body":
+            "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar la configuración de Jstmemit. Pídele a un admin del servidor si necesitas cambiarlo.",
+        "deleteData.confirm.heading": "🗑️ ¿Borrar todos los datos de este canal?",
+        "deleteData.confirm.body":
+            "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
+        "deleteData.success.heading": "✅ ¡Datos borrados!",
+        "deleteData.success.body":
+            "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
+        "deleteData.button.cancel": "Cancelar",
+        "deleteData.button.delete": "Borrar todos los datos",
+        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.body":
+            "Jstmemit es un bot que genera memes basados en los mensajes e imágenes del chat. ¿Están hablando de un raid a la base de alguien en Rust? El bot hará memes sobre eso.",
+        "settings.about.enablePrompt": "¡Activa Jstmemit para empezar!",
+        "settings.button.disable": "Desactivar",
+        "settings.button.enable": "Activar",
+        "settings.status.enabled": "**✅ ¡Jstmemit está activado en este canal!**",
+        "settings.status.disabled": "**⚠️ ¡Para hacer memes en este canal hay que activar Jstmemit!**",
+        "settings.meme.heading": "💬 Configuración de memes",
+        "settings.meme.body": "Puedes controlar con qué frecuencia el bot enviará memes y qué aparece en ellos",
+        "settings.frequency.heading": "Frecuencia",
+        "settings.frequency.body":
+            "¿Con qué frecuencia debe el bot enviar un meme al azar al chat sin que se lo pidan?",
+        "settings.frequency.never.label": "Nunca",
+        "settings.frequency.never.description": "No enviar memes, salvo que se pidan con el comando /meme",
+        "settings.frequency.rarely.label": "Rara vez",
+        "settings.frequency.rarely.description": "Uno cada ~100 mensajes",
+        "settings.frequency.sometimes.label": "A veces",
+        "settings.frequency.sometimes.description": "Uno cada ~50 mensajes (para servidores grandes)",
+        "settings.frequency.often.label": "Seguido",
+        "settings.frequency.often.description": "Uno cada ~20 mensajes (para servidores chicos)",
+        "settings.frequency.veryOften.label": "Muy seguido",
+        "settings.frequency.veryOften.description": "Uno cada ~10 mensajes (puede generar spam)",
+        "settings.avatars.heading": "Avatares en los memes",
+        "settings.avatars.body": "¿Incluir fotos de perfil en los memes generados?",
+        "settings.avatars.yes.label": "Sí",
+        "settings.avatars.yes.description": "El bot usará avatares para los memes (recomendado)",
+        "settings.avatars.no.label": "No",
+        "settings.avatars.no.description": "El bot no usará avatares para los memes",
+        "settings.footer.body": "¿Quieres eliminar todos los datos de mensajes de este canal?",
+        "settings.footer.deleteButton": "Borrar todos los datos",
+        "feedback.submit.heading": "💬 ¡Sugerencia enviada!",
+        "feedback.submit.body":
+            "Muchas gracias por tu mensaje, nuestro equipo lo recibió y lo revisará. Si quieres platicarlo más a fondo, únete a nuestro [servidor de soporte](https://discord.gg/THRnn8fhkZ), así podremos enviarte una respuesta.",
+        "feedback.submit.yourMessage": "Tu mensaje:",
+        "modal.customMeme.title": "Generar mi meme",
+        "modal.customMeme.text.label": "Texto #{{id}}",
+        "modal.customMeme.text.placeholder": "Algo gracioso aquí",
+        "modal.customMeme.image.label": "Imagen #{{id}}",
+        "modal.feedback.title": "Enviar sugerencia",
+        "modal.feedback.label": "Tu mensaje",
+        "modal.feedback.description": "Reporta un error, sugiere una función o dinos qué opinas",
+        "modal.feedback.placeholder": "Hola, ¿podrían agregar la plantilla de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Ustedes hablan y él hace los memes",
+        "help.autoMemes.tldr": "**Básicamente pone sus imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.autoMemes.description":
+            "Chateen como siempre. Una vez cada varias decenas de mensajes, Jstmemit elige una plantilla de meme, toma imágenes/gifs/mensajes de este canal y mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
+        "help.autoMemes.algorithm":
+            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué fue gracioso.",
+        "help.faq.heading": "## ❓ Preguntas frecuentes",
+        "help.faq.description":
+            "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ya agregué el bot, ¿y ahora qué?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Ejecuta /enable en un canal.** El bot va a empezar a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también van a llegar solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "¿Puedo tener configuraciones distintas para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**¡Sí!** Toda la información del canal, como los datos para memes, la frecuencia y demás configuraciones, se guarda por separado para cada canal. Nada te impide tener una frecuencia muy baja en el chat principal y ponerla al máximo en el canal de spam.",
+        "help.faq.isThereALimit.question": "¿Hay un límite de memes que el bot puede hacer al día?",
+        "help.faq.isThereALimit.answer":
+            "**No, no hay límites.** Puedes ejecutar `/meme` todas las veces que quieras al día. Y es gratis, porque cada generación tarda solo milisegundos. Además los memes no llevan marca de agua, así que se ven más limpios que los hechos con otros generadores de memes.",
+        "help.faq.canIDeleteStoredData.question": "¿Puedo borrar los datos guardados para generar memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Sí, en cualquier momento.** Ejecuta `/settings` y presiona el botón «Borrar todos los datos» para eliminar todo lo que el bot guardó del canal.",
+        "help.faq.addBotToMyApps.question": "¿Puedo agregar el bot a «Mis aplicaciones» y usarlo donde sea?",
+        "help.faq.addBotToMyApps.answer":
+            "**Sí, pero sin algunas funciones.** Vas a poder usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, por privacidad.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "¿Y si quiero hacer un meme con un texto y/o imagen específicos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
+        "help.button.addJstmemit": "🔗 Agregar Jstmemit",
+        "help.button.website": "🌐 Sitio web",
+    },
+    [Locale.PortugueseBR]: {
+        "enable.heading.enabled": "🎉 O bot está pronto!",
+        "enable.heading.disabled": "🔴 O Jstmemit está desligado neste canal",
+        "enable.body.enabled":
+            "O Jstmemit agora está ativo e vai gerar memes durante as conversas aqui. A qualidade melhora conforme ele conhece o seu canal, com resultados muito melhores quando tiver cerca de **~30 mensagens** na memória.",
+        "enable.body.disabled.ready":
+            "Você já tem mais de **{{messagesAmount}} mensagens** na memória, então o Jstmemit está pronto para fazer memes. É só ligar o bot de novo e ele começa a gerá-los durante as conversas ativas.",
+        "enable.body.disabled.notReady":
+            "O bot não pode fazer memes aqui até você ativá-lo para este canal. Ative-o e ele vai começar a gerar memes durante as conversas ativas.",
+        "enable.memory.progress": "Mensagens na memória: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Mensagens na memória: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Desligar",
+        "enable.button.turnOn": "Ligar",
+        "enable.button.settings": "⚙️ Abrir configurações",
+        "error.heading": "🔴 Algo deu errado!",
+        "error.body":
+            "O bot não conseguiu responder ao seu pedido por causa de um erro desconhecido. Tente de novo e se isso acontecer com frequência, entre em contato com o suporte.",
+        "error.id": "**Erro:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Ainda não há contexto suficiente",
+        "notEnoughContext.body":
+            "O Jstmemit precisa de mais tempo para conhecer o seu canal antes de poder fazer um meme. Conversem um pouco mais e mandem alguns GIFs. Se esse erro persistir, entre em contato com o suporte.",
+        "unknownTemplate.heading": "🤔 Não conheço esse template",
+        "unknownTemplate.body":
+            "Não esqueça de selecionar uma das opções do autocompletar ao escolher um template no `/custom`",
+        "wrongFileFormat.heading": "🤔 Formato de imagem desconhecido",
+        "wrongFileFormat.body": 'O arquivo de "{{file}}" não é uma imagem. Tente de novo com um PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Você não tem permissão para isso",
+        "missingPermissions.body":
+            "Só membros com a permissão **Gerenciar servidor** ou **Gerenciar canais** podem mudar as configurações do Jstmemit. Peça a um admin do servidor se precisar mudar isso.",
+        "deleteData.confirm.heading": "🗑️ Apagar todos os dados deste canal?",
+        "deleteData.confirm.body":
+            "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot continua ativado e vai começar a aprender de novo com as mensagens novas. Se depois quiser pará-lo de vez, desligue-o com `/enable`.",
+        "deleteData.success.heading": "✅ Dados apagados!",
+        "deleteData.success.body":
+            "Todas as mensagens e links de imagens salvos deste canal foram apagados. O bot ainda está ligado e vai começar a aprender de novo com as mensagens novas. Desligue-o com `/enable` se não quiser mais usá-lo.",
+        "deleteData.button.cancel": "Cancelar",
+        "deleteData.button.delete": "Apagar todos os dados",
+        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.body":
+            "O Jstmemit é um bot que gera memes com base nas mensagens e imagens do chat. Estão falando de um raid na base de alguém no Rust? O bot vai fazer memes sobre isso.",
+        "settings.about.enablePrompt": "Ative o Jstmemit para começar!",
+        "settings.button.disable": "Desativar",
+        "settings.button.enable": "Ativar",
+        "settings.status.enabled": "**✅ O Jstmemit está ligado neste canal!**",
+        "settings.status.disabled": "**⚠️ Para fazer memes neste canal é preciso ativar o Jstmemit!**",
+        "settings.meme.heading": "💬 Configurações de memes",
+        "settings.meme.body": "Você pode controlar com que frequência o bot vai mandar memes e o que aparece neles",
+        "settings.frequency.heading": "Frequência",
+        "settings.frequency.body": "Com que frequência o bot deve mandar um meme aleatório no chat sem ser pedido?",
+        "settings.frequency.never.label": "Nunca",
+        "settings.frequency.never.description": "Não mandar memes, a não ser pelo comando /meme",
+        "settings.frequency.rarely.label": "Raramente",
+        "settings.frequency.rarely.description": "Um a cada ~100 mensagens",
+        "settings.frequency.sometimes.label": "Às vezes",
+        "settings.frequency.sometimes.description": "Um a cada ~50 mensagens (para servidores maiores)",
+        "settings.frequency.often.label": "Frequentemente",
+        "settings.frequency.often.description": "Um a cada ~20 mensagens (para servidores menores)",
+        "settings.frequency.veryOften.label": "Muito frequentemente",
+        "settings.frequency.veryOften.description": "Um a cada ~10 mensagens (pode virar spam)",
+        "settings.avatars.heading": "Avatares nos memes",
+        "settings.avatars.body": "Incluir fotos de perfil nos memes gerados?",
+        "settings.avatars.yes.label": "Sim",
+        "settings.avatars.yes.description": "O bot vai usar avatares nos memes (recomendado)",
+        "settings.avatars.no.label": "Não",
+        "settings.avatars.no.description": "O bot não vai usar avatares nos memes",
+        "settings.footer.body": "Quer remover todos os dados de mensagens deste canal?",
+        "settings.footer.deleteButton": "Apagar todos os dados",
+        "feedback.submit.heading": "💬 Feedback enviado!",
+        "feedback.submit.body":
+            "Muito obrigado pela sua mensagem, nossa equipe recebeu e vai analisar. Se quiser conversar mais sobre isso, entre no nosso [servidor de suporte](https://discord.gg/THRnn8fhkZ), assim podemos te mandar uma resposta.",
+        "feedback.submit.yourMessage": "Sua mensagem:",
+        "modal.customMeme.title": "Gerar meu meme",
+        "modal.customMeme.text.label": "Texto #{{id}}",
+        "modal.customMeme.text.placeholder": "Algo engraçado aqui",
+        "modal.customMeme.image.label": "Imagem #{{id}}",
+        "modal.feedback.title": "Enviar feedback",
+        "modal.feedback.label": "Sua mensagem",
+        "modal.feedback.description": "Reporte um bug, sugira uma função ou diga o que você acha",
+        "modal.feedback.placeholder": "Oi, vocês poderiam adicionar o template de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 É só conversar que ele faz os memes",
+        "help.autoMemes.tldr": "**Basicamente ele coloca suas imagens, GIFs e mensagens em templates de memes**",
+        "help.autoMemes.description":
+            "Conversem como sempre. Uma vez a cada algumas dezenas de mensagens, o Jstmemit escolhe um template de meme, pega algumas imagens/gifs/mensagens deste canal e mistura tudo. Você não precisa escolher template, escrever legenda nem se preocupar com formato de imagem.",
+        "help.autoMemes.algorithm":
+            "Ah, e cada meme gerado tem botões de **`👍 Curtir`**, **`🔁 Gerar de novo`** e **`👎 Não curtir`** que melhoram a qualidade dos próximos memes ajudando o bot a entender o que foi engraçado.",
+        "help.faq.heading": "## ❓ Perguntas frequentes",
+        "help.faq.description":
+            "Não achou a resposta para a sua pergunta? A gente pode te ajudar no [servidor de suporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Adicionei o bot, e agora?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Rode /enable em um canal.** O bot vai começar a aprender com as mensagens novas por lá. Depois de conversar um pouco, rode /meme para gerar um meme. Os memes também vão chegar sozinhos quando o canal estiver ativo e tiver uma conversa rolando. Você pode mudar a frequência deles em /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Posso ter configurações diferentes para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Sim!** Todas as informações do canal, como dados para memes, frequência e outras configurações, ficam guardadas separadamente para cada canal. Nada impede de ter uma frequência bem baixa no chat principal e deixar no máximo no canal de spam.",
+        "help.faq.isThereALimit.question": "Tem limite de quantos memes o bot pode fazer por dia?",
+        "help.faq.isThereALimit.answer":
+            "**Não, não tem limite nenhum.** Você pode rodar `/meme` quantas vezes quiser por dia. E é de graça, porque cada geração leva só alguns milissegundos. Os memes também não têm marca d'água, então ficam mais limpos do que os feitos em outros geradores de memes.",
+        "help.faq.canIDeleteStoredData.question": "Posso apagar os dados guardados para a geração de memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Sim, a qualquer momento.** Rode `/settings` e aperte o botão "Apagar todos os dados" para excluir tudo que o bot guardou do canal.',
+        "help.faq.addBotToMyApps.question": 'Posso adicionar o bot em "Meus aplicativos" e usar em qualquer lugar?',
+        "help.faq.addBotToMyApps.answer":
+            '**Sim, mas sem alguns recursos.** Você vai poder usar o `/custom` e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, por questões de privacidade.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "E se eu quiser fazer um meme com um texto e/ou imagem específicos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Use o `/custom`!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
+        "help.button.addJstmemit": "🔗 Adicionar o Jstmemit",
+        "help.button.website": "🌐 Site",
+    },
+    [Locale.Turkish]: {
+        "enable.heading.enabled": "🎉 Bot hazır!",
+        "enable.heading.disabled": "🔴 Jstmemit bu kanalda kapalı",
+        "enable.body.enabled":
+            "Jstmemit artık aktif ve buradaki sohbetler sırasında caps üretecek. Bot kanalını tanıdıkça kalite artar, hafızasında yaklaşık **~30 mesaj** olduğunda çok daha iyi sonuçlar alırsın.",
+        "enable.body.disabled.ready":
+            "Hafızada zaten **{{messagesAmount}} mesajdan** fazlası var, yani Jstmemit caps yapmaya hazır. Botu tekrar aç, aktif sohbetler sırasında üretmeye başlasın.",
+        "enable.body.disabled.notReady":
+            "Bu kanal için botu etkinleştirmeden burada caps yapamaz. Aç, aktif sohbetler sırasında caps üretmeye başlasın.",
+        "enable.memory.progress": "Hafızadaki mesajlar: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Hafızadaki mesajlar: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Kapat",
+        "enable.button.turnOn": "Aç",
+        "enable.button.settings": "⚙️ Ayarları aç",
+        "error.heading": "🔴 Bir şeyler ters gitti!",
+        "error.body":
+            "Bot, bilinmeyen bir hata yüzünden isteğine yanıt veremedi. Tekrar dene, sık sık oluyorsa destek ekibine ulaş.",
+        "error.id": "**Hata:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Henüz yeterli bağlam yok",
+        "notEnoughContext.body":
+            "Jstmemit'in caps yapabilmesi için kanalını tanımaya biraz daha zamanı olması gerekiyor. Biraz daha sohbet edin ve birkaç GIF gönderin. Bu hata devam ederse destek ekibine ulaş.",
+        "unknownTemplate.heading": "🤔 Böyle bir şablon bilmiyorum",
+        "unknownTemplate.body":
+            "`/custom` içinde şablon seçerken otomatik tamamlama seçeneklerinden birini seçtiğinden emin ol",
+        "wrongFileFormat.heading": "🤔 Bilinmeyen görsel formatı",
+        "wrongFileFormat.body":
+            '"{{file}}" için gönderilen dosya bir görsel değil. PNG/JPEG/AVIF/WebP ile tekrar dene.',
+        "missingPermissions.heading": "🔒 Bunun için iznin yok",
+        "missingPermissions.body":
+            "Jstmemit'in ayarlarını yalnızca **Sunucuyu Yönet** veya **Kanalları Yönet** iznine sahip üyeler değiştirebilir. Bunun değişmesi gerekiyorsa bir sunucu yöneticisine sor.",
+        "deleteData.confirm.heading": "🗑️ Bu kanalın tüm verileri silinsin mi?",
+        "deleteData.confirm.body":
+            "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot açık kalır ve yeni mesajlardan yeniden öğrenmeye başlar. Sonrasında tamamen durdurmak istersen `/enable` ile kapat.",
+        "deleteData.success.heading": "✅ Veriler silindi!",
+        "deleteData.success.body":
+            "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi. Bot hâlâ açık ve yeni mesajlardan yeniden öğrenmeye başlayacak. Artık kullanmak istemiyorsan `/enable` ile kapat.",
+        "deleteData.button.cancel": "İptal",
+        "deleteData.button.delete": "Tüm verileri sil",
+        "settings.about.heading": "❓ Bu bot hakkında",
+        "settings.about.body":
+            "Jstmemit, sohbetteki mesajlara ve görsellere göre caps üreten bir bot. Rust'ta birinin üssüne yapılan raidden mi bahsediyorsunuz? Bot bununla ilgili capsler yapar.",
+        "settings.about.enablePrompt": "Başlamak için Jstmemit'i etkinleştir!",
+        "settings.button.disable": "Kapat",
+        "settings.button.enable": "Etkinleştir",
+        "settings.status.enabled": "**✅ Jstmemit bu kanalda açık!**",
+        "settings.status.disabled": "**⚠️ Bu kanalda caps yapmak için Jstmemit'in etkinleştirilmesi gerek!**",
+        "settings.meme.heading": "💬 Caps ayarları",
+        "settings.meme.body": "Botun ne sıklıkla caps göndereceğini ve üzerinde ne olacağını ayarlayabilirsin",
+        "settings.frequency.heading": "Sıklık",
+        "settings.frequency.body": "Bot, istenmeden sohbete ne sıklıkla rastgele bir caps göndersin?",
+        "settings.frequency.never.label": "Asla",
+        "settings.frequency.never.description": "/meme komutuyla istenmedikçe caps gönderme",
+        "settings.frequency.rarely.label": "Nadiren",
+        "settings.frequency.rarely.description": "Her ~100 mesajda bir",
+        "settings.frequency.sometimes.label": "Bazen",
+        "settings.frequency.sometimes.description": "Her ~50 mesajda bir (büyük sunucular için)",
+        "settings.frequency.often.label": "Sık sık",
+        "settings.frequency.often.description": "Her ~20 mesajda bir (küçük sunucular için)",
+        "settings.frequency.veryOften.label": "Çok sık",
+        "settings.frequency.veryOften.description": "Her ~10 mesajda bir (spam olabilir)",
+        "settings.avatars.heading": "Capslerde avatarlar",
+        "settings.avatars.body": "Üretilen capslerde profil fotoğrafları kullanılsın mı?",
+        "settings.avatars.yes.label": "Evet",
+        "settings.avatars.yes.description": "Bot capsler için avatarları kullanır (önerilir)",
+        "settings.avatars.no.label": "Hayır",
+        "settings.avatars.no.description": "Bot capsler için avatarları kullanmaz",
+        "settings.footer.body": "Bu kanalla ilgili tüm mesaj verilerini kaldırmak ister misin?",
+        "settings.footer.deleteButton": "Tüm verileri sil",
+        "feedback.submit.heading": "💬 Geri bildirim gönderildi!",
+        "feedback.submit.body":
+            "Mesajın için çok teşekkürler, ekibimiz aldı ve inceleyecek. Daha fazla konuşmak istersen [Destek sunucumuza](https://discord.gg/THRnn8fhkZ) katıl, böylece sana yanıt gönderebiliriz.",
+        "feedback.submit.yourMessage": "Mesajın:",
+        "modal.customMeme.title": "Kendi capsini yap",
+        "modal.customMeme.text.label": "Metin #{{id}}",
+        "modal.customMeme.text.placeholder": "Buraya komik bir şey",
+        "modal.customMeme.image.label": "Görsel #{{id}}",
+        "modal.feedback.title": "Geri bildirim gönder",
+        "modal.feedback.label": "Mesajın",
+        "modal.feedback.description": "Hata bildir, özellik öner veya ne düşündüğünü söyle",
+        "modal.feedback.placeholder": "Merhaba, ... caps şablonunu ekler misiniz?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Siz sohbet edin, o caps yapsın",
+        "help.autoMemes.tldr":
+            "**Kısacası görsellerinizi, GIF'lerinizi ve mesajlarınızı caps şablonlarına yerleştiriyor**",
+        "help.autoMemes.description":
+            "Her zamanki gibi sohbet edin. Birkaç düzine mesajda bir Jstmemit bir caps şablonu seçer, bu kanaldan görseller/gifler/mesajlar alır ve hepsini karıştırır. Şablon seçmenize, yazı yazmanıza veya görsel formatlarını dert etmenize gerek yok.",
+        "help.autoMemes.algorithm":
+            "Bu arada, üretilen her capste **`👍 Beğen`**, **`🔁 Yeniden`** ve **`👎 Beğenme`** butonları var. Bunlar botun neyin komik olduğunu anlamasına yardım ederek gelecekteki capslerin kalitesini artırıyor.",
+        "help.faq.heading": "## ❓ Sık sorulan sorular",
+        "help.faq.description":
+            "Sorunun cevabını bulamadın mı? [Destek sunucusunda](https://discord.gg/THRnn8fhkZ) yardımcı olabiliriz",
+        "help.faq.iAddedTheBotWhatNow.question": "Botu ekledim, şimdi ne yapmalıyım?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Bir kanalda /enable çalıştır.** Bot orada yeni mesajlardan öğrenmeye başlar. Biraz sohbet ettikten sonra caps üretmek için /meme çalıştır. Kanal aktifken ve bir sohbet dönüyorken capsler kendiliğinden de gelir. Bunların sıklığını /settings üzerinden değiştirebilirsin.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Her kanal için farklı ayarlar yapabilir miyim?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Evet!** Caps verileri, sıklık ve diğer ayarlar gibi tüm kanal bilgileri her kanal için ayrı ayrı saklanır. Ana sohbette caps sıklığını çok düşük tutup flood kanalında sonuna kadar açmana hiçbir engel yok.",
+        "help.faq.isThereALimit.question": "Botun günlük yapabileceği caps sayısında bir sınır var mı?",
+        "help.faq.isThereALimit.answer":
+            "**Hayır, hiçbir sınır yok.** `/meme` komutunu günde istediğin kadar çalıştırabilirsin. Üstelik ücretsiz, çünkü her üretim sadece milisaniyeler sürüyor. Capslerde filigran da yok, o yüzden diğer caps üreticilerinde yapılanlardan daha temiz görünüyorlar.",
+        "help.faq.canIDeleteStoredData.question": "Caps üretimi için saklanan verileri silebilir miyim?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Evet, istediğin zaman.** `/settings` çalıştır ve botun kanal için sakladığı her şeyi silmek için "Tüm verileri sil" butonuna bas.',
+        "help.faq.addBotToMyApps.question": 'Botu "Uygulamalarım"a ekleyip her yerde kullanabilir miyim?',
+        "help.faq.addBotToMyApps.answer":
+            '**Evet, ama bazı özellikler olmadan.** `/custom` komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler gizlilik nedeniyle çalışmaz.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Peki belirli bir metin ve/veya görselle kendi capsimi yapmak istersem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**`/custom` kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
+        "help.button.addJstmemit": "🔗 Jstmemit'i ekle",
+        "help.button.website": "🌐 Web sitesi",
+    },
+    [Locale.Italian]: {
+        "enable.heading.enabled": "🎉 Il bot è pronto!",
+        "enable.heading.disabled": "🔴 Jstmemit è spento in questo canale",
+        "enable.body.enabled":
+            "Jstmemit ora è attivo e genererà meme durante le chat qui. La qualità migliora man mano che conosce il tuo canale, con risultati molto migliori quando avrà circa **~30 messaggi** in memoria.",
+        "enable.body.disabled.ready":
+            "Hai già più di **{{messagesAmount}} messaggi** in memoria, quindi Jstmemit è pronto a fare meme. Riaccendi il bot e inizierà a generarli durante le chat attive.",
+        "enable.body.disabled.notReady":
+            "Il bot non può fare meme qui finché non lo attivi per questo canale. Attivalo e inizierà a generare meme durante le chat attive.",
+        "enable.memory.progress": "Messaggi in memoria: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Messaggi in memoria: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Spegni",
+        "enable.button.turnOn": "Accendi",
+        "enable.button.settings": "⚙️ Apri impostazioni",
+        "error.heading": "🔴 Qualcosa è andato storto!",
+        "error.body":
+            "Il bot non è riuscito a rispondere alla tua richiesta per un errore sconosciuto. Riprova e se succede spesso, contatta il supporto.",
+        "error.id": "**Errore:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Non c'è ancora abbastanza contesto",
+        "notEnoughContext.body":
+            "Jstmemit ha bisogno di più tempo per conoscere il tuo canale prima di poter fare un meme. Chattate ancora un po' e mandate qualche GIF. Se l'errore persiste, contatta il supporto.",
+        "unknownTemplate.heading": "🤔 Non conosco questo template",
+        "unknownTemplate.body":
+            "Assicurati di selezionare una delle opzioni di completamento automatico quando scegli un template in `/custom`",
+        "wrongFileFormat.heading": "🤔 Formato immagine sconosciuto",
+        "wrongFileFormat.body": 'Il file per "{{file}}" non è un\'immagine. Riprova con un PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Non hai il permesso per farlo",
+        "missingPermissions.body":
+            "Solo i membri con il permesso **Gestire il server** o **Gestire i canali** possono cambiare le impostazioni di Jstmemit. Chiedi a un admin del server se hai bisogno di cambiarlo.",
+        "deleteData.confirm.heading": "🗑️ Eliminare tutti i dati di questo canale?",
+        "deleteData.confirm.body":
+            "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot resta attivo e ricomincerà a imparare dai nuovi messaggi. Se poi vuoi fermarlo del tutto, spegnilo con `/enable`.",
+        "deleteData.success.heading": "✅ Dati eliminati!",
+        "deleteData.success.body":
+            "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati. Il bot è ancora acceso e ricomincerà a imparare dai nuovi messaggi. Spegnilo con `/enable` se non vuoi più usarlo.",
+        "deleteData.button.cancel": "Annulla",
+        "deleteData.button.delete": "Elimina tutti i dati",
+        "settings.about.heading": "❓ Su questo bot",
+        "settings.about.body":
+            "Jstmemit è un bot che genera meme basati sui messaggi e le immagini della chat. State parlando di un raid alla base di qualcuno su Rust? Il bot ci farà dei meme.",
+        "settings.about.enablePrompt": "Attiva Jstmemit per iniziare!",
+        "settings.button.disable": "Disattiva",
+        "settings.button.enable": "Attiva",
+        "settings.status.enabled": "**✅ Jstmemit è acceso in questo canale!**",
+        "settings.status.disabled": "**⚠️ Per fare meme in questo canale bisogna attivare Jstmemit!**",
+        "settings.meme.heading": "💬 Impostazioni meme",
+        "settings.meme.body": "Puoi controllare quanto spesso il bot manderà meme e cosa ci sarà sopra",
+        "settings.frequency.heading": "Frequenza",
+        "settings.frequency.body":
+            "Quanto spesso il bot dovrebbe mandare un meme casuale in chat senza che gli venga chiesto?",
+        "settings.frequency.never.label": "Mai",
+        "settings.frequency.never.description": "Non mandare meme, se non richiesti tramite il comando /meme",
+        "settings.frequency.rarely.label": "Raramente",
+        "settings.frequency.rarely.description": "Uno ogni ~100 messaggi",
+        "settings.frequency.sometimes.label": "A volte",
+        "settings.frequency.sometimes.description": "Uno ogni ~50 messaggi (per server più grandi)",
+        "settings.frequency.often.label": "Spesso",
+        "settings.frequency.often.description": "Uno ogni ~20 messaggi (per server più piccoli)",
+        "settings.frequency.veryOften.label": "Molto spesso",
+        "settings.frequency.veryOften.description": "Uno ogni ~10 messaggi (può produrre spam)",
+        "settings.avatars.heading": "Avatar nei meme",
+        "settings.avatars.body": "Includere le foto profilo nei meme generati?",
+        "settings.avatars.yes.label": "Sì",
+        "settings.avatars.yes.description": "Il bot userà gli avatar per i meme (consigliato)",
+        "settings.avatars.no.label": "No",
+        "settings.avatars.no.description": "Il bot non userà gli avatar per i meme",
+        "settings.footer.body": "Vuoi rimuovere tutti i dati dei messaggi di questo canale?",
+        "settings.footer.deleteButton": "Elimina tutti i dati",
+        "feedback.submit.heading": "💬 Feedback inviato!",
+        "feedback.submit.body":
+            "Grazie mille per il tuo messaggio, il nostro team l'ha ricevuto e lo esaminerà. Se vuoi parlarne meglio, unisciti al nostro [server di supporto](https://discord.gg/THRnn8fhkZ), così potremo risponderti.",
+        "feedback.submit.yourMessage": "Il tuo messaggio:",
+        "modal.customMeme.title": "Genera il mio meme",
+        "modal.customMeme.text.label": "Testo #{{id}}",
+        "modal.customMeme.text.placeholder": "Qualcosa di divertente qui",
+        "modal.customMeme.image.label": "Immagine #{{id}}",
+        "modal.feedback.title": "Invia feedback",
+        "modal.feedback.label": "Il tuo messaggio",
+        "modal.feedback.description": "Segnala un bug, suggerisci una funzione o dicci cosa ne pensi",
+        "modal.feedback.placeholder": "Ciao, potreste aggiungere il template di meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Voi chiacchierate, lui fa i meme",
+        "help.autoMemes.tldr": "**In pratica mette le vostre immagini, GIF e messaggi sui template dei meme**",
+        "help.autoMemes.description":
+            "Chattate come fate di solito. Una volta ogni qualche decina di messaggi, Jstmemit sceglie un template, prende immagini/gif/messaggi da questo canale e mescola tutto. Non dovete scegliere un template, scrivere didascalie o preoccuparvi dei formati delle immagini.",
+        "help.autoMemes.algorithm":
+            "Ah, e ogni meme generato ha i pulsanti **`👍 Mi piace`**, **`🔁 Rigenera`** e **`👎 Non mi piace`** che migliorano la qualità dei meme futuri aiutando il bot a capire cosa faceva ridere.",
+        "help.faq.heading": "## ❓ Domande frequenti",
+        "help.faq.description":
+            "Non trovi la risposta alla tua domanda? Possiamo aiutarti sul [server di supporto](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ho aggiunto il bot, e adesso?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Esegui /enable in un canale.** Il bot inizierà a imparare dai nuovi messaggi lì. Dopo aver chattato un po', esegui /meme per generare un meme. I meme arriveranno anche da soli quando il canale è attivo e c'è una conversazione in corso. Puoi cambiare la loro frequenza in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Posso avere impostazioni diverse per ogni canale?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Sì!** Tutte le informazioni del canale, come i dati per i meme, la frequenza e le altre impostazioni, sono salvate separatamente per ogni canale. Niente ti impedisce di tenere una frequenza bassissima nella chat principale e di alzarla al massimo nel canale spam.",
+        "help.faq.isThereALimit.question": "C'è un limite a quanti meme il bot può fare al giorno?",
+        "help.faq.isThereALimit.answer":
+            "**No, non ci sono limiti.** Puoi eseguire `/meme` quante volte vuoi al giorno. Ed è gratis, perché ogni generazione richiede solo qualche millisecondo. Inoltre i meme non hanno watermark, quindi risultano più puliti di quelli fatti con altri generatori di meme.",
+        "help.faq.canIDeleteStoredData.question": "Posso eliminare i dati salvati per la generazione dei meme?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Sì, in qualsiasi momento.** Esegui `/settings` e premi il pulsante "Elimina tutti i dati" per cancellare tutto quello che il bot ha salvato per il canale.',
+        "help.faq.addBotToMyApps.question": 'Posso aggiungere il bot a "Le mie app" e usarlo ovunque?',
+        "help.faq.addBotToMyApps.answer":
+            '**Sì, ma senza alcune funzioni.** Potrai usare `/custom` e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, per motivi di privacy.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "E se voglio fare un meme con un testo e/o un'immagine specifici?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Usa `/custom`!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
+        "help.button.addJstmemit": "🔗 Aggiungi Jstmemit",
+        "help.button.website": "🌐 Sito web",
+    },
+    [Locale.Indonesian]: {
+        "enable.heading.enabled": "🎉 Bot siap!",
+        "enable.heading.disabled": "🔴 Jstmemit mati di channel ini",
+        "enable.body.enabled":
+            "Jstmemit sekarang aktif dan akan membuat meme selama obrolan di sini. Kualitasnya makin bagus seiring bot mengenal channel kamu, dengan hasil yang jauh lebih baik setelah ada sekitar **~30 pesan** di memori.",
+        "enable.body.disabled.ready":
+            "Kamu sudah punya lebih dari **{{messagesAmount}} pesan** di memori, jadi Jstmemit siap bikin meme. Tinggal nyalakan lagi botnya dan dia akan mulai membuatnya selama obrolan aktif.",
+        "enable.body.disabled.notReady":
+            "Bot tidak bisa bikin meme di sini sampai kamu mengaktifkannya untuk channel ini. Nyalakan dan dia akan mulai membuat meme selama obrolan aktif.",
+        "enable.memory.progress": "Pesan di memori: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Pesan di memori: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Matikan",
+        "enable.button.turnOn": "Nyalakan",
+        "enable.button.settings": "⚙️ Buka pengaturan",
+        "error.heading": "🔴 Ada yang salah!",
+        "error.body":
+            "Bot gagal menjawab permintaanmu karena error yang tidak diketahui. Coba lagi, dan kalau sering terjadi, hubungi support.",
+        "error.id": "**Error:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Konteksnya belum cukup",
+        "notEnoughContext.body":
+            "Jstmemit butuh waktu lebih untuk mengenal channel kamu sebelum bisa bikin meme. Coba ngobrol lagi dan kirim beberapa GIF. Kalau error ini terus muncul, hubungi support.",
+        "unknownTemplate.heading": "🤔 Aku tidak kenal template itu",
+        "unknownTemplate.body": "Pastikan memilih salah satu opsi autocomplete saat memilih template di `/custom`",
+        "wrongFileFormat.heading": "🤔 Format gambar tidak dikenal",
+        "wrongFileFormat.body": 'File untuk "{{file}}" bukan gambar. Coba lagi dengan PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Kamu tidak punya izin untuk itu",
+        "missingPermissions.body":
+            "Hanya anggota dengan izin **Kelola Server** atau **Kelola Channel** yang bisa mengubah pengaturan Jstmemit. Minta admin server kalau kamu perlu mengubahnya.",
+        "deleteData.confirm.heading": "🗑️ Hapus semua data channel ini?",
+        "deleteData.confirm.body":
+            "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot tetap aktif dan akan mulai belajar lagi dari pesan baru. Kalau setelahnya mau berhenti total, matikan lewat `/enable`.",
+        "deleteData.success.heading": "✅ Data terhapus!",
+        "deleteData.success.body":
+            "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus. Bot masih menyala dan akan mulai belajar lagi dari pesan baru. Matikan lewat `/enable` kalau tidak mau memakainya lagi.",
+        "deleteData.button.cancel": "Batal",
+        "deleteData.button.delete": "Hapus semua data",
+        "settings.about.heading": "❓ Tentang bot ini",
+        "settings.about.body":
+            "Jstmemit adalah bot yang bikin meme berdasarkan pesan dan gambar di chat. Lagi ngobrolin raid base orang di Rust? Bot bakal bikin meme soal itu.",
+        "settings.about.enablePrompt": "Aktifkan Jstmemit untuk mulai!",
+        "settings.button.disable": "Nonaktifkan",
+        "settings.button.enable": "Aktifkan",
+        "settings.status.enabled": "**✅ Jstmemit menyala di channel ini!**",
+        "settings.status.disabled": "**⚠️ Untuk bikin meme di channel ini, Jstmemit harus diaktifkan dulu!**",
+        "settings.meme.heading": "💬 Pengaturan meme",
+        "settings.meme.body": "Kamu bisa mengatur seberapa sering bot mengirim meme dan apa isinya",
+        "settings.frequency.heading": "Frekuensi",
+        "settings.frequency.body": "Seberapa sering bot mengirim meme acak ke chat tanpa diminta?",
+        "settings.frequency.never.label": "Tidak pernah",
+        "settings.frequency.never.description": "Jangan kirim meme, kecuali diminta lewat perintah /meme",
+        "settings.frequency.rarely.label": "Jarang",
+        "settings.frequency.rarely.description": "Sekali tiap ~100 pesan",
+        "settings.frequency.sometimes.label": "Kadang-kadang",
+        "settings.frequency.sometimes.description": "Sekali tiap ~50 pesan (untuk server besar)",
+        "settings.frequency.often.label": "Sering",
+        "settings.frequency.often.description": "Sekali tiap ~20 pesan (untuk server kecil)",
+        "settings.frequency.veryOften.label": "Sangat sering",
+        "settings.frequency.veryOften.description": "Sekali tiap ~10 pesan (bisa jadi spam)",
+        "settings.avatars.heading": "Avatar di meme",
+        "settings.avatars.body": "Pakai foto profil di meme yang dibuat?",
+        "settings.avatars.yes.label": "Ya",
+        "settings.avatars.yes.description": "Bot akan pakai avatar untuk meme (disarankan)",
+        "settings.avatars.no.label": "Tidak",
+        "settings.avatars.no.description": "Bot tidak akan pakai avatar untuk meme",
+        "settings.footer.body": "Mau menghapus semua data pesan channel ini?",
+        "settings.footer.deleteButton": "Hapus semua data",
+        "feedback.submit.heading": "💬 Masukan terkirim!",
+        "feedback.submit.body":
+            "Terima kasih banyak atas pesanmu, tim kami sudah menerimanya dan akan meninjaunya. Kalau mau bahas lebih lanjut, gabung ke [server support](https://discord.gg/THRnn8fhkZ) kami, biar kami bisa kirim balasan ke kamu.",
+        "feedback.submit.yourMessage": "Pesanmu:",
+        "modal.customMeme.title": "Bikin meme sendiri",
+        "modal.customMeme.text.label": "Teks #{{id}}",
+        "modal.customMeme.text.placeholder": "Sesuatu yang lucu di sini",
+        "modal.customMeme.image.label": "Gambar #{{id}}",
+        "modal.feedback.title": "Kirim masukan",
+        "modal.feedback.label": "Pesanmu",
+        "modal.feedback.description": "Laporkan bug, usulkan fitur, atau beri tahu pendapatmu",
+        "modal.feedback.placeholder": "Halo, bisa tolong tambahkan template meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Kalian tinggal ngobrol, dia yang bikin meme",
+        "help.autoMemes.tldr": "**Intinya dia menempelkan gambar, GIF, dan pesan kalian ke template meme**",
+        "help.autoMemes.description":
+            "Ngobrol saja seperti biasa. Sekali tiap beberapa puluh pesan, Jstmemit memilih template meme, mengambil beberapa gambar/gif/pesan dari channel ini, lalu mencampur semuanya. Kamu tidak perlu pilih template, nulis caption, atau pusing soal format gambar.",
+        "help.autoMemes.algorithm":
+            "Oh iya, setiap meme yang dibuat punya tombol **`👍 Suka`**, **`🔁 Ulangi`**, dan **`👎 Tidak suka`** yang meningkatkan kualitas meme berikutnya dengan membantu bot paham mana yang lucu.",
+        "help.faq.heading": "## ❓ Pertanyaan yang sering ditanyakan",
+        "help.faq.description":
+            "Tidak menemukan jawaban untuk pertanyaanmu? Kami bisa bantu di [server support](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Aku sudah menambahkan botnya, terus apa?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Jalankan /enable di sebuah channel.** Bot akan mulai belajar dari pesan baru di sana. Setelah ngobrol sebentar, jalankan /meme untuk membuat meme. Meme juga akan muncul sendiri saat channel aktif dan ada obrolan berlangsung. Frekuensinya bisa diubah di /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Bisa punya pengaturan berbeda untuk tiap channel?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Bisa!** Semua informasi channel, seperti data untuk meme, frekuensi, dan pengaturan lainnya, disimpan terpisah untuk tiap channel. Tidak ada yang melarang kamu pasang frekuensi meme sangat rendah di chat utama tapi maksimal di channel spam.",
+        "help.faq.isThereALimit.question": "Ada batas berapa banyak meme yang bisa dibuat bot per hari?",
+        "help.faq.isThereALimit.answer":
+            "**Tidak, tidak ada batasan.** Kamu bisa menjalankan `/meme` sebanyak apa pun dalam sehari. Dan gratis, karena tiap pembuatan cuma butuh milidetik. Meme juga tanpa watermark, jadi terlihat lebih bersih dibanding buatan generator meme lain.",
+        "help.faq.canIDeleteStoredData.question": "Bisa menghapus data tersimpan untuk pembuatan meme?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Bisa, kapan saja.** Jalankan `/settings` lalu tekan tombol "Hapus semua data" untuk menghapus semua yang disimpan bot untuk channel itu.',
+        "help.faq.addBotToMyApps.question": 'Bisa menambahkan bot ke "Aplikasi Saya" dan memakainya di mana saja?',
+        "help.faq.addBotToMyApps.answer":
+            '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai `/custom` dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, demi privasi.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Bagaimana kalau aku mau bikin meme dengan teks dan/atau gambar tertentu?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Pakai `/custom`!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
+        "help.button.addJstmemit": "🔗 Tambahkan Jstmemit",
+        "help.button.website": "🌐 Situs web",
+    },
+    [Locale.Czech]: {
+        "enable.heading.enabled": "🎉 Bot je připraven!",
+        "enable.heading.disabled": "🔴 Jstmemit je v tomto kanálu vypnutý",
+        "enable.body.enabled":
+            "Jstmemit je teď aktivní a bude během chatů tady generovat memy. Kvalita se zlepšuje, jak bot poznává tvůj kanál, a výsledky budou o dost lepší, až bude mít v paměti asi **~30 zpráv**.",
+        "enable.body.disabled.ready":
+            "V paměti už máš přes **{{messagesAmount}} zpráv**, takže Jstmemit je připravený dělat memy. Stačí bota zase zapnout a začne je generovat během aktivních chatů.",
+        "enable.body.disabled.notReady":
+            "Bot tady nemůže dělat memy, dokud ho pro tento kanál nezapneš. Zapni ho a začne generovat memy během aktivních chatů.",
+        "enable.memory.progress": "Zpráv v paměti: **{{messagesAmount}}/30**",
+        "enable.memory.full": "Zpráv v paměti: **{{messagesAmount}}**",
+        "enable.button.turnOff": "Vypnout",
+        "enable.button.turnOn": "Zapnout",
+        "enable.button.settings": "⚙️ Otevřít nastavení",
+        "error.heading": "🔴 Něco se pokazilo!",
+        "error.body":
+            "Bot nedokázal odpovědět na tvůj požadavek kvůli neznámé chybě. Zkus to znovu, a pokud se to stává často, obrať se na podporu.",
+        "error.id": "**Chyba:** {{interactionId}}",
+        "notEnoughContext.heading": "🤔 Zatím není dost kontextu",
+        "notEnoughContext.body":
+            "Jstmemit potřebuje víc času, aby poznal tvůj kanál, než dokáže udělat mem. Zkuste si ještě chvíli psát a pošlete pár GIFů. Pokud chyba přetrvává, obrať se na podporu.",
+        "unknownTemplate.heading": "🤔 Takovou šablonu neznám",
+        "unknownTemplate.body": "Při výběru šablony v `/custom` určitě vyber jednu z možností automatického doplňování",
+        "wrongFileFormat.heading": "🤔 Neznámý formát obrázku",
+        "wrongFileFormat.body": 'Soubor pro "{{file}}" není obrázek. Zkus to znovu s PNG/JPEG/AVIF/WebP.',
+        "missingPermissions.heading": "🔒 Na tohle nemáš oprávnění",
+        "missingPermissions.body":
+            "Nastavení Jstmemitu můžou měnit jen členové s oprávněním **Spravovat server** nebo **Spravovat kanály**. Pokud potřebuješ změnu, obrať se na admina serveru.",
+        "deleteData.confirm.heading": "🗑️ Smazat všechna data tohoto kanálu?",
+        "deleteData.confirm.body":
+            "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot zůstane zapnutý a začne se znovu učit z nových zpráv. Pokud ho pak chceš úplně zastavit, vypni ho přes `/enable`.",
+        "deleteData.success.heading": "✅ Data smazána!",
+        "deleteData.success.body":
+            "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány. Bot je pořád zapnutý a začne se znovu učit z nových zpráv. Vypni ho přes `/enable`, pokud ho už nechceš používat.",
+        "deleteData.button.cancel": "Zrušit",
+        "deleteData.button.delete": "Smazat všechna data",
+        "settings.about.heading": "❓ O tomto botovi",
+        "settings.about.body":
+            "Jstmemit je bot, který generuje memy na základě zpráv a obrázků v chatu. Řešíte raid něčí základny v Rustu? Bot o tom udělá memy.",
+        "settings.about.enablePrompt": "Zapni Jstmemit a začni!",
+        "settings.button.disable": "Vypnout",
+        "settings.button.enable": "Zapnout",
+        "settings.status.enabled": "**✅ Jstmemit je v tomto kanálu zapnutý!**",
+        "settings.status.disabled": "**⚠️ Aby šlo v tomto kanálu dělat memy, musí se Jstmemit zapnout!**",
+        "settings.meme.heading": "💬 Nastavení memů",
+        "settings.meme.body": "Můžeš si nastavit, jak často bude bot posílat memy a co na nich bude",
+        "settings.frequency.heading": "Frekvence",
+        "settings.frequency.body": "Jak často má bot posílat náhodný mem do chatu, aniž by o to někdo požádal?",
+        "settings.frequency.never.label": "Nikdy",
+        "settings.frequency.never.description": "Neposílat memy, pokud nejsou vyžádány přes příkaz /meme",
+        "settings.frequency.rarely.label": "Zřídka",
+        "settings.frequency.rarely.description": "Jednou za ~100 zpráv",
+        "settings.frequency.sometimes.label": "Občas",
+        "settings.frequency.sometimes.description": "Jednou za ~50 zpráv (pro větší servery)",
+        "settings.frequency.often.label": "Často",
+        "settings.frequency.often.description": "Jednou za ~20 zpráv (pro menší servery)",
+        "settings.frequency.veryOften.label": "Velmi často",
+        "settings.frequency.veryOften.description": "Jednou za ~10 zpráv (může dělat spam)",
+        "settings.avatars.heading": "Avatary v memech",
+        "settings.avatars.body": "Používat profilovky ve vygenerovaných memech?",
+        "settings.avatars.yes.label": "Ano",
+        "settings.avatars.yes.description": "Bot bude používat avatary pro memy (doporučeno)",
+        "settings.avatars.no.label": "Ne",
+        "settings.avatars.no.description": "Bot nebude používat avatary pro memy",
+        "settings.footer.body": "Chceš odstranit všechna data zpráv tohoto kanálu?",
+        "settings.footer.deleteButton": "Smazat všechna data",
+        "feedback.submit.heading": "💬 Zpětná vazba odeslána!",
+        "feedback.submit.body":
+            "Moc děkujeme za tvou zprávu, náš tým ji dostal a podívá se na ni. Pokud to chceš probrat víc, přidej se na náš [server podpory](https://discord.gg/THRnn8fhkZ), tak ti budeme moct poslat odpověď.",
+        "feedback.submit.yourMessage": "Tvoje zpráva:",
+        "modal.customMeme.title": "Udělat vlastní mem",
+        "modal.customMeme.text.label": "Text #{{id}}",
+        "modal.customMeme.text.placeholder": "Něco vtipného sem",
+        "modal.customMeme.image.label": "Obrázek #{{id}}",
+        "modal.feedback.title": "Poslat zpětnou vazbu",
+        "modal.feedback.label": "Tvoje zpráva",
+        "modal.feedback.description": "Nahlaš chybu, navrhni funkci nebo nám řekni svůj názor",
+        "modal.feedback.placeholder": "Ahoj, mohli byste přidat šablonu memu ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Prostě si pište a on bude dělat memy",
+        "help.autoMemes.tldr": "**V podstatě dává vaše obrázky, GIFy a zprávy na šablony memů**",
+        "help.autoMemes.description":
+            "Pište si jako obvykle. Jednou za pár desítek zpráv si Jstmemit vybere šablonu memu, vezme nějaké obrázky/gify/zprávy z tohoto kanálu a všechno to smíchá dohromady. Nemusíš vybírat šablonu, psát popisky ani řešit formáty obrázků.",
+        "help.autoMemes.algorithm":
+            "Jo a každý vygenerovaný mem má tlačítka **`👍 Líbí`**, **`🔁 Znovu`** a **`👎 Nelíbí`**, která zlepšují kvalitu budoucích memů tím, že botovi pomáhají pochopit, co bylo vtipné.",
+        "help.faq.heading": "## ❓ Časté dotazy",
+        "help.faq.description":
+            "Nemůžeš najít odpověď na svou otázku? Pomůžeme ti na [serveru podpory](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Přidal jsem bota, co teď?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Spusť /enable v kanálu.** Bot se tam začne učit z nových zpráv. Až si chvíli popíšete, spusť /meme a vygeneruje se mem. Memy budou chodit i samy, když je kanál aktivní a probíhá konverzace. Jejich frekvenci můžeš změnit v /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Můžu mít pro každý kanál jiné nastavení?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ano!** Všechny informace o kanálu, jako data pro memy, frekvence a další nastavení, se ukládají pro každý kanál zvlášť. Nic ti nebrání mít v hlavním chatu velmi nízkou frekvenci memů a ve spamovém kanálu ji vytočit na maximum.",
+        "help.faq.isThereALimit.question": "Je nějaký limit, kolik memů může bot denně udělat?",
+        "help.faq.isThereALimit.answer":
+            "**Ne, žádné limity nejsou.** Můžeš spouštět `/meme` kolikrát denně chceš. A je to zadarmo, protože každá generace trvá jen milisekundy. Na memech taky nejsou žádné vodoznaky, takže vypadají čistěji než ty z jiných generátorů memů.",
+        "help.faq.canIDeleteStoredData.question": "Můžu smazat uložená data pro generování memů?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Ano, kdykoliv.** Spusť `/settings` a stiskni tlačítko „Smazat všechna data“, čímž smažeš všechno, co si bot pro kanál uložil.",
+        "help.faq.addBotToMyApps.question": "Můžu si bota přidat do „Moje aplikace“ a používat ho kdekoliv?",
+        "help.faq.addBotToMyApps.answer":
+            "**Ano, ale bez některých funkcí.** Budeš moct používat `/custom` a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, kvůli soukromí.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Co když chci udělat vlastní mem s konkrétním textem a/nebo obrázkem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Použij `/custom`!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
+        "help.button.addJstmemit": "🔗 Přidat Jstmemit",
+        "help.button.website": "🌐 Web",
+    },
+};

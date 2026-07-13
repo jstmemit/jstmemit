@@ -110,6 +110,8 @@ export class ChannelsService implements IChannelsService {
     public async rollChannelFrequency(channelId: string): Promise<boolean> {
         const channel = await this._channelsRepository.upsert(channelId, new Date());
 
+        if (channel.frequency <= 0) return false;
+
         const roll: number = Math.floor(Math.random() * channel.frequency);
 
         return roll === 0;

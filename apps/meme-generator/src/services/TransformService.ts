@@ -57,12 +57,8 @@ export class TransformService implements ITransformService {
             try {
                 return await this._markovProvider.getTransformedText(text, context);
             } catch {
-                if (context.length < 30) {
-                    return random;
-                }
+                return random;
             }
-
-            return "";
         } catch (error) {
             console.error(error);
             return "";

@@ -1,4 +1,4 @@
-import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction, StringSelectMenuInteraction } from "discord.js";
 import { type Client, type Interaction, type Message, ActivityType } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -12,6 +12,7 @@ import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.t
 import { AutoPoster } from "topgg-autoposter";
 import _ from "lodash";
 import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
+import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 
 const env = Env.parse(process.env);
@@ -24,6 +25,7 @@ export class EventsController implements IEventsController {
     private readonly _settingsController: ISettingsController;
     private readonly _feedbackController: IFeedbackController;
     private readonly _templateRepository: ITemplatesRepository;
+    private readonly _helpController: IHelpController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -33,6 +35,7 @@ export class EventsController implements IEventsController {
         ratingsController: IRatingsController,
         settingsController: ISettingsController,
         feedbackController: IFeedbackController,
+        helpController: IHelpController,
         templatesRepository: ITemplatesRepository,
     ) {
         this._contextController = contextController;
@@ -41,6 +44,7 @@ export class EventsController implements IEventsController {
         this._ratingsController = ratingsController;
         this._settingsController = settingsController;
         this._feedbackController = feedbackController;
+        this._helpController = helpController;
         this._templateRepository = templatesRepository;
     }
 
@@ -156,6 +160,9 @@ export class EventsController implements IEventsController {
                 case "Make a Team Fortress 2 meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "tf2Hahaha");
                     return;
+                case "Make a News Report meme":
+                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
+                    return;
                 case "Make an Absolute Cinema meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "absoluteCinema");
                     return;
@@ -224,12 +231,15 @@ export class EventsController implements IEventsController {
             switch (interaction.commandName) {
                 case "custom":
                     await this._memesController.handleGenerateCustomMemeInteraction(interaction);
-                    break;
+                    return;
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
                     return;
                 case "feedback":
                     await this._feedbackController.handleOpenFeedbackModal(interaction);
+                    return;
+                case "help":
+                    await this._helpController.handleHelpInteraction(interaction);
                     return;
             }
 
@@ -270,13 +280,6 @@ export class EventsController implements IEventsController {
 
             // only with permissions
             switch (customId) {
-                case "meme":
-                    await this._memesController.handleMemeInteraction(interaction);
-                    return;
-                case "like":
-                case "dislike":
-                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
-                    return;
                 case "enable":
                 case "disable":
                     await this._channelsController.handleEnableInteraction(interaction);
@@ -307,47 +310,6 @@ export class EventsController implements IEventsController {
                     await this._settingsController.handleUserAvatarsSelect(interaction);
                     return;
             }
-        }
-    }
-
-    /**
-     * Handles the Events.GuildCreate event from discord.js library
-     *
-     * @param guild
-     *
-     * @author Kyrylo Maliuha
-     */
-    public handleGuildCreate(guild: Guild): void {
-        if (this._isProduction) {
-            analytics.capture({
-                event: "guild_joined",
-                distinctId: "bot",
-                properties: {
-                    guildId: guild.id,
-                    memberCount: guild.memberCount,
-                    guildCount: guild.client.guilds.cache.size,
-                },
-            });
-        }
-    }
-
-    /**
-     * Handles the Events.GuildDelete event from discord.js library
-     *
-     * @param guild
-     *
-     * @author Kyrylo Maliuha
-     */
-    public handleGuildDelete(guild: Guild): void {
-        if (this._isProduction) {
-            analytics.capture({
-                event: "guild_left",
-                distinctId: "bot",
-                properties: {
-                    guildId: guild.id,
-                    guildCount: guild.client.guilds.cache.size,
-                },
-            });
         }
     }
 
