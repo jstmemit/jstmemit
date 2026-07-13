@@ -276,13 +276,6 @@ export class EventsController implements IEventsController {
 
             // only with permissions
             switch (customId) {
-                case "meme":
-                    await this._memesController.handleMemeInteraction(interaction);
-                    return;
-                case "like":
-                case "dislike":
-                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
-                    return;
                 case "enable":
                 case "disable":
                     await this._channelsController.handleEnableInteraction(interaction);
