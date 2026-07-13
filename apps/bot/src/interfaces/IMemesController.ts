@@ -17,6 +17,6 @@ export abstract class IMemesController {
     public abstract handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void>;
     public abstract handleGenerateViaContextMenuInteraction(
         interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
-        templateName: string,
+        templateName: string | undefined,
     ): Promise<void>;
 }

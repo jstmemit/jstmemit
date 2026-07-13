@@ -1,6 +1,7 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
+import type { TemplateTopic } from "#/models/TemplateTopic.ts";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -153,6 +154,20 @@ import { parrotBarber1 } from "#/templates/parrotBarber1.tsx";
 import { parrotBarber2 } from "#/templates/parrotBarber2.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
+    /**
+     * Returns an array of template names that
+     * all share a specific topic
+     *
+     * @param topic
+     * @returns string[]
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getTemplateNamesByTopic(topic: TemplateTopic): string[] {
+        const templates: Template[] = this.getAllByField("topics", topic);
+        return templates.map((template: Template): string => template.name);
+    }
+
     /**
      * Returns an array of all template objects
      *
