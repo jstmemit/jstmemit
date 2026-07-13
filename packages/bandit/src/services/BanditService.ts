@@ -78,10 +78,11 @@ export class BanditService implements IBanditService {
                 return;
             }
 
-            candidate.selectedTopic = topicBest;
-            candidate.selectedType = typeBest;
-
-            return candidate;
+            return {
+                ...candidate,
+                selectedTopic: topicBest,
+                selectedType: typeBest,
+            };
         } catch (error) {
             console.error(error);
 
