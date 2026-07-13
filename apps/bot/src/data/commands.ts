@@ -206,7 +206,7 @@ export const commands = [
         name: "feedback",
         name_localizations: {
             ru: "идеи",
-            uk: "ідеі",
+            uk: "ідеї",
             nl: "feedback",
             fr: "avis",
             de: "feedback",
@@ -217,7 +217,7 @@ export const commands = [
             tr: "geribildirim",
             it: "feedback",
             id: "masukan",
-            cs: "zpetnavazba",
+            cs: "nápady",
         },
         description: "Report a bug, suggest a feature or tell us what you think",
         description_localizations: {
@@ -466,7 +466,7 @@ export const commands = [
         name_localizations: {
             ru: "Сделать Absolute Cinema мем",
             uk: "Зробити Absolute Cinema мем",
-            nl: "Maak een Absolute Cinema-meme",
+            nl: "Maak een Absolute Cinema meme",
             fr: "Faire un mème Absolute Cinema",
             de: "Mach ein Absolute Cinema Meme",
             pl: "Zrób mema Absolute Cinema",
@@ -534,7 +534,7 @@ export const commands = [
         contexts: [0, 1, 2],
         name_localizations: {
             ru: "Сделать мем про двух гангстеров",
-            uk: "Зробити мем про двух гангстерів",
+            uk: "Зробити мем про двох гангстерів",
             nl: "Maak een twee gangsters meme",
             fr: "Faire un mème deux gangsters",
             de: "Mach ein Zwei Gangster Meme",
@@ -603,7 +603,7 @@ export const commands = [
         contexts: [0, 1, 2],
         name_localizations: {
             ru: 'Сделать мем "Посмотри на это!"',
-            uk: 'Зробити мем "Подиви на це!"',
+            uk: 'Зробити мем "Подивись на це!"',
             nl: "Maak een 'moet je zien' meme",
             fr: "Faire un mème « regarde ça »",
             de: "Mach ein 'Schau mal'-Meme",
@@ -709,7 +709,7 @@ export const commands = [
             cs: "Udělat mem s kolenem",
             ja: "膝をやられたミームにする",
             ko: "무릎 부상 밈 만들기",
-            "zh-CN": "做成膝盖中箭梗图",
+            "zh-CN": "做成膝盖痛梗图",
         },
     },
 ];

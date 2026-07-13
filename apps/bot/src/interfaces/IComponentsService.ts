@@ -1,20 +1,35 @@
-import type { ActionRowBuilder, ButtonBuilder } from "discord.js";
-import { type ContainerBuilder } from "discord.js";
+import type { ActionRowBuilder, ButtonBuilder, ContainerBuilder, Locale } from "discord.js";
 
 export abstract class IComponentsService {
-    public abstract getEnableMessageComponent(isEnabled: boolean, messagesAmount?: number): ContainerBuilder;
-    public abstract getEnableButtonsComponent(isEnabled: boolean): ActionRowBuilder<ButtonBuilder>;
-    public abstract getErrorMessageComponent(interactionId: string): ContainerBuilder;
-    public abstract getNotEnoughContextMessageComponent(interactionId: string): ContainerBuilder;
-    public abstract getMissingPermissionsMessageComponent(): ContainerBuilder;
-    public abstract getSettingsHeaderMessageComponent(isEnabled: boolean): ContainerBuilder;
-    public abstract getSettingsBodyMessageComponent(frequency: number, useAvatarsInMemes: boolean): ContainerBuilder;
-    public abstract getSettingsFooterMessageComponent(): ContainerBuilder;
-    public abstract getDeleteDataButtonsComponent(): ActionRowBuilder<ButtonBuilder>;
-    public abstract getDeleteDataConfirmationMessageComponent(): ContainerBuilder;
-    public abstract getDeleteDataSuccessMessageComponent(): ContainerBuilder;
-    public abstract getUnknownTemplateMessageComponent(interactionId: string): ContainerBuilder;
-    public abstract getWrongFileFormatMessageComponent(interactionId: string, file: string): ContainerBuilder;
-    public abstract getFeedbackMessageComponent(userId: string, message: string): ContainerBuilder;
-    public abstract getFeedbackMessageSubmitComponent(interactionId: string, message: string): ContainerBuilder;
+    public abstract getEnableMessageComponent(
+        language: Locale,
+        isEnabled: boolean,
+        messagesAmount?: number,
+    ): ContainerBuilder;
+    public abstract getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder>;
+    public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
+    public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
+    public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
+    public abstract getSettingsBodyMessageComponent(
+        language: Locale,
+        frequency: number,
+        useAvatarsInMemes: boolean,
+    ): ContainerBuilder;
+    public abstract getSettingsFooterMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
+    public abstract getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
+    public abstract getWrongFileFormatMessageComponent(
+        language: Locale,
+        interactionId: string,
+        file: string,
+    ): ContainerBuilder;
+    public abstract getFeedbackMessageComponent(language: Locale, userId: string, message: string): ContainerBuilder;
+    public abstract getFeedbackMessageSubmitComponent(
+        language: Locale,
+        interactionId: string,
+        message: string,
+    ): ContainerBuilder;
 }
