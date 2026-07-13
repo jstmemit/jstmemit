@@ -1,13 +1,10 @@
 {
-    "name": "@jstmemit/shared",
+    "name": "@jstmemit/i18n",
     "private": true,
     "type": "module",
-    "devDependencies": {
-        "@jstmemit/i18n": "workspace:*",
-        "@jstmemit/meme-generator": "workspace:*",
-        "discord.js": "^14.26.4",
-        "react": "^19.2.7",
-        "satori": "^0.26.0"
+    "dependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "discord.js": "^14.26.4"
     },
     "imports": {
         "#/*": [
@@ -15,6 +12,7 @@
         ]
     },
     "exports": {
+        ".": "./src/index.ts",
         "./*.ts": "./src/*.ts",
         "./*.tsx": "./src/*.tsx",
         "./*": [

@@ -12,6 +12,7 @@
         "@jstmemit/db": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",
         "@jstmemit/queue": "workspace:*",
+        "@jstmemit/i18n": "workspace:*",
         "@jstmemit/shared": "workspace:*",
         "bullmq": "^5.78.0",
         "discord.js": "^14.26.4",

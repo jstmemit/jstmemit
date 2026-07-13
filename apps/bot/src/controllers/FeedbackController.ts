@@ -28,7 +28,7 @@ export class FeedbackController implements IFeedbackController {
     }
 
     public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void> {
-        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.user.id);
+        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.locale, interaction.user.id);
 
         analytics.capture({
             event: "feedback_modal_opened",
@@ -58,7 +58,9 @@ export class FeedbackController implements IFeedbackController {
         });
 
         if (!message || !userId) {
-            await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
+            await respond(interaction, [
+                this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+            ]);
             return;
         }
 
@@ -67,11 +69,13 @@ export class FeedbackController implements IFeedbackController {
         });
 
         await this._channelsService.sendMessage(this._feedbackChannelId, [
-            this._componentsService.getFeedbackMessageComponent(userId, message),
+            this._componentsService.getFeedbackMessageComponent(interaction.locale, userId, message),
         ]);
 
         await interaction.editReply({
-            components: [this._componentsService.getFeedbackMessageSubmitComponent(interaction.id, message)],
+            components: [
+                this._componentsService.getFeedbackMessageSubmitComponent(interaction.locale, interaction.id, message),
+            ],
             flags: MessageFlags.IsComponentsV2,
         });
 
