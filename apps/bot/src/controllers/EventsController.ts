@@ -181,7 +181,7 @@ export class EventsController implements IEventsController {
                 case "Put avatar on YT thumbnail":
                     await this._memesController.handleGenerateViaContextMenuInteraction(
                         interaction,
-                        _.sample(this._templateRepository.getTemplatesByTopic("youtube")),
+                        _.sample(this._templateRepository.getTemplateNamesByTopic("youtube")),
                     );
                     return;
                 case "Make an Incoming Call meme":

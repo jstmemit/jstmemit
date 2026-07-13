@@ -4,7 +4,7 @@ import type { TemplateTopic } from "#/models/TemplateTopic.ts";
 
 export abstract class ITemplatesRepository {
     public abstract getAll(): Template[];
-    public abstract getTemplatesByTopic(topic: TemplateTopic): string[];
+    public abstract getTemplateNamesByTopic(topic: TemplateTopic): string[];
     public abstract getAllByFieldMap<K extends keyof Template>(
         templates: Template[],
         fieldName: K,

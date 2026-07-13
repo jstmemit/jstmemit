@@ -163,7 +163,7 @@ export class TemplatesRepository implements ITemplatesRepository {
      *
      * @author Kyrylo Maliuha
      */
-    public getTemplatesByTopic(topic: TemplateTopic): string[] {
+    public getTemplateNamesByTopic(topic: TemplateTopic): string[] {
         const templates: Template[] = this.getAllByField("topics", topic);
         return templates.map((template: Template): string => template.name);
     }
