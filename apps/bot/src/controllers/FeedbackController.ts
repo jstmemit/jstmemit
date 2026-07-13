@@ -36,6 +36,7 @@ export class FeedbackController implements IFeedbackController {
             properties: {
                 channelId: interaction.channelId,
                 guildId: interaction.guildId,
+                language: interaction.locale,
             },
         });
 
@@ -52,6 +53,7 @@ export class FeedbackController implements IFeedbackController {
             properties: {
                 channelId: interaction.channelId,
                 guildId: interaction.guildId,
+                language: interaction.locale,
             },
         });
 
@@ -79,6 +81,7 @@ export class FeedbackController implements IFeedbackController {
             properties: {
                 channelId: interaction.channelId,
                 guildId: interaction.guildId,
+                language: interaction.locale,
             },
         });
     }

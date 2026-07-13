@@ -65,6 +65,7 @@ export class ChannelsController implements IChannelsController {
                     guildId: interaction.guildId,
                     messagesAmount: messagesAmount,
                     enabled: isEnabled,
+                    language: interaction.locale,
                 },
             });
 
@@ -91,6 +92,7 @@ export class ChannelsController implements IChannelsController {
                 channelId: interaction.channelId,
                 guildId: interaction?.guildId || "",
                 command: "/enable",
+                language: interaction.locale,
             });
 
             const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(interaction.id);

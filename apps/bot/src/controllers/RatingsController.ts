@@ -59,6 +59,7 @@ export class RatingsController implements IRatingsController {
                         generationId: generationId,
                         channelId: interaction.channelId,
                         guildId: interaction.guildId,
+                        language: interaction.locale,
                     },
                 });
             }
