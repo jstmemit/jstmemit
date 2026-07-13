@@ -156,9 +156,6 @@ export class EventsController implements IEventsController {
                 case "Make a Team Fortress 2 meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "tf2Hahaha");
                     return;
-                case "Make a News Report meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
-                    return;
                 case "Make an Absolute Cinema meme":
                     await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "absoluteCinema");
                     return;
