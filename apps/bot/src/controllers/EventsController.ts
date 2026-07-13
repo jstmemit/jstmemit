@@ -1,4 +1,4 @@
-import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction, StringSelectMenuInteraction } from "discord.js";
 import { type Client, type Interaction, type Message, ActivityType } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -313,47 +313,6 @@ export class EventsController implements IEventsController {
                     await this._settingsController.handleUserAvatarsSelect(interaction);
                     return;
             }
-        }
-    }
-
-    /**
-     * Handles the Events.GuildCreate event from discord.js library
-     *
-     * @param guild
-     *
-     * @author Kyrylo Maliuha
-     */
-    public handleGuildCreate(guild: Guild): void {
-        if (this._isProduction) {
-            analytics.capture({
-                event: "guild_joined",
-                distinctId: "bot",
-                properties: {
-                    guildId: guild.id,
-                    memberCount: guild.memberCount,
-                    guildCount: guild.client.guilds.cache.size,
-                },
-            });
-        }
-    }
-
-    /**
-     * Handles the Events.GuildDelete event from discord.js library
-     *
-     * @param guild
-     *
-     * @author Kyrylo Maliuha
-     */
-    public handleGuildDelete(guild: Guild): void {
-        if (this._isProduction) {
-            analytics.capture({
-                event: "guild_left",
-                distinctId: "bot",
-                properties: {
-                    guildId: guild.id,
-                    guildCount: guild.client.guilds.cache.size,
-                },
-            });
         }
     }
 
