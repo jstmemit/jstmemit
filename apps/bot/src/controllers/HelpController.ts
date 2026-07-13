@@ -23,8 +23,6 @@ export class HelpController implements IHelpController {
      * @author Kyrylo Maliuha
      */
     public async handleHelpInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
-        await interaction.deferReply();
-
         try {
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
@@ -40,10 +38,16 @@ export class HelpController implements IHelpController {
                 },
             });
 
-            // await respond(interaction, [this._componentsService.getSettingsHeaderMessageComponent()]);
+            await respond(interaction, [
+                this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
+                this._componentsService.getHelpExplainMessageComponent(interaction.locale),
+                this._componentsService.getHelpFaqMessageComponent(interaction.locale),
+            ]);
         } catch (error) {
             analytics.captureException(error);
-            await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
+            await respond(interaction, [
+                this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+            ]);
         }
     }
 }

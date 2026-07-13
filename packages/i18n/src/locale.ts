@@ -86,6 +86,39 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Your message",
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Just talk and it will make memes",
+        "help.autoMemes.tldr": "**It basically puts your images, GIFs and messages on meme templates**",
+        "help.autoMemes.description":
+            "Chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
+        "help.autoMemes.algorithm":
+            "Oh, and each generated meme has **`👍 Like`**, **`🔁 Regenerate`** and **`👎 Dislike`** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+        "help.faq.heading": "## ❓ Frequently asked questions",
+        "help.faq.iAddedTheBotWhatNow.question": "I added the bot, what now?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Run /enable in a channel.** The bot will start learning from new messages there. After chatting for a bit run /meme to generate a meme. Memes will also come automatically when the channel is active and there is a conversation ongoing. You can change frequency for those in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Can I have different settings for every channel?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Yes!** All channel information, such as data for memes, frequency and other settings are stored separately for each channel. Nothing stops you from having very low meme frequency in your main chat, but also set it to high in your flood channel.",
+        "help.faq.isThereALimit.question": "Is there a limit on how many memes the bot can make daily?",
+        "help.faq.isThereALimit.answer":
+            "**No, there are no limits.** You can run `/meme` as many times a day as you want. And it's free, because each generation only takes milliseconds to finish. There are also no watermarks on memes so that they look cleaner than if they were made with other meme generators.",
+        "help.faq.canIDeleteStoredData.question": "Can I delete stored meme generation data?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Yes, at any time.** Run `/settings` and then press the "Delete all data" button to delete everything that the bot stored for the channel.',
+        "help.faq.addBotToMyApps.question": 'Can I add the bot to "My Apps" and use it anywhere?',
+        "help.faq.addBotToMyApps.answer":
+            '**Yes, but without some features.** You\'ll be able to use `/custom` and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work for privacy reasons.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "What if I want to make a custom meme with specific text and/or image?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
+        "help.button.addJstmemit": "🔗 Add Jstmemit",
+        "help.button.website": "🌐 Website",
     },
 
     [Locale.Russian]: {

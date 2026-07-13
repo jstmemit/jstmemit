@@ -10,6 +10,9 @@ export abstract class IComponentsService {
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder;
+    public abstract getHelpExplainMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpFaqMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
