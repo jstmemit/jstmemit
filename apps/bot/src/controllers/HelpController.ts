@@ -38,11 +38,15 @@ export class HelpController implements IHelpController {
                 },
             });
 
-            await respond(interaction, [
-                this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
-                this._componentsService.getHelpExplainMessageComponent(interaction.locale),
-                this._componentsService.getHelpFaqMessageComponent(interaction.locale),
-            ]);
+            await respond(
+                interaction,
+                [
+                    this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
+                    this._componentsService.getHelpExplainMessageComponent(interaction.locale),
+                    this._componentsService.getHelpFaqMessageComponent(interaction.locale),
+                ],
+                true,
+            );
         } catch (error) {
             analytics.captureException(error);
             await respond(interaction, [
