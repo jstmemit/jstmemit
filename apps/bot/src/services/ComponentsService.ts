@@ -343,12 +343,15 @@ export class ComponentsService implements IComponentsService {
     public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.faq.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.faq.iAddedTheBotWhatNow.answer", language)}`),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `### ${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.question", language)}`,
@@ -359,24 +362,28 @@ export class ComponentsService implements IComponentsService {
                     `${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.answer", language)}`,
                 ),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.faq.isThereALimit.answer", language)}`),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.faq.canIDeleteStoredData.answer", language)}`),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.faq.addBotToMyApps.answer", language)}`),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `### ${t("help.faq.whatIfIWantToMakeACustomMeme.question", language)}`,

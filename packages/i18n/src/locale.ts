@@ -97,6 +97,8 @@ export const locale: Partial<TranslationString> = {
         "help.autoMemes.algorithm":
             "Oh, and each generated meme has **`👍 Like`**, **`🔁 Regenerate`** and **`👎 Dislike`** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
         "help.faq.heading": "## ❓ Frequently asked questions",
+        "help.faq.description":
+            "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
         "help.faq.iAddedTheBotWhatNow.question": "I added the bot, what now?",
         "help.faq.iAddedTheBotWhatNow.answer":
             "**Run /enable in a channel.** The bot will start learning from new messages there. After chatting for a bit run /meme to generate a meme. Memes will also come automatically when the channel is active and there is a conversation ongoing. You can change frequency for those in /settings.",
