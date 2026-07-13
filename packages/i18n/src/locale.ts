@@ -105,7 +105,7 @@ export const locale: Partial<TranslationString> = {
         "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
             "Can I have different settings for every channel?",
         "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
-            "**Yes!** All channel information, such as data for memes, frequency and other settings are stored separately for each channel. Nothing stops you from having very low meme frequency in your main chat, but also set it to high in your flood channel.",
+            "**Yes!** All channel information, such as data for memes, frequency and other settings are stored separately for each channel. Nothing stops you from having very low meme frequency in your main chat, and setting it to high in your spam channel.",
         "help.faq.isThereALimit.question": "Is there a limit on how many memes the bot can make daily?",
         "help.faq.isThereALimit.answer":
             "**No, there are no limits.** You can run `/meme` as many times a day as you want. And it's free, because each generation only takes milliseconds to finish. There are also no watermarks on memes so that they look cleaner than if they were made with other meme generators.",
@@ -207,6 +207,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Ваше сообщение",
         "modal.feedback.description": "Сообщите о баге, предложите идею или просто напишите что думаете",
         "modal.feedback.placeholder": "Привет, добавьте пожалуйста шаблон мема ...",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Просто общайтесь, а он будет делать мемы",
+        "help.autoMemes.tldr": "**По сути он ставит ваши картинки, GIF и сообщения на шаблоны мемов**",
+        "help.autoMemes.description":
+            "Общайтесь как обычно. Раз в несколько десятков сообщений Jstmemit выбирает шаблон мема, берёт картинки/гифки/сообщения из этого канала и смешивает всё вместе. Вам не нужно выбирать шаблон, писать подписи или думать о форматах картинок.",
+        "help.autoMemes.algorithm":
+            "И да, у каждого сгенерированного мема есть кнопки **`👍 Нравится`**, **`🔁 Заново`** и **`👎 Не нравится`**. Они улучшают качество будущих мемов, помогая боту понять, что было смешно.",
+        "help.faq.heading": "## ❓ Частые вопросы",
+        "help.faq.description":
+            "Не нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Я добавил бота, что дальше?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Запустите /enable в канале.** Бот начнёт учиться на новых сообщениях там. Пообщайтесь немного и запустите /meme, чтобы сгенерировать мем. Мемы также будут приходить сами, когда канал активен и идёт разговор. Частоту таких мемов можно поменять в /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Можно сделать разные настройки для каждого канала?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Да!** Вся информация о канале, например данные для мемов, частота и другие настройки, хранится отдельно для каждого канала. Ничто не мешает поставить очень низкую частоту мемов в основном чате, а во флудилке выкрутить её на максимум.",
+        "help.faq.isThereALimit.question": "Есть ли лимит на количество мемов в день?",
+        "help.faq.isThereALimit.answer":
+            "**Нет, никаких лимитов.** Можете запускать `/meme` сколько угодно раз в день. И это бесплатно, потому что каждая генерация занимает лишь миллисекунды. А ещё на мемах нет водяных знаков, поэтому они выглядят чище, чем сделанные в других генераторах мемов.",
+        "help.faq.canIDeleteStoredData.question": "Можно удалить сохранённые данные для генерации мемов?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Да, в любой момент.** Запустите `/settings` и нажмите кнопку «Удалить все данные», чтобы стереть всё, что бот сохранил для канала.",
+        "help.faq.addBotToMyApps.question": "Можно добавить бота в «Мои приложения» и использовать его где угодно?",
+        "help.faq.addBotToMyApps.answer":
+            "**Да, но без части функций.** Вы сможете использовать `/custom` и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут из соображений приватности.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "А если я хочу сделать свой мем с конкретным текстом и/или картинкой?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Используйте `/custom`!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
+        "help.button.addJstmemit": "🔗 Добавить Jstmemit",
+        "help.button.website": "🌐 Сайт",
     },
     [Locale.Ukrainian]: {
         "enable.heading.enabled": "🎉 Бот готовий до роботи!",
@@ -286,6 +321,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Ваше повідомлення",
         "modal.feedback.description": "Повідомте про баг, запропонуйте ідею або просто напишіть, що думаєте",
         "modal.feedback.placeholder": "Привіт, додайте будь ласка шаблон мема ...",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Просто спілкуйтесь, а він робитиме меми",
+        "help.autoMemes.tldr": "**По суті він ставить ваші картинки, GIF та повідомлення на шаблони мемів**",
+        "help.autoMemes.description":
+            "Спілкуйтесь як зазвичай. Раз на кілька десятків повідомлень Jstmemit обирає шаблон мема, бере картинки/гіфки/повідомлення з цього каналу та змішує все разом. Вам не треба обирати шаблон, писати підписи чи думати про формати картинок.",
+        "help.autoMemes.algorithm":
+            "І так, у кожного згенерованого мема є кнопки **`👍 Подобається`**, **`🔁 Заново`** та **`👎 Не подобається`**. Вони покращують якість майбутніх мемів, допомагаючи боту зрозуміти, що було смішно.",
+        "help.faq.heading": "## ❓ Часті питання",
+        "help.faq.description":
+            "Не знайшли відповідь на своє питання? Ми допоможемо вам на [сервері підтримки](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Я додав бота, що далі?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Запустіть /enable у каналі.** Бот почне вчитися на нових повідомленнях там. Поспілкуйтесь трохи і запустіть /meme, щоб згенерувати мем. Меми також з'являтимуться самі, коли канал активний і триває розмова. Частоту таких мемів можна змінити в /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Чи можна зробити різні налаштування для кожного каналу?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Так!** Уся інформація про канал, наприклад дані для мемів, частота та інші налаштування, зберігається окремо для кожного каналу. Ніщо не заважає поставити дуже низьку частоту мемів в основному чаті, а у флудилці викрутити її на максимум.",
+        "help.faq.isThereALimit.question": "Чи є ліміт на кількість мемів на день?",
+        "help.faq.isThereALimit.answer":
+            "**Ні, жодних лімітів.** Можете запускати `/meme` скільки завгодно разів на день. І це безкоштовно, бо кожна генерація займає лише мілісекунди. До того ж на мемах немає водяних знаків, тому вони виглядають чистіше, ніж зроблені в інших генераторах мемів.",
+        "help.faq.canIDeleteStoredData.question": "Чи можна видалити збережені дані для генерації мемів?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Так, будь-коли.** Запустіть `/settings` і натисніть кнопку «Видалити всі дані», щоб стерти все, що бот зберіг для каналу.",
+        "help.faq.addBotToMyApps.question": "Чи можна додати бота в «Мої застосунки» і користуватися ним будь-де?",
+        "help.faq.addBotToMyApps.answer":
+            "**Так, але без частини функцій.** Ви зможете використовувати `/custom` та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть з міркувань приватності.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "А якщо я хочу зробити власний мем з конкретним текстом та/або картинкою?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Використовуйте `/custom`!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
+        "help.button.addJstmemit": "🔗 Додати Jstmemit",
+        "help.button.website": "🌐 Сайт",
     },
     [Locale.Dutch]: {
         "enable.heading.enabled": "🎉 De bot is er klaar voor!",
@@ -367,6 +437,40 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Jouw bericht",
         "modal.feedback.description": "Meld een bug, stel een feature voor of laat weten wat je vindt",
         "modal.feedback.placeholder": "Hoi, kunnen jullie het ... meme template toevoegen?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Gewoon kletsen en hij maakt memes",
+        "help.autoMemes.tldr": "**Hij plakt eigenlijk je afbeeldingen, GIF's en berichten op meme templates**",
+        "help.autoMemes.description":
+            "Chat zoals je normaal doet. Eens per paar dozijn berichten kiest Jstmemit een meme template, pakt wat afbeeldingen/gifs/berichten uit dit kanaal en gooit alles door elkaar. Je hoeft geen template te kiezen, geen teksten te schrijven en je niet druk te maken om bestandsformaten.",
+        "help.autoMemes.algorithm":
+            "O ja, elke gegenereerde meme heeft **`👍 Like`**, **`🔁 Opnieuw`** en **`👎 Dislike`** knoppen die de kwaliteit van toekomstige memes verbeteren door de bot te laten snappen wat grappig was.",
+        "help.faq.heading": "## ❓ Veelgestelde vragen",
+        "help.faq.description":
+            "Kun je het antwoord op je vraag niet vinden? We helpen je graag in de [Support server](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ik heb de bot toegevoegd, wat nu?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Voer /enable uit in een kanaal.** De bot begint daar te leren van nieuwe berichten. Chat even en voer dan /meme uit om een meme te maken. Memes komen ook vanzelf wanneer het kanaal actief is en er een gesprek gaande is. De frequentie daarvan kun je aanpassen in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Kan ik per kanaal andere instellingen hebben?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ja!** Alle kanaalinformatie, zoals data voor memes, frequentie en andere instellingen, wordt per kanaal apart opgeslagen. Niets houdt je tegen om een hele lage meme frequentie in je hoofdchat te hebben en hem in je spamkanaal juist hoog te zetten.",
+        "help.faq.isThereALimit.question": "Zit er een limiet op hoeveel memes de bot per dag kan maken?",
+        "help.faq.isThereALimit.answer":
+            "**Nee, er zijn geen limieten.** Je kunt `/meme` zo vaak per dag uitvoeren als je wilt. En het is gratis, want elke generatie duurt maar milliseconden. Er staan ook geen watermerken op de memes, dus ze zien er strakker uit dan bij andere meme generators.",
+        "help.faq.canIDeleteStoredData.question": "Kan ik opgeslagen data voor het genereren van memes verwijderen?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Ja, op elk moment.** Voer `/settings` uit en druk op de knop "Alle data verwijderen" om alles te wissen wat de bot voor het kanaal heeft opgeslagen.',
+        "help.faq.addBotToMyApps.question": 'Kan ik de bot toevoegen aan "Mijn apps" en hem overal gebruiken?',
+        "help.faq.addBotToMyApps.answer":
+            '**Ja, maar zonder sommige functies.** Je kunt `/custom` en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, vanwege privacy.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Wat als ik een eigen meme wil maken met specifieke tekst en/of afbeelding?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Gebruik `/custom`!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
+        "help.button.addJstmemit": "🔗 Jstmemit toevoegen",
+        "help.button.website": "🌐 Website",
     },
     [Locale.French]: {
         "enable.heading.enabled": "🎉 Le bot est prêt !",
@@ -449,6 +553,42 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Votre message",
         "modal.feedback.description": "Signalez un bug, proposez une fonctionnalité ou donnez votre avis",
         "modal.feedback.placeholder": "Bonjour, pourriez-vous ajouter le modèle de mème ... ?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Discutez, il s'occupe des mèmes",
+        "help.autoMemes.tldr": "**En gros, il colle vos images, GIF et messages sur des modèles de mèmes**",
+        "help.autoMemes.description":
+            "Discutez comme d'habitude. Toutes les quelques dizaines de messages, Jstmemit choisit un modèle de mème, prend des images/gifs/messages de ce salon et mélange le tout. Pas besoin de choisir un modèle, d'écrire des légendes ou de vous soucier des formats d'image.",
+        "help.autoMemes.algorithm":
+            "Ah, et chaque mème généré a des boutons **`👍 J'aime`**, **`🔁 Regénérer`** et **`👎 Je n'aime pas`** qui améliorent la qualité des futurs mèmes en aidant le bot à comprendre ce qui était drôle.",
+        "help.faq.heading": "## ❓ Questions fréquentes",
+        "help.faq.description":
+            "Vous ne trouvez pas la réponse à votre question ? On peut vous aider sur le [serveur de support](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "J'ai ajouté le bot, et maintenant ?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Lancez /enable dans un salon.** Le bot commencera à apprendre des nouveaux messages là-bas. Après avoir discuté un peu, lancez /meme pour générer un mème. Les mèmes arriveront aussi tout seuls quand le salon est actif et qu'une conversation est en cours. Vous pouvez régler leur fréquence dans /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Puis-je avoir des paramètres différents pour chaque salon ?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Oui !** Toutes les informations du salon, comme les données pour les mèmes, la fréquence et les autres paramètres, sont stockées séparément pour chaque salon. Rien ne vous empêche d'avoir une fréquence très basse dans votre chat principal et de la mettre au maximum dans votre salon de flood.",
+        "help.faq.isThereALimit.question": "Y a-t-il une limite au nombre de mèmes par jour ?",
+        "help.faq.isThereALimit.answer":
+            "**Non, aucune limite.** Vous pouvez lancer `/meme` autant de fois par jour que vous voulez. Et c'est gratuit, car chaque génération ne prend que quelques millisecondes. Il n'y a pas non plus de filigrane sur les mèmes, donc ils sont plus propres que ceux faits avec d'autres générateurs.",
+        "help.faq.canIDeleteStoredData.question":
+            "Puis-je supprimer les données stockées pour la génération de mèmes ?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Oui, à tout moment.** Lancez `/settings` puis appuyez sur le bouton « Supprimer toutes les données » pour effacer tout ce que le bot a stocké pour le salon.",
+        "help.faq.addBotToMyApps.question": "Puis-je ajouter le bot à « Mes applications » et l'utiliser partout ?",
+        "help.faq.addBotToMyApps.answer":
+            "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser `/custom` et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, pour des raisons de confidentialité.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Et si je veux faire un mème perso avec un texte et/ou une image en particulier ?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Utilisez `/custom` !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
+        "help.button.addJstmemit": "🔗 Ajouter Jstmemit",
+        "help.button.website": "🌐 Site web",
     },
     [Locale.German]: {
         "enable.heading.enabled": "🎉 Der Bot ist bereit!",
@@ -530,6 +670,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Deine Nachricht",
         "modal.feedback.description": "Melde einen Bug, schlag ein Feature vor oder sag uns deine Meinung",
         "modal.feedback.placeholder": "Hallo, könnt ihr bitte die Meme-Vorlage ... hinzufügen?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Einfach quatschen, er macht die Memes",
+        "help.autoMemes.tldr": "**Im Grunde packt er eure Bilder, GIFs und Nachrichten auf Meme-Vorlagen**",
+        "help.autoMemes.description":
+            "Chattet einfach wie immer. Alle paar Dutzend Nachrichten sucht Jstmemit eine Meme-Vorlage aus, nimmt ein paar Bilder/GIFs/Nachrichten aus diesem Kanal und mischt alles zusammen. Ihr müsst keine Vorlage aussuchen, keine Texte schreiben und euch nicht um Bildformate kümmern.",
+        "help.autoMemes.algorithm":
+            "Ach ja, jedes generierte Meme hat **`👍 Gefällt mir`**, **`🔁 Nochmal`** und **`👎 Gefällt mir nicht`** Buttons, die die Qualität zukünftiger Memes verbessern, weil der Bot dadurch versteht, was lustig war.",
+        "help.faq.heading": "## ❓ Häufige Fragen",
+        "help.faq.description":
+            "Keine Antwort auf deine Frage gefunden? Wir helfen dir auf dem [Support-Server](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ich habe den Bot hinzugefügt, was jetzt?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Führe /enable in einem Kanal aus.** Der Bot fängt dort an, aus neuen Nachrichten zu lernen. Chattet ein bisschen und führe dann /meme aus, um ein Meme zu generieren. Memes kommen auch von selbst, wenn der Kanal aktiv ist und gerade eine Unterhaltung läuft. Die Häufigkeit dafür kannst du in /settings ändern.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Kann ich für jeden Kanal andere Einstellungen haben?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ja!** Alle Kanalinformationen, wie Daten für Memes, Häufigkeit und andere Einstellungen, werden für jeden Kanal separat gespeichert. Nichts hält dich davon ab, im Hauptchat eine sehr niedrige Meme-Häufigkeit zu haben und sie im Spam-Kanal hochzudrehen.",
+        "help.faq.isThereALimit.question": "Gibt es ein Limit, wie viele Memes der Bot pro Tag machen kann?",
+        "help.faq.isThereALimit.answer":
+            "**Nein, es gibt keine Limits.** Du kannst `/meme` so oft am Tag ausführen, wie du willst. Und es ist kostenlos, weil jede Generierung nur Millisekunden dauert. Auf den Memes sind auch keine Wasserzeichen, dadurch sehen sie sauberer aus als bei anderen Meme-Generatoren.",
+        "help.faq.canIDeleteStoredData.question": "Kann ich gespeicherte Daten für die Meme-Generierung löschen?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Ja, jederzeit.** Führe `/settings` aus und drücke den Button "Alle Daten löschen", um alles zu löschen, was der Bot für den Kanal gespeichert hat.',
+        "help.faq.addBotToMyApps.question": 'Kann ich den Bot zu "Meine Apps" hinzufügen und überall nutzen?',
+        "help.faq.addBotToMyApps.answer":
+            '**Ja, aber ohne manche Funktionen.** Du kannst `/custom` und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, aus Datenschutzgründen.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Was, wenn ich ein eigenes Meme mit bestimmtem Text und/oder Bild machen will?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Nutze `/custom`!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
+        "help.button.addJstmemit": "🔗 Jstmemit hinzufügen",
+        "help.button.website": "🌐 Website",
     },
     [Locale.Polish]: {
         "enable.heading.enabled": "🎉 Bot jest gotowy!",
@@ -609,6 +784,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Twoja wiadomość",
         "modal.feedback.description": "Zgłoś błąd, zaproponuj funkcję lub podziel się opinią",
         "modal.feedback.placeholder": "Cześć, moglibyście dodać szablon mema ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Po prostu gadajcie, a on zrobi memy",
+        "help.autoMemes.tldr": "**W skrócie: wkleja wasze obrazki, GIF-y i wiadomości na szablony memów**",
+        "help.autoMemes.description":
+            "Piszcie tak jak zawsze. Raz na kilkadziesiąt wiadomości Jstmemit wybiera szablon mema, bierze trochę obrazków/gifów/wiadomości z tego kanału i miesza wszystko razem. Nie musisz wybierać szablonu, pisać podpisów ani martwić się o formaty obrazków.",
+        "help.autoMemes.algorithm":
+            "A, i każdy wygenerowany mem ma przyciski **`👍 Lubię to`**, **`🔁 Jeszcze raz`** i **`👎 Nie lubię`**, które poprawiają jakość przyszłych memów, pomagając botowi zrozumieć, co było śmieszne.",
+        "help.faq.heading": "## ❓ Częste pytania",
+        "help.faq.description":
+            "Nie możesz znaleźć odpowiedzi na swoje pytanie? Pomożemy ci na [serwerze supportu](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Dodałem bota, co dalej?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Uruchom /enable na kanale.** Bot zacznie się tam uczyć z nowych wiadomości. Po chwili rozmowy uruchom /meme, żeby wygenerować mema. Memy będą też pojawiać się same, gdy kanał jest aktywny i trwa rozmowa. Ich częstotliwość możesz zmienić w /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Czy mogę mieć różne ustawienia dla każdego kanału?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Tak!** Wszystkie informacje o kanale, takie jak dane do memów, częstotliwość i inne ustawienia, są przechowywane osobno dla każdego kanału. Nic nie stoi na przeszkodzie, żeby mieć bardzo niską częstotliwość memów na głównym czacie, a na spamie wykręcić ją na maksa.",
+        "help.faq.isThereALimit.question": "Czy jest limit memów, które bot może zrobić dziennie?",
+        "help.faq.isThereALimit.answer":
+            "**Nie, nie ma żadnych limitów.** Możesz uruchamiać `/meme` ile razy dziennie chcesz. I to za darmo, bo każda generacja trwa tylko milisekundy. Na memach nie ma też znaków wodnych, więc wyglądają czyściej niż te zrobione w innych generatorach memów.",
+        "help.faq.canIDeleteStoredData.question": "Czy mogę usunąć zapisane dane do generowania memów?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Tak, w każdej chwili.** Uruchom `/settings` i naciśnij przycisk „Usuń wszystkie dane”, żeby skasować wszystko, co bot zapisał dla kanału.",
+        "help.faq.addBotToMyApps.question": "Czy mogę dodać bota do „Moich aplikacji” i używać go wszędzie?",
+        "help.faq.addBotToMyApps.answer":
+            "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać `/custom` i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać ze względu na prywatność.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "A co, jeśli chcę zrobić własnego mema z konkretnym tekstem i/lub obrazkiem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Użyj `/custom`!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
+        "help.button.addJstmemit": "🔗 Dodaj Jstmemit",
+        "help.button.website": "🌐 Strona",
     },
     [Locale.SpanishES]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -691,6 +901,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tu mensaje",
         "modal.feedback.description": "Informa de un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podríais añadir la plantilla de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Vosotros habláis y él hace los memes",
+        "help.autoMemes.tldr": "**Básicamente pone vuestras imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.autoMemes.description":
+            "Chatead como siempre. Una vez cada varias docenas de mensajes, Jstmemit elige una plantilla de meme, coge imágenes/gifs/mensajes de este canal y lo mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
+        "help.autoMemes.algorithm":
+            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué tuvo gracia.",
+        "help.faq.heading": "## ❓ Preguntas frecuentes",
+        "help.faq.description":
+            "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ya he añadido el bot, ¿y ahora qué?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Ejecuta /enable en un canal.** El bot empezará a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también llegarán solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "¿Puedo tener ajustes distintos para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**¡Sí!** Toda la información del canal, como los datos para memes, la frecuencia y demás ajustes, se guarda por separado para cada canal. Nada te impide tener una frecuencia muy baja en el chat principal y ponerla al máximo en el canal de spam.",
+        "help.faq.isThereALimit.question": "¿Hay un límite de memes que el bot puede hacer al día?",
+        "help.faq.isThereALimit.answer":
+            "**No, no hay límites.** Puedes ejecutar `/meme` tantas veces al día como quieras. Y es gratis, porque cada generación solo tarda milisegundos. Además los memes no llevan marca de agua, así que quedan más limpios que los hechos con otros generadores de memes.",
+        "help.faq.canIDeleteStoredData.question": "¿Puedo borrar los datos guardados para generar memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Sí, en cualquier momento.** Ejecuta `/settings` y pulsa el botón «Borrar todos los datos» para eliminar todo lo que el bot ha guardado del canal.",
+        "help.faq.addBotToMyApps.question": "¿Puedo añadir el bot a «Mis aplicaciones» y usarlo en cualquier parte?",
+        "help.faq.addBotToMyApps.answer":
+            "**Sí, pero sin algunas funciones.** Podrás usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, por privacidad.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "¿Y si quiero hacer un meme con un texto y/o imagen concretos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
+        "help.button.addJstmemit": "🔗 Añadir Jstmemit",
+        "help.button.website": "🌐 Web",
     },
     [Locale.SpanishLATAM]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -773,6 +1018,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tu mensaje",
         "modal.feedback.description": "Reporta un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podrían agregar la plantilla de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Ustedes hablan y él hace los memes",
+        "help.autoMemes.tldr": "**Básicamente pone sus imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.autoMemes.description":
+            "Chateen como siempre. Una vez cada varias decenas de mensajes, Jstmemit elige una plantilla de meme, toma imágenes/gifs/mensajes de este canal y mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
+        "help.autoMemes.algorithm":
+            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué fue gracioso.",
+        "help.faq.heading": "## ❓ Preguntas frecuentes",
+        "help.faq.description":
+            "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ya agregué el bot, ¿y ahora qué?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Ejecuta /enable en un canal.** El bot va a empezar a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también van a llegar solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "¿Puedo tener configuraciones distintas para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**¡Sí!** Toda la información del canal, como los datos para memes, la frecuencia y demás configuraciones, se guarda por separado para cada canal. Nada te impide tener una frecuencia muy baja en el chat principal y ponerla al máximo en el canal de spam.",
+        "help.faq.isThereALimit.question": "¿Hay un límite de memes que el bot puede hacer al día?",
+        "help.faq.isThereALimit.answer":
+            "**No, no hay límites.** Puedes ejecutar `/meme` todas las veces que quieras al día. Y es gratis, porque cada generación tarda solo milisegundos. Además los memes no llevan marca de agua, así que se ven más limpios que los hechos con otros generadores de memes.",
+        "help.faq.canIDeleteStoredData.question": "¿Puedo borrar los datos guardados para generar memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Sí, en cualquier momento.** Ejecuta `/settings` y presiona el botón «Borrar todos los datos» para eliminar todo lo que el bot guardó del canal.",
+        "help.faq.addBotToMyApps.question": "¿Puedo agregar el bot a «Mis aplicaciones» y usarlo donde sea?",
+        "help.faq.addBotToMyApps.answer":
+            "**Sí, pero sin algunas funciones.** Vas a poder usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, por privacidad.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "¿Y si quiero hacer un meme con un texto y/o imagen específicos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
+        "help.button.addJstmemit": "🔗 Agregar Jstmemit",
+        "help.button.website": "🌐 Sitio web",
     },
     [Locale.PortugueseBR]: {
         "enable.heading.enabled": "🎉 O bot está pronto!",
@@ -853,6 +1133,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Sua mensagem",
         "modal.feedback.description": "Reporte um bug, sugira uma função ou diga o que você acha",
         "modal.feedback.placeholder": "Oi, vocês poderiam adicionar o template de meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 É só conversar que ele faz os memes",
+        "help.autoMemes.tldr": "**Basicamente ele coloca suas imagens, GIFs e mensagens em templates de memes**",
+        "help.autoMemes.description":
+            "Conversem como sempre. Uma vez a cada algumas dezenas de mensagens, o Jstmemit escolhe um template de meme, pega algumas imagens/gifs/mensagens deste canal e mistura tudo. Você não precisa escolher template, escrever legenda nem se preocupar com formato de imagem.",
+        "help.autoMemes.algorithm":
+            "Ah, e cada meme gerado tem botões de **`👍 Curtir`**, **`🔁 Gerar de novo`** e **`👎 Não curtir`** que melhoram a qualidade dos próximos memes ajudando o bot a entender o que foi engraçado.",
+        "help.faq.heading": "## ❓ Perguntas frequentes",
+        "help.faq.description":
+            "Não achou a resposta para a sua pergunta? A gente pode te ajudar no [servidor de suporte](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Adicionei o bot, e agora?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Rode /enable em um canal.** O bot vai começar a aprender com as mensagens novas por lá. Depois de conversar um pouco, rode /meme para gerar um meme. Os memes também vão chegar sozinhos quando o canal estiver ativo e tiver uma conversa rolando. Você pode mudar a frequência deles em /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Posso ter configurações diferentes para cada canal?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Sim!** Todas as informações do canal, como dados para memes, frequência e outras configurações, ficam guardadas separadamente para cada canal. Nada impede de ter uma frequência bem baixa no chat principal e deixar no máximo no canal de spam.",
+        "help.faq.isThereALimit.question": "Tem limite de quantos memes o bot pode fazer por dia?",
+        "help.faq.isThereALimit.answer":
+            "**Não, não tem limite nenhum.** Você pode rodar `/meme` quantas vezes quiser por dia. E é de graça, porque cada geração leva só alguns milissegundos. Os memes também não têm marca d'água, então ficam mais limpos do que os feitos em outros geradores de memes.",
+        "help.faq.canIDeleteStoredData.question": "Posso apagar os dados guardados para a geração de memes?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Sim, a qualquer momento.** Rode `/settings` e aperte o botão "Apagar todos os dados" para excluir tudo que o bot guardou do canal.',
+        "help.faq.addBotToMyApps.question": 'Posso adicionar o bot em "Meus aplicativos" e usar em qualquer lugar?',
+        "help.faq.addBotToMyApps.answer":
+            '**Sim, mas sem alguns recursos.** Você vai poder usar o `/custom` e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, por questões de privacidade.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "E se eu quiser fazer um meme com um texto e/ou imagem específicos?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Use o `/custom`!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
+        "help.button.addJstmemit": "🔗 Adicionar o Jstmemit",
+        "help.button.website": "🌐 Site",
     },
     [Locale.Turkish]: {
         "enable.heading.enabled": "🎉 Bot hazır!",
@@ -934,6 +1249,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Mesajın",
         "modal.feedback.description": "Hata bildir, özellik öner veya ne düşündüğünü söyle",
         "modal.feedback.placeholder": "Merhaba, ... caps şablonunu ekler misiniz?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Siz sohbet edin, o caps yapsın",
+        "help.autoMemes.tldr":
+            "**Kısacası görsellerinizi, GIF'lerinizi ve mesajlarınızı caps şablonlarına yerleştiriyor**",
+        "help.autoMemes.description":
+            "Her zamanki gibi sohbet edin. Birkaç düzine mesajda bir Jstmemit bir caps şablonu seçer, bu kanaldan görseller/gifler/mesajlar alır ve hepsini karıştırır. Şablon seçmenize, yazı yazmanıza veya görsel formatlarını dert etmenize gerek yok.",
+        "help.autoMemes.algorithm":
+            "Bu arada, üretilen her capste **`👍 Beğen`**, **`🔁 Yeniden`** ve **`👎 Beğenme`** butonları var. Bunlar botun neyin komik olduğunu anlamasına yardım ederek gelecekteki capslerin kalitesini artırıyor.",
+        "help.faq.heading": "## ❓ Sık sorulan sorular",
+        "help.faq.description":
+            "Sorunun cevabını bulamadın mı? [Destek sunucusunda](https://discord.gg/THRnn8fhkZ) yardımcı olabiliriz",
+        "help.faq.iAddedTheBotWhatNow.question": "Botu ekledim, şimdi ne yapmalıyım?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Bir kanalda /enable çalıştır.** Bot orada yeni mesajlardan öğrenmeye başlar. Biraz sohbet ettikten sonra caps üretmek için /meme çalıştır. Kanal aktifken ve bir sohbet dönüyorken capsler kendiliğinden de gelir. Bunların sıklığını /settings üzerinden değiştirebilirsin.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Her kanal için farklı ayarlar yapabilir miyim?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Evet!** Caps verileri, sıklık ve diğer ayarlar gibi tüm kanal bilgileri her kanal için ayrı ayrı saklanır. Ana sohbette caps sıklığını çok düşük tutup flood kanalında sonuna kadar açmana hiçbir engel yok.",
+        "help.faq.isThereALimit.question": "Botun günlük yapabileceği caps sayısında bir sınır var mı?",
+        "help.faq.isThereALimit.answer":
+            "**Hayır, hiçbir sınır yok.** `/meme` komutunu günde istediğin kadar çalıştırabilirsin. Üstelik ücretsiz, çünkü her üretim sadece milisaniyeler sürüyor. Capslerde filigran da yok, o yüzden diğer caps üreticilerinde yapılanlardan daha temiz görünüyorlar.",
+        "help.faq.canIDeleteStoredData.question": "Caps üretimi için saklanan verileri silebilir miyim?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Evet, istediğin zaman.** `/settings` çalıştır ve botun kanal için sakladığı her şeyi silmek için "Tüm verileri sil" butonuna bas.',
+        "help.faq.addBotToMyApps.question": 'Botu "Uygulamalarım"a ekleyip her yerde kullanabilir miyim?',
+        "help.faq.addBotToMyApps.answer":
+            '**Evet, ama bazı özellikler olmadan.** `/custom` komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler gizlilik nedeniyle çalışmaz.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Peki belirli bir metin ve/veya görselle kendi capsimi yapmak istersem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**`/custom` kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
+        "help.button.addJstmemit": "🔗 Jstmemit'i ekle",
+        "help.button.website": "🌐 Web sitesi",
     },
     [Locale.Italian]: {
         "enable.heading.enabled": "🎉 Il bot è pronto!",
@@ -1015,6 +1365,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Il tuo messaggio",
         "modal.feedback.description": "Segnala un bug, suggerisci una funzione o dicci cosa ne pensi",
         "modal.feedback.placeholder": "Ciao, potreste aggiungere il template di meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Voi chiacchierate, lui fa i meme",
+        "help.autoMemes.tldr": "**In pratica mette le vostre immagini, GIF e messaggi sui template dei meme**",
+        "help.autoMemes.description":
+            "Chattate come fate di solito. Una volta ogni qualche decina di messaggi, Jstmemit sceglie un template, prende immagini/gif/messaggi da questo canale e mescola tutto. Non dovete scegliere un template, scrivere didascalie o preoccuparvi dei formati delle immagini.",
+        "help.autoMemes.algorithm":
+            "Ah, e ogni meme generato ha i pulsanti **`👍 Mi piace`**, **`🔁 Rigenera`** e **`👎 Non mi piace`** che migliorano la qualità dei meme futuri aiutando il bot a capire cosa faceva ridere.",
+        "help.faq.heading": "## ❓ Domande frequenti",
+        "help.faq.description":
+            "Non trovi la risposta alla tua domanda? Possiamo aiutarti sul [server di supporto](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Ho aggiunto il bot, e adesso?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Esegui /enable in un canale.** Il bot inizierà a imparare dai nuovi messaggi lì. Dopo aver chattato un po', esegui /meme per generare un meme. I meme arriveranno anche da soli quando il canale è attivo e c'è una conversazione in corso. Puoi cambiare la loro frequenza in /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Posso avere impostazioni diverse per ogni canale?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Sì!** Tutte le informazioni del canale, come i dati per i meme, la frequenza e le altre impostazioni, sono salvate separatamente per ogni canale. Niente ti impedisce di tenere una frequenza bassissima nella chat principale e di alzarla al massimo nel canale spam.",
+        "help.faq.isThereALimit.question": "C'è un limite a quanti meme il bot può fare al giorno?",
+        "help.faq.isThereALimit.answer":
+            "**No, non ci sono limiti.** Puoi eseguire `/meme` quante volte vuoi al giorno. Ed è gratis, perché ogni generazione richiede solo qualche millisecondo. Inoltre i meme non hanno watermark, quindi risultano più puliti di quelli fatti con altri generatori di meme.",
+        "help.faq.canIDeleteStoredData.question": "Posso eliminare i dati salvati per la generazione dei meme?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Sì, in qualsiasi momento.** Esegui `/settings` e premi il pulsante "Elimina tutti i dati" per cancellare tutto quello che il bot ha salvato per il canale.',
+        "help.faq.addBotToMyApps.question": 'Posso aggiungere il bot a "Le mie app" e usarlo ovunque?',
+        "help.faq.addBotToMyApps.answer":
+            '**Sì, ma senza alcune funzioni.** Potrai usare `/custom` e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, per motivi di privacy.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "E se voglio fare un meme con un testo e/o un'immagine specifici?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Usa `/custom`!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
+        "help.button.addJstmemit": "🔗 Aggiungi Jstmemit",
+        "help.button.website": "🌐 Sito web",
     },
     [Locale.Indonesian]: {
         "enable.heading.enabled": "🎉 Bot siap!",
@@ -1094,6 +1479,41 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Pesanmu",
         "modal.feedback.description": "Laporkan bug, usulkan fitur, atau beri tahu pendapatmu",
         "modal.feedback.placeholder": "Halo, bisa tolong tambahkan template meme ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Kalian tinggal ngobrol, dia yang bikin meme",
+        "help.autoMemes.tldr": "**Intinya dia menempelkan gambar, GIF, dan pesan kalian ke template meme**",
+        "help.autoMemes.description":
+            "Ngobrol saja seperti biasa. Sekali tiap beberapa puluh pesan, Jstmemit memilih template meme, mengambil beberapa gambar/gif/pesan dari channel ini, lalu mencampur semuanya. Kamu tidak perlu pilih template, nulis caption, atau pusing soal format gambar.",
+        "help.autoMemes.algorithm":
+            "Oh iya, setiap meme yang dibuat punya tombol **`👍 Suka`**, **`🔁 Ulangi`**, dan **`👎 Tidak suka`** yang meningkatkan kualitas meme berikutnya dengan membantu bot paham mana yang lucu.",
+        "help.faq.heading": "## ❓ Pertanyaan yang sering ditanyakan",
+        "help.faq.description":
+            "Tidak menemukan jawaban untuk pertanyaanmu? Kami bisa bantu di [server support](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Aku sudah menambahkan botnya, terus apa?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Jalankan /enable di sebuah channel.** Bot akan mulai belajar dari pesan baru di sana. Setelah ngobrol sebentar, jalankan /meme untuk membuat meme. Meme juga akan muncul sendiri saat channel aktif dan ada obrolan berlangsung. Frekuensinya bisa diubah di /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question":
+            "Bisa punya pengaturan berbeda untuk tiap channel?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Bisa!** Semua informasi channel, seperti data untuk meme, frekuensi, dan pengaturan lainnya, disimpan terpisah untuk tiap channel. Tidak ada yang melarang kamu pasang frekuensi meme sangat rendah di chat utama tapi maksimal di channel spam.",
+        "help.faq.isThereALimit.question": "Ada batas berapa banyak meme yang bisa dibuat bot per hari?",
+        "help.faq.isThereALimit.answer":
+            "**Tidak, tidak ada batasan.** Kamu bisa menjalankan `/meme` sebanyak apa pun dalam sehari. Dan gratis, karena tiap pembuatan cuma butuh milidetik. Meme juga tanpa watermark, jadi terlihat lebih bersih dibanding buatan generator meme lain.",
+        "help.faq.canIDeleteStoredData.question": "Bisa menghapus data tersimpan untuk pembuatan meme?",
+        "help.faq.canIDeleteStoredData.answer":
+            '**Bisa, kapan saja.** Jalankan `/settings` lalu tekan tombol "Hapus semua data" untuk menghapus semua yang disimpan bot untuk channel itu.',
+        "help.faq.addBotToMyApps.question": 'Bisa menambahkan bot ke "Aplikasi Saya" dan memakainya di mana saja?',
+        "help.faq.addBotToMyApps.answer":
+            '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai `/custom` dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, demi privasi.',
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Bagaimana kalau aku mau bikin meme dengan teks dan/atau gambar tertentu?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Pakai `/custom`!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
+        "help.button.addJstmemit": "🔗 Tambahkan Jstmemit",
+        "help.button.website": "🌐 Situs web",
     },
     [Locale.Czech]: {
         "enable.heading.enabled": "🎉 Bot je připraven!",
@@ -1173,5 +1593,39 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tvoje zpráva",
         "modal.feedback.description": "Nahlaš chybu, navrhni funkci nebo nám řekni svůj názor",
         "modal.feedback.placeholder": "Ahoj, mohli byste přidat šablonu memu ...?",
+
+        "help.about.heading": "🤖 Jstmemit",
+        "help.about.commands":
+            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
+        "help.autoMemes.heading": "## 💬 Prostě si pište a on bude dělat memy",
+        "help.autoMemes.tldr": "**V podstatě dává vaše obrázky, GIFy a zprávy na šablony memů**",
+        "help.autoMemes.description":
+            "Pište si jako obvykle. Jednou za pár desítek zpráv si Jstmemit vybere šablonu memu, vezme nějaké obrázky/gify/zprávy z tohoto kanálu a všechno to smíchá dohromady. Nemusíš vybírat šablonu, psát popisky ani řešit formáty obrázků.",
+        "help.autoMemes.algorithm":
+            "Jo a každý vygenerovaný mem má tlačítka **`👍 Líbí`**, **`🔁 Znovu`** a **`👎 Nelíbí`**, která zlepšují kvalitu budoucích memů tím, že botovi pomáhají pochopit, co bylo vtipné.",
+        "help.faq.heading": "## ❓ Časté dotazy",
+        "help.faq.description":
+            "Nemůžeš najít odpověď na svou otázku? Pomůžeme ti na [serveru podpory](https://discord.gg/THRnn8fhkZ)",
+        "help.faq.iAddedTheBotWhatNow.question": "Přidal jsem bota, co teď?",
+        "help.faq.iAddedTheBotWhatNow.answer":
+            "**Spusť /enable v kanálu.** Bot se tam začne učit z nových zpráv. Až si chvíli popíšete, spusť /meme a vygeneruje se mem. Memy budou chodit i samy, když je kanál aktivní a probíhá konverzace. Jejich frekvenci můžeš změnit v /settings.",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": "Můžu mít pro každý kanál jiné nastavení?",
+        "help.faq.canIHaveDifferentQuestionsForEveryChannel.answer":
+            "**Ano!** Všechny informace o kanálu, jako data pro memy, frekvence a další nastavení, se ukládají pro každý kanál zvlášť. Nic ti nebrání mít v hlavním chatu velmi nízkou frekvenci memů a ve spamovém kanálu ji vytočit na maximum.",
+        "help.faq.isThereALimit.question": "Je nějaký limit, kolik memů může bot denně udělat?",
+        "help.faq.isThereALimit.answer":
+            "**Ne, žádné limity nejsou.** Můžeš spouštět `/meme` kolikrát denně chceš. A je to zadarmo, protože každá generace trvá jen milisekundy. Na memech taky nejsou žádné vodoznaky, takže vypadají čistěji než ty z jiných generátorů memů.",
+        "help.faq.canIDeleteStoredData.question": "Můžu smazat uložená data pro generování memů?",
+        "help.faq.canIDeleteStoredData.answer":
+            "**Ano, kdykoliv.** Spusť `/settings` a stiskni tlačítko „Smazat všechna data“, čímž smažeš všechno, co si bot pro kanál uložil.",
+        "help.faq.addBotToMyApps.question": "Můžu si bota přidat do „Moje aplikace“ a používat ho kdekoliv?",
+        "help.faq.addBotToMyApps.answer":
+            "**Ano, ale bez některých funkcí.** Budeš moct používat `/custom` a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, kvůli soukromí.",
+        "help.faq.whatIfIWantToMakeACustomMeme.question":
+            "Co když chci udělat vlastní mem s konkrétním textem a/nebo obrázkem?",
+        "help.faq.whatIfIWantToMakeACustomMeme.answer":
+            "**Použij `/custom`!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
+        "help.button.addJstmemit": "🔗 Přidat Jstmemit",
+        "help.button.website": "🌐 Web",
     },
 };
