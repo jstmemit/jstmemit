@@ -12,6 +12,7 @@ import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.t
 import { AutoPoster } from "topgg-autoposter";
 import _ from "lodash";
 import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
+import type { IHelpController } from "#/interfaces/IHelpController.ts";
 
 const env = Env.parse(process.env);
 
@@ -22,6 +23,7 @@ export class EventsController implements IEventsController {
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
     private readonly _feedbackController: IFeedbackController;
+    private readonly _helpController: IHelpController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -31,6 +33,7 @@ export class EventsController implements IEventsController {
         ratingsController: IRatingsController,
         settingsController: ISettingsController,
         feedbackController: IFeedbackController,
+        helpController: IHelpController,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
@@ -38,6 +41,7 @@ export class EventsController implements IEventsController {
         this._ratingsController = ratingsController;
         this._settingsController = settingsController;
         this._feedbackController = feedbackController;
+        this._helpController = helpController;
     }
 
     /**
@@ -236,6 +240,9 @@ export class EventsController implements IEventsController {
                     return;
                 case "feedback":
                     await this._feedbackController.handleOpenFeedbackModal(interaction);
+                    return;
+                case "help":
+                    await this._helpController.handleHelpInteraction(interaction);
                     return;
             }
 

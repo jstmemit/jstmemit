@@ -242,6 +242,17 @@ export const commands = [
         integration_types: [0, 1],
     },
     {
+        name: "help",
+        name_localizations: {
+            ru: "помощь",
+            uk: "допомога",
+            nl: "hulp",
+        },
+        description: "Contains answers on frequently asked questions and some basic information about Jstmemit",
+        contexts: [0, 1, 2],
+        integration_types: [0, 1],
+    },
+    {
         name: "Make it a Quote",
         type: 3,
         contexts: [0, 1, 2],
