@@ -230,7 +230,7 @@ export class EventsController implements IEventsController {
             switch (interaction.commandName) {
                 case "custom":
                     await this._memesController.handleGenerateCustomMemeInteraction(interaction);
-                    break;
+                    return;
                 case "meme":
                     await this._memesController.handleMemeInteraction(interaction);
                     return;
