@@ -1,4 +1,4 @@
-import type { Locale } from "discord.js";
+import type { Locale, MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -261,6 +261,136 @@ export class ComponentsService implements IComponentsService {
                             `${isEnabled ? t("settings.status.enabled", language) : t("settings.status.disabled", language)}`,
                         ),
                     ),
+            );
+    }
+
+    /**
+     * Returns back a message component for Header part of the /help command.
+     *
+     * @param language
+     * @param isEnabled
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder {
+        return new ContainerBuilder()
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
+                        new TextDisplayBuilder().setContent(t("settings.about.body", language)),
+                        new TextDisplayBuilder().setContent(t("help.about.commands", language)),
+                    ),
+            )
+            .addActionRowComponents(
+                new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
+                    ...(isEnabled === undefined
+                        ? []
+                        : [
+                              new ButtonBuilder()
+                                  .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                                  .setLabel(
+                                      isEnabled
+                                          ? t("settings.button.disable", language)
+                                          : t("settings.button.enable", language),
+                                  )
+                                  .setCustomId(isEnabled ? "disable" : "enable"),
+                          ]),
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(t("help.button.addJstmemit", language))
+                        .setURL("https://discord.com/oauth2/authorize?client_id=1375836467745783990"),
+
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(t("help.button.website", language))
+                        .setURL("https://jstmemit.com"),
+                ),
+            );
+    }
+
+    /**
+     * Returns back a message component for Explain part of the /help command.
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpExplainMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`## ${t("help.autoMemes.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.autoMemes.tldr", language)}`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.autoMemes.algorithm", language)}`),
+            );
+    }
+
+    /**
+     * Returns back a message component for FAQ part of the /help command.
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.faq.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.faq.iAddedTheBotWhatNow.answer", language)}`),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.question", language)}`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.answer", language)}`,
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.faq.isThereALimit.answer", language)}`),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.faq.canIDeleteStoredData.answer", language)}`),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.faq.addBotToMyApps.answer", language)}`),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("help.faq.whatIfIWantToMakeACustomMeme.question", language)}`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.faq.whatIfIWantToMakeACustomMeme.answer", language)}`),
             );
     }
 
