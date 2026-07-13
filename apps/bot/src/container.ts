@@ -130,4 +130,5 @@ export const eventsController: IEventsController = new EventsController(
     ratingsController,
     settingsController,
     feedbackController,
+    templatesRepository,
 );

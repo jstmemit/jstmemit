@@ -208,7 +208,7 @@ export class MemesController implements IMemesController {
 
     public async handleGenerateViaContextMenuInteraction(
         interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
-        templateName: string,
+        templateName: string | undefined,
     ): Promise<void> {
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
 

@@ -12,6 +12,7 @@ import { respondMissingPermissions } from "#/helpers/respondMissingPermissions.t
 import { AutoPoster } from "topgg-autoposter";
 import _ from "lodash";
 import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 
 const env = Env.parse(process.env);
 
@@ -22,6 +23,7 @@ export class EventsController implements IEventsController {
     private readonly _ratingsController: IRatingsController;
     private readonly _settingsController: ISettingsController;
     private readonly _feedbackController: IFeedbackController;
+    private readonly _templateRepository: ITemplatesRepository;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -31,6 +33,7 @@ export class EventsController implements IEventsController {
         ratingsController: IRatingsController,
         settingsController: ISettingsController,
         feedbackController: IFeedbackController,
+        templatesRepository: ITemplatesRepository,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
@@ -38,6 +41,7 @@ export class EventsController implements IEventsController {
         this._ratingsController = ratingsController;
         this._settingsController = settingsController;
         this._feedbackController = feedbackController;
+        this._templateRepository = templatesRepository;
     }
 
     /**
@@ -180,14 +184,7 @@ export class EventsController implements IEventsController {
                 case "Put avatar on YT thumbnail":
                     await this._memesController.handleGenerateViaContextMenuInteraction(
                         interaction,
-                        // TODO: use topics when they are ready instead of this
-                        _.sample([
-                            "iInterviewedAnimals",
-                            "iGotHuntedByARealBountyHunter",
-                            "iAdopted100Dogs",
-                            "oneDollarPrivateIsland",
-                            "worldsMostDangerousTrap",
-                        ]),
+                        _.sample(this._templateRepository.getTemplatesByTopic("youtube")),
                     );
                     return;
                 case "Make an Incoming Call meme":
