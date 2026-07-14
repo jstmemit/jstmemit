@@ -47,17 +47,16 @@ export class FeedbackController implements IFeedbackController {
         const userId: string | undefined = interaction.customId.split(":")[1];
         const message: string | undefined = interaction.fields.getTextInputValue(`text`);
 
-        analytics.capture({
-            event: "feedback_modal_failed",
-            distinctId: interaction.user.id,
-            properties: {
-                channelId: interaction.channelId,
-                guildId: interaction.guildId,
-                language: interaction.locale,
-            },
-        });
-
         if (!message || !userId) {
+            analytics.capture({
+                event: "feedback_modal_failed",
+                distinctId: interaction.user.id,
+                properties: {
+                    channelId: interaction.channelId,
+                    guildId: interaction.guildId,
+                    language: interaction.locale,
+                },
+            });
             await respond(interaction, [
                 this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
             ]);
@@ -69,13 +68,11 @@ export class FeedbackController implements IFeedbackController {
         });
 
         await this._channelsService.sendMessage(this._feedbackChannelId, [
-            this._componentsService.getFeedbackMessageComponent(interaction.locale, userId, message),
+            this._componentsService.getFeedbackMessageComponent(userId, message),
         ]);
 
         await interaction.editReply({
-            components: [
-                this._componentsService.getFeedbackMessageSubmitComponent(interaction.locale, interaction.id, message),
-            ],
+            components: [this._componentsService.getFeedbackMessageSubmitComponent(interaction.locale, message)],
             flags: MessageFlags.IsComponentsV2,
         });
 
