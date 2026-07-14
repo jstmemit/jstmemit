@@ -29,10 +29,6 @@ export abstract class IComponentsService {
         interactionId: string,
         file: string,
     ): ContainerBuilder;
-    public abstract getFeedbackMessageComponent(language: Locale, userId: string, message: string): ContainerBuilder;
-    public abstract getFeedbackMessageSubmitComponent(
-        language: Locale,
-        interactionId: string,
-        message: string,
-    ): ContainerBuilder;
+    public abstract getFeedbackMessageComponent(userId: string, message: string): ContainerBuilder;
+    public abstract getFeedbackMessageSubmitComponent(language: Locale, message: string): ContainerBuilder;
 }
