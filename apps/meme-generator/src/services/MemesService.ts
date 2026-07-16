@@ -178,17 +178,17 @@ export class MemesService implements IMemesService {
         };
     }
 
-    private async _toPngDataUri(url: string): Promise<string | undefined> {
+    private async _toPngDataUri(url: string): Promise<string> {
         try {
             const res: Response = await fetch(url);
-            if (!res.ok) return undefined;
+            if (!res.ok) return this._transparentImage;
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
             const png: Buffer = await sharp(input).png().toBuffer();
 
             return `data:image/png;base64,${png.toString("base64")}`;
         } catch {
-            return undefined;
+            return this._transparentImage;
         }
     }
 
@@ -202,7 +202,7 @@ export class MemesService implements IMemesService {
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return (await this._toPngDataUri(url)) ?? this._transparentImage;
+                return await this._toPngDataUri(url);
             }),
         );
 
