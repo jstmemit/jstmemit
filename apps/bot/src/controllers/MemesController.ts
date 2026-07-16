@@ -78,6 +78,10 @@ export class MemesController implements IMemesController {
             locale = interaction.locale;
         }
 
+        if (!(interaction instanceof Message)) {
+            await interaction.deferReply();
+        }
+
         if (!channel?.enabled) {
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 locale,
@@ -89,10 +93,6 @@ export class MemesController implements IMemesController {
             await respond(interaction, [notEnabledComponent, notEnabledButtons]);
 
             return;
-        }
-
-        if (!(interaction instanceof Message)) {
-            await interaction.deferReply();
         }
 
         if (interaction instanceof Message) {

@@ -166,29 +166,56 @@ export class MemesService implements IMemesService {
             return undefined;
         }
 
-        const selected: string[] = channelImages.slice(0, templateImages.length);
-
-        const images: string[] = (
-            await Promise.all(selected.map((url): Promise<string | undefined> => this._toPngDataUri(url)))
-        ).filter((uri: string | undefined): uri is string => uri !== undefined);
-
         return {
-            images,
+            images: await this._selectImages(channelImages, templateImages.length),
             texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         };
     }
 
-    private async _toPngDataUri(url: string): Promise<string | undefined> {
+    private async _selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
+        const primary: string[] = channelImages.slice(0, slotCount);
+        const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
+
+        const converted: string[] = await Promise.all(
+            primary.map((url: string): Promise<string> => this._toPngDataUri(url)),
+        );
+
+        const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
+
+        for (const url of backups) {
+            if (images.length === slotCount) {
+                break;
+            }
+
+            const image: string = await this._toPngDataUri(url);
+
+            if (this._isTransparent(image)) {
+                images.push(image);
+            }
+        }
+
+        while (images.length < slotCount) {
+            images.push(this._transparentImage);
+        }
+
+        return images;
+    }
+
+    private _isTransparent(image: string): boolean {
+        return image !== this._transparentImage;
+    }
+
+    private async _toPngDataUri(url: string): Promise<string> {
         try {
             const res: Response = await fetch(url);
-            if (!res.ok) return undefined;
+            if (!res.ok) return this._transparentImage;
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
             const png: Buffer = await sharp(input).png().toBuffer();
 
             return `data:image/png;base64,${png.toString("base64")}`;
         } catch {
-            return undefined;
+            return this._transparentImage;
         }
     }
 
@@ -202,7 +229,7 @@ export class MemesService implements IMemesService {
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return (await this._toPngDataUri(url)) ?? this._transparentImage;
+                return await this._toPngDataUri(url);
             }),
         );
 
