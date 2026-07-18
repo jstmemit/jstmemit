@@ -152,6 +152,13 @@ import { simpsonsNotMyBoyfriendShirt } from "#/templates/simpsonsNotMyBoyfriendS
 import { parrotBarber } from "#/templates/parrotBarber.tsx";
 import { parrotBarber1 } from "#/templates/parrotBarber1.tsx";
 import { parrotBarber2 } from "#/templates/parrotBarber2.tsx";
+import { acNowKillHim } from "#/templates/acNowKillHim.tsx";
+import { acsrMisakaMikotoDrakeMeme } from "#/templates/acsrMisakaMikotoDrakeMeme.tsx";
+import { acsrMisakaMikotoPlayingDSOnBus } from "#/templates/acsrMisakaMikotoPlayingDSOnBus.tsx";
+import { adHowAreYouFineThankYouMeme } from "#/templates/adHowAreYouFineThankYouMeme.tsx";
+import { adOsakaSeriousFace } from "#/templates/adOsakaSeriousFace.tsx";
+import { adOsakaStaring } from "#/templates/adOsakaStaring.tsx";
+import { adWhyAreYouSpeakingInEnglish } from "#/templates/adWhyAreYouSpeakingInEnglish.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -325,6 +332,13 @@ export class TemplatesRepository implements ITemplatesRepository {
             parrotBarber,
             parrotBarber1,
             parrotBarber2,
+            acNowKillHim,
+            acsrMisakaMikotoDrakeMeme,
+            acsrMisakaMikotoPlayingDSOnBus,
+            adHowAreYouFineThankYouMeme,
+            adOsakaSeriousFace,
+            adOsakaStaring,
+            adWhyAreYouSpeakingInEnglish,
         ];
     }
 
