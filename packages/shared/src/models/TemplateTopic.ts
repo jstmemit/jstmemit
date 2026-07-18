@@ -19,6 +19,9 @@ export const Topic = {
     SpongeBob: "spongeBob",
     SpiderMan: "spiderMan",
     StarTrek: "starTrek",
+    AssassinationClassroom: "Assassination Classroom",
+    ACertainScientificRailgun: "aCertainScientificRailgun",
+    AzumangaDaioh: "azumangaDaioh",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
