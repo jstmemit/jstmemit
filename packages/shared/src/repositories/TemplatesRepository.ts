@@ -328,6 +328,15 @@ export class TemplatesRepository implements ITemplatesRepository {
         ];
     }
 
+    /**
+     * Groups an array of templates into a Map based on the value of a specified field.
+     * If the field value is an array, the template will be mapped to each individual element inside that array.
+     *
+     * @template K - The key of the Template object used for grouping.
+     * @param templates - The array of templates to be processed and grouped.
+     * @param fieldName - The field name to group the templates by.
+     * @returns A Map where keys are the field values (or array elements) and values are arrays of templates matching that key.
+     */
     public getAllByFieldMap<K extends keyof Template>(
         templates: Template[],
         fieldName: K,
@@ -361,6 +370,13 @@ export class TemplatesRepository implements ITemplatesRepository {
         return map;
     }
 
+    /**
+     * Returns an array of templates filtered by a specific field value
+     *
+     * @param fieldName - The key of the Template object to filter by
+     * @param value - The expected value (or element within an array field) to match
+     * @returns An array of filtered Template objects
+     */
     public getAllByField<K extends keyof Template>(fieldName: K, value: TemplateMapKey<Template, K>): Template[] {
         return this.getAll().filter((template: Template): boolean => {
             const fieldValue: Template[K] = template[fieldName];
