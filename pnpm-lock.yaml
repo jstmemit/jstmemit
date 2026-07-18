@@ -262,6 +262,9 @@ importers:
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      awilix:
+        specifier: ^13.0.5
+        version: 13.0.5
       bullmq:
         specifier: ^5.78.0
         version: 5.78.0
@@ -293,6 +296,9 @@ importers:
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
+      awilix:
+        specifier: ^13.0.5
+        version: 13.0.5
       bullmq:
         specifier: ^5.78.0
         version: 5.78.0
@@ -2539,6 +2545,10 @@ packages:
     peerDependenciesMeta:
       '@astrojs/markdown-remark':
         optional: true
+
+  awilix@13.0.5:
+    resolution: {integrity: sha512-ORtca6suBdYA1FyTzqHEZDvEuUwo3lPDDBRm7GrzHgi6STESzJKdBtpqfTzObdMj1NGQUWX6k26E3EbQaGJX5Q==}
+    engines: {node: '>=20.0.0'}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -6392,6 +6402,10 @@ snapshots:
       - tsx
       - uploadthing
       - yaml
+
+  awilix@13.0.5:
+    dependencies:
+      fast-glob: 3.3.3
 
   axobject-query@4.1.0: {}
 
