@@ -4,16 +4,18 @@ import type { Template } from "@jstmemit/shared/models/Template";
 
 import Slots from "../components/Slots.astro";
 import Examples from "../components/Examples.astro";
+import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
 
 interface Props {
+    topic: TemplateTopic | "all";
     template: Template;
 }
 
-const { template } = Astro.props;
+const { topic, template } = Astro.props;
 ---
 
 <div class="flex flex-col gap-10 md:flex-row">
-    <Sidebar currentTemplateName={template.name} />
+    <Sidebar currentTopic={topic} currentTemplateName={template.name} />
     <hr class="text-neon-ice/25" />
     <section class="flex w-full min-w-0 flex-col gap-10">
         <div class="flex flex-col gap-1">
