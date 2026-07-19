@@ -80,24 +80,23 @@ const { currentTemplateName } = Astro.props;
     function checkNewTemplates() {
         const liElements: NodeListOf<Element> = document.querySelectorAll("#template-list li[template-name]");
         const savedTemplatesRaw: string | null = localStorage.getItem("known-templates");
+        const knownNames: string[] = savedTemplatesRaw ? JSON.parse(savedTemplatesRaw) : [];
 
-        if (savedTemplatesRaw) {
-            const knownNames: string[] = JSON.parse(savedTemplatesRaw);
-
-            liElements.forEach((li: Element) => {
-                const name: string = li.getAttribute("template-name") || "";
-                if (!knownNames.includes(name)) {
-                    const badge: Element | null = li.querySelector(".new-badge");
-                    badge?.classList.remove("hidden");
-                }
-            });
-        }
+        liElements.forEach((li: Element) => {
+            const name: string = li.getAttribute("template-name") || "";
+            if (knownNames.length > 0 && !knownNames.includes(name)) {
+                const badge: Element | null = li.querySelector(".new-badge");
+                badge?.classList.remove("hidden");
+            }
+        });
 
         const currentNames: string[] = Array.from(liElements).map(
             (li: Element) => li.getAttribute("template-name") || "",
         );
 
-        localStorage.setItem("known-templates", JSON.stringify(currentNames));
+        const updatedKnownTemplates = Array.from(new Set([...knownNames, ...currentNames]));
+
+        localStorage.setItem("known-templates", JSON.stringify(updatedKnownTemplates));
     }
 
     syncMenuState();
