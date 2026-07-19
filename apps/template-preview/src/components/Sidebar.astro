@@ -42,7 +42,7 @@ const topicOptions = Object.entries(Topic).sort((a, b) => a[0].localeCompare(b[0
             }
         </select>
     </div>
-    <ul id="template-list" class="hidden max-h-200 scrollbar-thin flex-col gap-2 overflow-y-scroll pt-3 md:flex">
+    <ul id="template-list" class="hidden max-h-200 scrollbar-thin flex-col gap-2 overflow-y-auto pt-3 md:flex">
         {
             templates
                 .filter((template: Template) => {

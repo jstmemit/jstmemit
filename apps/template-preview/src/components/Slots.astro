@@ -21,14 +21,14 @@ const { title, slots = [] } = Astro.props;
                     if (typeof slot === "string") {
                         return (
                             <li>
-                                <h3 class="border-hot-fuchsia border-l-2 pl-3 tabular-nums">{slot}</h3>
+                                <h3 class="border-hot-fuchsia border-l-2 pl-3 capitalize tabular-nums">{slot}</h3>
                             </li>
                         );
                     }
 
                     return (
                         <li>
-                            <h3 class="border-hot-fuchsia border-l-2 pl-3 tabular-nums">
+                            <h3 class="border-hot-fuchsia border-l-2 pl-3 capitalize tabular-nums">
                                 <b>#{slot.id}: </b> {slot.description}
                             </h3>
                         </li>
