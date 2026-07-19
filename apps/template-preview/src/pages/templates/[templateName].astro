@@ -5,24 +5,20 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import type { Template } from "@jstmemit/shared/models/Template";
 import TemplateLayout from "../../layouts/TemplateLayout.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { TemplatesService } from "../../services/TemplatesService.ts";
-import type { ITemplatesService } from "../../interfaces/ITemplatesService.ts";
 
 export const getStaticPaths = (() => {
     const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-    return templatesRepository.getAll().map((template: Template) => ({
+    const templates: Template[] = templatesRepository.getAll();
+
+    return templates.map((template: Template) => ({
         params: { templateName: template.name },
+        props: { template },
     }));
 }) satisfies GetStaticPaths;
 
-const { templateName } = Astro.params;
-
-const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
-
-const currentTemplate: Template = templatesService.getTemplateByName(templateName);
+const { template } = Astro.props;
 ---
 
 <BaseLayout>
-    <TemplateLayout template={currentTemplate} />
+    <TemplateLayout topic={"all"} template={template} />
 </BaseLayout>
