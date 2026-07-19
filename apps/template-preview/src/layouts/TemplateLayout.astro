@@ -15,10 +15,13 @@ const { template } = Astro.props;
 <div class="flex flex-col gap-10 md:flex-row">
     <Sidebar currentTemplateName={template.name} />
     <hr class="text-neon-ice/25" />
-    <section class="flex w-full flex-col gap-10">
+    <section class="flex w-full min-w-0 flex-col gap-10">
         <div class="flex flex-col gap-1">
-            <h1 class="mb-2 text-3xl font-black md:text-4xl">{template.name}</h1>
-            <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums"><b>Width:</b> {template.width}px</p>
+            <h1 class="mb-2 w-full truncate text-3xl font-black md:text-4xl">{template.name}</h1>
+            <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums">
+                <b>Width:</b>
+                {template.width}px
+            </p>
             <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums"><b>Height:</b> {template.height}px</p>
         </div>
 
