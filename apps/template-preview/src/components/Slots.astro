@@ -1,10 +1,12 @@
 ---
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
+import type { TemplateTopic } from "@jstmemit/shared/models/TemplateTopic";
+import type { TemplateType } from "@jstmemit/shared/models/TemplateType";
 
 interface Props {
     title: string;
-    slots?: TemplateText[] | TemplateImage[];
+    slots?: TemplateText[] | TemplateImage[] | TemplateTopic[] | TemplateType[];
 }
 
 const { title, slots = [] } = Astro.props;
@@ -15,13 +17,23 @@ const { title, slots = [] } = Astro.props;
         <section>
             <h2 class="mb-3 text-3xl font-bold">{title}</h2>
             <ul class="flex flex-col gap-1">
-                {slots.map((slot: TemplateText | TemplateImage, index: number) => (
-                    <li>
-                        <h3 class=`border-l-2 border-hot-fuchsia pl-3 tabular-nums`>
-                            <b>#{slot.id}: </b> {slot.description}
-                        </h3>
-                    </li>
-                ))}
+                {slots.map((slot: TemplateText | TemplateImage | TemplateTopic | TemplateType, index: number) => {
+                    if (typeof slot === "string") {
+                        return (
+                            <li>
+                                <h3 class="border-hot-fuchsia border-l-2 pl-3 tabular-nums">{slot}</h3>
+                            </li>
+                        );
+                    }
+
+                    return (
+                        <li>
+                            <h3 class="border-hot-fuchsia border-l-2 pl-3 tabular-nums">
+                                <b>#{slot.id}: </b> {slot.description}
+                            </h3>
+                        </li>
+                    );
+                })}
             </ul>
         </section>
     )

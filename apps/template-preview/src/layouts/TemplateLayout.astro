@@ -27,6 +27,8 @@ const { topic, template } = Astro.props;
             <p class="border-hot-fuchsia border-l-2 pl-4 tabular-nums"><b>Height:</b> {template.height}px</p>
         </div>
 
+        <Slots title="Topics" slots={template.topics} />
+        <Slots title="Types" slots={template.types} />
         <Slots title="Text slots" slots={template.texts} />
         <Slots title="Image slots" slots={template.images} />
 
