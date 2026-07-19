@@ -262,6 +262,9 @@ importers:
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@jstmemit/voice':
+        specifier: workspace:*
+        version: link:../../packages/voice
       awilix:
         specifier: ^13.0.5
         version: 13.0.5
