@@ -73,8 +73,6 @@ services:
       image: hwdsl2/whisper-server
       container_name: whisper
       restart: unless-stopped
-      ports:
-          - "9000:9000/tcp"
       volumes:
           - whisper-data:/var/lib/whisper
           - ./.env.docker:/whisper.env:ro
