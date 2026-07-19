@@ -33,6 +33,7 @@ const { currentTemplateName } = Astro.props;
                     if (nameA > nameB) return 1;
                     return 0;
                 })
+                .sort((a, b) => a.name.localeCompare(b.name))
                 .map((template: Template) => (
                     <li
                         template-name={template.name}
