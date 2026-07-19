@@ -103,7 +103,7 @@ import { spidermanPeterDance } from "#/templates/spidermanPeterDance.tsx";
 import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterParkerWearingGlasses.tsx";
 import { spongebobBeggingVsTuxedo } from "#/templates/spongebobBeggingVsTuxedo.tsx";
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
-import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
+import { griffinsLoisInBed } from "#/templates/griffinsLoisInBed.tsx";
 import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
 import { incomingCall } from "#/templates/incomingCall.tsx";
 import { spongebobSacredTextBook } from "#/templates/spongebobSacredTextBook.tsx";
