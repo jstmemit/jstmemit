@@ -504,6 +504,12 @@ importers:
         specifier: ^0.26.0
         version: 0.26.0
 
+  packages/voice:
+    devDependencies:
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../shared
+
 packages:
 
   '@astrojs/compiler-binding-darwin-arm64@0.3.1':
