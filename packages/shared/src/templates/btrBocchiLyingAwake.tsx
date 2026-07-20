@@ -59,8 +59,7 @@ export const btrBocchiLyingAwake: Template = {
                         color: "white",
                     }}
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat maxime quae quibusdam.
-                    {/*{texts[0]}*/}
+                    {texts[0]}
                 </div>
             </div>
         </div>
