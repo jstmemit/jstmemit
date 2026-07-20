@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsKahoAndMaikaMaids: Template = {
     name: "blendsKahoAndMaikaMaids",
-    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
+    topics: [Topic.Anime, Topic.BlendS],
     types: [Type.faceImage, Type.textBottom],
     width: 422,
     height: 600,

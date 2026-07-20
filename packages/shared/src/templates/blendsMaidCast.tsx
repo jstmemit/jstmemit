@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaidCast: Template = {
     name: "blendsMaidCast",
-    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
+    topics: [Topic.Anime, Topic.BlendS],
     types: [Type.faceImage, Type.textTopWithBackground],
     width: 849,
     height: 760,
