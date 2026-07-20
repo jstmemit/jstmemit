@@ -4,6 +4,8 @@ import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import { Env } from "@jstmemit/shared/schemas/Env";
+import { analytics } from "@jstmemit/analytics";
+import { logger } from "@jstmemit/meme-generator/container";
 
 const env = Env.parse(process.env);
 
@@ -51,19 +53,62 @@ export class ContextController implements IContextController {
             const avatar: string | null = author.avatarURL();
 
             if (avatar) {
-                await this._contextService.saveAvatar(id, channelId, avatar);
+                try {
+                    await this._contextService.saveAvatar(id, channelId, avatar);
+                } catch (error) {
+                    analytics.captureException(error);
+                    logger.emit({
+                        severityText: "error",
+                        body: "context.save_avatar.error",
+                        attributes: {
+                            posthogDistinctId: message.author.id,
+                            channel_id: message.channelId,
+                            guild_id: message.guildId,
+                            error_message: error instanceof Error ? error.message : String(error),
+                        },
+                    });
+                }
             }
 
             if (attachments) {
-                await this._contextService.saveImages(id, channelId, attachments);
+                try {
+                    await this._contextService.saveImages(id, channelId, attachments);
+                } catch (error) {
+                    analytics.captureException(error);
+                    logger.emit({
+                        severityText: "error",
+                        body: "context.save_images.error",
+                        attributes: {
+                            posthogDistinctId: message.author.id,
+                            channel_id: message.channelId,
+                            guild_id: message.guildId,
+                            attachments_amount: attachments.size,
+                            error_message: error instanceof Error ? error.message : String(error),
+                        },
+                    });
+                }
             }
 
             if (message.flags.has("IsVoiceMessage") && message?.attachments?.first()?.proxyURL) {
-                await this._contextService.saveTranscribedVoice(
-                    id,
-                    channelId,
-                    message?.attachments?.first()?.proxyURL as string,
-                );
+                try {
+                    await this._contextService.saveTranscribedVoice(
+                        id,
+                        channelId,
+                        message?.attachments?.first()?.proxyURL as string,
+                    );
+                } catch (error) {
+                    analytics.captureException(error);
+                    logger.emit({
+                        severityText: "error",
+                        body: "context.save_transcribed_voice.error",
+                        attributes: {
+                            posthogDistinctId: message.author.id,
+                            channel_id: message.channelId,
+                            guild_id: message.guildId,
+                            error_message: error instanceof Error ? error.message : String(error),
+                        },
+                    });
+                }
             }
 
             if (content.length > 0 && content.length < 2000) {
