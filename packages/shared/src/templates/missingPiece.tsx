@@ -66,6 +66,7 @@ export const missingPiece: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#000000",
                         WebkitTextStrokeWidth: 4,
                         WebkitTextStrokeColor: "#ffffff",

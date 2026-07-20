@@ -54,6 +54,7 @@ export const futuramaZeroDaysSinceLast: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#A72227",
                         WebkitTextStrokeWidth: 1,
                         WebkitTextStrokeColor: "#000000",

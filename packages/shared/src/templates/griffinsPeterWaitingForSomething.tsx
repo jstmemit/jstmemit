@@ -68,6 +68,7 @@ export const griffinsPeterWaitingForSomething: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 30,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#ffffff",
                         WebkitTextStrokeWidth: 3,
                         WebkitTextStrokeColor: "#000000",

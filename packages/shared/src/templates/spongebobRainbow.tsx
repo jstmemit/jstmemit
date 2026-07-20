@@ -68,6 +68,7 @@ export const spongebobRainbow: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 80,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#000000",
                     }}
                 >
