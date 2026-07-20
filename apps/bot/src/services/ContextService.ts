@@ -4,21 +4,25 @@ import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
+import type { IGifService } from "@jstmemit/images/interfaces/IGifService";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
     private readonly _voiceService: IVoiceService;
+    private readonly _gifService: IGifService;
 
     public constructor(
         messagesRepository: IMessagesRepository,
         imagesRepository: IImagesRepository,
         voiceService: IVoiceService,
+        gifService: IGifService,
     ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
         this._voiceService = voiceService;
+        this._gifService = gifService;
     }
 
     /**
@@ -99,11 +103,11 @@ export class ContextService implements IContextService {
         let result: string | undefined = "";
 
         if (content.includes("tenor")) {
-            result = await this._resolveTenorGifUrl(content);
+            result = await this._gifService.getTenorSourceUrl(content);
         }
 
         if (content.includes("giphy")) {
-            result = await this._resolveGiphyGifUrl(content);
+            result = await this._gifService.getGiphySourceUrl(content);
         }
 
         if (!result) {
@@ -129,41 +133,6 @@ export class ContextService implements IContextService {
      */
     public async saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void> {
         await this._imagesRepository.add(messageId, channelId, avatarUrl, "avatar", new Date());
-    }
-
-    /**
-     * Fetches a Tenor URL and looks for a direct link to the GIF
-     * source inside <link> elements with "image_src" rel attribute
-     *
-     * @param tenorUrl
-     * @private
-     *
-     * @author Kyrylo Maliuha
-     */
-    private async _resolveTenorGifUrl(tenorUrl: string): Promise<string | undefined> {
-        const response: Response = await fetch(tenorUrl);
-
-        if (!response.ok) {
-            return undefined;
-        }
-
-        const html: string = await response.text();
-        const match: RegExpMatchArray | null = html.match(/<link[^>]+rel="image_src"[^>]+href="([^"]+)"/i);
-
-        return match?.[1];
-    }
-
-    private async _resolveGiphyGifUrl(tenorUrl: string): Promise<string | undefined> {
-        const response: Response = await fetch(tenorUrl);
-
-        if (!response.ok) {
-            return undefined;
-        }
-
-        const html: string = await response.text();
-        const match: RegExpMatchArray | null = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i);
-
-        return match?.[1];
     }
 
     /**

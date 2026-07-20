@@ -10,6 +10,7 @@
         "@jstmemit/analytics": "workspace:*",
         "@jstmemit/voice": "workspace:*",
         "@jstmemit/bandit": "workspace:*",
+        "@jstmemit/images": "workspace:*",
         "@jstmemit/db": "workspace:*",
         "@jstmemit/i18n": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",

@@ -1,0 +1,20 @@
+{
+    "name": "@jstmemit/images",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "@jstmemit/analytics": "workspace:*"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*.ts": "./src/*.ts",
+        "./*": [
+            "./src/*.ts"
+        ]
+    }
+}
