@@ -73,7 +73,7 @@ export class ChannelsController implements IChannelsController {
                 const serverIcon: string | null = interaction.guild.iconURL();
 
                 if (serverIcon) {
-                    this._contextService.saveAvatar(interaction.id, interaction.channelId, serverIcon);
+                    await this._contextService.saveAvatar(interaction.id, interaction.channelId, serverIcon);
                 }
             }
 
