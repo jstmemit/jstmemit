@@ -420,6 +420,8 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @param templates - The array of templates to be processed and grouped.
      * @param fieldName - The field name to group the templates by.
      * @returns A Map where keys are the field values (or array elements) and values are arrays of templates matching that key.
+     *
+     * @author Oleksii Sych
      */
     public getAllByFieldMap<K extends keyof Template>(
         templates: Template[],
@@ -460,6 +462,8 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @param fieldName - The key of the Template object to filter by
      * @param value - The expected value (or element within an array field) to match
      * @returns An array of filtered Template objects
+     *
+     * @author Oleksii Sych
      */
     public getAllByField<K extends keyof Template>(fieldName: K, value: TemplateMapKey<Template, K>): Template[] {
         return this.getAll().filter((template: Template): boolean => {
