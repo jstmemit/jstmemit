@@ -69,6 +69,16 @@ services:
       sqld:
         condition: service_started
 
+  whisper:
+      image: hwdsl2/whisper-server
+      container_name: whisper
+      restart: unless-stopped
+      volumes:
+          - whisper-data:/var/lib/whisper
+          - ./.env.docker:/whisper.env:ro
+
 volumes:
   sqld-data:
   redis-data:
+  whisper-data:
+      name: whisper-data

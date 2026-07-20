@@ -27,6 +27,7 @@ import { ModalsService } from "#/services/ModalsService.ts";
 import { FeedbackController } from "#/controllers/FeedbackController.ts";
 import { HelpController } from "#/controllers/HelpController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
+import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -62,6 +63,7 @@ container.register({
     feedbackController: asClass(FeedbackController).singleton(),
     helpController: asClass(HelpController).singleton(),
     eventsController: asClass(EventsController).singleton(),
+    voiceService: asClass(VoiceService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
