@@ -180,6 +180,20 @@ import { blendsMaikaSadisticSmile } from "#/templates/blendsMaikaSadisticSmile.t
 import { blendsMaikaShockedPanic } from "#/templates/blendsMaikaShockedPanic.tsx";
 import { blendsMaikaUhHuh } from "#/templates/blendsMaikaUhHuh.tsx";
 import { blendsSnoopDoggFace } from "#/templates/blendsSnoopDoggFace.tsx";
+import { btrBocchiAnxietyWave } from "#/templates/btrBocchiAnxietyWave.tsx";
+import { btrBocchiAnxiousSmiling } from "#/templates/btrBocchiAnxiousSmiling.tsx";
+import { btrBocchiBreakingBadWalter } from "#/templates/btrBocchiBreakingBadWalter.tsx";
+import { btrBocchiDepressedCorner } from "#/templates/btrBocchiDepressedCorner.tsx";
+import { btrBocchiDizzyPanic } from "#/templates/btrBocchiDizzyPanic.tsx";
+import { btrBocchiExhaustedFace } from "#/templates/btrBocchiExhaustedFace.tsx";
+import { btrBocchiGlitchPanic } from "#/templates/btrBocchiGlitchPanic.tsx";
+import { btrBocchiHappy } from "#/templates/btrBocchiHappy.tsx";
+import { btrBocchiLyingAwake } from "#/templates/btrBocchiLyingAwake.tsx";
+import { btrBocchiPaleShock } from "#/templates/btrBocchiPaleShock.tsx";
+import { btrBocchiScaredScream } from "#/templates/btrBocchiScaredScream.tsx";
+import { btrBocchiSoulLeavingBody } from "#/templates/btrBocchiSoulLeavingBody.tsx";
+import { btrBocchiSpiralEyesPanic } from "#/templates/btrBocchiSpiralEyesPanic.tsx";
+import { btrBocchiTheRockMeltdownFace } from "#/templates/btrBocchiTheRockMeltdownFace.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -381,6 +395,20 @@ export class TemplatesRepository implements ITemplatesRepository {
             blendsMaikaShockedPanic,
             blendsMaikaUhHuh,
             blendsSnoopDoggFace,
+            btrBocchiAnxietyWave,
+            btrBocchiAnxiousSmiling,
+            btrBocchiBreakingBadWalter,
+            btrBocchiDepressedCorner,
+            btrBocchiDizzyPanic,
+            btrBocchiExhaustedFace,
+            btrBocchiGlitchPanic,
+            btrBocchiHappy,
+            btrBocchiLyingAwake,
+            btrBocchiPaleShock,
+            btrBocchiScaredScream,
+            btrBocchiSoulLeavingBody,
+            btrBocchiSpiralEyesPanic,
+            btrBocchiTheRockMeltdownFace,
         ];
     }
 
