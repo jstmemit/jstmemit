@@ -16,6 +16,7 @@ import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepos
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { logger } from "#/container.ts";
 
 export class MemesService implements IMemesService {
     private readonly _transparentImage: string;
@@ -80,7 +81,7 @@ export class MemesService implements IMemesService {
         const props: TemplateProps | undefined =
             data.texts || data.images
                 ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {})
-                : await this.getMemeTemplateContext(template, channelId);
+                : await this.getMemeTemplateContext(template, channelId, userId);
 
         if (!props) {
             throw new Error("No props");
@@ -141,10 +142,15 @@ export class MemesService implements IMemesService {
      *
      * @param template
      * @param channelId
+     * @param userId
      *
      * @author Kyrylo Maliuha
      */
-    public async getMemeTemplateContext(template: Template, channelId: string): Promise<TemplateProps | undefined> {
+    public async getMemeTemplateContext(
+        template: Template,
+        channelId: string,
+        userId: string,
+    ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
         const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsRepository.get(channelId);
@@ -164,6 +170,17 @@ export class MemesService implements IMemesService {
         }
 
         if (channelTexts.length <= 1 || channelImages.length <= 1) {
+            logger.emit({
+                severityText: "warn",
+                body: "generate_meme.context.insufficient",
+                attributes: {
+                    posthogDistinctId: userId,
+                    channel_id: channelId,
+                    template_name: template.name,
+                    text_count: channelTexts.length,
+                    image_count: channelImages.length,
+                },
+            });
             return undefined;
         }
 
@@ -208,14 +225,31 @@ export class MemesService implements IMemesService {
 
     private async _toPngDataUri(url: string): Promise<string> {
         try {
+            if (!url) return this._transparentImage;
             const res: Response = await fetch(url);
-            if (!res.ok) return this._transparentImage;
+            if (!res.ok) {
+                logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.image.fetch_failed",
+                    attributes: { url_host: new URL(url).hostname, status: res.status },
+                });
+                return this._transparentImage;
+            }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
             const png: Buffer = await sharp(input).png().toBuffer();
 
             return `data:image/png;base64,${png.toString("base64")}`;
-        } catch {
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "warn",
+                body: "generate_meme.image.sharp_convert_failed",
+                attributes: {
+                    url_host: url.startsWith("http") ? new URL(url).hostname : "invalid",
+                    error_message: error instanceof Error ? error.message : String(error),
+                },
+            });
             return this._transparentImage;
         }
     }

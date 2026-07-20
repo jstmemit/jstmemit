@@ -175,7 +175,7 @@ export class MemesController implements IMemesController {
                 case "No props":
                     logger.emit({
                         severityText: "warn",
-                        body: "generate_meme.context.insufficient",
+                        body: "generate_meme.context.insufficient.error_shown",
                         attributes: {
                             posthogDistinctId: userId,
                             interaction_id: interaction.id,

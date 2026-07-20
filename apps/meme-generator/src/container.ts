@@ -19,6 +19,7 @@ import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
 import { BanditService } from "@jstmemit/bandit/services/BanditService";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
 import { createContainer, asClass, InjectionMode, type AwilixContainer } from "awilix";
+import { type Logger, logs } from "@opentelemetry/api-logs";
 
 const env = Env.parse(process.env);
 
@@ -46,3 +47,4 @@ export const messagesRepository: IMessagesRepository = container.resolve<Message
 export const imagesRepository: IImagesRepository = container.resolve<ImagesRepository>("imagesRepository");
 export const banditRepository: IBanditRepository = container.resolve<BanditRepository>("banditRepository");
 export const memesService: IMemesService = container.resolve<MemesService>("memesService");
+export const logger: Logger = logs.getLogger("jstmemit/meme-generator");
