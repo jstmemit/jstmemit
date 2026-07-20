@@ -66,18 +66,23 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveImages(messageId: string, channelId: string, attachments: Collection<string, Attachment>): boolean {
-        attachments.forEach((attachment: Attachment): void => {
-            const expiresAt: Date = this._getExpirationDate(attachment.proxyURL);
-
-            this._imagesRepository
-                .add(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
-                .catch((error): void => {
-                    console.error(error);
-                });
-        });
-
-        return true;
+    public async saveImages(
+        messageId: string,
+        channelId: string,
+        attachments: Collection<string, Attachment>,
+    ): Promise<void> {
+        await Promise.all(
+            attachments.map(async (attachment: Attachment): Promise<void> => {
+                await this._imagesRepository.add(
+                    messageId,
+                    channelId,
+                    attachment.proxyURL,
+                    "attachment",
+                    new Date(),
+                    this._getExpirationDate(attachment.proxyURL),
+                );
+            }),
+        );
     }
 
     /**

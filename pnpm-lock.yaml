@@ -439,6 +439,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared

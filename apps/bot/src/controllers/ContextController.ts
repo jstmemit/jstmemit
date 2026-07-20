@@ -55,7 +55,7 @@ export class ContextController implements IContextController {
             }
 
             if (attachments) {
-                this._contextService.saveImages(id, channelId, attachments);
+                await this._contextService.saveImages(id, channelId, attachments);
             }
 
             if (message.flags.has("IsVoiceMessage") && message?.attachments?.first()?.proxyURL) {

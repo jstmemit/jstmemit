@@ -6,7 +6,7 @@ export abstract class IImagesRepository {
         source: "attachment" | "gif" | "avatar",
         timestamp: Date,
         expiresAt?: Date,
-    ): Promise<boolean>;
+    ): Promise<void>;
 
     public abstract getImagesByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
 

@@ -4,6 +4,7 @@
     "type": "module",
     "dependencies": {
         "@jstmemit/shared": "workspace:*",
+        "@jstmemit/analytics": "workspace:*",
         "@libsql/client": "^0.17.4",
         "@tursodatabase/database": "^0.6.1",
         "better-sqlite3": "^12.11.1",

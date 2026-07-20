@@ -9,7 +9,7 @@ export abstract class IContextService {
         messageId: string,
         channelId: string,
         attachments: Collection<string, Attachment>,
-    ): boolean;
+    ): Promise<void>;
 
     public abstract saveGif(messageId: string, channelId: string, content: string): Promise<boolean>;
 
