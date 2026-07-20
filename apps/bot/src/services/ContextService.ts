@@ -35,8 +35,8 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveContent(messageId: string, channelId: string, content: string): Promise<boolean> {
-        return await this._messagesRepository.new(messageId, channelId, content, new Date());
+    public async saveContent(messageId: string, channelId: string, content: string): Promise<void> {
+        await this._messagesRepository.new(messageId, channelId, content, new Date());
     }
 
     /**
@@ -49,14 +49,13 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<boolean> {
-        const content: string = await this._voiceService.convertSpeechToText(audio);
-
-        if (content) {
-            return await this._messagesRepository.new(messageId, channelId, content, new Date());
-        }
-
-        return false;
+    public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<void> {
+        await this._messagesRepository.new(
+            messageId,
+            channelId,
+            await this._voiceService.convertSpeechToText(audio),
+            new Date(),
+        );
     }
 
     /**
@@ -99,7 +98,7 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveGif(messageId: string, channelId: string, content: string): Promise<boolean> {
+    public async saveGif(messageId: string, channelId: string, content: string): Promise<void> {
         let result: string | undefined = "";
 
         if (content.includes("tenor")) {
@@ -111,14 +110,10 @@ export class ContextService implements IContextService {
         }
 
         if (!result) {
-            return false;
+            return undefined;
         }
 
-        this._imagesRepository.add(messageId, channelId, result, "gif", new Date()).catch((error): void => {
-            console.error(error);
-        });
-
-        return true;
+        await this._imagesRepository.add(messageId, channelId, result, "gif", new Date());
     }
 
     /**
@@ -149,11 +144,7 @@ export class ContextService implements IContextService {
 
             return expiration ? new Date(parseInt(expiration, 16) * 1000) : new Date(Date.now() + this._expiration);
         } catch (error) {
-            console.error(error);
-
-            analytics.captureException(error, "bot", {
-                attachmentUrl,
-            });
+            analytics.captureException(error);
 
             return new Date(Date.now() + this._expiration);
         }
