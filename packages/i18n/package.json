@@ -4,7 +4,7 @@
     "type": "module",
     "dependencies": {
         "@jstmemit/shared": "workspace:*",
-        "discord.js": "^14.26.4"
+        "discord.js": "^14.27.0"
     },
     "imports": {
         "#/*": [

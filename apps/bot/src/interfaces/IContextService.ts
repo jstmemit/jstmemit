@@ -1,11 +1,9 @@
 import type { Attachment, Collection } from "discord.js";
 
 export abstract class IContextService {
-    public abstract saveContent(
-        messageId: string,
-        channelId: string,
-        content: string,
-    ): Promise<boolean>;
+    public abstract saveContent(messageId: string, channelId: string, content: string): Promise<boolean>;
+
+    public abstract saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<boolean>;
 
     public abstract saveImages(
         messageId: string,
@@ -13,15 +11,7 @@ export abstract class IContextService {
         attachments: Collection<string, Attachment>,
     ): boolean;
 
-    public abstract saveGif(
-        messageId: string,
-        channelId: string,
-        content: string,
-    ): Promise<boolean>;
+    public abstract saveGif(messageId: string, channelId: string, content: string): Promise<boolean>;
 
-    public abstract saveAvatar(
-        messageId: string,
-        channelId: string,
-        avatarUrl: string,
-    ): boolean;
+    public abstract saveAvatar(messageId: string, channelId: string, avatarUrl: string): boolean;
 }

@@ -26,6 +26,7 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
+import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -35,6 +36,7 @@ export class MemesController implements IMemesController {
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
+    private readonly _voiceService: IVoiceService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -44,6 +46,7 @@ export class MemesController implements IMemesController {
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
+        voiceService: IVoiceService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -52,6 +55,7 @@ export class MemesController implements IMemesController {
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
+        this._voiceService = voiceService;
     }
 
     /**
@@ -225,7 +229,7 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = this._getContextMenuTexts(template, interaction);
+        const texts: Record<string, string> = await this._getContextMenuTexts(template, interaction);
         const images: Record<string, string> = this._getContextMenuImage(template, interaction);
 
         try {
@@ -318,16 +322,21 @@ export class MemesController implements IMemesController {
         return template;
     }
 
-    private _getContextMenuTexts(
+    private async _getContextMenuTexts(
         template: Template,
         interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
-    ): Record<string, string> {
+    ): Promise<Record<string, string>> {
         const texts: Record<string, string> = {};
         const slots: TemplateText[] = template.texts ?? [];
         const [first, second] = slots;
 
         if (interaction.isMessageContextMenuCommand()) {
             const message: Message = interaction.targetMessage;
+            const voiceMessage: string | undefined = message?.attachments.first()?.proxyURL;
+
+            if (message.flags.has("IsVoiceMessage") && voiceMessage) {
+                message.content = await this._voiceService.convertSpeechToText(voiceMessage);
+            }
 
             if (first && !second) {
                 texts[first.id] = message.content;

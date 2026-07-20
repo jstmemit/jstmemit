@@ -18,7 +18,7 @@ import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 
 export class MemesService implements IMemesService {
-    private readonly _transparentImage: string = "https://files.jstmemit.com/jstmemit/images/transparent.png";
+    private readonly _transparentImage: string;
     private readonly _memesRepository: IMemesRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
@@ -38,6 +38,7 @@ export class MemesService implements IMemesService {
         channelsRepository: IChannelsRepository,
         templatesRepository: ITemplatesRepository,
     ) {
+        this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
