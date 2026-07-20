@@ -4,7 +4,7 @@ import { db } from "../index.ts";
 import { and, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
 
 export class ImagesRepository extends IImagesRepository {
-    public async new(
+    public async add(
         messageId: string,
         channelId: string,
         imageUrl: string,

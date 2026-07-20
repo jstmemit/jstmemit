@@ -71,7 +71,7 @@ export class ContextService implements IContextService {
             const expiresAt: Date = this._getExpirationDate(attachment.proxyURL);
 
             this._imagesRepository
-                .new(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
+                .add(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
                 .catch((error): void => {
                     console.error(error);
                 });
@@ -105,7 +105,7 @@ export class ContextService implements IContextService {
             return false;
         }
 
-        this._imagesRepository.new(messageId, channelId, result, "gif", new Date()).catch((error): void => {
+        this._imagesRepository.add(messageId, channelId, result, "gif", new Date()).catch((error): void => {
             console.error(error);
         });
 
@@ -126,7 +126,7 @@ export class ContextService implements IContextService {
         const url: URL = new URL(`${avatarUrl.replace(".webp", "")}?size=1024&format=png`);
         url.searchParams.set("channel", channelId);
 
-        this._imagesRepository.new(messageId, channelId, url.toString(), "avatar", new Date()).catch((error): void => {
+        this._imagesRepository.add(messageId, channelId, url.toString(), "avatar", new Date()).catch((error): void => {
             console.error(error);
         });
 

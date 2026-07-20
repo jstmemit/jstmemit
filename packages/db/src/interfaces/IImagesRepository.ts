@@ -1,5 +1,5 @@
 export abstract class IImagesRepository {
-    public abstract new(
+    public abstract add(
         messageId: string,
         channelId: string,
         imageUrl: string,
