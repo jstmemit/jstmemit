@@ -43,6 +43,8 @@ if (templateName) {
 }
 ---
 
-<li class=`bg-white/10 w-[${templateWidth}px] h-[${templateHeight}px]`>
-    <img src={meme} width={templateWidth} height={templateHeight} alt={templateName} class="lg:max-w-111" />
+<li
+    class=`bg-white/10 w-[${templateWidth}px] h-[${templateHeight}px] lg:max-w-[calc((100%-20px)/2)] 2xl:max-w-[calc((100%-20px*2)/3)]`
+>
+    <img src={meme} width={templateWidth} height={templateHeight} alt={templateName} />
 </li>
