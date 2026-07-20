@@ -7,11 +7,12 @@ import type { Template } from "@jstmemit/shared/models/Template";
 import { analytics } from "@jstmemit/analytics";
 
 export class MemesRepository implements IMemesRepository {
-    private readonly _twemojiBaseUrl: string = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg";
+    private readonly _twemojiBaseUrl: string;
     private readonly _emojis: Map<string, string> = new Map();
     private readonly _fontsService: IFontsService;
 
     public constructor(fontsService: IFontsService) {
+        this._twemojiBaseUrl = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg";
         this._fontsService = fontsService;
     }
 

@@ -2,17 +2,20 @@
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
+import { type TemplateTopic, Topic } from "@jstmemit/shared/models/TemplateTopic";
 
 interface Props {
+    currentTopic: TemplateTopic | "all";
     currentTemplateName: string;
 }
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templates: Template[] = templatesRepository.getAll();
-const { currentTemplateName } = Astro.props;
+const { currentTopic, currentTemplateName } = Astro.props;
+const topicOptions = Object.entries(Topic).sort((a, b) => a[0].localeCompare(b[0]));
 ---
 
-<nav class="min-w-60">
+<nav class="flex min-w-60 flex-col gap-2">
     <div class="flex items-center justify-between">
         <a href="/" class="text-3xl font-bold md:text-2xl">Meme templates</a>
         <!--TODO: replace with some icon later-->
@@ -23,22 +26,39 @@ const { currentTemplateName } = Astro.props;
             ^
         </div>
     </div>
-    <ul id="template-list" class="hidden flex-col gap-2 pt-3 md:flex">
+    <div>
+        <label for="topic-select" class="sr-only">Choose topic</label>
+        <select
+            id="topic-select"
+            class="focus:border-hot-fuchsia w-full rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-white focus:outline-none"
+        >
+            <option value="all" selected={currentTopic === "all"}> All topics </option>
+            {
+                topicOptions.map(([key, value]) => (
+                    <option value={value} selected={currentTopic === value}>
+                        {key}
+                    </option>
+                ))
+            }
+        </select>
+    </div>
+    <ul id="template-list" class="hidden max-h-200 scrollbar-thin flex-col gap-2 overflow-y-auto pt-3 md:flex">
         {
             templates
-                .sort((a, b) => {
-                    const nameA = a.name.toLowerCase();
-                    const nameB = b.name.toLowerCase();
-                    if (nameA < nameB) return -1;
-                    if (nameA > nameB) return 1;
-                    return 0;
+                .filter((template: Template) => {
+                    if (currentTopic === "all") return true;
+                    return template.topics.includes(currentTopic);
                 })
+                .sort((a, b) => a.name.localeCompare(b.name))
                 .map((template: Template) => (
                     <li
                         template-name={template.name}
-                        class={`flex justify-between gap-2.5 border-l-2 pl-3 ${template.name === currentTemplateName ? "border-neon-ice/70" : "border-hot-fuchsia/80"} hover:border-neon-ice/70 mt-1 md:mt-0`}
+                        class={`flex justify-between gap-2.5 border-l-2 pr-3 pl-3 ${template.name === currentTemplateName ? "border-violet-500/70" : "border-hot-fuchsia/80"} hover:border-neon-ice/70 mt-1 md:mt-0`}
                     >
-                        <a class="truncate" href={`/templates/${template.name}`}>
+                        <a
+                            class="truncate"
+                            href={`/templates${currentTopic === "all" ? "" : `/${currentTopic}`}/${template.name}`}
+                        >
                             {template.name}
                         </a>
                         <span class="new-badge text-hot-fuchsia/80 hidden">new</span>
@@ -49,6 +69,17 @@ const { currentTemplateName } = Astro.props;
 </nav>
 
 <script>
+    function initTopicSelect() {
+        const select = document.getElementById("topic-select") as HTMLSelectElement | null;
+        if (!select) return;
+
+        select.addEventListener("change", (event) => {
+            const target = event.target as HTMLSelectElement;
+            const selectedTopic = target.value;
+            window.location.href = `/templates${selectedTopic === "all" ? "" : `/${selectedTopic}`}`;
+        });
+    }
+
     function syncMenuState() {
         const toggle: HTMLElement | null = document.getElementById("toggle");
         const list: HTMLElement | null = document.getElementById("template-list");
@@ -79,30 +110,31 @@ const { currentTemplateName } = Astro.props;
     function checkNewTemplates() {
         const liElements: NodeListOf<Element> = document.querySelectorAll("#template-list li[template-name]");
         const savedTemplatesRaw: string | null = localStorage.getItem("known-templates");
+        const knownNames: string[] = savedTemplatesRaw ? JSON.parse(savedTemplatesRaw) : [];
 
-        if (savedTemplatesRaw) {
-            const knownNames: string[] = JSON.parse(savedTemplatesRaw);
-
-            liElements.forEach((li: Element) => {
-                const name: string = li.getAttribute("template-name") || "";
-                if (!knownNames.includes(name)) {
-                    const badge: Element | null = li.querySelector(".new-badge");
-                    badge?.classList.remove("hidden");
-                }
-            });
-        }
+        liElements.forEach((li: Element) => {
+            const name: string = li.getAttribute("template-name") || "";
+            if (knownNames.length > 0 && !knownNames.includes(name)) {
+                const badge: Element | null = li.querySelector(".new-badge");
+                badge?.classList.remove("hidden");
+            }
+        });
 
         const currentNames: string[] = Array.from(liElements).map(
             (li: Element) => li.getAttribute("template-name") || "",
         );
 
-        localStorage.setItem("known-templates", JSON.stringify(currentNames));
+        const updatedKnownTemplates = Array.from(new Set([...knownNames, ...currentNames]));
+
+        localStorage.setItem("known-templates", JSON.stringify(updatedKnownTemplates));
     }
 
+    initTopicSelect();
     syncMenuState();
     checkNewTemplates();
 
     document.addEventListener("astro:page-load", () => {
+        initTopicSelect();
         syncMenuState();
         checkNewTemplates();
     });

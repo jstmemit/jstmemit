@@ -58,6 +58,14 @@ export class ContextController implements IContextController {
                 this._contextService.saveImages(id, channelId, attachments);
             }
 
+            if (message.flags.has("IsVoiceMessage") && message?.attachments?.first()?.proxyURL) {
+                await this._contextService.saveTranscribedVoice(
+                    id,
+                    channelId,
+                    message?.attachments?.first()?.proxyURL as string,
+                );
+            }
+
             if (content.length > 0 && content.length < 2000) {
                 if (this._checkIfLinkToGif(content)) {
                     await this._contextService.saveGif(id, channelId, content);

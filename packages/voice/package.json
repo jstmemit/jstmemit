@@ -1,0 +1,19 @@
+{
+    "name": "@jstmemit/voice",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "@jstmemit/shared": "workspace:*"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*.ts": "./src/*.ts",
+        "./*": [
+            "./src/*.ts"
+        ]
+    }
+}

@@ -3,15 +3,22 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
+import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
+    private readonly _voiceService: IVoiceService;
 
-    public constructor(messagesRepository: IMessagesRepository, imagesRepository: IImagesRepository) {
+    public constructor(
+        messagesRepository: IMessagesRepository,
+        imagesRepository: IImagesRepository,
+        voiceService: IVoiceService,
+    ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
+        this._voiceService = voiceService;
     }
 
     /**
@@ -26,6 +33,26 @@ export class ContextService implements IContextService {
      */
     public async saveContent(messageId: string, channelId: string, content: string): Promise<boolean> {
         return await this._messagesRepository.new(messageId, channelId, content, new Date());
+    }
+
+    /**
+     * Calls MessagesRepository to save transcribed voice message content into
+     * the database
+     *
+     * @param messageId
+     * @param channelId
+     * @param audio
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<boolean> {
+        const content: string = await this._voiceService.convertSpeechToText(audio);
+
+        if (content) {
+            return await this._messagesRepository.new(messageId, channelId, content, new Date());
+        }
+
+        return false;
     }
 
     /**
