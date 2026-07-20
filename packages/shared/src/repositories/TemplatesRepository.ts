@@ -159,6 +159,9 @@ import { adHowAreYouFineThankYouMeme } from "#/templates/adHowAreYouFineThankYou
 import { adOsakaSeriousFace } from "#/templates/adOsakaSeriousFace.tsx";
 import { adOsakaStaring } from "#/templates/adOsakaStaring.tsx";
 import { adWhyAreYouSpeakingInEnglish } from "#/templates/adWhyAreYouSpeakingInEnglish.tsx";
+import { animeSakuraDisapprovalRikoShrug } from "#/templates/animeSakuraDisapprovalRikoShrug.tsx";
+import { animeTheThreeStagesOfApproval } from "#/templates/animeTheThreeStagesOfApproval.tsx";
+import { aotErenYeagerHappyVsDepressed } from "#/templates/aotErenYeagerHappyVsDepressed.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -339,6 +342,9 @@ export class TemplatesRepository implements ITemplatesRepository {
             adOsakaSeriousFace,
             adOsakaStaring,
             adWhyAreYouSpeakingInEnglish,
+            animeSakuraDisapprovalRikoShrug,
+            animeTheThreeStagesOfApproval,
+            aotErenYeagerHappyVsDepressed,
         ];
     }
 
