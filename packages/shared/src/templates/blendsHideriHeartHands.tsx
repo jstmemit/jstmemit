@@ -4,15 +4,15 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const adOsakaStaring: Template = {
-    name: "adOsakaStaring",
-    topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textLeftWithBackground],
-    width: 948,
-    height: 577,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
-    images: [],
-    element: ({ texts }: TemplateProps) => (
+export const blendsHideriHeartHands: Template = {
+    name: "blendsHideriHeartHands",
+    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
+    types: [Type.textLeftWithBackground, Type.faceImage],
+    width: 1710,
+    height: 900,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
+    images: [{ id: 0, description: "Hideri`s face" }],
+    element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -23,40 +23,51 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
-                width={"50%"}
-                height={577}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                src="https://files.wideunits.nl/jstmemit/images/templates/blendsHideriHeartHands.png"
+                width={1710}
+                height={900}
+                style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={320}
+                height={320}
+                style={{
+                    position: "absolute",
+                    top: 150,
+                    right: 550,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
-                    bottom: 0,
-                    width: "50%",
-                    height: "100%",
+                    left: "20%",
+                    top: "8%",
+                    width: "25%",
+                    height: "50%",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 8,
+                        WebkitLineClamp: 5,
                         wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 60,
+                        fontSize: 80,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
-                        color: "#000000",
+                        color: "#ffffff",
                     }}
                 >
                     {texts[0]}

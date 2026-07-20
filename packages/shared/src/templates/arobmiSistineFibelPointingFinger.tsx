@@ -4,13 +4,13 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const adOsakaStaring: Template = {
-    name: "adOsakaStaring",
-    topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textLeftWithBackground],
-    width: 948,
-    height: 577,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+export const arobmiSistineFibelPointingFinger: Template = {
+    name: "arobmiSistineFibelPointingFinger",
+    topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
+    types: [Type.textTopWithBackground],
+    width: 400,
+    height: 304,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
         <div
@@ -23,18 +23,18 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
-                width={"50%"}
-                height={577}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                src="https://files.wideunits.nl/jstmemit/images/templates/arobmiSistineFibelPointingFinger.png"
+                width={400}
+                height={234}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
-                    width: "50%",
-                    height: "100%",
+                    top: 0,
+                    width: "100%",
+                    height: "70px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
@@ -48,12 +48,12 @@ export const adOsakaStaring: Template = {
                     style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 8,
+                        WebkitLineClamp: 2,
                         wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 60,
+                        fontSize: 25,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
                         color: "#000000",

@@ -4,12 +4,12 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const adOsakaStaring: Template = {
-    name: "adOsakaStaring",
-    topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textLeftWithBackground],
-    width: 948,
-    height: 577,
+export const blendsMaikaAngryPanic: Template = {
+    name: "blendsMaikaAngryPanic",
+    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
+    types: [Type.textTopWithBackground],
+    width: 1280,
+    height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -23,18 +23,18 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
-                width={"50%"}
-                height={577}
+                src="https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaBlendSAngryPanic.png"
+                width={1280}
+                height={720}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
-                    width: "50%",
-                    height: "100%",
+                    top: 0,
+                    width: "100%",
+                    height: "180px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
@@ -48,7 +48,7 @@ export const adOsakaStaring: Template = {
                     style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 8,
+                        WebkitLineClamp: 2,
                         wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",

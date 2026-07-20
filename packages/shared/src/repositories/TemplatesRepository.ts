@@ -162,6 +162,24 @@ import { adWhyAreYouSpeakingInEnglish } from "#/templates/adWhyAreYouSpeakingInE
 import { animeSakuraDisapprovalRikoShrug } from "#/templates/animeSakuraDisapprovalRikoShrug.tsx";
 import { animeTheThreeStagesOfApproval } from "#/templates/animeTheThreeStagesOfApproval.tsx";
 import { aotErenYeagerHappyVsDepressed } from "#/templates/aotErenYeagerHappyVsDepressed.tsx";
+import { arobmiAngrySistineFibel } from "#/templates/arobmiAngrySistineFibel.tsx";
+import { arobmiCryingSistine } from "#/templates/arobmiCryingSistine.tsx";
+import { arobmiSistineFibelPointingFinger } from "#/templates/arobmiSistineFibelPointingFinger.tsx";
+import { arobmiSistineFibelTeaSip } from "#/templates/arobmiSistineFibelTeaSip.tsx";
+import { arobmiSurprisedSistine } from "#/templates/arobmiSurprisedSistine.tsx";
+import { blendsChibiMaikaCheering } from "#/templates/blendsChibiMaikaCheering.tsx";
+import { blendsHideriFingerTapping } from "#/templates/blendsHideriFingerTapping.tsx";
+import { blendsHideriHeartHands } from "#/templates/blendsHideriHeartHands.tsx";
+import { blendsHideriKanzakiSmugFace } from "#/templates/blendsHideriKanzakiSmugFace.tsx";
+import { blendsHideriMaidUniformWink } from "#/templates/blendsHideriMaidUniformWink.tsx";
+import { blendsHideriSmugFace } from "#/templates/blendsHideriSmugFace.tsx";
+import { blendsKahoAndMaikaMaids } from "#/templates/blendsKahoAndMaikaMaids.tsx";
+import { blendsMaidCast } from "#/templates/blendsMaidCast.tsx";
+import { blendsMaikaAngryPanic } from "#/templates/blendsMaikaAngryPanic.tsx";
+import { blendsMaikaSadisticSmile } from "#/templates/blendsMaikaSadisticSmile.tsx";
+import { blendsMaikaShockedPanic } from "#/templates/blendsMaikaShockedPanic.tsx";
+import { blendsMaikaUhHuh } from "#/templates/blendsMaikaUhHuh.tsx";
+import { blendsSnoopDoggFace } from "#/templates/blendsSnoopDoggFace.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -345,6 +363,24 @@ export class TemplatesRepository implements ITemplatesRepository {
             animeSakuraDisapprovalRikoShrug,
             animeTheThreeStagesOfApproval,
             aotErenYeagerHappyVsDepressed,
+            arobmiAngrySistineFibel,
+            arobmiCryingSistine,
+            arobmiSistineFibelPointingFinger,
+            arobmiSistineFibelTeaSip,
+            arobmiSurprisedSistine,
+            blendsChibiMaikaCheering,
+            blendsHideriFingerTapping,
+            blendsHideriHeartHands,
+            blendsHideriKanzakiSmugFace,
+            blendsHideriMaidUniformWink,
+            blendsHideriSmugFace,
+            blendsKahoAndMaikaMaids,
+            blendsMaidCast,
+            blendsMaikaAngryPanic,
+            blendsMaikaSadisticSmile,
+            blendsMaikaShockedPanic,
+            blendsMaikaUhHuh,
+            blendsSnoopDoggFace,
         ];
     }
 

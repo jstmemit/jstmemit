@@ -4,12 +4,12 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const adOsakaStaring: Template = {
-    name: "adOsakaStaring",
-    topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textLeftWithBackground],
-    width: 948,
-    height: 577,
+export const blendsHideriSmugFace: Template = {
+    name: "blendsHideriSmugFace",
+    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
+    types: [Type.textRightWithBackground],
+    width: 638,
+    height: 396,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -23,15 +23,15 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
+                src="https://files.wideunits.nl/jstmemit/images/templates/blendsHideriSmugFace.png"
                 width={"50%"}
-                height={577}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                height={396}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
+                    right: 0,
                     bottom: 0,
                     width: "50%",
                     height: "100%",
@@ -53,7 +53,7 @@ export const adOsakaStaring: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 60,
+                        fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
                         color: "#000000",

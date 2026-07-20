@@ -4,12 +4,12 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const adOsakaStaring: Template = {
-    name: "adOsakaStaring",
-    topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
+export const blendsMaikaShockedPanic: Template = {
+    name: "blendsMaikaShockedPanic",
+    topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.textLeftWithBackground],
-    width: 948,
-    height: 577,
+    width: 898,
+    height: 412,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -23,9 +23,9 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
+                src="https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaShockedPanic.png"
                 width={"50%"}
-                height={577}
+                height={412}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
@@ -48,12 +48,12 @@ export const adOsakaStaring: Template = {
                     style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 8,
+                        WebkitLineClamp: 7,
                         wordBreak: "break-word",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 60,
+                        fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
                         color: "#000000",

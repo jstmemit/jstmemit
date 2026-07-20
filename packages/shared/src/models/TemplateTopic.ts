@@ -23,6 +23,8 @@ export const Topic = {
     ACertainScientificRailgun: "aCertainScientificRailgun",
     AzumangaDaioh: "azumangaDaioh",
     AttackOnTitan: "attackOnTitan",
+    AkashicRecords: "akashicRecords",
+    BlendS: "blenS",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
