@@ -127,15 +127,8 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveAvatar(messageId: string, channelId: string, avatarUrl: string): boolean {
-        const url: URL = new URL(`${avatarUrl.replace(".webp", "")}?size=1024&format=png`);
-        url.searchParams.set("channel", channelId);
-
-        this._imagesRepository.add(messageId, channelId, url.toString(), "avatar", new Date()).catch((error): void => {
-            console.error(error);
-        });
-
-        return true;
+    public async saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void> {
+        await this._imagesRepository.add(messageId, channelId, avatarUrl, "avatar", new Date());
     }
 
     /**
