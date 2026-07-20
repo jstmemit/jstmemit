@@ -59,6 +59,7 @@ export const acsrMisakaMikotoDrakeMeme: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#000000",
                     }}
                 >
@@ -93,6 +94,7 @@ export const acsrMisakaMikotoDrakeMeme: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#000000",
                     }}
                 >
