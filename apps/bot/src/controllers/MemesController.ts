@@ -27,6 +27,8 @@ import type { Template } from "@jstmemit/shared/models/Template";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
+import { logger } from "#/container.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -69,11 +71,31 @@ export class MemesController implements IMemesController {
     public async handleMemeInteraction(
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
     ): Promise<void> {
+        let trigger: MemeGenerationJob["trigger"];
         const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
         const userId: MemeGenerationJob["userId"] =
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
 
-        let trigger: MemeGenerationJob["trigger"];
+        if (interaction instanceof Message) {
+            trigger = "auto";
+        } else if (interaction.isButton()) {
+            trigger = "regenerate";
+        } else {
+            trigger = "command";
+        }
+
+        logger.emit({
+            severityText: "info",
+            body: "generate_meme.interaction.received",
+            attributes: {
+                posthogDistinctId: userId,
+                interaction_id: interaction.id,
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId,
+                trigger,
+            },
+        });
+
         let locale: Locale = Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
@@ -87,6 +109,17 @@ export class MemesController implements IMemesController {
         }
 
         if (!channel?.enabled) {
+            logger.emit({
+                severityText: "warn",
+                body: "generate_meme.channel.not_enabled",
+                attributes: {
+                    posthogDistinctId: userId,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction?.guildId,
+                    trigger,
+                },
+            });
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 locale,
                 channel?.enabled || false,
@@ -97,14 +130,6 @@ export class MemesController implements IMemesController {
             await respond(interaction, [notEnabledComponent, notEnabledButtons]);
 
             return;
-        }
-
-        if (interaction instanceof Message) {
-            trigger = "auto";
-        } else if (interaction.isButton()) {
-            trigger = "regenerate";
-        } else {
-            trigger = "command";
         }
 
         try {
@@ -148,9 +173,33 @@ export class MemesController implements IMemesController {
 
             switch (reason) {
                 case "No props":
+                    logger.emit({
+                        severityText: "warn",
+                        body: "generate_meme.context.insufficient",
+                        attributes: {
+                            posthogDistinctId: userId,
+                            interaction_id: interaction.id,
+                            channel_id: channelId,
+                            trigger,
+                        },
+                    });
+
                     message = this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id);
                     break;
                 default:
+                    analytics.captureException(error);
+                    logger.emit({
+                        severityText: "error",
+                        body: "generate_meme.job.failed",
+                        attributes: {
+                            posthogDistinctId: userId,
+                            interaction_id: interaction.id,
+                            channel_id: channelId,
+                            trigger,
+                            error_message: reason || String(error),
+                            error_stack: error instanceof Error ? error.stack : undefined,
+                        },
+                    });
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
             }
 
@@ -168,6 +217,20 @@ export class MemesController implements IMemesController {
      */
     public async handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void> {
         const templateName: string | undefined = interaction.customId.split(":")[1];
+
+        logger.emit({
+            severityText: "info",
+            body: "generate_meme.interaction.received",
+            attributes: {
+                posthogDistinctId: interaction.user.id,
+                interaction_id: interaction.id,
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId,
+                template_name: templateName,
+                trigger: "custom",
+            },
+        });
+
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
@@ -175,6 +238,15 @@ export class MemesController implements IMemesController {
         }
 
         if (!interaction.channelId) {
+            logger.emit({
+                severityText: "warn",
+                body: "generate_meme.interaction.channel_missing",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    trigger: "custom",
+                },
+            });
             await interaction.reply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
                 flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
@@ -210,7 +282,20 @@ export class MemesController implements IMemesController {
                     },
                 ],
             });
-        } catch {
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "generate_meme.job.failed",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    template_name: templateName,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
             await interaction.editReply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
             });
@@ -221,6 +306,20 @@ export class MemesController implements IMemesController {
         interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
         templateName: string | undefined,
     ): Promise<void> {
+        logger.emit({
+            severityText: "info",
+            body: "generate_meme.interaction.received",
+            attributes: {
+                posthogDistinctId: interaction.user.id,
+                interaction_id: interaction.id,
+                channel_id: interaction.channelId,
+                guild_id: interaction?.guildId,
+                command_name: interaction.commandName,
+                template_name: templateName,
+                trigger: "context",
+            },
+        });
+
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
@@ -229,10 +328,10 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = await this._getContextMenuTexts(template, interaction);
-        const images: Record<string, string> = this._getContextMenuImage(template, interaction);
-
         try {
+            const texts: Record<string, string> = await this._getContextMenuTexts(template, interaction);
+            const images: Record<string, string> = this._getContextMenuImage(template, interaction);
+
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
                 userId: interaction.user.id,
@@ -251,7 +350,20 @@ export class MemesController implements IMemesController {
                     },
                 ],
             });
-        } catch {
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "generate_meme.job.failed",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    template_name: templateName,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
             await interaction.editReply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
                 flags: MessageFlags.IsComponentsV2,
@@ -311,6 +423,18 @@ export class MemesController implements IMemesController {
             .find((template: Template): boolean => template.name === templateName);
 
         if (!template) {
+            logger.emit({
+                severityText: "error",
+                body: "generate_meme.template.not_found",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction?.guildId,
+                    template_name: templateName,
+                },
+            });
+
             await interaction.reply({
                 components: [
                     this._componentsService.getUnknownTemplateMessageComponent(interaction.locale, interaction.id),
@@ -438,6 +562,19 @@ export class MemesController implements IMemesController {
             "meme-generation",
             data,
         );
+
+        logger.emit({
+            severityText: "debug",
+            body: "generate_meme.job.added",
+            attributes: {
+                job_id: job.id,
+                channel_id: data.channelId,
+                posthogDistinctId: data.userId,
+                trigger: data.trigger,
+                template_name: data.templateName,
+            },
+        });
+
         return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
     }
 }

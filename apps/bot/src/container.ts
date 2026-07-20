@@ -29,6 +29,8 @@ import { HelpController } from "#/controllers/HelpController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
 import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 import { GifService } from "@jstmemit/images/services/GifService";
+import "@jstmemit/telemetry";
+import { type Logger, logs } from "@opentelemetry/api-logs";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -70,3 +72,4 @@ container.register({
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
+export const logger: Logger = logs.getLogger("jstmemit/bot");
