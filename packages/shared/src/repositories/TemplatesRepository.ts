@@ -103,7 +103,7 @@ import { spidermanPeterDance } from "#/templates/spidermanPeterDance.tsx";
 import { spidermanPeterParkerWearingGlasses } from "#/templates/spidermanPeterParkerWearingGlasses.tsx";
 import { spongebobBeggingVsTuxedo } from "#/templates/spongebobBeggingVsTuxedo.tsx";
 import { dhGirlWithHandOverMouth } from "#/templates/dhGirlWithHandOverMouth.tsx";
-import { griffinsLoisInBed } from "#/templates/griffensLoisInBed.tsx";
+import { griffinsLoisInBed } from "#/templates/griffinsLoisInBed.tsx";
 import { cinemaGuys } from "#/templates/cinemaGuys.tsx";
 import { incomingCall } from "#/templates/incomingCall.tsx";
 import { spongebobSacredTextBook } from "#/templates/spongebobSacredTextBook.tsx";
@@ -152,6 +152,48 @@ import { simpsonsNotMyBoyfriendShirt } from "#/templates/simpsonsNotMyBoyfriendS
 import { parrotBarber } from "#/templates/parrotBarber.tsx";
 import { parrotBarber1 } from "#/templates/parrotBarber1.tsx";
 import { parrotBarber2 } from "#/templates/parrotBarber2.tsx";
+import { acNowKillHim } from "#/templates/acNowKillHim.tsx";
+import { acsrMisakaMikotoDrakeMeme } from "#/templates/acsrMisakaMikotoDrakeMeme.tsx";
+import { acsrMisakaMikotoPlayingDSOnBus } from "#/templates/acsrMisakaMikotoPlayingDSOnBus.tsx";
+import { adHowAreYouFineThankYouMeme } from "#/templates/adHowAreYouFineThankYouMeme.tsx";
+import { adOsakaSeriousFace } from "#/templates/adOsakaSeriousFace.tsx";
+import { adOsakaStaring } from "#/templates/adOsakaStaring.tsx";
+import { adWhyAreYouSpeakingInEnglish } from "#/templates/adWhyAreYouSpeakingInEnglish.tsx";
+import { animeSakuraDisapprovalRikoShrug } from "#/templates/animeSakuraDisapprovalRikoShrug.tsx";
+import { animeTheThreeStagesOfApproval } from "#/templates/animeTheThreeStagesOfApproval.tsx";
+import { aotErenYeagerHappyVsDepressed } from "#/templates/aotErenYeagerHappyVsDepressed.tsx";
+import { arobmiAngrySistineFibel } from "#/templates/arobmiAngrySistineFibel.tsx";
+import { arobmiCryingSistine } from "#/templates/arobmiCryingSistine.tsx";
+import { arobmiSistineFibelPointingFinger } from "#/templates/arobmiSistineFibelPointingFinger.tsx";
+import { arobmiSistineFibelTeaSip } from "#/templates/arobmiSistineFibelTeaSip.tsx";
+import { arobmiSurprisedSistine } from "#/templates/arobmiSurprisedSistine.tsx";
+import { blendsChibiMaikaCheering } from "#/templates/blendsChibiMaikaCheering.tsx";
+import { blendsHideriFingerTapping } from "#/templates/blendsHideriFingerTapping.tsx";
+import { blendsHideriHeartHands } from "#/templates/blendsHideriHeartHands.tsx";
+import { blendsHideriKanzakiSmugFace } from "#/templates/blendsHideriKanzakiSmugFace.tsx";
+import { blendsHideriMaidUniformWink } from "#/templates/blendsHideriMaidUniformWink.tsx";
+import { blendsHideriSmugFace } from "#/templates/blendsHideriSmugFace.tsx";
+import { blendsKahoAndMaikaMaids } from "#/templates/blendsKahoAndMaikaMaids.tsx";
+import { blendsMaidCast } from "#/templates/blendsMaidCast.tsx";
+import { blendsMaikaAngryPanic } from "#/templates/blendsMaikaAngryPanic.tsx";
+import { blendsMaikaSadisticSmile } from "#/templates/blendsMaikaSadisticSmile.tsx";
+import { blendsMaikaShockedPanic } from "#/templates/blendsMaikaShockedPanic.tsx";
+import { blendsMaikaUhHuh } from "#/templates/blendsMaikaUhHuh.tsx";
+import { blendsSnoopDoggFace } from "#/templates/blendsSnoopDoggFace.tsx";
+import { btrBocchiAnxietyWave } from "#/templates/btrBocchiAnxietyWave.tsx";
+import { btrBocchiAnxiousSmiling } from "#/templates/btrBocchiAnxiousSmiling.tsx";
+import { btrBocchiBreakingBadWalter } from "#/templates/btrBocchiBreakingBadWalter.tsx";
+import { btrBocchiDepressedCorner } from "#/templates/btrBocchiDepressedCorner.tsx";
+import { btrBocchiDizzyPanic } from "#/templates/btrBocchiDizzyPanic.tsx";
+import { btrBocchiExhaustedFace } from "#/templates/btrBocchiExhaustedFace.tsx";
+import { btrBocchiGlitchPanic } from "#/templates/btrBocchiGlitchPanic.tsx";
+import { btrBocchiHappy } from "#/templates/btrBocchiHappy.tsx";
+import { btrBocchiLyingAwake } from "#/templates/btrBocchiLyingAwake.tsx";
+import { btrBocchiPaleShock } from "#/templates/btrBocchiPaleShock.tsx";
+import { btrBocchiScaredScream } from "#/templates/btrBocchiScaredScream.tsx";
+import { btrBocchiSoulLeavingBody } from "#/templates/btrBocchiSoulLeavingBody.tsx";
+import { btrBocchiSpiralEyesPanic } from "#/templates/btrBocchiSpiralEyesPanic.tsx";
+import { btrBocchiTheRockMeltdownFace } from "#/templates/btrBocchiTheRockMeltdownFace.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -325,9 +367,62 @@ export class TemplatesRepository implements ITemplatesRepository {
             parrotBarber,
             parrotBarber1,
             parrotBarber2,
+            acNowKillHim,
+            acsrMisakaMikotoDrakeMeme,
+            acsrMisakaMikotoPlayingDSOnBus,
+            adHowAreYouFineThankYouMeme,
+            adOsakaSeriousFace,
+            adOsakaStaring,
+            adWhyAreYouSpeakingInEnglish,
+            animeSakuraDisapprovalRikoShrug,
+            animeTheThreeStagesOfApproval,
+            aotErenYeagerHappyVsDepressed,
+            arobmiAngrySistineFibel,
+            arobmiCryingSistine,
+            arobmiSistineFibelPointingFinger,
+            arobmiSistineFibelTeaSip,
+            arobmiSurprisedSistine,
+            blendsChibiMaikaCheering,
+            blendsHideriFingerTapping,
+            blendsHideriHeartHands,
+            blendsHideriKanzakiSmugFace,
+            blendsHideriMaidUniformWink,
+            blendsHideriSmugFace,
+            blendsKahoAndMaikaMaids,
+            blendsMaidCast,
+            blendsMaikaAngryPanic,
+            blendsMaikaSadisticSmile,
+            blendsMaikaShockedPanic,
+            blendsMaikaUhHuh,
+            blendsSnoopDoggFace,
+            btrBocchiAnxietyWave,
+            btrBocchiAnxiousSmiling,
+            btrBocchiBreakingBadWalter,
+            btrBocchiDepressedCorner,
+            btrBocchiDizzyPanic,
+            btrBocchiExhaustedFace,
+            btrBocchiGlitchPanic,
+            btrBocchiHappy,
+            btrBocchiLyingAwake,
+            btrBocchiPaleShock,
+            btrBocchiScaredScream,
+            btrBocchiSoulLeavingBody,
+            btrBocchiSpiralEyesPanic,
+            btrBocchiTheRockMeltdownFace,
         ];
     }
 
+    /**
+     * Groups an array of templates into a Map based on the value of a specified field.
+     * If the field value is an array, the template will be mapped to each individual element inside that array.
+     *
+     * @template K - The key of the Template object used for grouping.
+     * @param templates - The array of templates to be processed and grouped.
+     * @param fieldName - The field name to group the templates by.
+     * @returns A Map where keys are the field values (or array elements) and values are arrays of templates matching that key.
+     *
+     * @author Oleksii Sych
+     */
     public getAllByFieldMap<K extends keyof Template>(
         templates: Template[],
         fieldName: K,
@@ -361,6 +456,15 @@ export class TemplatesRepository implements ITemplatesRepository {
         return map;
     }
 
+    /**
+     * Returns an array of templates filtered by a specific field value
+     *
+     * @param fieldName - The key of the Template object to filter by
+     * @param value - The expected value (or element within an array field) to match
+     * @returns An array of filtered Template objects
+     *
+     * @author Oleksii Sych
+     */
     public getAllByField<K extends keyof Template>(fieldName: K, value: TemplateMapKey<Template, K>): Template[] {
         return this.getAll().filter((template: Template): boolean => {
             const fieldValue: Template[K] = template[fieldName];

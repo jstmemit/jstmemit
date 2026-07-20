@@ -19,6 +19,13 @@ export const Topic = {
     SpongeBob: "spongeBob",
     SpiderMan: "spiderMan",
     StarTrek: "starTrek",
+    AssassinationClassroom: "Assassination Classroom",
+    ACertainScientificRailgun: "aCertainScientificRailgun",
+    AzumangaDaioh: "azumangaDaioh",
+    AttackOnTitan: "attackOnTitan",
+    AkashicRecords: "akashicRecords",
+    BlendS: "blenS",
+    BocchiTheRock: "bocchiTheRock",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];

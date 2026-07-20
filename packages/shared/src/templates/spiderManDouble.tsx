@@ -81,6 +81,7 @@ export const spiderManDouble: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
+                        paddingBottom: "0.15em",
                         color: "#000000",
                     }}
                 >
