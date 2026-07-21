@@ -158,16 +158,32 @@ export class MemesService implements IMemesService {
     ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
-        const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsRepository.get(channelId);
 
-        const channelTexts: string[] = await this._messagesRepository.getMessagesContentByChannelId(channelId);
+        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
+            `context:channel:${channelId}`,
+            (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
+            ms("1m"),
+        );
 
-        const channelImages: string[] = await this._imagesRepository.getImagesByChannelId(channelId, new Date());
+        const channelTexts: string[] = await this._cacheService.getOrSet(
+            `context:texts:${channelId}`,
+            (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
+            ms("1m"),
+        );
+        const channelImages: string[] = await this._cacheService.getOrSet(
+            `context:images:${channelId}`,
+            (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
+            ms("1m"),
+        );
 
         if (channel && channel?.useAvatarsInMemes) {
-            const avatars: string[] = await this._imagesRepository.getAvatarsByChannelId(channelId, new Date());
+            const channelAvatars: string[] = await this._cacheService.getOrSet(
+                `context:avatars:${channelId}`,
+                (): Promise<string[]> => this._imagesRepository.getAvatarsByChannelId(channelId, new Date()),
+                ms("1m"),
+            );
 
-            channelImages.push(...avatars);
+            channelImages.push(...channelAvatars);
         }
 
         if (!templateImages || !templateTexts) {
