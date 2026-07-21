@@ -226,12 +226,25 @@ export class MemesService implements IMemesService {
     private async _toPngDataUri(url: string): Promise<string> {
         try {
             if (!url) return this._transparentImage;
-            const res: Response = await fetch(url);
+
+            const res: Response = await fetch(url, { headers: { Accept: "image/*" } });
+
             if (!res.ok) {
                 logger.emit({
                     severityText: "warn",
                     body: "generate_meme.image.fetch_failed",
-                    attributes: { url_host: new URL(url).hostname, status: res.status },
+                    attributes: { url_host: this._safeHost(url), status: res.status },
+                });
+                return this._transparentImage;
+            }
+
+            const contentType: string = res.headers.get("content-type") ?? "";
+
+            if (!contentType.startsWith("image/")) {
+                logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.image.not_an_image",
+                    attributes: { url_host: this._safeHost(url), content_type: contentType },
                 });
                 return this._transparentImage;
             }
@@ -246,11 +259,19 @@ export class MemesService implements IMemesService {
                 severityText: "warn",
                 body: "generate_meme.image.sharp_convert_failed",
                 attributes: {
-                    url_host: url.startsWith("http") ? new URL(url).hostname : "invalid",
+                    url_host: this._safeHost(url),
                     error_message: error instanceof Error ? error.message : String(error),
                 },
             });
             return this._transparentImage;
+        }
+    }
+
+    private _safeHost(url: string): string {
+        try {
+            return new URL(url).hostname;
+        } catch {
+            return "invalid";
         }
     }
 
