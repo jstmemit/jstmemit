@@ -30,6 +30,7 @@ export const Topic = {
     Dandadan: "dandadan",
     DFrag: "dFrag",
     DarlingInTheFranxx: "darlingInTheFranxx",
+    WeNeverLearn: "weNeverLearn",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
