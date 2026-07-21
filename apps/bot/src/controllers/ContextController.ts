@@ -1,5 +1,6 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { Message } from "discord.js";
+import { PermissionFlagsBits } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -120,14 +121,51 @@ export class ContextController implements IContextController {
             }
 
             if ((await this._channelsService.rollChannelFrequency(channelId)) && !mentioned) {
-                await this._memesController.handleMemeInteraction(message);
+                if (this._checkForNeededPermissions(message)) {
+                    await this._memesController.handleMemeInteraction(message);
+                }
             }
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "context.new_message.error",
+                attributes: {
+                    posthogDistinctId: message.author.id,
+                    channel_id: message.channelId,
+                    guild_id: message.guildId,
+                    error_message: error instanceof Error ? error.message : String(error),
+                },
+            });
         }
     }
 
     private _checkIfLinkToGif(text: string): boolean {
         return text.startsWith("https://tenor.com/view") || text.startsWith("https://media3.giphy.com/");
+    }
+
+    private _checkForNeededPermissions(message: Message): boolean {
+        if (!message.inGuild()) {
+            return true;
+        }
+
+        const permissions = message.channel.permissionsFor(message.client.user);
+        if (!permissions?.has(PermissionFlagsBits.AttachFiles)) {
+            logger.emit({
+                severityText: "warn",
+                body: "context.auto_meme_generation.not_enough_permissions",
+                attributes: {
+                    posthogDistinctId: message.author.id,
+                    channel_id: message.channelId,
+                    guild_id: message.guildId,
+                    bot_permissions: permissions?.bitfield.toString(),
+                    bot_permissions_list: permissions?.toArray().join(","),
+                },
+            });
+
+            return false;
+        }
+
+        return true;
     }
 }
