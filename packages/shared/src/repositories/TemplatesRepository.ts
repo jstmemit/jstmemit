@@ -212,6 +212,7 @@ import { ditfZeroTwoWhatever } from "#/templates/ditfZeroTwoWhatever.tsx";
 import { ditfZeroTwoWhatever1 } from "#/templates/ditfZeroTwoWhatever1.tsx";
 import { ditfTheTwoSidesOfZeroTwo } from "#/templates/ditfTheTwoSidesOfZeroTwo.tsx";
 import { ceLucyHacking1 } from "#/templates/ceLucyHacking1.tsx";
+import { wnlFuminoRealization1 } from "#/templates/wnlFuminoRealization1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -445,6 +446,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             ditfZeroTwoWhatever1,
             ditfTheTwoSidesOfZeroTwo,
             ceLucyHacking1,
+            wnlFuminoRealization1,
         ];
     }
 
