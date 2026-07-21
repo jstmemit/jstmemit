@@ -20,6 +20,7 @@ import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
 import { xxh64 } from "@node-rs/xxhash";
 import ms from "ms";
+import _ from "lodash";
 
 export class MemesService implements IMemesService {
     private readonly _transparentImage: string;
@@ -209,7 +210,7 @@ export class MemesService implements IMemesService {
         }
 
         const [images, texts] = await Promise.all([
-            this._selectImages(channelImages, templateImages.length),
+            this._selectImages(_.shuffle(channelImages), templateImages.length),
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
