@@ -101,17 +101,16 @@ export class MemesService implements IMemesService {
             throw new Error("No svg");
         }
 
-        const png: Buffer = await this._cacheService.getOrSet(
-            `meme:png:${this._templatePropsKey(template, props)}`,
-            (): Buffer => this._memesRepository.convertIntoBuffer(svg, template.width),
-            ms("8h"),
-        );
+        const [png, generationId] = await Promise.all([
+            this._cacheService.getOrSet(
+                `meme:png:${this._templatePropsKey(template, props)}`,
+                (): Buffer => this._memesRepository.convertIntoBuffer(svg, template.width),
+                ms("8h"),
+            ),
+            this._generationsRepository.add(channelId, template.name, new Date()),
+        ]);
 
         const renderTime: number = performance.now();
-
-        const generationId: number = await this._generationsRepository.add(channelId, template.name, new Date());
-
-        const insertTime: number = performance.now();
 
         analytics.capture({
             event: "meme_generated",
@@ -123,8 +122,7 @@ export class MemesService implements IMemesService {
                 templateMs: templateTime - startTime,
                 contextMs: contextTime - templateTime,
                 renderMs: renderTime - contextTime,
-                insertMs: insertTime - renderTime,
-                totalMs: insertTime - startTime,
+                totalMs: renderTime - startTime,
 
                 textSlots: template.texts?.length ?? 0,
                 imageSlots: template.images?.length ?? 0,
@@ -289,7 +287,10 @@ export class MemesService implements IMemesService {
             }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const png: Buffer = await sharp(input).png().toBuffer();
+            const png: Buffer = await sharp(input)
+                .resize({ width: 1024, withoutEnlargement: true, kernel: "cubic" })
+                .png({ compressionLevel: 2 })
+                .toBuffer();
 
             const result: string = `data:image/png;base64,${png.toString("base64")}`;
             await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
