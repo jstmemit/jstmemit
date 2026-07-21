@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const buzz: Template = {
     name: "buzz",
-    topics: [Topic.Cartoons],
+    topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.faceImage, Type.textBottom],
     width: 800,
     height: 544,
