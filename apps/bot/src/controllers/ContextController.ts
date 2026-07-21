@@ -5,7 +5,7 @@ import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import { analytics } from "@jstmemit/analytics";
-import { logger } from "@jstmemit/meme-generator/container";
+import { logger } from "#/container.ts";
 
 const env = Env.parse(process.env);
 
