@@ -481,6 +481,9 @@ importers:
 
   packages/bandit:
     dependencies:
+      '@jstmemit/cache':
+        specifier: workspace:*
+        version: link:../cache
       '@opentelemetry/api-logs':
         specifier: ^0.220.0
         version: 0.220.0
@@ -496,6 +499,9 @@ importers:
       '@opentelemetry/sdk-node':
         specifier: ^0.220.0
         version: 0.220.0(@opentelemetry/api@1.9.1)
+      ms:
+        specifier: ^2.1.3
+        version: 2.1.3
     devDependencies:
       '@jstmemit/analytics':
         specifier: workspace:*
@@ -509,6 +515,9 @@ importers:
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared
+      '@types/ms':
+        specifier: ^2.1.0
+        version: 2.1.0
 
   packages/cache:
     dependencies:

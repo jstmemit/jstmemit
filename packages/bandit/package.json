@@ -3,10 +3,11 @@
     "private": true,
     "type": "module",
     "devDependencies": {
+        "@jstmemit/analytics": "workspace:*",
         "@jstmemit/db": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",
         "@jstmemit/shared": "workspace:*",
-        "@jstmemit/analytics": "workspace:*"
+        "@types/ms": "^2.1.0"
     },
     "imports": {
         "#/*": [
@@ -20,10 +21,12 @@
         ]
     },
     "dependencies": {
+        "@jstmemit/cache": "workspace:*",
         "@opentelemetry/api-logs": "^0.220.0",
         "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.9.0",
         "@opentelemetry/sdk-logs": "^0.220.0",
-        "@opentelemetry/sdk-node": "^0.220.0"
+        "@opentelemetry/sdk-node": "^0.220.0",
+        "ms": "^2.1.3"
     }
 }

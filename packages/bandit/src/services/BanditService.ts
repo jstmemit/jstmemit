@@ -8,19 +8,27 @@ import type { ScopedStats } from "@jstmemit/shared/models/ScopedStats";
 import type { TemplateMapStringKey } from "@jstmemit/shared/models/TemplateMapKey";
 import { type Logger, logs } from "@opentelemetry/api-logs";
 import { analytics } from "@jstmemit/analytics";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import ms from "ms";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
     private readonly _templatesRepository: ITemplatesRepository;
+    private readonly _cacheService: ICacheService;
     private readonly _logger: Logger = logs.getLogger("jstmemit/bandit");
 
     private readonly priorStrength: number = 4;
     private readonly likeWeight: number = 1;
     private readonly dislikeWeight: number = 1;
 
-    public constructor(banditRepository: IBanditRepository, templatesRepository: ITemplatesRepository) {
+    public constructor(
+        banditRepository: IBanditRepository,
+        templatesRepository: ITemplatesRepository,
+        cacheService: ICacheService,
+    ) {
         this._banditRepository = banditRepository;
         this._templatesRepository = templatesRepository;
+        this._cacheService = cacheService;
     }
 
     public async selectTemplate(channelId: string, userId?: string): Promise<Template | undefined> {
@@ -42,10 +50,22 @@ export class BanditService implements IBanditService {
             const templateNames: string[] = templates.map((template: Template): string => template.name);
 
             const [globalTemplate, channelTemplate, userTemplate] = await Promise.all([
-                this._banditRepository.getStats("global", "*", templateNames),
-                this._banditRepository.getStats("channel", channelId, templateNames),
+                this._cacheService.getOrSet(
+                    `bandit:global`,
+                    () => this._banditRepository.getStats("global", "*", templateNames),
+                    ms("30s"),
+                ),
+                this._cacheService.getOrSet(
+                    `bandit:channel:${channelId}`,
+                    () => this._banditRepository.getStats("channel", channelId, templateNames),
+                    ms("30s"),
+                ),
                 userId
-                    ? this._banditRepository.getStats("user", userId, templateNames)
+                    ? this._cacheService.getOrSet(
+                          `bandit:user:${userId}`,
+                          () => this._banditRepository.getStats("user", userId, templateNames),
+                          ms("30s"),
+                      )
                     : Promise.resolve<BanditStat[]>([]),
             ]);
 
