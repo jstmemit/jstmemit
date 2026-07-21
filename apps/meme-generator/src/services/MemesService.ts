@@ -104,7 +104,7 @@ export class MemesService implements IMemesService {
         const [png, generationId] = await Promise.all([
             this._cacheService.getOrSet(
                 `meme:png:${this._templatePropsKey(template, props)}`,
-                (): Buffer => this._memesRepository.convertIntoBuffer(svg, template.width),
+                (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
                 ms("8h"),
             ),
             this._generationsRepository.add(channelId, template.name, new Date()),

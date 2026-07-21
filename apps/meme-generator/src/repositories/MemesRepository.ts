@@ -1,5 +1,5 @@
 import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
+import { renderAsync } from "@resvg/resvg-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
@@ -67,14 +67,14 @@ export class MemesRepository implements IMemesRepository {
      *
      * @author Kyrylo Maliuha
      */
-    public convertIntoBuffer(svg: string, width: number): Buffer {
-        return new Resvg(svg, {
+    public async convertIntoBuffer(svg: string, width: number): Promise<Buffer> {
+        const rendered = await renderAsync(svg, {
             fitTo: { mode: "width", value: width },
             font: { loadSystemFonts: false },
             imageRendering: 1,
-        })
-            .render()
-            .asPng();
+        });
+
+        return rendered.asPng();
     }
 
     private async _loadEmoji(segment: string): Promise<string> {
