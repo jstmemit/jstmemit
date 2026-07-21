@@ -11,7 +11,10 @@ export const blendsHideriFingerTapping: Template = {
     width: 801,
     height: 765,
     texts: [],
-    images: [{ id: 0, description: "Hideri`s face" }],
+    images: [
+        { id: 0, description: "What Hideri holding in hands" },
+        { id: 1, description: "Hideri`s face" },
+    ],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -30,12 +33,24 @@ export const blendsHideriFingerTapping: Template = {
             />
             <img
                 src={images[0]}
-                width={150}
-                height={150}
+                width={130}
+                height={130}
                 style={{
                     position: "absolute",
-                    bottom: 140,
-                    left: 240,
+                    bottom: 130,
+                    left: 300,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[1]}
+                width={280}
+                height={280}
+                style={{
+                    position: "absolute",
+                    top: 140,
+                    left: 255,
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}

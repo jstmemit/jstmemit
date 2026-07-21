@@ -4,14 +4,14 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const buzz: Template = {
-    name: "buzz",
-    topics: [Topic.Reaction, Topic.Cartoons],
+export const ditfZeroTwoHeh: Template = {
+    name: "ditfZeroTwoHeh",
+    topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.faceImage, Type.textBottom],
-    width: 800,
-    height: 544,
-    texts: [{ id: 0, description: "the phrase Buzz says", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "Buzz's face" }],
+    width: 720,
+    height: 720,
+    texts: [{ id: 0, description: "the phrase Zero Two says", minLength: 1, maxLength: 8 }],
+    images: [{ id: 0, description: "Zero Two's face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -23,16 +23,16 @@ export const buzz: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/buzz.png"
-                width={800}
-                height={544}
+                src="https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoHeh.png"
+                width={720}
+                height={720}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={160}
-                height={160}
-                style={{ position: "absolute", top: 120, left: 300, borderRadius: "100%", objectFit: "cover" }}
+                width={300}
+                height={300}
+                style={{ position: "absolute", top: 130, right: 80, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
