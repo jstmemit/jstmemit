@@ -34,6 +34,9 @@ export const locale: Partial<TranslationString> = {
         "missingPermissions.heading": "🔒 You don't have permission for that",
         "missingPermissions.body":
             "Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.",
+        "missingBotPermissions.heading": "🔒 Jstmemit can't send memes here",
+        "missingBotPermissions.body":
+            "Bot is missing the **Attach Files** permission in this channel. Someone who can manage this channel can fix this by going into channel settings and giving it to the bot.\n\nIt's required for auto-generating memes during a conversation, but requesting memes with `/meme` or `/custom` is possible without the permission.",
         "deleteData.confirm.heading": "🗑️ Delete all data for this channel?",
         "deleteData.confirm.body":
             "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",

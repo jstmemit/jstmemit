@@ -7,6 +7,8 @@ import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import { Env } from "@jstmemit/shared/schemas/Env";
 import { analytics } from "@jstmemit/analytics";
 import { logger } from "#/container.ts";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { respond } from "#/helpers/respond.ts";
 
 const env = Env.parse(process.env);
 
@@ -14,15 +16,18 @@ export class ContextController implements IContextController {
     private readonly _contextService: IContextService;
     private readonly _channelsService: IChannelsService;
     private readonly _memesController: IMemesController;
+    private readonly _componentsService: IComponentsService;
 
     public constructor(
         contextService: IContextService,
         channelsService: IChannelsService,
         memesController: IMemesController,
+        componentsService: IComponentsService,
     ) {
         this._contextService = contextService;
         this._channelsService = channelsService;
         this._memesController = memesController;
+        this._componentsService = componentsService;
     }
 
     /**
@@ -42,8 +47,14 @@ export class ContextController implements IContextController {
                 return;
             }
 
-            if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`)) {
-                await this._memesController.handleMemeInteraction(message);
+            if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`) && message.inGuild()) {
+                if (this._checkForNeededPermissions(message)) {
+                    await this._memesController.handleMemeInteraction(message);
+                } else {
+                    await respond(message, [
+                        this._componentsService.getMissingBotPermissionsMessageComponent(message.guild.preferredLocale),
+                    ]);
+                }
                 mentioned = true;
             }
 
