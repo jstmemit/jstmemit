@@ -6,16 +6,63 @@ import ms from "ms";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
+    private readonly _kokoroUrl: string;
     private readonly _logger: Logger = logs.getLogger("jstmemit/voice");
     private readonly _cacheService: ICacheService;
 
-    public constructor(cacheService: ICacheService, whisperUrl: string = "http://whisper:9000/v1/audio") {
-        this._whisperUrl = whisperUrl;
+    public constructor(cacheService: ICacheService) {
+        this._whisperUrl = "http://whisper:9000/v1/audio";
+        this._kokoroUrl = "http://kokoro:8880/v1/audio";
         this._cacheService = cacheService;
     }
 
     public async convertSpeechToText(url: string): Promise<string> {
         return this._cacheService.getOrSet(`transcribe:${url}`, (): Promise<string> => this._transcribe(url), ms("7d"));
+    }
+
+    public async narrateText(
+        text: string,
+        locale: string = "a",
+        voice: string = "af_sky",
+    ): Promise<Buffer | undefined> {
+        const response: Response = await fetch(`${this._kokoroUrl}/speech`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                model: "kokoro",
+                input: text,
+                voice,
+                response_format: "mp3",
+                download_format: "mp3",
+                speed: 1,
+                return_download_link: false,
+                volume_multiplier: 1,
+                lang_code: locale,
+                normalization_options: {
+                    normalize: true,
+                    unit_normalization: false,
+                    url_normalization: true,
+                    email_normalization: true,
+                    optional_pluralization_normalization: true,
+                    phone_normalization: true,
+                    replace_remaining_symbols: true,
+                },
+            }),
+        });
+
+        if (!response.ok) {
+            this._logger.emit({
+                severityText: "error",
+                body: "voice.narrate_text.failed",
+                attributes: {
+                    status: response.status,
+                    error_body: await response.text(),
+                },
+            });
+            return undefined;
+        }
+
+        return Buffer.from(await response.arrayBuffer());
     }
 
     /**
