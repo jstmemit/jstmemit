@@ -20,11 +20,10 @@ export class CacheService implements ICacheService {
         return this._keyv.delete(key);
     }
 
-    public async getOrSet<T>(key: string, factory: () => Promise<T>, ttlMs?: number): Promise<T | undefined> {
+    public async getOrSet<T>(key: string, factory: () => Promise<T>, ttlMs?: number): Promise<T> {
         const cached: T | undefined = await this._keyv.get<T>(key);
 
-        const isHit: boolean = cached !== undefined;
-        if (isHit) return cached;
+        if (cached !== undefined) return cached;
 
         const fresh: T = await factory();
         await this._keyv.set(key, fresh, ttlMs);

@@ -661,6 +661,9 @@ importers:
       '@opentelemetry/sdk-node':
         specifier: ^0.220.0
         version: 0.220.0(@opentelemetry/api@1.9.1)
+      ms:
+        specifier: ^2.1.3
+        version: 2.1.3
     devDependencies:
       '@jstmemit/cache':
         specifier: workspace:*
@@ -671,6 +674,9 @@ importers:
       '@jstmemit/telemetry':
         specifier: workspace:*
         version: link:../telemetry
+      '@types/ms':
+        specifier: ^2.1.0
+        version: 2.1.0
 
 packages:
 
