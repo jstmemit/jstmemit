@@ -40,7 +40,7 @@ export const blendsMaidCast: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    top: 200,
+                    top: 220,
                     left: 90,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -52,7 +52,7 @@ export const blendsMaidCast: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    top: 200,
+                    top: 220,
                     left: 240,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -64,7 +64,7 @@ export const blendsMaidCast: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    top: 200,
+                    top: 220,
                     left: 385,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -76,7 +76,7 @@ export const blendsMaidCast: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    top: 230,
+                    top: 250,
                     right: 235,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -88,7 +88,7 @@ export const blendsMaidCast: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    top: 200,
+                    top: 220,
                     right: 100,
                     borderRadius: "100%",
                     objectFit: "cover",
