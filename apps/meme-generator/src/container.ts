@@ -18,8 +18,10 @@ import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepositor
 import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
 import { BanditService } from "@jstmemit/bandit/services/BanditService";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
-import { createContainer, asClass, InjectionMode, type AwilixContainer } from "awilix";
+import { createContainer, asClass, InjectionMode, type AwilixContainer, asValue } from "awilix";
 import { type Logger, logs } from "@opentelemetry/api-logs";
+import { CacheService } from "@jstmemit/cache/services/CacheService";
+import { cache } from "@jstmemit/cache";
 import "@jstmemit/telemetry";
 
 const env = Env.parse(process.env);
@@ -29,6 +31,7 @@ export const redisConnection: ConnectionOptions = createRedisConnection(env.REDI
 const container: AwilixContainer = createContainer({ injectionMode: InjectionMode.CLASSIC });
 
 container.register({
+    keyv: asValue(cache),
     fontsRepository: asClass(FontsRepository).singleton(),
     fontsService: asClass(FontsService).singleton(),
     messagesRepository: asClass(MessagesRepository).singleton(),
@@ -42,6 +45,7 @@ container.register({
     memesRepository: asClass(MemesRepository).singleton(),
     memesService: asClass(MemesService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
+    cacheService: asClass(CacheService).singleton(),
 });
 
 export const messagesRepository: IMessagesRepository = container.resolve<MessagesRepository>("messagesRepository");

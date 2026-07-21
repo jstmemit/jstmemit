@@ -16,7 +16,9 @@ import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepos
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
+import ms from "ms";
 
 export class MemesService implements IMemesService {
     private readonly _transparentImage: string;
@@ -28,6 +30,7 @@ export class MemesService implements IMemesService {
     private readonly _banditService: IBanditService;
     private readonly _channelsRepository: IChannelsRepository;
     private readonly _templatesRepository: ITemplatesRepository;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -38,6 +41,7 @@ export class MemesService implements IMemesService {
         banditService: IBanditService,
         channelsRepository: IChannelsRepository,
         templatesRepository: ITemplatesRepository,
+        cacheService: ICacheService,
     ) {
         this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
         this._memesRepository = memesRepository;
@@ -48,6 +52,7 @@ export class MemesService implements IMemesService {
         this._banditService = banditService;
         this._channelsRepository = channelsRepository;
         this._templatesRepository = templatesRepository;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -227,6 +232,11 @@ export class MemesService implements IMemesService {
         try {
             if (!url) return this._transparentImage;
 
+            const cached: string | undefined = await this._cacheService.get<string>(`img:png:${url}`);
+            if (cached !== undefined) {
+                return cached;
+            }
+
             const res: Response = await fetch(url, { headers: { Accept: "image/*" } });
 
             if (!res.ok) {
@@ -252,7 +262,9 @@ export class MemesService implements IMemesService {
             const input: Buffer = Buffer.from(await res.arrayBuffer());
             const png: Buffer = await sharp(input).png().toBuffer();
 
-            return `data:image/png;base64,${png.toString("base64")}`;
+            const result: string = `data:image/png;base64,${png.toString("base64")}`;
+            await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
+            return result;
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
