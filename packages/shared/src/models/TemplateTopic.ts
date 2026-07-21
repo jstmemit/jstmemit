@@ -26,6 +26,10 @@ export const Topic = {
     AkashicRecords: "akashicRecords",
     BlendS: "blenS",
     BocchiTheRock: "bocchiTheRock",
+    CyberpunkEdgerunners: "cyberpunkEdgerunners",
+    Dandadan: "dandadan",
+    DFrag: "dFrag",
+    DarlingInTheFranxx: "darlingInTheFranxx",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
