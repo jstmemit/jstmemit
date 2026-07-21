@@ -194,6 +194,24 @@ import { btrBocchiScaredScream } from "#/templates/btrBocchiScaredScream.tsx";
 import { btrBocchiSoulLeavingBody } from "#/templates/btrBocchiSoulLeavingBody.tsx";
 import { btrBocchiSpiralEyesPanic } from "#/templates/btrBocchiSpiralEyesPanic.tsx";
 import { btrBocchiTheRockMeltdownFace } from "#/templates/btrBocchiTheRockMeltdownFace.tsx";
+import { ceDavidTraumatizedFace } from "#/templates/ceDavidTraumatizedFace.tsx";
+import { ceLucyCryingDavidChad } from "#/templates/ceLucyCryingDavidChad.tsx";
+import { ceLucyHacking } from "#/templates/ceLucyHacking.tsx";
+import { ceLucyLaughingVsCold } from "#/templates/ceLucyLaughingVsCold.tsx";
+import { ceRebeccaCalmVsAngry } from "#/templates/ceRebeccaCalmVsAngry.tsx";
+import { ceRebeccaDrake } from "#/templates/ceRebeccaDrake.tsx";
+import { ceRebeccaSquidward } from "#/templates/ceRebeccaSquidward.tsx";
+import { dandadanShockedTurboGranny } from "#/templates/dandadanShockedTurboGranny.tsx";
+import { dandadanTurboGrannyCatSquintedEyes } from "#/templates/dandadanTurboGrannyCatSquintedEyes.tsx";
+import { dandadanTurboGrannyCatSquintedEyes1 } from "#/templates/dandadanTurboGrannyCatSquintedEyes1.tsx";
+import { dfragRokaShibasakiDisguise } from "#/templates/dfragRokaShibasakiDisguise.tsx";
+import { dfragRokaShibasaki } from "#/templates/dfragRokaShibasaki.tsx";
+import { ceRebeccaDisgusted } from "#/templates/ceRebeccaDisgusted.tsx";
+import { ditfZeroTwoHeh } from "#/templates/ditfZeroTwoHeh.tsx";
+import { ditfZeroTwoWhatever } from "#/templates/ditfZeroTwoWhatever.tsx";
+import { ditfZeroTwoWhatever1 } from "#/templates/ditfZeroTwoWhatever1.tsx";
+import { ditfTheTwoSidesOfZeroTwo } from "#/templates/ditfTheTwoSidesOfZeroTwo.tsx";
+import { ceLucyHacking1 } from "#/templates/ceLucyHacking1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -409,6 +427,24 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiSoulLeavingBody,
             btrBocchiSpiralEyesPanic,
             btrBocchiTheRockMeltdownFace,
+            ceDavidTraumatizedFace,
+            ceLucyCryingDavidChad,
+            ceLucyHacking,
+            ceLucyLaughingVsCold,
+            ceRebeccaCalmVsAngry,
+            ceRebeccaDrake,
+            ceRebeccaSquidward,
+            dandadanShockedTurboGranny,
+            dandadanTurboGrannyCatSquintedEyes,
+            dandadanTurboGrannyCatSquintedEyes1,
+            dfragRokaShibasakiDisguise,
+            dfragRokaShibasaki,
+            ceRebeccaDisgusted,
+            ditfZeroTwoHeh,
+            ditfZeroTwoWhatever,
+            ditfZeroTwoWhatever1,
+            ditfTheTwoSidesOfZeroTwo,
+            ceLucyHacking1,
         ];
     }
 
