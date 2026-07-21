@@ -7,6 +7,7 @@
     },
     "dependencies": {
         "@jstmemit/cache": "workspace:*",
+        "@node-rs/xxhash": "^1.7.6",
         "@opentelemetry/api-logs": "^0.220.0",
         "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.9.0",

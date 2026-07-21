@@ -18,6 +18,7 @@ import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
+import { xxh64 } from "@node-rs/xxhash";
 import ms from "ms";
 
 export class MemesService implements IMemesService {
@@ -100,7 +101,11 @@ export class MemesService implements IMemesService {
             throw new Error("No svg");
         }
 
-        const png: Buffer = this._memesRepository.convertIntoBuffer(svg, template.width);
+        const png: Buffer = await this._cacheService.getOrSet(
+            `meme:png:${this._templatePropsKey(template, props)}`,
+            (): Buffer => this._memesRepository.convertIntoBuffer(svg, template.width),
+            ms("8h"),
+        );
 
         const renderTime: number = performance.now();
 
@@ -209,6 +214,12 @@ export class MemesService implements IMemesService {
             images: await this._selectImages(channelImages, templateImages.length),
             texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         };
+    }
+
+    private _templatePropsKey(template: Template, props: TemplateProps): string {
+        const material: string = [template.name, ...props.texts, ...props.images].join("\u0000");
+
+        return xxh64(material).toString(16);
     }
 
     private async _selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
