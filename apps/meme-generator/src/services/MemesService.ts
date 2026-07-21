@@ -210,10 +210,12 @@ export class MemesService implements IMemesService {
             return undefined;
         }
 
-        return {
-            images: await this._selectImages(channelImages, templateImages.length),
-            texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
-        };
+        const [images, texts] = await Promise.all([
+            this._selectImages(channelImages, templateImages.length),
+            this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
+        ]);
+
+        return { images, texts };
     }
 
     private _templatePropsKey(template: Template, props: TemplateProps): string {
