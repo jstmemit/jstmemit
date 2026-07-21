@@ -15,6 +15,7 @@ import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
 import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { logger } from "#/container.ts";
+import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 
 const env = Env.parse(process.env);
 
@@ -27,6 +28,7 @@ export class EventsController implements IEventsController {
     private readonly _feedbackController: IFeedbackController;
     private readonly _templateRepository: ITemplatesRepository;
     private readonly _helpController: IHelpController;
+    private readonly _voiceController: IVoiceController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -37,6 +39,7 @@ export class EventsController implements IEventsController {
         settingsController: ISettingsController,
         feedbackController: IFeedbackController,
         helpController: IHelpController,
+        voiceController: IVoiceController,
         templatesRepository: ITemplatesRepository,
     ) {
         this._contextController = contextController;
@@ -46,6 +49,7 @@ export class EventsController implements IEventsController {
         this._settingsController = settingsController;
         this._feedbackController = feedbackController;
         this._helpController = helpController;
+        this._voiceController = voiceController;
         this._templateRepository = templatesRepository;
     }
 
@@ -254,6 +258,9 @@ export class EventsController implements IEventsController {
                         return;
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
+                        return;
+                    case "voice":
+                        await this._voiceController.handleNarrateTextInteraction(interaction);
                         return;
                 }
 

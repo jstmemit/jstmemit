@@ -203,6 +203,21 @@ export const commands = [
         ],
     },
     {
+        name: "voice",
+        description: "Make the bot read out loud any text that you write",
+        contexts: [0, 1, 2],
+        integration_types: [0, 1],
+        options: [
+            {
+                type: 3,
+                name: "text",
+                description: "Text to narrate",
+                required: true,
+                max_length: 1500,
+            },
+        ],
+    },
+    {
         name: "feedback",
         name_localizations: {
             ru: "идеи",

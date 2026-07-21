@@ -26,6 +26,7 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import { ModalsService } from "#/services/ModalsService.ts";
 import { FeedbackController } from "#/controllers/FeedbackController.ts";
 import { HelpController } from "#/controllers/HelpController.ts";
+import { VoiceController } from "#/controllers/VoiceController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
 import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 import { GifService } from "@jstmemit/images/services/GifService";
@@ -72,6 +73,7 @@ container.register({
     voiceService: asClass(VoiceService).singleton(),
     gifService: asClass(GifService).singleton(),
     cacheService: asClass(CacheService).singleton(),
+    voiceController: asClass(VoiceController).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
