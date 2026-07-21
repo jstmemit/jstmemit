@@ -11,6 +11,7 @@ import {
     type ButtonBuilder,
     type AutocompleteInteraction,
     type ChatInputCommandInteraction,
+    ChannelType,
     Locale,
 } from "discord.js";
 import { MessageFlags, Message } from "discord.js";
@@ -93,6 +94,9 @@ export class MemesController implements IMemesController {
                 channel_id: interaction.channelId,
                 guild_id: interaction?.guildId,
                 trigger,
+                permissions: this._getAppPermissionsBitfield(interaction),
+                channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                receive_latency_ms: Date.now() - interaction.createdTimestamp,
             },
         });
 
@@ -118,6 +122,9 @@ export class MemesController implements IMemesController {
                     channel_id: interaction.channelId,
                     guild_id: interaction?.guildId,
                     trigger,
+                    permissions: this._getAppPermissionsBitfield(interaction),
+                    channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
                 },
             });
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
@@ -181,6 +188,9 @@ export class MemesController implements IMemesController {
                             interaction_id: interaction.id,
                             channel_id: channelId,
                             trigger,
+                            permissions: this._getAppPermissionsBitfield(interaction),
+                            channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                            receive_latency_ms: Date.now() - interaction.createdTimestamp,
                         },
                     });
 
@@ -198,6 +208,9 @@ export class MemesController implements IMemesController {
                             trigger,
                             error_message: reason || String(error),
                             error_stack: error instanceof Error ? error.stack : undefined,
+                            permissions: this._getAppPermissionsBitfield(interaction),
+                            channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                            receive_latency_ms: Date.now() - interaction.createdTimestamp,
                         },
                     });
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
@@ -228,6 +241,11 @@ export class MemesController implements IMemesController {
                 guild_id: interaction?.guildId,
                 template_name: templateName,
                 trigger: "custom",
+                permissions: this._getAppPermissionsBitfield(interaction),
+                user_locale: interaction.locale,
+                guild_locale: interaction?.guildLocale,
+                channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                receive_latency_ms: Date.now() - interaction.createdTimestamp,
             },
         });
 
@@ -245,6 +263,11 @@ export class MemesController implements IMemesController {
                     posthogDistinctId: interaction.user.id,
                     interaction_id: interaction.id,
                     trigger: "custom",
+                    permissions: this._getAppPermissionsBitfield(interaction),
+                    user_locale: interaction.locale,
+                    guild_locale: interaction?.guildLocale,
+                    channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
                 },
             });
             await interaction.reply({
@@ -294,6 +317,11 @@ export class MemesController implements IMemesController {
                     template_name: templateName,
                     error_message: error instanceof Error ? error.message : String(error),
                     error_stack: error instanceof Error ? error.stack : undefined,
+                    permissions: this._getAppPermissionsBitfield(interaction),
+                    user_locale: interaction.locale,
+                    guild_locale: interaction?.guildLocale,
+                    channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
                 },
             });
             await interaction.editReply({
@@ -317,6 +345,11 @@ export class MemesController implements IMemesController {
                 command_name: interaction.commandName,
                 template_name: templateName,
                 trigger: "context",
+                permissions: this._getAppPermissionsBitfield(interaction),
+                user_locale: interaction.locale,
+                guild_locale: interaction?.guildLocale,
+                channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                receive_latency_ms: Date.now() - interaction.createdTimestamp,
             },
         });
 
@@ -362,6 +395,11 @@ export class MemesController implements IMemesController {
                     template_name: templateName,
                     error_message: error instanceof Error ? error.message : String(error),
                     error_stack: error instanceof Error ? error.stack : undefined,
+                    permissions: this._getAppPermissionsBitfield(interaction),
+                    user_locale: interaction.locale,
+                    guild_locale: interaction?.guildLocale,
+                    channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
                 },
             });
             await interaction.editReply({
@@ -432,6 +470,11 @@ export class MemesController implements IMemesController {
                     channel_id: interaction.channelId,
                     guild_id: interaction?.guildId,
                     template_name: templateName,
+                    permissions: this._getAppPermissionsBitfield(interaction),
+                    user_locale: interaction.locale,
+                    guild_locale: interaction?.guildLocale,
+                    channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
                 },
             });
 
@@ -459,6 +502,21 @@ export class MemesController implements IMemesController {
             const voiceMessage: string | undefined = message?.attachments.first()?.proxyURL;
 
             if (message.flags.has("IsVoiceMessage") && voiceMessage) {
+                logger.emit({
+                    severityText: "info",
+                    body: "generate_meme.context_menu.used_on_voice_message",
+                    attributes: {
+                        posthogDistinctId: interaction.user.id,
+                        interaction_id: interaction.id,
+                        channel_id: interaction.channelId,
+                        guild_id: interaction?.guildId,
+                        permissions: this._getAppPermissionsBitfield(interaction),
+                        user_locale: interaction.locale,
+                        guild_locale: interaction?.guildLocale,
+                        channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                        receive_latency_ms: Date.now() - interaction.createdTimestamp,
+                    },
+                });
                 message.content = await this._voiceService.convertSpeechToText(voiceMessage);
             }
 
@@ -524,6 +582,23 @@ export class MemesController implements IMemesController {
             }
 
             if (!attachment.contentType?.startsWith("image/")) {
+                logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.modal.unsupported_attachment_image_format",
+                    attributes: {
+                        posthogDistinctId: interaction.user.id,
+                        interaction_id: interaction.id,
+                        channel_id: interaction.channelId,
+                        guild_id: interaction?.guildId,
+                        attachment_content_type: attachment.contentType,
+                        attachment_size: attachment.size,
+                        permissions: this._getAppPermissionsBitfield(interaction),
+                        user_locale: interaction.locale,
+                        guild_locale: interaction?.guildLocale,
+                        channel_type: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                        receive_latency_ms: Date.now() - interaction.createdTimestamp,
+                    },
+                });
                 await interaction.editReply({
                     components: [
                         this._componentsService.getWrongFileFormatMessageComponent(
@@ -555,6 +630,20 @@ export class MemesController implements IMemesController {
         });
 
         return texts;
+    }
+
+    private _getAppPermissionsBitfield(
+        interaction:
+            | ChatInputCommandInteraction
+            | ButtonInteraction
+            | Message
+            | ModalSubmitInteraction
+            | MessageContextMenuCommandInteraction
+            | UserContextMenuCommandInteraction,
+    ): string | undefined {
+        return interaction instanceof Message
+            ? interaction.guild?.members.me?.permissionsIn(interaction.channelId).bitfield.toString()
+            : interaction.appPermissions?.bitfield.toString();
     }
 
     private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
