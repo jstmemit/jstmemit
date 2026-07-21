@@ -28,6 +28,7 @@ import { FeedbackController } from "#/controllers/FeedbackController.ts";
 import { HelpController } from "#/controllers/HelpController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
 import { VoiceService } from "@jstmemit/voice/services/VoiceService";
+import { GifService } from "@jstmemit/images/services/GifService";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -64,6 +65,7 @@ container.register({
     helpController: asClass(HelpController).singleton(),
     eventsController: asClass(EventsController).singleton(),
     voiceService: asClass(VoiceService).singleton(),
+    gifService: asClass(GifService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");

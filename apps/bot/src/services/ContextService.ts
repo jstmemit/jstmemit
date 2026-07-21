@@ -4,21 +4,25 @@ import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
+import type { IGifService } from "@jstmemit/images/interfaces/IGifService";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
     private readonly _voiceService: IVoiceService;
+    private readonly _gifService: IGifService;
 
     public constructor(
         messagesRepository: IMessagesRepository,
         imagesRepository: IImagesRepository,
         voiceService: IVoiceService,
+        gifService: IGifService,
     ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
         this._voiceService = voiceService;
+        this._gifService = gifService;
     }
 
     /**
@@ -31,8 +35,8 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveContent(messageId: string, channelId: string, content: string): Promise<boolean> {
-        return await this._messagesRepository.new(messageId, channelId, content, new Date());
+    public async saveContent(messageId: string, channelId: string, content: string): Promise<void> {
+        await this._messagesRepository.new(messageId, channelId, content, new Date());
     }
 
     /**
@@ -45,14 +49,13 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<boolean> {
-        const content: string = await this._voiceService.convertSpeechToText(audio);
-
-        if (content) {
-            return await this._messagesRepository.new(messageId, channelId, content, new Date());
-        }
-
-        return false;
+    public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<void> {
+        await this._messagesRepository.new(
+            messageId,
+            channelId,
+            await this._voiceService.convertSpeechToText(audio),
+            new Date(),
+        );
     }
 
     /**
@@ -66,22 +69,23 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveImages(messageId: string, channelId: string, attachments: Collection<string, Attachment>): boolean {
-        attachments.forEach((attachment: Attachment): void => {
-            const expiresAt: Date = this._getExpirationDate(attachment.proxyURL);
-
-            if (attachment.proxyURL.includes(".webp")) {
-                return;
-            }
-
-            this._imagesRepository
-                .new(messageId, channelId, attachment.proxyURL, "attachment", new Date(), expiresAt)
-                .catch((error): void => {
-                    console.error(error);
-                });
-        });
-
-        return true;
+    public async saveImages(
+        messageId: string,
+        channelId: string,
+        attachments: Collection<string, Attachment>,
+    ): Promise<void> {
+        await Promise.all(
+            attachments.map(async (attachment: Attachment): Promise<void> => {
+                await this._imagesRepository.add(
+                    messageId,
+                    channelId,
+                    attachment.proxyURL,
+                    "attachment",
+                    new Date(),
+                    this._getExpirationDate(attachment.proxyURL),
+                );
+            }),
+        );
     }
 
     /**
@@ -94,26 +98,22 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveGif(messageId: string, channelId: string, content: string): Promise<boolean> {
+    public async saveGif(messageId: string, channelId: string, content: string): Promise<void> {
         let result: string | undefined = "";
 
         if (content.includes("tenor")) {
-            result = await this._resolveTenorGifUrl(content);
+            result = await this._gifService.getTenorSourceUrl(content);
         }
 
         if (content.includes("giphy")) {
-            result = await this._resolveGiphyGifUrl(content);
+            result = await this._gifService.getGiphySourceUrl(content);
         }
 
         if (!result) {
-            return false;
+            return undefined;
         }
 
-        this._imagesRepository.new(messageId, channelId, result, "gif", new Date()).catch((error): void => {
-            console.error(error);
-        });
-
-        return true;
+        await this._imagesRepository.add(messageId, channelId, result, "gif", new Date());
     }
 
     /**
@@ -126,50 +126,8 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public saveAvatar(messageId: string, channelId: string, avatarUrl: string): boolean {
-        const url: URL = new URL(`${avatarUrl.replace(".webp", "")}?size=1024&format=png`);
-        url.searchParams.set("channel", channelId);
-
-        this._imagesRepository.new(messageId, channelId, url.toString(), "avatar", new Date()).catch((error): void => {
-            console.error(error);
-        });
-
-        return true;
-    }
-
-    /**
-     * Fetches a Tenor URL and looks for a direct link to the GIF
-     * source inside <link> elements with "image_src" rel attribute
-     *
-     * @param tenorUrl
-     * @private
-     *
-     * @author Kyrylo Maliuha
-     */
-    private async _resolveTenorGifUrl(tenorUrl: string): Promise<string | undefined> {
-        const response: Response = await fetch(tenorUrl);
-
-        if (!response.ok) {
-            return undefined;
-        }
-
-        const html: string = await response.text();
-        const match: RegExpMatchArray | null = html.match(/<link[^>]+rel="image_src"[^>]+href="([^"]+)"/i);
-
-        return match?.[1];
-    }
-
-    private async _resolveGiphyGifUrl(tenorUrl: string): Promise<string | undefined> {
-        const response: Response = await fetch(tenorUrl);
-
-        if (!response.ok) {
-            return undefined;
-        }
-
-        const html: string = await response.text();
-        const match: RegExpMatchArray | null = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i);
-
-        return match?.[1];
+    public async saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void> {
+        await this._imagesRepository.add(messageId, channelId, avatarUrl, "avatar", new Date());
     }
 
     /**
@@ -186,11 +144,7 @@ export class ContextService implements IContextService {
 
             return expiration ? new Date(parseInt(expiration, 16) * 1000) : new Date(Date.now() + this._expiration);
         } catch (error) {
-            console.error(error);
-
-            analytics.captureException(error, "bot", {
-                attachmentUrl,
-            });
+            analytics.captureException(error);
 
             return new Date(Date.now() + this._expiration);
         }

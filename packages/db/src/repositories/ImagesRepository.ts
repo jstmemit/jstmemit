@@ -2,16 +2,17 @@ import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
 import { and, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class ImagesRepository extends IImagesRepository {
-    public async new(
+    public async add(
         messageId: string,
         channelId: string,
         imageUrl: string,
         source: "attachment" | "gif" | "avatar",
         timestamp: Date,
         expiresAt?: Date,
-    ): Promise<boolean> {
+    ): Promise<void> {
         try {
             const image: typeof imagesTable.$inferInsert = {
                 messageId: messageId,
@@ -26,12 +27,8 @@ export class ImagesRepository extends IImagesRepository {
                 target: imagesTable.imageUrl,
                 set: { imageUrl },
             });
-
-            return true;
         } catch (error) {
-            console.error(error);
-
-            return false;
+            analytics.captureException(error);
         }
     }
 

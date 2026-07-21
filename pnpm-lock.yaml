@@ -253,6 +253,9 @@ importers:
       '@jstmemit/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@jstmemit/images':
+        specifier: workspace:*
+        version: link:../../packages/images
       '@jstmemit/meme-generator':
         specifier: workspace:*
         version: link:../meme-generator
@@ -439,6 +442,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared
@@ -479,6 +485,15 @@ importers:
       discord.js:
         specifier: ^14.27.0
         version: 14.27.0
+
+  packages/images:
+    devDependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
+      '@jstmemit/shared':
+        specifier: workspace:*
+        version: link:../shared
 
   packages/queue:
     dependencies:
