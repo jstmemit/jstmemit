@@ -1,5 +1,5 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { Message } from "discord.js";
+import type { GuildMember, Message } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
@@ -48,7 +48,7 @@ export class ContextController implements IContextController {
             }
 
             if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`) && message.inGuild()) {
-                if (this._checkForNeededPermissions(message)) {
+                if (await this._checkForNeededPermissions(message)) {
                     await this._memesController.handleMemeInteraction(message);
                 } else {
                     await respond(message, [
@@ -132,7 +132,7 @@ export class ContextController implements IContextController {
             }
 
             if ((await this._channelsService.rollChannelFrequency(channelId)) && !mentioned) {
-                if (this._checkForNeededPermissions(message)) {
+                if (await this._checkForNeededPermissions(message)) {
                     await this._memesController.handleMemeInteraction(message);
                 }
             }
@@ -155,13 +155,14 @@ export class ContextController implements IContextController {
         return text.startsWith("https://tenor.com/view") || text.startsWith("https://media3.giphy.com/");
     }
 
-    private _checkForNeededPermissions(message: Message): boolean {
+    private async _checkForNeededPermissions(message: Message): Promise<boolean> {
         if (!message.inGuild()) {
             return true;
         }
 
-        const permissions = message.channel.permissionsFor(message.client.user);
-        if (!permissions?.has(PermissionFlagsBits.AttachFiles)) {
+        const bot: GuildMember = message.guild.members.me || (await message.guild.members.fetchMe());
+        const permissions = message.channel.permissionsFor(bot);
+        if (!permissions.has(PermissionFlagsBits.AttachFiles)) {
             logger.emit({
                 severityText: "warn",
                 body: "context.auto_meme_generation.not_enough_permissions",
