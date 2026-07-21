@@ -1,6 +1,11 @@
+x-logging: &default-logging
+    driver: json-file
+    options: { max-size: "10m", max-file: "3" }
+
 services:
   sqld:
     image: ghcr.io/tursodatabase/libsql-server:latest
+    logging: *default-logging
     volumes: [ "sqld-data:/var/lib/sqld" ]
     restart: unless-stopped
     healthcheck:
@@ -12,6 +17,7 @@ services:
 
   migrate:
       image: ghcr.io/jstmemit/migrate
+      logging: *default-logging
       build:
           context: .
           dockerfile: packages/db/Dockerfile
@@ -24,6 +30,7 @@ services:
 
   redis:
     image: redis:alpine
+    logging: *default-logging
     command: [ "redis-server", "--appendonly", "yes" ]
     volumes: [ "redis-data:/data" ]
     healthcheck:
@@ -35,6 +42,8 @@ services:
 
   bot:
     image: ghcr.io/jstmemit/bot
+    init: true
+    logging: *default-logging
     build:
       context: .
       dockerfile: apps/bot/Dockerfile
@@ -49,6 +58,8 @@ services:
 
   website:
       image: ghcr.io/jstmemit/website
+      init: true
+      logging: *default-logging
       build:
           context: .
           dockerfile: apps/website/Dockerfile
@@ -57,9 +68,13 @@ services:
 
   meme-generator:
     image: ghcr.io/jstmemit/meme-generator
+    init: true
+    logging: *default-logging
     build:
       context: .
       dockerfile: apps/meme-generator/Dockerfile
+    environment:
+        - UV_THREADPOOL_SIZE=8
     env_file:
       - ".env.docker"
     restart: unless-stopped
@@ -71,8 +86,12 @@ services:
 
   whisper:
       image: hwdsl2/whisper-server
+      logging: *default-logging
       container_name: whisper
       restart: unless-stopped
+      deploy:
+          resources:
+              limits: { cpus: "2", memory: 4g }
       volumes:
           - whisper-data:/var/lib/whisper
           - ./.env.docker:/whisper.env:ro
