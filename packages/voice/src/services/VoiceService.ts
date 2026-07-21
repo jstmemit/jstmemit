@@ -1,7 +1,10 @@
 import type { IVoiceService } from "#/interface/IVoiceService.ts";
+import "@jstmemit/telemetry";
+import { type Logger, logs } from "@opentelemetry/api-logs";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
+    private readonly _logger: Logger = logs.getLogger("jstmemit/voice");
 
     public constructor(whisperUrl: string = "http://whisper:9000/v1/audio") {
         this._whisperUrl = whisperUrl;
@@ -27,6 +30,19 @@ export class VoiceService implements IVoiceService {
             body: form,
         });
 
-        return await res.text();
+        const text: string = await res.text();
+
+        if (text.length < 1) {
+            this._logger.emit({
+                severityText: "warn",
+                body: "voice.speech_to_text.returned_empty_string",
+                attributes: {
+                    audio_fetch_status_text: audio.statusText,
+                    audio_fetch_status_code: audio.status,
+                },
+            });
+        }
+
+        return text;
     }
 }
