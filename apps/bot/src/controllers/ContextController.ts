@@ -51,7 +51,7 @@ export class ContextController implements IContextController {
             const avatar: string | null = author.avatarURL();
 
             if (avatar) {
-                this._contextService.saveAvatar(id, channelId, avatar);
+                await this._contextService.saveAvatar(id, channelId, avatar);
             }
 
             if (attachments) {
