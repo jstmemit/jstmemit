@@ -1,0 +1,79 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+
+export const dfragRokaShibasaki: Template = {
+    name: "dfragRokaShibasaki",
+    topics: [Topic.Anime, Topic.DFrag],
+    types: [Type.textTopWithBackground, Type.faceImage],
+    width: 750,
+    height: 543,
+    texts: [{ id: 0, description: "the phrase Roka says", minLength: 1, maxLength: 8 }],
+    images: [{ id: 0, description: "Roka`s face" }],
+    element: ({ texts, images }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Comic Sans MS",
+            }}
+        >
+            <img
+                src="https://files.wideunits.nl/jstmemit/images/templates/dfragRokaShibasaki.png"
+                width={750}
+                height={433}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={230}
+                height={230}
+                style={{
+                    position: "absolute",
+                    top: 160,
+                    left: 270,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "110px",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "white",
+                }}
+            >
+                <div
+                    style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                        wordBreak: "break-word",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        paddingBottom: "0.15em",
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+        </div>
+    ),
+};
