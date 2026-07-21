@@ -296,8 +296,8 @@ export class SettingsController implements ISettingsController {
     ): Promise<void> {
         console.error(error);
         analytics.captureException(error, interaction.user.id, {
-            channel_id: interaction.channelId,
-            guild_id: interaction.guildId || "",
+            channelId: interaction.channelId,
+            guildId: interaction.guildId || "",
             trigger: interaction.isCommand() ? "/settings" : "/enable",
             language: interaction.locale,
             ...properties,

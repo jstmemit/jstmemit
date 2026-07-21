@@ -10,7 +10,7 @@ import Separator from "#/components/ui/Separator.astro";
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
     <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
         <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
-            <Explainer>Last updated: 13th July, 2026</Explainer>
+            <Explainer>Last updated: 21st July, 2026</Explainer>
             <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
             <Paragraph id="privacyPolicyDescription">
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
@@ -88,12 +88,12 @@ import Separator from "#/components/ui/Separator.astro";
             <Separator variant="hr" />
 
             <Paragraph>
-                Links to images and GIFs posted in the enabled channel:<br />
+                Links to images, avatars and GIFs that appear in the enabled channel:<br />
                 <b>messageId, channelId, imageUrl, source, timestamp, expiresAt</b>
             </Paragraph>
             <Paragraph>
-                They are used on meme templates. Only the <b>link</b> to the file is saved and the actual files are never
-                downloaded or stored on our servers.
+                They are used on meme templates. Only the <b>link</b> to the file is saved. Content of those links is fetched
+                and temporarily stored in RAM when used in a meme generation, but it never ends up on the actual hard drive.
             </Paragraph>
 
             <Separator variant="hr" />
@@ -123,12 +123,13 @@ import Separator from "#/components/ui/Separator.astro";
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="analyticsHeading"> 4. Analytics and service providers </Heading>
             <Paragraph id="analyticsDescription">
-                We use <b>PostHog EU</b> for analytics on this website and inside the bot. In addition to that, we use <b
-                    >Cloudflare</b
-                > for the website's CDN, DNS and image delivery.
+                We use <b>PostHog EU</b> for analytics and OpenTelemetry logs on this website and inside the bot. In addition
+                to that, we use <b>Cloudflare</b> for the website's CDN, DNS and image delivery.
             </Paragraph>
             <Paragraph>
-                The bot sends an analytics event when: <ul class="list-[lower-alpha] pl-10 text-white/75">
+                The bot sends an analytics event when a user directly interacts with the bot, for example: <ul
+                    class="list-[lower-alpha] pl-10 text-white/75"
+                >
                     <li>it is added to or removed from a server</li>
                     <li>a channel is enabled or disabled</li>
                     <li>settings are opened or changed</li>
@@ -138,17 +139,37 @@ import Separator from "#/components/ui/Separator.astro";
                 </ul>
             </Paragraph>
             <Paragraph>
-                These events include the Discord user ID of the person who performed the action, together with technical
-                details like the setting values that changed, how long meme generation took, etc.
+                The bot emits an OpenTelemetry event when something goes wrong, for example: <ul
+                    class="list-[lower-alpha] pl-10 text-white/75"
+                >
+                    <li>a meme generation has failed</li>
+                    <li>there was not enough context for a meme</li>
+                    <li>a meme template was not found</li>
+                    <li>an interaction has failed without a known reason</li>
+                    <li>a ratings (like/dislike) action has failed</li>
+                </ul>
             </Paragraph>
             <Paragraph>
-                In addition to this information some of these events include Discord's interaction ID, which is also
-                shown to you if an error occurs. It's used to investigate any errors that happen.
+                <b>Message content is never sent to analytics or OpenTelemetry logs</b>, and neither are the generated
+                memes themselves.
             </Paragraph>
             <Paragraph>
-                <b>Message content is never sent to analytics</b>, and neither are the generated memes themselves. We
-                use these events to understand which features are used and how the bot performs.
+                Properties of sent events include the Discord user ID of the person who performed the action, together
+                with technical details like the setting values that changed, how long meme generation took, error
+                messages and stack traces.
             </Paragraph>
+            <Paragraph>
+                In addition to this information most of these events include Discord's interaction ID, which is also
+                shown to you if an error occurs. It's used to trace and investigate any errors that happen.
+            </Paragraph>
+            <Paragraph>
+                Analytics events are used to understand which features are used and how the bot performs, mostly in
+                happy flows: a meme generated was generated, a channel has enabled Jstmemit, a meme was liked.
+            </Paragraph>
+            <Paragraph>
+                Logs are used to understand how errors happen, mostly in unhappy flows: meme generation failed, bot
+                didn't respond to a command.</Paragraph
+            >
         </div>
     </Section>
 
@@ -163,8 +184,10 @@ import Separator from "#/components/ui/Separator.astro";
                 <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
             </Paragraph>
             <Paragraph>
+                <b>OpenTelemetry logs</b> - deleted after 14 days.<br />
                 <b>Session replays</b> - deleted after 90 days.<br />
                 <b>Analytics events</b> - deleted after 1 year.<br />
+                <b>Ratings</b> - deleted after 1 year.<br />
             </Paragraph>
         </div>
     </Section>
@@ -173,7 +196,7 @@ import Separator from "#/components/ui/Separator.astro";
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="storageHeading"> 6. Where your data is stored </Heading>
             <Paragraph id="storageDescription">
-                All received data is stored within the <b> European Union.</b>
+                All data received by the bot is stored within the <b> European Union.</b>
             </Paragraph>
         </div>
     </Section>
@@ -209,14 +232,20 @@ import Separator from "#/components/ui/Separator.astro";
             <Heading id="legalBasisHeading"> 8. Legal basis for processing </Heading>
             <Paragraph id="legalBasisDescription"> We process data for these purposes: </Paragraph>
             <Paragraph>
-                <b>Generating memes</b> - is done with the explicit consent that is given to <b>Jstmemit</b> when <b
-                    >/enable{" "}</b
-                >
-                command is used.
+                <b>Generating memes</b> - is done under the basis of legitimate interest in operating the bot, and only after
+                a server owner or administrator invites it and explicitly runs <b>/enable{" "}</b> command. After which members
+                are notified with a "Jstmemit is now active and will generate memes during chats here" disclaimer. No message
+                data is collected before that.
             </Paragraph>
             <Paragraph>
-                <b>Analytics</b> - we have a legitimate interest in understanding how the bot is used, which templates are
-                doing well, tracking errors and how we can keep it working.
+                Because we rely on legitimate interest, we have weighed our interest in operating <b>Jstmemit</b> against
+                your privacy. The bot is essentially designed to be blind by not collecting identifiers of who sent what message.
+                In addition to that, collected content is stored for a short period of time (see section 5). You can object
+                to this processing at any time (see section 10).
+            </Paragraph>
+            <Paragraph>
+                <b>Analytics and logs</b> - we have a legitimate interest in understanding how the bot is used, which templates
+                are doing well, tracking errors and how we can keep it working.
             </Paragraph>
         </div>
     </Section>

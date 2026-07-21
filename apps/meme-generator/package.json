@@ -6,6 +6,11 @@
         "start": "tsx src/workers.ts"
     },
     "dependencies": {
+        "@opentelemetry/api-logs": "^0.220.0",
+        "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
+        "@opentelemetry/resources": "^2.9.0",
+        "@opentelemetry/sdk-logs": "^0.220.0",
+        "@opentelemetry/sdk-node": "^0.220.0",
         "@resvg/resvg-js": "^2.6.2",
         "awilix": "^13.0.5",
         "bullmq": "^5.80.8",
@@ -21,6 +26,7 @@
         "@jstmemit/db": "workspace:*",
         "@jstmemit/queue": "workspace:*",
         "@jstmemit/shared": "workspace:*",
+        "@jstmemit/telemetry": "workspace:*",
         "@types/lodash": "^4.17.24",
         "@types/node": "^25.9.5",
         "@types/react": "^19.2.17",

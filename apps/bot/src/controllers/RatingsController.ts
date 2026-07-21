@@ -4,6 +4,7 @@ import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import { logger } from "#/container.ts";
 
 export class RatingsController implements IRatingsController {
     private readonly _ratingsService: IRatingsService;
@@ -66,7 +67,21 @@ export class RatingsController implements IRatingsController {
 
             await this._ratingsService.updateRatingButtons(interaction, generationId);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "ratings.interaction.error",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction?.guildId,
+                    generation_id: generationId,
+                    rating,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
         }
     }
 }

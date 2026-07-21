@@ -14,6 +14,7 @@ import _ from "lodash";
 import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
 import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { logger } from "#/container.ts";
 
 const env = Env.parse(process.env);
 
@@ -100,216 +101,247 @@ export class EventsController implements IEventsController {
      * @author Kyrylo Maliuha
      */
     public async handleInteractionCreate(interaction: Interaction): Promise<void> {
-        // autocomplete
-        if (interaction.isAutocomplete()) {
-            switch (interaction.commandName) {
-                case "custom":
-                    await this._memesController.handleTemplateAutocompleteInteraction(interaction);
-                    return;
-            }
-            return;
-        }
-
-        // modals
-        if (interaction.isModalSubmit()) {
-            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
-
-            switch (customId) {
-                case "custom-meme":
-                    await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
-                    return;
-                case "feedback":
-                    await this._feedbackController.handleNewFeedbackSubmit(interaction);
-                    return;
-            }
-        }
-
-        // message context menus
-        if (interaction.isMessageContextMenuCommand()) {
-            switch (interaction.commandName) {
-                case "Make it a Quote":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
-                    return;
-                case "Make it a Post":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "post");
-                    return;
-                case "Make it a Grok tweet":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
-                    return;
-                case "Make it a News Report":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
-                    return;
-                case "Make it a Comment":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "creativeMetaphor",
-                    );
-                    return;
-                case "Make an Explain meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "explainingWhiteboard",
-                    );
-                    return;
-                case "Make a Chad meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
-                    return;
-                case "Make a Stonks meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "stonks");
-                    return;
-                case "Make a Team Fortress 2 meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "tf2Hahaha");
-                    return;
-                case "Make a News Report meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
-                    return;
-                case "Make an Absolute Cinema meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "absoluteCinema");
-                    return;
-                case "Make a Missing Piece meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "missingPiece");
-                    return;
-                case "Make a Drinking Coffee meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "pfCoffeeScene");
-                    return;
-                case "Make a Two Gangsters meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "pfTwoGangsterWithGuns",
-                    );
-                    return;
-            }
-            return;
-        }
-
-        // user context menus
-        if (interaction.isUserContextMenuCommand()) {
-            switch (interaction.commandName) {
-                case "Put avatar on YT thumbnail":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        _.sample(this._templateRepository.getTemplateNamesByTopic("youtube")),
-                    );
-                    return;
-                case "Make an Incoming Call meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "incomingCall");
-                    return;
-                case "Make a Look At This meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "lookAtThis");
-                    return;
-                case "Make a Psych Ward meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "griffinsPaddedWalls",
-                    );
-                    return;
-                case "Make a Running Away meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "griffinsPeterGriffinRunningAway",
-                    );
-                    return;
-                case "Make a Thinking meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "griffinsPeterGriffinThinking",
-                    );
-                    return;
-                case "Make a Hurt Knee meme":
-                    await this._memesController.handleGenerateViaContextMenuInteraction(
-                        interaction,
-                        "griffinsPeterHurtsHisKnee",
-                    );
-                    return;
-            }
-            return;
-        }
-
-        // chat commands
-        if (interaction.isChatInputCommand()) {
-            // without permissions
-            switch (interaction.commandName) {
-                case "custom":
-                    await this._memesController.handleGenerateCustomMemeInteraction(interaction);
-                    return;
-                case "meme":
-                    await this._memesController.handleMemeInteraction(interaction);
-                    return;
-                case "feedback":
-                    await this._feedbackController.handleOpenFeedbackModal(interaction);
-                    return;
-                case "help":
-                    await this._helpController.handleHelpInteraction(interaction);
-                    return;
-            }
-
-            if (await this._checkForMissingPermissions(interaction)) {
+        try {
+            // autocomplete
+            if (interaction.isAutocomplete()) {
+                switch (interaction.commandName) {
+                    case "custom":
+                        await this._memesController.handleTemplateAutocompleteInteraction(interaction);
+                        return;
+                }
                 return;
             }
 
-            // only with permissions
-            switch (interaction.commandName) {
-                case "enable":
-                    await this._channelsController.handleEnableInteraction(interaction);
-                    return;
-                case "settings":
-                    await this._settingsController.handleSettingsInteraction(interaction);
-                    return;
-            }
-        }
+            // modals
+            if (interaction.isModalSubmit()) {
+                const customId: string = interaction.customId.split(":")[0] || interaction.customId;
 
-        // buttons
-        if (interaction.isButton()) {
-            const id: string | undefined = interaction.customId.split(":")[1];
-            const customId: string = interaction.customId.split(":")[0] || interaction.customId;
-
-            // without permissions
-            switch (customId) {
-                case "meme":
-                    await this._memesController.handleMemeInteraction(interaction);
-                    return;
-                case "like":
-                case "dislike":
-                    await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
-                    return;
+                switch (customId) {
+                    case "custom-meme":
+                        await this._memesController.handleGenerateCustomMemeModalSubmit(interaction);
+                        return;
+                    case "feedback":
+                        await this._feedbackController.handleNewFeedbackSubmit(interaction);
+                        return;
+                }
             }
 
-            if (await this._checkForMissingPermissions(interaction)) {
+            // message context menus
+            if (interaction.isMessageContextMenuCommand()) {
+                switch (interaction.commandName) {
+                    case "Make it a Quote":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
+                        return;
+                    case "Make it a Post":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "post");
+                        return;
+                    case "Make it a Grok tweet":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "grokTweet");
+                        return;
+                    case "Make it a News Report":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
+                        return;
+                    case "Make it a Comment":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "creativeMetaphor",
+                        );
+                        return;
+                    case "Make an Explain meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "explainingWhiteboard",
+                        );
+                        return;
+                    case "Make a Chad meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "yesChad");
+                        return;
+                    case "Make a Stonks meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "stonks");
+                        return;
+                    case "Make a Team Fortress 2 meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "tf2Hahaha");
+                        return;
+                    case "Make a News Report meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "bearArrest");
+                        return;
+                    case "Make an Absolute Cinema meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "absoluteCinema",
+                        );
+                        return;
+                    case "Make a Missing Piece meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "missingPiece",
+                        );
+                        return;
+                    case "Make a Drinking Coffee meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "pfCoffeeScene",
+                        );
+                        return;
+                    case "Make a Two Gangsters meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "pfTwoGangsterWithGuns",
+                        );
+                        return;
+                }
                 return;
             }
 
-            // only with permissions
-            switch (customId) {
-                case "enable":
-                case "disable":
-                    await this._channelsController.handleEnableInteraction(interaction);
-                    return;
-                case "settings":
-                    await this._settingsController.handleSettingsInteraction(interaction);
-                    return;
-                case "open-delete-data-confirmation":
-                    await this._settingsController.handleOpenDeleteDataConfirmationInteraction(interaction);
-                    return;
-                case "delete-data":
-                    await this._settingsController.handleDeleteDataInteraction(interaction);
-                    return;
-            }
-        }
-
-        // string select menu
-        if (interaction.isStringSelectMenu()) {
-            if (await this._checkForMissingPermissions(interaction)) {
+            // user context menus
+            if (interaction.isUserContextMenuCommand()) {
+                switch (interaction.commandName) {
+                    case "Put avatar on YT thumbnail":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            _.sample(this._templateRepository.getTemplateNamesByTopic("youtube")),
+                        );
+                        return;
+                    case "Make an Incoming Call meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "incomingCall",
+                        );
+                        return;
+                    case "Make a Look At This meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "lookAtThis");
+                        return;
+                    case "Make a Psych Ward meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "griffinsPaddedWalls",
+                        );
+                        return;
+                    case "Make a Running Away meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "griffinsPeterGriffinRunningAway",
+                        );
+                        return;
+                    case "Make a Thinking meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "griffinsPeterGriffinThinking",
+                        );
+                        return;
+                    case "Make a Hurt Knee meme":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            "griffinsPeterHurtsHisKnee",
+                        );
+                        return;
+                }
                 return;
             }
 
-            switch (interaction.customId) {
-                case "frequency":
-                    await this._settingsController.handleFrequencySelect(interaction);
+            // chat commands
+            if (interaction.isChatInputCommand()) {
+                // without permissions
+                switch (interaction.commandName) {
+                    case "custom":
+                        await this._memesController.handleGenerateCustomMemeInteraction(interaction);
+                        return;
+                    case "meme":
+                        await this._memesController.handleMemeInteraction(interaction);
+                        return;
+                    case "feedback":
+                        await this._feedbackController.handleOpenFeedbackModal(interaction);
+                        return;
+                    case "help":
+                        await this._helpController.handleHelpInteraction(interaction);
+                        return;
+                }
+
+                if (await this._checkForMissingPermissions(interaction)) {
                     return;
-                case "avatar":
-                    await this._settingsController.handleUserAvatarsSelect(interaction);
-                    return;
+                }
+
+                // only with permissions
+                switch (interaction.commandName) {
+                    case "enable":
+                        await this._channelsController.handleEnableInteraction(interaction);
+                        return;
+                    case "settings":
+                        await this._settingsController.handleSettingsInteraction(interaction);
+                        return;
+                }
             }
+
+            // buttons
+            if (interaction.isButton()) {
+                const id: string | undefined = interaction.customId.split(":")[1];
+                const customId: string = interaction.customId.split(":")[0] || interaction.customId;
+
+                // without permissions
+                switch (customId) {
+                    case "meme":
+                        await this._memesController.handleMemeInteraction(interaction);
+                        return;
+                    case "like":
+                    case "dislike":
+                        await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
+                        return;
+                }
+
+                if (await this._checkForMissingPermissions(interaction)) {
+                    return;
+                }
+
+                // only with permissions
+                switch (customId) {
+                    case "enable":
+                    case "disable":
+                        await this._channelsController.handleEnableInteraction(interaction);
+                        return;
+                    case "settings":
+                        await this._settingsController.handleSettingsInteraction(interaction);
+                        return;
+                    case "open-delete-data-confirmation":
+                        await this._settingsController.handleOpenDeleteDataConfirmationInteraction(interaction);
+                        return;
+                    case "delete-data":
+                        await this._settingsController.handleDeleteDataInteraction(interaction);
+                        return;
+                }
+            }
+
+            // string select menu
+            if (interaction.isStringSelectMenu()) {
+                if (await this._checkForMissingPermissions(interaction)) {
+                    return;
+                }
+
+                switch (interaction.customId) {
+                    case "frequency":
+                        await this._settingsController.handleFrequencySelect(interaction);
+                        return;
+                    case "avatar":
+                        await this._settingsController.handleUserAvatarsSelect(interaction);
+                        return;
+                }
+            }
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "interaction.error",
+                attributes: {
+                    interaction_id: interaction.id,
+                    channel_id: interaction?.channelId,
+                    guild_id: interaction?.guildId,
+                    posthogDistinctId: interaction.user.id,
+                    interaction_type: interaction.type,
+                    command_name: interaction.isCommand() ? interaction.commandName : undefined,
+                    custom_id: "customId" in interaction ? interaction.customId : undefined,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
         }
     }
 

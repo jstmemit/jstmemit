@@ -90,7 +90,6 @@ export class ChannelsController implements IChannelsController {
 
             await respond(interaction, [message, buttons]);
         } catch (error) {
-            console.error(error);
             analytics.captureException(error, interaction.user.id, {
                 channelId: interaction.channelId,
                 guildId: interaction?.guildId || "",
