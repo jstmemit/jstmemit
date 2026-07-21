@@ -560,6 +560,9 @@ importers:
 
   packages/telemetry:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared
@@ -578,6 +581,9 @@ importers:
       '@opentelemetry/sdk-node':
         specifier: ^0.220.0
         version: 0.220.0(@opentelemetry/api@1.9.1)
+      bullmq:
+        specifier: ^5.80.8
+        version: 5.80.8
 
   packages/voice:
     devDependencies:
