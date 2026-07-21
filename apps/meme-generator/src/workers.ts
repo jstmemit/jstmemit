@@ -1,8 +1,16 @@
 import { Worker } from "bullmq";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
-import { memesService, banditRepository, redisConnection, messagesRepository, imagesRepository } from "#/container.ts";
+import {
+    memesService,
+    banditRepository,
+    redisConnection,
+    messagesRepository,
+    imagesRepository,
+    logger,
+} from "#/container.ts";
 import { analytics } from "@jstmemit/analytics";
+import { addWorkerTelemetry } from "@jstmemit/telemetry/helpers/addWorkerTelemetry.ts";
 
 export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGenerationResult>(
     "meme-generation",
@@ -35,3 +43,8 @@ export const imagePurgeWorker = new Worker("image-purge", async () => imagesRepo
     connection: redisConnection,
     concurrency: 1,
 });
+
+addWorkerTelemetry(memeGenerationWorker, "meme-generation", logger);
+addWorkerTelemetry(banditDecayWorker, "bandit-decay", logger);
+addWorkerTelemetry(messagePurgeWorker, "message-purge", logger);
+addWorkerTelemetry(imagePurgeWorker, "image-purge", logger);

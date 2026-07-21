@@ -156,7 +156,8 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a message component for a "missing permissions" error
+     * Returns back a message component for a "missing permissions" user error (when a user
+     * without permissions tries to change bot settings)
      *
      * @param language
      *
@@ -168,6 +169,22 @@ export class ComponentsService implements IComponentsService {
                 new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
             )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingPermissions.body", language)));
+    }
+
+    /**
+     * Returns back a message component for a "missing permissions" bot error (when bot is triggered
+     * in the channel, but he doesn't have enough permissions to respond)
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMissingBotPermissionsMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("missingBotPermissions.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingBotPermissions.body", language)));
     }
 
     /**

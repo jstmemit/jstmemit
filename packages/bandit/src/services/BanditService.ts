@@ -6,10 +6,13 @@ import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { RatingKind } from "@jstmemit/shared/models/RatingKind";
 import type { ScopedStats } from "@jstmemit/shared/models/ScopedStats";
 import type { TemplateMapStringKey } from "@jstmemit/shared/models/TemplateMapKey";
+import { type Logger, logs } from "@opentelemetry/api-logs";
+import { analytics } from "@jstmemit/analytics";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
     private readonly _templatesRepository: ITemplatesRepository;
+    private readonly _logger: Logger = logs.getLogger("jstmemit/bandit");
 
     private readonly priorStrength: number = 4;
     private readonly likeWeight: number = 1;
@@ -25,6 +28,15 @@ export class BanditService implements IBanditService {
             const templates: Template[] = this._templatesRepository.getAll();
 
             if (templates.length === 0) {
+                this._logger.emit({
+                    severityText: "error",
+                    body: "bandit.select_template.no_templates_found",
+                    attributes: {
+                        posthogDistinctId: userId,
+                        channel_id: channelId,
+                    },
+                });
+
                 return undefined;
             }
             const templateNames: string[] = templates.map((template: Template): string => template.name);
@@ -84,9 +96,20 @@ export class BanditService implements IBanditService {
                 selectedType: typeBest,
             };
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             const templates: Template[] = this._templatesRepository.getAll();
+
+            this._logger.emit({
+                severityText: "error",
+                body: "bandit.select_template.failed",
+                attributes: {
+                    posthogDistinctId: userId,
+                    channel_id: channelId,
+                    fallback_template: templates[0]?.name,
+                },
+            });
+
             return templates[0];
         }
     }
@@ -124,7 +147,19 @@ export class BanditService implements IBanditService {
 
             await Promise.all(writes);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
+            this._logger.emit({
+                severityText: "error",
+                body: "bandit.write_all_scopes.failed",
+                attributes: {
+                    posthogDistinctId: userId,
+                    channel_id: channelId,
+                    template_name: templateName,
+                    delta_success: deltaSuccess,
+                    delta_failure: deltaFailure,
+                },
+            });
         }
     }
 
