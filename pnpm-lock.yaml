@@ -465,7 +465,26 @@ importers:
         version: link:../shared
 
   packages/bandit:
+    dependencies:
+      '@opentelemetry/api-logs':
+        specifier: ^0.220.0
+        version: 0.220.0
+      '@opentelemetry/exporter-logs-otlp-http':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/resources':
+        specifier: ^2.9.0
+        version: 2.9.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/sdk-logs':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/sdk-node':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
     devDependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@jstmemit/db':
         specifier: workspace:*
         version: link:../db
@@ -560,6 +579,9 @@ importers:
 
   packages/telemetry:
     dependencies:
+      '@jstmemit/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared
@@ -578,12 +600,34 @@ importers:
       '@opentelemetry/sdk-node':
         specifier: ^0.220.0
         version: 0.220.0(@opentelemetry/api@1.9.1)
+      bullmq:
+        specifier: ^5.80.8
+        version: 5.80.8
 
   packages/voice:
+    dependencies:
+      '@opentelemetry/api-logs':
+        specifier: ^0.220.0
+        version: 0.220.0
+      '@opentelemetry/exporter-logs-otlp-http':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/resources':
+        specifier: ^2.9.0
+        version: 2.9.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/sdk-logs':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
+      '@opentelemetry/sdk-node':
+        specifier: ^0.220.0
+        version: 0.220.0(@opentelemetry/api@1.9.1)
     devDependencies:
       '@jstmemit/shared':
         specifier: workspace:*
         version: link:../shared
+      '@jstmemit/telemetry':
+        specifier: workspace:*
+        version: link:../telemetry
 
 packages:
 

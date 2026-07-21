@@ -11,9 +11,13 @@ import {
     type ButtonBuilder,
     type AutocompleteInteraction,
     type ChatInputCommandInteraction,
+    ChannelType,
+    Message,
+    InteractionContextType,
     Locale,
+    MessageFlags,
+    type TextBasedChannel,
 } from "discord.js";
-import { MessageFlags, Message } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
@@ -88,11 +92,8 @@ export class MemesController implements IMemesController {
             severityText: "info",
             body: "generate_meme.interaction.received",
             attributes: {
-                posthogDistinctId: userId,
-                interaction_id: interaction.id,
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId,
                 trigger,
+                ...this._getTelemetryProperties(interaction),
             },
         });
 
@@ -113,11 +114,8 @@ export class MemesController implements IMemesController {
                 severityText: "warn",
                 body: "generate_meme.channel.not_enabled",
                 attributes: {
-                    posthogDistinctId: userId,
-                    interaction_id: interaction.id,
-                    channel_id: interaction.channelId,
-                    guild_id: interaction?.guildId,
                     trigger,
+                    ...this._getTelemetryProperties(interaction),
                 },
             });
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
@@ -177,10 +175,8 @@ export class MemesController implements IMemesController {
                         severityText: "warn",
                         body: "generate_meme.context.insufficient.error_shown",
                         attributes: {
-                            posthogDistinctId: userId,
-                            interaction_id: interaction.id,
-                            channel_id: channelId,
                             trigger,
+                            ...this._getTelemetryProperties(interaction),
                         },
                     });
 
@@ -192,12 +188,8 @@ export class MemesController implements IMemesController {
                         severityText: "error",
                         body: "generate_meme.job.failed",
                         attributes: {
-                            posthogDistinctId: userId,
-                            interaction_id: interaction.id,
-                            channel_id: channelId,
                             trigger,
-                            error_message: reason || String(error),
-                            error_stack: error instanceof Error ? error.stack : undefined,
+                            ...this._getTelemetryProperties(interaction),
                         },
                     });
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
@@ -222,12 +214,8 @@ export class MemesController implements IMemesController {
             severityText: "info",
             body: "generate_meme.interaction.received",
             attributes: {
-                posthogDistinctId: interaction.user.id,
-                interaction_id: interaction.id,
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId,
-                template_name: templateName,
                 trigger: "custom",
+                ...this._getTelemetryProperties(interaction),
             },
         });
 
@@ -242,9 +230,8 @@ export class MemesController implements IMemesController {
                 severityText: "warn",
                 body: "generate_meme.interaction.channel_missing",
                 attributes: {
-                    posthogDistinctId: interaction.user.id,
-                    interaction_id: interaction.id,
                     trigger: "custom",
+                    ...this._getTelemetryProperties(interaction),
                 },
             });
             await interaction.reply({
@@ -288,12 +275,7 @@ export class MemesController implements IMemesController {
                 severityText: "error",
                 body: "generate_meme.job.failed",
                 attributes: {
-                    posthogDistinctId: interaction.user.id,
-                    interaction_id: interaction.id,
-                    channel_id: interaction.channelId,
-                    template_name: templateName,
-                    error_message: error instanceof Error ? error.message : String(error),
-                    error_stack: error instanceof Error ? error.stack : undefined,
+                    ...this._getTelemetryProperties(interaction),
                 },
             });
             await interaction.editReply({
@@ -310,13 +292,8 @@ export class MemesController implements IMemesController {
             severityText: "info",
             body: "generate_meme.interaction.received",
             attributes: {
-                posthogDistinctId: interaction.user.id,
-                interaction_id: interaction.id,
-                channel_id: interaction.channelId,
-                guild_id: interaction?.guildId,
-                command_name: interaction.commandName,
-                template_name: templateName,
                 trigger: "context",
+                ...this._getTelemetryProperties(interaction),
             },
         });
 
@@ -356,12 +333,7 @@ export class MemesController implements IMemesController {
                 severityText: "error",
                 body: "generate_meme.job.failed",
                 attributes: {
-                    posthogDistinctId: interaction.user.id,
-                    interaction_id: interaction.id,
-                    channel_id: interaction.channelId,
-                    template_name: templateName,
-                    error_message: error instanceof Error ? error.message : String(error),
-                    error_stack: error instanceof Error ? error.stack : undefined,
+                    ...this._getTelemetryProperties(interaction),
                 },
             });
             await interaction.editReply({
@@ -427,11 +399,7 @@ export class MemesController implements IMemesController {
                 severityText: "error",
                 body: "generate_meme.template.not_found",
                 attributes: {
-                    posthogDistinctId: interaction.user.id,
-                    interaction_id: interaction.id,
-                    channel_id: interaction.channelId,
-                    guild_id: interaction?.guildId,
-                    template_name: templateName,
+                    ...this._getTelemetryProperties(interaction),
                 },
             });
 
@@ -459,6 +427,13 @@ export class MemesController implements IMemesController {
             const voiceMessage: string | undefined = message?.attachments.first()?.proxyURL;
 
             if (message.flags.has("IsVoiceMessage") && voiceMessage) {
+                logger.emit({
+                    severityText: "info",
+                    body: "generate_meme.context_menu.used_on_voice_message",
+                    attributes: {
+                        ...this._getTelemetryProperties(interaction),
+                    },
+                });
                 message.content = await this._voiceService.convertSpeechToText(voiceMessage);
             }
 
@@ -524,6 +499,13 @@ export class MemesController implements IMemesController {
             }
 
             if (!attachment.contentType?.startsWith("image/")) {
+                logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.modal.unsupported_attachment_image_format",
+                    attributes: {
+                        ...this._getTelemetryProperties(interaction),
+                    },
+                });
                 await interaction.editReply({
                     components: [
                         this._componentsService.getWrongFileFormatMessageComponent(
@@ -555,6 +537,66 @@ export class MemesController implements IMemesController {
         });
 
         return texts;
+    }
+
+    private _getAppPermissionsBitfield(
+        interaction:
+            | ChatInputCommandInteraction
+            | ButtonInteraction
+            | Message
+            | ModalSubmitInteraction
+            | MessageContextMenuCommandInteraction
+            | UserContextMenuCommandInteraction,
+    ): string | undefined {
+        return interaction instanceof Message
+            ? interaction.guild?.members.me?.permissionsIn(interaction.channelId).bitfield.toString()
+            : interaction.appPermissions?.bitfield.toString();
+    }
+
+    private _getTelemetryProperties(
+        interaction:
+            | ChatInputCommandInteraction
+            | ButtonInteraction
+            | Message
+            | ModalSubmitInteraction
+            | MessageContextMenuCommandInteraction
+            | UserContextMenuCommandInteraction,
+    ): Record<string, string | number | boolean | undefined> {
+        const channel: TextBasedChannel | null = interaction.channel;
+
+        const base: Record<string, string | number | boolean | undefined> = {
+            interaction_id: interaction.id,
+            channel_id: interaction.channelId || undefined,
+            guild_id: interaction.guildId || undefined,
+            channel_type: channel ? ChannelType[channel.type] : undefined,
+            is_thread: channel?.isThread(),
+            permissions: this._getAppPermissionsBitfield(interaction),
+            receive_latency_ms: Date.now() - interaction.createdTimestamp,
+        };
+
+        if (interaction instanceof Message) {
+            return {
+                ...base,
+                posthogDistinctId: interaction.author.id,
+                source: "message",
+                guild_locale: interaction.guild?.preferredLocale,
+                attachment_count: interaction.attachments.size,
+                content_length: interaction.content.length,
+                author_is_bot: interaction.author.bot,
+            };
+        }
+
+        return {
+            ...base,
+            posthogDistinctId: interaction.user.id,
+            source: "interaction",
+            user_locale: interaction.locale,
+            guild_locale: interaction.guildLocale || undefined,
+            context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+            is_user_install: "1" in (interaction.authorizingIntegrationOwners || {}),
+            deferred: interaction.deferred,
+            replied: interaction.replied,
+        };
     }
 
     private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {

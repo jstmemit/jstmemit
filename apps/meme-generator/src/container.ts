@@ -20,6 +20,7 @@ import { BanditService } from "@jstmemit/bandit/services/BanditService";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
 import { createContainer, asClass, InjectionMode, type AwilixContainer } from "awilix";
 import { type Logger, logs } from "@opentelemetry/api-logs";
+import "@jstmemit/telemetry";
 
 const env = Env.parse(process.env);
 
