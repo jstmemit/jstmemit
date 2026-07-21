@@ -30,17 +30,22 @@ export class MemesRepository implements IMemesRepository {
      */
     public async generateMeme(template: Template, props: TemplateProps): Promise<string | undefined> {
         try {
+            const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
+
             return await satori(template.element(props), {
                 width: template.width,
                 height: template.height,
-                fonts: this._fontsService.getFonts(),
+                fonts: this._fontsService.getFonts(hasCjk),
                 loadAdditionalAsset: async (code: string, segment: string): Promise<string> => {
                     if (code === "emoji") {
-                        return this._cacheService.getOrSet(
-                            `emoji:${segment}`,
-                            (): Promise<string> => this._loadEmoji(segment),
-                            ms("4w"),
-                        );
+                        const cached: string | undefined = await this._cacheService.get<string>(`emoji:${segment}`);
+                        if (cached !== undefined) return cached;
+
+                        const emoji: string = await this._loadEmoji(segment);
+                        if (emoji !== "") {
+                            await this._cacheService.set(`emoji:${segment}`, emoji, ms("4w"));
+                        }
+                        return emoji;
                     }
 
                     return "";
@@ -65,6 +70,8 @@ export class MemesRepository implements IMemesRepository {
     public convertIntoBuffer(svg: string, width: number): Buffer {
         return new Resvg(svg, {
             fitTo: { mode: "width", value: width },
+            font: { loadSystemFonts: false },
+            imageRendering: 1,
         })
             .render()
             .asPng();
