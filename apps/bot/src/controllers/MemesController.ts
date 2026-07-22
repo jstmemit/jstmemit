@@ -104,6 +104,7 @@ export class MemesController implements IMemesController {
         let locale: Locale = Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
+        const job = this._addGenerateMemeJob({ channelId, userId, trigger });
 
         if (!(interaction instanceof Message)) {
             locale = interaction.locale;
@@ -135,11 +136,7 @@ export class MemesController implements IMemesController {
         }
 
         try {
-            const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
-                channelId,
-                userId,
-                trigger,
-            });
+            const jobResult: MemeGenerationResult = await job;
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
