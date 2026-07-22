@@ -14,7 +14,7 @@ import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
-import sharp from "sharp";
+import sharp, { type Metadata, type Sharp } from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
@@ -289,12 +289,15 @@ export class MemesService implements IMemesService {
             }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const png: Buffer = await sharp(input)
-                .resize({ width: 1024, withoutEnlargement: true, kernel: "cubic" })
-                .png({ compressionLevel: 2 })
-                .toBuffer();
+            const img: Sharp = sharp(input);
+            const resized: Sharp = img.resize({ width: 512, withoutEnlargement: true, kernel: "cubic" });
+            const meta: Metadata = await img.metadata();
 
-            const result: string = `data:image/png;base64,${png.toString("base64")}`;
+            const [buf, mime] = meta.hasAlpha
+                ? [await resized.png({ compressionLevel: 1 }).toBuffer(), "image/png"]
+                : [await resized.jpeg({ quality: 82 }).toBuffer(), "image/jpeg"];
+
+            const result = `data:${mime};base64,${buf.toString("base64")}`;
             await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
             return result;
         } catch (error) {

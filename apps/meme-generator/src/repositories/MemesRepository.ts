@@ -74,6 +74,8 @@ export class MemesRepository implements IMemesRepository {
             fitTo: { mode: "width", value: width },
             font: { loadSystemFonts: false },
             imageRendering: 1,
+            shapeRendering: 1,
+            textRendering: 0,
         });
 
         return sharp(rendered.pixels, {
