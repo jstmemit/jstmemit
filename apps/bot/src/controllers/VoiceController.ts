@@ -1,16 +1,21 @@
-import { type ChatInputCommandInteraction, MessageFlags } from "discord.js";
+import { type ChatInputCommandInteraction, InteractionContextType, MessageFlags } from "discord.js";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
 import { type IAudioMetadata, parseBuffer } from "music-metadata";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { respond } from "#/helpers/respond.ts";
+import { logger } from "#/container.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export class VoiceController implements IVoiceController {
     private readonly _voiceService: IVoiceService;
+    private readonly _componentsService: IComponentsService;
 
-    public constructor(voiceService: IVoiceService) {
+    public constructor(voiceService: IVoiceService, componentsService: IComponentsService) {
         this._voiceService = voiceService;
+        this._componentsService = componentsService;
     }
 
-    // TODO: add telemetry and remove console logs
     public async handleNarrateTextInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
         await interaction.deferReply();
 
@@ -18,19 +23,69 @@ export class VoiceController implements IVoiceController {
         const voice: string | null = interaction.options.getString("voice");
 
         if (!text) {
-            console.log("no text");
+            logger.emit({
+                severityText: "warn",
+                body: "voice.narrate_text.no_text_given",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction.guildId,
+                    locale: interaction.locale,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
+                    context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                    is_user_install: "1" in (interaction.authorizingIntegrationOwners || {}),
+                    deferred: interaction.deferred,
+                    replied: interaction.replied,
+                    voice,
+                },
+            });
+            await respond(interaction, [
+                this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+            ]);
             return;
         }
 
         const result: Buffer<ArrayBufferLike> | undefined = await this._voiceService.narrateText(text, voice);
 
         if (!result) {
-            console.log("no result");
+            logger.emit({
+                severityText: "warn",
+                body: "voice.narrate_text.failed_error_shown",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction.guildId,
+                    locale: interaction.locale,
+                    receive_latency_ms: Date.now() - interaction.createdTimestamp,
+                    context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                    is_user_install: "1" in (interaction.authorizingIntegrationOwners || {}),
+                    deferred: interaction.deferred,
+                    replied: interaction.replied,
+                    voice,
+                },
+            });
+            await respond(interaction, [
+                this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+            ]);
             return;
         }
 
         const metadata: IAudioMetadata = await parseBuffer(result);
         const duration: number = Math.round(metadata.format.duration || 1);
+
+        analytics.capture({
+            event: "text_narrated",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+                locale: interaction.locale,
+                receiveLatencyMs: Date.now() - interaction.createdTimestamp,
+                context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                voice,
+            },
+        });
 
         await interaction.followUp({
             files: [
