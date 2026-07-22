@@ -98,6 +98,7 @@ services:
 
   kokoro:
       image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.6.0
+      command: [ "python", "-m", "uvicorn", "api.src.main:app", "--host", "0.0.0.0", "--port", "8880", "--no-access-log" ]
       logging: *default-logging
       restart: unless-stopped
       environment:
