@@ -7,6 +7,8 @@ import type { Voice } from "@jstmemit/shared/models/Voice";
 import type { TextNarrationJob } from "@jstmemit/shared/models/TextNarrationJob";
 import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationResult";
 import { type Logger } from "@opentelemetry/api-logs";
+import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
+import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
@@ -23,8 +25,14 @@ export class VoiceService implements IVoiceService {
         this._logger = logger;
     }
 
-    public async convertSpeechToText(url: string): Promise<string> {
-        return this._cacheService.getOrSet(`transcribe:${url}`, (): Promise<string> => this._transcribe(url), ms("7d"));
+    public async convertSpeechToText(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
+        return {
+            text: await this._cacheService.getOrSet(
+                `transcribe:${data.url}`,
+                (): Promise<string> => this._transcribe(data.url),
+                ms("7d"),
+            ),
+        };
     }
 
     public async convertTextToSpeech(data: TextNarrationJob): Promise<TextNarrationResult> {

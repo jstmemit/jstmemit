@@ -28,7 +28,6 @@ import { FeedbackController } from "#/controllers/FeedbackController.ts";
 import { HelpController } from "#/controllers/HelpController.ts";
 import { VoiceController } from "#/controllers/VoiceController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
-import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 import { GifService } from "@jstmemit/images/services/GifService";
 import "@jstmemit/telemetry";
 import { type Logger, logs } from "@opentelemetry/api-logs";
@@ -37,6 +36,7 @@ import { cache } from "@jstmemit/cache";
 import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
 import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
 import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
+import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscription";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -54,6 +54,12 @@ container.register({
     textNarrationQueue: asValue(createTextNarrationQueue(redisConnection)),
     textNarrationQueueEvents: asValue(
         new QueueEvents("text-narration", {
+            connection: redisConnection,
+        }),
+    ),
+    voiceTranscriptionQueue: asValue(createVoiceTranscriptionQueue(redisConnection)),
+    voiceTranscriptionQueueEvents: asValue(
+        new QueueEvents("voice-transcription", {
             connection: redisConnection,
         }),
     ),
@@ -80,7 +86,6 @@ container.register({
     feedbackController: asClass(FeedbackController).singleton(),
     helpController: asClass(HelpController).singleton(),
     eventsController: asClass(EventsController).singleton(),
-    voiceService: asClass(VoiceService).singleton(),
     gifService: asClass(GifService).singleton(),
     cacheService: asClass(CacheService).singleton(),
     voiceController: asClass(VoiceController).singleton(),
