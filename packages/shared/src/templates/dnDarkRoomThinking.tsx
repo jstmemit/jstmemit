@@ -4,15 +4,15 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const ceLucyHacking1: Template = {
-    name: "ceLucyHacking1",
-    topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.defaultText, Type.avatarImage],
+export const dnDarkRoomThinking: Template = {
+    name: "dnDarkRoomThinking",
+    topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
+    types: [Type.textTopWithBackground],
     width: 640,
-    height: 572,
+    height: 750,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "user avatar" }],
-    element: ({ images }: TemplateProps) => (
+    images: [],
+    element: ({ texts }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -23,24 +23,10 @@ export const ceLucyHacking1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
+                src="https://files.wideunits.nl/jstmemit/images/templates/dnDarkRoomThinking.png"
                 width={640}
-                height={462}
+                height={640}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
-            />
-            <img
-                src={images[0]}
-                width={200}
-                height={200}
-                style={{
-                    position: "absolute",
-                    top: 300,
-                    left: 50,
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                    filter: "sepia(1) hue-rotate(330deg) saturate(3)",
-                    opacity: 0.6,
-                }}
             />
             <div
                 style={{
@@ -73,7 +59,7 @@ export const ceLucyHacking1: Template = {
                         color: "#000000",
                     }}
                 >
-                    I am rapidly uncovering your location
+                    {texts[0]}
                 </div>
             </div>
         </div>

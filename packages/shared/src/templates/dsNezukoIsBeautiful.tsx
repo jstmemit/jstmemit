@@ -4,15 +4,18 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const ceLucyHacking1: Template = {
-    name: "ceLucyHacking1",
-    topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.defaultText, Type.avatarImage],
-    width: 640,
-    height: 572,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "user avatar" }],
-    element: ({ images }: TemplateProps) => (
+export const dsNezukoIsBeautiful: Template = {
+    name: "dsNezukoIsBeautiful",
+    topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
+    types: [Type.faceImage, Type.textTopWithBackground],
+    width: 1710,
+    height: 1105,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
+    images: [
+        { id: 0, description: "Tanjiro's face" },
+        { id: 1, description: "Nezuko's face" },
+    ],
+    element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -23,24 +26,22 @@ export const ceLucyHacking1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
-                width={640}
-                height={462}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                src="https://files.wideunits.nl/jstmemit/images/templates/dsNezukoIsBeautiful.png"
+                width={1710}
+                height={855}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={200}
-                height={200}
-                style={{
-                    position: "absolute",
-                    top: 300,
-                    left: 50,
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                    filter: "sepia(1) hue-rotate(330deg) saturate(3)",
-                    opacity: 0.6,
-                }}
+                width={600}
+                height={600}
+                style={{ position: "absolute", top: 400, left: 150, borderRadius: "100%", objectFit: "cover" }}
+            />
+            <img
+                src={images[1]}
+                width={400}
+                height={400}
+                style={{ position: "absolute", top: 400, right: 150, borderRadius: "100%", objectFit: "cover" }}
             />
             <div
                 style={{
@@ -48,7 +49,7 @@ export const ceLucyHacking1: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "250px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
@@ -67,13 +68,13 @@ export const ceLucyHacking1: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 40,
+                        fontSize: 80,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
                         color: "#000000",
                     }}
                 >
-                    I am rapidly uncovering your location
+                    {texts[0]}
                 </div>
             </div>
         </div>
