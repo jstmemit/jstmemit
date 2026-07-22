@@ -31,12 +31,14 @@ export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGeneration
 );
 
 memeGenerationWorker.on("failed", (job, error) => {
-    analytics.captureException(error, job?.data.userId, {
-        channelId: job?.data.channelId,
-        trigger: job?.data.trigger,
-        templateName: job?.data.templateName,
-        unrecoverable: error instanceof UnrecoverableError,
-    });
+    if (error.message !== "No props") {
+        analytics.captureException(error, job?.data.userId, {
+            channelId: job?.data.channelId,
+            trigger: job?.data.trigger,
+            templateName: job?.data.templateName,
+            unrecoverable: error instanceof UnrecoverableError,
+        });
+    }
 });
 
 export const banditDecayWorker = new Worker("bandit-decay", async () => banditRepository.decayAll(0.99), {
