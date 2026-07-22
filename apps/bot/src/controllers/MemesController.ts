@@ -30,7 +30,7 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
-import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
+import type { IVoiceService } from "@jstmemit/voice/interfaces/IVoiceService";
 import { logger } from "#/container.ts";
 import { analytics } from "@jstmemit/analytics";
 

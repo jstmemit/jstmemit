@@ -1,6 +1,6 @@
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
-import type { IVoiceService } from "#/interface/IVoiceService.ts";
+import type { IVoiceService } from "#/interfaces/IVoiceService.ts";
 import "@jstmemit/telemetry";
 import ms from "ms";
 import type { Voice } from "@jstmemit/shared/models/Voice";

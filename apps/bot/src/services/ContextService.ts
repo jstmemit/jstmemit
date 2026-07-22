@@ -3,7 +3,7 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
-import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
+import type { IVoiceService } from "@jstmemit/voice/interfaces/IVoiceService";
 import type { IGifService } from "@jstmemit/images/interfaces/IGifService";
 
 export class ContextService implements IContextService {

@@ -2,7 +2,7 @@ import { Env } from "@jstmemit/shared/schemas/Env";
 import type { ConnectionOptions } from "bullmq";
 import { createRedisConnection } from "@jstmemit/queue/connection";
 import { cache } from "@jstmemit/cache";
-import type { IVoiceService } from "#/interface/IVoiceService.ts";
+import type { IVoiceService } from "#/interfaces/IVoiceService.ts";
 import { VoiceService } from "#/services/VoiceService.ts";
 import { asClass, asValue, type AwilixContainer, createContainer, InjectionMode } from "awilix";
 import { type Logger, logs } from "@opentelemetry/api-logs";
