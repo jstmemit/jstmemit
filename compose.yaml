@@ -106,7 +106,7 @@ services:
           - ONNX_EXECUTION_MODE=parallel
           - ONNX_OPTIMIZATION_LEVEL=all
           - ONNX_MEMORY_PATTERN=true
-          - API_LOG_LEVEL=INFO
+          - API_LOG_LEVEL=ERROR
           - DOWNLOAD_MODEL=true
       deploy:
           resources:

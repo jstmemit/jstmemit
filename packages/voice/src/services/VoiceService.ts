@@ -32,7 +32,7 @@ export class VoiceService implements IVoiceService {
                 model: "kokoro",
                 input: text,
                 voice,
-                response_format: "mp3",
+                response_format: "opus",
                 download_format: "mp3",
                 speed: 1,
                 return_download_link: false,

@@ -8,8 +8,8 @@
     },
     "dependencies": {
         "@jstmemit/analytics": "workspace:*",
-        "@jstmemit/cache": "workspace:*",
         "@jstmemit/bandit": "workspace:*",
+        "@jstmemit/cache": "workspace:*",
         "@jstmemit/db": "workspace:*",
         "@jstmemit/i18n": "workspace:*",
         "@jstmemit/images": "workspace:*",
@@ -28,6 +28,7 @@
         "discord.js": "^14.27.0",
         "dotenv": "^17.4.2",
         "lodash": "^4.18.1",
+        "music-metadata": "^11.14.0",
         "topgg-autoposter": "^2.0.2",
         "zod": "^4.4.3"
     },
