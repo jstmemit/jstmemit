@@ -163,22 +163,23 @@ export class MemesService implements IMemesService {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
 
-        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
-            `context:channel:${channelId}`,
-            (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
-            ms("1m"),
-        );
-
-        const channelTexts: string[] = await this._cacheService.getOrSet(
-            `context:texts:${channelId}`,
-            (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
-            ms("1m"),
-        );
-        const channelImages: string[] = await this._cacheService.getOrSet(
-            `context:images:${channelId}`,
-            (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
-            ms("1m"),
-        );
+        const [channel, channelTexts, channelImages] = await Promise.all([
+            this._cacheService.getOrSet(
+                `context:channel:${channelId}`,
+                (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
+                ms("1m"),
+            ),
+            this._cacheService.getOrSet(
+                `context:texts:${channelId}`,
+                (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
+                ms("1m"),
+            ),
+            this._cacheService.getOrSet(
+                `context:images:${channelId}`,
+                (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
+                ms("1m"),
+            ),
+        ]);
 
         if (channel && channel?.useAvatarsInMemes) {
             const channelAvatars: string[] = await this._cacheService.getOrSet(
