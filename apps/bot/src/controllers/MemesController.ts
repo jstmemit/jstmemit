@@ -30,38 +30,42 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
-import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
 import { logger } from "#/container.ts";
 import { analytics } from "@jstmemit/analytics";
+import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
+import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
     private readonly _memeGenerationQueueEvents: QueueEvents;
+    private readonly _voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>;
+    private readonly _voiceTranscriptionQueueEvents: QueueEvents;
     private readonly _ratingsService: IRatingsService;
     private readonly _componentsService: IComponentsService;
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
-    private readonly _voiceService: IVoiceService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
         memeGenerationQueueEvents: QueueEvents,
+        voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>,
+        voiceTranscriptionQueueEvents: QueueEvents,
         ratingsService: IRatingsService,
         componentsService: IComponentsService,
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
-        voiceService: IVoiceService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
+        this._voiceTranscriptionQueue = voiceTranscriptionQueue;
+        this._voiceTranscriptionQueueEvents = voiceTranscriptionQueueEvents;
         this._ratingsService = ratingsService;
         this._componentsService = componentsService;
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
-        this._voiceService = voiceService;
     }
 
     /**
@@ -434,7 +438,11 @@ export class MemesController implements IMemesController {
                         ...this._getTelemetryProperties(interaction),
                     },
                 });
-                message.content = await this._voiceService.convertSpeechToText(voiceMessage);
+                const result: VoiceTranscriptionResult = await this._addVoiceTranscriptionJob({
+                    url: voiceMessage,
+                    channelId: interaction.channelId,
+                });
+                message.content = result.text;
             }
 
             if (first && !second) {
@@ -618,5 +626,23 @@ export class MemesController implements IMemesController {
         });
 
         return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+    }
+
+    private async _addVoiceTranscriptionJob(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
+        const job: Job<VoiceTranscriptionJob, VoiceTranscriptionResult> = await this._voiceTranscriptionQueue.add(
+            "voice-transcription",
+            data,
+        );
+
+        logger.emit({
+            severityText: "debug",
+            body: "voice.speech_to_text.job.added",
+            attributes: {
+                job_id: job.id,
+                channel_id: data.channelId,
+            },
+        });
+
+        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, 60000);
     }
 }

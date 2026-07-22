@@ -26,13 +26,17 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import { ModalsService } from "#/services/ModalsService.ts";
 import { FeedbackController } from "#/controllers/FeedbackController.ts";
 import { HelpController } from "#/controllers/HelpController.ts";
+import { VoiceController } from "#/controllers/VoiceController.ts";
 import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
-import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 import { GifService } from "@jstmemit/images/services/GifService";
 import "@jstmemit/telemetry";
 import { type Logger, logs } from "@opentelemetry/api-logs";
 import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
+import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
+import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
+import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
+import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscription";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -47,7 +51,20 @@ container.register({
         }),
     ),
     memeGenerationQueue: asValue(createMemeGenerationQueue(redisConnection)),
+    textNarrationQueue: asValue(createTextNarrationQueue(redisConnection)),
+    textNarrationQueueEvents: asValue(
+        new QueueEvents("text-narration", {
+            connection: redisConnection,
+        }),
+    ),
+    voiceTranscriptionQueue: asValue(createVoiceTranscriptionQueue(redisConnection)),
+    voiceTranscriptionQueueEvents: asValue(
+        new QueueEvents("voice-transcription", {
+            connection: redisConnection,
+        }),
+    ),
     keyv: asValue(cache),
+    logger: asValue(logs.getLogger("jstmemit/bot")),
     messagesRepository: asClass(MessagesRepository).singleton(),
     componentsService: asClass(ComponentsService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
@@ -69,11 +86,13 @@ container.register({
     feedbackController: asClass(FeedbackController).singleton(),
     helpController: asClass(HelpController).singleton(),
     eventsController: asClass(EventsController).singleton(),
-    voiceService: asClass(VoiceService).singleton(),
     gifService: asClass(GifService).singleton(),
     cacheService: asClass(CacheService).singleton(),
+    voiceController: asClass(VoiceController).singleton(),
+    voicesRepository: asClass(VoicesRepository).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
-export const logger: Logger = logs.getLogger("jstmemit/bot");
+export const voicesRepository: IVoicesRepository = container.resolve<IVoicesRepository>("voicesRepository");
+export const logger: Logger = container.resolve<Logger>("logger");

@@ -4,12 +4,12 @@
     "type": "module",
     "scripts": {
         "start": "tsx src/index.ts",
-        "register": "node src/register.ts"
+        "register": "tsx --env-file=../../.env src/register.ts"
     },
     "dependencies": {
         "@jstmemit/analytics": "workspace:*",
-        "@jstmemit/cache": "workspace:*",
         "@jstmemit/bandit": "workspace:*",
+        "@jstmemit/cache": "workspace:*",
         "@jstmemit/db": "workspace:*",
         "@jstmemit/i18n": "workspace:*",
         "@jstmemit/images": "workspace:*",
@@ -17,7 +17,6 @@
         "@jstmemit/queue": "workspace:*",
         "@jstmemit/shared": "workspace:*",
         "@jstmemit/telemetry": "workspace:*",
-        "@jstmemit/voice": "workspace:*",
         "@opentelemetry/api-logs": "^0.220.0",
         "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.9.0",
@@ -28,6 +27,7 @@
         "discord.js": "^14.27.0",
         "dotenv": "^17.4.2",
         "lodash": "^4.18.1",
+        "music-metadata": "^11.14.0",
         "topgg-autoposter": "^2.0.2",
         "zod": "^4.4.3"
     },

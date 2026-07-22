@@ -3,26 +3,32 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import type { Attachment, Collection } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
-import type { IVoiceService } from "@jstmemit/voice/interface/IVoiceService";
 import type { IGifService } from "@jstmemit/images/interfaces/IGifService";
+import type { Job, Queue, QueueEvents } from "bullmq";
+import { logger } from "#/container.ts";
+import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
+import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
-    private readonly _voiceService: IVoiceService;
     private readonly _gifService: IGifService;
+    private readonly _voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>;
+    private readonly _voiceTranscriptionQueueEvents: QueueEvents;
 
     public constructor(
         messagesRepository: IMessagesRepository,
         imagesRepository: IImagesRepository,
-        voiceService: IVoiceService,
         gifService: IGifService,
+        voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>,
+        voiceTranscriptionQueueEvents: QueueEvents,
     ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
-        this._voiceService = voiceService;
         this._gifService = gifService;
+        this._voiceTranscriptionQueue = voiceTranscriptionQueue;
+        this._voiceTranscriptionQueueEvents = voiceTranscriptionQueueEvents;
     }
 
     /**
@@ -50,12 +56,12 @@ export class ContextService implements IContextService {
      * @author Kyrylo Maliuha
      */
     public async saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<void> {
-        await this._messagesRepository.new(
-            messageId,
+        const result: VoiceTranscriptionResult = await this._addVoiceTranscriptionJob({
+            url: audio,
             channelId,
-            await this._voiceService.convertSpeechToText(audio),
-            new Date(),
-        );
+        });
+
+        await this._messagesRepository.new(messageId, channelId, result.text, new Date());
     }
 
     /**
@@ -148,5 +154,23 @@ export class ContextService implements IContextService {
 
             return new Date(Date.now() + this._expiration);
         }
+    }
+
+    private async _addVoiceTranscriptionJob(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
+        const job: Job<VoiceTranscriptionJob, VoiceTranscriptionResult> = await this._voiceTranscriptionQueue.add(
+            "voice-transcription",
+            data,
+        );
+
+        logger.emit({
+            severityText: "debug",
+            body: "voice.speech_to_text.job.added",
+            attributes: {
+                job_id: job.id,
+                channel_id: data.channelId,
+            },
+        });
+
+        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, 60000);
     }
 }
