@@ -30,16 +30,15 @@ export const ceLucyHacking1: Template = {
             />
             <img
                 src={images[0]}
-                width={250}
-                height={250}
+                width={200}
+                height={200}
                 style={{
                     position: "absolute",
-                    top: 200,
+                    top: 300,
                     left: 50,
                     borderRadius: "100%",
                     objectFit: "cover",
-                    backgroundColor: "red",
-                    transform: "scaleY(0.8) rotate(10deg)",
+                    filter: "sepia(1) hue-rotate(330deg) saturate(3)",
                     opacity: 0.6,
                 }}
             />
