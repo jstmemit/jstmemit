@@ -266,7 +266,10 @@ export class MemesService implements IMemesService {
                 return cached;
             }
 
-            const res: Response = await fetch(url, { headers: { Accept: "image/*" } });
+            const res: Response = await fetch(url, {
+                headers: { Accept: "image/*" },
+                signal: AbortSignal.timeout(1500),
+            });
 
             if (!res.ok) {
                 logger.emit({
