@@ -145,7 +145,7 @@ export class MemesController implements IMemesController {
                     files: [
                         {
                             attachment: Buffer.from(jobResult.png, "base64"),
-                            name: "meme.png",
+                            name: "meme.webp",
                         },
                     ],
                 });
@@ -161,7 +161,7 @@ export class MemesController implements IMemesController {
                     files: [
                         {
                             attachment: Buffer.from(jobResult.png, "base64"),
-                            name: "meme.png",
+                            name: "meme.webp",
                         },
                     ],
                 });
@@ -266,7 +266,7 @@ export class MemesController implements IMemesController {
                 files: [
                     {
                         attachment: Buffer.from(jobResult.png, "base64"),
-                        name: "meme.png",
+                        name: "meme.webp",
                     },
                 ],
             });
@@ -324,7 +324,7 @@ export class MemesController implements IMemesController {
                 files: [
                     {
                         attachment: Buffer.from(jobResult.png, "base64"),
-                        name: "meme.png",
+                        name: "meme.webp",
                     },
                 ],
             });
