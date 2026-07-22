@@ -111,6 +111,10 @@ export class MemesController implements IMemesController {
         }
 
         if (!channel?.enabled) {
+            if (!(interaction instanceof Message)) {
+                await interaction.deferReply();
+            }
+
             logger.emit({
                 severityText: "warn",
                 body: "generate_meme.channel.not_enabled",
