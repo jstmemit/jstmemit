@@ -34,6 +34,7 @@ import { logger } from "#/container.ts";
 import { analytics } from "@jstmemit/analytics";
 import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
+import { timeout } from "#/helpers/timeout.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -104,14 +105,9 @@ export class MemesController implements IMemesController {
         let locale: Locale = Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
-        const job = this._addGenerateMemeJob({ channelId, userId, trigger });
 
         if (!(interaction instanceof Message)) {
             locale = interaction.locale;
-        }
-
-        if (!(interaction instanceof Message)) {
-            await interaction.deferReply();
         }
 
         if (!channel?.enabled) {
@@ -136,10 +132,11 @@ export class MemesController implements IMemesController {
         }
 
         try {
-            const jobResult: MemeGenerationResult = await job;
+            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({ channelId, userId, trigger });
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
+                const jobResult: MemeGenerationResult = await job;
                 await interaction.reply({
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
                     files: [
@@ -153,8 +150,24 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            // if bot sent the meme because of /meme or regenerate button
-            if (interaction.isChatInputCommand() || interaction.isButton()) {
+            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(2000)]);
+
+            if (fastResult) {
+                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms
+                await interaction.reply({
+                    content: `<@${interaction.user.id}>`,
+                    components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
+                    files: [
+                        {
+                            attachment: Buffer.from(fastResult.png, "base64"),
+                            name: "meme.webp",
+                        },
+                    ],
+                });
+            } else {
+                await interaction.deferReply();
+                const jobResult: MemeGenerationResult = await job;
+
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
