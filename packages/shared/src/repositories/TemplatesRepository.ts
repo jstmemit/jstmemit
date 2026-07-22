@@ -213,6 +213,33 @@ import { ditfZeroTwoWhatever1 } from "#/templates/ditfZeroTwoWhatever1.tsx";
 import { ditfTheTwoSidesOfZeroTwo } from "#/templates/ditfTheTwoSidesOfZeroTwo.tsx";
 import { ceLucyHacking1 } from "#/templates/ceLucyHacking1.tsx";
 import { wnlFuminoRealization1 } from "#/templates/wnlFuminoRealization1.tsx";
+import { ditfZeroTwoHuggingPaper } from "#/templates/ditfZeroTwoHuggingPaper.tsx";
+import { dnDarkRoomThinking } from "#/templates/dnDarkRoomThinking.tsx";
+import { dnLSmile } from "#/templates/dnLSmile.tsx";
+import { dnLSmirkFinger } from "#/templates/dnLSmirkFinger.tsx";
+import { dnLStaring } from "#/templates/dnLStaring.tsx";
+import { dnLTwoFaces } from "#/templates/dnLTwoFaces.tsx";
+import { dsFreeHugsVsDeluxeHugs } from "#/templates/dsFreeHugsVsDeluxeHugs.tsx";
+import { dsGenyaHospitalBed } from "#/templates/dsGenyaHospitalBed.tsx";
+import { dsGiyuTomiokaDeadpan } from "#/templates/dsGiyuTomiokaDeadpan.tsx";
+import { dsNezukoIsBeautiful } from "#/templates/dsNezukoIsBeautiful.tsx";
+import { dsTanjiroChibiAngry } from "#/templates/dsTanjiroChibiAngry.tsx";
+import { dsTanjiroHappyChibi } from "#/templates/dsTanjiroHappyChibi.tsx";
+import { dsTanjiroLookingAtPhone } from "#/templates/dsTanjiroLookingAtPhone.tsx";
+import { dsTanjiroSumiko } from "#/templates/dsTanjiroSumiko.tsx";
+import { evangelionAsukaLangleyDisappointedLook } from "#/templates/evangelionAsukaLangleyDisappointedLook.tsx";
+import { evangelionShinjiCalmVsPanic } from "#/templates/evangelionShinjiCalmVsPanic.tsx";
+import { evangelionShinjiIkariChairDepression } from "#/templates/evangelionShinjiIkariChairDepression.tsx";
+import { evangelionShinjiIkariListeningToMusic } from "#/templates/evangelionShinjiIkariListeningToMusic.tsx";
+import { evangelionShinjiIkariMentalBreakdown } from "#/templates/evangelionShinjiIkariMentalBreakdown.tsx";
+import { evangelionShinjiIkariPanicAttack } from "#/templates/evangelionShinjiIkariPanicAttack.tsx";
+import { evangelionShinjiSeriousFace } from "#/templates/evangelionShinjiSeriousFace.tsx";
+import { frierenBlowingKiss } from "#/templates/frierenBlowingKiss.tsx";
+import { frierenBlowingKissChuu } from "#/templates/frierenBlowingKissChuu.tsx";
+import { frierenBlowingKissToFlamme } from "#/templates/frierenBlowingKissToFlamme.tsx";
+import { frierenFlammeShowingSerieDrawing } from "#/templates/frierenFlammeShowingSerieDrawing.tsx";
+import { frierenInspiration } from "#/templates/frierenInspiration.tsx";
+import { frierenLiftedUp } from "#/templates/frierenLiftedUp.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -447,6 +474,33 @@ export class TemplatesRepository implements ITemplatesRepository {
             ditfTheTwoSidesOfZeroTwo,
             ceLucyHacking1,
             wnlFuminoRealization1,
+            ditfZeroTwoHuggingPaper,
+            dnDarkRoomThinking,
+            dnLSmile,
+            dnLSmirkFinger,
+            dnLStaring,
+            dnLTwoFaces,
+            dsFreeHugsVsDeluxeHugs,
+            dsGenyaHospitalBed,
+            dsGiyuTomiokaDeadpan,
+            dsNezukoIsBeautiful,
+            dsTanjiroChibiAngry,
+            dsTanjiroHappyChibi,
+            dsTanjiroLookingAtPhone,
+            dsTanjiroSumiko,
+            evangelionAsukaLangleyDisappointedLook,
+            evangelionShinjiCalmVsPanic,
+            evangelionShinjiIkariChairDepression,
+            evangelionShinjiIkariListeningToMusic,
+            evangelionShinjiIkariMentalBreakdown,
+            evangelionShinjiIkariPanicAttack,
+            evangelionShinjiSeriousFace,
+            frierenBlowingKiss,
+            frierenBlowingKissChuu,
+            frierenBlowingKissToFlamme,
+            frierenFlammeShowingSerieDrawing,
+            frierenInspiration,
+            frierenLiftedUp,
         ];
     }
 
