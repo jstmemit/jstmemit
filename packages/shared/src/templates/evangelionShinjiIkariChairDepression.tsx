@@ -4,15 +4,15 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const ceLucyHacking1: Template = {
-    name: "ceLucyHacking1",
-    topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.defaultText, Type.avatarImage],
-    width: 640,
-    height: 572,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "user avatar" }],
-    element: ({ images }: TemplateProps) => (
+export const evangelionShinjiIkariChairDepression: Template = {
+    name: "evangelionShinjiIkariChairDepression",
+    topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
+    types: [Type.textTopWithBackground],
+    width: 604,
+    height: 563,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    images: [],
+    element: ({ texts }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -23,24 +23,10 @@ export const ceLucyHacking1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
-                width={640}
-                height={462}
+                src="https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiIkariChairDepression.png"
+                width={604}
+                height={453}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
-            />
-            <img
-                src={images[0]}
-                width={200}
-                height={200}
-                style={{
-                    position: "absolute",
-                    top: 300,
-                    left: 50,
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                    filter: "sepia(1) hue-rotate(330deg) saturate(3)",
-                    opacity: 0.6,
-                }}
             />
             <div
                 style={{
@@ -55,7 +41,7 @@ export const ceLucyHacking1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "white",
+                    backgroundColor: "black",
                 }}
             >
                 <div
@@ -67,13 +53,13 @@ export const ceLucyHacking1: Template = {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 40,
+                        fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
-                        color: "#000000",
+                        color: "#ffffff",
                     }}
                 >
-                    I am rapidly uncovering your location
+                    {texts[0]}
                 </div>
             </div>
         </div>
