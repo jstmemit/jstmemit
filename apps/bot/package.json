@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "start": "tsx src/index.ts",
-        "register": "node src/register.ts"
+        "register": "tsx --env-file=../../.env src/register.ts"
     },
     "dependencies": {
         "@jstmemit/analytics": "workspace:*",

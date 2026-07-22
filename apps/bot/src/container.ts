@@ -34,6 +34,8 @@ import "@jstmemit/telemetry";
 import { type Logger, logs } from "@opentelemetry/api-logs";
 import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
+import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
+import type { IVoiceRepository } from "@jstmemit/shared/interfaces/IVoiceRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -74,8 +76,10 @@ container.register({
     gifService: asClass(GifService).singleton(),
     cacheService: asClass(CacheService).singleton(),
     voiceController: asClass(VoiceController).singleton(),
+    voiceRepository: asClass(VoicesRepository).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
+export const voiceRepository: IVoiceRepository = container.resolve<IVoiceRepository>("voiceRepository");
 export const logger: Logger = logs.getLogger("jstmemit/bot");

@@ -1,3 +1,6 @@
+import { voiceRepository } from "#/container.ts";
+import type { Voice } from "@jstmemit/shared/models/Voice";
+
 export const commands = [
     {
         name: "meme",
@@ -214,6 +217,18 @@ export const commands = [
                 description: "Text to narrate",
                 required: true,
                 max_length: 1500,
+            },
+            {
+                type: 3,
+                name: "voice",
+                description: "Choose what voice you want to use",
+                required: false,
+                choices: voiceRepository.getAllVoices().map((voice: Voice) => {
+                    return {
+                        name: voice.name,
+                        value: voice.id,
+                    };
+                }),
             },
         ],
     },
