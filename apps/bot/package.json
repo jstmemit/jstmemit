@@ -17,7 +17,6 @@
         "@jstmemit/queue": "workspace:*",
         "@jstmemit/shared": "workspace:*",
         "@jstmemit/telemetry": "workspace:*",
-        "@jstmemit/voice": "workspace:*",
         "@opentelemetry/api-logs": "^0.220.0",
         "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.9.0",

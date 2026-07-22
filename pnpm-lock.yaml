@@ -271,9 +271,6 @@ importers:
       '@jstmemit/telemetry':
         specifier: workspace:*
         version: link:../../packages/telemetry
-      '@jstmemit/voice':
-        specifier: workspace:*
-        version: link:../voice
       '@opentelemetry/api-logs':
         specifier: ^0.220.0
         version: 0.220.0
