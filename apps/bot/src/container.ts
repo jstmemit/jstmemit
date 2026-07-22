@@ -31,6 +31,8 @@ import { VoiceService } from "@jstmemit/voice/services/VoiceService";
 import { GifService } from "@jstmemit/images/services/GifService";
 import "@jstmemit/telemetry";
 import { type Logger, logs } from "@opentelemetry/api-logs";
+import { CacheService } from "@jstmemit/cache/services/CacheService";
+import { cache } from "@jstmemit/cache";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -45,6 +47,7 @@ container.register({
         }),
     ),
     memeGenerationQueue: asValue(createMemeGenerationQueue(redisConnection)),
+    keyv: asValue(cache),
     messagesRepository: asClass(MessagesRepository).singleton(),
     componentsService: asClass(ComponentsService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
@@ -68,6 +71,7 @@ container.register({
     eventsController: asClass(EventsController).singleton(),
     voiceService: asClass(VoiceService).singleton(),
     gifService: asClass(GifService).singleton(),
+    cacheService: asClass(CacheService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
