@@ -1,43 +1,45 @@
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
 import type { IVoiceService } from "#/interface/IVoiceService.ts";
 import { type Logger, logs } from "@opentelemetry/api-logs";
 import "@jstmemit/telemetry";
 import ms from "ms";
+import type { Voice } from "@jstmemit/shared/models/Voice";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
     private readonly _kokoroUrl: string;
     private readonly _logger: Logger = logs.getLogger("jstmemit/voice");
     private readonly _cacheService: ICacheService;
+    private readonly _voicesRepository: IVoicesRepository;
 
-    public constructor(cacheService: ICacheService) {
+    public constructor(cacheService: ICacheService, voicesRepository: IVoicesRepository) {
         this._whisperUrl = "http://whisper:9000/v1/audio";
         this._kokoroUrl = "http://kokoro:8880/v1/audio";
         this._cacheService = cacheService;
+        this._voicesRepository = voicesRepository;
     }
 
     public async convertSpeechToText(url: string): Promise<string> {
         return this._cacheService.getOrSet(`transcribe:${url}`, (): Promise<string> => this._transcribe(url), ms("7d"));
     }
 
-    public async narrateText(
-        text: string,
-        locale: string = "a",
-        voice: string = "af_sky",
-    ): Promise<Buffer | undefined> {
+    public async narrateText(text: string, voiceId: string = "af_sky"): Promise<Buffer | undefined> {
+        const voice: Voice | undefined = this._voicesRepository.getVoiceById(voiceId);
+
         const response: Response = await fetch(`${this._kokoroUrl}/speech`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 model: "kokoro",
                 input: text,
-                voice,
+                voice: voice?.id,
                 response_format: "opus",
                 download_format: "mp3",
                 speed: 1,
                 return_download_link: false,
                 volume_multiplier: 1,
-                lang_code: locale,
+                lang_code: voice?.locale,
                 normalization_options: {
                     normalize: true,
                     unit_normalization: false,

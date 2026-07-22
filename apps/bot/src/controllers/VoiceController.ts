@@ -15,13 +15,14 @@ export class VoiceController implements IVoiceController {
         await interaction.deferReply();
 
         const text: string | null = interaction.options.getString("text");
+        const voice: string | null = interaction.options.getString("voice");
 
         if (!text) {
             console.log("no text");
             return;
         }
 
-        const result: Buffer<ArrayBufferLike> | undefined = await this._voiceService.narrateText(text);
+        const result: Buffer<ArrayBufferLike> | undefined = await this._voiceService.narrateText(text, voice);
 
         if (!result) {
             console.log("no result");

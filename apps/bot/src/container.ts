@@ -76,10 +76,10 @@ container.register({
     gifService: asClass(GifService).singleton(),
     cacheService: asClass(CacheService).singleton(),
     voiceController: asClass(VoiceController).singleton(),
-    voiceRepository: asClass(VoicesRepository).singleton(),
+    voicesRepository: asClass(VoicesRepository).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
-export const voicesRepository: IVoicesRepository = container.resolve<IVoicesRepository>("voiceRepository");
+export const voicesRepository: IVoicesRepository = container.resolve<IVoicesRepository>("voicesRepository");
 export const logger: Logger = logs.getLogger("jstmemit/bot");

@@ -35,4 +35,8 @@ export class VoicesRepository implements IVoicesRepository {
     public getAllVoices(): Voice[] {
         return [...this._voices];
     }
+
+    public getVoiceById(id: string): Voice | undefined {
+        return this._voices.filter((voice: Voice): boolean => voice.id === id)[0];
+    }
 }
