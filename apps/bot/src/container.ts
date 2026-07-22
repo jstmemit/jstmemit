@@ -36,6 +36,7 @@ import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
 import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
 import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
+import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -50,7 +51,14 @@ container.register({
         }),
     ),
     memeGenerationQueue: asValue(createMemeGenerationQueue(redisConnection)),
+    textNarrationQueue: asValue(createTextNarrationQueue(redisConnection)),
+    textNarrationQueueEvents: asValue(
+        new QueueEvents("text-narration", {
+            connection: redisConnection,
+        }),
+    ),
     keyv: asValue(cache),
+    logger: asValue(logs.getLogger("jstmemit/bot")),
     messagesRepository: asClass(MessagesRepository).singleton(),
     componentsService: asClass(ComponentsService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
@@ -82,4 +90,4 @@ container.register({
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
 export const voicesRepository: IVoicesRepository = container.resolve<IVoicesRepository>("voicesRepository");
-export const logger: Logger = logs.getLogger("jstmemit/bot");
+export const logger: Logger = container.resolve<Logger>("logger");

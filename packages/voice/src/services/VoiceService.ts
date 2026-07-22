@@ -1,30 +1,43 @@
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
 import type { IVoiceService } from "#/interface/IVoiceService.ts";
-import { type Logger, logs } from "@opentelemetry/api-logs";
 import "@jstmemit/telemetry";
 import ms from "ms";
 import type { Voice } from "@jstmemit/shared/models/Voice";
+import type { TextNarrationJob } from "@jstmemit/shared/models/TextNarrationJob";
+import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationResult";
+import { type Logger } from "@opentelemetry/api-logs";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
     private readonly _kokoroUrl: string;
-    private readonly _logger: Logger = logs.getLogger("jstmemit/voice");
+    private readonly _logger: Logger;
     private readonly _cacheService: ICacheService;
     private readonly _voicesRepository: IVoicesRepository;
 
-    public constructor(cacheService: ICacheService, voicesRepository: IVoicesRepository) {
+    public constructor(cacheService: ICacheService, voicesRepository: IVoicesRepository, logger: Logger) {
         this._whisperUrl = "http://whisper:9000/v1/audio";
         this._kokoroUrl = "http://kokoro:8880/v1/audio";
         this._cacheService = cacheService;
         this._voicesRepository = voicesRepository;
+        this._logger = logger;
     }
 
     public async convertSpeechToText(url: string): Promise<string> {
         return this._cacheService.getOrSet(`transcribe:${url}`, (): Promise<string> => this._transcribe(url), ms("7d"));
     }
 
-    public async narrateText(text: string, voiceId: string = "af_sky"): Promise<Buffer | undefined> {
+    public async convertTextToSpeech(data: TextNarrationJob): Promise<TextNarrationResult> {
+        if (!data.voiceId) {
+            data.voiceId = "af_sky";
+        }
+
+        return {
+            audio: await this._narrateText(data.text, data.voiceId),
+        };
+    }
+
+    private async _narrateText(text: string, voiceId: string): Promise<Buffer | undefined> {
         const voice: Voice | undefined = this._voicesRepository.getVoiceById(voiceId);
 
         const response: Response = await fetch(`${this._kokoroUrl}/speech`, {
