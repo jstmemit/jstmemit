@@ -1,4 +1,4 @@
-import { Worker } from "bullmq";
+import { UnrecoverableError, Worker } from "bullmq";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
 import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import {
@@ -14,7 +14,16 @@ import { addWorkerTelemetry } from "@jstmemit/telemetry/helpers/addWorkerTelemet
 
 export const memeGenerationWorker = new Worker<MemeGenerationJob, MemeGenerationResult>(
     "meme-generation",
-    async (job) => memesService.generateMeme(job.data),
+    async (job) => {
+        try {
+            return await memesService.generateMeme(job.data);
+        } catch (error) {
+            if (error instanceof Error && (error.message === "No props" || error.message === "No template")) {
+                throw new UnrecoverableError(error.message);
+            }
+            throw error;
+        }
+    },
     {
         connection: redisConnection,
         concurrency: 5,
@@ -26,6 +35,7 @@ memeGenerationWorker.on("failed", (job, error) => {
         channelId: job?.data.channelId,
         trigger: job?.data.trigger,
         templateName: job?.data.templateName,
+        unrecoverable: error instanceof UnrecoverableError,
     });
 });
 
