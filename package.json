@@ -9,7 +9,7 @@
         "db:generate": "cd packages/db && pnpm drizzle-kit generate",
         "db:migrate": "cd packages/db && pnpm drizzle-kit migrate",
         "meme-generator:start": "cd apps/meme-generator && pnpm start",
-        "voice:start": "cd packages/voice && pnpm start",
+        "voice:start": "cd apps/voice && pnpm start",
         "website:dev": "cd apps/website && pnpm run dev",
         "website:build": "cd apps/website && pnpm run build",
         "website:run-build": "node ./apps/website/dist/server/entry.mjs",

@@ -6,6 +6,7 @@ WORKDIR /app
 
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY packages ./packages
+COPY apps/voice ./apps/voice
 
 RUN pnpm install --frozen-lockfile --filter @jstmemit/voice...
 

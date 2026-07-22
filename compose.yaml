@@ -90,7 +90,7 @@ services:
       logging: *default-logging
       build:
           context: .
-          dockerfile: packages/voice/Dockerfile
+          dockerfile: apps/voice/Dockerfile
       env_file:
           - ".env.docker"
       restart: unless-stopped
