@@ -1,19 +1,22 @@
 import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
+import { renderAsync } from "@resvg/resvg-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
 import { analytics } from "@jstmemit/analytics";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import ms from "ms";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _twemojiBaseUrl: string;
-    private readonly _emojis: Map<string, string> = new Map();
     private readonly _fontsService: IFontsService;
+    private readonly _cacheService: ICacheService;
 
-    public constructor(fontsService: IFontsService) {
+    public constructor(fontsService: IFontsService, cacheService: ICacheService) {
         this._twemojiBaseUrl = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg";
         this._fontsService = fontsService;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -27,13 +30,22 @@ export class MemesRepository implements IMemesRepository {
      */
     public async generateMeme(template: Template, props: TemplateProps): Promise<string | undefined> {
         try {
+            const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
+
             return await satori(template.element(props), {
                 width: template.width,
                 height: template.height,
-                fonts: this._fontsService.getFonts(),
+                fonts: this._fontsService.getFonts(hasCjk),
                 loadAdditionalAsset: async (code: string, segment: string): Promise<string> => {
                     if (code === "emoji") {
-                        return await this._loadEmoji(segment);
+                        const cached: string | undefined = await this._cacheService.get<string>(`emoji:${segment}`);
+                        if (cached !== undefined) return cached;
+
+                        const emoji: string = await this._loadEmoji(segment);
+                        if (emoji !== "") {
+                            await this._cacheService.set(`emoji:${segment}`, emoji, ms("4w"));
+                        }
+                        return emoji;
                     }
 
                     return "";
@@ -55,21 +67,17 @@ export class MemesRepository implements IMemesRepository {
      *
      * @author Kyrylo Maliuha
      */
-    public convertIntoBuffer(svg: string, width: number): Buffer {
-        return new Resvg(svg, {
+    public async convertIntoBuffer(svg: string, width: number): Promise<Buffer> {
+        const rendered = await renderAsync(svg, {
             fitTo: { mode: "width", value: width },
-        })
-            .render()
-            .asPng();
+            font: { loadSystemFonts: false },
+            imageRendering: 1,
+        });
+
+        return rendered.asPng();
     }
 
     private async _loadEmoji(segment: string): Promise<string> {
-        const cached: string | undefined = this._emojis.get(segment);
-
-        if (cached) {
-            return cached;
-        }
-
         try {
             const response: Response = await fetch(`${this._twemojiBaseUrl}/${this._getEmojiCode(segment)}.svg`);
 
@@ -77,10 +85,7 @@ export class MemesRepository implements IMemesRepository {
                 return "";
             }
 
-            const dataUri: string = `data:image/svg+xml;base64,${Buffer.from(await response.text()).toString("base64")}`;
-            this._emojis.set(segment, dataUri);
-
-            return dataUri;
+            return `data:image/svg+xml;base64,${Buffer.from(await response.text()).toString("base64")}`;
         } catch (error) {
             analytics.captureException(error);
             return "";

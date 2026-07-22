@@ -1,13 +1,21 @@
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { IVoiceService } from "#/interface/IVoiceService.ts";
-import "@jstmemit/telemetry";
 import { type Logger, logs } from "@opentelemetry/api-logs";
+import "@jstmemit/telemetry";
+import ms from "ms";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
     private readonly _logger: Logger = logs.getLogger("jstmemit/voice");
+    private readonly _cacheService: ICacheService;
 
-    public constructor(whisperUrl: string = "http://whisper:9000/v1/audio") {
+    public constructor(cacheService: ICacheService, whisperUrl: string = "http://whisper:9000/v1/audio") {
         this._whisperUrl = whisperUrl;
+        this._cacheService = cacheService;
+    }
+
+    public async convertSpeechToText(url: string): Promise<string> {
+        return this._cacheService.getOrSet(`transcribe:${url}`, (): Promise<string> => this._transcribe(url), ms("7d"));
     }
 
     /**
@@ -15,10 +23,11 @@ export class VoiceService implements IVoiceService {
      * for a transcription that returns plain text
      *
      * @param url
+     * @private
      *
      * @author Kyrylo Maliuha
      */
-    public async convertSpeechToText(url: string): Promise<string> {
+    private async _transcribe(url: string): Promise<string> {
         const audio: Response = await fetch(url);
 
         const form = new FormData();

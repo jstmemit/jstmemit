@@ -16,7 +16,11 @@ import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepos
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import sharp from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
+import { xxh64 } from "@node-rs/xxhash";
+import ms from "ms";
+import _ from "lodash";
 
 export class MemesService implements IMemesService {
     private readonly _transparentImage: string;
@@ -28,6 +32,7 @@ export class MemesService implements IMemesService {
     private readonly _banditService: IBanditService;
     private readonly _channelsRepository: IChannelsRepository;
     private readonly _templatesRepository: ITemplatesRepository;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -38,6 +43,7 @@ export class MemesService implements IMemesService {
         banditService: IBanditService,
         channelsRepository: IChannelsRepository,
         templatesRepository: ITemplatesRepository,
+        cacheService: ICacheService,
     ) {
         this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
         this._memesRepository = memesRepository;
@@ -48,6 +54,7 @@ export class MemesService implements IMemesService {
         this._banditService = banditService;
         this._channelsRepository = channelsRepository;
         this._templatesRepository = templatesRepository;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -95,13 +102,16 @@ export class MemesService implements IMemesService {
             throw new Error("No svg");
         }
 
-        const png: Buffer = this._memesRepository.convertIntoBuffer(svg, template.width);
+        const [png, generationId] = await Promise.all([
+            this._cacheService.getOrSet(
+                `meme:png:${this._templatePropsKey(template, props)}`,
+                (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
+                ms("8h"),
+            ),
+            this._generationsRepository.add(channelId, template.name, new Date()),
+        ]);
 
         const renderTime: number = performance.now();
-
-        const generationId: number = await this._generationsRepository.add(channelId, template.name, new Date());
-
-        const insertTime: number = performance.now();
 
         analytics.capture({
             event: "meme_generated",
@@ -113,8 +123,7 @@ export class MemesService implements IMemesService {
                 templateMs: templateTime - startTime,
                 contextMs: contextTime - templateTime,
                 renderMs: renderTime - contextTime,
-                insertMs: insertTime - renderTime,
-                totalMs: insertTime - startTime,
+                totalMs: renderTime - startTime,
 
                 textSlots: template.texts?.length ?? 0,
                 imageSlots: template.images?.length ?? 0,
@@ -153,16 +162,32 @@ export class MemesService implements IMemesService {
     ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
-        const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsRepository.get(channelId);
 
-        const channelTexts: string[] = await this._messagesRepository.getMessagesContentByChannelId(channelId);
+        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
+            `context:channel:${channelId}`,
+            (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
+            ms("1m"),
+        );
 
-        const channelImages: string[] = await this._imagesRepository.getImagesByChannelId(channelId, new Date());
+        const channelTexts: string[] = await this._cacheService.getOrSet(
+            `context:texts:${channelId}`,
+            (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
+            ms("1m"),
+        );
+        const channelImages: string[] = await this._cacheService.getOrSet(
+            `context:images:${channelId}`,
+            (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
+            ms("1m"),
+        );
 
         if (channel && channel?.useAvatarsInMemes) {
-            const avatars: string[] = await this._imagesRepository.getAvatarsByChannelId(channelId, new Date());
+            const channelAvatars: string[] = await this._cacheService.getOrSet(
+                `context:avatars:${channelId}`,
+                (): Promise<string[]> => this._imagesRepository.getAvatarsByChannelId(channelId, new Date()),
+                ms("1m"),
+            );
 
-            channelImages.push(...avatars);
+            channelImages.push(...channelAvatars);
         }
 
         if (!templateImages || !templateTexts) {
@@ -184,10 +209,18 @@ export class MemesService implements IMemesService {
             return undefined;
         }
 
-        return {
-            images: await this._selectImages(channelImages, templateImages.length),
-            texts: await this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
-        };
+        const [images, texts] = await Promise.all([
+            this._selectImages(_.shuffle(channelImages), templateImages.length),
+            this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
+        ]);
+
+        return { images, texts };
+    }
+
+    private _templatePropsKey(template: Template, props: TemplateProps): string {
+        const material: string = [template.name, ...props.texts, ...props.images].join("\u0000");
+
+        return xxh64(material).toString(16);
     }
 
     private async _selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
@@ -227,6 +260,11 @@ export class MemesService implements IMemesService {
         try {
             if (!url) return this._transparentImage;
 
+            const cached: string | undefined = await this._cacheService.get<string>(`img:png:${url}`);
+            if (cached !== undefined) {
+                return cached;
+            }
+
             const res: Response = await fetch(url, { headers: { Accept: "image/*" } });
 
             if (!res.ok) {
@@ -250,9 +288,14 @@ export class MemesService implements IMemesService {
             }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const png: Buffer = await sharp(input).png().toBuffer();
+            const png: Buffer = await sharp(input)
+                .resize({ width: 1024, withoutEnlargement: true, kernel: "cubic" })
+                .png({ compressionLevel: 2 })
+                .toBuffer();
 
-            return `data:image/png;base64,${png.toString("base64")}`;
+            const result: string = `data:image/png;base64,${png.toString("base64")}`;
+            await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
+            return result;
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
