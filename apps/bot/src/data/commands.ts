@@ -1,4 +1,4 @@
-import { voiceRepository } from "#/container.ts";
+import { voicesRepository } from "#/container.ts";
 import type { Voice } from "@jstmemit/shared/models/Voice";
 
 export const commands = [
@@ -223,7 +223,7 @@ export const commands = [
                 name: "voice",
                 description: "Choose what voice you want to use",
                 required: false,
-                choices: voiceRepository.getAllVoices().map((voice: Voice) => {
+                choices: voicesRepository.getAllVoices().map((voice: Voice) => {
                     return {
                         name: voice.name,
                         value: voice.id,

@@ -1,7 +1,7 @@
-import type { IVoiceRepository } from "#/interfaces/IVoiceRepository.ts";
+import type { IVoicesRepository } from "#/interfaces/IVoicesRepository.ts";
 import type { Voice } from "#/models/Voice.ts";
 
-export class VoicesRepository implements IVoiceRepository {
+export class VoicesRepository implements IVoicesRepository {
     private readonly _voices: Voice[];
 
     public constructor() {
