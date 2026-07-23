@@ -6,7 +6,7 @@ export const createMemeGenerationQueue = (connection: ConnectionOptions) =>
     new Queue<MemeGenerationJob, MemeGenerationResult>("meme-generation", {
         connection,
         defaultJobOptions: {
-            attempts: 8,
+            attempts: 3,
             backoff: { type: "exponential", delay: 100 },
             removeOnComplete: 100,
             removeOnFail: 500,

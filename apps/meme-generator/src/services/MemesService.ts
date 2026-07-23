@@ -14,7 +14,7 @@ import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
-import sharp from "sharp";
+import sharp, { type Metadata, type Sharp } from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
@@ -163,22 +163,23 @@ export class MemesService implements IMemesService {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
 
-        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
-            `context:channel:${channelId}`,
-            (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
-            ms("1m"),
-        );
-
-        const channelTexts: string[] = await this._cacheService.getOrSet(
-            `context:texts:${channelId}`,
-            (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
-            ms("1m"),
-        );
-        const channelImages: string[] = await this._cacheService.getOrSet(
-            `context:images:${channelId}`,
-            (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
-            ms("1m"),
-        );
+        const [channel, channelTexts, channelImages] = await Promise.all([
+            this._cacheService.getOrSet(
+                `context:channel:${channelId}`,
+                (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
+                ms("1m"),
+            ),
+            this._cacheService.getOrSet(
+                `context:texts:${channelId}`,
+                (): Promise<string[]> => this._messagesRepository.getMessagesContentByChannelId(channelId),
+                ms("1m"),
+            ),
+            this._cacheService.getOrSet(
+                `context:images:${channelId}`,
+                (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
+                ms("1m"),
+            ),
+        ]);
 
         if (channel && channel?.useAvatarsInMemes) {
             const channelAvatars: string[] = await this._cacheService.getOrSet(
@@ -265,7 +266,10 @@ export class MemesService implements IMemesService {
                 return cached;
             }
 
-            const res: Response = await fetch(url, { headers: { Accept: "image/*" } });
+            const res: Response = await fetch(url, {
+                headers: { Accept: "image/*" },
+                signal: AbortSignal.timeout(1500),
+            });
 
             if (!res.ok) {
                 logger.emit({
@@ -288,12 +292,15 @@ export class MemesService implements IMemesService {
             }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const png: Buffer = await sharp(input)
-                .resize({ width: 1024, withoutEnlargement: true, kernel: "cubic" })
-                .png({ compressionLevel: 2 })
-                .toBuffer();
+            const img: Sharp = sharp(input);
+            const resized: Sharp = img.resize({ width: 512, withoutEnlargement: true, kernel: "cubic" });
+            const meta: Metadata = await img.metadata();
 
-            const result: string = `data:image/png;base64,${png.toString("base64")}`;
+            const [buf, mime] = meta.hasAlpha
+                ? [await resized.png({ compressionLevel: 1 }).toBuffer(), "image/png"]
+                : [await resized.jpeg({ quality: 82 }).toBuffer(), "image/jpeg"];
+
+            const result = `data:${mime};base64,${buf.toString("base64")}`;
             await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
             return result;
         } catch (error) {

@@ -1,4 +1,5 @@
 import satori from "satori";
+import type { RenderedImage } from "@resvg/resvg-js";
 import { renderAsync } from "@resvg/resvg-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
@@ -7,6 +8,7 @@ import type { Template } from "@jstmemit/shared/models/Template";
 import { analytics } from "@jstmemit/analytics";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import ms from "ms";
+import sharp from "sharp";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _twemojiBaseUrl: string;
@@ -59,8 +61,8 @@ export class MemesRepository implements IMemesRepository {
     }
 
     /**
-     * Converts an SVG string into a PNG buffer
-     * using Resvg library
+     * Converts an SVG string into a .webp buffer
+     * using Resvg and sharp libraries
      *
      * @param svg
      * @param width
@@ -68,13 +70,19 @@ export class MemesRepository implements IMemesRepository {
      * @author Kyrylo Maliuha
      */
     public async convertIntoBuffer(svg: string, width: number): Promise<Buffer> {
-        const rendered = await renderAsync(svg, {
+        const rendered: RenderedImage = await renderAsync(svg, {
             fitTo: { mode: "width", value: width },
             font: { loadSystemFonts: false },
             imageRendering: 1,
+            shapeRendering: 1,
+            textRendering: 0,
         });
 
-        return rendered.asPng();
+        return sharp(rendered.pixels, {
+            raw: { width: rendered.width, height: rendered.height, channels: 4 },
+        })
+            .webp({ quality: 82, effort: 2 })
+            .toBuffer();
     }
 
     private async _loadEmoji(segment: string): Promise<string> {

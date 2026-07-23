@@ -4,9 +4,7 @@ import { db } from "../index.ts";
 import { eq } from "drizzle-orm";
 
 export class ChannelsRepository implements IChannelsRepository {
-    public async get(
-        channelId: string,
-    ): Promise<typeof channelsTable.$inferSelect | undefined> {
+    public async get(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
         try {
             const channels = await db
                 .select()
@@ -22,10 +20,13 @@ export class ChannelsRepository implements IChannelsRepository {
         }
     }
 
-    public async upsert(
-        channelId: string,
-        addedAt: Date,
-    ): Promise<typeof channelsTable.$inferSelect> {
+    public async upsert(channelId: string, addedAt: Date): Promise<typeof channelsTable.$inferSelect> {
+        const existing = await this.get(channelId);
+
+        if (existing) {
+            return existing;
+        }
+
         const [channel] = await db
             .insert(channelsTable)
             .values({ channelId, addedAt })
@@ -61,15 +62,9 @@ export class ChannelsRepository implements IChannelsRepository {
         }
     }
 
-    public async switch(
-        channelId: string,
-        isEnabled: boolean,
-    ): Promise<boolean> {
+    public async switch(channelId: string, isEnabled: boolean): Promise<boolean> {
         try {
-            await db
-                .update(channelsTable)
-                .set({ enabled: !isEnabled })
-                .where(eq(channelsTable.channelId, channelId));
+            await db.update(channelsTable).set({ enabled: !isEnabled }).where(eq(channelsTable.channelId, channelId));
 
             return true;
         } catch (error) {

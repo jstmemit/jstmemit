@@ -9,18 +9,26 @@ export const messagesTable = sqliteTable(
         content: text().notNull(),
         timestamp: int({ mode: "timestamp" }).notNull(),
     },
-    (table) => [index("messages_channel_idx").on(table.channelId)],
+    (table) => [index("messages_channel_idx").on(table.channelId), index("messages_timestamp_idx").on(table.timestamp)],
 );
 
-export const imagesTable = sqliteTable("images_table", {
-    id: int().primaryKey({ autoIncrement: true }),
-    messageId: text().notNull(),
-    channelId: text().notNull(),
-    imageUrl: text().notNull().unique(),
-    source: text().notNull().default("attachment"),
-    timestamp: int({ mode: "timestamp" }).notNull(),
-    expiresAt: int({ mode: "timestamp" }),
-});
+export const imagesTable = sqliteTable(
+    "images_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        messageId: text().notNull(),
+        channelId: text().notNull(),
+        imageUrl: text().notNull().unique(),
+        source: text().notNull().default("attachment"),
+        timestamp: int({ mode: "timestamp" }).notNull(),
+        expiresAt: int({ mode: "timestamp" }),
+    },
+    (table) => [
+        index("images_channel_source_idx").on(table.channelId, table.source),
+        index("images_expires_at_idx").on(table.expiresAt),
+        index("images_timestamp_idx").on(table.timestamp),
+    ],
+);
 
 export const generationsTable = sqliteTable(
     "generations_table",
