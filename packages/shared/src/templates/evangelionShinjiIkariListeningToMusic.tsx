@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiIkariListeningToMusic: Template = {
     name: "evangelionShinjiIkariListeningToMusic",
-    topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
+    topics: [Topic.Anime, Topic.Evangelion],
     types: [Type.textBottom, Type.faceImage],
     width: 640,
     height: 480,
