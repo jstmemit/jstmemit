@@ -136,7 +136,12 @@ export class MemesController implements IMemesController {
         }
 
         try {
-            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({ channelId, userId, trigger });
+            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({
+                channelId,
+                userId,
+                trigger,
+                turbo: channel.turbo,
+            });
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
@@ -276,6 +281,7 @@ export class MemesController implements IMemesController {
                 templateName: templateName,
                 texts,
                 images,
+                turbo: false,
             });
 
             await interaction.editReply({
@@ -334,6 +340,7 @@ export class MemesController implements IMemesController {
                 templateName,
                 texts,
                 images,
+                turbo: false,
             });
 
             await interaction.editReply({

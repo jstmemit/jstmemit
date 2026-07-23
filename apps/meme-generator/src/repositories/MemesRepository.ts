@@ -66,22 +66,23 @@ export class MemesRepository implements IMemesRepository {
      *
      * @param svg
      * @param width
+     * @param turbo
      *
      * @author Kyrylo Maliuha
      */
-    public async convertIntoBuffer(svg: string, width: number): Promise<Buffer> {
+    public async convertIntoBuffer(svg: string, width: number, turbo: boolean): Promise<Buffer> {
         const rendered: RenderedImage = await renderAsync(svg, {
             fitTo: { mode: "width", value: width },
             font: { loadSystemFonts: false },
-            imageRendering: 1,
-            shapeRendering: 1,
-            textRendering: 0,
+            imageRendering: turbo ? 1 : 0,
+            shapeRendering: turbo ? 0 : 2,
+            textRendering: turbo ? 0 : 1,
         });
 
         return sharp(rendered.pixels, {
             raw: { width: rendered.width, height: rendered.height, channels: 4 },
         })
-            .webp({ quality: 82, effort: 2 })
+            .webp({ quality: turbo ? 55 : 82, effort: turbo ? 0 : 2 })
             .toBuffer();
     }
 
