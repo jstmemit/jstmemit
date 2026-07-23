@@ -26,7 +26,7 @@ export const wnlFuminoRealization1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization1.png"
                 width={"50%"}
                 height={612}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

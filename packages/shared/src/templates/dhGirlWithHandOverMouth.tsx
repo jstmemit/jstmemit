@@ -23,7 +23,7 @@ export const dhGirlWithHandOverMouth: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/dhGirlWithHandOverMouth.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dhGirlWithHandOverMouth.jpg"
                 width={718}
                 height={1131}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -25,7 +25,7 @@ export const creativeMetaphor: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
                 width={1202}
                 height={1028}
                 style={{ position: "absolute", top: 0, left: 0 }}

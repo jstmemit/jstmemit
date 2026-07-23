@@ -23,7 +23,7 @@ export const dfragRokaShibasaki: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/dfragRokaShibasaki.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dfragRokaShibasaki.png"
                 width={750}
                 height={433}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

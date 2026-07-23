@@ -26,7 +26,7 @@ export const crowdFromAngryToHappy: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
                 width={716}
                 height={700}
                 style={{ position: "absolute", top: 0, left: 0 }}

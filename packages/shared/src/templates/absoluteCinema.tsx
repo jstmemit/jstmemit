@@ -23,7 +23,7 @@ export const absoluteCinema: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/absolutecinema.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/absolutecinema.png"
                 width={1230}
                 height={1422}
                 style={{ position: "absolute", top: 0, left: 0 }}

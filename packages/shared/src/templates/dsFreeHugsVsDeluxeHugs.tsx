@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsFreeHugsVsDeluxeHugs: Template = {
     name: "dsFreeHugsVsDeluxeHugs",
-    topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
+    topics: [Topic.Anime, Topic.DemonSlayer],
     types: [Type.faceImage, Type.twoOption],
     width: 438,
     height: 412,
@@ -26,7 +26,7 @@ export const dsFreeHugsVsDeluxeHugs: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/dsFreeHugsVsDeluxeHugs.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dsFreeHugsVsDeluxeHugs.png"
                 width={438}
                 height={412}
                 style={{ position: "absolute", top: 0, left: 0 }}

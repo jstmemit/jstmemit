@@ -26,7 +26,7 @@ export const spidermanPeterParkerWearingGlasses: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/spidermanPeterParkerWearingGlasses.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spidermanPeterParkerWearingGlasses.jpg"
                 width={1020}
                 height={692}
                 style={{ position: "absolute", top: 0, left: 0 }}

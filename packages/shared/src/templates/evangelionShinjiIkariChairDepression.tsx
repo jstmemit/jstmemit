@@ -23,7 +23,7 @@ export const evangelionShinjiIkariChairDepression: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiIkariChairDepression.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiIkariChairDepression.png"
                 width={604}
                 height={453}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

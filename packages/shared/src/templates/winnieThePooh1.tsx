@@ -27,7 +27,7 @@ export const winnieThePooh1: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/winnieThePooh1.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/winnieThePooh1.jpg"
                 width={640}
                 height={731}
                 style={{ position: "absolute", top: 0, left: 0 }}

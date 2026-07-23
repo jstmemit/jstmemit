@@ -23,7 +23,7 @@ export const monkeyThinking: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/monkeyThinking.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/monkeyThinking.jpg"
                 width={800}
                 height={699}
                 style={{ position: "absolute", top: 0, left: 0 }}

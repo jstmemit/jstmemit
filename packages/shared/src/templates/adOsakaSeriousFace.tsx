@@ -23,7 +23,7 @@ export const adOsakaSeriousFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-up,width=500,upscale=generate/https://files.wideunits.nl/jstmemit/images/templates/adOsakaSeriousFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/format=avif,fit=scale-up,width=500,upscale=generate/https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/adOsakaSeriousFace.png"
                 width={500}
                 height={500}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

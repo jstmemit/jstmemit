@@ -34,7 +34,7 @@ export const oneDollarPrivateIsland: Template = {
                 }}
             />
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail1.png"
                 width={621}
                 height={426}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -23,7 +23,7 @@ export const evangelionShinjiSeriousFace: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiSeriousFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiSeriousFace.png"
                 width={1000}
                 height={600}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
