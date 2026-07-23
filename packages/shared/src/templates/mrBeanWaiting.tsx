@@ -23,7 +23,7 @@ export const mrBeanWaiting: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/mrBeanWaiting.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/mrBeanWaiting.jpg"
                 width={640}
                 height={640}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -26,7 +26,7 @@ export const frierenSmilingCrying: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/frierenSmilingCrying.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenSmilingCrying.png"
                 width={686}
                 height={298}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -23,7 +23,7 @@ export const blendsHideriKanzakiSmugFace: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/blendsHideriKanzakiSmugFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriKanzakiSmugFace.png"
                 width={"50%"}
                 height={646}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

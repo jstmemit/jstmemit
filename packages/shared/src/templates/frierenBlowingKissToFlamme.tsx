@@ -26,7 +26,7 @@ export const frierenBlowingKissToFlamme: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKissToFlamme.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKissToFlamme.png"
                 width={1200}
                 height={1700}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

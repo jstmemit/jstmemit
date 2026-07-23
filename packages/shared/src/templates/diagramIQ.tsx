@@ -31,7 +31,7 @@ export const diagramIQ: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
                 width={1272}
                 height={843}
                 style={{ position: "absolute", top: 0, left: 0 }}

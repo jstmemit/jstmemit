@@ -26,7 +26,7 @@ export const bbLetsCook: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/bbLetsCook.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/bbLetsCook.png"
                 width={498}
                 height={350}
                 style={{ position: "absolute", top: 0, left: 0 }}

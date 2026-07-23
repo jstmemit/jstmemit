@@ -27,7 +27,7 @@ export const gintamaGintokiRealizationStages: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiRealizationStages.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiRealizationStages.png"
                 width={"50%"}
                 height={1080}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

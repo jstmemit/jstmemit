@@ -23,7 +23,7 @@ export const futuramaFrySleeplessInsomnia: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/futuramaFrySleeplessInsomnia.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaFrySleeplessInsomnia.jpg"
                 width={604}
                 height={479}
                 style={{ position: "absolute", top: 0, left: 0 }}

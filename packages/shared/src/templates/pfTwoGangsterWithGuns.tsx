@@ -26,7 +26,7 @@ export const pfTwoGangsterWithGuns: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/pfTwoGangsterWithGuns.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/pfTwoGangsterWithGuns.png"
                 width={1461}
                 height={822}
                 style={{ position: "absolute", top: 0, left: 0 }}

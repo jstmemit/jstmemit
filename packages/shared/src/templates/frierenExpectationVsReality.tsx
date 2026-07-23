@@ -26,7 +26,7 @@ export const frierenExpectationVsReality: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/frierenExpectationVsReality.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenExpectationVsReality.png"
                 width={"50%"}
                 height={640}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

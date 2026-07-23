@@ -23,7 +23,7 @@ export const btrBocchiGlitchPanic: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/btrBocchiGlitchPanic.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiGlitchPanic.png"
                 width={1200}
                 height={805}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

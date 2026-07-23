@@ -23,7 +23,7 @@ export const dnLSmirkFinger: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/dnLSmirkFinger.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnLSmirkFinger.png"
                 width={"50%"}
                 height={736}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

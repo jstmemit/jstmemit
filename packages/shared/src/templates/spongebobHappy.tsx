@@ -23,7 +23,7 @@ export const spongebobHappy: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/spongebobhappy.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spongebobhappy.png"
                 width={1199}
                 height={918}
                 style={{ position: "absolute", top: 0, left: 0 }}

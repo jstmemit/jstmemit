@@ -23,7 +23,7 @@ export const griffinsElephantAndPenguin: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/griffinsElephantAndPenguin.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsElephantAndPenguin.jpg"
                 width={450}
                 height={371}
                 style={{ position: "absolute", top: 0, left: 0 }}
