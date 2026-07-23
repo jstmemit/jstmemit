@@ -143,6 +143,6 @@ export class VoiceController implements IVoiceController {
             },
         });
 
-        return job.waitUntilFinished(this._textNarrationQueueEvents, 60000);
+        return job.waitUntilFinished(this._textNarrationQueueEvents, 130000);
     }
 }

@@ -118,16 +118,16 @@ services:
       logging: *default-logging
       restart: unless-stopped
       environment:
-          - ONNX_NUM_THREADS=2
+          - ONNX_NUM_THREADS=3
           - ONNX_INTER_OP_THREADS=1
-          - ONNX_EXECUTION_MODE=parallel
+          - ONNX_EXECUTION_MODE=sequential
           - ONNX_OPTIMIZATION_LEVEL=all
           - ONNX_MEMORY_PATTERN=true
           - API_LOG_LEVEL=ERROR
           - DOWNLOAD_MODEL=true
       deploy:
           resources:
-              limits: { cpus: "2", memory: 2g }
+              limits: { cpus: "3", memory: 3g }
       healthcheck:
           test: [ "CMD-SHELL", "python3 -c \"import urllib.request;urllib.request.urlopen('http://localhost:8880/health')\" || exit 1" ]
           interval: 10s

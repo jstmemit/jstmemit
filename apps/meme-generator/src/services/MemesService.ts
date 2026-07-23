@@ -103,11 +103,13 @@ export class MemesService implements IMemesService {
         }
 
         const [png, generationId] = await Promise.all([
-            this._cacheService.getOrSet(
-                `meme:png:${this._templatePropsKey(template, props)}`,
-                (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
-                ms("8h"),
-            ),
+            data.trigger === "custom" || data.trigger === "context"
+                ? this._cacheService.getOrSet(
+                      `meme:png:${this._templatePropsKey(template, props)}`,
+                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
+                      ms("8h"),
+                  )
+                : this._memesRepository.convertIntoBuffer(svg, template.width),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -163,7 +165,7 @@ export class MemesService implements IMemesService {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
 
-        const [channel, channelTexts, channelImages] = await Promise.all([
+        const [channel, channelTexts, channelImages, channelAvatars] = await Promise.all([
             this._cacheService.getOrSet(
                 `context:channel:${channelId}`,
                 (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
@@ -179,15 +181,14 @@ export class MemesService implements IMemesService {
                 (): Promise<string[]> => this._imagesRepository.getImagesByChannelId(channelId, new Date()),
                 ms("1m"),
             ),
-        ]);
-
-        if (channel && channel?.useAvatarsInMemes) {
-            const channelAvatars: string[] = await this._cacheService.getOrSet(
+            this._cacheService.getOrSet(
                 `context:avatars:${channelId}`,
                 (): Promise<string[]> => this._imagesRepository.getAvatarsByChannelId(channelId, new Date()),
                 ms("1m"),
-            );
+            ),
+        ]);
 
+        if (channel?.useAvatarsInMemes) {
             channelImages.push(...channelAvatars);
         }
 

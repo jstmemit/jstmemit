@@ -43,6 +43,8 @@ export class RatingsController implements IRatingsController {
                 rating,
             );
 
+            await this._ratingsService.updateRatingButtons(interaction, generationId);
+
             const generation = await this._generationsRepository.get(generationId);
 
             if (generation && success) {
@@ -64,8 +66,6 @@ export class RatingsController implements IRatingsController {
                     },
                 });
             }
-
-            await this._ratingsService.updateRatingButtons(interaction, generationId);
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
