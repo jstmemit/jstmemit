@@ -51,6 +51,7 @@ export const channelsTable = sqliteTable("channels_table", {
     frequency: int().notNull().default(20),
     useAvatarsInMemes: int({ mode: "boolean" }).notNull().default(true),
     addedAt: int({ mode: "timestamp" }).notNull(),
+    turbo: int({ mode: "boolean" }).notNull().default(false),
 });
 
 export const ratingsTable = sqliteTable("ratings_table", {

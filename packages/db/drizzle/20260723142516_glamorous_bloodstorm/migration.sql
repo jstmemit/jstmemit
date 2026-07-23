@@ -1,0 +1,1 @@
+ALTER TABLE `channels_table` ADD `turbo` integer DEFAULT false NOT NULL;

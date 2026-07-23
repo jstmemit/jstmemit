@@ -56,6 +56,13 @@ export const locale: Partial<TranslationString> = {
         "settings.status.disabled": "**⚠️ Jstmemit needs to be enabled to make memes here!**",
         "settings.meme.heading": "💬 Meme settings",
         "settings.meme.body": "You can control how often the bot is going to send memes and what's on them",
+        "settings.quality.heading": "Image quality",
+        "settings.quality.body":
+            "Choose if you'd like to receive memes in better quality or have instant meme generation",
+        "settings.quality.image.label": "Better quality (~1.2s per meme)",
+        "settings.quality.image.description": "Don't compress images on memes and turn on antialiasing",
+        "settings.quality.speed.label": "Faster generation (~0.1s per meme)",
+        "settings.quality.speed.description": "Compress and downscale images on memes, reduce text quality",
         "settings.frequency.heading": "Frequency",
         "settings.frequency.body": "How often should the bot send a random meme in the chat without being asked to?",
         "settings.frequency.never.label": "Never",
