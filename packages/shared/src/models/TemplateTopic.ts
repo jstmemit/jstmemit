@@ -35,6 +35,8 @@ export const Topic = {
     DemonSlayer: "demonSlayer",
     Evangelion: "evangelion",
     Frieren: "frieren",
+    GabrielDropOut: "gabrielDropOut",
+    Gintama: "gintama",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];

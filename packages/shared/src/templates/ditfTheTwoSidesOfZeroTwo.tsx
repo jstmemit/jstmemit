@@ -26,7 +26,7 @@ export const ditfTheTwoSidesOfZeroTwo: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/ditfTheTwoSidesOfZeroTwo.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ditfTheTwoSidesOfZeroTwo.png"
                 width={"50%"}
                 height={739}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

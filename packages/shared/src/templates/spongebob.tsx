@@ -24,7 +24,9 @@ export const spongebob: Template = {
         >
             <img src={images[0]} width={195} height={275} style={{ position: "absolute", top: 50, left: 45 }} />
             <img
-                src={"https://files.wideunits.nl/jstmemit/images/templates/spongebob.png"}
+                src={
+                    "https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spongebob.png"
+                }
                 width={622}
                 height={727}
                 style={{ position: "absolute", top: 0, left: 0 }}

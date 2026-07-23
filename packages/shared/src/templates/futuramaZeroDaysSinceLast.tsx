@@ -23,7 +23,7 @@ export const futuramaZeroDaysSinceLast: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/futuramaZeroDaysSinceLast.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaZeroDaysSinceLast.jpg"
                 width={640}
                 height={469}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -26,7 +26,7 @@ export const looksAtPaperAngry: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/looksatpaperangry.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/looksatpaperangry.png"
                 width={768}
                 height={727}
                 style={{ position: "absolute", top: 0, left: 0 }}

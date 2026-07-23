@@ -23,7 +23,7 @@ export const buzz: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/buzz.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/buzz.png"
                 width={800}
                 height={544}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -23,7 +23,7 @@ export const btrBocchiTheRockMeltdownFace: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/btrBocchiTheRockMeltdownFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiTheRockMeltdownFace.png"
                 width={640}
                 height={357}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

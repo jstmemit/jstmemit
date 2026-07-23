@@ -23,7 +23,7 @@ export const boykisserEnergy: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/boykisserEnergy.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/boykisserEnergy.jpg"
                 width={665}
                 height={662}
                 style={{ position: "absolute", top: 0, left: 0 }}

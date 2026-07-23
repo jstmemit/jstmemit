@@ -26,7 +26,9 @@ export const liveReaction: Template = {
         >
             <img src={images[0]} width={768} height={615} style={{ position: "absolute", top: 185, left: 17 }} />
             <img
-                src={"https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"}
+                src={
+                    "https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"
+                }
                 width={800}
                 height={800}
                 style={{ position: "absolute", top: 0, left: 0 }}

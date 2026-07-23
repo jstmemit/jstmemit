@@ -23,7 +23,7 @@ export const owlStareAtYou: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/owlStareAtYou.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/owlStareAtYou.png"
                 width={1600}
                 height={1600}
                 style={{ position: "absolute", top: 0, left: 0 }}

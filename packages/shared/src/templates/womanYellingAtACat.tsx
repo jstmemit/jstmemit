@@ -26,7 +26,7 @@ export const womanYellingAtACat: Template = {
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
                 width={1200}
                 height={1200}
                 style={{ position: "absolute", top: 0, left: 0 }}

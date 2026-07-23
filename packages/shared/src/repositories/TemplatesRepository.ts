@@ -240,6 +240,29 @@ import { frierenBlowingKissToFlamme } from "#/templates/frierenBlowingKissToFlam
 import { frierenFlammeShowingSerieDrawing } from "#/templates/frierenFlammeShowingSerieDrawing.tsx";
 import { frierenInspiration } from "#/templates/frierenInspiration.tsx";
 import { frierenLiftedUp } from "#/templates/frierenLiftedUp.tsx";
+import { frierenExpectationVsReality } from "#/templates/frierenExpectationVsReality.tsx";
+import { frierenSmugVsDark } from "#/templates/frierenSmugVsDark.tsx";
+import { frierenSittingAndSmiling } from "#/templates/frierenSittingAndSmiling.tsx";
+import { frierenSmilingCrying } from "#/templates/frierenSmilingCrying.tsx";
+import { frierenSmugCatFaceCloseUp } from "#/templates/frierenSmugCatFaceCloseUp.tsx";
+import { frierenSmugPotion } from "#/templates/frierenSmugPotion.tsx";
+import { gdoSataniaCrying } from "#/templates/gdoSataniaCrying.tsx";
+import { gdoSataniaDeathNote } from "#/templates/gdoSataniaDeathNote.tsx";
+import { gdoSataniaDisappointed } from "#/templates/gdoSataniaDisappointed.tsx";
+import { gdoSataniaShocked } from "#/templates/gdoSataniaShocked.tsx";
+import { gdoSataniaLaugh } from "#/templates/gdoSataniaLaugh.tsx";
+import { gdoSataniaThumbsUp } from "#/templates/gdoSataniaThumbsUp.tsx";
+import { gintamaGintokiCreepyFace } from "#/templates/gintamaGintokiCreepyFace.tsx";
+import { gintamaGintokiDarkFace } from "#/templates/gintamaGintokiDarkFace.tsx";
+import { gintamaGintokiDrinkingBeer } from "#/templates/gintamaGintokiDrinkingBeer.tsx";
+import { gintamaGintokiManiacLaugh } from "#/templates/gintamaGintokiManiacLaugh.tsx";
+import { gintamaGintokiNosePickThumbsUp } from "#/templates/gintamaGintokiNosePickThumbsUp.tsx";
+import { gintamaGintokiPointingUp } from "#/templates/gintamaGintokiPointingUp.tsx";
+import { gintamaGintokiRealizationStages } from "#/templates/gintamaGintokiRealizationStages.tsx";
+import { gintamaGintokiScaredGhost } from "#/templates/gintamaGintokiScaredGhost.tsx";
+import { gintamaGintokiSmirk } from "#/templates/gintamaGintokiSmirk.tsx";
+import { gintamaGintokiSurprisedFace } from "#/templates/gintamaGintokiSurprisedFace.tsx";
+import { gintamaGintokiUnderstood } from "#/templates/gintamaGintokiUnderstood.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -501,6 +524,29 @@ export class TemplatesRepository implements ITemplatesRepository {
             frierenFlammeShowingSerieDrawing,
             frierenInspiration,
             frierenLiftedUp,
+            frierenExpectationVsReality,
+            frierenSmugVsDark,
+            frierenSittingAndSmiling,
+            frierenSmilingCrying,
+            frierenSmugCatFaceCloseUp,
+            frierenSmugPotion,
+            gdoSataniaCrying,
+            gdoSataniaDeathNote,
+            gdoSataniaDisappointed,
+            gdoSataniaShocked,
+            gdoSataniaLaugh,
+            gdoSataniaThumbsUp,
+            gintamaGintokiCreepyFace,
+            gintamaGintokiDarkFace,
+            gintamaGintokiDrinkingBeer,
+            gintamaGintokiManiacLaugh,
+            gintamaGintokiNosePickThumbsUp,
+            gintamaGintokiPointingUp,
+            gintamaGintokiRealizationStages,
+            gintamaGintokiScaredGhost,
+            gintamaGintokiSmirk,
+            gintamaGintokiSurprisedFace,
+            gintamaGintokiUnderstood,
         ];
     }
 
