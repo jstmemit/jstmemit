@@ -140,8 +140,6 @@ export class MemesService implements IMemesService {
             },
         });
 
-        console.log(renderTime - startTime + "ms");
-
         return {
             png: png.toString("base64"),
             generationId: generationId,
