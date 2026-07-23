@@ -220,8 +220,6 @@ export class MemesService implements IMemesService {
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
-        void this._warmImages(_.shuffle(channelImages), templateImages.length, turbo);
-
         return { images, texts };
     }
 
@@ -241,16 +239,14 @@ export class MemesService implements IMemesService {
 
         const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
 
-        for (const url of backups) {
-            if (images.length === slotCount) {
-                break;
-            }
+        if (images.length < slotCount) {
+            const missing: number = slotCount - images.length;
 
-            const image: string = await this._toPngDataUri(url, turbo);
+            const retried: string[] = await Promise.all(
+                backups.slice(0, missing + 2).map((url: string): Promise<string> => this._toPngDataUri(url, turbo)),
+            );
 
-            if (this._isTransparent(image)) {
-                images.push(image);
-            }
+            images.push(...retried.filter((image: string): boolean => this._isTransparent(image)).slice(0, missing));
         }
 
         while (images.length < slotCount) {
@@ -262,12 +258,6 @@ export class MemesService implements IMemesService {
 
     private _isTransparent(image: string): boolean {
         return image !== this._transparentImage;
-    }
-
-    private _warmImages(urls: string[], count: number = 6, turbo: boolean): void {
-        void Promise.allSettled(
-            urls.slice(0, count).map((url: string): Promise<string> => this._toPngDataUri(url, turbo)),
-        );
     }
 
     private async _toPngDataUri(url: string, turbo: boolean): Promise<string> {
