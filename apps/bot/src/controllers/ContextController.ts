@@ -162,7 +162,7 @@ export class ContextController implements IContextController {
 
         const bot: GuildMember = message.guild.members.me || (await message.guild.members.fetchMe());
         const permissions = message.channel.permissionsFor(bot);
-        if (!permissions.has(PermissionFlagsBits.AttachFiles)) {
+        if (!permissions.has(PermissionFlagsBits.AttachFiles) || !permissions.has(PermissionFlagsBits.SendMessages)) {
             logger.emit({
                 severityText: "warn",
                 body: "context.auto_meme_generation.not_enough_permissions",
