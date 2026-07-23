@@ -154,6 +154,7 @@ export class MemesController implements IMemesController {
                             name: "meme.webp",
                         },
                     ],
+                    failIfNotExists: false,
                 });
 
                 return;
