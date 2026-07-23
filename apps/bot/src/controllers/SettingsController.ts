@@ -181,6 +181,52 @@ export class SettingsController implements ISettingsController {
     }
 
     /**
+     * Handles changing of the meme generation mode
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleModeSelect(interaction: StringSelectMenuInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const old: boolean = channel.turbo;
+            channel.turbo = interaction.values[0] === "true";
+
+            await this._channelsService.setChannel(interaction.channelId, channel);
+
+            // meme generation mode (prioritize quality or speed)
+            analytics.capture({
+                event: "mode_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    language: interaction.locale,
+                    old: old,
+                    new: channel.turbo,
+                },
+            });
+
+            await this._replyWithSettings(interaction, channel);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+                action: "mode",
+            });
+        }
+    }
+
+    /**
      * Handles changing if the bot can use avatars
      * in memes that are generated in the channel
      *

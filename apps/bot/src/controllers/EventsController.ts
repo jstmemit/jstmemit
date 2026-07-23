@@ -324,6 +324,9 @@ export class EventsController implements IEventsController {
                     case "frequency":
                         await this._settingsController.handleFrequencySelect(interaction);
                         return;
+                    case "mode":
+                        await this._settingsController.handleModeSelect(interaction);
+                        return;
                     case "avatar":
                         await this._settingsController.handleUserAvatarsSelect(interaction);
                         return;

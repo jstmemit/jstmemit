@@ -460,7 +460,7 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.quality.body", language)))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-                    new StringSelectMenuBuilder().setCustomId("turbo").addOptions(
+                    new StringSelectMenuBuilder().setCustomId("mode").addOptions(
                         modes.map((option: Mode) =>
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
