@@ -103,11 +103,13 @@ export class MemesService implements IMemesService {
         }
 
         const [png, generationId] = await Promise.all([
-            this._cacheService.getOrSet(
-                `meme:png:${this._templatePropsKey(template, props)}`,
-                (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
-                ms("8h"),
-            ),
+            data.trigger === "custom" || data.trigger === "context"
+                ? this._cacheService.getOrSet(
+                      `meme:png:${this._templatePropsKey(template, props)}`,
+                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
+                      ms("8h"),
+                  )
+                : this._memesRepository.convertIntoBuffer(svg, template.width),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
