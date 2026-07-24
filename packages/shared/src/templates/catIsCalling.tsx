@@ -34,7 +34,6 @@ export const catIsCalling: Template = {
                     top: 0,
                     width: "100%",
                     height: "45%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -44,19 +43,15 @@ export const catIsCalling: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 3,
+                        lineClamp: 3,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 100,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
-                        WebkitTextStrokeWidth: 7,
-                        WebkitTextStrokeColor: "#fd9da8",
+                        textShadow: "4px 4px 8px #fd9da8",
                     }}
                 >
                     {texts[0]}

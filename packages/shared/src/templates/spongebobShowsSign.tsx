@@ -10,7 +10,9 @@ export const spongebobShowsSign: Template = {
     types: [Type.objectImage, Type.textLeft],
     width: 657,
     height: 493,
-    texts: [{ id: 0, description: "what spongebob says while holding the sign", minLength: 1, maxLength: 12 }],
+    texts: [
+        { id: 0, description: "what spongebobBurningTheNote says while holding the sign", minLength: 1, maxLength: 12 },
+    ],
     images: [{ id: 0, description: "image on the sign" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
@@ -40,7 +42,6 @@ export const spongebobShowsSign: Template = {
                     top: 0,
                     width: "45%",
                     height: "55%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -50,19 +51,15 @@ export const spongebobShowsSign: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 30,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 4,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[0]}

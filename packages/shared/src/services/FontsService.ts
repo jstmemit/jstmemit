@@ -10,8 +10,15 @@ export class FontsService implements IFontsService {
         this._fonts = [
             {
                 name: "Comic Sans MS",
-                data: fontsRepository.getComicSans(),
-                weight: 600,
+                data: fontsRepository.getComicSansRegular(),
+                weight: 400,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Comic Sans MS",
+                data: fontsRepository.getComicSansBold(),
+                weight: 700,
                 style: "normal",
                 generic: "sans-serif",
             },

@@ -35,7 +35,6 @@ export const parrotBarber1: Template = {
                     bottom: 0,
                     width: "100%",
                     height: "30%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -46,19 +45,15 @@ export const parrotBarber1: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 4,
+                        lineClamp: 4,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 50,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[0]}

@@ -50,7 +50,6 @@ export const post: Template = {
                     top: "5%",
                     width: "70%",
                     height: "10%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
@@ -60,19 +59,15 @@ export const post: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 1,
+                        lineClamp: 1,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 50,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[0]}
@@ -85,7 +80,6 @@ export const post: Template = {
                     bottom: 0,
                     width: "100%",
                     height: "75%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "flex-start",
                     justifyContent: "flex-start",
@@ -95,19 +89,15 @@ export const post: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 6,
+                        lineClamp: 6,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 85,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[1]}
