@@ -37,6 +37,7 @@ if (templateName) {
         height: template.height,
         fonts: fontsService.getFonts(true),
         fontFamilies: ["Comic Sans MS"],
+        dithering: "floyd-steinberg",
     });
     meme = `data:image/webp;base64,${webp.toString("base64")}`;
 }

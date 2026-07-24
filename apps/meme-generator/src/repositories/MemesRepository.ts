@@ -32,6 +32,7 @@ export class MemesRepository implements IMemesRepository {
                 height: template.height,
                 fonts: this._fontsService.getFonts(hasCjk),
                 fontFamilies: ["Comic Sans MS"],
+                dithering: "floyd-steinberg",
             });
         } catch (error) {
             console.error(error);
