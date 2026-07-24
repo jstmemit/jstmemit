@@ -9,8 +9,7 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import { TemplatesService } from "../services/TemplatesService.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
-import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
+import { render } from "takumi-js";
 
 interface Props {
     src?: string;
@@ -33,13 +32,13 @@ let meme: string | undefined = undefined;
 if (templateName) {
     const template: Template = templatesService.getTemplateByName(templateName || "");
 
-    const svg: string = await satori(template.element(variant!), {
+    const webp: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(template.element(variant!), {
         width: template.width,
         height: template.height,
-        fonts: fontsService.getFonts(),
+        fonts: fontsService.getFonts(true),
+        fontFamilies: ["Comic Sans MS"],
     });
-    const png: Buffer<ArrayBufferLike> = new Resvg(svg).render().asPng();
-    meme = `data:image/png;base64,${png.toString("base64")}`;
+    meme = `data:image/webp;base64,${webp.toString("base64")}`;
 }
 ---
 
