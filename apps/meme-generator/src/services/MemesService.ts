@@ -105,7 +105,7 @@ export class MemesService implements IMemesService {
             //           ms("8h"),
             //       )
             //     :
-            this._memesRepository.generateMeme(template, props),
+            this._memesRepository.generateMeme(template, props, true),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -258,9 +258,7 @@ export class MemesService implements IMemesService {
         try {
             if (!url) return this._transparentImage;
 
-            const cached: string | undefined = await this._cacheService.get<string>(
-                `img:png:${turbo ? "t" : "n"}:${url}`,
-            );
+            const cached: string | undefined = await this._cacheService.get<string>(`img:${turbo ? "t" : "n"}:${url}`);
             if (cached !== undefined) {
                 return cached;
             }
@@ -291,20 +289,45 @@ export class MemesService implements IMemesService {
             }
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const img: Sharp = sharp(input);
+            const meta: Metadata = await sharp(input).metadata();
+
+            const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
+            const format: string = animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
+
+            const img: Sharp = sharp(input, {
+                animated,
+            });
+
             const resized: Sharp = img.resize({
                 width: turbo ? 128 : 512,
                 withoutEnlargement: true,
                 kernel: turbo ? "nearest" : "cubic",
             });
-            const meta: Metadata = await img.metadata();
 
-            const [buf, mime] = meta.hasAlpha
-                ? [await resized.png({ compressionLevel: 1 }).toBuffer(), "image/png"]
-                : [await resized.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer(), "image/jpeg"];
+            let buf: Buffer;
 
-            const result = `data:${mime};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
+            switch (format) {
+                case "gif":
+                    buf = await resized
+                        .gif({
+                            effort: 1,
+                            dither: 0,
+                            colours: turbo ? 16 : 64,
+                            interFrameMaxError: turbo ? 16 : 8,
+                            interPaletteMaxError: turbo ? 64 : 16,
+                        })
+                        .toBuffer();
+                    break;
+                case "png":
+                    buf = await resized.png({ compressionLevel: 1 }).toBuffer();
+                    break;
+                default:
+                    buf = await resized.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer();
+                    break;
+            }
+
+            const result = `data:image/${format};base64,${buf.toString("base64")}`;
+            await this._cacheService.set(`img:${turbo ? "t" : "n"}:${url}`, result, ms("4h"));
             return result;
         } catch (error) {
             analytics.captureException(error);

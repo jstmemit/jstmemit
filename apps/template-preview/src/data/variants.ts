@@ -25,6 +25,7 @@ const texts: string[] = [
     "тестовое сообщение",
 ];
 const images: string[] = [
+    "https://media1.tenor.com/m/1AhUNYnySx4AAAAC/f-bi-raid.gif",
     "https://files.wideunits.nl/memes/examples/city.png",
     "https://files.wideunits.nl/memes/examples/markrutte.jpeg",
     "https://files.wideunits.nl/memes/examples/chicken.png",
