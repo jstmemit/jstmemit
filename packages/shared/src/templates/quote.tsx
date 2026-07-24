@@ -59,11 +59,10 @@ export const quote: Template = {
                         overflow: "hidden",
                         fontFamily: "Comic Sans MS",
                         fontSize: 44,
-                        fontWeight: 600,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
                         paintOrder: "stroke fill",
-                        WebkitTextStroke: "1.25px #000000",
+                        WebkitTextStroke: "2px #000000",
                         WebkitTextFillColor: "white",
                         color: "#ffffff",
                     }}
