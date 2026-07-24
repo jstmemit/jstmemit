@@ -4,8 +4,8 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const spongebob: Template = {
-    name: Topic.SpongeBob,
+export const spongebobBurningTheNote: Template = {
+    name: "spongebobBurningTheNote",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.textCenterWithBackground, Type.objectImage, Type.fourOption],
     width: 622,
