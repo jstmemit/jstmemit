@@ -69,7 +69,7 @@ export class MemesService implements IMemesService {
     public async generateMeme(data: MemeGenerationJob): Promise<MemeGenerationResult> {
         const startTime: number = performance.now();
 
-        const { channelId, userId, templateName } = data;
+        const { channelId, userId, templateName, turbo } = data;
 
         let template: Template | undefined = templateName
             ? this._templatesRepository.getAll().find((template: Template): boolean => template.name === templateName)
@@ -87,8 +87,8 @@ export class MemesService implements IMemesService {
 
         const props: TemplateProps | undefined =
             data.texts || data.images
-                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {})
-                : await this.getMemeTemplateContext(template, channelId, userId);
+                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {}, turbo)
+                : await this.getMemeTemplateContext(template, channelId, userId, turbo);
 
         if (!props) {
             throw new Error("No props");
@@ -106,10 +106,10 @@ export class MemesService implements IMemesService {
             data.trigger === "custom" || data.trigger === "context"
                 ? this._cacheService.getOrSet(
                       `meme:png:${this._templatePropsKey(template, props)}`,
-                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
+                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width, turbo),
                       ms("8h"),
                   )
-                : this._memesRepository.convertIntoBuffer(svg, template.width),
+                : this._memesRepository.convertIntoBuffer(svg, template.width, turbo),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -154,6 +154,7 @@ export class MemesService implements IMemesService {
      * @param template
      * @param channelId
      * @param userId
+     * @param turbo
      *
      * @author Kyrylo Maliuha
      */
@@ -161,6 +162,7 @@ export class MemesService implements IMemesService {
         template: Template,
         channelId: string,
         userId: string,
+        turbo: boolean,
     ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
@@ -212,7 +214,7 @@ export class MemesService implements IMemesService {
         }
 
         const [images, texts] = await Promise.all([
-            this._selectImages(_.shuffle(channelImages), templateImages.length),
+            this._selectImages(_.shuffle(channelImages), templateImages.length, turbo),
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
@@ -225,26 +227,24 @@ export class MemesService implements IMemesService {
         return xxh64(material).toString(16);
     }
 
-    private async _selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
+    private async _selectImages(channelImages: string[], slotCount: number, turbo: boolean): Promise<string[]> {
         const primary: string[] = channelImages.slice(0, slotCount);
         const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
 
         const converted: string[] = await Promise.all(
-            primary.map((url: string): Promise<string> => this._toPngDataUri(url)),
+            primary.map((url: string): Promise<string> => this._toPngDataUri(url, turbo)),
         );
 
         const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
 
-        for (const url of backups) {
-            if (images.length === slotCount) {
-                break;
-            }
+        if (images.length < slotCount) {
+            const missing: number = slotCount - images.length;
 
-            const image: string = await this._toPngDataUri(url);
+            const retried: string[] = await Promise.all(
+                backups.slice(0, missing + 2).map((url: string): Promise<string> => this._toPngDataUri(url, turbo)),
+            );
 
-            if (this._isTransparent(image)) {
-                images.push(image);
-            }
+            images.push(...retried.filter((image: string): boolean => this._isTransparent(image)).slice(0, missing));
         }
 
         while (images.length < slotCount) {
@@ -258,11 +258,13 @@ export class MemesService implements IMemesService {
         return image !== this._transparentImage;
     }
 
-    private async _toPngDataUri(url: string): Promise<string> {
+    private async _toPngDataUri(url: string, turbo: boolean): Promise<string> {
         try {
             if (!url) return this._transparentImage;
 
-            const cached: string | undefined = await this._cacheService.get<string>(`img:png:${url}`);
+            const cached: string | undefined = await this._cacheService.get<string>(
+                `img:png:${turbo ? "t" : "n"}:${url}`,
+            );
             if (cached !== undefined) {
                 return cached;
             }
@@ -294,12 +296,16 @@ export class MemesService implements IMemesService {
 
             const input: Buffer = Buffer.from(await res.arrayBuffer());
             const img: Sharp = sharp(input);
-            const resized: Sharp = img.resize({ width: 512, withoutEnlargement: true, kernel: "cubic" });
+            const resized: Sharp = img.resize({
+                width: turbo ? 128 : 512,
+                withoutEnlargement: true,
+                kernel: turbo ? "nearest" : "cubic",
+            });
             const meta: Metadata = await img.metadata();
 
             const [buf, mime] = meta.hasAlpha
                 ? [await resized.png({ compressionLevel: 1 }).toBuffer(), "image/png"]
-                : [await resized.jpeg({ quality: 82 }).toBuffer(), "image/jpeg"];
+                : [await resized.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer(), "image/jpeg"];
 
             const result = `data:${mime};base64,${buf.toString("base64")}`;
             await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
@@ -330,13 +336,14 @@ export class MemesService implements IMemesService {
         template: Template,
         texts: Record<string, string>,
         images: Record<string, string>,
+        turbo: boolean,
     ): Promise<TemplateProps> {
         const orderedTexts: string[] = (template.texts ?? []).map((text: TemplateText): string => texts[text.id] ?? "");
 
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return await this._toPngDataUri(url);
+                return await this._toPngDataUri(url, turbo);
             }),
         );
 

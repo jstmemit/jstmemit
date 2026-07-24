@@ -7,4 +7,5 @@ export interface MemeGenerationJob {
     templateName?: Template["name"];
     texts?: Record<string, string>;
     images?: Record<string, string>;
+    turbo: boolean;
 }

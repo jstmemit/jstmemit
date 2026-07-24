@@ -16,6 +16,7 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 import type { Frequency } from "#/models/Frequency.ts";
 import { t } from "@jstmemit/i18n";
+import type { Mode } from "@jstmemit/shared/models/Mode";
 
 export class ComponentsService implements IComponentsService {
     /**
@@ -416,6 +417,7 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param frequency
+     * @param turbo
      * @param useAvatarsInMemes
      *
      * @author Kyrylo Maliuha
@@ -423,9 +425,11 @@ export class ComponentsService implements IComponentsService {
     public getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,
+        turbo: boolean,
         useAvatarsInMemes: boolean,
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
+        const modes: Mode[] = this._getModeOptions(language);
 
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("settings.meme.heading", language)}`))
@@ -443,6 +447,25 @@ export class ComponentsService implements IComponentsService {
                                 .setLabel(option.label)
                                 .setValue(option.value)
                                 .setDefault(frequency === Number(option.value))
+                                .setEmoji({ name: option.emoji })
+                                .setDescription(option.description),
+                        ),
+                    ),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.quality.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.quality.body", language)))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder().setCustomId("mode").addOptions(
+                        modes.map((option: Mode) =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.label)
+                                .setValue(option.value)
+                                .setDefault(option.value === String(turbo))
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),
@@ -611,6 +634,30 @@ export class ComponentsService implements IComponentsService {
                 value: "10",
                 description: t("settings.frequency.veryOften.description", language),
                 emoji: "🟩",
+            },
+        ];
+    }
+
+    /**
+     * Returns an array of meme generation mode options
+     *
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private _getModeOptions(language: Locale): Mode[] {
+        return [
+            {
+                label: t("settings.quality.image.label", language),
+                value: "false",
+                description: t("settings.quality.image.description", language),
+                emoji: "🖼️",
+            },
+            {
+                label: t("settings.quality.speed.label", language),
+                value: "true",
+                description: t("settings.quality.speed.description", language),
+                emoji: "⚡",
             },
         ];
     }
