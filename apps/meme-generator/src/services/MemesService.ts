@@ -96,20 +96,16 @@ export class MemesService implements IMemesService {
 
         const contextTime: number = performance.now();
 
-        const svg: string | undefined = await this._memesRepository.generateMeme(template, props);
-
-        if (!svg) {
-            throw new Error("No svg");
-        }
-
-        const [png, generationId] = await Promise.all([
-            data.trigger === "custom" || data.trigger === "context"
-                ? this._cacheService.getOrSet(
-                      `meme:png:${this._templatePropsKey(template, props)}`,
-                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width, turbo),
-                      ms("8h"),
-                  )
-                : this._memesRepository.convertIntoBuffer(svg, template.width, turbo),
+        const [meme, generationId] = await Promise.all([
+            // data.trigger === "custom" || data.trigger === "context"
+            //     ? this._cacheService.getOrSet(
+            //           `meme:png:${this._templatePropsKey(template, props)}`,
+            //           (): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> =>
+            //               this._memesRepository.generateMeme(template, props),
+            //           ms("8h"),
+            //       )
+            //     :
+            this._memesRepository.generateMeme(template, props),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -141,7 +137,7 @@ export class MemesService implements IMemesService {
         });
 
         return {
-            png: png.toString("base64"),
+            png: meme.toString("base64"),
             generationId: generationId,
         };
     }

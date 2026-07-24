@@ -38,7 +38,6 @@ export const disappointedGuy: Template = {
                     top: 0,
                     width: "60%",
                     height: "50%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -48,16 +47,13 @@ export const disappointedGuy: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
+                        lineClamp: 5,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -71,7 +67,6 @@ export const disappointedGuy: Template = {
                     bottom: 0,
                     width: "60%",
                     height: "50%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -81,16 +76,13 @@ export const disappointedGuy: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
+                        lineClamp: 5,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

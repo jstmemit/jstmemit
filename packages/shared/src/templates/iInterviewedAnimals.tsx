@@ -53,11 +53,10 @@ export const iInterviewedAnimals: Template = {
                     fontFamily: "Comic Sans MS",
                     fontSize: 40,
                     lineHeight: 1.05,
-                    paddingBottom: "0.15em",
-                    color: "#fff",
+                    paddingBottom: "0.2em",
+                    color: "#ffffff",
                     wordBreak: "break-word",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "black",
+                    textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                 }}
             >
                 "{texts[0]}"

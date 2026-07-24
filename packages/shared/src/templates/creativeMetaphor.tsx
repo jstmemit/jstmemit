@@ -44,11 +44,10 @@ export const creativeMetaphor: Template = {
                     fontFamily: "Comic Sans MS",
                     fontSize: 43,
                     lineHeight: 1.05,
-                    paddingBottom: "0.15em",
+                    paddingBottom: "0.2em",
                     color: "#808080",
                     wordBreak: "break-word",
                     whiteSpace: "nowrap",
-                    overflow: "hidden",
                     textOverflow: "ellipsis",
                 }}
             >
@@ -67,11 +66,10 @@ export const creativeMetaphor: Template = {
                     fontFamily: "Comic Sans MS",
                     fontSize: 48,
                     lineHeight: 1.05,
-                    paddingBottom: "0.15em",
+                    paddingBottom: "0.2em",
                     color: "#fff",
                     wordBreak: "break-word",
                     whiteSpace: "nowrap",
-                    overflow: "hidden",
                     textOverflow: "ellipsis",
                 }}
             >

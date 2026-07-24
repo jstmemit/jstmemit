@@ -40,7 +40,6 @@ export const quote: Template = {
                     top: 0,
                     width: "100%",
                     height: "100%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -51,19 +50,15 @@ export const quote: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
-                        wordBreak: "break-word",
-                        overflow: "hidden",
+                        lineClamp: 5,
                         textOverflow: "ellipsis",
+                        wordBreak: "break-word",
                         fontFamily: "Comic Sans MS",
                         fontSize: 44,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
                     }}
                 >
                     {`"${texts[0]}"`}

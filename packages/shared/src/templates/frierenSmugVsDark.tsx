@@ -27,7 +27,7 @@ export const frierenSmugVsDark: Template = {
         >
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugVsDark.png"
-                width={"50%"}
+                width={329}
                 height={493}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
@@ -38,7 +38,6 @@ export const frierenSmugVsDark: Template = {
                     top: 0,
                     width: "50%",
                     height: "53%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -50,16 +49,13 @@ export const frierenSmugVsDark: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
+                        lineClamp: 5,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 30,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -73,7 +69,6 @@ export const frierenSmugVsDark: Template = {
                     bottom: 0,
                     width: "50%",
                     height: "47%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -85,16 +80,13 @@ export const frierenSmugVsDark: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
+                        lineClamp: 5,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 30,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

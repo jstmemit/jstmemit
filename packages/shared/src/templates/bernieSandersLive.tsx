@@ -60,13 +60,11 @@ export const bernieSandersLive: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#fff",
                         wordBreak: "break-word",
-                        WebkitTextStrokeWidth: 6,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                         whiteSpace: "nowrap",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                     }}
                 >
@@ -92,13 +90,11 @@ export const bernieSandersLive: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         wordBreak: "break-word",
-                        WebkitTextStrokeWidth: 6,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                         whiteSpace: "nowrap",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                     }}
                 >

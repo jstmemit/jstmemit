@@ -62,7 +62,6 @@ export const simpsonsBartHitsHomerWithChair: Template = {
                     bottom: 0,
                     width: "100%",
                     height: "20%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -73,16 +72,13 @@ export const simpsonsBartHitsHomerWithChair: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+                        lineClamp: 2,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 100,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

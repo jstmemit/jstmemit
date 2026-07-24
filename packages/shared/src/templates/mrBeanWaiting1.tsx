@@ -83,7 +83,6 @@ export const mrBeanWaiting1: Template = {
                     bottom: "250px",
                     width: "100%",
                     height: "100px",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -94,16 +93,13 @@ export const mrBeanWaiting1: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+                        lineClamp: 2,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

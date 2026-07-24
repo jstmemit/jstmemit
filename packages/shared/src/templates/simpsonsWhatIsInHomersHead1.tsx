@@ -60,30 +60,25 @@ export const simpsonsWhatIsInHomersHead1: Template = {
                     bottom: 0,
                     width: "100%",
                     height: "20%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+                        lineClamp: 2,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[0]}
