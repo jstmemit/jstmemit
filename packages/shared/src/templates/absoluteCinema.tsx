@@ -47,8 +47,7 @@ export const absoluteCinema: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "27%",
-                    overflow: "hidden",
+                    height: "30%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -58,19 +57,16 @@ export const absoluteCinema: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 4,
-                        wordBreak: "break-word",
-                        overflow: "hidden",
+                        lineClamp: 4,
                         textOverflow: "ellipsis",
+                        wordBreak: "break-word",
                         fontFamily: "Comic Sans MS",
                         fontSize: 90,
+                        fontWeight: "bold",
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 6,
-                        WebkitTextStrokeColor: "#000000",
+                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
                     }}
                 >
                     {texts[0]}

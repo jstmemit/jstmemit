@@ -51,7 +51,6 @@ export const dsTanjiroLookingAtPhone: Template = {
                     top: "3%",
                     width: "70%",
                     height: "4%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
@@ -61,17 +60,14 @@ export const dsTanjiroLookingAtPhone: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 1,
+                        lineClamp: 1,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 15,
                         fontWeight: 700,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -85,7 +81,6 @@ export const dsTanjiroLookingAtPhone: Template = {
                     top: "8%",
                     width: "70%",
                     height: "4%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
@@ -95,16 +90,13 @@ export const dsTanjiroLookingAtPhone: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 1,
+                        lineClamp: 1,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 15,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#58585b",
                     }}
                 >
@@ -118,7 +110,6 @@ export const dsTanjiroLookingAtPhone: Template = {
                     top: "17%",
                     width: "85%",
                     height: "19%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "flex-start",
                     justifyContent: "flex-start",
@@ -128,16 +119,13 @@ export const dsTanjiroLookingAtPhone: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 3,
+                        lineClamp: 3,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 20,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#cbcbcb",
                     }}
                 >
