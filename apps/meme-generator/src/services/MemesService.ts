@@ -97,14 +97,15 @@ export class MemesService implements IMemesService {
         const contextTime: number = performance.now();
 
         const [meme, generationId] = await Promise.all([
-            data.trigger === "custom" || data.trigger === "context"
-                ? this._cacheService.getOrSet(
-                      `meme:png:${this._templatePropsKey(template, props)}`,
-                      (): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> =>
-                          this._memesRepository.generateMeme(template, props),
-                      ms("8h"),
-                  )
-                : this._memesRepository.generateMeme(template, props),
+            // data.trigger === "custom" || data.trigger === "context"
+            //     ? this._cacheService.getOrSet(
+            //           `meme:png:${this._templatePropsKey(template, props)}`,
+            //           (): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> =>
+            //               this._memesRepository.generateMeme(template, props),
+            //           ms("8h"),
+            //       )
+            //     :
+            this._memesRepository.generateMeme(template, props),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 

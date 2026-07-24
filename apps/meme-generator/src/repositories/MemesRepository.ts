@@ -24,12 +24,18 @@ export class MemesRepository implements IMemesRepository {
         template: Template,
         props: TemplateProps,
     ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> {
-        const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
+        try {
+            const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
 
-        return await render(template.element(props), {
-            width: template.width,
-            height: template.height,
-            fonts: this._fontsService.getFonts(hasCjk),
-        });
+            return await render(template.element(props), {
+                width: template.width,
+                height: template.height,
+                fonts: this._fontsService.getFonts(hasCjk),
+                fontFamilies: ["Comic Sans MS"],
+            });
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
 }

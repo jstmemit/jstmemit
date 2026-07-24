@@ -51,19 +51,21 @@ export const quote: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 5,
+                        display: "flex",
+                        flexDirection: "column",
+                        lineClamp: 5,
+                        textOverflow: "ellipsis",
                         wordBreak: "break-word",
                         overflow: "hidden",
-                        textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 44,
+                        fontWeight: 600,
                         lineHeight: 1.05,
                         paddingBottom: "0.15em",
+                        paintOrder: "stroke fill",
+                        WebkitTextStroke: "1.25px #000000",
+                        WebkitTextFillColor: "white",
                         color: "#ffffff",
-                        WebkitTextStrokeWidth: 3,
-                        WebkitTextStrokeColor: "#000000",
                     }}
                 >
                     {`"${texts[0]}"`}

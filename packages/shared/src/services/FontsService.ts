@@ -8,8 +8,13 @@ export class FontsService implements IFontsService {
 
     public constructor(fontsRepository: IFontsRepository) {
         this._fonts = [
-            { name: "Impact", data: fontsRepository.getImpact(), weight: 800, style: "normal" },
-            { name: "Comic Sans MS", data: fontsRepository.getComicSans(), weight: 400, style: "normal" },
+            {
+                name: "Comic Sans MS",
+                data: fontsRepository.getComicSans(),
+                weight: 600,
+                style: "normal",
+                generic: "sans-serif",
+            },
             { name: "Noto Sans Math", data: fontsRepository.getNotoSansMath(), weight: 400, style: "normal" },
         ];
 
