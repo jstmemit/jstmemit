@@ -15,6 +15,20 @@ services:
         retries: 10
         start_period: 5s
 
+  scheduler:
+      image: mcuadros/ofelia:latest
+      logging: *default-logging
+      restart: unless-stopped
+      depends_on: [ sqld, redis, bot ]
+      command: daemon --docker
+      environment:
+          - TZ=Europe/Amsterdam
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+      labels:
+          ofelia.job-local.restart-stack.schedule: "0 0 5 * * *"
+          ofelia.job-local.restart-stack.command: "docker compose -f /compose.yaml restart sqld redis bot meme-generator voice website whisper kokoro"
+
   migrate:
       image: ghcr.io/jstmemit/migrate
       logging: *default-logging
