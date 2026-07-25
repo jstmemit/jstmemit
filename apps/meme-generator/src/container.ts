@@ -23,6 +23,7 @@ import { type Logger, logs } from "@opentelemetry/api-logs";
 import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
 import "@jstmemit/telemetry";
+import { ImageService } from "@jstmemit/images/services/ImageService";
 
 const env = Env.parse(process.env);
 
@@ -46,6 +47,7 @@ container.register({
     memesService: asClass(MemesService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
     cacheService: asClass(CacheService).singleton(),
+    imageService: asClass(ImageService).singleton(),
 });
 
 export const messagesRepository: IMessagesRepository = container.resolve<MessagesRepository>("messagesRepository");
