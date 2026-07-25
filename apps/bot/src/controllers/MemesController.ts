@@ -160,7 +160,7 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(2000)]);
+            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(1500)]);
 
             if (fastResult) {
                 // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms

@@ -105,7 +105,7 @@ export class MemesService implements IMemesService {
             //           ms("8h"),
             //       )
             //     :
-            this._memesRepository.generateMeme(template, props, true),
+            this._memesRepository.generateMeme(template, props, true, turbo),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -258,14 +258,16 @@ export class MemesService implements IMemesService {
         try {
             if (!url) return this._transparentImage;
 
-            const cached: string | undefined = await this._cacheService.get<string>(`img:${turbo ? "t" : "n"}:${url}`);
+            const cached: string | undefined = await this._cacheService.get<string>(
+                `image:${turbo ? "t" : "n"}:${url}`,
+            );
             if (cached !== undefined) {
                 return cached;
             }
 
             const res: Response = await fetch(url, {
                 headers: { Accept: "image/*" },
-                signal: AbortSignal.timeout(1500),
+                signal: AbortSignal.timeout(3500),
             });
 
             if (!res.ok) {
@@ -310,11 +312,12 @@ export class MemesService implements IMemesService {
                 case "gif":
                     buf = await resized
                         .gif({
-                            effort: 1,
-                            dither: 0,
-                            colours: turbo ? 16 : 64,
-                            interFrameMaxError: turbo ? 16 : 8,
-                            interPaletteMaxError: turbo ? 64 : 16,
+                            effort: 5,
+                            dither: 1,
+                            reuse: true,
+                            colours: 128,
+                            interFrameMaxError: 0,
+                            interPaletteMaxError: 0,
                         })
                         .toBuffer();
                     break;
@@ -327,7 +330,7 @@ export class MemesService implements IMemesService {
             }
 
             const result = `data:image/${format};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(`img:${turbo ? "t" : "n"}:${url}`, result, ms("4h"));
+            await this._cacheService.set(`image:${turbo ? "t" : "n"}:${url}`, result, ms("4h"));
             return result;
         } catch (error) {
             analytics.captureException(error);
