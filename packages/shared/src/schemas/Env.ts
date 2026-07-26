@@ -12,4 +12,7 @@ export const Env = z.object({
 
     REDIS_HOST: z.string().min(1),
     REDIS_PORT: z.coerce.number().min(1),
+
+    REDIS_CACHE_HOST: z.string().min(1),
+    REDIS_CACHE_PORT: z.string().min(1),
 });
