@@ -33,6 +33,7 @@ const container: AwilixContainer = createContainer({ injectionMode: InjectionMod
 
 container.register({
     keyv: asValue(cache),
+    logger: asValue(logs.getLogger("jstmemit/meme-generator")),
     fontsRepository: asClass(FontsRepository).singleton(),
     fontsService: asClass(FontsService).singleton(),
     messagesRepository: asClass(MessagesRepository).singleton(),
@@ -54,4 +55,4 @@ export const messagesRepository: IMessagesRepository = container.resolve<Message
 export const imagesRepository: IImagesRepository = container.resolve<ImagesRepository>("imagesRepository");
 export const banditRepository: IBanditRepository = container.resolve<BanditRepository>("banditRepository");
 export const memesService: IMemesService = container.resolve<MemesService>("memesService");
-export const logger: Logger = logs.getLogger("jstmemit/meme-generator");
+export const logger: Logger = container.resolve<Logger>("logger");

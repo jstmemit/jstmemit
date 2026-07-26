@@ -1,7 +1,8 @@
 import type { IImageService } from "#/interfaces/IImageService.ts";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { analytics } from "@jstmemit/analytics";
-import { type Metadata, sharp, type Sharp } from "sharp";
+import type { Metadata, Sharp } from "sharp";
+import sharp from "sharp";
 import type { Logger } from "@opentelemetry/api-logs";
 import ms from "ms";
 
@@ -20,27 +21,16 @@ export class ImageService implements IImageService {
     public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
         try {
             const cached: string | undefined = await this._cacheService.get<string>(
-                `image:${turbo ? "t" : "n"}:${url}`,
+                this._getConvertToDataUriCacheKey(turbo, url),
             );
+
             if (cached !== undefined) {
                 return cached;
             }
 
             const input: Buffer = await this._fetchImageBuffer(url);
-            const meta: Metadata = await sharp(input).metadata();
-
-            const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
-            const format: string = animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
-
-            const img: Sharp = sharp(input, {
-                animated,
-            });
-
-            const resized: Sharp = img.resize({
-                width: turbo ? 128 : 512,
-                withoutEnlargement: true,
-                kernel: turbo ? "nearest" : "cubic",
-            });
+            const format: string = await this._getFormat(input);
+            const resized: Sharp = this._resizeImage(input, format, turbo);
 
             let buf: Buffer;
 
@@ -57,7 +47,7 @@ export class ImageService implements IImageService {
             }
 
             const result = `data:image/${format};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(`image:${turbo ? "t" : "n"}:${url}`, result, ms("4h"));
+            await this._cacheService.set(this._getConvertToDataUriCacheKey(turbo, url), result, ms("4h"));
             return result;
         } catch (error) {
             analytics.captureException(error);
@@ -71,6 +61,29 @@ export class ImageService implements IImageService {
             });
             return this._transparentImage;
         }
+    }
+
+    private _resizeImage(input: Buffer, format: string, turbo: boolean): Sharp {
+        const img: Sharp = sharp(input, {
+            animated: format === "gif",
+        });
+
+        return img.resize({
+            width: turbo ? 128 : 512,
+            withoutEnlargement: true,
+            kernel: turbo ? "nearest" : "cubic",
+        });
+    }
+
+    private async _getFormat(input: Buffer): Promise<string> {
+        const meta: Metadata = await sharp(input).metadata();
+
+        const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
+        return animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
+    }
+
+    private _getConvertToDataUriCacheKey(turbo: boolean, url: string): string {
+        return `image:${turbo ? "t" : "n"}:${url}`;
     }
 
     private async _fetchImageBuffer(url: string): Promise<Buffer> {
