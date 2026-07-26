@@ -4,7 +4,5 @@ import { Events } from "discord.js";
 import { eventsController } from "#/container.ts";
 
 client.on(Events.GuildDelete, (guild: Guild): void => {
-    eventsController.handleGuildDelete(guild).catch((error): void => {
-        console.error(error);
-    });
+    eventsController.handleGuildDelete(guild);
 });
