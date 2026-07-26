@@ -49,13 +49,13 @@ export class ChannelsController implements IChannelsController {
         try {
             let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
 
-            if (!isEnabled || interaction.isButton()) {
-                isEnabled = await this._channelsService.switchChannel(interaction.channelId);
-            }
-
             const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
                 interaction.channelId,
             );
+
+            if ((!isEnabled && messagesAmount < 1) || interaction.isButton()) {
+                isEnabled = await this._channelsService.switchChannel(interaction.channelId);
+            }
 
             analytics.capture({
                 event: isEnabled ? "channel_enabled" : "channel_disabled",
