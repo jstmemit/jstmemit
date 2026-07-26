@@ -11,15 +11,14 @@ export class ImageService implements IImageService {
     private readonly _logger: Logger;
 
     public constructor(cacheService: ICacheService, logger: Logger) {
-        this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
+        this._transparentImage =
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNgYGBgAAAABQABeqhXUAAAAABJRU5ErkJggg==";
         this._cacheService = cacheService;
         this._logger = logger;
     }
 
     public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
         try {
-            if (!url) return this._transparentImage;
-
             const cached: string | undefined = await this._cacheService.get<string>(
                 `image:${turbo ? "t" : "n"}:${url}`,
             );
@@ -27,32 +26,7 @@ export class ImageService implements IImageService {
                 return cached;
             }
 
-            const res: Response = await fetch(url, {
-                headers: { Accept: "image/*" },
-                signal: AbortSignal.timeout(3500),
-            });
-
-            if (!res.ok) {
-                this._logger.emit({
-                    severityText: "warn",
-                    body: "generate_meme.image.fetch_failed",
-                    attributes: { url_host: this._safeHost(url), status: res.status },
-                });
-                return this._transparentImage;
-            }
-
-            const contentType: string = res.headers.get("content-type") ?? "";
-
-            if (!contentType.startsWith("image/")) {
-                this._logger.emit({
-                    severityText: "warn",
-                    body: "generate_meme.image.not_an_image",
-                    attributes: { url_host: this._safeHost(url), content_type: contentType },
-                });
-                return this._transparentImage;
-            }
-
-            const input: Buffer = Buffer.from(await res.arrayBuffer());
+            const input: Buffer = await this._fetchImageBuffer(url);
             const meta: Metadata = await sharp(input).metadata();
 
             const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
@@ -72,22 +46,13 @@ export class ImageService implements IImageService {
 
             switch (format) {
                 case "gif":
-                    buf = await resized
-                        .gif({
-                            effort: 5,
-                            dither: 1,
-                            reuse: true,
-                            colours: 128,
-                            interFrameMaxError: 0,
-                            interPaletteMaxError: 0,
-                        })
-                        .toBuffer();
+                    buf = await this._resizeGif(resized);
                     break;
                 case "png":
-                    buf = await resized.png({ compressionLevel: 1 }).toBuffer();
+                    buf = await this._resizePng(resized);
                     break;
                 default:
-                    buf = await resized.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer();
+                    buf = await this._resizeJpeg(resized, turbo);
                     break;
             }
 
@@ -108,8 +73,54 @@ export class ImageService implements IImageService {
         }
     }
 
-    private _isTransparent(image: string): boolean {
-        return image !== this._transparentImage;
+    private async _fetchImageBuffer(url: string): Promise<Buffer> {
+        const res: Response = await fetch(url, {
+            headers: { Accept: "image/*" },
+            signal: AbortSignal.timeout(3500),
+        });
+
+        if (!res.ok) {
+            this._logger.emit({
+                severityText: "warn",
+                body: "generate_meme.image.fetch_failed",
+                attributes: { url_host: this._safeHost(url), status: res.status },
+            });
+            return Buffer.from(this._transparentImage);
+        }
+
+        const contentType: string = res.headers.get("content-type") ?? "";
+
+        if (!contentType.startsWith("image/")) {
+            this._logger.emit({
+                severityText: "warn",
+                body: "generate_meme.image.not_an_image",
+                attributes: { url_host: this._safeHost(url), content_type: contentType },
+            });
+            return Buffer.from(this._transparentImage);
+        }
+
+        return Buffer.from(await res.arrayBuffer());
+    }
+
+    private async _resizeGif(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
+        return await input
+            .gif({
+                effort: 5,
+                dither: 1,
+                reuse: true,
+                colours: 128,
+                interFrameMaxError: 0,
+                interPaletteMaxError: 0,
+            })
+            .toBuffer();
+    }
+
+    private async _resizePng(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
+        return await input.png({ compressionLevel: 1 }).toBuffer();
+    }
+
+    private async _resizeJpeg(input: Sharp, turbo: boolean): Promise<Buffer<ArrayBufferLike>> {
+        return await input.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer();
     }
 
     private _safeHost(url: string): string {
