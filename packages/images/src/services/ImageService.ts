@@ -143,4 +143,35 @@ export class ImageService implements IImageService {
             return "invalid";
         }
     }
+
+    public async selectImages(channelImages: string[], slotCount: number, turbo: boolean): Promise<string[]> {
+        const primary: string[] = channelImages.slice(0, slotCount);
+        const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
+
+        const converted: string[] = await Promise.all(
+            primary.map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
+        );
+
+        const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
+
+        if (images.length < slotCount) {
+            const missing: number = slotCount - images.length;
+
+            const retried: string[] = await Promise.all(
+                backups.slice(0, missing + 2).map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
+            );
+
+            images.push(...retried.filter((image: string): boolean => this._isTransparent(image)).slice(0, missing));
+        }
+
+        while (images.length < slotCount) {
+            images.push(this._transparentImage);
+        }
+
+        return images;
+    }
+
+    private _isTransparent(image: string): boolean {
+        return image !== this._transparentImage;
+    }
 }

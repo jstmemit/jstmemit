@@ -22,7 +22,6 @@ import _ from "lodash";
 import type { IImageService } from "@jstmemit/images/interfaces/IImageService";
 
 export class MemesService implements IMemesService {
-    private readonly _transparentImage: string;
     private readonly _memesRepository: IMemesRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
@@ -46,7 +45,6 @@ export class MemesService implements IMemesService {
         cacheService: ICacheService,
         imageService: IImageService,
     ) {
-        this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
@@ -99,14 +97,6 @@ export class MemesService implements IMemesService {
         const contextTime: number = performance.now();
 
         const [meme, generationId] = await Promise.all([
-            // data.trigger === "custom" || data.trigger === "context"
-            //     ? this._cacheService.getOrSet(
-            //           `meme:png:${this._templatePropsKey(template, props)}`,
-            //           (): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> =>
-            //               this._memesRepository.generateMeme(template, props),
-            //           ms("8h"),
-            //       )
-            //     :
             this._memesRepository.generateMeme(template, props, true, turbo),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
@@ -212,44 +202,11 @@ export class MemesService implements IMemesService {
         }
 
         const [images, texts] = await Promise.all([
-            this._selectImages(_.shuffle(channelImages), templateImages.length, turbo),
+            this._imageService.selectImages(_.shuffle(channelImages), templateImages.length, turbo),
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
         return { images, texts };
-    }
-
-    private async _selectImages(channelImages: string[], slotCount: number, turbo: boolean): Promise<string[]> {
-        const primary: string[] = channelImages.slice(0, slotCount);
-        const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
-
-        const converted: string[] = await Promise.all(
-            primary.map((url: string): Promise<string> => this._imageService.convertToDataUri(url, turbo)),
-        );
-
-        const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
-
-        if (images.length < slotCount) {
-            const missing: number = slotCount - images.length;
-
-            const retried: string[] = await Promise.all(
-                backups
-                    .slice(0, missing + 2)
-                    .map((url: string): Promise<string> => this._imageService.convertToDataUri(url, turbo)),
-            );
-
-            images.push(...retried.filter((image: string): boolean => this._isTransparent(image)).slice(0, missing));
-        }
-
-        while (images.length < slotCount) {
-            images.push(this._transparentImage);
-        }
-
-        return images;
-    }
-
-    private _isTransparent(image: string): boolean {
-        return image !== this._transparentImage;
     }
 
     private async _getCustomMemeProps(
