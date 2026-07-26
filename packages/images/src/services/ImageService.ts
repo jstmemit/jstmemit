@@ -18,6 +18,15 @@ export class ImageService implements IImageService {
         this._logger = logger;
     }
 
+    /**
+     * Fetches image from the URL and returns a resized + compressed
+     * version of it as a base64 string
+     *
+     * @param url
+     * @param turbo if true, reduces quality
+     *
+     * @author Kyrylo Maliuha
+     */
     public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
         try {
             const cached: string | undefined = await this._cacheService.get<string>(
@@ -63,6 +72,17 @@ export class ImageService implements IImageService {
         }
     }
 
+    /**
+     * Returns a Sharp object with a resized image
+     * from received Buffer
+     *
+     * @param input
+     * @param format
+     * @param turbo
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _resizeImage(input: Buffer, format: string, turbo: boolean): Sharp {
         const img: Sharp = sharp(input, {
             animated: format === "gif",
@@ -75,6 +95,15 @@ export class ImageService implements IImageService {
         });
     }
 
+    /**
+     * Checks image's metadata and returns back into which
+     * format it must get transformed
+     *
+     * @param input
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _getFormat(input: Buffer): Promise<string> {
         const meta: Metadata = await sharp(input).metadata();
 
@@ -82,14 +111,32 @@ export class ImageService implements IImageService {
         return animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
     }
 
+    /**
+     * Builds cache key for a fetched image
+     *
+     * @param turbo
+     * @param url
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _getConvertToDataUriCacheKey(turbo: boolean, url: string): string {
         return `image:${turbo ? "t" : "n"}:${url}`;
     }
 
+    /**
+     * Fetches image from the URL and returns it
+     * as a Buffer
+     *
+     * @param url
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _fetchImageBuffer(url: string): Promise<Buffer> {
         const res: Response = await fetch(url, {
             headers: { Accept: "image/*" },
-            signal: AbortSignal.timeout(3500),
+            signal: AbortSignal.timeout(5000),
         });
 
         if (!res.ok) {
@@ -171,6 +218,14 @@ export class ImageService implements IImageService {
         return images;
     }
 
+    /**
+     * Checks if the image is already a transparent placeholder
+     *
+     * @param image
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _isTransparent(image: string): boolean {
         return image !== this._transparentImage;
     }
