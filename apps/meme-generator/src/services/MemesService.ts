@@ -14,16 +14,14 @@ import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
-import sharp, { type Metadata, type Sharp } from "sharp";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { logger } from "#/container.ts";
-import { xxh64 } from "@node-rs/xxhash";
 import ms from "ms";
 import _ from "lodash";
+import type { IImageService } from "@jstmemit/images/interfaces/IImageService";
 
 export class MemesService implements IMemesService {
-    private readonly _transparentImage: string;
     private readonly _memesRepository: IMemesRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _imagesRepository: IImagesRepository;
@@ -33,6 +31,7 @@ export class MemesService implements IMemesService {
     private readonly _channelsRepository: IChannelsRepository;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _cacheService: ICacheService;
+    private readonly _imageService: IImageService;
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -44,8 +43,8 @@ export class MemesService implements IMemesService {
         channelsRepository: IChannelsRepository,
         templatesRepository: ITemplatesRepository,
         cacheService: ICacheService,
+        imageService: IImageService,
     ) {
-        this._transparentImage = "https://files.jstmemit.com/jstmemit/images/transparent.png";
         this._memesRepository = memesRepository;
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
@@ -55,6 +54,7 @@ export class MemesService implements IMemesService {
         this._channelsRepository = channelsRepository;
         this._templatesRepository = templatesRepository;
         this._cacheService = cacheService;
+        this._imageService = imageService;
     }
 
     /**
@@ -69,7 +69,7 @@ export class MemesService implements IMemesService {
     public async generateMeme(data: MemeGenerationJob): Promise<MemeGenerationResult> {
         const startTime: number = performance.now();
 
-        const { channelId, userId, templateName } = data;
+        const { channelId, userId, templateName, turbo } = data;
 
         let template: Template | undefined = templateName
             ? this._templatesRepository.getAll().find((template: Template): boolean => template.name === templateName)
@@ -87,8 +87,8 @@ export class MemesService implements IMemesService {
 
         const props: TemplateProps | undefined =
             data.texts || data.images
-                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {})
-                : await this.getMemeTemplateContext(template, channelId, userId);
+                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {}, turbo)
+                : await this.getMemeTemplateContext(template, channelId, userId, turbo);
 
         if (!props) {
             throw new Error("No props");
@@ -96,20 +96,8 @@ export class MemesService implements IMemesService {
 
         const contextTime: number = performance.now();
 
-        const svg: string | undefined = await this._memesRepository.generateMeme(template, props);
-
-        if (!svg) {
-            throw new Error("No svg");
-        }
-
-        const [png, generationId] = await Promise.all([
-            data.trigger === "custom" || data.trigger === "context"
-                ? this._cacheService.getOrSet(
-                      `meme:png:${this._templatePropsKey(template, props)}`,
-                      (): Promise<Buffer> => this._memesRepository.convertIntoBuffer(svg, template.width),
-                      ms("8h"),
-                  )
-                : this._memesRepository.convertIntoBuffer(svg, template.width),
+        const [meme, generationId] = await Promise.all([
+            this._memesRepository.generateMeme(template, props, true, turbo),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -141,7 +129,7 @@ export class MemesService implements IMemesService {
         });
 
         return {
-            png: png.toString("base64"),
+            png: meme.toString("base64"),
             generationId: generationId,
         };
     }
@@ -154,6 +142,7 @@ export class MemesService implements IMemesService {
      * @param template
      * @param channelId
      * @param userId
+     * @param turbo
      *
      * @author Kyrylo Maliuha
      */
@@ -161,6 +150,7 @@ export class MemesService implements IMemesService {
         template: Template,
         channelId: string,
         userId: string,
+        turbo: boolean,
     ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
@@ -212,131 +202,25 @@ export class MemesService implements IMemesService {
         }
 
         const [images, texts] = await Promise.all([
-            this._selectImages(_.shuffle(channelImages), templateImages.length),
+            this._imageService.selectImages(_.shuffle(channelImages), templateImages.length, turbo),
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
         return { images, texts };
     }
 
-    private _templatePropsKey(template: Template, props: TemplateProps): string {
-        const material: string = [template.name, ...props.texts, ...props.images].join("\u0000");
-
-        return xxh64(material).toString(16);
-    }
-
-    private async _selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
-        const primary: string[] = channelImages.slice(0, slotCount);
-        const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
-
-        const converted: string[] = await Promise.all(
-            primary.map((url: string): Promise<string> => this._toPngDataUri(url)),
-        );
-
-        const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
-
-        for (const url of backups) {
-            if (images.length === slotCount) {
-                break;
-            }
-
-            const image: string = await this._toPngDataUri(url);
-
-            if (this._isTransparent(image)) {
-                images.push(image);
-            }
-        }
-
-        while (images.length < slotCount) {
-            images.push(this._transparentImage);
-        }
-
-        return images;
-    }
-
-    private _isTransparent(image: string): boolean {
-        return image !== this._transparentImage;
-    }
-
-    private async _toPngDataUri(url: string): Promise<string> {
-        try {
-            if (!url) return this._transparentImage;
-
-            const cached: string | undefined = await this._cacheService.get<string>(`img:png:${url}`);
-            if (cached !== undefined) {
-                return cached;
-            }
-
-            const res: Response = await fetch(url, {
-                headers: { Accept: "image/*" },
-                signal: AbortSignal.timeout(1500),
-            });
-
-            if (!res.ok) {
-                logger.emit({
-                    severityText: "warn",
-                    body: "generate_meme.image.fetch_failed",
-                    attributes: { url_host: this._safeHost(url), status: res.status },
-                });
-                return this._transparentImage;
-            }
-
-            const contentType: string = res.headers.get("content-type") ?? "";
-
-            if (!contentType.startsWith("image/")) {
-                logger.emit({
-                    severityText: "warn",
-                    body: "generate_meme.image.not_an_image",
-                    attributes: { url_host: this._safeHost(url), content_type: contentType },
-                });
-                return this._transparentImage;
-            }
-
-            const input: Buffer = Buffer.from(await res.arrayBuffer());
-            const img: Sharp = sharp(input);
-            const resized: Sharp = img.resize({ width: 512, withoutEnlargement: true, kernel: "cubic" });
-            const meta: Metadata = await img.metadata();
-
-            const [buf, mime] = meta.hasAlpha
-                ? [await resized.png({ compressionLevel: 1 }).toBuffer(), "image/png"]
-                : [await resized.jpeg({ quality: 82 }).toBuffer(), "image/jpeg"];
-
-            const result = `data:${mime};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(`img:png:${url}`, result, ms("4h"));
-            return result;
-        } catch (error) {
-            analytics.captureException(error);
-            logger.emit({
-                severityText: "warn",
-                body: "generate_meme.image.sharp_convert_failed",
-                attributes: {
-                    url_host: this._safeHost(url),
-                    error_message: error instanceof Error ? error.message : String(error),
-                },
-            });
-            return this._transparentImage;
-        }
-    }
-
-    private _safeHost(url: string): string {
-        try {
-            return new URL(url).hostname;
-        } catch {
-            return "invalid";
-        }
-    }
-
     private async _getCustomMemeProps(
         template: Template,
         texts: Record<string, string>,
         images: Record<string, string>,
+        turbo: boolean,
     ): Promise<TemplateProps> {
         const orderedTexts: string[] = (template.texts ?? []).map((text: TemplateText): string => texts[text.id] ?? "");
 
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return await this._toPngDataUri(url);
+                return await this._imageService.convertToDataUri(url, turbo);
             }),
         );
 

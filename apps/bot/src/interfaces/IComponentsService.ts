@@ -18,6 +18,7 @@ export abstract class IComponentsService {
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,
+        turbo: boolean,
         useAvatarsInMemes: boolean,
     ): ContainerBuilder;
     public abstract getSettingsFooterMessageComponent(language: Locale): ContainerBuilder;

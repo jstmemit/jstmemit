@@ -5,7 +5,7 @@ import type { TemplateTopic } from "#/models/TemplateTopic.ts";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
-import { spongebob } from "#/templates/spongebob.tsx";
+import { spongebobBurningTheNote } from "#/templates/spongebobBurningTheNote.tsx";
 import { looksAtPaperAngry } from "#/templates/looksAtPaperAngry.tsx";
 import { homerHiding } from "#/templates/homerHiding.tsx";
 import { isThisAPigeon } from "#/templates/isThisAPigeon.tsx";
@@ -289,7 +289,7 @@ export class TemplatesRepository implements ITemplatesRepository {
         return [
             topBottomText,
             liveReaction,
-            spongebob,
+            spongebobBurningTheNote,
             explains,
             looksAtPaperAngry,
             homerHiding,

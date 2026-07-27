@@ -23,6 +23,7 @@ import { type Logger, logs } from "@opentelemetry/api-logs";
 import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
 import "@jstmemit/telemetry";
+import { ImageService } from "@jstmemit/images/services/ImageService";
 
 const env = Env.parse(process.env);
 
@@ -32,6 +33,7 @@ const container: AwilixContainer = createContainer({ injectionMode: InjectionMod
 
 container.register({
     keyv: asValue(cache),
+    logger: asValue(logs.getLogger("jstmemit/meme-generator")),
     fontsRepository: asClass(FontsRepository).singleton(),
     fontsService: asClass(FontsService).singleton(),
     messagesRepository: asClass(MessagesRepository).singleton(),
@@ -46,10 +48,11 @@ container.register({
     memesService: asClass(MemesService).singleton(),
     imagesRepository: asClass(ImagesRepository).singleton(),
     cacheService: asClass(CacheService).singleton(),
+    imageService: asClass(ImageService).singleton(),
 });
 
 export const messagesRepository: IMessagesRepository = container.resolve<MessagesRepository>("messagesRepository");
 export const imagesRepository: IImagesRepository = container.resolve<ImagesRepository>("imagesRepository");
 export const banditRepository: IBanditRepository = container.resolve<BanditRepository>("banditRepository");
 export const memesService: IMemesService = container.resolve<MemesService>("memesService");
-export const logger: Logger = logs.getLogger("jstmemit/meme-generator");
+export const logger: Logger = container.resolve<Logger>("logger");

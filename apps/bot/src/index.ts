@@ -4,6 +4,8 @@ import { Env } from "@jstmemit/shared/schemas/Env";
 import "#/events/ClientReady.ts";
 import "#/events/InteractionCreate.ts";
 import "#/events/MessageCreate.ts";
+import "#/events/GuildCreate.ts";
+import "#/events/GuildDelete.ts";
 
 const env = Env.parse(process.env);
 

@@ -6,4 +6,5 @@ export interface FontOptions {
     weight?: FontWeight;
     style?: FontStyle;
     lang?: string;
+    generic?: string;
 }

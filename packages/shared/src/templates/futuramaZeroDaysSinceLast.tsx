@@ -35,7 +35,6 @@ export const futuramaZeroDaysSinceLast: Template = {
                     bottom: "33%",
                     width: "45%",
                     height: "20%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -45,19 +44,15 @@ export const futuramaZeroDaysSinceLast: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+                        lineClamp: 2,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
+                        fontWeight: 700,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#A72227",
-                        WebkitTextStrokeWidth: 1,
-                        WebkitTextStrokeColor: "#000000",
                         textTransform: "uppercase",
                     }}
                 >

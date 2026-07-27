@@ -27,7 +27,7 @@ export const ceLucyLaughingVsCold: Template = {
         >
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceLucyLaughingVsCold.png"
-                width={"50%"}
+                width={1023}
                 height={1846}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
@@ -38,7 +38,6 @@ export const ceLucyLaughingVsCold: Template = {
                     top: 0,
                     width: "50%",
                     height: "50%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -49,16 +48,13 @@ export const ceLucyLaughingVsCold: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 90,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -72,7 +68,6 @@ export const ceLucyLaughingVsCold: Template = {
                     bottom: 0,
                     width: "50%",
                     height: "50%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -83,16 +78,13 @@ export const ceLucyLaughingVsCold: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 90,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

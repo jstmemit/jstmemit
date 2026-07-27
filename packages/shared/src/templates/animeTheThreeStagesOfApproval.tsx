@@ -28,7 +28,7 @@ export const animeTheThreeStagesOfApproval: Template = {
         >
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/animeTheThreeStagesOfApproval.png"
-                width={"50%"}
+                width={504}
                 height={1500}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
@@ -39,7 +39,6 @@ export const animeTheThreeStagesOfApproval: Template = {
                     top: 0,
                     width: "50%",
                     height: "33%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -50,16 +49,13 @@ export const animeTheThreeStagesOfApproval: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -73,7 +69,6 @@ export const animeTheThreeStagesOfApproval: Template = {
                     top: "33%",
                     width: "50%",
                     height: "34%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -86,16 +81,13 @@ export const animeTheThreeStagesOfApproval: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -109,7 +101,7 @@ export const animeTheThreeStagesOfApproval: Template = {
                     bottom: 0,
                     width: "50%",
                     height: "33%",
-                    overflow: "hidden",
+
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -120,16 +112,13 @@ export const animeTheThreeStagesOfApproval: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

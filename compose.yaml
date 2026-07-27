@@ -15,6 +15,20 @@ services:
         retries: 10
         start_period: 5s
 
+  scheduler:
+      image: mcuadros/ofelia:latest
+      logging: *default-logging
+      restart: unless-stopped
+      depends_on: [ sqld, redis, bot ]
+      command: daemon --docker
+      environment:
+          - TZ=Europe/Amsterdam
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+      labels:
+          ofelia.job-local.restart-stack.schedule: "0 0 5 * * *"
+          ofelia.job-local.restart-stack.command: "docker compose -f /compose.yaml restart sqld redis redis-cache bot meme-generator voice website whisper kokoro"
+
   migrate:
       image: ghcr.io/jstmemit/migrate
       logging: *default-logging
@@ -31,7 +45,7 @@ services:
   redis:
     image: redis:alpine
     logging: *default-logging
-    command: [ "redis-server", "--appendonly", "yes" ]
+    command: [ "redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction" ]
     volumes: [ "redis-data:/data" ]
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
@@ -39,6 +53,17 @@ services:
       timeout: 3s
       retries: 5
       start_period: 10s
+
+  redis-cache:
+      image: redis:alpine
+      logging: *default-logging
+      command: [ "redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "6gb", "--maxmemory-policy", "allkeys-lru" ]
+      healthcheck:
+          test: [ "CMD", "redis-cli", "ping" ]
+          interval: 5s
+          timeout: 3s
+          retries: 5
+          start_period: 10s
 
   bot:
     image: ghcr.io/jstmemit/bot
@@ -127,7 +152,7 @@ services:
           - DOWNLOAD_MODEL=true
       deploy:
           resources:
-              limits: { cpus: "3", memory: 3g }
+              limits: { cpus: "3", memory: 6g }
       healthcheck:
           test: [ "CMD-SHELL", "python3 -c \"import urllib.request;urllib.request.urlopen('http://localhost:8880/health')\" || exit 1" ]
           interval: 10s

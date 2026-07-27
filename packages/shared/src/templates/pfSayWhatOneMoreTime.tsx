@@ -10,7 +10,7 @@ export const pfSayWhatOneMoreTime: Template = {
     types: [Type.textTopWithBackground, Type.faceImage],
     width: 1920,
     height: 1317,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "face of the person with a gun" },
         { id: 1, description: "face of the person in the corner" },
@@ -75,7 +75,6 @@ export const pfSayWhatOneMoreTime: Template = {
                     top: 0,
                     width: "100%",
                     height: "18%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -85,16 +84,13 @@ export const pfSayWhatOneMoreTime: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+                        lineClamp: 2,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 70,
+                        fontSize: 85,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

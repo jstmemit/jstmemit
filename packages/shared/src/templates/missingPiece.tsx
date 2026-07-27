@@ -47,7 +47,6 @@ export const missingPiece: Template = {
                     bottom: "40%",
                     width: "40%",
                     maxHeight: "60%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -57,19 +56,14 @@ export const missingPiece: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 8,
+                        lineClamp: 8,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
-                        WebkitTextStrokeWidth: 4,
-                        WebkitTextStrokeColor: "#ffffff",
                     }}
                 >
                     {texts[0]}

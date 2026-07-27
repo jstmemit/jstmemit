@@ -74,11 +74,11 @@ export const crowdFromAngryToHappy: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",
-                        overflow: "hidden",
+
                         textOverflow: "ellipsis",
                     }}
                 >
@@ -104,11 +104,10 @@ export const crowdFromAngryToHappy: Template = {
                         fontFamily: "Comic Sans MS",
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                     }}
                 >

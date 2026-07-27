@@ -24,7 +24,7 @@ export const dnLStaring: Template = {
         >
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnLStaring.png"
-                width={"50%"}
+                width={675}
                 height={675}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
@@ -35,7 +35,6 @@ export const dnLStaring: Template = {
                     top: 0,
                     width: "50%",
                     height: "100%",
-                    overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -46,16 +45,13 @@ export const dnLStaring: Template = {
             >
                 <div
                     style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 7,
+                        lineClamp: 7,
                         wordBreak: "break-word",
-                        overflow: "hidden",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 80,
                         lineHeight: 1.05,
-                        paddingBottom: "0.15em",
+                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

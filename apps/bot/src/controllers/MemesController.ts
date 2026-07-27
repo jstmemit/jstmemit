@@ -136,7 +136,18 @@ export class MemesController implements IMemesController {
         }
 
         try {
-            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({ channelId, userId, trigger });
+            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({
+                channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall:
+                    interaction instanceof Message
+                        ? undefined
+                        : "1" in (interaction?.authorizingIntegrationOwners || {}),
+                locale: interaction instanceof Message ? undefined : interaction?.locale,
+                userId,
+                trigger,
+                turbo: channel.turbo,
+            });
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
@@ -149,12 +160,13 @@ export class MemesController implements IMemesController {
                             name: "meme.webp",
                         },
                     ],
+                    failIfNotExists: false,
                 });
 
                 return;
             }
 
-            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(2000)]);
+            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(1500)]);
 
             if (fastResult) {
                 // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms
@@ -271,11 +283,15 @@ export class MemesController implements IMemesController {
         try {
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                locale: interaction.locale,
                 userId: interaction.user.id,
                 trigger: "custom",
                 templateName: templateName,
                 texts,
                 images,
+                turbo: false,
             });
 
             await interaction.editReply({
@@ -329,11 +345,15 @@ export class MemesController implements IMemesController {
 
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                locale: interaction.locale,
                 userId: interaction.user.id,
                 trigger: "context",
                 templateName,
                 texts,
                 images,
+                turbo: false,
             });
 
             await interaction.editReply({
