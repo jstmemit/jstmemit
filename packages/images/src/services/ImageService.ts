@@ -37,8 +37,23 @@ export class ImageService implements IImageService {
                 return cached;
             }
 
-            const input: Buffer = await this._fetchImageBuffer(url);
-            const format: string = await this._getFormat(input);
+            const input: Buffer | null = await this._fetchImageBuffer(url);
+
+            if (input === null) {
+                return this._transparentImage;
+            }
+
+            const format: string | null = await this._getFormat(input);
+
+            if (format === null) {
+                this._logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.image.unsupported_format",
+                    attributes: { url_host: this._safeHost(url) },
+                });
+                return this._transparentImage;
+            }
+
             const resized: Sharp = this._resizeImage(input, format, turbo);
 
             let buf: Buffer;
@@ -104,8 +119,14 @@ export class ImageService implements IImageService {
      *
      * @author Kyrylo Maliuha
      */
-    private async _getFormat(input: Buffer): Promise<string> {
-        const meta: Metadata = await sharp(input).metadata();
+    private async _getFormat(input: Buffer): Promise<string | null> {
+        let meta: Metadata;
+
+        try {
+            meta = await sharp(input).metadata();
+        } catch {
+            return null;
+        }
 
         const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
         return animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
@@ -133,7 +154,7 @@ export class ImageService implements IImageService {
      *
      * @author Kyrylo Maliuha
      */
-    private async _fetchImageBuffer(url: string): Promise<Buffer> {
+    private async _fetchImageBuffer(url: string): Promise<Buffer | null> {
         const res: Response = await fetch(url, {
             headers: { Accept: "image/*" },
             signal: AbortSignal.timeout(5000),
@@ -145,7 +166,7 @@ export class ImageService implements IImageService {
                 body: "generate_meme.image.fetch_failed",
                 attributes: { url_host: this._safeHost(url), status: res.status },
             });
-            return Buffer.from(this._transparentImage);
+            return null;
         }
 
         const contentType: string = res.headers.get("content-type") ?? "";
@@ -156,7 +177,7 @@ export class ImageService implements IImageService {
                 body: "generate_meme.image.not_an_image",
                 attributes: { url_host: this._safeHost(url), content_type: contentType },
             });
-            return Buffer.from(this._transparentImage);
+            return null;
         }
 
         return Buffer.from(await res.arrayBuffer());
