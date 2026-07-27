@@ -1,112 +1,94 @@
-import satori from "satori";
-import type { RenderedImage } from "@resvg/resvg-js";
-import { renderAsync } from "@resvg/resvg-js";
+import { render, renderAnimation } from "takumi-js";
+import { Renderer } from "takumi-js/node";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { analytics } from "@jstmemit/analytics";
-import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
-import ms from "ms";
-import sharp from "sharp";
 
 export class MemesRepository implements IMemesRepository {
-    private readonly _twemojiBaseUrl: string;
     private readonly _fontsService: IFontsService;
-    private readonly _cacheService: ICacheService;
+    private readonly _renderer: Renderer;
+    private readonly _fontsReady: Promise<void>;
+    private readonly _fetchCache: Map<string, Promise<ArrayBuffer>>;
+    private readonly _fallbackChain: string[] = ["Comic Sans MS"];
+    private readonly _cjkFallbackChain: string[] = [
+        "Comic Sans MS",
+        "Noto Sans SC",
+        "Noto Sans TC",
+        "Noto Sans HK",
+        "Noto Sans JP",
+        "Noto Sans KR",
+    ];
 
-    public constructor(fontsService: IFontsService, cacheService: ICacheService) {
-        this._twemojiBaseUrl = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg";
+    public constructor(fontsService: IFontsService) {
         this._fontsService = fontsService;
-        this._cacheService = cacheService;
+        this._renderer = new Renderer({ cacheMaxBytes: 128 * 1024 * 1024 });
+        this._fetchCache = new Map<string, Promise<ArrayBuffer>>();
+        this._fontsReady = this._registerFonts();
     }
 
     /**
-     * Renders passed meme template using satori and
-     * returns an SVG string
+     * Renders passed meme template using takumi and
+     * returns a WebP buffer
      *
      * @param template
      * @param props
+     * @param animated
+     * @param turbo
      *
      * @author Kyrylo Maliuha
      */
-    public async generateMeme(template: Template, props: TemplateProps): Promise<string | undefined> {
+    public async generateMeme(
+        template: Template,
+        props: TemplateProps,
+        animated: boolean,
+        turbo: boolean,
+    ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> {
         try {
+            await this._fontsReady;
+
             const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
 
-            return await satori(template.element(props), {
-                width: template.width,
-                height: template.height,
-                fonts: this._fontsService.getFonts(hasCjk),
-                loadAdditionalAsset: async (code: string, segment: string): Promise<string> => {
-                    if (code === "emoji") {
-                        const cached: string | undefined = await this._cacheService.get<string>(`emoji:${segment}`);
-                        if (cached !== undefined) return cached;
+            const fonts = hasCjk ? this._fontsService.getFonts(true) : undefined;
+            const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
 
-                        const emoji: string = await this._loadEmoji(segment);
-                        if (emoji !== "") {
-                            await this._cacheService.set(`emoji:${segment}`, emoji, ms("4w"));
-                        }
-                        return emoji;
-                    }
-
-                    return "";
-                },
-            });
-        } catch (error) {
-            analytics.captureException(error);
-            console.error("Error generating meme:", error);
-            return undefined;
-        }
-    }
-
-    /**
-     * Converts an SVG string into a .webp buffer
-     * using Resvg and sharp libraries
-     *
-     * @param svg
-     * @param width
-     *
-     * @author Kyrylo Maliuha
-     */
-    public async convertIntoBuffer(svg: string, width: number): Promise<Buffer> {
-        const rendered: RenderedImage = await renderAsync(svg, {
-            fitTo: { mode: "width", value: width },
-            font: { loadSystemFonts: false },
-            imageRendering: 1,
-            shapeRendering: 1,
-            textRendering: 0,
-        });
-
-        return sharp(rendered.pixels, {
-            raw: { width: rendered.width, height: rendered.height, channels: 4 },
-        })
-            .webp({ quality: 82, effort: 2 })
-            .toBuffer();
-    }
-
-    private async _loadEmoji(segment: string): Promise<string> {
-        try {
-            const response: Response = await fetch(`${this._twemojiBaseUrl}/${this._getEmojiCode(segment)}.svg`);
-
-            if (!response.ok) {
-                return "";
+            if (animated || template.isAnimated) {
+                return await renderAnimation({
+                    width: template.width,
+                    height: template.height,
+                    renderer: this._renderer,
+                    fonts,
+                    fontFamilies,
+                    format: "webp",
+                    emoji: "twemoji",
+                    images: { fetchCache: this._fetchCache },
+                    quality: turbo ? 35 : 45,
+                    fps: 12,
+                    scenes: [{ durationMs: 1500, node: template.element(props) }],
+                });
+            } else {
+                return await render(template.element(props), {
+                    width: template.width,
+                    height: template.height,
+                    renderer: this._renderer,
+                    fonts,
+                    fontFamilies,
+                    quality: turbo ? 30 : 55,
+                    format: "webp",
+                    emoji: "twemoji",
+                    images: { fetchCache: this._fetchCache },
+                    devicePixelRatio: 2,
+                });
             }
-
-            return `data:image/svg+xml;base64,${Buffer.from(await response.text()).toString("base64")}`;
         } catch (error) {
-            analytics.captureException(error);
-            return "";
+            console.error(error);
+            throw error;
         }
     }
 
-    private _getEmojiCode(segment: string): string {
-        const codePoints: string[] = [...segment].map((char: string): string => char.codePointAt(0)!.toString(16));
-
-        if (!codePoints.includes("200d")) {
-            return codePoints.filter((point: string): boolean => point !== "fe0f").join("-");
+    private async _registerFonts(): Promise<void> {
+        for (const font of this._fontsService.getFonts(false)) {
+            await this._renderer.registerFont(font);
         }
-
-        return codePoints.join("-");
     }
 }
