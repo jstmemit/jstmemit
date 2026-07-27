@@ -4,7 +4,7 @@ x-logging: &default-logging
 
 services:
     sqld:
-        image: ghcr.io/tursodatabase/libsql-server:latest
+        image: ghcr.io/tursodatabase/libsql-server@sha256:817fb6c6865d048a509f5c120905629fb9b5af20ad0c526cdc68a6d8793898ad
         logging: *default-logging
         volumes: [ "sqld-data:/var/lib/sqld" ]
         restart: unless-stopped
@@ -29,7 +29,7 @@ services:
         restart: "no"
 
     redis:
-        image: redis:alpine
+        image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
         logging: *default-logging
         command: [ "redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction" ]
         volumes: [ "redis-data:/data" ]
@@ -42,7 +42,7 @@ services:
             start_period: 10s
 
     redis-cache:
-        image: redis:alpine
+        image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
         logging: *default-logging
         command: [ "redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "6gb", "--maxmemory-policy", "allkeys-lru" ]
         restart: unless-stopped
@@ -116,7 +116,7 @@ services:
                 condition: service_started
 
     whisper:
-        image: hwdsl2/whisper-server
+        image: hwdsl2/whisper-server@sha256:120e4b7835898715d97b16e54e991e5226535fdfad506863a3b9cd4dd6d6377f
         logging: *default-logging
         container_name: whisper
         restart: unless-stopped
