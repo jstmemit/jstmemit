@@ -165,12 +165,13 @@ export class ImageService implements IImageService {
     private async _resizeGif(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
         return await input
             .gif({
-                effort: 5,
+                effort: 7,
                 dither: 1,
                 reuse: true,
-                colours: 128,
-                interFrameMaxError: 0,
-                interPaletteMaxError: 0,
+                colours: 100,
+                interFrameMaxError: 4,
+                interPaletteMaxError: 4,
+                progressive: true,
             })
             .toBuffer();
     }
