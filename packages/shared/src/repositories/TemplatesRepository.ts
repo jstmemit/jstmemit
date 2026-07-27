@@ -263,6 +263,7 @@ import { gintamaGintokiScaredGhost } from "#/templates/gintamaGintokiScaredGhost
 import { gintamaGintokiSmirk } from "#/templates/gintamaGintokiSmirk.tsx";
 import { gintamaGintokiSurprisedFace } from "#/templates/gintamaGintokiSurprisedFace.tsx";
 import { gintamaGintokiUnderstood } from "#/templates/gintamaGintokiUnderstood.tsx";
+import { gintamaGintokiRealizationStages1 } from "#/templates/gintamaGintokiRealizationStages1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -547,6 +548,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             gintamaGintokiSmirk,
             gintamaGintokiSurprisedFace,
             gintamaGintokiUnderstood,
+            gintamaGintokiRealizationStages1,
         ];
     }
 
