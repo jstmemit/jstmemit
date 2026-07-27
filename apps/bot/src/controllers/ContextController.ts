@@ -1,5 +1,5 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { GuildMember, Message } from "discord.js";
+import type { Collection, GuildMember, Message, TextBasedChannel } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
@@ -179,5 +179,66 @@ export class ContextController implements IContextController {
         }
 
         return true;
+    }
+
+    public async prefetchChannel(channel: TextBasedChannel): Promise<number> {
+        let prefetched: number = 0;
+
+        try {
+            const messages: Collection<string, Message> = await channel.messages.fetch({ limit: 50 });
+
+            for (const message of messages.values()) {
+                if (message.author.bot || message.system) {
+                    continue;
+                }
+
+                const { id, content, channelId, attachments, author } = message;
+
+                try {
+                    const avatar: string | null = author.avatarURL();
+
+                    if (avatar) {
+                        await this._contextService.saveAvatar(id, channelId, avatar);
+                    }
+
+                    if (attachments.size > 0) {
+                        await this._contextService.saveImages(id, channelId, attachments);
+                    }
+
+                    if (content.length > 0 && content.length < 2000) {
+                        if (this._checkIfLinkToGif(content)) {
+                            await this._contextService.saveGif(id, channelId, content);
+                        } else {
+                            await this._contextService.saveContent(id, channelId, content);
+                        }
+                    }
+
+                    prefetched++;
+                } catch (error) {
+                    analytics.captureException(error);
+                    logger.emit({
+                        severityText: "error",
+                        body: "context.prefetch.message_error",
+                        attributes: {
+                            channel_id: channelId,
+                            message_id: id,
+                            error_message: error instanceof Error ? error.message : String(error),
+                        },
+                    });
+                }
+            }
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "context.prefetch.error",
+                attributes: {
+                    channel_id: channel.id,
+                    error_message: error instanceof Error ? error.message : String(error),
+                },
+            });
+        }
+
+        return prefetched;
     }
 }
