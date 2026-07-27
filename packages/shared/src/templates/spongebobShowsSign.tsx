@@ -58,8 +58,7 @@ export const spongebobShowsSign: Template = {
                         fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#ffffff",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

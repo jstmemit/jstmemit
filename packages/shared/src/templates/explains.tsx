@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const explains: Template = {
     name: "explains",
-    topics: [Topic.Reaction, Topic.Movies],
+    topics: [Topic.Reaction, Topic.Movies, Topic.Office],
     types: [Type.objectImage, Type.twoOption, Type.textBottom],
     width: 700,
     height: 800,
@@ -25,7 +25,7 @@ export const explains: Template = {
             <img src={images[0]} width={455} height={360} style={{ position: "absolute", top: 20, left: 0 }} />
             <img src={images[0]} width={400} height={320} style={{ position: "absolute", top: 435, left: 0 }} />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/explainingWhiteboard.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/explains.png"
                 width={700}
                 height={800}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -42,7 +42,7 @@ export const explains: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div
@@ -55,7 +55,7 @@ export const explains: Template = {
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
                 >
                     {texts[0]}

@@ -24,7 +24,7 @@ export const Topic = {
     AzumangaDaioh: "azumangaDaioh",
     AttackOnTitan: "attackOnTitan",
     AkashicRecords: "akashicRecords",
-    BlendS: "blenS",
+    BlendS: "blendS",
     BocchiTheRock: "bocchiTheRock",
     CyberpunkEdgerunners: "cyberpunkEdgerunners",
     Dandadan: "dandadan",
@@ -37,6 +37,13 @@ export const Topic = {
     Frieren: "frieren",
     GabrielDropOut: "gabrielDropOut",
     Gintama: "gintama",
+    Office: "office",
+    IronMan: "ironMan",
+    Incredibles: "incredibles",
+    ToyStory: "toyStory",
+    ScoobyDoo: "scoobyDoo",
+    WinnieThePooh: "winnieThePooh",
+    MrBean: "mrBean",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];

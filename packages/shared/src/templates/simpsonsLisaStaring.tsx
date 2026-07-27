@@ -35,7 +35,7 @@ export const simpsonsLisaStaring: Template = {
                     bottom: 0,
                     width: "100%",
                     height: "100%",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             />
             <img
@@ -74,7 +74,7 @@ export const simpsonsLisaStaring: Template = {
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
                 >
                     {texts[0]}

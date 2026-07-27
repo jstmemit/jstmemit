@@ -63,7 +63,7 @@ export const bernieSandersLive: Template = {
                         paddingBottom: "0.2em",
                         color: "#fff",
                         wordBreak: "break-word",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis",
                     }}
@@ -93,7 +93,7 @@ export const bernieSandersLive: Template = {
                         paddingBottom: "0.2em",
                         color: "#ffffff",
                         wordBreak: "break-word",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis",
                     }}

@@ -52,7 +52,7 @@ export const parrotBarber: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div
