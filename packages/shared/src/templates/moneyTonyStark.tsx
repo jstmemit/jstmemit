@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const moneyTonyStark: Template = {
     name: "moneyTonyStark",
-    topics: [Topic.Movies],
+    topics: [Topic.Movies, Topic.IronMan],
     types: [Type.textTopWithBackground, Type.faceImage],
     width: 1200,
     height: 1000,

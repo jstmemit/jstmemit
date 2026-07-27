@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const uncanny: Template = {
     name: "uncanny",
-    topics: [Topic.Cartoons, Topic.Reaction],
+    topics: [Topic.Cartoons, Topic.Reaction, Topic.Incredibles],
     types: [Type.twoOption, Type.textTopWithBackground],
     width: 950,
     height: 600,

@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const mrBeanWaiting: Template = {
     name: "mrBeanWaiting",
-    topics: [Topic.Movies],
+    topics: [Topic.Movies, Topic.MrBean],
     types: [Type.textBottom, Type.faceImage, Type.fourOption],
     width: 640,
     height: 640,
