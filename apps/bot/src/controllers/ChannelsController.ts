@@ -12,22 +12,26 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import { analytics } from "@jstmemit/analytics";
 import { respond } from "#/helpers/respond.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
+import type { IContextController } from "#/interfaces/IContextController.ts";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
     private readonly _componentsService: IComponentsService;
     private readonly _messagesRepository: IMessagesRepository;
+    private readonly _contextController: IContextController;
     private readonly _contextService: IContextService;
 
     public constructor(
         channelsService: IChannelsService,
         componentsService: IComponentsService,
         messagesRepository: IMessagesRepository,
+        contextController: IContextController,
         contextService: IContextService,
     ) {
         this._channelsService = channelsService;
         this._componentsService = componentsService;
         this._messagesRepository = messagesRepository;
+        this._contextController = contextController;
         this._contextService = contextService;
     }
 
@@ -47,6 +51,7 @@ export class ChannelsController implements IChannelsController {
         }
 
         try {
+            let prefetchedContext: number = 0;
             let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
 
             const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
@@ -57,6 +62,10 @@ export class ChannelsController implements IChannelsController {
                 isEnabled = await this._channelsService.switchChannel(interaction.channelId);
             }
 
+            if (isEnabled && messagesAmount < 1 && interaction.channel) {
+                prefetchedContext = await this._contextController.prefetchChannel(interaction.channel);
+            }
+
             analytics.capture({
                 event: isEnabled ? "channel_enabled" : "channel_disabled",
                 distinctId: interaction.user.id,
@@ -64,6 +73,7 @@ export class ChannelsController implements IChannelsController {
                     channelId: interaction.channelId,
                     guildId: interaction.guildId,
                     messagesAmount: messagesAmount,
+                    prefetchedContext,
                     enabled: isEnabled,
                     language: interaction.locale,
                 },
@@ -80,7 +90,7 @@ export class ChannelsController implements IChannelsController {
             const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 interaction.locale,
                 isEnabled,
-                messagesAmount,
+                messagesAmount + prefetchedContext,
             );
 
             const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
