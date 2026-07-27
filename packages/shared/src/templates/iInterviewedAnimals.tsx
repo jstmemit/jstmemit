@@ -56,7 +56,7 @@ export const iInterviewedAnimals: Template = {
                     paddingBottom: "0.2em",
                     color: "#ffffff",
                     wordBreak: "break-word",
-                    textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                    textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                 }}
             >
                 "{texts[0]}"

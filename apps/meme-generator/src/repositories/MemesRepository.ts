@@ -52,7 +52,7 @@ export class MemesRepository implements IMemesRepository {
             const fonts = hasCjk ? this._fontsService.getFonts(true) : undefined;
             const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
 
-            if (animated) {
+            if (animated || template.isAnimated) {
                 return await renderAnimation({
                     width: template.width,
                     height: template.height,

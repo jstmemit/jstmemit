@@ -4,15 +4,16 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const stonks: Template = {
-    name: "stonks",
-    topics: [Topic.Reaction],
-    types: [Type.backgroundImage, Type.textRight],
-    width: 512,
-    height: 386,
-    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 15 }],
-    images: [{ id: 0, description: "what the stonks guy is happy about" }],
-    element: ({ texts, images }: TemplateProps) => (
+export const gintamaGintokiRealizationStages1: Template = {
+    name: "gintamaGintokiRealizationStages1",
+    topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
+    types: [Type.textTopWithBackground],
+    isAnimated: true,
+    width: 640,
+    height: 470,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    images: [],
+    element: ({ texts }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -23,48 +24,36 @@ export const stonks: Template = {
             }}
         >
             <img
-                src={images[0]}
-                width={512}
-                height={386}
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    objectFit: "cover",
-                }}
-            />
-            <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/stonks.png"
-                width={512}
-                height={386}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiRealizationStages1.gif"
+                width={640}
+                height={360}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
-                    width: "45%",
-                    height: "100%",
+                    width: "100%",
+                    height: "110px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 10,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#ffffff",
-                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

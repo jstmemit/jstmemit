@@ -54,7 +54,7 @@ export const newsReporterSitting: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div
@@ -67,7 +67,7 @@ export const newsReporterSitting: Template = {
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
                 >
                     {texts[0]}
@@ -85,7 +85,7 @@ export const newsReporterSitting: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div
@@ -98,7 +98,7 @@ export const newsReporterSitting: Template = {
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
                 >
                     {texts[1]}
