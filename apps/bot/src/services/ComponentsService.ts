@@ -630,10 +630,16 @@ export class ComponentsService implements IComponentsService {
                 emoji: "🟨",
             },
             {
-                label: t("settings.frequency.veryOften.label", language),
+                label: t("settings.frequency.quiteOften.label", language),
                 value: "10",
-                description: t("settings.frequency.veryOften.description", language),
+                description: t("settings.frequency.quiteOften.description", language),
                 emoji: "🟩",
+            },
+            {
+                label: t("settings.frequency.veryOften.label", language),
+                value: "5",
+                description: t("settings.frequency.veryOften.description", language),
+                emoji: "🟦",
             },
         ];
     }
