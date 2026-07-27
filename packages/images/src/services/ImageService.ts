@@ -28,6 +28,10 @@ export class ImageService implements IImageService {
      * @author Kyrylo Maliuha
      */
     public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
+        if (!this._isValidUrl(url)) {
+            return this._transparentImage;
+        }
+
         try {
             const cached: string | undefined = await this._cacheService.get<string>(
                 this._getConvertToDataUriCacheKey(turbo, url),
@@ -188,6 +192,24 @@ export class ImageService implements IImageService {
             return new URL(url).hostname;
         } catch {
             return "invalid";
+        }
+    }
+
+    /**
+     * Checks whether a string can be parsed into a URL, so we
+     * never hand an empty or malformed value to fetch()
+     *
+     * @param url
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private _isValidUrl(url: string): boolean {
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
         }
     }
 
