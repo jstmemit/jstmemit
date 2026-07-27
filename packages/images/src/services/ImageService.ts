@@ -37,8 +37,23 @@ export class ImageService implements IImageService {
                 return cached;
             }
 
-            const input: Buffer = await this._fetchImageBuffer(url);
-            const format: string = await this._getFormat(input);
+            const input: Buffer | null = await this._fetchImageBuffer(url);
+
+            if (input === null) {
+                return this._transparentImage;
+            }
+
+            const format: string | null = await this._getFormat(input);
+
+            if (format === null) {
+                this._logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.image.unsupported_format",
+                    attributes: { url_host: this._safeHost(url) },
+                });
+                return this._transparentImage;
+            }
+
             const resized: Sharp = this._resizeImage(input, format, turbo);
 
             let buf: Buffer;
@@ -97,15 +112,25 @@ export class ImageService implements IImageService {
 
     /**
      * Checks image's metadata and returns back into which
-     * format it must get transformed
+     * format it must get transformed.
+     *
+     * Returns null when sharp cannot decode the buffer (unsupported
+     * formats such as AVIF/HEIC/SVG, or a truncated/corrupt response)
+     * so the caller can skip it gracefully instead of throwing.
      *
      * @param input
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private async _getFormat(input: Buffer): Promise<string> {
-        const meta: Metadata = await sharp(input).metadata();
+    private async _getFormat(input: Buffer): Promise<string | null> {
+        let meta: Metadata;
+
+        try {
+            meta = await sharp(input).metadata();
+        } catch {
+            return null;
+        }
 
         const animated: boolean = (meta.pages ?? 1) > 1 && (meta.format === "gif" || meta.format === "webp");
         return animated ? "gif" : meta.hasAlpha ? "png" : "jpeg";
@@ -125,15 +150,21 @@ export class ImageService implements IImageService {
     }
 
     /**
-     * Fetches image from the URL and returns it
-     * as a Buffer
+     * Fetches image from the URL and returns it as a Buffer.
+     *
+     * Returns null when the response is not a usable image so the
+     * caller can fall back to a placeholder. It deliberately does not
+     * return the transparent-placeholder bytes here: those bytes would
+     * be fed straight into sharp and, being a data-URI string rather
+     * than a decoded image, would re-trigger the very decode error we
+     * are trying to avoid.
      *
      * @param url
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private async _fetchImageBuffer(url: string): Promise<Buffer> {
+    private async _fetchImageBuffer(url: string): Promise<Buffer | null> {
         const res: Response = await fetch(url, {
             headers: { Accept: "image/*" },
             signal: AbortSignal.timeout(5000),
@@ -145,7 +176,7 @@ export class ImageService implements IImageService {
                 body: "generate_meme.image.fetch_failed",
                 attributes: { url_host: this._safeHost(url), status: res.status },
             });
-            return Buffer.from(this._transparentImage);
+            return null;
         }
 
         const contentType: string = res.headers.get("content-type") ?? "";
@@ -156,7 +187,7 @@ export class ImageService implements IImageService {
                 body: "generate_meme.image.not_an_image",
                 attributes: { url_host: this._safeHost(url), content_type: contentType },
             });
-            return Buffer.from(this._transparentImage);
+            return null;
         }
 
         return Buffer.from(await res.arrayBuffer());
