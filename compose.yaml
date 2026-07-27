@@ -80,12 +80,14 @@ services:
   meme-generator:
     image: ghcr.io/jstmemit/meme-generator
     init: true
+    deploy:
+        replicas: 2
+        resources:
+            limits: { cpus: "1.5", memory: 1500m }
     logging: *default-logging
     build:
       context: .
       dockerfile: apps/meme-generator/Dockerfile
-    environment:
-        - UV_THREADPOOL_SIZE=8
     env_file:
       - ".env.docker"
     restart: unless-stopped
@@ -126,6 +128,7 @@ services:
   kokoro:
       image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.6.0
       command: [ "python", "-m", "uvicorn", "api.src.main:app", "--host", "0.0.0.0", "--port", "8880", "--no-access-log" ]
+      volumes: [ "kokoro-models:/app/api/src/models" ]
       logging: *default-logging
       restart: unless-stopped
       environment:
