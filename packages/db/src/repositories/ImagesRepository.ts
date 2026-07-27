@@ -1,6 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
+import { isTransientNetworkError, withRetry } from "../utils/retry.ts";
 import { and, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
 import { analytics } from "@jstmemit/analytics";
 
@@ -23,11 +24,23 @@ export class ImagesRepository extends IImagesRepository {
                 expiresAt: expiresAt,
             };
 
-            await db.insert(imagesTable).values(image).onConflictDoUpdate({
-                target: imagesTable.imageUrl,
-                set: { imageUrl },
-            });
+            await withRetry(() =>
+                db.insert(imagesTable).values(image).onConflictDoUpdate({
+                    target: imagesTable.imageUrl,
+                    set: { imageUrl },
+                }),
+            );
         } catch (error) {
+            // Transient libsql/Turso connectivity blips (undici SocketError /
+            // HeadersTimeoutError) are retried above; once retries are exhausted
+            // we only log them so they don't flood error tracking and bury real
+            // bugs. Everything else is a genuine failure worth capturing.
+            if (isTransientNetworkError(error)) {
+                console.error("ImagesRepository.add: transient network error after retries", error);
+
+                return;
+            }
+
             analytics.captureException(error);
         }
     }

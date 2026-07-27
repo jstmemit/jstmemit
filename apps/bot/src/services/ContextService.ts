@@ -80,18 +80,19 @@ export class ContextService implements IContextService {
         channelId: string,
         attachments: Collection<string, Attachment>,
     ): Promise<void> {
-        await Promise.all(
-            attachments.map(async (attachment: Attachment): Promise<void> => {
-                await this._imagesRepository.add(
-                    messageId,
-                    channelId,
-                    attachment.proxyURL,
-                    "attachment",
-                    new Date(),
-                    this._getExpirationDate(attachment.proxyURL),
-                );
-            }),
-        );
+        // Save sequentially rather than via Promise.all: firing every attachment
+        // insert concurrently piles load onto the remote libsql connection, which
+        // was amplifying transient network failures.
+        for (const attachment of attachments.values()) {
+            await this._imagesRepository.add(
+                messageId,
+                channelId,
+                attachment.proxyURL,
+                "attachment",
+                new Date(),
+                this._getExpirationDate(attachment.proxyURL),
+            );
+        }
     }
 
     /**
