@@ -12,6 +12,7 @@ export interface Template {
     element: (props: TemplateProps) => ReactNode;
     width: number;
     height: number;
+    isAnimated?: boolean;
     images?: TemplateImage[];
     texts?: TemplateText[];
     selectedTopic?: TemplateTopic;
