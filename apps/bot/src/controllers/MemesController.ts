@@ -138,6 +138,12 @@ export class MemesController implements IMemesController {
         try {
             const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({
                 channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall:
+                    interaction instanceof Message
+                        ? undefined
+                        : "1" in (interaction?.authorizingIntegrationOwners || {}),
+                locale: interaction instanceof Message ? undefined : interaction?.locale,
                 userId,
                 trigger,
                 turbo: channel.turbo,
@@ -277,6 +283,9 @@ export class MemesController implements IMemesController {
         try {
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                locale: interaction.locale,
                 userId: interaction.user.id,
                 trigger: "custom",
                 templateName: templateName,
@@ -336,6 +345,9 @@ export class MemesController implements IMemesController {
 
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                locale: interaction.locale,
                 userId: interaction.user.id,
                 trigger: "context",
                 templateName,

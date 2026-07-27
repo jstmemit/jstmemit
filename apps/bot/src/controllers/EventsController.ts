@@ -1,4 +1,4 @@
-import type { ButtonInteraction, ChatInputCommandInteraction, StringSelectMenuInteraction } from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction, Guild, StringSelectMenuInteraction } from "discord.js";
 import { type Client, type Interaction, type Message, ActivityType } from "discord.js";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -349,6 +349,50 @@ export class EventsController implements IEventsController {
                     error_stack: error instanceof Error ? error.stack : undefined,
                 },
             });
+        }
+    }
+
+    /**
+     * Handles the Events.GuildCreate event from discord.js library
+     *
+     * @param guild
+     *
+     * @author Kyrylo Maliuha
+     */
+    public handleGuildCreate(guild: Guild): void {
+        try {
+            analytics.capture({
+                distinctId: guild.id,
+                event: "guild_joined",
+                properties: {
+                    memberCount: guild.memberCount,
+                    locale: guild.preferredLocale,
+                },
+            });
+        } catch (error) {
+            analytics.captureException(error);
+        }
+    }
+
+    /**
+     * Handles the Events.GuildDelete event from discord.js library
+     *
+     * @param guild
+     *
+     * @author Kyrylo Maliuha
+     */
+    public handleGuildDelete(guild: Guild): void {
+        try {
+            analytics.capture({
+                distinctId: guild.id,
+                event: "guild_left",
+                properties: {
+                    memberCount: guild.memberCount,
+                    locale: guild.preferredLocale,
+                },
+            });
+        } catch (error) {
+            analytics.captureException(error);
         }
     }
 
