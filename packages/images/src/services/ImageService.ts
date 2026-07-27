@@ -28,6 +28,10 @@ export class ImageService implements IImageService {
      * @author Kyrylo Maliuha
      */
     public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
+        if (!this._isValidUrl(url)) {
+            return this._transparentImage;
+        }
+
         try {
             const cached: string | undefined = await this._cacheService.get<string>(
                 this._getConvertToDataUriCacheKey(turbo, url),
@@ -194,6 +198,15 @@ export class ImageService implements IImageService {
                 interPaletteMaxError: 0,
             })
             .toBuffer();
+    }
+
+    private _isValidUrl(url: string): boolean {
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
+        }
     }
 
     private async _resizePng(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
