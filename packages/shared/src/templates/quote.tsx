@@ -57,7 +57,7 @@ export const quote: Template = {
                         fontSize: 44,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        textShadow: "4px 4px 8px rgba(0, 0, 0, 0.8)",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                         color: "#ffffff",
                     }}
                 >
