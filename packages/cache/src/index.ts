@@ -8,7 +8,7 @@ import "@jstmemit/telemetry";
 const env = Env.parse(process.env);
 
 const logger: Logger = logs.getLogger("jstmemit/cache");
-export const cache = new Keyv(new KeyvRedis(`redis://${env.REDIS_HOST}:${env.REDIS_PORT}`));
+export const cache = new Keyv(new KeyvRedis(`redis://${env.REDIS_CACHE_HOST}:${env.REDIS_CACHE_PORT}`));
 
 cache.on("error", (error): void => {
     analytics.captureException(error);
