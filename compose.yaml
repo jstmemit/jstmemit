@@ -33,6 +33,7 @@ services:
     logging: *default-logging
     command: [ "redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction" ]
     volumes: [ "redis-data:/data" ]
+    restart: unless-stopped
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
       interval: 5s
@@ -44,6 +45,7 @@ services:
       image: redis:alpine
       logging: *default-logging
       command: [ "redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "6gb", "--maxmemory-policy", "allkeys-lru" ]
+      restart: unless-stopped
       healthcheck:
           test: [ "CMD", "redis-cli", "ping" ]
           interval: 5s
