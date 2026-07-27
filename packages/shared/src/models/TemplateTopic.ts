@@ -24,7 +24,7 @@ export const Topic = {
     AzumangaDaioh: "azumangaDaioh",
     AttackOnTitan: "attackOnTitan",
     AkashicRecords: "akashicRecords",
-    BlendS: "blenS",
+    BlendS: "blendS",
     BocchiTheRock: "bocchiTheRock",
     CyberpunkEdgerunners: "cyberpunkEdgerunners",
     Dandadan: "dandadan",
