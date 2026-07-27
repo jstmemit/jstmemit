@@ -9,7 +9,10 @@ export const messagesTable = sqliteTable(
         content: text().notNull(),
         timestamp: int({ mode: "timestamp" }).notNull(),
     },
-    (table) => [index("messages_channel_idx").on(table.channelId), index("messages_timestamp_idx").on(table.timestamp)],
+    (table) => [
+        index("messages_channel_timestamp_idx").on(table.channelId, table.timestamp),
+        index("messages_timestamp_idx").on(table.timestamp),
+    ],
 );
 
 export const imagesTable = sqliteTable(
@@ -24,7 +27,7 @@ export const imagesTable = sqliteTable(
         expiresAt: int({ mode: "timestamp" }),
     },
     (table) => [
-        index("images_channel_source_idx").on(table.channelId, table.source),
+        index("images_channel_source_timestamp_idx").on(table.channelId, table.source, table.timestamp),
         index("images_expires_at_idx").on(table.expiresAt),
         index("images_timestamp_idx").on(table.timestamp),
     ],

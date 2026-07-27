@@ -1,6 +1,6 @@
 import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
-import { and, count, eq, gte, lte, sql, lt } from "drizzle-orm";
+import { and, count, eq, gte, lte, sql, lt, desc } from "drizzle-orm";
 import { db } from "../index.ts";
 
 export class MessagesRepository implements IMessagesRepository {
@@ -45,7 +45,7 @@ export class MessagesRepository implements IMessagesRepository {
         maxLength?: number,
     ): Promise<string[]> {
         try {
-            const messages = await db
+            const recent = db
                 .select({ content: messagesTable.content })
                 .from(messagesTable)
                 .where(
@@ -55,10 +55,17 @@ export class MessagesRepository implements IMessagesRepository {
                         maxLength !== undefined ? lte(sql`length(${messagesTable.content})`, maxLength) : undefined,
                     ),
                 )
+                .orderBy(desc(messagesTable.timestamp))
+                .limit(500)
+                .as("recent");
+
+            const messages = await db
+                .select({ content: recent.content })
+                .from(recent)
                 .orderBy(sql`random()`)
                 .limit(limit);
 
-            return messages.map((message) => message.content);
+            return messages.map((message): string => message.content);
         } catch (error) {
             console.error(error);
 

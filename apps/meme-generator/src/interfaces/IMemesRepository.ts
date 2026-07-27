@@ -5,5 +5,7 @@ export abstract class IMemesRepository {
     public abstract generateMeme(
         template: Template,
         props: TemplateProps,
+        animated: boolean,
+        turbo: boolean,
     ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>>;
 }

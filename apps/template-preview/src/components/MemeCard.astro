@@ -9,7 +9,7 @@ import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepo
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import { TemplatesService } from "../services/TemplatesService.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { render } from "takumi-js";
+import { render, renderAnimation } from "takumi-js";
 
 interface Props {
     src?: string;
@@ -32,14 +32,24 @@ let meme: string | undefined = undefined;
 if (templateName) {
     const template: Template = templatesService.getTemplateByName(templateName || "");
 
-    const webp: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(template.element(variant!), {
+    const staticMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(template.element(variant!), {
         width: template.width,
         height: template.height,
         fonts: fontsService.getFonts(true),
         fontFamilies: ["Comic Sans MS"],
         dithering: "floyd-steinberg",
     });
-    meme = `data:image/webp;base64,${webp.toString("base64")}`;
+    //
+    // const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
+    //     width: template.width,
+    //     height: template.height,
+    //     fonts: fontsService.getFonts(true),
+    //     fontFamilies: ["Comic Sans MS"],
+    //     fps: 30,
+    //     format: "webp",
+    //     scenes: [{ durationMs: 10000, node: template.element(variant!) }],
+    // });
+    meme = `data:image/webp;base64,${staticMeme.toString("base64")}`;
 }
 ---
 
