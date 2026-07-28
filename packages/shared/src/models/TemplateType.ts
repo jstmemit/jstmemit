@@ -19,6 +19,7 @@ export const Type = {
     TwoOption: "twoOption",
     ThreeOption: "threeOption",
     FourOption: "fourOption",
+    Animated: "animated",
 } as const;
 
 export type TemplateType = (typeof Type)[keyof typeof Type];
