@@ -343,7 +343,11 @@ pnpm run template-preview:dev
 
 ## Alternatives
 
-Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages. It is really great and fun to have on your server.
+Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages mixed together using Markov chains. 
+
+However, Jstmemit's focus is on being a "meme generator" and having a giant library of not only static, but also animated (GIF) meme templates. And to support user-installs, to allow users to use the bot on any server or even in DMs. 
+
+If you are not looking for memes, but rather funny and random text messages, feel free to check [Genai](https://genai.bot/) out. It is really great and fun to have on your server instead or alongside Jstmemit.
 
 ## Questions or feedback?
 
