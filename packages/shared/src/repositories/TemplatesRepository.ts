@@ -283,6 +283,11 @@ import { kaguyasamaKaguyaDroppingPhone } from "#/templates/kaguyasamaKaguyaDropp
 import { kaguyasamaKaguyaDroppingPhone1 } from "#/templates/kaguyasamaKaguyaDroppingPhone1.tsx";
 import { konAzusaNoThanks } from "#/templates/konAzusaNoThanks.tsx";
 import { konAzusaNoThanks1 } from "#/templates/konAzusaNoThanks1.tsx";
+import { konosubaAquaBarnShock } from "#/templates/konosubaAquaBarnShock.tsx";
+import { konosubaAquaCryingFace } from "#/templates/konosubaAquaCryingFace.tsx";
+import { konosubaAquaPanic } from "#/templates/konosubaAquaPanic.tsx";
+import { konosubaAquaNervousSmug } from "#/templates/konosubaAquaNervousSmug.tsx";
+import { lhShiroeBigBrain } from "#/templates/lhShiroeBigBrain.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -587,6 +592,11 @@ export class TemplatesRepository implements ITemplatesRepository {
             kaguyasamaKaguyaDroppingPhone1,
             konAzusaNoThanks,
             konAzusaNoThanks1,
+            konosubaAquaBarnShock,
+            konosubaAquaCryingFace,
+            konosubaAquaPanic,
+            konosubaAquaNervousSmug,
+            lhShiroeBigBrain,
         ];
     }
 
