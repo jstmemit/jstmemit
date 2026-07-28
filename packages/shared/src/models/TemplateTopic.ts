@@ -19,7 +19,7 @@ export const Topic = {
     SpongeBob: "spongeBob",
     SpiderMan: "spiderMan",
     StarTrek: "starTrek",
-    AssassinationClassroom: "Assassination Classroom",
+    AssassinationClassroom: "assassinationClassroom",
     ACertainScientificRailgun: "aCertainScientificRailgun",
     AzumangaDaioh: "azumangaDaioh",
     AttackOnTitan: "attackOnTitan",
