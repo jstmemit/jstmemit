@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ceRebeccaSquidward: Template = {
     name: "ceRebeccaSquidward",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners, Topic.SpongeBob],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 625,
     height: 592,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

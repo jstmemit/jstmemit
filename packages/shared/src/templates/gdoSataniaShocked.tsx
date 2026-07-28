@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const gdoSataniaShocked: Template = {
     name: "gdoSataniaShocked",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.textRightWithBackground],
+    types: [Type.TextRightWithBackground],
     width: 1800,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

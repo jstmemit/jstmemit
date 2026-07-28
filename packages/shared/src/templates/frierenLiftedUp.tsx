@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenLiftedUp: Template = {
     name: "frierenLiftedUp",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.textTop, Type.faceImage],
+    types: [Type.TextTop, Type.FaceImage],
     width: 335,
     height: 597,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

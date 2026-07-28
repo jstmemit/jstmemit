@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ditfTheTwoSidesOfZeroTwo: Template = {
     name: "ditfTheTwoSidesOfZeroTwo",
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
-    types: [Type.twoOption, Type.textLeftWithBackground],
+    types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 906,
     height: 739,
     texts: [

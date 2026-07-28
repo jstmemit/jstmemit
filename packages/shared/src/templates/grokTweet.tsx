@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const grokTweet: Template = {
     name: "grokTweet",
     topics: [Topic.SocialPost],
-    types: [Type.textPost, Type.avatarImage, Type.defaultText],
+    types: [Type.TextPost, Type.AvatarImage, Type.DefaultText],
     width: 1280,
     height: 1146,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],

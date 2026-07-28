@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ceRebeccaDisgusted: Template = {
     name: "ceRebeccaDisgusted",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 852,
     height: 640,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

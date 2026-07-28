@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const griffinsPeterWriteALetter: Template = {
     name: "griffinsPeterWriteALetter",
     topics: [Topic.Griffins, Topic.Cartoons],
-    types: [Type.textTop, Type.faceImage],
+    types: [Type.TextTop, Type.FaceImage],
     width: 1080,
     height: 598,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

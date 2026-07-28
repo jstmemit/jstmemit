@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobHandsomeFace: Template = {
     name: "spongebobHandsomeFace",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textTop, Type.textBottom],
+    types: [Type.TextTop, Type.TextBottom],
     width: 750,
     height: 1334,
     texts: [

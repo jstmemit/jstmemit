@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dogeWithGlasses: Template = {
     name: "dogeWithGlasses",
     topics: [Topic.Animals, Topic.Reaction],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1024,
     height: 777,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

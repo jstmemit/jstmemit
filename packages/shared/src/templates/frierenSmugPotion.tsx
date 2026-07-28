@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenSmugPotion: Template = {
     name: "frierenSmugPotion",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.textTopWithBackground, Type.objectImage],
+    types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 739,
     height: 525,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

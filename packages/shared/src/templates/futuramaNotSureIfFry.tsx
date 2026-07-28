@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaNotSureIfFry: Template = {
     name: "futuramaNotSureIfFry",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 603,
     height: 519,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

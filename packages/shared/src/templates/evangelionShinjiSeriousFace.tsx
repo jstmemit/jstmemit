@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const evangelionShinjiSeriousFace: Template = {
     name: "evangelionShinjiSeriousFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1000,
     height: 800,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ditfZeroTwoWhatever: Template = {
     name: "ditfZeroTwoWhatever",
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
-    types: [Type.faceImage, Type.textBottomWithBackground],
+    types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 736,
     height: 524,
     texts: [{ id: 0, description: "the phrase Zero Two says", minLength: 1, maxLength: 8 }],

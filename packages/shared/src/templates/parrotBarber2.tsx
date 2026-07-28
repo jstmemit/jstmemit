@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const parrotBarber2: Template = {
     name: "parrotBarber2",
     topics: [Topic.Animals],
-    types: [Type.textBottom, Type.faceImage],
+    types: [Type.TextBottom, Type.FaceImage],
     width: 672,
     height: 921,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

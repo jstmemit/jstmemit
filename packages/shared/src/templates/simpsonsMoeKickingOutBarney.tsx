@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsMoeKickingOutBarney: Template = {
     name: "simpsonsMoeKickingOutBarney",
     topics: [Topic.Simpsons, Topic.Cartoons],
-    types: [Type.faceImage, Type.threeOption],
+    types: [Type.FaceImage, Type.ThreeOption],
     width: 1470,
     height: 2506,
     texts: [],

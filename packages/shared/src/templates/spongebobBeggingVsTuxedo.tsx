@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobBeggingVsTuxedo: Template = {
     name: "spongebobBeggingVsTuxedo",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textLeftWithBackground, Type.twoOption],
+    types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 755,
     height: 601,
     texts: [

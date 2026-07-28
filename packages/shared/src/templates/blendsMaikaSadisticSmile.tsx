@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsMaikaSadisticSmile: Template = {
     name: "blendsMaikaSadisticSmile",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.textBottomWithBackground],
+    types: [Type.TextBottomWithBackground],
     width: 787,
     height: 552,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

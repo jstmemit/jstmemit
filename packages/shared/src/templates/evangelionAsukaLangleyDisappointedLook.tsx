@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const evangelionAsukaLangleyDisappointedLook: Template = {
     name: "evangelionAsukaLangleyDisappointedLook",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
-    types: [Type.textBottom],
+    types: [Type.TextBottom],
     width: 736,
     height: 736,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

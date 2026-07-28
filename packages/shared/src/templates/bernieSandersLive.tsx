@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const bernieSandersLive: Template = {
     name: "bernieSandersLive",
     topics: [Topic.YouTube],
-    types: [Type.faceImage, Type.textCenter],
+    types: [Type.FaceImage, Type.TextCenter],
     width: 981,
     height: 1038,
     texts: [

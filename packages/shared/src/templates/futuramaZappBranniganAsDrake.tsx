@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaZappBranniganAsDrake: Template = {
     name: "futuramaZappBranniganAsDrake",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textRightWithBackground, Type.twoOption],
+    types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 2048,
     height: 1368,
     texts: [

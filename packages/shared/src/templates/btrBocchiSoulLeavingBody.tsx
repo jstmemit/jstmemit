@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiSoulLeavingBody: Template = {
     name: "btrBocchiSoulLeavingBody",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.textBottomWithBackground],
+    types: [Type.TextBottomWithBackground],
     width: 1280,
     height: 850,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

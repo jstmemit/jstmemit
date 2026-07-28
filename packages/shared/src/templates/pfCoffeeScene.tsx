@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const pfCoffeeScene: Template = {
     name: "pfCoffeeScene",
     topics: [Topic.PulpFiction, Topic.Movies],
-    types: [Type.textTopWithBackground, Type.faceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 600,
     height: 386,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

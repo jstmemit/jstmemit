@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsMonkeyInHomerHead: Template = {
     name: "simpsonsMonkeyInHomerHead",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
-    types: [Type.objectImage, Type.textBottomWithBackground],
+    types: [Type.ObjectImage, Type.TextBottomWithBackground],
     width: 450,
     height: 490,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dandadanTurboGrannyCatSquintedEyes: Template = {
     name: "dandadanTurboGrannyCatSquintedEyes",
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 2790,
     height: 1057,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

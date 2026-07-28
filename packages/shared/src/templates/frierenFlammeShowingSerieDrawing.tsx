@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenFlammeShowingSerieDrawing: Template = {
     name: "frierenFlammeShowingSerieDrawing",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.faceImage],
+    types: [Type.FaceImage],
     width: 1080,
     height: 1530,
     texts: [],

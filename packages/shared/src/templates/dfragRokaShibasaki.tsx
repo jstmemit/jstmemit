@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dfragRokaShibasaki: Template = {
     name: "dfragRokaShibasaki",
     topics: [Topic.Anime, Topic.DFrag],
-    types: [Type.textTopWithBackground, Type.faceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 750,
     height: 543,
     texts: [{ id: 0, description: "the phrase Roka says", minLength: 1, maxLength: 8 }],

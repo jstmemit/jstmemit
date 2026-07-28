@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const explains: Template = {
     name: "explains",
     topics: [Topic.Reaction, Topic.Movies, Topic.Office],
-    types: [Type.objectImage, Type.twoOption, Type.textBottom],
+    types: [Type.ObjectImage, Type.TwoOption, Type.TextBottom],
     width: 700,
     height: 800,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

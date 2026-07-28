@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const evangelionShinjiCalmVsPanic: Template = {
     name: "evangelionShinjiCalmVsPanic",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
-    types: [Type.textTopWithBackground, Type.twoOption],
+    types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,
     height: 700,
     texts: [

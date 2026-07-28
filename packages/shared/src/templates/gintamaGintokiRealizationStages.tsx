@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const gintamaGintokiRealizationStages: Template = {
     name: "gintamaGintokiRealizationStages",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
-    types: [Type.threeOption, Type.textRightWithBackground],
+    types: [Type.ThreeOption, Type.TextRightWithBackground],
     width: 1084,
     height: 1080,
     texts: [

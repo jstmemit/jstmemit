@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiPaleShock: Template = {
     name: "btrBocchiPaleShock",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 1472,
     height: 736,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

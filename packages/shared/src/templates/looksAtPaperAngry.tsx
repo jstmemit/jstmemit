@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const looksAtPaperAngry: Template = {
     name: "looksAtPaperAngry",
     topics: [Topic.Reaction],
-    types: [Type.textBottomWithBackground, Type.faceImage],
+    types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 768,
     height: 727,
     texts: [{ id: 0, description: "what's written on the paper", minLength: 1, maxLength: 3 }],

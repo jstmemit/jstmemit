@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const homerHiding: Template = {
     name: "homerHiding",
     topics: [Topic.Simpsons, Topic.Cartoons],
-    types: [Type.textBottom, Type.faceImage, Type.fourOption],
+    types: [Type.TextBottom, Type.FaceImage, Type.FourOption],
     width: 600,
     height: 600,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

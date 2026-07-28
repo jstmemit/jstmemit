@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const adWhyAreYouSpeakingInEnglish: Template = {
     name: "adWhyAreYouSpeakingInEnglish",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textTopWithBackground, Type.defaultText],
+    types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 480,
     height: 470,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

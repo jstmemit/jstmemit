@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsWhyYouLittle: Template = {
     name: "simpsonsWhyYouLittle",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textBottomWithBackground, Type.faceImage],
+    types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 498,
     height: 424,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

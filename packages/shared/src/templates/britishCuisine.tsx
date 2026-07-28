@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const britishCuisine: Template = {
     name: "britishCuisine",
     topics: [Topic.SocialPost],
-    types: [Type.textName, Type.avatarImage, Type.objectImage, Type.defaultText],
+    types: [Type.TextName, Type.AvatarImage, Type.ObjectImage, Type.DefaultText],
     width: 883,
     height: 1025,
     texts: [

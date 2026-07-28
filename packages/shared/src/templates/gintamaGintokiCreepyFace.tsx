@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const gintamaGintokiCreepyFace: Template = {
     name: "gintamaGintokiCreepyFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1200,
     height: 875,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const womanYellingAtACat: Template = {
     name: "womanYellingAtACat",
     topics: [Topic.Reaction, Topic.Animals],
-    types: [Type.twoOption, Type.textRightWithBackground, Type.faceImage],
+    types: [Type.TwoOption, Type.TextRightWithBackground, Type.FaceImage],
     width: 1200,
     height: 1200,
     texts: [

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const cowLookingIntoOcean: Template = {
     name: "cowLookingIntoOcean",
     topics: [Topic.Animals],
-    types: [Type.textBottom, Type.faceImage],
+    types: [Type.TextBottom, Type.FaceImage],
     width: 403,
     height: 352,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

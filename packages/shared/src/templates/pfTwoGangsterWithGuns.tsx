@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const pfTwoGangsterWithGuns: Template = {
     name: "pfTwoGangsterWithGuns",
     topics: [Topic.PulpFiction, Topic.Movies],
-    types: [Type.textBottom, Type.faceImage],
+    types: [Type.TextBottom, Type.FaceImage],
     width: 1461,
     height: 822,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

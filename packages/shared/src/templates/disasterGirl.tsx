@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const disasterGirl: Template = {
     name: "disasterGirl",
     topics: [Topic.Reaction, Topic.News],
-    types: [Type.textTop, Type.faceImage],
+    types: [Type.TextTop, Type.FaceImage],
     width: 2042,
     height: 1531,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

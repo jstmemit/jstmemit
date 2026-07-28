@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsMaidCast: Template = {
     name: "blendsMaidCast",
     topics: [Topic.Anime, Topic.BlendS],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 849,
     height: 760,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

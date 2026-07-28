@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsLemmyThinking: Template = {
     name: "simpsonsLemmyThinking",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textBottom],
+    types: [Type.TextBottom],
     width: 638,
     height: 438,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

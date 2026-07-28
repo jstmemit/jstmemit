@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const soGladIGrewUpWithThis: Template = {
     name: "soGladIGrewUpWithThis",
     topics: [Topic.Misc],
-    types: [Type.defaultText, Type.objectImage],
+    types: [Type.DefaultText, Type.ObjectImage],
     width: 1313,
     height: 790,
     texts: [],

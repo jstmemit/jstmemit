@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const explainingWhiteboard: Template = {
     name: "explainingWhiteboard",
     topics: [Topic.Reaction],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1280,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

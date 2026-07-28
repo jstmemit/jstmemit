@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaToasterBoo: Template = {
     name: "futuramaToasterBoo",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
-    types: [Type.faceImage, Type.textCenterWithBackground, Type.fourOption],
+    types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 539,
     height: 1214,
     texts: [

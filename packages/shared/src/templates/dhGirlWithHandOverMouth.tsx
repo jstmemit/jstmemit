@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dhGirlWithHandOverMouth: Template = {
     name: "dhGirlWithHandOverMouth",
     topics: [Topic.Misc],
-    types: [Type.textTopWithBackground, Type.faceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 718,
     height: 1131,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dfragRokaShibasakiDisguise: Template = {
     name: "dfragRokaShibasakiDisguise",
     topics: [Topic.Reaction, Topic.Anime, Topic.DFrag],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 750,
     height: 532,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

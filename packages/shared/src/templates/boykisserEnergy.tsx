@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const boykisserEnergy: Template = {
     name: "boykisserEnergy",
     topics: [Topic.Misc],
-    types: [Type.faceImage],
+    types: [Type.FaceImage],
     width: 665,
     height: 662,
     texts: [],

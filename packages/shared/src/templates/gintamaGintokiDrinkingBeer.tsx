@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const gintamaGintokiDrinkingBeer: Template = {
     name: "gintamaGintokiDrinkingBeer",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
-    types: [Type.textBottom],
+    types: [Type.TextBottom],
     width: 1000,
     height: 1000,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

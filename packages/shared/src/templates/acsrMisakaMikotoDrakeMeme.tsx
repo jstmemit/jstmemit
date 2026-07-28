@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const acsrMisakaMikotoDrakeMeme: Template = {
     name: "acsrMisakaMikotoDrakeMeme",
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
-    types: [Type.textRightWithBackground, Type.twoOption],
+    types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 964,
     height: 960,
     texts: [

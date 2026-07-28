@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobSacredTextBook: Template = {
     name: "spongebobSacredTextBook",
     topics: [Topic.SpongeBob, Topic.Cartoons],
-    types: [Type.faceImage, Type.textBottomWithBackground, Type.twoOption, Type.defaultText],
+    types: [Type.FaceImage, Type.TextBottomWithBackground, Type.TwoOption, Type.DefaultText],
     width: 1280,
     height: 1245,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

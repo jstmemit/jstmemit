@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobHappy: Template = {
     name: "spongebobHappy",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.faceImage, Type.textBottom],
+    types: [Type.FaceImage, Type.TextBottom],
     width: 1199,
     height: 918,
     texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],

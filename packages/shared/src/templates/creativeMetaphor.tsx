@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const creativeMetaphor: Template = {
     name: "creativeMetaphor",
     topics: [Topic.SocialPost],
-    types: [Type.textPost, Type.textName, Type.defaultText, Type.avatarImage],
+    types: [Type.TextPost, Type.TextName, Type.DefaultText, Type.AvatarImage],
     width: 1202,
     height: 1028,
     texts: [

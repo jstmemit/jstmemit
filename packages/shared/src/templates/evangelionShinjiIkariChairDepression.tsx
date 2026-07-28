@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const evangelionShinjiIkariChairDepression: Template = {
     name: "evangelionShinjiIkariChairDepression",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 604,
     height: 563,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

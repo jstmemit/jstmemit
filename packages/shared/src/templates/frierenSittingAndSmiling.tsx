@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenSittingAndSmiling: Template = {
     name: "frierenSittingAndSmiling",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.textBottom],
+    types: [Type.TextBottom],
     width: 735,
     height: 528,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

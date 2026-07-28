@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const tryingToExplain: Template = {
     name: "tryingToExplain",
     topics: [Topic.Movies, Topic.Reaction],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,
     height: 1118,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

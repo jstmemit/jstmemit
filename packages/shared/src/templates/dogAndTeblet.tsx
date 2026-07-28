@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dogAndTeblet: Template = {
     name: "dogAndTeblet",
     topics: [Topic.Animals],
-    types: [Type.textCenter, Type.faceImage],
+    types: [Type.TextCenter, Type.FaceImage],
     width: 1000,
     height: 572,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

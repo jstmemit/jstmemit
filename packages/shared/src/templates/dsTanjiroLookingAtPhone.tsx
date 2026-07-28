@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dsTanjiroLookingAtPhone: Template = {
     name: "dsTanjiroLookingAtPhone",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer, Topic.SocialPost],
-    types: [Type.textPost, Type.textName, Type.avatarImage, Type.defaultText],
+    types: [Type.TextPost, Type.TextName, Type.AvatarImage, Type.DefaultText],
     width: 400,
     height: 400,
     texts: [

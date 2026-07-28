@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const animeSakuraDisapprovalRikoShrug: Template = {
     name: "animeSakuraDisapprovalRikoShrug",
     topics: [Topic.Reaction, Topic.Anime],
-    types: [Type.textRightWithBackground, Type.twoOption],
+    types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 1008,
     height: 993,
     texts: [

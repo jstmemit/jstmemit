@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dsNezukoIsBeautiful: Template = {
     name: "dsNezukoIsBeautiful",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1710,
     height: 1105,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],

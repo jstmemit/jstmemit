@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaFrySleeplessInsomnia: Template = {
     name: "futuramaFrySleeplessInsomnia",
     topics: [Topic.Futurama, Topic.Cartoons],
-    types: [Type.faceImage, Type.textCenterWithBackground, Type.fourOption],
+    types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 604,
     height: 479,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

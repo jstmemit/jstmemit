@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const missingPiece: Template = {
     name: "missingPiece",
     topics: [Topic.Misc],
-    types: [Type.textRight, Type.faceImage],
+    types: [Type.TextRight, Type.FaceImage],
     width: 783,
     height: 581,
     texts: [{ id: 0, description: "text on the puzzle", minLength: 1, maxLength: 15 }],

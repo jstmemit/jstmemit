@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const awkwardLookMonkey: Template = {
     name: "awkwardLookMonkey",
     topics: [Topic.Reaction, Topic.Animals],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 750,
     height: 750,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

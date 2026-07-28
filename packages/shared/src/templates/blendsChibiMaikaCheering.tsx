@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsChibiMaikaCheering: Template = {
     name: "blendsChibiMaikaCheering",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 1472,
     height: 986,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

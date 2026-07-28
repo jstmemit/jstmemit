@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenInspiration: Template = {
     name: "frierenInspiration",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.textRightWithBackground, Type.faceImage],
+    types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 786,
     height: 508,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

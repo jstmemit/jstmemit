@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const iSteppedInShit: Template = {
     name: "iSteppedInShit",
     topics: [Topic.Cartoons],
-    types: [Type.faceImage, Type.defaultText],
+    types: [Type.FaceImage, Type.DefaultText],
     width: 636,
     height: 900,
     texts: [],
