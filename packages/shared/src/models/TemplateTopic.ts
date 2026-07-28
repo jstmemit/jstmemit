@@ -49,6 +49,8 @@ export const Topic = {
     JujutsuKaisen: "jujutsuKaisen",
     KaguyaSama: "kaguyaSama",
     Kon: "kon",
+    KonoSuba: "konoSuba",
+    LogHorizon: "logHorizon",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
