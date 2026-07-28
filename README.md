@@ -210,7 +210,7 @@ If there are CJK (Chinese, Japanese and Korean) characters present, then these m
 - Noto Sans KR 
 #### Layout
 
-**topBottomText.tsx**
+**textOverBackground.tsx**
 ```tsx
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
@@ -218,10 +218,10 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const topBottomText: Template = {
-    name: "topBottomText", // make sure this name is not taken
+export const textOverBackground: Template = {
+    name: "textOverBackground", // make sure this name is not taken
     topics: [Topic.Misc],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.backgroundImage, Type.textTopWithBackground, Type.textBottomWithBackground],
     width: 800,
     height: 800,
     texts: [
@@ -253,7 +253,6 @@ export const topBottomText: Template = {
                             top: 0,
                             width: "100%",
                             height: "100px",
-                            overflow: "hidden",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -264,15 +263,13 @@ export const topBottomText: Template = {
                 >
                     <div
                             style={{
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
-                                WebkitLineClamp: 2,
+                                lineClamp: 2,
                                 wordBreak: "break-word",
-                                overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 fontFamily: "Comic Sans MS",
                                 fontSize: 40,
                                 lineHeight: 1.05,
+                                paddingBottom: "0.2em",
                                 color: "#000000",
                             }}
                     >
@@ -286,7 +283,6 @@ export const topBottomText: Template = {
                             bottom: 0,
                             width: "100%",
                             height: "100px",
-                            overflow: "hidden",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -297,15 +293,13 @@ export const topBottomText: Template = {
                 >
                     <div
                             style={{
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
-                                WebkitLineClamp: 2,
+                                lineClamp: 2,
                                 wordBreak: "break-word",
-                                overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 fontFamily: "Comic Sans MS",
                                 fontSize: 40,
                                 lineHeight: 1.05,
+                                paddingBottom: "0.2em",
                                 color: "#000000",
                             }}
                     >
@@ -320,12 +314,13 @@ export const topBottomText: Template = {
 **TemplateRepository.ts**
 ```ts
 // import your new template
-import { topBottomText } from "#/templates/topBottomText.tsx";
+import { textOverBackground } from "#/templates/textOverBackground.tsx";
 
 public getAll(): Template[] {
     return [
         // return it together with others
-        topBottomText,
+        textOverBackground,
+        // ...
     ]
 }
 ```
