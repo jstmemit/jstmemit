@@ -45,6 +45,10 @@ export const Topic = {
     WinnieThePooh: "winnieThePooh",
     MrBean: "mrBean",
     Toradora: "toradora",
+    HimoutoUmaruChan: "himoutoUmaruChan",
+    JujutsuKaisen: "jujutsuKaisen",
+    KaguyaSama: "kaguyaSama",
+    Kon: "kon",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
