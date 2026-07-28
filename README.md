@@ -70,8 +70,16 @@ DISCORD_CLIENT_ID_PRODUCTION= # application id for the public bot
 
 POSTHOG_PUBLIC_KEY= # starts with phc, used for analytics
 
+# instance for BullMQ jobs
 REDIS_HOST= # redis
 REDIS_PORT= # 6379
+
+# instance for context/images cache
+REDIS_CACHE_HOST= # redis-cache
+REDIS_CACHE_PORT= # 6379
+
+WHISPER_API_KEY= # leave empty
+WHISPER_MODEL= # small (1.5 GB RAM) works good, base (700 MB RAM) can be used for less RAM usage
 ```
 
 4. Launch docker compose
