@@ -56,7 +56,7 @@ export class ImageService implements IImageService {
             }
 
             const result = `data:image/${format};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(this._getConvertToDataUriCacheKey(turbo, url), result, ms("4h"));
+            await this._cacheService.set(this._getConvertToDataUriCacheKey(turbo, url), result, ms("24h"));
             return result;
         } catch (error) {
             analytics.captureException(error);
@@ -136,7 +136,7 @@ export class ImageService implements IImageService {
     private async _fetchImageBuffer(url: string): Promise<Buffer> {
         const res: Response = await fetch(url, {
             headers: { Accept: "image/*" },
-            signal: AbortSignal.timeout(5000),
+            signal: AbortSignal.timeout(8500),
         });
 
         if (!res.ok) {
@@ -165,12 +165,13 @@ export class ImageService implements IImageService {
     private async _resizeGif(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
         return await input
             .gif({
-                effort: 5,
+                effort: 7,
                 dither: 1,
                 reuse: true,
-                colours: 128,
-                interFrameMaxError: 0,
-                interPaletteMaxError: 0,
+                colours: 100,
+                interFrameMaxError: 4,
+                interPaletteMaxError: 4,
+                progressive: true,
             })
             .toBuffer();
     }
