@@ -84,7 +84,7 @@ WHISPER_MODEL= # small (1.5 GB RAM) works good, base (700 MB RAM) can be used fo
 
 4. Launch docker compose
 ```bash
-docker compose up
+docker compose up --build
 ```
 
 ## Contribution
@@ -117,45 +117,28 @@ There are also some useful extensions if you plan on contributing to more than m
 - Tailwind CSS Smart Completions
 - Docker
 
+---
+
 ### Making new meme templates
 
 All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
 
 #### Topics
 
-Each template must have topics that describe it. For example, if you have a template with `SpongeBob`, then you must add the `Topic.spongebob` topic to this template. The topics field is an array, allowing you to add as many topics as needed:
+Each template must have topics that describe it. For example, if you are making a meme template with SpongeBob characters on it, then you must add the `Topic.SpongeBob` topic to it. The topics field is an array, allowing you to add as many topics as needed:
 ```tsx
-import { Topic } from "#/models/TemplateTopic.ts";  //don`t forget to import `Topic` enum
+import { Topic } from "#/models/TemplateTopic.ts";  // don`t forget to import `Topic` enum
 
-...
+export const spongebob: Template = {
+    // ...
+    topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
+}
+```
+**Available topics:**
 
-topics: [Topic.Reaction, Topic.Movies]
-```
-Topics list:
-```ts
-export const Topic = {
-    Reaction: "reaction",
-    SocialPost: "socialPost",
-    BreakingBad: "breakingBad",
-    News: "news",
-    YouTube: "youtube",
-    Misc: "misc",
-    Cartoons: "cartoons",
-    Animals: "animals",
-    Futurama: "futurama",
-    Griffins: "griffins",
-    Simpsons: "simpsons",
-    Movies: "movies",
-    Art: "art",
-    PulpFiction: "pulpFiction",
-    Anime: "anime",
-    TeamFortress2: "teamFortress2",
-    Games: "games",
-    SpongeBob: "spongeBob",
-    SpiderMan: "spiderMan",
-    StarTrek: "starTrek",
-} as const;
-```
+Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean
+
+---
 
 #### Types
 
@@ -163,39 +146,21 @@ Each template must have types that describe its structure and layout components.
 ```tsx
 import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
 
-...
-
-types: [Type.faceImage, Type.textBottom]
-```
-Types list:
-```ts
-export const Type = {
-    textTop: "textTop",
-    textBottom: "textBottom",
-    textLeft: "textLeft",
-    textRight: "textRight",
-    textCenter: "textCenter",
-    textTopWithBackground: "textTopWithBackground",
-    textBottomWithBackground: "textBottomWithBackground",
-    textLeftWithBackground: "textLeftWithBackground",
-    textRightWithBackground: "textRightWithBackground",
-    textCenterWithBackground: "textCenterWithBackground",
-    textName: "textName",
-    textPost: "textPost",
-    defaultText: "defaultText",
-    avatarImage: "avatarImage",
-    faceImage: "faceImage",
-    objectImage: "objectImage",
-    backgroundImage: "backgroundImage",
-    twoOption: "twoOption",
-    threeOption: "threeOption",
-    fourOption: "fourOption",
-} as const;
+export const spongebob: Template = {
+    // ...
+    types: [Type.faceImage, Type.textBottom]
+}
 ```
 
-#### Texts/images
+**Available types:**
 
-Each template must say which slots it has inside. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
+textTop, textBottom, textLeft, textRight, textCenter, textTopWithBackground, textBottomWithBackground, textLeftWithBackground, textRightWithBackground, textCenterWithBackground, textName, textPost, defaultText, avatarImage, faceImage, objectImage, backgroundImage, twoOption, threeOption, fourOption
+
+---
+
+#### Texts and Images
+
+Each template must say which slots it has on it. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
 ```ts
 texts: [
     { id: 0, description: "top text", minLength: 1, maxLength: 5 },
@@ -220,7 +185,9 @@ After that you can use them in your layout:
 <div>{texts[0]}</div>
 ```
 
-`element()` function will be always called with exact amount of texts and images as specified in the template.
+`element()` function will always be called with exact amount of texts and images as specified in the template.
+
+---
 
 #### Render
 
