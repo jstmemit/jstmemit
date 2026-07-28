@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
     topics: [Topic.SocialPost],
-    types: [Type.defaultText, Type.objectImage, Type.textBottom],
+    types: [Type.DefaultText, Type.ObjectImage, Type.TextBottom],
     width: 776,
     height: 999,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

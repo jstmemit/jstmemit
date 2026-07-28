@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiAnxietyWave: Template = {
     name: "btrBocchiAnxietyWave",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 686,
     height: 476,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

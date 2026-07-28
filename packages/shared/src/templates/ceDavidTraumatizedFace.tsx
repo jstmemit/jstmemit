@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ceDavidTraumatizedFace: Template = {
     name: "ceDavidTraumatizedFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 640,
     height: 743,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

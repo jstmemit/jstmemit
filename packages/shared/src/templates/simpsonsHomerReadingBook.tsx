@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsHomerReadingBook: Template = {
     name: "simpsonsHomerReadingBook",
     topics: [Topic.Simpsons, Topic.Cartoons],
-    types: [Type.faceImage, Type.textTopWithBackground, Type.defaultText],
+    types: [Type.FaceImage, Type.TextTopWithBackground, Type.DefaultText],
     width: 400,
     height: 500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],

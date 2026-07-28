@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const griffinsPeterSkinColor: Template = {
     name: "griffinsPeterSkinColor",
     topics: [Topic.Griffins, Topic.Cartoons],
-    types: [Type.textLeftWithBackground, Type.faceImage, Type.twoOption],
+    types: [Type.TextLeftWithBackground, Type.FaceImage, Type.TwoOption],
     width: 1000,
     height: 539,
     texts: [

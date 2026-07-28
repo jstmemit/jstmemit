@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const connor: Template = {
     name: "connor",
     topics: [Topic.Games],
-    types: [Type.textTopWithBackground, Type.fourOption, Type.textBottom, Type.faceImage],
+    types: [Type.TextTopWithBackground, Type.FourOption, Type.TextBottom, Type.FaceImage],
     width: 960,
     height: 1211,
     texts: [

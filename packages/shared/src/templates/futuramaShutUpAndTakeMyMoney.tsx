@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaShutUpAndTakeMyMoney: Template = {
     name: "futuramaShutUpAndTakeMyMoney",
     topics: [Topic.Futurama, Topic.Cartoons],
-    types: [Type.faceImage, Type.textTopWithBackground, Type.defaultText],
+    types: [Type.FaceImage, Type.TextTopWithBackground, Type.DefaultText],
     width: 735,
     height: 414,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

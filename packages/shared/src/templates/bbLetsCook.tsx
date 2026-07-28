@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const bbLetsCook: Template = {
     name: "bbLetsCook",
     topics: [Topic.BreakingBad, Topic.Movies],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 498,
     height: 350,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 9 }],

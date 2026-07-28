@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const monkeyThinking: Template = {
     name: "monkeyThinking",
     topics: [Topic.Animals, Topic.Reaction],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 800,
     height: 699,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

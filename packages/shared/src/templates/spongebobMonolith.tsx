@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobMonolith: Template = {
     name: "spongebobMonolith",
     topics: [Topic.SpongeBob, Topic.Cartoons],
-    types: [Type.faceImage, Type.textBottomWithBackground],
+    types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 1080,
     height: 1080,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const diagramIQ: Template = {
     name: "diagramIQ",
     topics: [Topic.Misc],
-    types: [Type.textTop, Type.textLeft, Type.textRight, Type.faceImage, Type.threeOption],
+    types: [Type.TextTop, Type.TextLeft, Type.TextRight, Type.FaceImage, Type.ThreeOption],
     width: 1272,
     height: 843,
     texts: [

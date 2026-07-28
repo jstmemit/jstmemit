@@ -19,7 +19,7 @@ export const Topic = {
     SpongeBob: "spongeBob",
     SpiderMan: "spiderMan",
     StarTrek: "starTrek",
-    AssassinationClassroom: "Assassination Classroom",
+    AssassinationClassroom: "assassinationClassroom",
     ACertainScientificRailgun: "aCertainScientificRailgun",
     AzumangaDaioh: "azumangaDaioh",
     AttackOnTitan: "attackOnTitan",
@@ -44,6 +44,13 @@ export const Topic = {
     ScoobyDoo: "scoobyDoo",
     WinnieThePooh: "winnieThePooh",
     MrBean: "mrBean",
+    Toradora: "toradora",
+    HimoutoUmaruChan: "himoutoUmaruChan",
+    JujutsuKaisen: "jujutsuKaisen",
+    KaguyaSama: "kaguyaSama",
+    Kon: "kon",
+    KonoSuba: "konoSuba",
+    LogHorizon: "logHorizon",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];

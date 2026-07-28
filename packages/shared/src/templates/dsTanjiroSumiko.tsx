@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dsTanjiroSumiko: Template = {
     name: "dsTanjiroSumiko",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 600,
     height: 719,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

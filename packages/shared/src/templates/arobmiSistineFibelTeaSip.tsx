@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const arobmiSistineFibelTeaSip: Template = {
     name: "arobmiSistineFibelTeaSip",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1280,
     height: 1212,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

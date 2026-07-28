@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiBreakingBadWalter: Template = {
     name: "btrBocchiBreakingBadWalter",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock, Topic.BreakingBad],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 800,
     height: 800,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

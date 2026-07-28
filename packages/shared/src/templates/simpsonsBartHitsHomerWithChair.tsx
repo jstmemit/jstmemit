@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsBartHitsHomerWithChair: Template = {
     name: "simpsonsBartHitsHomerWithChair",
     topics: [Topic.Simpsons, Topic.Cartoons],
-    types: [Type.faceImage, Type.textBottomWithBackground],
+    types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 2180,
     height: 1646,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

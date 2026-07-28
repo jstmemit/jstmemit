@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const adOsakaStaring: Template = {
     name: "adOsakaStaring",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 948,
     height: 577,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

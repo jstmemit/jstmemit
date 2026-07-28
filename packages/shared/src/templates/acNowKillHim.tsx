@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const acNowKillHim: Template = {
     name: "acNowKillHim",
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
-    types: [Type.textTopWithBackground, Type.faceImage, Type.defaultText],
+    types: [Type.TextTopWithBackground, Type.FaceImage, Type.DefaultText],
     width: 445,
     height: 382,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

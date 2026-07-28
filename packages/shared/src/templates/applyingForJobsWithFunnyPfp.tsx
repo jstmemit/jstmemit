@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const applyingForJobsWithFunnyPfp: Template = {
     name: "applyingForJobsWithFunnyPfp",
     topics: [Topic.SocialPost],
-    types: [Type.textName, Type.textPost, Type.objectImage, Type.avatarImage],
+    types: [Type.TextName, Type.TextPost, Type.ObjectImage, Type.AvatarImage],
     width: 933,
     height: 1051,
     texts: [

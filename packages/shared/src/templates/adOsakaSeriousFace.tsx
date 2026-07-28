@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const adOsakaSeriousFace: Template = {
     name: "adOsakaSeriousFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
-    types: [Type.textBottom],
+    types: [Type.TextBottom],
     width: 500,
     height: 500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const saltBae: Template = {
     name: "saltBae",
     topics: [Topic.Misc],
-    types: [Type.faceImage, Type.textBottom],
+    types: [Type.FaceImage, Type.TextBottom],
     width: 1500,
     height: 1495,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

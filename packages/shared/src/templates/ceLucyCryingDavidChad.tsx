@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ceLucyCryingDavidChad: Template = {
     name: "ceLucyCryingDavidChad",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.textTopWithBackground, Type.twoOption],
+    types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 736,
     height: 433,
     texts: [

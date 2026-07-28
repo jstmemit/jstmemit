@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const absoluteCinema: Template = {
     name: "absoluteCinema",
     topics: [Topic.Reaction, Topic.Movies],
-    types: [Type.textTop, Type.faceImage],
+    types: [Type.TextTop, Type.FaceImage],
     width: 1230,
     height: 1422,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

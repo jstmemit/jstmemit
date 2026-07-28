@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const myHeartBlank: Template = {
     name: "myHeartBlank",
     topics: [Topic.Reaction],
-    types: [Type.textLeftWithBackground, Type.threeOption],
+    types: [Type.TextLeftWithBackground, Type.ThreeOption],
     width: 680,
     height: 602,
     texts: [

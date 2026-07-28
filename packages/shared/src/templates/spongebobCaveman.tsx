@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobCaveman: Template = {
     name: "spongebobCaveman",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textTop],
+    types: [Type.TextTop],
     width: 716,
     height: 552,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

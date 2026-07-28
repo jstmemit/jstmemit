@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenExpectationVsReality: Template = {
     name: "frierenExpectationVsReality",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.twoOption, Type.textLeftWithBackground],
+    types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 638,
     height: 640,
     texts: [

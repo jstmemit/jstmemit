@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const aotErenYeagerHappyVsDepressed: Template = {
     name: "aotErenYeagerHappyVsDepressed",
     topics: [Topic.Reaction, Topic.Anime, Topic.AttackOnTitan],
-    types: [Type.textRightWithBackground, Type.twoOption],
+    types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 718,
     height: 720,
     texts: [

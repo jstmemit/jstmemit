@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dnDarkRoomThinking: Template = {
     name: "dnDarkRoomThinking",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 640,
     height: 750,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

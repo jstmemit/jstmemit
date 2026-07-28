@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const frierenSmilingCrying: Template = {
     name: "frierenSmilingCrying",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
-    types: [Type.textTopWithBackground, Type.twoOption],
+    types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 686,
     height: 408,
     texts: [

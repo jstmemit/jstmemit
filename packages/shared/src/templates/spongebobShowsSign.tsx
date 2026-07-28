@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobShowsSign: Template = {
     name: "spongebobShowsSign",
     topics: [Topic.SpongeBob, Topic.Cartoons],
-    types: [Type.objectImage, Type.textLeft],
+    types: [Type.ObjectImage, Type.TextLeft],
     width: 657,
     height: 493,
     texts: [

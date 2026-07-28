@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsHideriKanzakiSmugFace: Template = {
     name: "blendsHideriKanzakiSmugFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.textLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 1440,
     height: 646,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

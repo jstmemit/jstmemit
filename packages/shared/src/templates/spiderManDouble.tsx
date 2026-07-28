@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spiderManDouble: Template = {
     name: "spiderManDouble",
     topics: [Topic.SpiderMan, Topic.Cartoons],
-    types: [Type.textTopWithBackground, Type.faceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 560,
     height: 376,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

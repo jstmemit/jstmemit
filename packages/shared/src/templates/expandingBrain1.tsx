@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const expandingBrain1: Template = {
     name: "expandingBrain1",
     topics: [Topic.Reaction],
-    types: [Type.textLeftWithBackground, Type.fourOption],
+    types: [Type.TextLeftWithBackground, Type.FourOption],
     width: 857,
     height: 1202,
     texts: [

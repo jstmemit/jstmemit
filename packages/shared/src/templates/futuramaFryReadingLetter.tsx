@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const futuramaFryReadingLetter: Template = {
     name: "futuramaFryReadingLetter",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
-    types: [Type.faceImage, Type.textCenterWithBackground],
+    types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 720,
     height: 1110,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

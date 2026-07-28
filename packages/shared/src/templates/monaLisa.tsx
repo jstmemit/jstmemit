@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const monaLisa: Template = {
     name: "monaLisa",
     topics: [Topic.Art],
-    types: [Type.textBottom, Type.faceImage],
+    types: [Type.TextBottom, Type.FaceImage],
     width: 960,
     height: 1431,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 30 }],

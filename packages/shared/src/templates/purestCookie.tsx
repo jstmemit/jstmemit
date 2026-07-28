@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const purestCookie: Template = {
     name: "purestCookie",
     topics: [Topic.Misc, Topic.Reaction],
-    types: [Type.defaultText, Type.objectImage],
+    types: [Type.DefaultText, Type.ObjectImage],
     width: 1067,
     height: 591,
     texts: [],

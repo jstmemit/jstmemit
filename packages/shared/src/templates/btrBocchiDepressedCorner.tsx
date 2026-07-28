@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiDepressedCorner: Template = {
     name: "btrBocchiDepressedCorner",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1920,
     height: 1280,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],

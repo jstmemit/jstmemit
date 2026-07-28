@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobLongTodoList: Template = {
     name: "spongebobLongTodoList",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1000,
     height: 991,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

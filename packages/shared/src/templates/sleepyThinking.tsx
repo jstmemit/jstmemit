@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const sleepyThinking: Template = {
     name: "sleepyThinking",
     topics: [Topic.Misc],
-    types: [Type.textBottom, Type.objectImage],
+    types: [Type.TextBottom, Type.ObjectImage],
     width: 885,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsLIsaShowPresentation: Template = {
     name: "simpsonsLIsaShowPresentation",
     topics: [Topic.Simpsons, Topic.Cartoons],
-    types: [Type.faceImage, Type.textCenterWithBackground],
+    types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 736,
     height: 551,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 25 }],

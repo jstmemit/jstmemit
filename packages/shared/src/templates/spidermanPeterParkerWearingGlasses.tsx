@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spidermanPeterParkerWearingGlasses: Template = {
     name: "spidermanPeterParkerWearingGlasses",
     topics: [Topic.SpiderMan, Topic.Movies, Topic.Reaction],
-    types: [Type.textLeftWithBackground, Type.twoOption],
+    types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 1020,
     height: 692,
     texts: [

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const spongebobBurningTheNote: Template = {
     name: "spongebobBurningTheNote",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textCenterWithBackground, Type.objectImage, Type.fourOption],
+    types: [Type.TextCenterWithBackground, Type.ObjectImage, Type.FourOption],
     width: 622,
     height: 727,
     texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],

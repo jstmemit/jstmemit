@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const pfAllToghether: Template = {
     name: "pfAllToghether",
     topics: [Topic.PulpFiction, Topic.Movies],
-    types: [Type.textBottomWithBackground, Type.faceImage],
+    types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 950,
     height: 632,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

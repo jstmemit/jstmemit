@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const willSmith: Template = {
     name: "willSmith",
     topics: [Topic.Movies, Topic.Reaction],
-    types: [Type.faceImage, Type.textRight],
+    types: [Type.FaceImage, Type.TextRight],
     width: 891,
     height: 891,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],

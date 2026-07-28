@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const ceLucyHacking: Template = {
     name: "ceLucyHacking",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
-    types: [Type.textTopWithBackground, Type.avatarImage],
+    types: [Type.TextTopWithBackground, Type.AvatarImage],
     width: 640,
     height: 572,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

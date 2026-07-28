@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const mrBeanWaiting1: Template = {
     name: "mrBeanWaiting1",
     topics: [Topic.Movies, Topic.MrBean],
-    types: [Type.textCenterWithBackground, Type.faceImage, Type.fourOption],
+    types: [Type.TextCenterWithBackground, Type.FaceImage, Type.FourOption],
     width: 736,
     height: 617,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

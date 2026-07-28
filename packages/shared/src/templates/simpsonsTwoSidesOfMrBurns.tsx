@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const simpsonsTwoSidesOfMrBurns: Template = {
     name: "simpsonsTwoSidesOfMrBurns",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textTopWithBackground, Type.twoOption],
+    types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,
     height: 855,
     texts: [

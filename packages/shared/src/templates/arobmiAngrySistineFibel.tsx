@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const arobmiAngrySistineFibel: Template = {
     name: "arobmiAngrySistineFibel",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 658,
     height: 496,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

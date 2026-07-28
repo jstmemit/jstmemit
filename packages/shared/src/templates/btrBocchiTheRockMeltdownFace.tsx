@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiTheRockMeltdownFace: Template = {
     name: "btrBocchiTheRockMeltdownFace",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 640,
     height: 467,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

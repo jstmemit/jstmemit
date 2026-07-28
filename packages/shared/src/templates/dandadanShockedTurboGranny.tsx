@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dandadanShockedTurboGranny: Template = {
     name: "dandadanShockedTurboGranny",
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 1200,
     height: 1500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const griffinsPeterHurtsHisKnee: Template = {
     name: "griffinsPeterHurtsHisKnee",
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Reaction],
-    types: [Type.textBottom, Type.faceImage],
+    types: [Type.TextBottom, Type.FaceImage],
     width: 499,
     height: 361,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

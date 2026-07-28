@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const evangelionShinjiIkariMentalBreakdown: Template = {
     name: "evangelionShinjiIkariMentalBreakdown",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
-    types: [Type.textTopWithBackground],
+    types: [Type.TextTopWithBackground],
     width: 844,
     height: 661,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

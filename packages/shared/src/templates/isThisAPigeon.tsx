@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const isThisAPigeon: Template = {
     name: "isThisAPigeon",
     topics: [Topic.Cartoons],
-    types: [Type.objectImage, Type.textBottom],
+    types: [Type.ObjectImage, Type.TextBottom],
     width: 1587,
     height: 1425,
     texts: [{ id: 0, description: "question", minLength: 1, maxLength: 8 }],

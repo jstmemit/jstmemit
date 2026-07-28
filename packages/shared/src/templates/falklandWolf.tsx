@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const falklandWolf: Template = {
     name: "falklandWolf",
     topics: [Topic.SocialPost],
-    types: [Type.avatarImage, Type.defaultText, Type.objectImage, Type.textBottom],
+    types: [Type.AvatarImage, Type.DefaultText, Type.ObjectImage, Type.TextBottom],
     width: 814,
     height: 691,
     texts: [{ id: 0, description: "Phrase that wolf says", minLength: 1, maxLength: 8 }],

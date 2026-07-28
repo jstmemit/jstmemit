@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const theyAllGoIntoSquareHole: Template = {
     name: "theyAllGoIntoSquareHole",
     topics: [Topic.Misc],
-    types: [Type.defaultText, Type.objectImage],
+    types: [Type.DefaultText, Type.ObjectImage],
     width: 854,
     height: 1042,
     texts: [],

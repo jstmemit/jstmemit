@@ -32,19 +32,7 @@ let meme: string | undefined = undefined;
 if (templateName) {
     const template: Template = templatesService.getTemplateByName(templateName || "");
 
-    if (template.isAnimated) {
-        const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
-            width: template.width,
-            height: template.height,
-            fonts: fontsService.getFonts(true),
-            fontFamilies: ["Comic Sans MS"],
-            fps: 12,
-            format: "webp",
-            scenes: [{ durationMs: 1250, node: template.element(variant!) }],
-            emoji: "twemoji",
-        });
-        meme = `data:image/webp;base64,${animatedMeme.toString("base64")}`;
-    } else {
+    if (template.animationDuration === undefined) {
         const staticMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(
             template.element(variant!),
             {
@@ -57,6 +45,19 @@ if (templateName) {
             },
         );
         meme = `data:image/webp;base64,${staticMeme.toString("base64")}`;
+    } else {
+        const animationDuration = template.animationDuration === null ? 1500 : template.animationDuration;
+        const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
+            width: template.width,
+            height: template.height,
+            fonts: fontsService.getFonts(true),
+            fontFamilies: ["Comic Sans MS"],
+            fps: 12,
+            format: "webp",
+            scenes: [{ durationMs: animationDuration, node: template.element(variant!) }],
+            emoji: "twemoji",
+        });
+        meme = `data:image/webp;base64,${animatedMeme.toString("base64")}`;
     }
 }
 ---

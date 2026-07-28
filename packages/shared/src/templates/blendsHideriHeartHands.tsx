@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsHideriHeartHands: Template = {
     name: "blendsHideriHeartHands",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.textLeftWithBackground, Type.faceImage],
+    types: [Type.TextLeftWithBackground, Type.FaceImage],
     width: 1710,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],

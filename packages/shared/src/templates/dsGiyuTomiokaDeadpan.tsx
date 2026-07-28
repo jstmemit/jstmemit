@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dsGiyuTomiokaDeadpan: Template = {
     name: "dsGiyuTomiokaDeadpan",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
-    types: [Type.textRightWithBackground],
+    types: [Type.TextRightWithBackground],
     width: 1624,
     height: 768,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
