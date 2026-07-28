@@ -53,7 +53,7 @@ export class MemesRepository implements IMemesRepository {
             const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
 
             if (animated || template.animationDuration !== undefined) {
-                const animationDuration = template.animationDuration ?? 1500;
+                const animationDuration: number = template.animationDuration ?? 1500;
                 return await renderAnimation({
                     width: template.width,
                     height: template.height,
