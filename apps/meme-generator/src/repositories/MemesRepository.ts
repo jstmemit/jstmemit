@@ -52,7 +52,8 @@ export class MemesRepository implements IMemesRepository {
             const fonts = hasCjk ? this._fontsService.getFonts(true) : undefined;
             const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
 
-            if (animated || template.isAnimated) {
+            if (animated || template.animationDuration !== undefined) {
+                const animationDuration = template.animationDuration ?? 1500;
                 return await renderAnimation({
                     width: template.width,
                     height: template.height,
@@ -64,7 +65,7 @@ export class MemesRepository implements IMemesRepository {
                     images: { fetchCache: this._fetchCache },
                     quality: turbo ? 35 : 45,
                     fps: 12,
-                    scenes: [{ durationMs: 1500, node: template.element(props) }],
+                    scenes: [{ durationMs: animationDuration, node: template.element(props) }],
                 });
             } else {
                 return await render(template.element(props), {

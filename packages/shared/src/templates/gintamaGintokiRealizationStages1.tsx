@@ -8,7 +8,7 @@ export const gintamaGintokiRealizationStages1: Template = {
     name: "gintamaGintokiRealizationStages1",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground, Type.Animated],
-    isAnimated: true,
+    animationDuration: 1900,
     width: 640,
     height: 470,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
