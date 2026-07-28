@@ -264,6 +264,25 @@ import { gintamaGintokiSmirk } from "#/templates/gintamaGintokiSmirk.tsx";
 import { gintamaGintokiSurprisedFace } from "#/templates/gintamaGintokiSurprisedFace.tsx";
 import { gintamaGintokiUnderstood } from "#/templates/gintamaGintokiUnderstood.tsx";
 import { gintamaGintokiRealizationStages1 } from "#/templates/gintamaGintokiRealizationStages1.tsx";
+import { hucSylphynfordTachibanaWithAGun } from "#/templates/hucSylphynfordTachibanaWithAGun.tsx";
+import { hucUmaruHamsterHoodie } from "#/templates/hucUmaruHamsterHoodie.tsx";
+import { hucUmaruSmugFace } from "#/templates/hucUmaruSmugFace.tsx";
+import { hucUmaruSunglassesSmug } from "#/templates/hucUmaruSunglassesSmug.tsx";
+import { hucUmaruWhiningCry } from "#/templates/hucUmaruWhiningCry.tsx";
+import { jkHigurumaCoveringFaceStare } from "#/templates/jkHigurumaCoveringFaceStare.tsx";
+import { jkHigurumaCoveringFaceStare1 } from "#/templates/jkHigurumaCoveringFaceStare1.tsx";
+import { jkKidMegumiSeriouslyBro } from "#/templates/jkKidMegumiSeriouslyBro.tsx";
+import { jkRizzSukuna } from "#/templates/jkRizzSukuna.tsx";
+import { jkSatoruGojoNahIdWin } from "#/templates/jkSatoruGojoNahIdWin.tsx";
+import { jkSatoruGojoNahIdWin1 } from "#/templates/jkSatoruGojoNahIdWin1.tsx";
+import { jkSatoruGojoNahIdWin2 } from "#/templates/jkSatoruGojoNahIdWin2.tsx";
+import { kaguyasamaBakaguya } from "#/templates/kaguyasamaBakaguya.tsx";
+import { kaguyasamaChikaFujiwaraFadingSmile } from "#/templates/kaguyasamaChikaFujiwaraFadingSmile.tsx";
+import { kaguyasamaChikaFujiwaraHappyVsShocked } from "#/templates/kaguyasamaChikaFujiwaraHappyVsShocked.tsx";
+import { kaguyasamaKaguyaDroppingPhone } from "#/templates/kaguyasamaKaguyaDroppingPhone.tsx";
+import { kaguyasamaKaguyaDroppingPhone1 } from "#/templates/kaguyasamaKaguyaDroppingPhone1.tsx";
+import { konAzusaNoThanks } from "#/templates/konAzusaNoThanks.tsx";
+import { konAzusaNoThanks1 } from "#/templates/konAzusaNoThanks1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -549,6 +568,25 @@ export class TemplatesRepository implements ITemplatesRepository {
             gintamaGintokiSurprisedFace,
             gintamaGintokiUnderstood,
             gintamaGintokiRealizationStages1,
+            hucSylphynfordTachibanaWithAGun,
+            hucUmaruHamsterHoodie,
+            hucUmaruSmugFace,
+            hucUmaruSunglassesSmug,
+            hucUmaruWhiningCry,
+            jkHigurumaCoveringFaceStare,
+            jkHigurumaCoveringFaceStare1,
+            jkKidMegumiSeriouslyBro,
+            jkRizzSukuna,
+            jkSatoruGojoNahIdWin,
+            jkSatoruGojoNahIdWin1,
+            jkSatoruGojoNahIdWin2,
+            kaguyasamaBakaguya,
+            kaguyasamaChikaFujiwaraFadingSmile,
+            kaguyasamaChikaFujiwaraHappyVsShocked,
+            kaguyasamaKaguyaDroppingPhone,
+            kaguyasamaKaguyaDroppingPhone1,
+            konAzusaNoThanks,
+            konAzusaNoThanks1,
         ];
     }
 
