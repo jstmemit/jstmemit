@@ -61,9 +61,14 @@ export const respond = async (
                     flags,
                     components,
                 });
-            } else {
+            } else if (interaction.deferred || interaction.replied) {
                 await interaction.editReply({
                     flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            } else {
+                await interaction.reply({
+                    flags,
                     components,
                 });
             }
