@@ -161,18 +161,21 @@ textTop, textBottom, textLeft, textRight, textCenter, textTopWithBackground, tex
 #### Texts and Images
 
 Each template must say which slots it has on it. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
-```ts
-texts: [
-    { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-    { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
-],
-images: [{ id: 0, description: "background" }]
+```tsx
+export const textOverBackground: Template = {
+    // ...
+    texts: [
+        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+    ],
+    images: [{ id: 0, description: "background" }]
+}
 ```
 
 Minimum and maximum length is set in amount of words.
 
 After that you can use them in your layout:
-```jsx
+```tsx
 <img
     src={images[0]}
     width={800}
@@ -191,12 +194,20 @@ After that you can use them in your layout:
 
 #### Render
 
-Your layout will be rendered into an image using [Satori](https://github.com/vercel/satori). This means that some of the CSS is not supported (such as `z-index`), each element needs to have its styles inline and `flex` is the only option for making layouts.
+Your layout will be rendered into an image using [Takumi](https://takumi.kane.tw/), a library that is similar to [Satori](https://github.com/vercel/satori) but has performance, supports almost all CSS properties and can render animations.
 
 #### Fonts
 
-Only Impact and Comic Sans MS are available.
+Available fonts:
+- Comic Sans MS
+- Noto Sans Math
 
+If there are CJK (Chinese, Japanese and Korean) characters present, then these more fonts are injected:
+- Noto Sans SC
+- Noto Sans TC 
+- Noto Sans HK 
+- Noto Sans JP 
+- Noto Sans KR 
 #### Layout
 
 **topBottomText.tsx**
