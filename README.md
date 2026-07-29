@@ -70,13 +70,21 @@ DISCORD_CLIENT_ID_PRODUCTION= # application id for the public bot
 
 POSTHOG_PUBLIC_KEY= # starts with phc, used for analytics
 
+# instance for BullMQ jobs
 REDIS_HOST= # redis
 REDIS_PORT= # 6379
+
+# instance for context/images cache
+REDIS_CACHE_HOST= # redis-cache
+REDIS_CACHE_PORT= # 6379
+
+WHISPER_API_KEY= # leave empty
+WHISPER_MODEL= # small (1.5 GB RAM) works good, base (700 MB RAM) can be used for less RAM usage
 ```
 
 4. Launch docker compose
 ```bash
-docker compose up
+docker compose up --build
 ```
 
 ## Contribution
@@ -109,45 +117,28 @@ There are also some useful extensions if you plan on contributing to more than m
 - Tailwind CSS Smart Completions
 - Docker
 
+---
+
 ### Making new meme templates
 
 All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
 
 #### Topics
 
-Each template must have topics that describe it. For example, if you have a template with `SpongeBob`, then you must add the `Topic.spongebob` topic to this template. The topics field is an array, allowing you to add as many topics as needed:
+Each template must have topics that describe it. For example, if you are making a meme template with SpongeBob characters on it, then you must add the `Topic.SpongeBob` topic to it. The topics field is an array, allowing you to add as many topics as needed:
 ```tsx
-import { Topic } from "#/models/TemplateTopic.ts";  //don`t forget to import `Topic` enum
+import { Topic } from "#/models/TemplateTopic.ts";  // don`t forget to import `Topic` enum
 
-...
+export const spongebob: Template = {
+    // ...
+    topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
+}
+```
+**Available topics:**
 
-topics: [Topic.Reaction, Topic.Movies]
-```
-Topics list:
-```ts
-export const Topic = {
-    Reaction: "reaction",
-    SocialPost: "socialPost",
-    BreakingBad: "breakingBad",
-    News: "news",
-    YouTube: "youtube",
-    Misc: "misc",
-    Cartoons: "cartoons",
-    Animals: "animals",
-    Futurama: "futurama",
-    Griffins: "griffins",
-    Simpsons: "simpsons",
-    Movies: "movies",
-    Art: "art",
-    PulpFiction: "pulpFiction",
-    Anime: "anime",
-    TeamFortress2: "teamFortress2",
-    Games: "games",
-    SpongeBob: "spongeBob",
-    SpiderMan: "spiderMan",
-    StarTrek: "starTrek",
-} as const;
-```
+Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean
+
+---
 
 #### Types
 
@@ -155,51 +146,36 @@ Each template must have types that describe its structure and layout components.
 ```tsx
 import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
 
-...
-
-types: [Type.faceImage, Type.textBottom]
-```
-Types list:
-```ts
-export const Type = {
-    textTop: "textTop",
-    textBottom: "textBottom",
-    textLeft: "textLeft",
-    textRight: "textRight",
-    textCenter: "textCenter",
-    textTopWithBackground: "textTopWithBackground",
-    textBottomWithBackground: "textBottomWithBackground",
-    textLeftWithBackground: "textLeftWithBackground",
-    textRightWithBackground: "textRightWithBackground",
-    textCenterWithBackground: "textCenterWithBackground",
-    textName: "textName",
-    textPost: "textPost",
-    defaultText: "defaultText",
-    avatarImage: "avatarImage",
-    faceImage: "faceImage",
-    objectImage: "objectImage",
-    backgroundImage: "backgroundImage",
-    twoOption: "twoOption",
-    threeOption: "threeOption",
-    fourOption: "fourOption",
-} as const;
+export const spongebob: Template = {
+    // ...
+    types: [Type.faceImage, Type.textBottom]
+}
 ```
 
-#### Texts/images
+**Available types:**
 
-Each template must say which slots it has inside. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
-```ts
-texts: [
-    { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-    { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
-],
-images: [{ id: 0, description: "background" }]
+textTop, textBottom, textLeft, textRight, textCenter, textTopWithBackground, textBottomWithBackground, textLeftWithBackground, textRightWithBackground, textCenterWithBackground, textName, textPost, defaultText, avatarImage, faceImage, objectImage, backgroundImage, twoOption, threeOption, fourOption
+
+---
+
+#### Texts and Images
+
+Each template must say which slots it has on it. For example, let's say you want to put two texts on a random background images. Add these fields to your template object:
+```tsx
+export const textOverBackground: Template = {
+    // ...
+    texts: [
+        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
+    ],
+    images: [{ id: 0, description: "background" }]
+}
 ```
 
 Minimum and maximum length is set in amount of words.
 
 After that you can use them in your layout:
-```jsx
+```tsx
 <img
     src={images[0]}
     width={800}
@@ -212,19 +188,29 @@ After that you can use them in your layout:
 <div>{texts[0]}</div>
 ```
 
-`element()` function will be always called with exact amount of texts and images as specified in the template.
+`element()` function will always be called with exact amount of texts and images as specified in the template.
+
+---
 
 #### Render
 
-Your layout will be rendered into an image using [Satori](https://github.com/vercel/satori). This means that some of the CSS is not supported (such as `z-index`), each element needs to have its styles inline and `flex` is the only option for making layouts.
+Your layout will be rendered into an image using [Takumi](https://takumi.kane.tw/), a library that is similar to [Satori](https://github.com/vercel/satori) but has performance, supports almost all CSS properties and can render animations.
 
 #### Fonts
 
-Only Impact and Comic Sans MS are available.
+Available fonts:
+- Comic Sans MS
+- Noto Sans Math
 
+If there are CJK (Chinese, Japanese and Korean) characters present, then these more fonts are injected:
+- Noto Sans SC
+- Noto Sans TC 
+- Noto Sans HK 
+- Noto Sans JP 
+- Noto Sans KR 
 #### Layout
 
-**topBottomText.tsx**
+**textOverBackground.tsx**
 ```tsx
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
@@ -232,10 +218,10 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const topBottomText: Template = {
-    name: "topBottomText", // make sure this name is not taken
+export const textOverBackground: Template = {
+    name: "textOverBackground", // make sure this name is not taken
     topics: [Topic.Misc],
-    types: [Type.faceImage, Type.textTopWithBackground],
+    types: [Type.backgroundImage, Type.textTopWithBackground, Type.textBottomWithBackground],
     width: 800,
     height: 800,
     texts: [
@@ -267,7 +253,6 @@ export const topBottomText: Template = {
                             top: 0,
                             width: "100%",
                             height: "100px",
-                            overflow: "hidden",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -278,15 +263,13 @@ export const topBottomText: Template = {
                 >
                     <div
                             style={{
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
-                                WebkitLineClamp: 2,
+                                lineClamp: 2,
                                 wordBreak: "break-word",
-                                overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 fontFamily: "Comic Sans MS",
                                 fontSize: 40,
                                 lineHeight: 1.05,
+                                paddingBottom: "0.2em",
                                 color: "#000000",
                             }}
                     >
@@ -300,7 +283,6 @@ export const topBottomText: Template = {
                             bottom: 0,
                             width: "100%",
                             height: "100px",
-                            overflow: "hidden",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -311,15 +293,13 @@ export const topBottomText: Template = {
                 >
                     <div
                             style={{
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
-                                WebkitLineClamp: 2,
+                                lineClamp: 2,
                                 wordBreak: "break-word",
-                                overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 fontFamily: "Comic Sans MS",
                                 fontSize: 40,
                                 lineHeight: 1.05,
+                                paddingBottom: "0.2em",
                                 color: "#000000",
                             }}
                     >
@@ -334,12 +314,13 @@ export const topBottomText: Template = {
 **TemplateRepository.ts**
 ```ts
 // import your new template
-import { topBottomText } from "#/templates/topBottomText.tsx";
+import { textOverBackground } from "#/templates/textOverBackground.tsx";
 
 public getAll(): Template[] {
     return [
         // return it together with others
-        topBottomText,
+        textOverBackground,
+        // ...
     ]
 }
 ```
@@ -362,7 +343,11 @@ pnpm run template-preview:dev
 
 ## Alternatives
 
-Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages. It is really great and fun to have on your server.
+Idea for Jstmemit was partly inspired by a bot called [Genai](https://genai.bot/), that sends random texts made from channel messages mixed together using Markov chains. 
+
+However, Jstmemit's focus is on being a "meme generator" and having a giant library of not only static, but also animated (GIF) meme templates. And to support user-installs, to allow users to use the bot on any server or even in DMs. 
+
+If you are not looking for memes, but rather funny and random text messages, feel free to check [Genai](https://genai.bot/) out. It is really great and fun to have on your server instead or alongside Jstmemit.
 
 ## Questions or feedback?
 

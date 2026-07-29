@@ -10,7 +10,7 @@ import Separator from "#/components/ui/Separator.astro";
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
     <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
         <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
-            <Explainer>Last updated: 21st July, 2026</Explainer>
+            <Explainer>Last updated: 28th July, 2026</Explainer>
             <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
             <Paragraph id="privacyPolicyDescription">
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
@@ -67,7 +67,7 @@ import Separator from "#/components/ui/Separator.astro";
 
             <Paragraph>
                 When a setting was changed using <b>/settings</b> command:<br />
-                <b>frequency, useAvatarsInMemes</b>
+                <b>frequency, useAvatarsInMemes, turbo</b>
             </Paragraph>
             <Paragraph>
                 They are used to change the bot's behaviour based on set settings. For example, if a server owner
@@ -94,6 +94,17 @@ import Separator from "#/components/ui/Separator.astro";
             <Paragraph>
                 They are used on meme templates. Only the <b>link</b> to the file is saved. Content of those links is fetched
                 and temporarily stored in RAM when used in a meme generation, but it never ends up on the actual hard drive.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a voice message is sent:<br />
+                <b>messageId, channelId, content, timestamp</b>
+            </Paragraph>
+            <Paragraph>
+                Their transcription is used as text content when applied to meme templates. Speech-to-text happens using
+                a local Whisper modal (see chapter 4)
             </Paragraph>
 
             <Separator variant="hr" />
@@ -170,13 +181,37 @@ import Separator from "#/components/ui/Separator.astro";
                 Logs are used to understand how errors happen, mostly in unhappy flows: meme generation failed, bot
                 didn't respond to a command.</Paragraph
             >
+
+            <Heading variant="h3" id="voiceHeading" classes="mt-5"> 4.1 Voice processing</Heading>
+
+            <Paragraph>
+                Currently Jstmemit doesn't use any external service providers for Speech-To-Text and Text-To-Speech
+                functionality. We host our own instances of these models:
+                <ul class="list-[lower-alpha] pl-10 text-white/75">
+                    <li>
+                        <b>Whisper</b> - used for transcribing voice messages to use their content as text on generated memes
+                    </li>
+                    <li>
+                        <b>Kokoro 82M</b> - used for generating voice messages via /voice command
+                    </li>
+                </ul>
+            </Paragraph>
+
+            <Paragraph>
+                If we ever decide to use such provider in the future for improving generated voice messages quality or
+                other reasons, it would be made opt-in only and local options would stay selected by default to all
+                users to respect their privacy.
+            </Paragraph>
         </div>
     </Section>
 
     <Section variant="light" headingId="retentionHeading" descriptionId="retentionDescription">
         <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
             <Heading id="retentionHeading"> 5. How long we keep your data </Heading>
-            <Paragraph id="retentionDescription"> Saved data is purged automatically on a fixed schedule. </Paragraph>
+            <Paragraph id="retentionDescription">
+                Saved data is purged automatically on a fixed schedule. However, some of it may still be cached for up
+                to 24 hours after it's removal.</Paragraph
+            >
             <Paragraph>
                 <b>Messages</b> - deleted after 30 days.<br />
                 <b>Links to images</b> - deleted after 24 hours.<br />
