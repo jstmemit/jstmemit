@@ -1,5 +1,6 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { GuildEmoji } from "discord.js";
+import type { PollAnswer } from "discord.js";
+import { type GuildEmoji, type PartialPollAnswer } from "discord.js";
 import { type Guild, type Sticker } from "discord.js";
 import { type Collection, type GuildMember, type Message, type TextBasedChannel } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
@@ -194,7 +195,7 @@ export class ContextController implements IContextController {
                     continue;
                 }
 
-                const { id, content, channelId, attachments, author } = message;
+                const { id, content, channelId, attachments, author, poll } = message;
 
                 try {
                     const avatar: string | null = author.avatarURL();
@@ -205,6 +206,19 @@ export class ContextController implements IContextController {
 
                     if (attachments.size > 0) {
                         await this._contextService.saveImages(id, channelId, attachments);
+                    }
+
+                    if (poll) {
+                        const answers: string = poll.answers
+                            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
+                            .filter((text: string | null): text is string => Boolean(text))
+                            .join(", ");
+
+                        const text: string = `${poll.question.text}, ${answers}`;
+
+                        if (text.length < 2000) {
+                            await this._contextService.saveContent(id, channelId, text);
+                        }
                     }
 
                     if (content.length > 0 && content.length < 2000) {
