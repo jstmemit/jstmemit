@@ -4,6 +4,7 @@ import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _fontsService: IFontsService;
@@ -49,7 +50,7 @@ export class MemesRepository implements IMemesRepository {
 
             const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
 
-            const fonts = hasCjk ? this._fontsService.getFonts(true) : undefined;
+            const fonts: FontOptions[] | undefined = hasCjk ? this._fontsService.getFonts(true) : undefined;
             const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
 
             if (animated || template.animationDuration !== undefined) {
