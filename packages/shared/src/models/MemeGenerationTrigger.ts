@@ -1,1 +1,1 @@
-export type MemeGenerationTrigger = "auto" | "command" | "regenerate" | "custom" | "context";
+export type MemeGenerationTrigger = "auto" | "command" | "regenerate" | "custom" | "context" | "mention";

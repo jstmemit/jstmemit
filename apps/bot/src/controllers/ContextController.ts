@@ -49,7 +49,7 @@ export class ContextController implements IContextController {
 
             if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`) && message.inGuild()) {
                 if (await this._checkForNeededPermissions(message)) {
-                    await this._memesController.handleMemeInteraction(message);
+                    await this._memesController.handleMemeInteraction(message, "mention");
                 } else {
                     await respond(message, [
                         this._componentsService.getMissingBotPermissionsMessageComponent(message.guild.preferredLocale),
