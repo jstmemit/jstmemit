@@ -51,6 +51,16 @@ export const Topic = {
     Kon: "kon",
     KonoSuba: "konoSuba",
     LogHorizon: "logHorizon",
+    LuckyStar: "luckyStar",
+    MyHeroicAcademy: "myHeroicAcademy",
+    Monster: "monster",
+    Noragami: "noragami",
+    RascalDoesNotDreamOfBunnyGirlSenpai: "rascalDoesNotDreamOfBunnyGirlSenpai",
+    SerialExperimentsLain: "serialExperimentsLain",
+    SpyFamily: "spyFamily",
+    SquidGame: "squidGame",
+    Shirobako: "shirobako",
+    TheBalladOfBusterScruggs: "theBalladOfBusterScruggs",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
