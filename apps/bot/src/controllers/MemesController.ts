@@ -227,7 +227,9 @@ export class MemesController implements IMemesController {
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
             }
 
-            await respond(interaction, [message]);
+            if (trigger !== "auto") {
+                await respond(interaction, [message]);
+            }
         }
     }
 
@@ -430,7 +432,7 @@ export class MemesController implements IMemesController {
             | UserContextMenuCommandInteraction,
         templateName: string | undefined,
     ): Promise<Template | undefined> {
-        const template: Template = this._templatesRepository
+        const template: Template | undefined = this._templatesRepository
             .getAll()
             .find((template: Template): boolean => template.name === templateName);
 
