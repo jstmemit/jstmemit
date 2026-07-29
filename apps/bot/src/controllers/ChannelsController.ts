@@ -62,8 +62,11 @@ export class ChannelsController implements IChannelsController {
                 isEnabled = await this._channelsService.switchChannel(interaction.channelId);
             }
 
-            if (isEnabled && messagesAmount < 1 && interaction.channel) {
-                prefetchedContext = await this._contextController.prefetchChannel(interaction.channel);
+            if (isEnabled && messagesAmount < 1 && interaction.channel && interaction.guild) {
+                prefetchedContext = await this._contextController.prefetchChannel(
+                    interaction.channel,
+                    interaction.guild,
+                );
             }
 
             analytics.capture({

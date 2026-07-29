@@ -1,11 +1,12 @@
 import type { Template } from "@jstmemit/shared/models/Template.ts";
+import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger.ts";
 
 export interface MemeGenerationJob {
     channelId: string;
     guildId?: string;
     isUserInstall?: boolean;
     locale?: string;
-    trigger: "auto" | "command" | "regenerate" | "custom" | "context";
+    trigger: MemeGenerationTrigger;
     userId: string;
     templateName?: Template["name"];
     texts?: Record<string, string>;
