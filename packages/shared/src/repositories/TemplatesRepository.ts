@@ -288,6 +288,38 @@ import { konosubaAquaCryingFace } from "#/templates/konosubaAquaCryingFace.tsx";
 import { konosubaAquaPanic } from "#/templates/konosubaAquaPanic.tsx";
 import { konosubaAquaNervousSmug } from "#/templates/konosubaAquaNervousSmug.tsx";
 import { lhShiroeBigBrain } from "#/templates/lhShiroeBigBrain.tsx";
+import { lightVsDark } from "#/templates/lightVsDark.tsx";
+import { lsWindowsXPWallpaper } from "#/templates/lsWindowsXPWallpaper.tsx";
+import { mhaDekuAllMightFace } from "#/templates/mhaDekuAllMightFace.tsx";
+import { monsterKenzoTenmaBeforeAfter } from "#/templates/monsterKenzoTenmaBeforeAfter.tsx";
+import { noragamiYatoNoragamiMoneyFloor } from "#/templates/noragamiYatoNoragamiMoneyFloor.tsx";
+import { noragamiYatoNoragamiMoneyFloor1 } from "#/templates/noragamiYatoNoragamiMoneyFloor1.tsx";
+import { rtnobgsMaiSakurajimaPhoneReaction } from "#/templates/rtnobgsMaiSakurajimaPhoneReaction.tsx";
+import { selLainStare } from "#/templates/selLainStare.tsx";
+import { selLainFunnyILaugh } from "#/templates/selLainFunnyILaugh.tsx";
+import { selLainImFineScreen } from "#/templates/selLainImFineScreen.tsx";
+import { sfAnyaForgerDisgustFace } from "#/templates/sfAnyaForgerDisgustFace.tsx";
+import { sfAnyaForgerSmugShush } from "#/templates/sfAnyaForgerSmugShush.tsx";
+import { sfAnyaStudyingHard } from "#/templates/sfAnyaStudyingHard.tsx";
+import { sgPlayer456HappyVsDepressed } from "#/templates/sgPlayer456HappyVsDepressed.tsx";
+import { shirobakoWorkStress } from "#/templates/shirobakoWorkStress.tsx";
+import { shirobakoWorkStress1 } from "#/templates/shirobakoWorkStress1.tsx";
+import { shirobakoWorkStress2 } from "#/templates/shirobakoWorkStress2.tsx";
+import { shirobakoWorkStress3 } from "#/templates/shirobakoWorkStress3.tsx";
+import { tbobsJamesFrancoFirstTime } from "#/templates/tbobsJamesFrancoFirstTime.tsx";
+import { thisPersonIs100kmNearYourHouse } from "#/templates/thisPersonIs100kmNearYourHouse.tsx";
+import { toradoraCriticalHit } from "#/templates/toradoraCriticalHit.tsx";
+import { toradoraMinoriAndTaigaCryingSalute } from "#/templates/toradoraMinoriAndTaigaCryingSalute.tsx";
+import { toradoraMinoriHoldingDocument } from "#/templates/toradoraMinoriHoldingDocument.tsx";
+import { toradoraMinoriHoldingDocument1 } from "#/templates/toradoraMinoriHoldingDocument1.tsx";
+import { toradoraMinoriTwoMoods } from "#/templates/toradoraMinoriTwoMoods.tsx";
+import { toradoraTaigaAndAmiChibiAnimalEars } from "#/templates/toradoraTaigaAndAmiChibiAnimalEars.tsx";
+import { toradoraTaigaCatchesRyuujiAndAmi } from "#/templates/toradoraTaigaCatchesRyuujiAndAmi.tsx";
+import { toradoraTaigaChristmasDonut } from "#/templates/toradoraTaigaChristmasDonut.tsx";
+import { toradoraTaigaCreepySmile } from "#/templates/toradoraTaigaCreepySmile.tsx";
+import { toradoraTaigaHoldingHead } from "#/templates/toradoraTaigaHoldingHead.tsx";
+import { toradoraTaigaHoldingLeek } from "#/templates/toradoraTaigaHoldingLeek.tsx";
+import { toradoraTaigaHoldingLeek1 } from "#/templates/toradoraTaigaHoldingLeek1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -597,6 +629,38 @@ export class TemplatesRepository implements ITemplatesRepository {
             konosubaAquaPanic,
             konosubaAquaNervousSmug,
             lhShiroeBigBrain,
+            lightVsDark,
+            lsWindowsXPWallpaper,
+            mhaDekuAllMightFace,
+            monsterKenzoTenmaBeforeAfter,
+            noragamiYatoNoragamiMoneyFloor,
+            noragamiYatoNoragamiMoneyFloor1,
+            rtnobgsMaiSakurajimaPhoneReaction,
+            selLainStare,
+            selLainFunnyILaugh,
+            selLainImFineScreen,
+            sfAnyaForgerDisgustFace,
+            sfAnyaForgerSmugShush,
+            sfAnyaStudyingHard,
+            sgPlayer456HappyVsDepressed,
+            shirobakoWorkStress,
+            shirobakoWorkStress1,
+            shirobakoWorkStress2,
+            shirobakoWorkStress3,
+            tbobsJamesFrancoFirstTime,
+            thisPersonIs100kmNearYourHouse,
+            toradoraCriticalHit,
+            toradoraMinoriAndTaigaCryingSalute,
+            toradoraMinoriHoldingDocument,
+            toradoraMinoriHoldingDocument1,
+            toradoraMinoriTwoMoods,
+            toradoraTaigaAndAmiChibiAnimalEars,
+            toradoraTaigaCatchesRyuujiAndAmi,
+            toradoraTaigaChristmasDonut,
+            toradoraTaigaCreepySmile,
+            toradoraTaigaHoldingHead,
+            toradoraTaigaHoldingLeek,
+            toradoraTaigaHoldingLeek1,
         ];
     }
 
