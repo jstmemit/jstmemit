@@ -61,6 +61,9 @@ export const Topic = {
     SquidGame: "squidGame",
     Shirobako: "shirobako",
     TheBalladOfBusterScruggs: "theBalladOfBusterScruggs",
+    TheQuintessentialQuintuplets: "theQuintessentialQuintuplets",
+    UzakiChanWantsToHangOut: "uzakiChanWantsToHangOut",
+    ShikanokoNokonokoKoshitantan: "shikanokoNokonokoKoshitantan",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
