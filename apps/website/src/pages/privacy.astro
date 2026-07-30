@@ -139,9 +139,9 @@ import Separator from "#/components/ui/Separator.astro";
             </Paragraph>
             <Paragraph>
                 Your message is sent to our team so that they can work on the issue or suggestion that you provided. The
-                user ID is kept for so that we can reach back to you for more information if needed. Channel and Guild
-                IDs are used for context about bot's usage in a particular guild/channel, for example, to understand
-                what have caused the mentioned in the message issue.
+                user ID is kept so that we can reach back to you for more information if needed. Channel and Guild IDs
+                are used for context about bot's usage in a particular guild/channel, for example, to understand what
+                have caused the mentioned in the message issue.
             </Paragraph>
         </div>
     </Section>
@@ -162,6 +162,8 @@ import Separator from "#/components/ui/Separator.astro";
                     <li>settings are opened or changed</li>
                     <li>a meme is generated</li>
                     <li>a meme is rated</li>
+                    <li>a voice message is generated with /voice</li>
+                    <li>feedback is sent with /feedback</li>
                     <li>data deletion is done via the /settings command</li>
                 </ul>
             </Paragraph>
@@ -177,13 +179,16 @@ import Separator from "#/components/ui/Separator.astro";
                 </ul>
             </Paragraph>
             <Paragraph>
-                <b>Message content is never sent to analytics or OpenTelemetry logs</b>, and neither are the generated
-                memes themselves.
+                <b
+                    >Message content, narrated voice text and other personal information such as channel or server names
+                    is never sent to analytics or OpenTelemetry logs</b
+                >, and neither are the generated memes themselves.
             </Paragraph>
             <Paragraph>
-                Properties of sent events include the Discord user ID of the person who performed the action, together
-                with technical details like the setting values that changed, how long meme generation took, error
-                messages and stack traces.
+                Properties of sent events include the Discord user ID of the person who performed the action, the server
+                and channel IDs, your Discord language, together with technical details like the setting values that
+                changed, which meme template and voice were picked, how long meme generation took, error messages and
+                stack traces.
             </Paragraph>
             <Paragraph>
                 In addition to this information most of these events include Discord's interaction ID, which is also
