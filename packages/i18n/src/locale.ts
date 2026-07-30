@@ -16,6 +16,10 @@ export const locale: Partial<TranslationString> = {
         "enable.permissions.heading": "Some permissions are missing!",
         "enable.permissions.description":
             "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated or **Embed links** for the `/settings` menu to work properly:\n",
+        "enable.permissions.sendMessages": "Send Messages",
+        "enable.permissions.attachFiles": "Attach Files",
+        "enable.permissions.embedLinks": "Embed Links",
+        "enable.permissions.readHistory": "Read Message History",
 
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
