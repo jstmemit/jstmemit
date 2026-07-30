@@ -1,4 +1,4 @@
-import { type ChatInputCommandInteraction, InteractionContextType, MessageFlags } from "discord.js";
+import { ChannelType, type ChatInputCommandInteraction, InteractionContextType, MessageFlags } from "discord.js";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 import { type IAudioMetadata, parseBuffer } from "music-metadata";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -75,6 +75,9 @@ export class VoiceController implements IVoiceController {
                     is_user_install: "1" in (interaction.authorizingIntegrationOwners || {}),
                     deferred: interaction.deferred,
                     replied: interaction.replied,
+                    channelType: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                    voiceExplicitlyPicked: voice != null,
+                    textLength: text.length,
                     voice,
                 },
             });
@@ -98,6 +101,11 @@ export class VoiceController implements IVoiceController {
                 receiveLatencyMs: Date.now() - interaction.createdTimestamp,
                 context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
                 isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                channelType: interaction.channel ? ChannelType[interaction.channel.type] : undefined,
+                voiceExplicitlyPicked: voice != null,
+                textLength: text.length,
+                durationSeconds: duration,
+                audioBytes: audio.byteLength,
                 voice,
             },
         });
