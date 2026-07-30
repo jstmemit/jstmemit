@@ -11,7 +11,7 @@ export const nerdDog: Template = {
     width: 890,
     height: 1085,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "object" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

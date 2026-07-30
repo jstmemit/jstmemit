@@ -4,15 +4,15 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const wnlFuminoRealization1: Template = {
-    name: "wnlFuminoRealization1",
+export const wnlMafuyuKirisuIntrovert: Template = {
+    name: "wnlMafuyuKirisuIntrovert",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
-    types: [Type.TwoOption, Type.TextRightWithBackground],
-    width: 1088,
-    height: 612,
+    types: [Type.TwoOption, Type.TextRightWithBackground, Type.DefaultText],
+    width: 948,
+    height: 658,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -26,9 +26,9 @@ export const wnlFuminoRealization1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization1.png"
-                width={544}
-                height={612}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlMafuyuKirisuIntrovert.png"
+                width={474}
+                height={658}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -43,7 +43,8 @@ export const wnlFuminoRealization1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "black",
+                    backgroundColor: "white",
+                    borderLeft: "1px solid #000000",
                 }}
             >
                 <div
@@ -55,7 +56,7 @@ export const wnlFuminoRealization1: Template = {
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#ffffff",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}
@@ -73,7 +74,8 @@ export const wnlFuminoRealization1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "black",
+                    backgroundColor: "white",
+                    borderLeft: "1px solid #000000",
                 }}
             >
                 <div
@@ -85,12 +87,22 @@ export const wnlFuminoRealization1: Template = {
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#ffffff",
+                        color: "#000000",
                     }}
                 >
                     {texts[1]}
                 </div>
             </div>
+            <div
+                style={{
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "50%",
+                    borderBottom: "1px solid #000000",
+                }}
+            ></div>
         </div>
     ),
 };

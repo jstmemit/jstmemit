@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const thisPersonIs100kmNearYourHouse: Template = {
     name: "thisPersonIs100kmNearYourHouse",
     topics: [Topic.Misc],
-    types: [Type.FaceImage],
+    types: [Type.FaceImage, Type.DefaultText],
     width: 498,
     height: 464,
     texts: [],

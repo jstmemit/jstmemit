@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const dnLStaring: Template = {
     name: "dnLStaring",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
-    types: [Type.TwoOption, Type.TextLeftWithBackground],
+    types: [Type.TextLeftWithBackground],
     width: 1350,
     height: 675,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],

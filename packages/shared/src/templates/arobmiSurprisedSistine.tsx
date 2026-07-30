@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const arobmiSurprisedSistine: Template = {
     name: "arobmiSurprisedSistine",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
-    types: [Type.TextTopWithBackground],
+    types: [Type.TextBottomWithBackground],
     width: 537,
     height: 638,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const wojackPoint: Template = {
     name: "wojackPoint",
     topics: [Topic.Reaction],
-    types: [Type.BackgroundImage, Type.TextBottomWithBackground],
+    types: [Type.BackgroundImage, Type.TextBottom],
     width: 512,
     height: 512,
     texts: [{ id: 0, description: "what wojak says", minLength: 1, maxLength: 6 }],

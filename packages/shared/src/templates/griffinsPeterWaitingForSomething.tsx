@@ -11,7 +11,7 @@ export const griffinsPeterWaitingForSomething: Template = {
     width: 568,
     height: 386,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Peter`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

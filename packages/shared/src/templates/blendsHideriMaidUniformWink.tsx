@@ -38,6 +38,7 @@ export const blendsHideriMaidUniformWink: Template = {
                     left: 190,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(15deg)",
                 }}
             />
             <div

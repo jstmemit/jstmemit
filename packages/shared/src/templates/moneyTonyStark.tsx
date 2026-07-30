@@ -11,7 +11,7 @@ export const moneyTonyStark: Template = {
     width: 1200,
     height: 1000,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Tony Stark`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -35,7 +35,7 @@ export const moneyTonyStark: Template = {
                 style={{
                     position: "absolute",
                     top: 400,
-                    left: "50%",
+                    left: "49%",
                     transform: "translateX(-50%)",
                     borderRadius: "100%",
                     objectFit: "cover",

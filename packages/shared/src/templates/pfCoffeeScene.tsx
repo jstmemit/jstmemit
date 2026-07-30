@@ -12,8 +12,8 @@ export const pfCoffeeScene: Template = {
     height: 386,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
-        { id: 0, description: "first person`s face" },
-        { id: 1, description: "second person`s face " },
+        { id: 0, description: "Vincent's face (left)" },
+        { id: 1, description: "Jules's face (right)" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div

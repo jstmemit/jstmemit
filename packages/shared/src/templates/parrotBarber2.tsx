@@ -11,7 +11,7 @@ export const parrotBarber2: Template = {
     width: 672,
     height: 921,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
-    images: [{ id: 0, description: "Parrot`s face" }],
+    images: [{ id: 0, description: "Parrot face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

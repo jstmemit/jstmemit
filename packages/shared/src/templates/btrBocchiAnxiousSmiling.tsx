@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const btrBocchiAnxiousSmiling: Template = {
     name: "btrBocchiAnxiousSmiling",
     topics: [Topic.Anime, Topic.BocchiTheRock],
-    types: [Type.TextTopWithBackground],
+    types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 1020,
     height: 1211,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
@@ -30,12 +30,12 @@ export const btrBocchiAnxiousSmiling: Template = {
             />
             <img
                 src={images[0]}
-                width={400}
-                height={400}
+                width={420}
+                height={420}
                 style={{
                     position: "absolute",
                     top: 350,
-                    left: 320,
+                    left: 300,
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}

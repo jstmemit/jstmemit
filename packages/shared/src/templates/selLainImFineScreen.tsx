@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const selLainImFineScreen: Template = {
     name: "selLainImFineScreen",
     topics: [Topic.Reaction, Topic.Anime, Topic.SerialExperimentsLain],
-    types: [Type.DefaultText, Type.TextRightWithBackground],
+    types: [Type.DefaultText, Type.ObjectImage],
     width: 736,
     height: 721,
     texts: [],

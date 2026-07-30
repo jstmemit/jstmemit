@@ -38,6 +38,7 @@ export const blendsHideriHeartHands: Template = {
                     right: 550,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(-15deg)",
                 }}
             />
             <div

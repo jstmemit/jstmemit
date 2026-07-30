@@ -83,6 +83,7 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    textAlign: "center",
                 }}
             >
                 <span
@@ -94,7 +95,6 @@ export const diagramIQ: Template = {
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",
-
                         textOverflow: "ellipsis",
                     }}
                 >
@@ -113,6 +113,7 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    textAlign: "center",
                 }}
             >
                 <span
@@ -141,6 +142,7 @@ export const diagramIQ: Template = {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    textAlign: "center",
                 }}
             >
                 <span

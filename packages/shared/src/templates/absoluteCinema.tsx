@@ -7,11 +7,11 @@ import { Type } from "#/models/TemplateType.ts";
 export const absoluteCinema: Template = {
     name: "absoluteCinema",
     topics: [Topic.Reaction, Topic.Movies],
-    types: [Type.TextTop, Type.FaceImage],
+    types: [Type.TextTop, Type.FaceImage, Type.DefaultText],
     width: 1230,
     height: 1422,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
-    images: [{ id: 0, description: "background" }],
+    images: [{ id: 0, description: "face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

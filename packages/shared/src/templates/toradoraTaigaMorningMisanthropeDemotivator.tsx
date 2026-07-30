@@ -4,14 +4,14 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const bbSayMyName: Template = {
-    name: "bbSayMyName",
-    topics: [Topic.BreakingBad, Topic.Movies],
+export const toradoraTaigaMorningMisanthropeDemotivator: Template = {
+    name: "toradoraTaigaMorningMisanthropeDemotivator",
+    topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.FaceImage, Type.DefaultText],
-    width: 1280,
-    height: 720,
+    width: 500,
+    height: 418,
     texts: [],
-    images: [{ id: 0, description: "Walter`s face" }],
+    images: [{ id: 0, description: "Taiga`s face" }],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -23,21 +23,21 @@ export const bbSayMyName: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/bbSayMyName.jpg"
-                width={1280}
-                height={720}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaMorningMisanthropeDemotivator.png"
+                width={500}
+                height={418}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={650}
-                height={650}
+                width={140}
+                height={140}
                 style={{
                     position: "absolute",
-                    top: -70,
-                    right: 100,
-                    borderRadius: "100%",
+                    top: 100,
+                    left: 160,
                     objectFit: "cover",
+                    borderRadius: "100%",
                 }}
             />
         </div>

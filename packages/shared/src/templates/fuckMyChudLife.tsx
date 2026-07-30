@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
     topics: [Topic.SocialPost],
-    types: [Type.DefaultText, Type.ObjectImage, Type.TextBottom],
+    types: [Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 776,
     height: 999,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
@@ -40,6 +40,7 @@ export const fuckMyChudLife: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div

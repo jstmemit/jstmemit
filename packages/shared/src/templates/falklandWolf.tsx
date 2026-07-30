@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const falklandWolf: Template = {
     name: "falklandWolf",
     topics: [Topic.SocialPost],
-    types: [Type.AvatarImage, Type.DefaultText, Type.ObjectImage, Type.TextBottom],
+    types: [Type.AvatarImage, Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 814,
     height: 691,
     texts: [{ id: 0, description: "Phrase that wolf says", minLength: 1, maxLength: 8 }],
@@ -53,15 +53,16 @@ export const falklandWolf: Template = {
             <div
                 style={{
                     position: "absolute",
-                    right: "2.5%",
-                    bottom: "5%",
-                    width: "85%",
+                    right: "1%",
+                    bottom: "7%",
+                    width: "86%",
                     height: "20%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
                 <div

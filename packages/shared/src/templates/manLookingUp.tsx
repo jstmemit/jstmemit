@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const manLookingUp: Template = {
     name: "manLookingUp",
-    topics: [Topic.Movies],
+    topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTopWithBackground],
     width: 661,
     height: 372,

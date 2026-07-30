@@ -4,12 +4,12 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const wnlFuminoRealization1: Template = {
-    name: "wnlFuminoRealization1",
-    topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
+export const tqqNinoNakanoHappyVsSad: Template = {
+    name: "tqqNinoNakanoHappyVsSad",
+    topics: [Topic.Reaction, Topic.Movies, Topic.TheQuintessentialQuintuplets],
     types: [Type.TwoOption, Type.TextRightWithBackground],
-    width: 1088,
-    height: 612,
+    width: 1082,
+    height: 1080,
     texts: [
         { id: 0, description: "first option", minLength: 1, maxLength: 12 },
         { id: 1, description: "second option", minLength: 1, maxLength: 12 },
@@ -26,9 +26,9 @@ export const wnlFuminoRealization1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization1.png"
-                width={544}
-                height={612}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/tqqNinoNakanoHappyVsSad.png"
+                width={542}
+                height={1080}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -48,11 +48,11 @@ export const wnlFuminoRealization1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 50,
+                        fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
@@ -78,11 +78,11 @@ export const wnlFuminoRealization1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 50,
+                        fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",

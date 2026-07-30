@@ -11,7 +11,7 @@ export const grokTweet: Template = {
     width: 1280,
     height: 1146,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "avatar" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

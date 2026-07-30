@@ -12,7 +12,7 @@ export const starTrekThinking: Template = {
     height: 1200,
     texts: [
         { id: 0, description: "caption", minLength: 1, maxLength: 10 },
-        { id: 0, description: "caption", minLength: 1, maxLength: 10 },
+        { id: 1, description: "caption", minLength: 1, maxLength: 10 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (

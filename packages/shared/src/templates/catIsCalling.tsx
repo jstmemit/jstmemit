@@ -6,7 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const catIsCalling: Template = {
     name: "catIsCalling",
-    topics: [Topic.Misc],
+    topics: [Topic.Cartoons],
     types: [Type.TextTop],
     width: 1498,
     height: 936,

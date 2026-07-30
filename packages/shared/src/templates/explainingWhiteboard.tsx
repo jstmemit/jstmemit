@@ -11,7 +11,7 @@ export const explainingWhiteboard: Template = {
     width: 1280,
     height: 900,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "person face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -30,12 +30,12 @@ export const explainingWhiteboard: Template = {
             />
             <img
                 src={images[0]}
-                width={250}
-                height={250}
+                width={270}
+                height={270}
                 style={{
                     position: "absolute",
-                    top: 210,
-                    left: 425,
+                    top: 200,
+                    left: 415,
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}

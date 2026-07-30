@@ -11,7 +11,7 @@ export const spongebobShowsSign: Template = {
     width: 657,
     height: 493,
     texts: [
-        { id: 0, description: "what spongebobBurningTheNote says while holding the sign", minLength: 1, maxLength: 12 },
+        { id: 0, description: "what spongebobBurningTheNote says while holding the sign", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "image on the sign" }],
     element: ({ texts, images }: TemplateProps) => (
@@ -51,11 +51,12 @@ export const spongebobShowsSign: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 30,
+                        fontSize: 40,
+                        fontWeight: 700,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",

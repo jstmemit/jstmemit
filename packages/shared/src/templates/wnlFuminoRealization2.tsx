@@ -4,12 +4,12 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const wnlFuminoRealization1: Template = {
-    name: "wnlFuminoRealization1",
+export const wnlFuminoRealization2: Template = {
+    name: "wnlFuminoRealization2",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TwoOption, Type.TextRightWithBackground],
-    width: 1088,
-    height: 612,
+    width: 1090,
+    height: 608,
     texts: [
         { id: 0, description: "first option", minLength: 1, maxLength: 12 },
         { id: 1, description: "second option", minLength: 1, maxLength: 12 },
@@ -26,9 +26,9 @@ export const wnlFuminoRealization1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization1.png"
-                width={544}
-                height={612}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization2.png"
+                width={545}
+                height={608}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div

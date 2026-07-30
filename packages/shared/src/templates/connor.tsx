@@ -15,9 +15,9 @@ export const connor: Template = {
         { id: 1, description: "option 2", minLength: 1, maxLength: 12 },
         { id: 2, description: "option 3", minLength: 1, maxLength: 12 },
         { id: 3, description: "option 4 (the chosen one)", minLength: 1, maxLength: 20 },
-        { id: 4, description: "the chosen option, repeated", minLength: 1, maxLength: 12 },
+        { id: 4, description: "Connor`s phrase", minLength: 1, maxLength: 12 },
     ],
-    images: [{ id: 0, description: "the chooser's face" }],
+    images: [{ id: 0, description: "Connor's face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

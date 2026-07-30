@@ -12,8 +12,8 @@ export const pfTwoGangsterWithGuns: Template = {
     height: 822,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [
-        { id: 0, description: "left person`s face" },
-        { id: 1, description: "right person`s face" },
+        { id: 0, description: "Vincent's face (left)" },
+        { id: 1, description: "Jules's face (center left)" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div

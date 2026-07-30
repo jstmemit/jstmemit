@@ -41,9 +41,10 @@ export const blendsMaidCast: Template = {
                 style={{
                     position: "absolute",
                     top: 220,
-                    left: 90,
+                    left: 95,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(10deg)",
                 }}
             />
             <img
@@ -56,6 +57,7 @@ export const blendsMaidCast: Template = {
                     left: 240,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(-5deg)",
                 }}
             />
             <img
