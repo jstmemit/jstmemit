@@ -36,6 +36,8 @@ import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscr
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -125,9 +127,13 @@ export class MemesController implements IMemesController {
                     ...this._getTelemetryProperties(interaction),
                 },
             });
+
+            const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
+
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 locale,
                 channel?.enabled || false,
+                permissions,
             );
             const notEnabledButtons: ActionRowBuilder<ButtonBuilder> =
                 this._componentsService.getEnableButtonsComponent(locale, channel?.enabled || false);

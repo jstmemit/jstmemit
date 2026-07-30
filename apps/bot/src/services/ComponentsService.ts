@@ -34,13 +34,8 @@ export class ComponentsService implements IComponentsService {
     public getEnableMessageComponent(
         language: Locale,
         isEnabled: boolean,
+        permissions: RequiredBotPermissions,
         messagesAmount: number = 0,
-        permissions: RequiredBotPermissions = {
-            sendMessages: true,
-            attachFiles: true,
-            embedLinks: false,
-            readHistory: true,
-        },
     ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
         const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);

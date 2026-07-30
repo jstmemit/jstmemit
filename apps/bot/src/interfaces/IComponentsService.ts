@@ -1,9 +1,11 @@
 import type { ActionRowBuilder, ButtonBuilder, ContainerBuilder, Locale } from "discord.js";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 
 export abstract class IComponentsService {
     public abstract getEnableMessageComponent(
         language: Locale,
         isEnabled: boolean,
+        permissions: RequiredBotPermissions,
         messagesAmount?: number,
     ): ContainerBuilder;
     public abstract getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder>;
