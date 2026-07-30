@@ -11,15 +11,6 @@ export class MemesRepository implements IMemesRepository {
     private readonly _renderer: Renderer;
     private readonly _fontsReady: Promise<void>;
     private readonly _fetchCache: Map<string, Promise<ArrayBuffer>>;
-    private readonly _fallbackChain: string[] = ["Comic Sans MS"];
-    private readonly _cjkFallbackChain: string[] = [
-        "Comic Sans MS",
-        "Noto Sans SC",
-        "Noto Sans TC",
-        "Noto Sans HK",
-        "Noto Sans JP",
-        "Noto Sans KR",
-    ];
 
     public constructor(fontsService: IFontsService) {
         this._fontsService = fontsService;
@@ -48,10 +39,8 @@ export class MemesRepository implements IMemesRepository {
         try {
             await this._fontsReady;
 
-            const hasCjk: boolean = this._fontsService.checkForCjk(props.texts);
-
-            const fonts: FontOptions[] | undefined = hasCjk ? this._fontsService.getFonts(true) : undefined;
-            const fontFamilies: string[] = hasCjk ? this._cjkFallbackChain : this._fallbackChain;
+            const { fonts, fontFamilies }: { fonts?: FontOptions[]; fontFamilies: string[] } =
+                this._fontsService.getFontsFor(props.texts);
 
             if (animated || template.animationDuration !== undefined) {
                 const animationDuration: number = template.animationDuration ?? 1500;
@@ -89,7 +78,7 @@ export class MemesRepository implements IMemesRepository {
     }
 
     private async _registerFonts(): Promise<void> {
-        for (const font of this._fontsService.getFonts(false)) {
+        for (const font of this._fontsService.getFonts()) {
             await this._renderer.registerFont(font);
         }
     }
