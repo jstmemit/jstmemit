@@ -41,4 +41,36 @@ export class FontsRepository implements IFontsRepository {
     public getNotoSansTc(): Buffer {
         return readFileSync(join(here, "../fonts/NotoSansTC.otf"));
     }
+
+    public getNotoSans(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSans-Regular.ttf"));
+    }
+
+    public getNotoSansArabic(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansArabic-Regular.ttf"));
+    }
+
+    public getNotoSansHebrew(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansHebrew-Regular.ttf"));
+    }
+
+    public getNotoSansThai(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansThai-Regular.ttf"));
+    }
+
+    public getNotoSansDevanagari(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansDevanagari-Regular.ttf"));
+    }
+
+    public getNotoSansBengali(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansBengali-Regular.ttf"));
+    }
+
+    public getNotoSansGeorgian(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansGeorgian-Regular.ttf"));
+    }
+
+    public getNotoSansArmenian(): Buffer {
+        return readFileSync(join(here, "../fonts/NotoSansArmenian-Regular.ttf"));
+    }
 }
