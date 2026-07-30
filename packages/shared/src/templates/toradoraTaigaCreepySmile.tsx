@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const toradoraTaigaCreepySmile: Template = {
     name: "toradoraTaigaCreepySmile",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
-    types: [Type.TextRightWithBackground],
+    types: [Type.TextRightWithBackground, Type.DefaultText],
     width: 1102,
     height: 650,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],

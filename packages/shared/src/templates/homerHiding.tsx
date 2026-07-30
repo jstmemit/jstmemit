@@ -11,7 +11,7 @@ export const homerHiding: Template = {
     width: 600,
     height: 600,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "the person hiding" }],
+    images: [{ id: 0, description: "homer hiding" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

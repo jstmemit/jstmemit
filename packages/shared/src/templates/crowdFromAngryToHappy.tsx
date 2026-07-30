@@ -14,7 +14,7 @@ export const crowdFromAngryToHappy: Template = {
         { id: 0, description: "first speach", minLength: 1, maxLength: 2 },
         { id: 1, description: "second speach", minLength: 1, maxLength: 2 },
     ],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "person face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

@@ -7,11 +7,11 @@ import { Type } from "#/models/TemplateType.ts";
 export const bbCooking: Template = {
     name: "bbCooking",
     topics: [Topic.BreakingBad, Topic.Movies],
-    types: [Type.TextTopWithBackground],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 710,
     height: 477,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Walter`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

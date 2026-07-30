@@ -10,7 +10,7 @@ export const ceLucyHacking1: Template = {
     types: [Type.DefaultText, Type.AvatarImage],
     width: 640,
     height: 572,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [],
     images: [{ id: 0, description: "user avatar" }],
     element: ({ images }: TemplateProps) => (
         <div

@@ -11,7 +11,7 @@ export const disasterGirl: Template = {
     width: 2042,
     height: 1531,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "girl`s face" }],
+    images: [{ id: 0, description: "girl face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

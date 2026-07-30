@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const tf2Hahaha: Template = {
     name: "tf2Hahaha",
     topics: [Topic.TeamFortress2, Topic.Games, Topic.Reaction],
-    types: [Type.FaceImage, Type.TextRight, Type.TwoOption],
+    types: [Type.FaceImage, Type.TextRight],
     width: 1732,
     height: 1732,
     texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 12 }],

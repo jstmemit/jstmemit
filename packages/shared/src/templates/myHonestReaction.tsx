@@ -11,7 +11,7 @@ export const myHonestReaction: Template = {
     width: 900,
     height: 1000,
     texts: [],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "person face" }],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -55,6 +55,7 @@ export const myHonestReaction: Template = {
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
                         fontSize: 60,
+                        fontWeight: 700,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",

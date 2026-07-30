@@ -10,7 +10,7 @@ export const incomingCall: Template = {
     types: [Type.AvatarImage, Type.TextCenter],
     width: 640,
     height: 1055,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "name", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div

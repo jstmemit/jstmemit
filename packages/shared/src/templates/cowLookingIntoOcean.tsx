@@ -11,7 +11,7 @@ export const cowLookingIntoOcean: Template = {
     width: 403,
     height: 352,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [{ id: 0, description: "people in the ocean" }],
+    images: [{ id: 0, description: "horse face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

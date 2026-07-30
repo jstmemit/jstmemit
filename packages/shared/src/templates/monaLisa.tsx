@@ -11,7 +11,7 @@ export const monaLisa: Template = {
     width: 960,
     height: 1431,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 30 }],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Mona Lisa`s face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

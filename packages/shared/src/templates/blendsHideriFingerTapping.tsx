@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const blendsHideriFingerTapping: Template = {
     name: "blendsHideriFingerTapping",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.ObjectImage],
+    types: [Type.ObjectImage, Type.FaceImage],
     width: 801,
     height: 765,
     texts: [],
@@ -41,6 +41,7 @@ export const blendsHideriFingerTapping: Template = {
                     left: 300,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(-25deg)",
                 }}
             />
             <img
@@ -53,6 +54,7 @@ export const blendsHideriFingerTapping: Template = {
                     left: 255,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(-25deg)",
                 }}
             />
         </div>

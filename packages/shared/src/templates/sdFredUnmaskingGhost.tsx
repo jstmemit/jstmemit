@@ -13,7 +13,7 @@ export const sdFredUnmaskingGhost: Template = {
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "Fred`s face" },
-        { id: 1, description: "Villain`s face" },
+        { id: 1, description: "Villain face" },
     ],
     element: ({ texts, images }: TemplateProps) => (
         <div

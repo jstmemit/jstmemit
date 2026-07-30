@@ -11,8 +11,8 @@ export const wnlFuminoRealization1: Template = {
     width: 1088,
     height: 612,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 15 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 10 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -43,20 +43,19 @@ export const wnlFuminoRealization1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "white",
-                    borderBottom: "8px solid #000000",
+                    backgroundColor: "black",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 40,
+                        fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#000000",
+                        color: "#ffffff",
                     }}
                 >
                     {texts[0]}
@@ -74,20 +73,19 @@ export const wnlFuminoRealization1: Template = {
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundColor: "white",
-                    borderTop: "8px solid #000000",
+                    backgroundColor: "black",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 40,
+                        fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
-                        color: "#000000",
+                        color: "#ffffff",
                     }}
                 >
                     {texts[1]}

@@ -41,6 +41,7 @@ export const blendsKahoAndMaikaMaids: Template = {
                     left: 75,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(-5deg)",
                 }}
             />
             <img
@@ -53,6 +54,7 @@ export const blendsKahoAndMaikaMaids: Template = {
                     right: 75,
                     borderRadius: "100%",
                     objectFit: "cover",
+                    transform: "rotate(3deg)",
                 }}
             />
             <div

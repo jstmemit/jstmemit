@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const liveReaction: Template = {
     name: "liveReaction",
     topics: [Topic.Reaction],
-    types: [Type.DefaultText, Type.FaceImage],
+    types: [Type.DefaultText, Type.FaceImage, Type.ObjectImage],
     width: 800,
     height: 800,
     texts: [],

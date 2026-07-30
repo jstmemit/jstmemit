@@ -11,7 +11,7 @@ export const boykisserEnergy: Template = {
     width: 665,
     height: 662,
     texts: [],
-    images: [{ id: 0, description: "femboy`s face" }],
+    images: [{ id: 0, description: "femboy face" }],
     element: ({ images }: TemplateProps) => (
         <div
             style={{

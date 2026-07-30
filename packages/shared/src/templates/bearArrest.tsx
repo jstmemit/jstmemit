@@ -11,7 +11,7 @@ export const bearArrest: Template = {
     width: 640,
     height: 434,
     texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
-    images: [{ id: 0, description: "arrested person" }],
+    images: [{ id: 0, description: "arrested bear" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{
@@ -34,8 +34,8 @@ export const bearArrest: Template = {
                 height={180}
                 style={{
                     position: "absolute",
-                    top: 30,
-                    left: "50%",
+                    top: 35,
+                    left: 315,
                     transform: "translateX(-50%)",
                     borderRadius: "100%",
                     objectFit: "cover",

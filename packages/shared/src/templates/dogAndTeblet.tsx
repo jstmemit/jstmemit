@@ -11,7 +11,7 @@ export const dogAndTeblet: Template = {
     width: 1000,
     height: 572,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
-    images: [{ id: 0, description: "dog`s face" }],
+    images: [{ id: 0, description: "dog face" }],
     element: ({ texts, images }: TemplateProps) => (
         <div
             style={{

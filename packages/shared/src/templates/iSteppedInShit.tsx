@@ -12,8 +12,8 @@ export const iSteppedInShit: Template = {
     height: 900,
     texts: [],
     images: [
-        { id: 0, description: "person`s face" },
-        { id: 1, description: "person`s face on foot" },
+        { id: 0, description: "person face" },
+        { id: 1, description: "person face on foot" },
     ],
     element: ({ images }: TemplateProps) => (
         <div

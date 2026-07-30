@@ -7,7 +7,7 @@ import { Type } from "#/models/TemplateType.ts";
 export const toradoraTaigaHoldingLeek1: Template = {
     name: "toradoraTaigaHoldingLeek1",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
-    types: [Type.DefaultText, Type.FaceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 519,
     height: 380,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],

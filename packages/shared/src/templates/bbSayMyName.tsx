@@ -11,7 +11,7 @@ export const bbSayMyName: Template = {
     width: 1280,
     height: 720,
     texts: [],
-    images: [{ id: 0, description: "person`s face" }],
+    images: [{ id: 0, description: "Walter`s face" }],
     element: ({ images }: TemplateProps) => (
         <div
             style={{
@@ -30,12 +30,12 @@ export const bbSayMyName: Template = {
             />
             <img
                 src={images[0]}
-                width={500}
-                height={500}
+                width={650}
+                height={650}
                 style={{
                     position: "absolute",
-                    top: 0,
-                    right: 200,
+                    top: -70,
+                    right: 100,
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}
