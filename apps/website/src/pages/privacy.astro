@@ -10,7 +10,7 @@ import Separator from "#/components/ui/Separator.astro";
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
     <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
         <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
-            <Explainer>Last updated: 28th July, 2026</Explainer>
+            <Explainer>Last updated: 30th July, 2026</Explainer>
             <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
             <Paragraph id="privacyPolicyDescription">
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
@@ -216,6 +216,7 @@ import Separator from "#/components/ui/Separator.astro";
                 <b>Messages</b> - deleted after 30 days.<br />
                 <b>Links to images</b> - deleted after 24 hours.<br />
                 <b>Links to (server) avatars</b> - deleted after 30 days.<br />
+                <b>Links to custom emoji's and stickers</b> - deleted after 30 days.<br />
                 <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
             </Paragraph>
             <Paragraph>
@@ -257,7 +258,19 @@ import Separator from "#/components/ui/Separator.astro";
                 You can also email <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
                     >privacy@jstmemit.com</a
                 >
-                and we will delete data relating to you manually, including analytics events.
+                {" "}and we will delete data relating to you manually, including analytics events and ratings.
+            </Paragraph>
+            <Paragraph>
+                If email is inconvenient, you can reach us the same way you use the bot: with the <b>/feedback</b>{" "}
+                command or on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                >. Requests sent using these options are handled the same. Email is still the better option if you want
+                a written reply, or if you no longer have access to the Discord account the data belongs to. You don't
+                have to include anything else, simple "Please delete my data" is enough. When emailing, including your
+                Discord user ID helps us find the right data faster.
             </Paragraph>
         </div>
     </Section>
