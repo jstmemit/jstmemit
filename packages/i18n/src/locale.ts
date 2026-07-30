@@ -13,6 +13,9 @@ export const locale: Partial<TranslationString> = {
             "Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.",
         "enable.memory.progress": "Messages in memory: **{{messagesAmount}}**",
         "enable.memory.full": "Messages in memory: **{{messagesAmount}}**",
+        "enable.permissions.heading": "Some permissions are missing!",
+        "enable.permissions.description":
+            "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated or **Embed links** for the `/settings` menu to work properly:\n",
 
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
