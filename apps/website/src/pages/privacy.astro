@@ -10,7 +10,7 @@ import Separator from "#/components/ui/Separator.astro";
 <PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
     <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
         <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
-            <Explainer>Last updated: 28th July, 2026</Explainer>
+            <Explainer>Last updated: 30th July, 2026</Explainer>
             <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
             <Paragraph id="privacyPolicyDescription">
                 <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
@@ -46,8 +46,11 @@ import Separator from "#/components/ui/Separator.astro";
                 explicitly turns the bot on for a specific text channel.
             </Paragraph>
             <Paragraph>
-                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then in that case it will
-                not collect any messages, profile pictures or GIFs at all.
+                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then it will not save any
+                messages, profile pictures or GIFs. It still receives what you give it: the message you right-click on,
+                the text and images you put into <b>/custom</b> or <b>/voice</b>. That content is only held in memory
+                (RAM) while the meme or voice message is being made and is never written to disk. Analytics events for
+                these actions are still sent as described in section 4.
             </Paragraph>
         </div>
     </Section>
@@ -127,6 +130,19 @@ import Separator from "#/components/ui/Separator.astro";
                 They are used to help the bot learn which meme templates work well globally, in a specific channel and
                 for a specific user.
             </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When feedback is sent using <b>/feedback</b> command:<br />
+                <b>userId, channelId, guildId, message, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                Your message is sent to our team so that they can work on the issue or suggestion that you provided. The
+                user ID is kept so that we can reach back to you for more information if needed. Channel and Guild IDs
+                are used for context about bot's usage in a particular guild/channel, for example, to understand what
+                have caused the mentioned in the message issue.
+            </Paragraph>
         </div>
     </Section>
 
@@ -146,6 +162,8 @@ import Separator from "#/components/ui/Separator.astro";
                     <li>settings are opened or changed</li>
                     <li>a meme is generated</li>
                     <li>a meme is rated</li>
+                    <li>a voice message is generated with /voice</li>
+                    <li>feedback is sent with /feedback</li>
                     <li>data deletion is done via the /settings command</li>
                 </ul>
             </Paragraph>
@@ -161,13 +179,16 @@ import Separator from "#/components/ui/Separator.astro";
                 </ul>
             </Paragraph>
             <Paragraph>
-                <b>Message content is never sent to analytics or OpenTelemetry logs</b>, and neither are the generated
-                memes themselves.
+                <b
+                    >Message content, narrated voice text and other personal information such as channel or server names
+                    is never sent to analytics or OpenTelemetry logs</b
+                >, and neither are the generated memes themselves.
             </Paragraph>
             <Paragraph>
-                Properties of sent events include the Discord user ID of the person who performed the action, together
-                with technical details like the setting values that changed, how long meme generation took, error
-                messages and stack traces.
+                Properties of sent events include the Discord user ID of the person who performed the action, the server
+                and channel IDs, your Discord language, together with technical details like the setting values that
+                changed, which meme template and voice were picked, how long meme generation took, error messages and
+                stack traces.
             </Paragraph>
             <Paragraph>
                 In addition to this information most of these events include Discord's interaction ID, which is also
@@ -216,6 +237,7 @@ import Separator from "#/components/ui/Separator.astro";
                 <b>Messages</b> - deleted after 30 days.<br />
                 <b>Links to images</b> - deleted after 24 hours.<br />
                 <b>Links to (server) avatars</b> - deleted after 30 days.<br />
+                <b>Links to custom emoji's and stickers</b> - deleted after 30 days.<br />
                 <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
             </Paragraph>
             <Paragraph>
@@ -257,7 +279,19 @@ import Separator from "#/components/ui/Separator.astro";
                 You can also email <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
                     >privacy@jstmemit.com</a
                 >
-                and we will delete data relating to you manually, including analytics events.
+                {" "}and we will delete data relating to you manually, including analytics events and ratings.
+            </Paragraph>
+            <Paragraph>
+                If email is inconvenient, you can reach us the same way you use the bot: with the <b>/feedback</b>{" "}
+                command or on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                >. Requests sent using these options are handled the same. Email is still the better option if you want
+                a written reply, or if you no longer have access to the Discord account the data belongs to. You don't
+                have to include anything else, simple "Please delete my data" is enough. When emailing, including your
+                Discord user ID helps us find the right data faster.
             </Paragraph>
         </div>
     </Section>
