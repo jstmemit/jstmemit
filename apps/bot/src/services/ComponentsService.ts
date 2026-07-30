@@ -92,9 +92,9 @@ export class ComponentsService implements IComponentsService {
         return (Object.keys(permissions) as (keyof RequiredBotPermissions)[])
             .map(
                 (permission) =>
-                    `${t(`enable.permissions.${permission}`, language)} ${permissions[permission] ? "✅" : "❌"}`,
+                    `- ${t(`enable.permissions.${permission}`, language)} ${permissions[permission] ? "✅" : "❌"}`,
             )
-            .join(", ");
+            .join("\n");
     }
 
     /**
