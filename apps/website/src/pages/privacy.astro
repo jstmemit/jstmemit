@@ -46,8 +46,11 @@ import Separator from "#/components/ui/Separator.astro";
                 explicitly turns the bot on for a specific text channel.
             </Paragraph>
             <Paragraph>
-                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then in that case it will
-                not collect any messages, profile pictures or GIFs at all.
+                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then it will not save any
+                messages, profile pictures or GIFs. It still receives what you give it: the message you right-click on,
+                the text and images you put into <b>/custom</b> or <b>/voice</b>. That content is only held in memory
+                (RAM) while the meme or voice message is being made and is never written to disk. Analytics events for
+                these actions are still sent as described in section 4.
             </Paragraph>
         </div>
     </Section>
