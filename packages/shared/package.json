@@ -6,8 +6,7 @@
         "@jstmemit/i18n": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",
         "discord.js": "^14.27.0",
-        "react": "^19.2.7",
-        "satori": "^0.26.0"
+        "react": "^19.2.7"
     },
     "imports": {
         "#/*": [
@@ -21,5 +20,8 @@
             "./src/*.ts",
             "./src/*.tsx"
         ]
+    },
+    "dependencies": {
+        "takumi": "^0.8.2"
     }
 }

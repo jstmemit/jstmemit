@@ -1,5 +1,8 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { Collection, GuildMember, Message, TextBasedChannel } from "discord.js";
+import type { PollAnswer } from "discord.js";
+import { type GuildEmoji, type PartialPollAnswer } from "discord.js";
+import { type Guild, type Sticker } from "discord.js";
+import { type Collection, type GuildMember, type Message, type TextBasedChannel } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
@@ -49,7 +52,7 @@ export class ContextController implements IContextController {
 
             if (content?.includes(`<@${env.DISCORD_CLIENT_ID}>`) && message.inGuild()) {
                 if (await this._checkForNeededPermissions(message)) {
-                    await this._memesController.handleMemeInteraction(message);
+                    await this._memesController.handleMemeInteraction(message, "mention");
                 } else {
                     await respond(message, [
                         this._componentsService.getMissingBotPermissionsMessageComponent(message.guild.preferredLocale),
@@ -181,7 +184,7 @@ export class ContextController implements IContextController {
         return true;
     }
 
-    public async prefetchChannel(channel: TextBasedChannel): Promise<number> {
+    public async prefetchChannel(channel: TextBasedChannel, guild: Guild): Promise<number> {
         let prefetched: number = 0;
 
         try {
@@ -192,7 +195,7 @@ export class ContextController implements IContextController {
                     continue;
                 }
 
-                const { id, content, channelId, attachments, author } = message;
+                const { id, content, channelId, attachments, author, poll } = message;
 
                 try {
                     const avatar: string | null = author.avatarURL();
@@ -203,6 +206,19 @@ export class ContextController implements IContextController {
 
                     if (attachments.size > 0) {
                         await this._contextService.saveImages(id, channelId, attachments);
+                    }
+
+                    if (poll) {
+                        const answers: string = poll.answers
+                            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
+                            .filter((text: string | null): text is string => Boolean(text))
+                            .join(", ");
+
+                        const text: string = `${poll.question.text}, ${answers}`;
+
+                        if (text.length < 2000) {
+                            await this._contextService.saveContent(id, channelId, text);
+                        }
                     }
 
                     if (content.length > 0 && content.length < 2000) {
@@ -226,6 +242,20 @@ export class ContextController implements IContextController {
                         },
                     });
                 }
+            }
+
+            const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
+
+            for (const emoji of emojis.values()) {
+                const url: string = emoji.imageURL({ size: 128 });
+
+                await this._contextService.saveAvatar(emoji.id, channel.id, url);
+            }
+
+            const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
+
+            for (const sticker of stickers.values()) {
+                await this._contextService.saveAvatar(sticker.id, channel.id, sticker.url);
             }
         } catch (error) {
             analytics.captureException(error);

@@ -35,6 +35,7 @@ import { analytics } from "@jstmemit/analytics";
 import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 import { timeout } from "#/helpers/timeout.ts";
+import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -74,19 +75,20 @@ export class MemesController implements IMemesController {
      * to the channel back with a meme
      *
      * @param interaction
+     * @param trigger
      *
      * @author Kyrylo Maliuha
      */
     public async handleMemeInteraction(
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
+        trigger?: MemeGenerationTrigger,
     ): Promise<void> {
-        let trigger: MemeGenerationJob["trigger"];
         const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
         const userId: MemeGenerationJob["userId"] =
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
 
         if (interaction instanceof Message) {
-            trigger = "auto";
+            trigger ??= "auto";
         } else if (interaction.isButton()) {
             trigger = "regenerate";
         } else {
@@ -225,7 +227,9 @@ export class MemesController implements IMemesController {
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
             }
 
-            await respond(interaction, [message]);
+            if (trigger !== "auto") {
+                await respond(interaction, [message]);
+            }
         }
     }
 
@@ -428,7 +432,7 @@ export class MemesController implements IMemesController {
             | UserContextMenuCommandInteraction,
         templateName: string | undefined,
     ): Promise<Template | undefined> {
-        const template: Template = this._templatesRepository
+        const template: Template | undefined = this._templatesRepository
             .getAll()
             .find((template: Template): boolean => template.name === templateName);
 

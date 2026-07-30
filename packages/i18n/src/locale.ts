@@ -11,7 +11,7 @@ export const locale: Partial<TranslationString> = {
             "You already have over **{{messagesAmount}} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.",
         "enable.body.disabled.notReady":
             "Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.",
-        "enable.memory.progress": "Messages in memory: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Messages in memory: **{{messagesAmount}}**",
         "enable.memory.full": "Messages in memory: **{{messagesAmount}}**",
 
         "enable.button.turnOff": "Turn off",
@@ -144,7 +144,7 @@ export const locale: Partial<TranslationString> = {
             "У вас уже более **{{messagesAmount}} сообщений** в памяти, так что Jstmemit готов делать мемы. Просто включите бота обратно, и он начнёт генерировать их во время активных чатов.",
         "enable.body.disabled.notReady":
             "Бот не может делать мемы тут, пока вы не включите его для этого канала. Включите его, и он начнёт генерировать мемы во время активного общения.",
-        "enable.memory.progress": "Сообщений в памяти: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Сообщений в памяти: **{{messagesAmount}}**",
         "enable.memory.full": "Сообщений в памяти: **{{messagesAmount}}**",
 
         "enable.button.turnOff": "Выключить",
@@ -275,7 +275,7 @@ export const locale: Partial<TranslationString> = {
             "У вас вже понад **{{messagesAmount}} повідомлень** у пам'яті, тож Jstmemit готовий робити меми. Просто увімкніть бота знову, і він почне генерувати їх під час активного спілкування.",
         "enable.body.disabled.notReady":
             "Бот не може робити меми тут, поки ви не увімкнете його для цього каналу. Увімкніть його, і він почне генерувати меми під час активного спілкування.",
-        "enable.memory.progress": "Повідомлень у пам'яті: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.memory.full": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.button.turnOff": "Вимкнути",
         "enable.button.turnOn": "Увімкнути",
@@ -400,7 +400,7 @@ export const locale: Partial<TranslationString> = {
             "Je hebt al meer dan **{{messagesAmount}} berichten** in het geheugen, dus Jstmemit is klaar om memes te maken. Zet de bot gewoon weer aan en hij begint ze te maken tijdens actieve gesprekken.",
         "enable.body.disabled.notReady":
             "De bot kan hier geen memes maken totdat je hem inschakelt voor dit kanaal. Zet hem aan en hij begint memes te maken tijdens actieve gesprekken.",
-        "enable.memory.progress": "Berichten in geheugen: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.memory.full": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.button.turnOff": "Uitzetten",
         "enable.button.turnOn": "Aanzetten",
@@ -527,7 +527,7 @@ export const locale: Partial<TranslationString> = {
             "Vous avez déjà plus de **{{messagesAmount}} messages** en mémoire, donc Jstmemit est prêt à faire des mèmes. Réactivez simplement le bot et il commencera à en générer pendant les discussions actives.",
         "enable.body.disabled.notReady":
             "Le bot ne peut pas faire de mèmes ici tant que vous ne l'avez pas activé pour ce salon. Activez-le et il commencera à générer des mèmes pendant les discussions actives.",
-        "enable.memory.progress": "Messages en mémoire : **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.memory.full": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.button.turnOff": "Désactiver",
         "enable.button.turnOn": "Activer",
@@ -657,7 +657,7 @@ export const locale: Partial<TranslationString> = {
             "Du hast bereits über **{{messagesAmount}} Nachrichten** im Speicher, also ist Jstmemit bereit, Memes zu machen. Schalte den Bot einfach wieder ein und er fängt an, sie während aktiver Chats zu erstellen.",
         "enable.body.disabled.notReady":
             "Der Bot kann hier keine Memes machen, bis du ihn für diesen Kanal aktivierst. Schalte ihn ein und er beginnt, während aktiver Chats Memes zu erstellen.",
-        "enable.memory.progress": "Nachrichten im Speicher: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.memory.full": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.button.turnOff": "Ausschalten",
         "enable.button.turnOn": "Einschalten",
@@ -784,7 +784,7 @@ export const locale: Partial<TranslationString> = {
             "Masz już ponad **{{messagesAmount}} wiadomości** w pamięci, więc Jstmemit jest gotowy do robienia memów. Po prostu włącz bota z powrotem, a zacznie je generować podczas aktywnych rozmów.",
         "enable.body.disabled.notReady":
             "Bot nie może robić memów tutaj, dopóki nie włączysz go dla tego kanału. Włącz go, a zacznie generować memy podczas aktywnych rozmów.",
-        "enable.memory.progress": "Wiadomości w pamięci: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.memory.full": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.button.turnOff": "Wyłącz",
         "enable.button.turnOn": "Włącz",
@@ -909,7 +909,7 @@ export const locale: Partial<TranslationString> = {
             "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
         "enable.body.disabled.notReady":
             "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
-        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
@@ -1037,7 +1037,7 @@ export const locale: Partial<TranslationString> = {
             "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
         "enable.body.disabled.notReady":
             "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
-        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
@@ -1165,7 +1165,7 @@ export const locale: Partial<TranslationString> = {
             "Você já tem mais de **{{messagesAmount}} mensagens** na memória, então o Jstmemit está pronto para fazer memes. É só ligar o bot de novo e ele começa a gerá-los durante as conversas ativas.",
         "enable.body.disabled.notReady":
             "O bot não pode fazer memes aqui até você ativá-lo para este canal. Ative-o e ele vai começar a gerar memes durante as conversas ativas.",
-        "enable.memory.progress": "Mensagens na memória: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.memory.full": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.button.turnOff": "Desligar",
         "enable.button.turnOn": "Ligar",
@@ -1291,7 +1291,7 @@ export const locale: Partial<TranslationString> = {
             "Hafızada zaten **{{messagesAmount}} mesajdan** fazlası var, yani Jstmemit caps yapmaya hazır. Botu tekrar aç, aktif sohbetler sırasında üretmeye başlasın.",
         "enable.body.disabled.notReady":
             "Bu kanal için botu etkinleştirmeden burada caps yapamaz. Aç, aktif sohbetler sırasında caps üretmeye başlasın.",
-        "enable.memory.progress": "Hafızadaki mesajlar: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.memory.full": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.button.turnOff": "Kapat",
         "enable.button.turnOn": "Aç",
@@ -1418,7 +1418,7 @@ export const locale: Partial<TranslationString> = {
             "Hai già più di **{{messagesAmount}} messaggi** in memoria, quindi Jstmemit è pronto a fare meme. Riaccendi il bot e inizierà a generarli durante le chat attive.",
         "enable.body.disabled.notReady":
             "Il bot non può fare meme qui finché non lo attivi per questo canale. Attivalo e inizierà a generare meme durante le chat attive.",
-        "enable.memory.progress": "Messaggi in memoria: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.button.turnOff": "Spegni",
         "enable.button.turnOn": "Accendi",
@@ -1545,7 +1545,7 @@ export const locale: Partial<TranslationString> = {
             "Kamu sudah punya lebih dari **{{messagesAmount}} pesan** di memori, jadi Jstmemit siap bikin meme. Tinggal nyalakan lagi botnya dan dia akan mulai membuatnya selama obrolan aktif.",
         "enable.body.disabled.notReady":
             "Bot tidak bisa bikin meme di sini sampai kamu mengaktifkannya untuk channel ini. Nyalakan dan dia akan mulai membuat meme selama obrolan aktif.",
-        "enable.memory.progress": "Pesan di memori: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Pesan di memori: **{{messagesAmount}}**",
         "enable.memory.full": "Pesan di memori: **{{messagesAmount}}**",
         "enable.button.turnOff": "Matikan",
         "enable.button.turnOn": "Nyalakan",
@@ -1670,7 +1670,7 @@ export const locale: Partial<TranslationString> = {
             "V paměti už máš přes **{{messagesAmount}} zpráv**, takže Jstmemit je připravený dělat memy. Stačí bota zase zapnout a začne je generovat během aktivních chatů.",
         "enable.body.disabled.notReady":
             "Bot tady nemůže dělat memy, dokud ho pro tento kanál nezapneš. Zapni ho a začne generovat memy během aktivních chatů.",
-        "enable.memory.progress": "Zpráv v paměti: **{{messagesAmount}}/30**",
+        "enable.memory.progress": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.memory.full": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.button.turnOff": "Vypnout",
         "enable.button.turnOn": "Zapnout",
