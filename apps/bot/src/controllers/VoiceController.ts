@@ -26,6 +26,7 @@ export class VoiceController implements IVoiceController {
 
     public async handleNarrateTextInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
         await interaction.deferReply();
+        let duration: number = 1;
 
         const text: string | null = interaction.options.getString("text");
         const voice: string | null = interaction.options.getString("voice");
@@ -84,9 +85,36 @@ export class VoiceController implements IVoiceController {
             return;
         }
 
-        const audio: Buffer<ArrayBufferLike> = Buffer.from(result.audio);
-        const metadata: IAudioMetadata = await parseBuffer(audio);
-        const duration: number = Math.round(metadata.format.duration || 1);
+        const audio: Buffer = Buffer.from(result.audio);
+
+        if (audio.byteLength === 0) {
+            return;
+        }
+
+        logger.emit({
+            severityText: "debug",
+            body: "voice.narrate_text.audio_received",
+            attributes: {
+                byte_length: audio.byteLength,
+                magic: audio.subarray(0, 8).toString("hex"),
+                text_length: text.length,
+            },
+        });
+
+        try {
+            const metadata: IAudioMetadata = await parseBuffer(audio, { mimeType: "audio/ogg" });
+            duration = Math.round(metadata.format.duration || 1);
+        } catch (error) {
+            logger.emit({
+                severityText: "warn",
+                body: "voice.narrate_text.metadata_parse_failed",
+                attributes: {
+                    error_message: error instanceof Error ? error.message : String(error),
+                    byte_length: audio.byteLength,
+                    magic: audio.subarray(0, 8).toString("hex"),
+                },
+            });
+        }
 
         analytics.capture({
             event: "text_narrated",
