@@ -320,6 +320,17 @@ import { toradoraTaigaCreepySmile } from "#/templates/toradoraTaigaCreepySmile.t
 import { toradoraTaigaHoldingHead } from "#/templates/toradoraTaigaHoldingHead.tsx";
 import { toradoraTaigaHoldingLeek } from "#/templates/toradoraTaigaHoldingLeek.tsx";
 import { toradoraTaigaHoldingLeek1 } from "#/templates/toradoraTaigaHoldingLeek1.tsx";
+import { toradoraTaigaMorningMisanthropeDemotivator } from "#/templates/toradoraTaigaMorningMisanthropeDemotivator.tsx";
+import { toradoraTaigaStartled } from "#/templates/toradoraTaigaStartled.tsx";
+import { toradoraTaigaWideGrin } from "#/templates/toradoraTaigaWideGrin.tsx";
+import { tqqNinoAndMikuLookingAtYou } from "#/templates/tqqNinoAndMikuLookingAtYou.tsx";
+import { tqqNinoNakanoHappyVsSad } from "#/templates/tqqNinoNakanoHappyVsSad.tsx";
+import { ucwthoTsukiUzakiWhatAreYouSaying } from "#/templates/ucwthoTsukiUzakiWhatAreYouSaying.tsx";
+import { wnlFuminoRealization } from "#/templates/wnlFuminoRealization.tsx";
+import { wnlFuminoRealization2 } from "#/templates/wnlFuminoRealization2.tsx";
+import { wnlFuminoRealization3 } from "#/templates/wnlFuminoRealization3.tsx";
+import { wnlMafuyuKirisuIntrovert } from "#/templates/wnlMafuyuKirisuIntrovert.tsx";
+import { wnlMafuyuKirisuMenacing } from "#/templates/wnlMafuyuKirisuMenacing.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -661,6 +672,17 @@ export class TemplatesRepository implements ITemplatesRepository {
             toradoraTaigaHoldingHead,
             toradoraTaigaHoldingLeek,
             toradoraTaigaHoldingLeek1,
+            toradoraTaigaMorningMisanthropeDemotivator,
+            toradoraTaigaStartled,
+            toradoraTaigaWideGrin,
+            tqqNinoAndMikuLookingAtYou,
+            tqqNinoNakanoHappyVsSad,
+            ucwthoTsukiUzakiWhatAreYouSaying,
+            wnlFuminoRealization,
+            wnlFuminoRealization2,
+            wnlFuminoRealization3,
+            wnlMafuyuKirisuIntrovert,
+            wnlMafuyuKirisuMenacing,
         ];
     }
 
