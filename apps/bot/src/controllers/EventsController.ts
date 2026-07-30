@@ -365,8 +365,12 @@ export class EventsController implements IEventsController {
                 distinctId: guild.id,
                 event: "guild_joined",
                 properties: {
+                    guildId: guild.id,
                     memberCount: guild.memberCount,
                     locale: guild.preferredLocale,
+                    available: guild.available,
+                    guildAgeDays: Math.round((Date.now() - guild.createdTimestamp) / 86400000),
+                    shardId: guild.shardId,
                 },
             });
         } catch (error) {
@@ -387,8 +391,15 @@ export class EventsController implements IEventsController {
                 distinctId: guild.id,
                 event: "guild_left",
                 properties: {
+                    guildId: guild.id,
                     memberCount: guild.memberCount,
                     locale: guild.preferredLocale,
+                    available: guild.available,
+                    lifetimeDays: guild.joinedTimestamp
+                        ? Math.round((Date.now() - guild.joinedTimestamp) / 86400000)
+                        : undefined,
+                    guildAgeDays: Math.round((Date.now() - guild.createdTimestamp) / 86400000),
+                    shardId: guild.shardId,
                 },
             });
         } catch (error) {
