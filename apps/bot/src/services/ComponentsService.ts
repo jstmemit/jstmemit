@@ -17,6 +17,7 @@ import { emojis } from "#/data/emojis.ts";
 import type { Frequency } from "#/models/Frequency.ts";
 import { t } from "@jstmemit/i18n";
 import type { Mode } from "@jstmemit/shared/models/Mode";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 
 export class ComponentsService implements IComponentsService {
     /**
@@ -26,17 +27,20 @@ export class ComponentsService implements IComponentsService {
      * @param language
      * @param isEnabled
      * @param messagesAmount
+     * @param permissions
      *
      * @author Kyrylo Maliuha
      */
     public getEnableMessageComponent(
         language: Locale,
         isEnabled: boolean,
+        permissions: RequiredBotPermissions,
         messagesAmount: number = 0,
     ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
+        const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
-        return new ContainerBuilder()
+        const container: ContainerBuilder = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
@@ -57,8 +61,40 @@ export class ComponentsService implements IComponentsService {
                         ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
                         : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
                 ),
+            );
+
+        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+
+        if (hasMissingPermissions) {
+            container.addSeparatorComponents(
+                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+            );
+            container.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`\n### ${t("enable.permissions.heading", language)} ⚠️`),
+                new TextDisplayBuilder().setContent(
+                    `${t("enable.permissions.description", language)}\n${this._createPermissionsList(permissions, language)}`,
+                ),
+            );
+        }
+
+        return container;
+    }
+
+    /**
+     * Returns a list of translated permissions
+     *
+     * @param permissions
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    private _createPermissionsList(permissions: RequiredBotPermissions, language: Locale): string {
+        return (Object.keys(permissions) as (keyof RequiredBotPermissions)[])
+            .map(
+                (permission) =>
+                    `- ${t(`enable.permissions.${permission}`, language)} ${permissions[permission] ? "✅" : "❌"}`,
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${progressBar}`));
+            .join("\n");
     }
 
     /**

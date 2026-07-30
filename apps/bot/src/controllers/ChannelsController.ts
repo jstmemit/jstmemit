@@ -13,6 +13,8 @@ import { analytics } from "@jstmemit/analytics";
 import { respond } from "#/helpers/respond.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IContextController } from "#/interfaces/IContextController.ts";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
@@ -90,9 +92,12 @@ export class ChannelsController implements IChannelsController {
                 }
             }
 
+            const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
+
             const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 interaction.locale,
                 isEnabled,
+                permissions,
                 messagesAmount + prefetchedContext,
             );
 
