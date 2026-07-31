@@ -1,5 +1,5 @@
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
-import type { ButtonInteraction } from "discord.js";
+import { type ButtonInteraction, InteractionContextType } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
@@ -63,6 +63,12 @@ export class RatingsController implements IRatingsController {
                         channelId: interaction.channelId,
                         guildId: interaction.guildId,
                         language: interaction.locale,
+                        templateName: generation.templateName,
+                        secondsSinceGeneration: Math.round((Date.now() - generation.createdAt.getTime()) / 1000),
+                        isFirstRating: success,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        receiveLatencyMs: Date.now() - interaction.createdTimestamp,
                     },
                 });
             }

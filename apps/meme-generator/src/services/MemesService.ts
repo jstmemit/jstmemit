@@ -110,15 +110,28 @@ export class MemesService implements IMemesService {
                 generationId: generationId,
                 templateName: template.name,
 
+                channelId: channelId,
+                guildId: data.guildId,
+                isUserInstall: data.isUserInstall,
+                language: data.locale,
+
                 templateMs: templateTime - startTime,
                 contextMs: contextTime - templateTime,
                 renderMs: renderTime - contextTime,
                 totalMs: renderTime - startTime,
 
+                turbo: turbo,
+                isAnimated: template.isAnimated ?? false,
+                animationDuration: template.animationDuration ?? undefined,
+                memeBytes: meme.byteLength,
+                templateWidth: template.width,
+                templateHeight: template.height,
+
                 textSlots: template.texts?.length ?? 0,
                 imageSlots: template.images?.length ?? 0,
                 textsFilled: props.texts.length,
                 imagesFilled: props.images.length,
+                pickedByBandit: !templateName,
 
                 trigger: data.trigger,
                 topics: template.topics,

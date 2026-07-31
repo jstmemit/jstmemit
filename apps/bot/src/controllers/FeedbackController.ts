@@ -1,5 +1,6 @@
 import {
     type ChatInputCommandInteraction,
+    InteractionContextType,
     MessageFlags,
     type ModalBuilder,
     type ModalSubmitInteraction,
@@ -57,6 +58,11 @@ export class FeedbackController implements IFeedbackController {
                         channelId: interaction.channelId,
                         guildId: interaction.guildId,
                         language: interaction.locale,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        command: "/feedback",
+                        hasMessage: Boolean(message),
+                        hasUserId: Boolean(userId),
                     },
                 });
                 logger.emit({
@@ -68,6 +74,10 @@ export class FeedbackController implements IFeedbackController {
                         channel_id: interaction.channelId,
                         guild_id: interaction?.guildId,
                         language: interaction.locale,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        command: "/feedback",
+                        messageLength: message.length,
                     },
                 });
                 await respond(interaction, [

@@ -71,6 +71,8 @@ export class ChannelsController implements IChannelsController {
                 );
             }
 
+            const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
+
             analytics.capture({
                 event: isEnabled ? "channel_enabled" : "channel_disabled",
                 distinctId: interaction.user.id,
@@ -81,6 +83,12 @@ export class ChannelsController implements IChannelsController {
                     prefetchedContext,
                     enabled: isEnabled,
                     language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    hasGuildIcon: Boolean(interaction.guild?.iconURL()),
+                    canSendMessages: permissions.sendMessages,
+                    canAttachFiles: permissions.attachFiles,
+                    canEmbedLinks: permissions.embedLinks,
+                    canReadHistory: permissions.readHistory,
                 },
             });
 
@@ -91,8 +99,6 @@ export class ChannelsController implements IChannelsController {
                     await this._contextService.saveAvatar(interaction.id, interaction.channelId, serverIcon);
                 }
             }
-
-            const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
 
             const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 interaction.locale,

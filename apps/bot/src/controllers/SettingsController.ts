@@ -48,6 +48,9 @@ export class SettingsController implements ISettingsController {
                     trigger: interaction.isCommand() ? "/settings" : "/enable",
                     command: "/settings",
                     language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    receiveLatencyMs: Date.now() - interaction.createdTimestamp,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -84,6 +87,8 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     command: "/settings",
                     language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -122,6 +127,8 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     command: "/settings",
                     language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -168,6 +175,11 @@ export class SettingsController implements ISettingsController {
                     language: interaction.locale,
                     old: old,
                     new: channel.frequency,
+                    enabled: channel.enabled,
+                    turbo: channel.turbo,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
                 },
             });
 
@@ -214,6 +226,11 @@ export class SettingsController implements ISettingsController {
                     language: interaction.locale,
                     old: old,
                     new: channel.turbo,
+                    enabled: channel.enabled,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    frequency: channel.frequency,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
                 },
             });
 
@@ -260,6 +277,11 @@ export class SettingsController implements ISettingsController {
                     language: interaction.locale,
                     old: old,
                     new: channel.useAvatarsInMemes,
+                    enabled: channel.enabled,
+                    turbo: channel.turbo,
+                    frequency: channel.frequency,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
                 },
             });
 

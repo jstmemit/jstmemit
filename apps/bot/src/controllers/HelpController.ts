@@ -1,4 +1,4 @@
-import { type ChatInputCommandInteraction } from "discord.js";
+import { type ChatInputCommandInteraction, InteractionContextType } from "discord.js";
 import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
@@ -34,6 +34,13 @@ export class HelpController implements IHelpController {
                 properties: {
                     guildId: interaction.guildId,
                     command: "/help",
+                    channelId: interaction.channelId,
+                    language: interaction.locale,
+                    context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                    isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                    receiveLatencyMs: Date.now() - interaction.createdTimestamp,
+                    isKnownChannel: Boolean(channel),
+                    enabled: channel?.enabled ?? false,
                     ...channel,
                 },
             });
