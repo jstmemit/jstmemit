@@ -213,15 +213,23 @@ export class ComponentsService implements IComponentsService {
      * in the channel, but he doesn't have enough permissions to respond)
      *
      * @param language
+     * @param permissions
      *
      * @author Kyrylo Maliuha
      */
-    public getMissingBotPermissionsMessageComponent(language: Locale): ContainerBuilder {
+    public getMissingBotPermissionsMessageComponent(
+        language: Locale,
+        permissions: RequiredBotPermissions,
+    ): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`# ${t("missingBotPermissions.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingBotPermissions.body", language)));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `${t("missingBotPermissions.body", language)}\n\n${this._createPermissionsList(permissions, language)}`,
+                ),
+            );
     }
 
     /**

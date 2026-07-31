@@ -12,6 +12,8 @@ import { analytics } from "@jstmemit/analytics";
 import { logger } from "#/container.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
+import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 
 const env = Env.parse(process.env);
 
@@ -54,8 +56,13 @@ export class ContextController implements IContextController {
                 if (await this._checkForNeededPermissions(message)) {
                     await this._memesController.handleMemeInteraction(message, "mention");
                 } else {
+                    const permissions: RequiredBotPermissions = getRequiredBotPermissions(message);
+
                     await respond(message, [
-                        this._componentsService.getMissingBotPermissionsMessageComponent(message.guild.preferredLocale),
+                        this._componentsService.getMissingBotPermissionsMessageComponent(
+                            message.guild.preferredLocale,
+                            permissions,
+                        ),
                     ]);
                 }
                 mentioned = true;

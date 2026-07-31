@@ -109,6 +109,7 @@ export class MemesController implements IMemesController {
         let locale: Locale = Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
+        const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
 
         if (!(interaction instanceof Message)) {
             locale = interaction.locale;
@@ -127,8 +128,6 @@ export class MemesController implements IMemesController {
                     ...this._getTelemetryProperties(interaction),
                 },
             });
-
-            const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
 
             const notEnabledComponent: ContainerBuilder = this._componentsService.getEnableMessageComponent(
                 locale,
@@ -159,6 +158,23 @@ export class MemesController implements IMemesController {
 
             // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
+                if (!permissions.sendMessages) {
+                    return;
+                }
+
+                if (
+                    !permissions.attachFiles ||
+                    !permissions.viewChannel ||
+                    !permissions.readHistory ||
+                    !permissions.embedLinks
+                ) {
+                    const permissionError: ContainerBuilder =
+                        this._componentsService.getMissingBotPermissionsMessageComponent(locale, permissions);
+
+                    await respond(interaction, [permissionError]);
+                    return;
+                }
+
                 const jobResult: MemeGenerationResult = await job;
                 await interaction.reply({
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
