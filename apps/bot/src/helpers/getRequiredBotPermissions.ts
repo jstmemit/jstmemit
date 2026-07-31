@@ -14,7 +14,7 @@ export const getRequiredBotPermissions = (interaction: Message | Interaction): R
     const permissions: PermissionsBitField | null = resolveBotPermissions(interaction);
 
     if (!permissions) {
-        return { sendMessages: true, attachFiles: true, embedLinks: true, readHistory: true };
+        return { sendMessages: true, attachFiles: true, embedLinks: true, readHistory: true, viewChannel: true };
     }
 
     return {
@@ -22,5 +22,6 @@ export const getRequiredBotPermissions = (interaction: Message | Interaction): R
         attachFiles: permissions.has(PermissionFlagsBits.AttachFiles),
         embedLinks: permissions.has(PermissionFlagsBits.EmbedLinks),
         readHistory: permissions.has(PermissionFlagsBits.ReadMessageHistory),
+        viewChannel: permissions.has(PermissionFlagsBits.ViewChannel),
     };
 };

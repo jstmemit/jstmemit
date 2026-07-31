@@ -15,11 +15,12 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.full": "Messages in memory: **{{messagesAmount}}**",
         "enable.permissions.heading": "Some permissions are missing!",
         "enable.permissions.description":
-            "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated or **Embed links** for the `/settings` menu to work properly:\n",
+            "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated, **View Channel** to get context for the memes or **Embed links** for the `/settings` menu to work properly:\n",
         "enable.permissions.sendMessages": "Send Messages",
         "enable.permissions.attachFiles": "Attach Files",
         "enable.permissions.embedLinks": "Embed Links",
         "enable.permissions.readHistory": "Read Message History",
+        "enable.permissions.viewChannel": "View Channel",
 
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
@@ -43,7 +44,7 @@ export const locale: Partial<TranslationString> = {
             "Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.",
         "missingBotPermissions.heading": "🔒 Jstmemit can't send memes here",
         "missingBotPermissions.body":
-            "Bot is missing the **Attach Files** permission in this channel. Someone who can manage this channel can fix this by going into channel settings and giving it to the bot.\n\nIt's required for auto-generating memes during a conversation, but requesting memes with `/meme` or `/custom` is possible without the permission.",
+            "Bot is missing some permissions in this channel. Someone who can manage this channel can fix this by going into channel settings and giving them to the bot.\n\nIt's required for auto-generating memes during a conversation, but requesting memes with `/meme` or `/custom` is possible without them.",
         "deleteData.confirm.heading": "🗑️ Delete all data for this channel?",
         "deleteData.confirm.body":
             "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",
@@ -154,12 +155,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Сообщений в памяти: **{{messagesAmount}}**",
         "enable.memory.full": "Сообщений в памяти: **{{messagesAmount}}**",
         "enable.permissions.heading": "Не хватает некоторых прав!",
-        "enable.permissions.description":
-            "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, или **Встраивать ссылки**, чтобы меню `/settings` работало нормально:\n",
         "enable.permissions.sendMessages": "Отправлять сообщения",
         "enable.permissions.attachFiles": "Прикреплять файлы",
         "enable.permissions.embedLinks": "Встраивать ссылки",
         "enable.permissions.readHistory": "Читать историю сообщений",
+        "enable.permissions.viewChannel": "Просмотр канала",
+        "enable.permissions.description":
+            "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, **Просмотр канала**, чтобы получать контекст для мемов, или **Встраивать ссылки**, чтобы меню `/settings` работало нормально:\n",
 
         "enable.button.turnOff": "Выключить",
         "enable.button.turnOn": "Включить",
@@ -183,7 +185,7 @@ export const locale: Partial<TranslationString> = {
             "Только участники с правом **Управлять сервером** или **Управлять каналами** могут менять настройки Jstmemit. Обратитесь к администратору сервера, если вам нужно это изменить.",
         "missingBotPermissions.heading": "🔒 Jstmemit не может отправлять мемы тут",
         "missingBotPermissions.body":
-            "У бота нет права **Прикреплять файлы** в этом канале. Любой, кто может управлять этим каналом, может это исправить, зайдя в настройки канала и выдав право боту.\n\nОно нужно для автогенерации мемов во время переписки, но генерировать мемы через `/meme` или `/custom` можно и без него.",
+            "У бота нет некоторых прав в этом канале. Любой, кто может управлять этим каналом, может это исправить, зайдя в настройки канала и выдав их боту.\n\nОни нужны для автогенерации мемов во время переписки, но генерировать мемы через `/meme` или `/custom` можно и без них.",
         "deleteData.confirm.heading": "🗑️ Удалить все данные для этого канала?",
         "deleteData.confirm.body":
             "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот останется включённым и начнёт обучаться заново на новых сообщениях. Если после этого вы хотите полностью его остановить, выключите его через `/enable`.",
@@ -292,12 +294,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.memory.full": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.permissions.heading": "Бракує деяких прав!",
-        "enable.permissions.description":
-            "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, або **Вставляти посилання**, щоб меню `/settings` працювало нормально:\n",
         "enable.permissions.sendMessages": "Надсилати повідомлення",
         "enable.permissions.attachFiles": "Прикріплювати файли",
         "enable.permissions.embedLinks": "Вставляти посилання",
         "enable.permissions.readHistory": "Читати історію повідомлень",
+        "enable.permissions.viewChannel": "Переглядати канал",
+        "enable.permissions.description":
+            "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, **Переглядати канал**, щоб отримувати контекст для мемів, або **Вставляти посилання**, щоб меню `/settings` працювало нормально:\n",
 
         "enable.button.turnOff": "Вимкнути",
         "enable.button.turnOn": "Увімкнути",
@@ -318,7 +321,7 @@ export const locale: Partial<TranslationString> = {
             "Тільки учасники з правом **Керувати сервером** або **Керувати каналами** можуть змінювати налаштування Jstmemit. Зверніться до адміністратора сервера, якщо вам потрібно це змінити.",
         "missingBotPermissions.heading": "🔒 Jstmemit не може надсилати меми тут",
         "missingBotPermissions.body":
-            "У бота немає права **Прикріплювати файли** у цьому каналі. Будь-хто, хто може керувати цим каналом, може це виправити, зайшовши в налаштування каналу і надавши право боту.\n\nВоно потрібне для автогенерації мемів під час розмови, але запитувати меми через `/meme` чи `/custom` можна й без нього.",
+            "У бота немає деяких прав у цьому каналі. Будь-хто, хто може керувати цим каналом, може це виправити, зайшовши в налаштування каналу і надавши їх боту.\n\nВони потрібні для автогенерації мемів під час розмови, але запитувати меми через `/meme` чи `/custom` можна й без них.",
         "deleteData.confirm.heading": "🗑️ Видалити всі дані для цього каналу?",
         "deleteData.confirm.body":
             "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот залишиться увімкненим і почне навчатися заново на нових повідомленнях. Якщо після цього ви хочете повністю його зупинити, вимкніть його через `/enable`.",
@@ -425,12 +428,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.memory.full": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.permissions.heading": "Er ontbreken een paar permissies!",
-        "enable.permissions.description":
-            "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen of **Links insluiten** zodat het `/settings` menu goed werkt:\n",
         "enable.permissions.sendMessages": "Berichten verzenden",
         "enable.permissions.attachFiles": "Bestanden bijvoegen",
         "enable.permissions.embedLinks": "Links insluiten",
         "enable.permissions.readHistory": "Berichtgeschiedenis lezen",
+        "enable.permissions.viewChannel": "Kanaal bekijken",
+        "enable.permissions.description":
+            "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen, **Kanaal bekijken** om context voor de memes op te halen of **Links insluiten** zodat het `/settings` menu goed werkt:\n",
+
         "enable.button.turnOff": "Uitzetten",
         "enable.button.turnOn": "Aanzetten",
         "enable.button.settings": "⚙️ Instellingen openen",
@@ -452,7 +457,7 @@ export const locale: Partial<TranslationString> = {
             "Alleen leden met de permissie **Server beheren** of **Kanalen beheren** kunnen de instellingen van Jstmemit aanpassen. Vraag een serveradmin als je dit wilt veranderen.",
         "missingBotPermissions.heading": "🔒 Jstmemit kan hier geen memes sturen",
         "missingBotPermissions.body":
-            "De bot mist de permissie **Bestanden bijvoegen** in dit kanaal. Iemand die dit kanaal kan beheren kan dit oplossen door naar de kanaalinstellingen te gaan en die aan de bot te geven.\n\nHet is nodig om memes automatisch te maken tijdens een gesprek, maar memes genereren via `/meme` of `/custom` kan ook zonder die permissie.",
+            "De bot mist een paar permissies in dit kanaal. Iemand die dit kanaal kan beheren kan dit oplossen door naar de kanaalinstellingen te gaan en ze aan de bot te geven.\n\nZe zijn nodig om memes automatisch te maken tijdens een gesprek, maar memes genereren via `/meme` of `/custom` kan ook zonder.",
         "deleteData.confirm.heading": "🗑️ Alle data van dit kanaal verwijderen?",
         "deleteData.confirm.body":
             "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot blijft ingeschakeld en begint opnieuw te leren van nieuwe berichten. Wil je hem daarna helemaal stoppen, zet hem dan uit met `/enable`.",
@@ -559,12 +564,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.memory.full": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.permissions.heading": "Il manque quelques permissions !",
-        "enable.permissions.description":
-            "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère ou **Intégrer des liens** pour que le menu `/settings` marche correctement :\n",
         "enable.permissions.sendMessages": "Envoyer des messages",
         "enable.permissions.attachFiles": "Joindre des fichiers",
         "enable.permissions.embedLinks": "Intégrer des liens",
         "enable.permissions.readHistory": "Voir les anciens messages",
+        "enable.permissions.viewChannel": "Voir le salon",
+        "enable.permissions.description":
+            "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère, **Voir le salon** pour récupérer du contexte pour les mèmes ou **Intégrer des liens** pour que le menu `/settings` marche correctement :\n",
+
         "enable.button.turnOff": "Désactiver",
         "enable.button.turnOn": "Activer",
         "enable.button.settings": "⚙️ Ouvrir les paramètres",
@@ -586,7 +593,7 @@ export const locale: Partial<TranslationString> = {
             "Seuls les membres avec la permission **Gérer le serveur** ou **Gérer les salons** peuvent modifier les paramètres de Jstmemit. Demandez à un admin du serveur si vous voulez changer cela.",
         "missingBotPermissions.heading": "🔒 Jstmemit ne peut pas envoyer de mèmes ici",
         "missingBotPermissions.body":
-            "Le bot n'a pas la permission **Joindre des fichiers** dans ce salon. Quelqu'un qui peut gérer ce salon peut corriger ça en allant dans les paramètres du salon et en la donnant au bot.\n\nElle est nécessaire pour générer des mèmes automatiquement pendant une conversation, mais demander des mèmes avec `/meme` ou `/custom` reste possible sans cette permission.",
+            "Le bot n'a pas certaines permissions dans ce salon. Quelqu'un qui peut gérer ce salon peut corriger ça en allant dans les paramètres du salon et en les donnant au bot.\n\nElles sont nécessaires pour générer des mèmes automatiquement pendant une conversation, mais demander des mèmes avec `/meme` ou `/custom` reste possible sans elles.",
         "deleteData.confirm.heading": "🗑️ Supprimer toutes les données de ce salon ?",
         "deleteData.confirm.body":
             "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot reste activé et recommencera à apprendre avec les nouveaux messages. Si vous voulez l'arrêter complètement ensuite, désactivez-le avec `/enable`.",
@@ -696,12 +703,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.memory.full": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.permissions.heading": "Ein paar Berechtigungen fehlen!",
-        "enable.permissions.description":
-            "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, oder **Links einbetten**, damit das `/settings` Menü richtig funktioniert:\n",
         "enable.permissions.sendMessages": "Nachrichten senden",
         "enable.permissions.attachFiles": "Dateien anhängen",
         "enable.permissions.embedLinks": "Links einbetten",
         "enable.permissions.readHistory": "Nachrichtenverlauf anzeigen",
+        "enable.permissions.viewChannel": "Kanal anzeigen",
+        "enable.permissions.description":
+            "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, **Kanal anzeigen**, um Kontext für die Memes zu bekommen, oder **Links einbetten**, damit das `/settings` Menü richtig funktioniert:\n",
+
         "enable.button.turnOff": "Ausschalten",
         "enable.button.turnOn": "Einschalten",
         "enable.button.settings": "⚙️ Einstellungen öffnen",
@@ -723,7 +732,7 @@ export const locale: Partial<TranslationString> = {
             "Nur Mitglieder mit der Berechtigung **Server verwalten** oder **Kanäle verwalten** können die Einstellungen von Jstmemit ändern. Frag einen Server-Admin, wenn du das ändern möchtest.",
         "missingBotPermissions.heading": "🔒 Jstmemit kann hier keine Memes senden",
         "missingBotPermissions.body":
-            "Dem Bot fehlt die Berechtigung **Dateien anhängen** in diesem Kanal. Wer diesen Kanal verwalten kann, behebt das in den Kanaleinstellungen, indem er sie dem Bot gibt.\n\nSie ist nötig, um Memes während eines Gesprächs automatisch zu erstellen, aber Memes mit `/meme` oder `/custom` anzufordern geht auch ohne die Berechtigung.",
+            "Dem Bot fehlen ein paar Berechtigungen in diesem Kanal. Wer diesen Kanal verwalten kann, behebt das in den Kanaleinstellungen, indem er sie dem Bot gibt.\n\nSie sind nötig, um Memes während eines Gesprächs automatisch zu erstellen, aber Memes mit `/meme` oder `/custom` anzufordern geht auch ohne sie.",
         "deleteData.confirm.heading": "🗑️ Alle Daten für diesen Kanal löschen?",
         "deleteData.confirm.body":
             "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot bleibt aktiviert und beginnt, aus neuen Nachrichten neu zu lernen. Wenn du ihn danach komplett stoppen willst, schalte ihn mit `/enable` aus.",
@@ -830,12 +839,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.memory.full": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.permissions.heading": "Brakuje kilku uprawnień!",
-        "enable.permissions.description":
-            "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, albo **Osadzanie linków**, żeby menu `/settings` działało poprawnie:\n",
         "enable.permissions.sendMessages": "Wysyłanie wiadomości",
         "enable.permissions.attachFiles": "Załączanie plików",
         "enable.permissions.embedLinks": "Osadzanie linków",
         "enable.permissions.readHistory": "Czytanie historii wiadomości",
+        "enable.permissions.viewChannel": "Wyświetlanie kanału",
+        "enable.permissions.description":
+            "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, **Wyświetlanie kanału**, żeby mieć kontekst do memów, albo **Osadzanie linków**, żeby menu `/settings` działało poprawnie:\n",
+
         "enable.button.turnOff": "Wyłącz",
         "enable.button.turnOn": "Włącz",
         "enable.button.settings": "⚙️ Otwórz ustawienia",
@@ -855,7 +866,7 @@ export const locale: Partial<TranslationString> = {
             "Tylko członkowie z uprawnieniem **Zarządzanie serwerem** lub **Zarządzanie kanałami** mogą zmieniać ustawienia Jstmemit. Poproś admina serwera, jeśli chcesz to zmienić.",
         "missingBotPermissions.heading": "🔒 Jstmemit nie może wysyłać memów tutaj",
         "missingBotPermissions.body":
-            "Bot nie ma uprawnienia **Załączanie plików** na tym kanale. Ktoś, kto może zarządzać tym kanałem, może to naprawić, wchodząc w ustawienia kanału i nadając je botowi.\n\nJest ono potrzebne do automatycznego robienia memów podczas rozmowy, ale zamawianie memów przez `/meme` lub `/custom` działa też bez niego.",
+            "Bot nie ma niektórych uprawnień na tym kanale. Ktoś, kto może zarządzać tym kanałem, może to naprawić, wchodząc w ustawienia kanału i nadając je botowi.\n\nSą one potrzebne do automatycznego robienia memów podczas rozmowy, ale zamawianie memów przez `/meme` lub `/custom` działa też bez nich.",
         "deleteData.confirm.heading": "🗑️ Usunąć wszystkie dane tego kanału?",
         "deleteData.confirm.body":
             "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot pozostanie włączony i zacznie uczyć się od nowa z nowych wiadomości. Jeśli potem chcesz go całkowicie zatrzymać, wyłącz go przez `/enable`.",
@@ -962,12 +973,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "¡Faltan algunos permisos!",
-        "enable.permissions.description":
-            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
         "enable.permissions.sendMessages": "Enviar mensajes",
         "enable.permissions.attachFiles": "Adjuntar archivos",
         "enable.permissions.embedLinks": "Insertar enlaces",
         "enable.permissions.readHistory": "Leer el historial de mensajes",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir ajustes",
@@ -989,7 +1002,7 @@ export const locale: Partial<TranslationString> = {
             "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar los ajustes de Jstmemit. Pídeselo a un admin del servidor si necesitas cambiarlo.",
         "missingBotPermissions.heading": "🔒 Jstmemit no puede enviar memes aquí",
         "missingBotPermissions.body":
-            "Al bot le falta el permiso **Adjuntar archivos** en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en los ajustes del canal y dándoselo al bot.\n\nHace falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ese permiso.",
+            "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en los ajustes del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ellos.",
         "deleteData.confirm.heading": "🗑️ ¿Borrar todos los datos de este canal?",
         "deleteData.confirm.body":
             "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
@@ -1097,12 +1110,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "¡Faltan algunos permisos!",
-        "enable.permissions.description":
-            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
         "enable.permissions.sendMessages": "Enviar mensajes",
         "enable.permissions.attachFiles": "Adjuntar archivos",
         "enable.permissions.embedLinks": "Insertar enlaces",
         "enable.permissions.readHistory": "Leer el historial de mensajes",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir configuración",
@@ -1124,7 +1139,7 @@ export const locale: Partial<TranslationString> = {
             "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar la configuración de Jstmemit. Pídele a un admin del servidor si necesitas cambiarlo.",
         "missingBotPermissions.heading": "🔒 Jstmemit no puede enviar memes aquí",
         "missingBotPermissions.body":
-            "Al bot le falta el permiso **Adjuntar archivos** en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en la configuración del canal y dándoselo al bot.\n\nHace falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ese permiso.",
+            "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en la configuración del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ellos.",
         "deleteData.confirm.heading": "🗑️ ¿Borrar todos los datos de este canal?",
         "deleteData.confirm.body":
             "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
@@ -1232,12 +1247,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.memory.full": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.permissions.heading": "Estão faltando algumas permissões!",
-        "enable.permissions.description":
-            "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera ou **Inserir links** para o menu `/settings` funcionar direito:\n",
         "enable.permissions.sendMessages": "Enviar mensagens",
         "enable.permissions.attachFiles": "Anexar arquivos",
         "enable.permissions.embedLinks": "Inserir links",
         "enable.permissions.readHistory": "Ver histórico de mensagens",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera, **Ver canal** para pegar contexto para os memes ou **Inserir links** para o menu `/settings` funcionar direito:\n",
+
         "enable.button.turnOff": "Desligar",
         "enable.button.turnOn": "Ligar",
         "enable.button.settings": "⚙️ Abrir configurações",
@@ -1258,7 +1275,7 @@ export const locale: Partial<TranslationString> = {
             "Só membros com a permissão **Gerenciar servidor** ou **Gerenciar canais** podem mudar as configurações do Jstmemit. Peça a um admin do servidor se precisar mudar isso.",
         "missingBotPermissions.heading": "🔒 O Jstmemit não pode enviar memes aqui",
         "missingBotPermissions.body":
-            "O bot está sem a permissão **Anexar arquivos** neste canal. Qualquer pessoa que possa gerenciar este canal consegue resolver isso indo nas configurações do canal e dando a permissão ao bot.\n\nEla é necessária para gerar memes automaticamente durante uma conversa, mas pedir memes com `/meme` ou `/custom` funciona mesmo sem ela.",
+            "O bot está sem algumas permissões neste canal. Qualquer pessoa que possa gerenciar este canal consegue resolver isso indo nas configurações do canal e dando as permissões ao bot.\n\nElas são necessárias para gerar memes automaticamente durante uma conversa, mas pedir memes com `/meme` ou `/custom` funciona mesmo sem elas.",
         "deleteData.confirm.heading": "🗑️ Apagar todos os dados deste canal?",
         "deleteData.confirm.body":
             "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot continua ativado e vai começar a aprender de novo com as mensagens novas. Se depois quiser pará-lo de vez, desligue-o com `/enable`.",
@@ -1365,12 +1382,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.memory.full": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.permissions.heading": "Bazı izinler eksik!",
-        "enable.permissions.description":
-            "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle** ya da `/settings` menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
         "enable.permissions.sendMessages": "Mesaj Gönder",
         "enable.permissions.attachFiles": "Dosya Ekle",
         "enable.permissions.embedLinks": "Bağlantı Yerleştir",
         "enable.permissions.readHistory": "Mesaj Geçmişini Oku",
+        "enable.permissions.viewChannel": "Kanalı Görüntüle",
+        "enable.permissions.description":
+            "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle**, capsler için bağlam alabilmek için **Kanalı Görüntüle** ya da `/settings` menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
+
         "enable.button.turnOff": "Kapat",
         "enable.button.turnOn": "Aç",
         "enable.button.settings": "⚙️ Ayarları aç",
@@ -1392,7 +1411,7 @@ export const locale: Partial<TranslationString> = {
             "Jstmemit'in ayarlarını yalnızca **Sunucuyu Yönet** veya **Kanalları Yönet** iznine sahip üyeler değiştirebilir. Bunun değişmesi gerekiyorsa bir sunucu yöneticisine sor.",
         "missingBotPermissions.heading": "🔒 Jstmemit burada caps gönderemez",
         "missingBotPermissions.body":
-            "Botun bu kanalda **Dosya Ekle** izni yok. Bu kanalı yönetebilen biri, kanal ayarlarına girip bu izni bota vererek bunu düzeltebilir.\n\nSohbet sırasında capslerin otomatik üretilmesi için gerekli, ama `/meme` veya `/custom` ile caps istemek bu izin olmadan da mümkün.",
+            "Botun bu kanalda bazı izinleri yok. Bu kanalı yönetebilen biri, kanal ayarlarına girip bu izinleri bota vererek bunu düzeltebilir.\n\nSohbet sırasında capslerin otomatik üretilmesi için gerekli, ama `/meme` veya `/custom` ile caps istemek bu izinler olmadan da mümkün.",
         "deleteData.confirm.heading": "🗑️ Bu kanalın tüm verileri silinsin mi?",
         "deleteData.confirm.body":
             "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot açık kalır ve yeni mesajlardan yeniden öğrenmeye başlar. Sonrasında tamamen durdurmak istersen `/enable` ile kapat.",
@@ -1499,12 +1518,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "Mancano alcuni permessi!",
-        "enable.permissions.description":
-            "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera o **Incorpora link** perché il menu `/settings` funzioni bene:\n",
         "enable.permissions.sendMessages": "Invia messaggi",
         "enable.permissions.attachFiles": "Allega file",
         "enable.permissions.embedLinks": "Incorpora link",
         "enable.permissions.readHistory": "Leggi cronologia messaggi",
+        "enable.permissions.viewChannel": "Visualizza canale",
+        "enable.permissions.description":
+            "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera, **Visualizza canale** per avere contesto per i meme o **Incorpora link** perché il menu `/settings` funzioni bene:\n",
+
         "enable.button.turnOff": "Spegni",
         "enable.button.turnOn": "Accendi",
         "enable.button.settings": "⚙️ Apri impostazioni",
@@ -1525,7 +1546,7 @@ export const locale: Partial<TranslationString> = {
             "Solo i membri con il permesso **Gestire il server** o **Gestire i canali** possono cambiare le impostazioni di Jstmemit. Chiedi a un admin del server se hai bisogno di cambiarlo.",
         "missingBotPermissions.heading": "🔒 Jstmemit non può inviare meme qui",
         "missingBotPermissions.body":
-            "Al bot manca il permesso **Allega file** in questo canale. Chiunque possa gestire questo canale può risolvere andando nelle impostazioni del canale e dandoglielo.\n\nServe per generare i meme automaticamente durante una conversazione, ma chiedere meme con `/meme` o `/custom` è possibile anche senza questo permesso.",
+            "Al bot mancano alcuni permessi in questo canale. Chiunque possa gestire questo canale può risolvere andando nelle impostazioni del canale e dandoglieli.\n\nServono per generare i meme automaticamente durante una conversazione, ma chiedere meme con `/meme` o `/custom` è possibile anche senza.",
         "deleteData.confirm.heading": "🗑️ Eliminare tutti i dati di questo canale?",
         "deleteData.confirm.body":
             "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot resta attivo e ricomincerà a imparare dai nuovi messaggi. Se poi vuoi fermarlo del tutto, spegnilo con `/enable`.",
@@ -1658,7 +1679,7 @@ export const locale: Partial<TranslationString> = {
             "Hanya anggota dengan izin **Kelola Server** atau **Kelola Channel** yang bisa mengubah pengaturan Jstmemit. Minta admin server kalau kamu perlu mengubahnya.",
         "missingBotPermissions.heading": "🔒 Jstmemit tidak bisa mengirim meme di sini",
         "missingBotPermissions.body":
-            "Bot tidak punya izin **Lampirkan File** di channel ini. Siapa saja yang bisa mengelola channel ini bisa memperbaikinya dengan masuk ke pengaturan channel dan memberikan izin itu ke bot.\n\nIzin ini diperlukan untuk membuat meme otomatis selama obrolan, tapi meminta meme lewat `/meme` atau `/custom` tetap bisa tanpa izin tersebut.",
+            "Bot tidak punya beberapa izin di channel ini. Siapa saja yang bisa mengelola channel ini bisa memperbaikinya dengan masuk ke pengaturan channel dan memberikan izin-izin itu ke bot.\n\nIzin ini diperlukan untuk membuat meme otomatis selama obrolan, tapi meminta meme lewat `/meme` atau `/custom` tetap bisa tanpa izin tersebut.",
         "deleteData.confirm.heading": "🗑️ Hapus semua data channel ini?",
         "deleteData.confirm.body":
             "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot tetap aktif dan akan mulai belajar lagi dari pesan baru. Kalau setelahnya mau berhenti total, matikan lewat `/enable`.",
@@ -1765,12 +1786,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.memory.full": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.permissions.heading": "Chybí nějaká oprávnění!",
-        "enable.permissions.description":
-            "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, nebo **Vkládat odkazy**, aby menu `/settings` fungovalo správně:\n",
         "enable.permissions.sendMessages": "Posílat zprávy",
         "enable.permissions.attachFiles": "Připojovat soubory",
         "enable.permissions.embedLinks": "Vkládat odkazy",
         "enable.permissions.readHistory": "Číst historii zpráv",
+        "enable.permissions.viewChannel": "Zobrazit kanál",
+        "enable.permissions.description":
+            "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, **Zobrazit kanál**, aby měl kontext pro memy, nebo **Vkládat odkazy**, aby menu `/settings` fungovalo správně:\n",
         "enable.button.turnOff": "Vypnout",
         "enable.button.turnOn": "Zapnout",
         "enable.button.settings": "⚙️ Otevřít nastavení",
@@ -1790,7 +1812,7 @@ export const locale: Partial<TranslationString> = {
             "Nastavení Jstmemitu můžou měnit jen členové s oprávněním **Spravovat server** nebo **Spravovat kanály**. Pokud potřebuješ změnu, obrať se na admina serveru.",
         "missingBotPermissions.heading": "🔒 Jstmemit tady nemůže posílat memy",
         "missingBotPermissions.body":
-            "Bot nemá v tomto kanálu oprávnění **Připojovat soubory**. Kdokoliv, kdo může tento kanál spravovat, to opraví v nastavení kanálu tím, že oprávnění botovi udělí.\n\nJe potřeba pro automatické generování memů během konverzace, ale vyžádat si memy přes `/meme` nebo `/custom` jde i bez něj.",
+            "Bot nemá v tomto kanálu některá oprávnění. Kdokoliv, kdo může tento kanál spravovat, to opraví v nastavení kanálu tím, že mu je udělí.\n\nJsou potřeba pro automatické generování memů během konverzace, ale vyžádat si memy přes `/meme` nebo `/custom` jde i bez nich.",
         "deleteData.confirm.heading": "🗑️ Smazat všechna data tohoto kanálu?",
         "deleteData.confirm.body":
             "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot zůstane zapnutý a začne se znovu učit z nových zpráv. Pokud ho pak chceš úplně zastavit, vypni ho přes `/enable`.",

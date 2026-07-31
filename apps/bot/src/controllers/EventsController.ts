@@ -94,7 +94,11 @@ export class EventsController implements IEventsController {
             return;
         }
 
-        await this._contextController.handleNewMessage(message);
+        try {
+            await this._contextController.handleNewMessage(message);
+        } catch (error) {
+            analytics.captureException(error);
+        }
     }
 
     /**

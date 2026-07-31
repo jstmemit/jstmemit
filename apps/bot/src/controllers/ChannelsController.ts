@@ -53,7 +53,6 @@ export class ChannelsController implements IChannelsController {
         }
 
         try {
-            let prefetchedContext: number = 0;
             let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
 
             const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
@@ -64,11 +63,22 @@ export class ChannelsController implements IChannelsController {
                 isEnabled = await this._channelsService.switchChannel(interaction.channelId);
             }
 
+            let prefetchPromise: Promise<number> | null = null;
+
             if (isEnabled && messagesAmount < 1 && interaction.channel && interaction.guild) {
-                prefetchedContext = await this._contextController.prefetchChannel(
-                    interaction.channel,
-                    interaction.guild,
-                );
+                prefetchPromise = this._contextController
+                    .prefetchChannel(interaction.channel, interaction.guild)
+                    .catch((error: unknown): number => {
+                        analytics.captureException(error, interaction.user.id, {
+                            channelId: interaction.channelId,
+                            guildId: interaction?.guildId || "",
+                            command: "/enable",
+                            stage: "prefetch",
+                            language: interaction.locale,
+                        });
+
+                        return 0;
+                    });
             }
 
             const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
@@ -80,7 +90,7 @@ export class ChannelsController implements IChannelsController {
                     channelId: interaction.channelId,
                     guildId: interaction.guildId,
                     messagesAmount: messagesAmount,
-                    prefetchedContext,
+                    prefetchStarted: prefetchPromise !== null,
                     enabled: isEnabled,
                     language: interaction.locale,
                     memberCount: interaction.guild?.memberCount,
@@ -89,6 +99,7 @@ export class ChannelsController implements IChannelsController {
                     canAttachFiles: permissions.attachFiles,
                     canEmbedLinks: permissions.embedLinks,
                     canReadHistory: permissions.readHistory,
+                    canViewChannel: permissions.viewChannel,
                 },
             });
 
@@ -100,19 +111,11 @@ export class ChannelsController implements IChannelsController {
                 }
             }
 
-            const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
-                interaction.locale,
-                isEnabled,
-                permissions,
-                messagesAmount + prefetchedContext,
-            );
+            await this.sendEnableResponse(interaction, isEnabled, permissions, messagesAmount);
 
-            const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
-                interaction.locale,
-                isEnabled,
-            );
-
-            await respond(interaction, [message, buttons]);
+            if (prefetchPromise && messagesAmount < 1) {
+                void this.updateAfterPrefetch(interaction, prefetchPromise, isEnabled, permissions, messagesAmount);
+            }
         } catch (error) {
             analytics.captureException(error, interaction.user.id, {
                 channelId: interaction.channelId,
@@ -127,6 +130,86 @@ export class ChannelsController implements IChannelsController {
             );
 
             await respond(interaction, [message]);
+        }
+    }
+
+    /**
+     * Sends the /enable reply.
+     *
+     * @param interaction
+     * @param isEnabled
+     * @param permissions
+     * @param contextAmount
+     */
+    private async sendEnableResponse(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        isEnabled: boolean,
+        permissions: RequiredBotPermissions,
+        contextAmount: number,
+    ): Promise<void> {
+        const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
+            interaction.locale,
+            isEnabled,
+            permissions,
+            contextAmount,
+        );
+
+        const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
+            interaction.locale,
+            isEnabled,
+        );
+
+        await respond(interaction, [message, buttons]);
+    }
+
+    /**
+     * Edits already sent response with amount of
+     * messages in bot's memory after the prefetch
+     *
+     * @param interaction
+     * @param prefetchPromise
+     * @param isEnabled
+     * @param permissions
+     * @param messagesAmount
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async updateAfterPrefetch(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        prefetchPromise: Promise<number>,
+        isEnabled: boolean,
+        permissions: RequiredBotPermissions,
+        messagesAmount: number,
+    ): Promise<void> {
+        const prefetchedContext: number = await prefetchPromise;
+
+        analytics.capture({
+            event: "channel_prefetched",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+                messagesAmount: messagesAmount,
+                prefetchedContext,
+                succeeded: prefetchedContext > 0,
+                language: interaction.locale,
+            },
+        });
+
+        if (prefetchedContext < 1) {
+            return;
+        }
+
+        try {
+            await this.sendEnableResponse(interaction, isEnabled, permissions, messagesAmount + prefetchedContext);
+        } catch (error) {
+            analytics.captureException(error, interaction.user.id, {
+                channelId: interaction.channelId,
+                guildId: interaction?.guildId || "",
+                command: "/enable",
+                stage: "prefetch_response_update",
+                language: interaction.locale,
+            });
         }
     }
 }
