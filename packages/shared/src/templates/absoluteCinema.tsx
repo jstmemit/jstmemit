@@ -23,19 +23,19 @@ export const absoluteCinema: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/absolutecinema.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/absoluteCinema.png"
                 width={1230}
                 height={1422}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={400}
-                height={400}
+                width={320}
+                height={320}
                 style={{
                     position: "absolute",
-                    top: 500,
-                    left: 415,
+                    top: 370,
+                    left: 460,
                     filter: "grayscale(100%)",
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -47,7 +47,7 @@ export const absoluteCinema: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "30%",
+                    height: "20%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -57,12 +57,11 @@ export const absoluteCinema: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         textOverflow: "ellipsis",
                         wordBreak: "break-word",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 90,
-                        fontWeight: "bold",
+                        fontSize: 80,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#ffffff",
