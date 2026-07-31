@@ -331,6 +331,52 @@ import { wnlFuminoRealization2 } from "#/templates/wnlFuminoRealization2.tsx";
 import { wnlFuminoRealization3 } from "#/templates/wnlFuminoRealization3.tsx";
 import { wnlMafuyuKirisuIntrovert } from "#/templates/wnlMafuyuKirisuIntrovert.tsx";
 import { wnlMafuyuKirisuMenacing } from "#/templates/wnlMafuyuKirisuMenacing.tsx";
+import { snkNekoNekoyamadaCuteSleeves } from "#/templates/snkNekoNekoyamadaCuteSleeves.tsx";
+import { ditfZeroTwoHuggingPaper1 } from "#/templates/ditfZeroTwoHuggingPaper1.tsx";
+import { blendsMafuyuHoshikawaSparkle } from "#/templates/blendsMafuyuHoshikawaSparkle.tsx";
+import { acNagisaCalm } from "#/templates/acNagisaCalm.tsx";
+import { acNagisaNotes } from "#/templates/acNagisaNotes.tsx";
+import { acsrMisakaAtack } from "#/templates/acsrMisakaAtack.tsx";
+import { acsrMisakaRailgun } from "#/templates/acsrMisakaRailgun.tsx";
+import { adChiyoAngryCrying } from "#/templates/adChiyoAngryCrying.tsx";
+import { adChiyoChangingPigtails } from "#/templates/adChiyoChangingPigtails.tsx";
+import { adChiyoPanic } from "#/templates/adChiyoPanic.tsx";
+import { adChiyoShocked } from "#/templates/adChiyoShocked.tsx";
+import { adKaguraLaughing } from "#/templates/adKaguraLaughing.tsx";
+import { adKaguraPanic } from "#/templates/adKaguraPanic.tsx";
+import { adOsakaPool } from "#/templates/adOsakaPool.tsx";
+import { adOsakaStudying } from "#/templates/adOsakaStudying.tsx";
+import { adOsakaWithSoap } from "#/templates/adOsakaWithSoap.tsx";
+import { adTomoAndOsakaAgree } from "#/templates/adTomoAndOsakaAgree.tsx";
+import { adTomoBoasting } from "#/templates/adTomoBoasting.tsx";
+import { arobmiSistineAndRumiaShocked } from "#/templates/arobmiSistineAndRumiaShocked.tsx";
+import { acNagisaNotes1 } from "#/templates/acNagisaNotes1.tsx";
+import { arobmiSistineBlush } from "#/templates/arobmiSistineBlush.tsx";
+import { arobmiSistineBlush1 } from "#/templates/arobmiSistineBlush1.tsx";
+import { arobmiSistineConfused } from "#/templates/arobmiSistineConfused.tsx";
+import { arobmiSistineShocked } from "#/templates/arobmiSistineShocked.tsx";
+import { blendsHideriKanzakiSmugFace1 } from "#/templates/blendsHideriKanzakiSmugFace1.tsx";
+import { blendsKahoFlustered } from "#/templates/blendsKahoFlustered.tsx";
+import { blendsMaikaAngryPanic1 } from "#/templates/blendsMaikaAngryPanic1.tsx";
+import { blendsMaikaBlush } from "#/templates/blendsMaikaBlush.tsx";
+import { blendsMaikaInnocent } from "#/templates/blendsMaikaInnocent.tsx";
+import { blendsMaikaNo } from "#/templates/blendsMaikaNo.tsx";
+import { blendsMaikaPlusEyes } from "#/templates/blendsMaikaPlusEyes.tsx";
+import { blendsMaikaSadisticEyes } from "#/templates/blendsMaikaSadisticEyes.tsx";
+import { blendsMaikaWithCat } from "#/templates/blendsMaikaWithCat.tsx";
+import { btrBocchiCrying } from "#/templates/btrBocchiCrying.tsx";
+import { btrBocchiDefeated } from "#/templates/btrBocchiDefeated.tsx";
+import { btrBocchiDizzy } from "#/templates/btrBocchiDizzy.tsx";
+import { btrBocchiExcited } from "#/templates/btrBocchiExcited.tsx";
+import { btrBocchiExplosion } from "#/templates/btrBocchiExplosion.tsx";
+import { btrBocchiGlitch } from "#/templates/btrBocchiGlitch.tsx";
+import { btrBocchiHeartAttack } from "#/templates/btrBocchiHeartAttack.tsx";
+import { btrBocchiHiding } from "#/templates/btrBocchiHiding.tsx";
+import { btrBocchiNo } from "#/templates/btrBocchiNo.tsx";
+import { btrBocchiPanic } from "#/templates/btrBocchiPanic.tsx";
+import { btrBocchiPerform } from "#/templates/btrBocchiPerform.tsx";
+import { btrBocchiSpiralEyesPanic1 } from "#/templates/btrBocchiSpiralEyesPanic1.tsx";
+import { btrNijikaGoodbye } from "#/templates/btrNijikaGoodbye.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -683,6 +729,52 @@ export class TemplatesRepository implements ITemplatesRepository {
             wnlFuminoRealization3,
             wnlMafuyuKirisuIntrovert,
             wnlMafuyuKirisuMenacing,
+            snkNekoNekoyamadaCuteSleeves,
+            ditfZeroTwoHuggingPaper1,
+            blendsMafuyuHoshikawaSparkle,
+            acNagisaCalm,
+            acNagisaNotes,
+            acsrMisakaAtack,
+            acsrMisakaRailgun,
+            adChiyoAngryCrying,
+            adChiyoChangingPigtails,
+            adChiyoPanic,
+            adChiyoShocked,
+            adKaguraLaughing,
+            adKaguraPanic,
+            adOsakaPool,
+            adOsakaStudying,
+            adOsakaWithSoap,
+            adTomoAndOsakaAgree,
+            adTomoBoasting,
+            arobmiSistineAndRumiaShocked,
+            acNagisaNotes1,
+            arobmiSistineBlush,
+            arobmiSistineBlush1,
+            arobmiSistineConfused,
+            arobmiSistineShocked,
+            blendsHideriKanzakiSmugFace1,
+            blendsKahoFlustered,
+            blendsMaikaAngryPanic1,
+            blendsMaikaBlush,
+            blendsMaikaInnocent,
+            blendsMaikaNo,
+            blendsMaikaPlusEyes,
+            blendsMaikaSadisticEyes,
+            blendsMaikaWithCat,
+            btrBocchiCrying,
+            btrBocchiDefeated,
+            btrBocchiDizzy,
+            btrBocchiExcited,
+            btrBocchiExplosion,
+            btrBocchiGlitch,
+            btrBocchiHeartAttack,
+            btrBocchiHiding,
+            btrBocchiNo,
+            btrBocchiPanic,
+            btrBocchiPerform,
+            btrBocchiSpiralEyesPanic1,
+            btrNijikaGoodbye,
         ];
     }
 
