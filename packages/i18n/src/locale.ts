@@ -15,11 +15,12 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.full": "Messages in memory: **{{messagesAmount}}**",
         "enable.permissions.heading": "Some permissions are missing!",
         "enable.permissions.description":
-            "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated or **Embed links** for the `/settings` menu to work properly:\n",
+            "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated, **View Channel** to get context for the memes or **Embed links** for the `/settings` menu to work properly:\n",
         "enable.permissions.sendMessages": "Send Messages",
         "enable.permissions.attachFiles": "Attach Files",
         "enable.permissions.embedLinks": "Embed Links",
         "enable.permissions.readHistory": "Read Message History",
+        "enable.permissions.viewChannel": "View Channel",
 
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
@@ -154,12 +155,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Сообщений в памяти: **{{messagesAmount}}**",
         "enable.memory.full": "Сообщений в памяти: **{{messagesAmount}}**",
         "enable.permissions.heading": "Не хватает некоторых прав!",
-        "enable.permissions.description":
-            "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, или **Встраивать ссылки**, чтобы меню `/settings` работало нормально:\n",
         "enable.permissions.sendMessages": "Отправлять сообщения",
         "enable.permissions.attachFiles": "Прикреплять файлы",
         "enable.permissions.embedLinks": "Встраивать ссылки",
         "enable.permissions.readHistory": "Читать историю сообщений",
+        "enable.permissions.viewChannel": "Просмотр канала",
+        "enable.permissions.description":
+            "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, **Просмотр канала**, чтобы получать контекст для мемов, или **Встраивать ссылки**, чтобы меню `/settings` работало нормально:\n",
 
         "enable.button.turnOff": "Выключить",
         "enable.button.turnOn": "Включить",
@@ -292,12 +294,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.memory.full": "Повідомлень у пам'яті: **{{messagesAmount}}**",
         "enable.permissions.heading": "Бракує деяких прав!",
-        "enable.permissions.description":
-            "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, або **Вставляти посилання**, щоб меню `/settings` працювало нормально:\n",
         "enable.permissions.sendMessages": "Надсилати повідомлення",
         "enable.permissions.attachFiles": "Прикріплювати файли",
         "enable.permissions.embedLinks": "Вставляти посилання",
         "enable.permissions.readHistory": "Читати історію повідомлень",
+        "enable.permissions.viewChannel": "Переглядати канал",
+        "enable.permissions.description":
+            "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, **Переглядати канал**, щоб отримувати контекст для мемів, або **Вставляти посилання**, щоб меню `/settings` працювало нормально:\n",
 
         "enable.button.turnOff": "Вимкнути",
         "enable.button.turnOn": "Увімкнути",
@@ -425,12 +428,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.memory.full": "Berichten in geheugen: **{{messagesAmount}}**",
         "enable.permissions.heading": "Er ontbreken een paar permissies!",
-        "enable.permissions.description":
-            "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen of **Links insluiten** zodat het `/settings` menu goed werkt:\n",
         "enable.permissions.sendMessages": "Berichten verzenden",
         "enable.permissions.attachFiles": "Bestanden bijvoegen",
         "enable.permissions.embedLinks": "Links insluiten",
         "enable.permissions.readHistory": "Berichtgeschiedenis lezen",
+        "enable.permissions.viewChannel": "Kanaal bekijken",
+        "enable.permissions.description":
+            "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen, **Kanaal bekijken** om context voor de memes op te halen of **Links insluiten** zodat het `/settings` menu goed werkt:\n",
+
         "enable.button.turnOff": "Uitzetten",
         "enable.button.turnOn": "Aanzetten",
         "enable.button.settings": "⚙️ Instellingen openen",
@@ -559,12 +564,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.memory.full": "Messages en mémoire : **{{messagesAmount}}**",
         "enable.permissions.heading": "Il manque quelques permissions !",
-        "enable.permissions.description":
-            "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère ou **Intégrer des liens** pour que le menu `/settings` marche correctement :\n",
         "enable.permissions.sendMessages": "Envoyer des messages",
         "enable.permissions.attachFiles": "Joindre des fichiers",
         "enable.permissions.embedLinks": "Intégrer des liens",
         "enable.permissions.readHistory": "Voir les anciens messages",
+        "enable.permissions.viewChannel": "Voir le salon",
+        "enable.permissions.description":
+            "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère, **Voir le salon** pour récupérer du contexte pour les mèmes ou **Intégrer des liens** pour que le menu `/settings` marche correctement :\n",
+
         "enable.button.turnOff": "Désactiver",
         "enable.button.turnOn": "Activer",
         "enable.button.settings": "⚙️ Ouvrir les paramètres",
@@ -696,12 +703,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.memory.full": "Nachrichten im Speicher: **{{messagesAmount}}**",
         "enable.permissions.heading": "Ein paar Berechtigungen fehlen!",
-        "enable.permissions.description":
-            "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, oder **Links einbetten**, damit das `/settings` Menü richtig funktioniert:\n",
         "enable.permissions.sendMessages": "Nachrichten senden",
         "enable.permissions.attachFiles": "Dateien anhängen",
         "enable.permissions.embedLinks": "Links einbetten",
         "enable.permissions.readHistory": "Nachrichtenverlauf anzeigen",
+        "enable.permissions.viewChannel": "Kanal anzeigen",
+        "enable.permissions.description":
+            "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, **Kanal anzeigen**, um Kontext für die Memes zu bekommen, oder **Links einbetten**, damit das `/settings` Menü richtig funktioniert:\n",
+
         "enable.button.turnOff": "Ausschalten",
         "enable.button.turnOn": "Einschalten",
         "enable.button.settings": "⚙️ Einstellungen öffnen",
@@ -830,12 +839,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.memory.full": "Wiadomości w pamięci: **{{messagesAmount}}**",
         "enable.permissions.heading": "Brakuje kilku uprawnień!",
-        "enable.permissions.description":
-            "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, albo **Osadzanie linków**, żeby menu `/settings` działało poprawnie:\n",
         "enable.permissions.sendMessages": "Wysyłanie wiadomości",
         "enable.permissions.attachFiles": "Załączanie plików",
         "enable.permissions.embedLinks": "Osadzanie linków",
         "enable.permissions.readHistory": "Czytanie historii wiadomości",
+        "enable.permissions.viewChannel": "Wyświetlanie kanału",
+        "enable.permissions.description":
+            "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, **Wyświetlanie kanału**, żeby mieć kontekst do memów, albo **Osadzanie linków**, żeby menu `/settings` działało poprawnie:\n",
+
         "enable.button.turnOff": "Wyłącz",
         "enable.button.turnOn": "Włącz",
         "enable.button.settings": "⚙️ Otwórz ustawienia",
@@ -962,12 +973,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "¡Faltan algunos permisos!",
-        "enable.permissions.description":
-            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
         "enable.permissions.sendMessages": "Enviar mensajes",
         "enable.permissions.attachFiles": "Adjuntar archivos",
         "enable.permissions.embedLinks": "Insertar enlaces",
         "enable.permissions.readHistory": "Leer el historial de mensajes",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir ajustes",
@@ -1097,12 +1110,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Mensajes en memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "¡Faltan algunos permisos!",
-        "enable.permissions.description":
-            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
         "enable.permissions.sendMessages": "Enviar mensajes",
         "enable.permissions.attachFiles": "Adjuntar archivos",
         "enable.permissions.embedLinks": "Insertar enlaces",
         "enable.permissions.readHistory": "Leer el historial de mensajes",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir configuración",
@@ -1232,12 +1247,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.memory.full": "Mensagens na memória: **{{messagesAmount}}**",
         "enable.permissions.heading": "Estão faltando algumas permissões!",
-        "enable.permissions.description":
-            "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera ou **Inserir links** para o menu `/settings` funcionar direito:\n",
         "enable.permissions.sendMessages": "Enviar mensagens",
         "enable.permissions.attachFiles": "Anexar arquivos",
         "enable.permissions.embedLinks": "Inserir links",
         "enable.permissions.readHistory": "Ver histórico de mensagens",
+        "enable.permissions.viewChannel": "Ver canal",
+        "enable.permissions.description":
+            "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera, **Ver canal** para pegar contexto para os memes ou **Inserir links** para o menu `/settings` funcionar direito:\n",
+
         "enable.button.turnOff": "Desligar",
         "enable.button.turnOn": "Ligar",
         "enable.button.settings": "⚙️ Abrir configurações",
@@ -1365,12 +1382,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.memory.full": "Hafızadaki mesajlar: **{{messagesAmount}}**",
         "enable.permissions.heading": "Bazı izinler eksik!",
-        "enable.permissions.description":
-            "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle** ya da `/settings` menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
         "enable.permissions.sendMessages": "Mesaj Gönder",
         "enable.permissions.attachFiles": "Dosya Ekle",
         "enable.permissions.embedLinks": "Bağlantı Yerleştir",
         "enable.permissions.readHistory": "Mesaj Geçmişini Oku",
+        "enable.permissions.viewChannel": "Kanalı Görüntüle",
+        "enable.permissions.description":
+            "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle**, capsler için bağlam alabilmek için **Kanalı Görüntüle** ya da `/settings` menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
+
         "enable.button.turnOff": "Kapat",
         "enable.button.turnOn": "Aç",
         "enable.button.settings": "⚙️ Ayarları aç",
@@ -1499,12 +1518,14 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.memory.full": "Messaggi in memoria: **{{messagesAmount}}**",
         "enable.permissions.heading": "Mancano alcuni permessi!",
-        "enable.permissions.description":
-            "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera o **Incorpora link** perché il menu `/settings` funzioni bene:\n",
         "enable.permissions.sendMessages": "Invia messaggi",
         "enable.permissions.attachFiles": "Allega file",
         "enable.permissions.embedLinks": "Incorpora link",
         "enable.permissions.readHistory": "Leggi cronologia messaggi",
+        "enable.permissions.viewChannel": "Visualizza canale",
+        "enable.permissions.description":
+            "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera, **Visualizza canale** per avere contesto per i meme o **Incorpora link** perché il menu `/settings` funzioni bene:\n",
+
         "enable.button.turnOff": "Spegni",
         "enable.button.turnOn": "Accendi",
         "enable.button.settings": "⚙️ Apri impostazioni",
@@ -1765,12 +1786,13 @@ export const locale: Partial<TranslationString> = {
         "enable.memory.progress": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.memory.full": "Zpráv v paměti: **{{messagesAmount}}**",
         "enable.permissions.heading": "Chybí nějaká oprávnění!",
-        "enable.permissions.description":
-            "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, nebo **Vkládat odkazy**, aby menu `/settings` fungovalo správně:\n",
         "enable.permissions.sendMessages": "Posílat zprávy",
         "enable.permissions.attachFiles": "Připojovat soubory",
         "enable.permissions.embedLinks": "Vkládat odkazy",
         "enable.permissions.readHistory": "Číst historii zpráv",
+        "enable.permissions.viewChannel": "Zobrazit kanál",
+        "enable.permissions.description":
+            "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, **Zobrazit kanál**, aby měl kontext pro memy, nebo **Vkládat odkazy**, aby menu `/settings` fungovalo správně:\n",
         "enable.button.turnOff": "Vypnout",
         "enable.button.turnOn": "Zapnout",
         "enable.button.settings": "⚙️ Otevřít nastavení",
