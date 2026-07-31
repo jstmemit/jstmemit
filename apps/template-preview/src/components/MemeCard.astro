@@ -10,6 +10,7 @@ import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import { TemplatesService } from "../services/TemplatesService.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
 import { render, renderAnimation } from "takumi-js";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 interface Props {
     src?: string;
@@ -31,17 +32,24 @@ let meme: string | undefined = undefined;
 
 if (templateName) {
     const template: Template = templatesService.getTemplateByName(templateName || "");
-
+    if (variant?.texts === undefined) {
+        throw new Error();
+    }
+    const { fonts, fontFamilies }: { fonts?: FontOptions[]; fontFamilies: string[] } = fontsService.getFontsFor(
+        variant.texts,
+    );
     if (template.animationDuration === undefined) {
         const staticMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(
             template.element(variant!),
             {
                 width: template.width,
                 height: template.height,
-                fonts: fontsService.getFonts(true),
-                fontFamilies: ["Comic Sans MS"],
+                fonts: fonts,
+                fontFamilies: fontFamilies,
                 dithering: "floyd-steinberg",
                 emoji: "twemoji",
+                quality: 55,
+                drawDebugBorder: true,
             },
         );
         meme = `data:image/webp;base64,${staticMeme.toString("base64")}`;
@@ -50,12 +58,14 @@ if (templateName) {
         const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
             width: template.width,
             height: template.height,
-            fonts: fontsService.getFonts(true),
-            fontFamilies: ["Comic Sans MS"],
+            fonts: fonts,
+            fontFamilies: fontFamilies,
             fps: 12,
             format: "webp",
             scenes: [{ durationMs: animationDuration, node: template.element(variant!) }],
             emoji: "twemoji",
+            quality: 55,
+            drawDebugBorder: true,
         });
         meme = `data:image/webp;base64,${animatedMeme.toString("base64")}`;
     }
