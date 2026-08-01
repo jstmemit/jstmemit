@@ -50,6 +50,8 @@ export class ChannelsController implements IChannelsController {
     public async handleEnableInteraction(interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> {
         if (interaction.isCommand()) {
             await interaction.deferReply();
+        } else {
+            await interaction.deferUpdate();
         }
 
         try {

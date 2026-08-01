@@ -301,6 +301,9 @@ importers:
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
+      ms:
+        specifier: ^2.1.3
+        version: 2.1.3
       music-metadata:
         specifier: ^11.14.0
         version: 11.14.0(supports-color@7.2.0)
@@ -314,6 +317,9 @@ importers:
       '@types/lodash':
         specifier: ^4.17.24
         version: 4.17.24
+      '@types/ms':
+        specifier: ^2.1.0
+        version: 2.1.0
       tsx:
         specifier: ^4.23.1
         version: 4.23.1

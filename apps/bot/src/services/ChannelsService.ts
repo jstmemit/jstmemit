@@ -4,14 +4,22 @@ import type { channelsTable } from "@jstmemit/db/schema.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { client } from "#/bot.ts";
 import { type BaseMessageOptions, type Channel, MessageFlags } from "discord.js";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import ms from "ms";
 
 export class ChannelsService implements IChannelsService {
     private readonly _channelsRepository: IChannelsRepository;
     private readonly _messagesRepository: IMessagesRepository;
+    private readonly _cacheService: ICacheService;
 
-    public constructor(channelsRepository: IChannelsRepository, messagesRepository: IMessagesRepository) {
+    public constructor(
+        channelsRepository: IChannelsRepository,
+        messagesRepository: IMessagesRepository,
+        cacheService: ICacheService,
+    ) {
         this._channelsRepository = channelsRepository;
         this._messagesRepository = messagesRepository;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -38,6 +46,7 @@ export class ChannelsService implements IChannelsService {
         const channel: typeof channelsTable.$inferSelect = await this._channelsRepository.upsert(channelId, new Date());
 
         await this._channelsRepository.switch(channelId, channel.enabled);
+        await this._cacheService.delete(`context:channel:${channelId}`);
 
         return !channel.enabled;
     }
@@ -51,7 +60,7 @@ export class ChannelsService implements IChannelsService {
      */
     public async isChannelEnabled(channelId: string): Promise<boolean> {
         try {
-            const channel = await this._channelsRepository.upsert(channelId, new Date());
+            const channel = await this._getCachedChannel(channelId);
 
             return channel.enabled;
         } catch (error) {
@@ -108,7 +117,7 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async rollChannelFrequency(channelId: string): Promise<boolean> {
-        const channel = await this._channelsRepository.upsert(channelId, new Date());
+        const channel = await this._getCachedChannel(channelId);
 
         if (channel.frequency <= 0) return false;
 
@@ -133,5 +142,22 @@ export class ChannelsService implements IChannelsService {
                 components,
             });
         }
+    }
+
+    /**
+     * Gets a channel from cache and upserts it into the database
+     * if it's not there yet
+     *
+     * @param channelId
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async _getCachedChannel(channelId: string): Promise<typeof channelsTable.$inferSelect> {
+        return await this._cacheService.getOrSet(
+            `context:channel:${channelId}`,
+            (): Promise<typeof channelsTable.$inferSelect> => this._channelsRepository.upsert(channelId, new Date()),
+            ms("1m"),
+        );
     }
 }
