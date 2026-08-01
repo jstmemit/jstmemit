@@ -190,7 +190,11 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const fastResult: MemeGenerationResult | undefined = await Promise.race([job, timeout(1500)]);
+            const budget: number = 1200 - (Date.now() - interaction.createdTimestamp);
+            const fastResult: MemeGenerationResult | undefined = await Promise.race([
+                job,
+                timeout(Math.max(0, budget)),
+            ]);
 
             if (fastResult) {
                 // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms
