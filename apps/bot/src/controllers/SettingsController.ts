@@ -28,6 +28,8 @@ export class SettingsController implements ISettingsController {
     ): Promise<void> {
         if (interaction.isCommand()) {
             await interaction.deferReply();
+        } else {
+            await interaction.deferUpdate();
         }
 
         try {
