@@ -24,7 +24,9 @@ jobs:
                   password: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Build docker compose images
-              run: docker compose build
+              run: |
+                  touch .env.docker
+                  docker compose build
 
             - name: Push docker compose images
               run: docker compose push
