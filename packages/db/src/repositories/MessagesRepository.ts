@@ -13,9 +13,13 @@ export class MessagesRepository implements IMessagesRepository {
                 timestamp: timestamp,
             };
 
-            await db.insert(messagesTable).values(message);
+            const inserted = await db
+                .insert(messagesTable)
+                .values(message)
+                .onConflictDoNothing({ target: messagesTable.messageId })
+                .returning({ id: messagesTable.id });
 
-            return true;
+            return inserted.length > 0;
         } catch (error) {
             console.error(error);
 
