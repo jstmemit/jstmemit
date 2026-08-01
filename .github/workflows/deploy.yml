@@ -1,0 +1,46 @@
+name: Build and deploy images
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - v2
+
+jobs:
+    build-and-push:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v7
+
+            - name: Log in to GHCR
+              uses: docker/login-action@v4
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build docker compose images
+              run: docker compose build
+
+            - name: Push docker compose images
+              run: docker compose push
+
+    deploy:
+        needs: build-and-push
+        runs-on: ubuntu-latest
+        steps:
+            - name: Pull new images and use them
+              uses: appleboy/ssh-action@v1.2.5
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.SSH_KEY }}
+                  script: |
+                      cd jstmemit
+                      docker compose pull
+                      docker compose up -d
+#                      docker image prune -af --filter "until=168h"
