@@ -37,6 +37,8 @@ export class RatingsController implements IRatingsController {
         generationId: number,
     ): Promise<void> {
         try {
+            await interaction.deferUpdate();
+
             const success: boolean = await this._ratingsService.addRating(
                 interaction.user.id,
                 interaction.message.id,

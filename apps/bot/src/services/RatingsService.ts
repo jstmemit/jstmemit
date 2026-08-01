@@ -1,9 +1,4 @@
-import {
-    ActionRowBuilder,
-    ButtonBuilder,
-    type ButtonInteraction,
-    ButtonStyle,
-} from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, type ButtonInteraction, ButtonStyle } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 
@@ -28,11 +23,7 @@ export class RatingsService implements IRatingsService {
      *
      * @author Kyrylo Maliuha
      */
-    public async addRating(
-        userId: string,
-        messageId: string,
-        rating: "like" | "dislike",
-    ): Promise<boolean> {
+    public async addRating(userId: string, messageId: string, rating: "like" | "dislike"): Promise<boolean> {
         const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
 
         if (alreadyRated) {
@@ -81,11 +72,7 @@ export class RatingsService implements IRatingsService {
             .setLabel(`👎 ${dislikes}`)
             .setStyle(ButtonStyle.Danger);
 
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            likeButton,
-            regenerateButton,
-            dislikeButton,
-        );
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(likeButton, regenerateButton, dislikeButton);
     }
 
     /**
@@ -97,19 +84,13 @@ export class RatingsService implements IRatingsService {
      *
      * @author Kyrylo Maliuha
      */
-    public async updateRatingButtons(
-        interaction: ButtonInteraction,
-        generationId: number,
-    ): Promise<void> {
+    public async updateRatingButtons(interaction: ButtonInteraction, generationId: number): Promise<void> {
         const messageId: string = interaction.message.id;
 
-        const { likes, dislikes } =
-            await this._ratingsRepository.getMemeRatings(messageId);
+        const { likes, dislikes } = await this._ratingsRepository.getMemeRatings(messageId);
 
-        await interaction.update({
-            components: [
-                this.constructRatingButtons(likes, dislikes, generationId),
-            ],
+        await interaction.editReply({
+            components: [this.constructRatingButtons(likes, dislikes, generationId)],
         });
     }
 
@@ -126,8 +107,7 @@ export class RatingsService implements IRatingsService {
      * @author Kyrylo Maliuha
      */
     private _checkIfUserRated(userId: string, messageId: string): boolean {
-        const userRatings: Set<string> | undefined =
-            this._ratings.get(messageId);
+        const userRatings: Set<string> | undefined = this._ratings.get(messageId);
 
         if (!userRatings) {
             this._ratings.set(messageId, new Set());
