@@ -85,7 +85,7 @@ export class ContextService implements IContextService {
                 await this._imagesRepository.add(
                     messageId,
                     channelId,
-                    attachment.proxyURL,
+                    `${attachment.proxyURL}#${channelId}`,
                     "attachment",
                     new Date(),
                     this._getExpirationDate(attachment.proxyURL),
@@ -119,7 +119,7 @@ export class ContextService implements IContextService {
             return undefined;
         }
 
-        await this._imagesRepository.add(messageId, channelId, result, "gif", new Date());
+        await this._imagesRepository.add(messageId, channelId, `${result}#${channelId}}`, "gif", new Date());
     }
 
     /**
@@ -133,7 +133,7 @@ export class ContextService implements IContextService {
      * @author Kyrylo Maliuha
      */
     public async saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void> {
-        await this._imagesRepository.add(messageId, channelId, avatarUrl, "avatar", new Date());
+        await this._imagesRepository.add(messageId, channelId, `${avatarUrl}#${channelId}`, "avatar", new Date());
     }
 
     /**
