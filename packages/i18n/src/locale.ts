@@ -54,9 +54,9 @@ export const locale: Partial<TranslationString> = {
         "deleteData.button.cancel": "Cancel",
         "deleteData.button.delete": "Delete all data",
 
-        "settings.about.heading": "❓ About this bot",
+        "settings.about.heading": "<:jstmemit:1533562305353220146> Hey, I'm Jstmemit",
         "settings.about.body":
-            "A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that.",
+            "The bot that makes memes from your chat. Talk about anything and...\nit will use its collection of 300+ meme templates to roast you for it ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Enable Jstmemit below to start!",
         "settings.button.disable": "Disable",
         "settings.button.enable": "Enable",
@@ -107,21 +107,19 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
 
-        "help.about.heading": "🤖 Hey, I'm Jstmemit",
+        "help.about.heading": `<:jstmemit:1533562305353220146> Hey, I'm Jstmemit`,
         "help.about.commands.user":
-            "### 👤 Added to My Apps: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-        "help.about.commands.guild": "### 👥 Added to Server : **`/meme`**, **`/enable`**, **`/settings`**",
-        "help.autoMemes.heading": "## 💬 Chat like you normally would",
+            "### 👤 Anywhere on Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  But how exactly does that work?",
         "help.autoMemes.description":
-            "### How it works?\nOnce every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
-        "help.autoMemes.algorithm":
-            "### Understands your humour\nEach generated meme has **👍 Like**, **🔁 Regenerate** and **👎 Dislike** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
-        "help.rightClick.heading": "## 🖱 Or turn anything into a meme",
+            "Once every few dozen messages it picks a meme template, takes a few images/gifs/messages and mixes it all together into a meme.\n\nEach generated meme has **:thumbsup: Like**, **:repeat: Regenerate** and** :thumbsdown: Dislike** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+        "help.rightClick.heading": "## 🖱 Turn anything into a meme",
         "help.rightClick.description":
-            'Remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet. Or put someone\'s profile picture into a "MrBeast style" YouTube thumbnail.\n\nOpen the Apps menu after a right-click or long-press on mobile, choose Jstmemit and select the meme you want to get.',
-        "help.voice.heading": "## 🔊 Make voice messages",
+            'With it you can also remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet. Or put someone\'s profile picture into a "MrBeast style" YouTube thumbnail.\n\nOpen the Apps menu after a right-click or long-press on mobile, choose Jstmemit and select the meme you want to get.',
+        "help.voice.heading": "## 🔊  Make voice messages",
         "help.voice.description":
-            "Use `/voice` to make a voice message from your text using one of 23 different voices. Perfect for making soundboard phrases or just making funny voice messages. \n\nYour language is not supported? Please tell us by using `/feedback` and we'll add it.",
+            "Use `/voice` to narrate your text using one of 23 different voices. Perfect for making soundboard phrases or simply narrating funny messages.",
         "help.faq.heading": "## ❓ Frequently asked questions",
         "help.faq.description":
             "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
@@ -146,6 +144,7 @@ export const locale: Partial<TranslationString> = {
         "help.faq.whatIfIWantToMakeACustomMeme.answer":
             "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
         "help.button.addJstmemit": "🔗 Add Jstmemit",
+        "help.button.settings": "⚙️ Settings",
         "help.button.website": "🌐 Website",
     },
 
