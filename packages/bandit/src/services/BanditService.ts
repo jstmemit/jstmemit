@@ -10,6 +10,7 @@ import { type Logger, logs } from "@opentelemetry/api-logs";
 import { analytics } from "@jstmemit/analytics";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import ms from "ms";
+import type { PosteriorSource } from "@jstmemit/shared/models/PosteriorSource";
 
 export class BanditService implements IBanditService {
     private readonly _banditRepository: IBanditRepository;
@@ -85,7 +86,7 @@ export class BanditService implements IBanditService {
                 return undefined;
             }
 
-            const topicTemplates: Template[] = topicGrouped.get(topicBest) ?? [];
+            const topicTemplates: Template[] = topicGrouped.get(topicBest.name) ?? [];
 
             const { grouped: typeGrouped, best: typeBest } = this._selectBestGroup(
                 topicTemplates,
@@ -97,23 +98,29 @@ export class BanditService implements IBanditService {
                 return undefined;
             }
 
-            const candidates: Template[] = typeGrouped.get(typeBest) ?? [];
+            const candidates: Template[] = typeGrouped.get(typeBest.name) ?? [];
 
-            const bestTemplateName: string | undefined = this._selectBest(
+            const best = this._selectBest(
                 candidates.map((template: Template): string => template.name),
                 (name: string): number => this._sampleForName(name, templateStats),
             );
 
-            const candidate = candidates.find((template: Template): boolean => template.name === bestTemplateName);
+            const candidate = candidates.find((template: Template): boolean => template.name === best?.name);
 
-            if (!candidate) {
-                return;
+            if (!best || !candidate) {
+                return undefined;
             }
+
+            const { alpha, beta } = this._posterior(candidate.name, templateStats);
 
             return {
                 ...candidate,
-                selectedTopic: topicBest,
-                selectedType: typeBest,
+                selectedTopic: topicBest.name,
+                selectedType: typeBest.name,
+                banditScore: best.score,
+                banditPosteriorMean: alpha / (alpha + beta),
+                banditCandidateCount: candidates.length,
+                banditPosteriorSource: this._sourceForName(candidate.name, templateStats),
             };
         } catch (error) {
             analytics.captureException(error);
@@ -130,7 +137,15 @@ export class BanditService implements IBanditService {
                 },
             });
 
-            return templates[0];
+            if (!templates[0]) {
+                return undefined;
+            }
+
+            return {
+                ...templates[0],
+                banditCandidateCount: templates.length,
+                banditPosteriorSource: "fallback",
+            };
         }
     }
 
@@ -221,7 +236,7 @@ export class BanditService implements IBanditService {
         templateStats: ScopedStats<BanditStat>,
     ): {
         grouped: Map<TemplateMapStringKey<Template, K>, Template[]>;
-        best: TemplateMapStringKey<Template, K> | undefined;
+        best: { name: TemplateMapStringKey<Template, K>; score: number } | undefined;
     } {
         type Key = TemplateMapStringKey<Template, K>;
 
@@ -252,28 +267,29 @@ export class BanditService implements IBanditService {
             ),
         };
 
-        const best: Key | undefined = this._selectBest(keys, (name: Key): number => this._sampleForName(name, stats));
+        const best = this._selectBest(keys, (name: Key): number => this._sampleForName(name, stats));
 
         return { grouped, best };
     }
 
-    private _selectBest<T extends string>(names: T[], sample: (name: T) => number): T | undefined {
-        let bestName: T | undefined;
-        let bestSample: number = -1;
+    private _selectBest<T extends string>(
+        names: T[],
+        sample: (name: T) => number,
+    ): { name: T; score: number } | undefined {
+        let best: { name: T; score: number } | undefined;
 
         for (const name of names) {
             const value: number = sample(name);
 
-            if (value > bestSample) {
-                bestSample = value;
-                bestName = name;
+            if (best === undefined || value > best.score) {
+                best = { name: name, score: value };
             }
         }
 
-        return bestName;
+        return best;
     }
 
-    private _sampleForName<K extends string>(name: K, stats: ScopedStats<BanditStat, K>): number {
+    private _posterior<K extends string>(name: K, stats: ScopedStats<BanditStat, K>): { alpha: number; beta: number } {
         const global: BanditStat = stats.global.get(name) || this._zero(name);
         const channel: BanditStat = stats.channel.get(name) || this._zero(name);
         const user: BanditStat = stats.user.get(name) || this._zero(name);
@@ -282,10 +298,28 @@ export class BanditService implements IBanditService {
         const globalMean: number = (1 + global.successes) / (2 + global.successes + global.failures);
 
         // alpha value for positive activity, beta for negative
-        const alpha: number = 1 + this.priorStrength * globalMean + channel.successes + user.successes;
-        const beta: number = 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures;
+        return {
+            alpha: 1 + this.priorStrength * globalMean + channel.successes + user.successes,
+            beta: 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures,
+        };
+    }
+
+    private _sampleForName<K extends string>(name: K, stats: ScopedStats<BanditStat, K>): number {
+        const { alpha, beta } = this._posterior(name, stats);
 
         return this._sampleBeta(alpha, beta);
+    }
+
+    private _sourceForName<K extends string>(name: K, stats: ScopedStats<BanditStat, K>): PosteriorSource {
+        if (this._hasObservations(stats.user.get(name))) return "user";
+        if (this._hasObservations(stats.channel.get(name))) return "channel";
+        if (this._hasObservations(stats.global.get(name))) return "global";
+
+        return "prior";
+    }
+
+    private _hasObservations(stat: BanditStat | undefined): boolean {
+        return stat !== undefined && stat.successes + stat.failures > 0;
     }
 
     private _index(stats: BanditStat[]): Map<string, BanditStat> {

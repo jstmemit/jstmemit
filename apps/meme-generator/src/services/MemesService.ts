@@ -138,6 +138,10 @@ export class MemesService implements IMemesService {
                 types: template.types,
                 selectedTopic: template?.selectedTopic,
                 selectedType: template?.selectedType,
+                banditPosteriorSource: template?.banditPosteriorSource,
+                banditCandidateCount: template?.banditCandidateCount,
+                banditScore: template?.banditScore,
+                banditPosteriorMean: template?.banditPosteriorMean,
             },
         });
 
