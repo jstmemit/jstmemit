@@ -358,13 +358,13 @@ export class ComponentsService implements IComponentsService {
                         ? []
                         : [
                               new ButtonBuilder()
-                                  .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                                  .setStyle(isEnabled ? ButtonStyle.Secondary : ButtonStyle.Success)
                                   .setLabel(
                                       isEnabled
-                                          ? t("settings.button.disable", language)
+                                          ? t("enable.button.settings", language)
                                           : t("settings.button.enable", language),
                                   )
-                                  .setCustomId(isEnabled ? "disable" : "enable"),
+                                  .setCustomId(isEnabled ? "settings" : "enable"),
                           ]),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
@@ -394,9 +394,6 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.autoMemes.algorithm", language)}`),
             );
     }
 
