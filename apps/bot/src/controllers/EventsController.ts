@@ -260,6 +260,9 @@ export class EventsController implements IEventsController {
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
                         return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
+                        return;
                     case "voice":
                         await this._voiceController.handleNarrateTextInteraction(interaction);
                         return;
