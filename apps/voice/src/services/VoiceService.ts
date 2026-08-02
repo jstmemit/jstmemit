@@ -9,6 +9,7 @@ import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationR
 import { type Logger } from "@opentelemetry/api-logs";
 import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
+import _ from "lodash";
 
 export class VoiceService implements IVoiceService {
     private readonly _whisperUrl: string;
@@ -37,7 +38,7 @@ export class VoiceService implements IVoiceService {
 
     public async convertTextToSpeech(data: TextNarrationJob): Promise<TextNarrationResult> {
         if (!data.voiceId) {
-            data.voiceId = "af_sky";
+            data.voiceId = _.sample(this._voicesRepository.getAllVoices())?.id || "af_sky";
         }
 
         return {
