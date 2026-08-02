@@ -297,6 +297,9 @@ export class EventsController implements IEventsController {
                     case "dislike":
                         await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
                         return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
+                        return;
                 }
 
                 if (await this._checkForMissingPermissions(interaction)) {

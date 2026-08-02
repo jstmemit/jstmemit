@@ -124,6 +124,22 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a row with Frequently Asked Questions button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.faq", language))
+                .setCustomId(`faq`),
+        );
+    }
+
+    /**
      * Returns back a message component for an unknown error
      *
      * @param language
