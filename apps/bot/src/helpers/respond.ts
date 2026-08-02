@@ -1,3 +1,4 @@
+import type { MessageContextMenuCommandInteraction } from "discord.js";
 import { Message, type ModalSubmitInteraction } from "discord.js";
 import { type ChatInputCommandInteraction, type StringSelectMenuInteraction } from "discord.js";
 import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "discord.js";
@@ -23,7 +24,8 @@ export const respond = async (
         | ChatInputCommandInteraction
         | StringSelectMenuInteraction
         | Message
-        | ModalSubmitInteraction,
+        | ModalSubmitInteraction
+        | MessageContextMenuCommandInteraction,
     components: BaseMessageOptions["components"],
     ephemeral: boolean = false,
 ): Promise<void> => {
@@ -48,7 +50,7 @@ export const respond = async (
                 flags: MessageFlags.IsComponentsV2,
                 components,
             });
-        } else if (!interaction.isModalSubmit()) {
+        } else if (!interaction.isModalSubmit() && !interaction.isMessageContextMenuCommand()) {
             await interaction.update({
                 flags: MessageFlags.IsComponentsV2,
                 components,

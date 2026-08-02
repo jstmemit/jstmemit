@@ -194,6 +194,9 @@ export class EventsController implements IEventsController {
                             "pfTwoGangsterWithGuns",
                         );
                         return;
+                    case "Generate a voice message":
+                        await this._voiceController.handleNarrateTextInteraction(interaction);
+                        return;
                 }
                 return;
             }
