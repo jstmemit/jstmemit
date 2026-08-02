@@ -99,6 +99,7 @@ export class HelpController implements IHelpController {
                 [
                     this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
                     this._componentsService.getHelpFaqMessageComponent(interaction.locale),
+                    this._componentsService.getHelpButtonComponent(interaction.locale),
                 ],
                 true,
             );

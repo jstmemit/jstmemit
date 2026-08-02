@@ -140,6 +140,22 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a row with Features list button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.features", language))
+                .setCustomId(`help`),
+        );
+    }
+
+    /**
      * Returns back a message component for an unknown error
      *
      * @param language

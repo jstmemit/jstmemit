@@ -23,6 +23,7 @@ export abstract class IComponentsService {
     public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
     public abstract getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
+    public abstract getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,

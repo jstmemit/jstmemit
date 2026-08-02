@@ -145,6 +145,7 @@ export const locale: Partial<TranslationString> = {
             "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
         "help.button.addJstmemit": "🔗 Add Jstmemit",
         "help.button.faq": "❓ Frequently asked questions",
+        "help.button.features": "✨ Features list",
         "help.button.website": "🌐 Website",
     },
 

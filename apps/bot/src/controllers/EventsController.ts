@@ -300,6 +300,9 @@ export class EventsController implements IEventsController {
                     case "faq":
                         await this._helpController.handleFaqInteraction(interaction);
                         return;
+                    case "help":
+                        await this._helpController.handleHelpInteraction(interaction);
+                        return;
                 }
 
                 if (await this._checkForMissingPermissions(interaction)) {
