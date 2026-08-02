@@ -54,7 +54,7 @@ export const locale: Partial<TranslationString> = {
         "deleteData.button.cancel": "Cancel",
         "deleteData.button.delete": "Delete all data",
 
-        "settings.about.heading": "<:jstmemit:1533562305353220146> Hey, I'm Jstmemit",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hey, I'm Jstmemit",
         "settings.about.body":
             "The bot that makes memes from your chat. Talk about anything and...\nit will use its collection of 300+ meme templates to roast you for it ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Enable Jstmemit below to start!",
@@ -107,7 +107,7 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
 
-        "help.about.heading": `<:jstmemit:1533562305353220146> Hey, I'm Jstmemit`,
+        "help.about.heading": `<:jstmemit:1533562196980797462> Hey, I'm Jstmemit`,
         "help.about.commands.user":
             "### 👤 Anywhere on Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
         "help.about.commands.guild": "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**",
