@@ -24,7 +24,7 @@ export const adOsakaPool: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/adOsakaPool.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adOsakaPool.gif"
                 width={540}
                 height={404}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

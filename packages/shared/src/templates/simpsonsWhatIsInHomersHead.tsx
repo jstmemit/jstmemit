@@ -63,7 +63,7 @@ export const simpsonsWhatIsInHomersHead: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsWhatIsInHomersHead.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsWhatIsInHomersHead.png"
                 width={525}
                 height={682}
                 style={{ position: "absolute", top: 0, left: 0 }}

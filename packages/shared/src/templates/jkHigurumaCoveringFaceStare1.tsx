@@ -23,7 +23,7 @@ export const jkHigurumaCoveringFaceStare1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/jkHigurumaCoveringFaceStare1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/jkHigurumaCoveringFaceStare1.png"
                 width={975}
                 height={547}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

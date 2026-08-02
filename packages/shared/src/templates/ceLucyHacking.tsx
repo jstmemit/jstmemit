@@ -23,7 +23,7 @@ export const ceLucyHacking: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
                 width={640}
                 height={462}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

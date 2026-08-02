@@ -26,7 +26,7 @@ export const simpsonsHomerInLesbianBar: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsHomerInLesbianBar.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsHomerInLesbianBar.jpg"
                 width={800}
                 height={480}
                 style={{ position: "absolute", top: 0, left: 0 }}

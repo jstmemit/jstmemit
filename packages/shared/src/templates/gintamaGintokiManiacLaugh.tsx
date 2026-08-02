@@ -23,7 +23,7 @@ export const gintamaGintokiManiacLaugh: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiManiacLaugh.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiManiacLaugh.png"
                 width={638}
                 height={412}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -23,7 +23,7 @@ export const bearArrest: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
                 width={640}
                 height={434}
                 style={{ position: "absolute", top: 0, left: 0 }}

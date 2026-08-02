@@ -23,7 +23,7 @@ export const blendsMaikaSadisticSmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaSadisticSmile.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaSadisticSmile.png"
                 width={787}
                 height={442}
                 style={{ position: "absolute", top: 0, right: 0 }}

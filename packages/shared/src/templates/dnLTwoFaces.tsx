@@ -26,7 +26,7 @@ export const dnLTwoFaces: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnLTwoFaces.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dnLTwoFaces.png"
                 width={1200}
                 height={700}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

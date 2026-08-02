@@ -23,7 +23,7 @@ export const toradoraTaigaAndAmiChibiAnimalEars: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaAndAmiChibiAnimalEars.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaAndAmiChibiAnimalEars.png"
                 width={848}
                 height={480}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

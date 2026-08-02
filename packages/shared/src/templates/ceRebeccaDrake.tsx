@@ -26,7 +26,7 @@ export const ceRebeccaDrake: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaDrake.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaDrake.png"
                 width={296}
                 height={601}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

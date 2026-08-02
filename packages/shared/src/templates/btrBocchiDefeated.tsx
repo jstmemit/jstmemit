@@ -24,7 +24,7 @@ export const btrBocchiDefeated: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/btrBocchiDefeated.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/btrBocchiDefeated.gif"
                 width={498}
                 height={280}
                 style={{ position: "absolute", top: 0, right: 0 }}

@@ -23,7 +23,7 @@ export const mhaDekuAllMightFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/mhaDekuAllMightFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/mhaDekuAllMightFace.png"
                 width={1200}
                 height={668}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

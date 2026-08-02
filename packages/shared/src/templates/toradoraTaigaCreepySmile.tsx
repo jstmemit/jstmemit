@@ -23,7 +23,7 @@ export const toradoraTaigaCreepySmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaCreepySmile.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaCreepySmile.png"
                 width={551}
                 height={650}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
