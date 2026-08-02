@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     push:
         branches:
-            - v2
+            - main
 
 jobs:
     build-and-push:
@@ -45,4 +45,3 @@ jobs:
                       cd jstmemit
                       docker compose pull
                       docker compose up -d
-                      docker image prune -af --filter "until=72h"
