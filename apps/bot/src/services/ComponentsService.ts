@@ -402,6 +402,20 @@ export class ComponentsService implements IComponentsService {
 
     /**
      * Returns back a message component for explanation of the
+     * voice narration in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpVoiceMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.voice.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.voice.description", language)}`));
+    }
+
+    /**
+     * Returns back a message component for explanation of the
      * right-click actions in /help
      *
      * @param language

@@ -51,7 +51,8 @@ export class HelpController implements IHelpController {
                     this._componentsService.getHelpHeaderMessageComponent(interaction.locale, channel?.enabled),
                     this._componentsService.getHelpAutoMemesMessageComponent(interaction.locale),
                     this._componentsService.getHelpRightClickMessageComponent(interaction.locale),
-                    this._componentsService.getHelpFaqMessageComponent(interaction.locale),
+                    this._componentsService.getHelpVoiceMessageComponent(interaction.locale),
+                    // this._componentsService.getHelpFaqMessageComponent(interaction.locale),
                 ],
                 true,
             );

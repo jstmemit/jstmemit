@@ -20,6 +20,7 @@ export abstract class IComponentsService {
     public abstract getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpRightClickMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpFaqMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
     public abstract getSettingsBodyMessageComponent(
         language: Locale,

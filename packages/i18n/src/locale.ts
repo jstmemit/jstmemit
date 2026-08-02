@@ -119,14 +119,9 @@ export const locale: Partial<TranslationString> = {
         "help.rightClick.heading": "## 🖱 Or turn anything into a meme",
         "help.rightClick.description":
             'Remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet. Or put someone\'s profile picture into a "MrBeast style" YouTube thumbnail.\n\nOpen the Apps menu after a right-click or long-press on mobile, choose Jstmemit and select the meme you want to get.',
-        "help.voice.heading": "## 🔊 Narrate any text",
+        "help.voice.heading": "## 🔊 Make voice messages",
         "help.voice.description":
-            "Give any text to `/voice` and bot will read it out loud using one of 23 different voices. For free and without daily limits.### Available voices:\n" +
-            ":flag_us: Aoede, :flag_us: Heart, :flag_us: Bella, :flag_us: Nicole, :flag_br: Dora\n" +
-            ":flag_es: Alex, :flag_us: Kore, :flag_fr: Siwis, :flag_us: Sarah, :flag_it: Nicola\n" +
-            ":flag_us: Nova, :flag_us: Alloy, :flag_us: Fenrir, :flag_us: Michael, :flag_us: Puck\n" +
-            ":flag_gb: Emma, :flag_it: Sara, :flag_es: Dora, :flag_br: Alex, :flag_gb: Lewis\n" +
-            ":flag_gb: George, :flag_gb: Fable, :flag_gb: Isabella",
+            "Use `/voice` to make a voice message from your text using one of 23 different voices. Perfect for making soundboard phrases or just making funny voice messages. \n\nYour language is not supported? Please tell us by using `/feedback` and we'll add it.",
         "help.faq.heading": "## ❓ Frequently asked questions",
         "help.faq.description":
             "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
