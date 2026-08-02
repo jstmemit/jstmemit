@@ -107,15 +107,26 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Just talk and it will make memes",
-        "help.autoMemes.tldr": "**It basically puts your images, GIFs and messages on meme templates**",
+        "help.about.heading": "🤖 Hey, I'm Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Added to My Apps: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 👥 Added to Server : **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬 Chat like you normally would",
         "help.autoMemes.description":
-            "Chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
+            "### How it works?\nOnce every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
         "help.autoMemes.algorithm":
-            "Oh, and each generated meme has **`👍 Like`**, **`🔁 Regenerate`** and **`👎 Dislike`** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+            "### Understands your humour\nEach generated meme has **👍 Like**, **🔁 Regenerate** and **👎 Dislike** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+        "help.rightClick.heading": "## 🖱 Or turn anything into a meme",
+        "help.rightClick.description":
+            'Remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet. Or put someone\'s profile picture into a "MrBeast style" YouTube thumbnail.\n\nOpen the Apps menu after a right-click or long-press on mobile, choose Jstmemit and select the meme you want to get.',
+        "help.voice.heading": "## 🔊 Narrate any text",
+        "help.voice.description":
+            "Give any text to `/voice` and bot will read it out loud using one of 23 different voices. For free and without daily limits.### Available voices:\n" +
+            ":flag_us: Aoede, :flag_us: Heart, :flag_us: Bella, :flag_us: Nicole, :flag_br: Dora\n" +
+            ":flag_es: Alex, :flag_us: Kore, :flag_fr: Siwis, :flag_us: Sarah, :flag_it: Nicola\n" +
+            ":flag_us: Nova, :flag_us: Alloy, :flag_us: Fenrir, :flag_us: Michael, :flag_us: Puck\n" +
+            ":flag_gb: Emma, :flag_it: Sara, :flag_es: Dora, :flag_br: Alex, :flag_gb: Lewis\n" +
+            ":flag_gb: George, :flag_gb: Fable, :flag_gb: Isabella",
         "help.faq.heading": "## ❓ Frequently asked questions",
         "help.faq.description":
             "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",

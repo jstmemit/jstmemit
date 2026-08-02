@@ -343,10 +343,15 @@ export class ComponentsService implements IComponentsService {
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
-                        new TextDisplayBuilder().setContent(t("settings.about.body", language)),
-                        new TextDisplayBuilder().setContent(t("help.about.commands", language)),
+                        new TextDisplayBuilder().setContent(`${t("settings.about.body", language)}`),
                     ),
             )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language)}`,
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addActionRowComponents(
                 new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
                     ...(isEnabled === undefined
@@ -375,23 +380,41 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a message component for Explain part of the /help command.
+     * Returns back a message component for explanation of the auto
+     * generated memes from channel context in /help
      *
      * @param language
      *
      * @author Kyrylo Maliuha
      */
-    public getHelpExplainMessageComponent(language: Locale): ContainerBuilder {
+    public getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`## ${t("help.autoMemes.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.autoMemes.tldr", language)}`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.autoMemes.algorithm", language)}`),
+            );
+    }
+
+    /**
+     * Returns back a message component for explanation of the
+     * right-click actions in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpRightClickMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`## ${t("help.rightClick.heading", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.rightClick.description", language)}`),
             );
     }
 
