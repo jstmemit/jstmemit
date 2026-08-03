@@ -38,6 +38,7 @@ import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepos
 import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
 import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscription";
 import { MilestonesService } from "#/services/MilestonesService.ts";
+import { NarrationsRepository } from "@jstmemit/db/repositories/NarrationsRepository";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -92,6 +93,7 @@ container.register({
     voiceController: asClass(VoiceController).singleton(),
     voicesRepository: asClass(VoicesRepository).singleton(),
     milestonesService: asClass(MilestonesService).singleton(),
+    narrationsRepository: asClass(NarrationsRepository).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");

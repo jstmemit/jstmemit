@@ -47,6 +47,17 @@ export const generationsTable = sqliteTable(
     ],
 );
 
+export const narrationsTable = sqliteTable(
+    "narrations_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        channelId: text().notNull(),
+        voice: text().notNull(),
+        createdAt: int({ mode: "timestamp" }).notNull(),
+    },
+    (table) => [index("narrations_channel_idx").on(table.channelId)],
+);
+
 export const channelsTable = sqliteTable("channels_table", {
     id: int().primaryKey({ autoIncrement: true }),
     channelId: text().notNull().unique(),
