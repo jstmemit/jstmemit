@@ -47,9 +47,11 @@ export class MilestonesService implements IMilestonesService {
 
         const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(interaction.channelId);
 
+        const templates: number = await this._generationsRepository.getTemplateCountPerChannel(interaction.channelId);
+
         const components: (ActionRowBuilder<ButtonBuilder> | ContainerBuilder)[] = [
             this._componentsService.getMilestoneMessageComponent(locale, count, interaction.channelId),
-            this._componentsService.getMilestoneButtonsComponent(locale, likes, dislikes, 1, 1),
+            this._componentsService.getMilestoneButtonsComponent(locale, likes, dislikes, templates, 1),
         ];
 
         if (interaction instanceof Message) {
