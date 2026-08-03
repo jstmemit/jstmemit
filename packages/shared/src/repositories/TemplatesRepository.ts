@@ -377,6 +377,7 @@ import { btrBocchiPanic } from "#/templates/btrBocchiPanic.tsx";
 import { btrBocchiPerform } from "#/templates/btrBocchiPerform.tsx";
 import { btrBocchiSpiralEyesPanic1 } from "#/templates/btrBocchiSpiralEyesPanic1.tsx";
 import { btrNijikaGoodbye } from "#/templates/btrNijikaGoodbye.tsx";
+import { umAgnesTachyonUncanny } from "#/templates/umAgnesTachyonUncanny.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -775,6 +776,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiPerform,
             btrBocchiSpiralEyesPanic1,
             btrNijikaGoodbye,
+            umAgnesTachyonUncanny,
         ];
     }
 
