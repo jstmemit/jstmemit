@@ -233,8 +233,6 @@ export class MemesController implements IMemesController {
                         this._componentsService.getMilestoneMessageComponent(
                             interaction.locale,
                             count,
-                            likes,
-                            dislikes,
                             interaction.channelId,
                         ),
                         this._componentsService.getMilestoneButtonsComponent(interaction.locale, likes, dislikes),

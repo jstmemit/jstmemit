@@ -128,19 +128,11 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param count
-     * @param likes
-     * @param dislikes
      * @param channelId
      *
      * @author Kyrylo Maliuha
      */
-    public getMilestoneMessageComponent(
-        language: Locale,
-        count: number,
-        likes: number,
-        dislikes: number,
-        channelId: string,
-    ): ContainerBuilder {
+    public getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
         return new ContainerBuilder()
@@ -154,7 +146,13 @@ export class ComponentsService implements IComponentsService {
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Next goal: ${count}/${count * 2} memes`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `-# If you don't want to receive these messages you can disable them in **/settings**`,
+                ),
+            );
     }
 
     /**
@@ -176,25 +174,29 @@ export class ComponentsService implements IComponentsService {
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Likes placed: ${likes} 👍`)
+                    .setLabel(`Likes: ${likes} 👍`)
+                    .setDisabled(true)
                     .setCustomId(`total-likes`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Dislikes placed: ${dislikes} 👎`)
+                    .setLabel(`Dislikes: ${dislikes} 👎`)
+                    .setDisabled(true)
                     .setCustomId(`total-dislikes`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(`Templates used: 99 🖼️`)
+                    .setDisabled(true)
                     .setCustomId(`total-templates`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(`Voices used: 2 🔊`)
+                    .setDisabled(true)
                     .setCustomId(`total-voices`),
             );
     }
