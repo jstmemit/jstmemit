@@ -1,4 +1,11 @@
-import { ChannelType, type ChatInputCommandInteraction, InteractionContextType, MessageFlags } from "discord.js";
+import type { Message } from "discord.js";
+import {
+    ChannelType,
+    type ChatInputCommandInteraction,
+    InteractionContextType,
+    type MessageContextMenuCommandInteraction,
+    MessageFlags,
+} from "discord.js";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 import { type IAudioMetadata, parseBuffer } from "music-metadata";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
@@ -24,12 +31,23 @@ export class VoiceController implements IVoiceController {
         this._textNarrationQueueEvents = textNarrationQueueEvents;
     }
 
-    public async handleNarrateTextInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
+    public async handleNarrateTextInteraction(
+        interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
+    ): Promise<void> {
         await interaction.deferReply();
         let duration: number = 1;
+        let text: string | null = null;
+        let voice: string | null = null;
 
-        const text: string | null = interaction.options.getString("text");
-        const voice: string | null = interaction.options.getString("voice");
+        if (interaction.isChatInputCommand()) {
+            text = interaction.options.getString("text");
+            voice = interaction.options.getString("voice");
+        }
+
+        if (interaction.isMessageContextMenuCommand()) {
+            const message: Message = interaction.targetMessage;
+            text = message.content;
+        }
 
         if (!text) {
             logger.emit({
