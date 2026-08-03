@@ -303,6 +303,17 @@ export const locale: Partial<TranslationString> = {
             "**Используйте `/custom`!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
         "help.button.addJstmemit": "🔗 Добавить Jstmemit",
         "help.button.website": "🌐 Сайт",
+
+        "milestones.heading": `Ура! {{count}} мемов в **<#{{channelId}}>**!`,
+        "milestones.description": `Ничего этого не было бы, если бы вы говорили о нормальных вещах.\nНиже немного статистики о том, как вы на них реагировали.`,
+        "milestones.nextGoal": "Следующая цель: {{currentGoal}}/{{nextGoal}} мемов",
+        "milestones.turnOffInSettings":
+            "-# Если вы не хотите получать такие сообщения, их можно отключить в **/settings**",
+
+        "stats.likes": "Лайки: {{count}}",
+        "stats.dislikes": "Дизлайки: {{count}}",
+        "stats.templates": "Использовано шаблонов: {{count}}",
+        "stats.voices": "Использовано голосов: {{count}}",
     },
     [Locale.Ukrainian]: {
         "enable.heading.enabled": "🎉 Бот готовий до роботи!",
@@ -443,6 +454,17 @@ export const locale: Partial<TranslationString> = {
             "**Використовуйте `/custom`!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
         "help.button.addJstmemit": "🔗 Додати Jstmemit",
         "help.button.website": "🌐 Сайт",
+
+        "milestones.heading": `Ура! {{count}} мемів у **<#{{channelId}}>**!`,
+        "milestones.description": `Нічого з цього не було б, якби ви говорили про нормальні речі.\nНижче трохи статистики про те, як ви на них реагували.`,
+        "milestones.nextGoal": "Наступна ціль: {{currentGoal}}/{{nextGoal}} мемів",
+        "milestones.turnOffInSettings":
+            "-# Якщо ви не хочете отримувати такі повідомлення, їх можна вимкнути в **/settings**",
+
+        "stats.likes": "Лайки: {{count}}",
+        "stats.dislikes": "Дизлайки: {{count}}",
+        "stats.templates": "Використано шаблонів: {{count}}",
+        "stats.voices": "Використано голосів: {{count}}",
     },
     [Locale.Dutch]: {
         "enable.heading.enabled": "🎉 De bot is er klaar voor!",
@@ -585,6 +607,17 @@ export const locale: Partial<TranslationString> = {
             "**Gebruik `/custom`!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
         "help.button.addJstmemit": "🔗 Jstmemit toevoegen",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yes! {{count}} memes in **<#{{channelId}}>**!`,
+        "milestones.description": `Niks hiervan had bestaan als jullie het over normale dingen hadden gehad.\nHieronder wat stats over hoe jullie erop reageerden.`,
+        "milestones.nextGoal": "Volgend doel: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Wil je deze berichten niet ontvangen, dan kun je ze uitzetten in **/settings**",
+
+        "stats.likes": "Likes: {{count}}",
+        "stats.dislikes": "Dislikes: {{count}}",
+        "stats.templates": "Gebruikte templates: {{count}}",
+        "stats.voices": "Gebruikte stemmen: {{count}}",
     },
     [Locale.French]: {
         "enable.heading.enabled": "🎉 Le bot est prêt !",
@@ -731,6 +764,17 @@ export const locale: Partial<TranslationString> = {
             "**Utilisez `/custom` !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
         "help.button.addJstmemit": "🔗 Ajouter Jstmemit",
         "help.button.website": "🌐 Site web",
+
+        "milestones.heading": `Youpi ! {{count}} mèmes dans **<#{{channelId}}>** !`,
+        "milestones.description": `Rien de tout ça n'existerait si vous parliez de choses normales.\nVoici quelques stats sur la façon dont vous y avez réagi.`,
+        "milestones.nextGoal": "Prochain objectif : {{currentGoal}}/{{nextGoal}} mèmes",
+        "milestones.turnOffInSettings":
+            "-# Si vous ne voulez pas recevoir ces messages, vous pouvez les désactiver dans **/settings**",
+
+        "stats.likes": "J'aime : {{count}}",
+        "stats.dislikes": "Je n'aime pas : {{count}}",
+        "stats.templates": "Modèles utilisés : {{count}}",
+        "stats.voices": "Voix utilisées : {{count}}",
     },
     [Locale.German]: {
         "enable.heading.enabled": "🎉 Der Bot ist bereit!",
@@ -873,6 +917,17 @@ export const locale: Partial<TranslationString> = {
             "**Nutze `/custom`!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
         "help.button.addJstmemit": "🔗 Jstmemit hinzufügen",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yay! {{count}} Memes in **<#{{channelId}}>**!`,
+        "milestones.description": `Nichts davon würde existieren, wenn ihr über normale Dinge reden würdet.\nUnten ein paar Statistiken dazu, wie ihr darauf reagiert habt.`,
+        "milestones.nextGoal": "Nächstes Ziel: {{currentGoal}}/{{nextGoal}} Memes",
+        "milestones.turnOffInSettings":
+            "-# Wenn du diese Nachrichten nicht bekommen willst, kannst du sie in **/settings** deaktivieren",
+
+        "stats.likes": "Gefällt mir: {{count}}",
+        "stats.dislikes": "Gefällt mir nicht: {{count}}",
+        "stats.templates": "Verwendete Vorlagen: {{count}}",
+        "stats.voices": "Verwendete Stimmen: {{count}}",
     },
     [Locale.Polish]: {
         "enable.heading.enabled": "🎉 Bot jest gotowy!",
@@ -1013,6 +1068,17 @@ export const locale: Partial<TranslationString> = {
             "**Użyj `/custom`!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
         "help.button.addJstmemit": "🔗 Dodaj Jstmemit",
         "help.button.website": "🌐 Strona",
+
+        "milestones.heading": `Hurra! {{count}} memów w **<#{{channelId}}>**!`,
+        "milestones.description": `Nic z tego by nie powstało, gdybyście gadali o normalnych rzeczach.\nPoniżej trochę statystyk o tym, jak na nie reagowaliście.`,
+        "milestones.nextGoal": "Następny cel: {{currentGoal}}/{{nextGoal}} memów",
+        "milestones.turnOffInSettings":
+            "-# Jeśli nie chcesz dostawać takich wiadomości, możesz je wyłączyć w **/settings**",
+
+        "stats.likes": "Polubienia: {{count}}",
+        "stats.dislikes": "Łapki w dół: {{count}}",
+        "stats.templates": "Użyte szablony: {{count}}",
+        "stats.voices": "Użyte głosy: {{count}}",
     },
     [Locale.SpanishES]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -1156,6 +1222,17 @@ export const locale: Partial<TranslationString> = {
             "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
         "help.button.addJstmemit": "🔗 Añadir Jstmemit",
         "help.button.website": "🌐 Web",
+
+        "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
+        "milestones.description": `Nada de esto existiría si hablarais de cosas normales.\nAbajo tienes algunas estadísticas de cómo reaccionasteis a ellos.`,
+        "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
+
+        "stats.likes": "Me gusta: {{count}}",
+        "stats.dislikes": "No me gusta: {{count}}",
+        "stats.templates": "Plantillas usadas: {{count}}",
+        "stats.voices": "Voces usadas: {{count}}",
     },
     [Locale.SpanishLATAM]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -1299,6 +1376,17 @@ export const locale: Partial<TranslationString> = {
             "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
         "help.button.addJstmemit": "🔗 Agregar Jstmemit",
         "help.button.website": "🌐 Sitio web",
+
+        "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
+        "milestones.description": `Nada de esto existiría si hablaran de cosas normales.\nAbajo hay algunas estadísticas de cómo reaccionaron a ellos.`,
+        "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
+
+        "stats.likes": "Me gusta: {{count}}",
+        "stats.dislikes": "No me gusta: {{count}}",
+        "stats.templates": "Plantillas usadas: {{count}}",
+        "stats.voices": "Voces usadas: {{count}}",
     },
     [Locale.PortugueseBR]: {
         "enable.heading.enabled": "🎉 O bot está pronto!",
@@ -1440,6 +1528,17 @@ export const locale: Partial<TranslationString> = {
             "**Use o `/custom`!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
         "help.button.addJstmemit": "🔗 Adicionar o Jstmemit",
         "help.button.website": "🌐 Site",
+
+        "milestones.heading": `Eba! {{count}} memes em **<#{{channelId}}>**!`,
+        "milestones.description": `Nada disso existiria se vocês falassem de coisas normais.\nAbaixo estão algumas estatísticas de como vocês reagiram a eles.`,
+        "milestones.nextGoal": "Próxima meta: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Se você não quiser receber essas mensagens, dá para desativá-las em **/settings**",
+
+        "stats.likes": "Curtidas: {{count}}",
+        "stats.dislikes": "Descurtidas: {{count}}",
+        "stats.templates": "Templates usados: {{count}}",
+        "stats.voices": "Vozes usadas: {{count}}",
     },
     [Locale.Turkish]: {
         "enable.heading.enabled": "🎉 Bot hazır!",
@@ -1581,6 +1680,16 @@ export const locale: Partial<TranslationString> = {
             "**`/custom` kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
         "help.button.addJstmemit": "🔗 Jstmemit'i ekle",
         "help.button.website": "🌐 Web sitesi",
+
+        "milestones.heading": `Yaşasın! **<#{{channelId}}>** kanalında {{count}} caps!`,
+        "milestones.description": `Normal şeylerden konuşsaydınız bunların hiçbiri olmazdı.\nAşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.`,
+        "milestones.nextGoal": "Sonraki hedef: {{currentGoal}}/{{nextGoal}} caps",
+        "milestones.turnOffInSettings": "-# Bu mesajları almak istemiyorsan **/settings** üzerinden kapatabilirsin",
+
+        "stats.likes": "Beğeni: {{count}}",
+        "stats.dislikes": "Beğenmeme: {{count}}",
+        "stats.templates": "Kullanılan şablonlar: {{count}}",
+        "stats.voices": "Kullanılan sesler: {{count}}",
     },
     [Locale.Italian]: {
         "enable.heading.enabled": "🎉 Il bot è pronto!",
@@ -1723,6 +1832,16 @@ export const locale: Partial<TranslationString> = {
             "**Usa `/custom`!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
         "help.button.addJstmemit": "🔗 Aggiungi Jstmemit",
         "help.button.website": "🌐 Sito web",
+
+        "milestones.heading": `Evviva! {{count}} meme in **<#{{channelId}}>**!`,
+        "milestones.description": `Niente di tutto questo esisterebbe se parlaste di cose normali.\nQui sotto qualche statistica su come ci avete reagito.`,
+        "milestones.nextGoal": "Prossimo obiettivo: {{currentGoal}}/{{nextGoal}} meme",
+        "milestones.turnOffInSettings": "-# Se non vuoi ricevere questi messaggi, puoi disattivarli in **/settings**",
+
+        "stats.likes": "Mi piace: {{count}}",
+        "stats.dislikes": "Non mi piace: {{count}}",
+        "stats.templates": "Template usati: {{count}}",
+        "stats.voices": "Voci usate: {{count}}",
     },
     [Locale.Indonesian]: {
         "enable.heading.enabled": "🎉 Bot siap!",
@@ -1862,6 +1981,17 @@ export const locale: Partial<TranslationString> = {
             "**Pakai `/custom`!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
         "help.button.addJstmemit": "🔗 Tambahkan Jstmemit",
         "help.button.website": "🌐 Situs web",
+
+        "milestones.heading": `Yeay! {{count}} meme di **<#{{channelId}}>**!`,
+        "milestones.description": `Semua ini tidak akan ada kalau kalian ngobrolin hal-hal normal.\nDi bawah ada beberapa statistik soal cara kalian menanggapinya.`,
+        "milestones.nextGoal": "Target berikutnya: {{currentGoal}}/{{nextGoal}} meme",
+        "milestones.turnOffInSettings":
+            "-# Kalau tidak mau menerima pesan seperti ini, kamu bisa mematikannya di **/settings**",
+
+        "stats.likes": "Suka: {{count}}",
+        "stats.dislikes": "Tidak suka: {{count}}",
+        "stats.templates": "Template terpakai: {{count}}",
+        "stats.voices": "Suara terpakai: {{count}}",
     },
     [Locale.Czech]: {
         "enable.heading.enabled": "🎉 Bot je připraven!",
@@ -2000,5 +2130,15 @@ export const locale: Partial<TranslationString> = {
             "**Použij `/custom`!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
         "help.button.addJstmemit": "🔗 Přidat Jstmemit",
         "help.button.website": "🌐 Web",
+
+        "milestones.heading": `Hurá! {{count}} memů v **<#{{channelId}}>**!`,
+        "milestones.description": `Nic z toho by neexistovalo, kdybyste se bavili o normálních věcech.\nNíže je pár statistik o tom, jak jste na ně reagovali.`,
+        "milestones.nextGoal": "Další cíl: {{currentGoal}}/{{nextGoal}} memů",
+        "milestones.turnOffInSettings": "-# Pokud tyhle zprávy nechceš dostávat, můžeš je vypnout v **/settings**",
+
+        "stats.likes": "Líbí: {{count}}",
+        "stats.dislikes": "Nelíbí: {{count}}",
+        "stats.templates": "Použité šablony: {{count}}",
+        "stats.voices": "Použité hlasy: {{count}}",
     },
 };
