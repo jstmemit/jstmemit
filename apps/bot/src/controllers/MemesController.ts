@@ -40,6 +40,7 @@ import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBot
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -53,6 +54,7 @@ export class MemesController implements IMemesController {
     private readonly _modalsService: IModalsService;
     private readonly _generationsRepository: IGenerationsRepository;
     private readonly _ratingsRepository: IRatingsRepository;
+    private readonly _milestonesService: IMilestonesService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -66,6 +68,7 @@ export class MemesController implements IMemesController {
         modalsService: IModalsService,
         generationsRepository: IGenerationsRepository,
         ratingsRepository: IRatingsRepository,
+        milestonesService: IMilestonesService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -78,6 +81,7 @@ export class MemesController implements IMemesController {
         this._modalsService = modalsService;
         this._generationsRepository = generationsRepository;
         this._ratingsRepository = ratingsRepository;
+        this._milestonesService = milestonesService;
     }
 
     /**
@@ -200,6 +204,8 @@ export class MemesController implements IMemesController {
                     failIfNotExists: false,
                 });
 
+                await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
+
                 return;
             }
 
@@ -221,23 +227,6 @@ export class MemesController implements IMemesController {
                         },
                     ],
                 });
-
-                const count: number = await this._generationsRepository.getCountPerChannel(interaction.channelId);
-                const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(
-                    interaction.channelId,
-                );
-
-                await interaction.followUp({
-                    flags: MessageFlags.IsComponentsV2,
-                    components: [
-                        this._componentsService.getMilestoneMessageComponent(
-                            interaction.locale,
-                            count,
-                            interaction.channelId,
-                        ),
-                        this._componentsService.getMilestoneButtonsComponent(interaction.locale, likes, dislikes, 1, 1),
-                    ],
-                });
             } else {
                 await interaction.deferReply();
                 const jobResult: MemeGenerationResult = await job;
@@ -253,6 +242,8 @@ export class MemesController implements IMemesController {
                     ],
                 });
             }
+
+            await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
         } catch (error) {
             let message: ContainerBuilder;
             const reason: string = error instanceof Error ? error.message : "";
