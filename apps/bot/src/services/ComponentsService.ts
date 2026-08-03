@@ -124,6 +124,23 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a milestone message component
+     *
+     * @param language
+     * @param count
+     * @param channelId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# 🎉 ${count} memes in **<#${channelId}>**!`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`some text here woohoo hooray!!!`));
+    }
+
+    /**
      * Returns back a message component for an unknown error
      *
      * @param language

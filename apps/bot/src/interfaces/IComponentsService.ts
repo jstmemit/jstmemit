@@ -12,6 +12,7 @@ export abstract class IComponentsService {
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder;
     public abstract getMissingBotPermissionsMessageComponent(
         language: Locale,
         permissions: RequiredBotPermissions,

@@ -38,6 +38,7 @@ import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -49,6 +50,7 @@ export class MemesController implements IMemesController {
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
+    private readonly _generationsRepository: IGenerationsRepository;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -60,6 +62,7 @@ export class MemesController implements IMemesController {
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
+        generationsRepository: IGenerationsRepository,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -70,6 +73,7 @@ export class MemesController implements IMemesController {
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
+        this._generationsRepository = generationsRepository;
     }
 
     /**
@@ -206,6 +210,19 @@ export class MemesController implements IMemesController {
                             attachment: Buffer.from(fastResult.png, "base64"),
                             name: "meme.webp",
                         },
+                    ],
+                });
+
+                const count: number = await this._generationsRepository.getCountPerChannel(interaction.channelId);
+
+                await interaction.followUp({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [
+                        this._componentsService.getMilestoneMessageComponent(
+                            interaction.locale,
+                            count,
+                            interaction.channelId,
+                        ),
                     ],
                 });
             } else {
