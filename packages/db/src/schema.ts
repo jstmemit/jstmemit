@@ -57,12 +57,17 @@ export const channelsTable = sqliteTable("channels_table", {
     turbo: int({ mode: "boolean" }).notNull().default(false),
 });
 
-export const ratingsTable = sqliteTable("ratings_table", {
-    id: int().primaryKey({ autoIncrement: true }),
-    messageId: text().notNull().unique(),
-    likes: int().notNull().default(0),
-    dislikes: int().notNull().default(0),
-});
+export const ratingsTable = sqliteTable(
+    "ratings_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        messageId: text().notNull().unique(),
+        channelId: text().notNull().default(""),
+        likes: int().notNull().default(0),
+        dislikes: int().notNull().default(0),
+    },
+    (table) => [index("ratings_channel_idx").on(table.channelId)],
+);
 
 export const banditStatsTable = sqliteTable(
     "bandit_stats_table",
