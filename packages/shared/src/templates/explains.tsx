@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const explains: Template = {
     name: "explains",
+    displayName: "Office Jim explains",
     topics: [Topic.Reaction, Topic.Movies, Topic.Office],
     types: [Type.ObjectImage, Type.TwoOption, Type.TextBottom],
     width: 700,

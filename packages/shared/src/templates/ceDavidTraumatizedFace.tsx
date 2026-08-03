@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceDavidTraumatizedFace: Template = {
     name: "ceDavidTraumatizedFace",
+    displayName: "CE David traumatized face",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground],
     width: 640,

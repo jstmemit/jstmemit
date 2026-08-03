@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsKahoFlustered: Template = {
     name: "blendsKahoFlustered",
+    displayName: "BlendS Kaho flustered",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 512,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkRizzSukuna: Template = {
     name: "jkRizzSukuna",
+    displayName: "JK Rizz Sukuna",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 692,

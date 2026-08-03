@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenInspiration: Template = {
     name: "frierenInspiration",
+    displayName: "Frieren inspiration",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 786,

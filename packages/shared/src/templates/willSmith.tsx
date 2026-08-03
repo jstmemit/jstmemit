@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const willSmith: Template = {
     name: "willSmith",
+    displayName: "Will Smith",
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 891,

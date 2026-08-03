@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const mrBeanWaiting1: Template = {
     name: "mrBeanWaiting1",
+    displayName: "Mr Bean waiting 1",
     topics: [Topic.Movies, Topic.MrBean],
     types: [Type.TextCenterWithBackground, Type.FaceImage, Type.FourOption],
     width: 736,

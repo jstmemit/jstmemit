@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const arobmiSistineFibelPointingFinger: Template = {
     name: "arobmiSistineFibelPointingFinger",
+    displayName: "AROBMI Sistine Fibel pointing finger",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 400,

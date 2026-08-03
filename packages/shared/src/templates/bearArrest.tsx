@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const bearArrest: Template = {
     name: "bearArrest",
+    displayName: "Bear arrest",
     topics: [Topic.News, Topic.Animals],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 640,

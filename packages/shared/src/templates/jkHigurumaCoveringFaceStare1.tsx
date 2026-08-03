@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkHigurumaCoveringFaceStare1: Template = {
     name: "jkHigurumaCoveringFaceStare1",
+    displayName: "JK Higuruma covering face stare 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 975,

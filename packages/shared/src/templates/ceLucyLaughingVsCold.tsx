@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceLucyLaughingVsCold: Template = {
     name: "ceLucyLaughingVsCold",
+    displayName: "CE Lucy laughing vs cold",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 2046,

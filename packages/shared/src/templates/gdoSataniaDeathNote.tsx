@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gdoSataniaDeathNote: Template = {
     name: "gdoSataniaDeathNote",
+    displayName: "GDO Satania Death Note",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut, Topic.DeathNote],
     types: [Type.TextBottom],
     width: 500,

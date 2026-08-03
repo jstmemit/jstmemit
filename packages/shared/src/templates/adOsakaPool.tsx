@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adOsakaPool: Template = {
     name: "adOsakaPool",
+    displayName: "AD Osaka pool",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

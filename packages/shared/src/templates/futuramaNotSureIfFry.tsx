@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaNotSureIfFry: Template = {
     name: "futuramaNotSureIfFry",
+    displayName: "Futurama Not sure if Fry",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 603,

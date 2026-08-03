@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaStartled: Template = {
     name: "toradoraTaigaStartled",
+    displayName: "Toradora Taiga startled",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextRightWithBackground],
     width: 1462,

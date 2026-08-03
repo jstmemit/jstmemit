@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterHurtsHisKnee: Template = {
     name: "griffinsPeterHurtsHisKnee",
+    displayName: "Griffins Peter hurts his knee",
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 499,

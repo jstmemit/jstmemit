@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiSmirk: Template = {
     name: "gintamaGintokiSmirk",
+    displayName: "Gintama Gintoki smirk",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextBottom],
     width: 736,

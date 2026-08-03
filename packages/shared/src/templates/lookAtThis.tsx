@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const lookAtThis: Template = {
     name: "lookAtThis",
+    displayName: "Look at this",
     topics: [Topic.Reaction],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 480,

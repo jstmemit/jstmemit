@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ditfZeroTwoHeh: Template = {
     name: "ditfZeroTwoHeh",
+    displayName: "DITF Zero Two heh",
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.FaceImage, Type.TextBottom],
     width: 720,

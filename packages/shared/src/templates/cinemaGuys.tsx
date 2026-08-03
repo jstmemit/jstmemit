@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const cinemaGuys: Template = {
     name: "cinemaGuys",
+    displayName: "Cinema guys",
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 1280,

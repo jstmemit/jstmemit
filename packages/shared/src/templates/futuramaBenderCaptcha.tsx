@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaBenderCaptcha: Template = {
     name: "futuramaBenderCaptcha",
+    displayName: "Futurama Bender captcha",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom],
     width: 480,

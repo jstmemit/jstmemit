@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const selLainImFineScreen: Template = {
     name: "selLainImFineScreen",
+    displayName: "SEL Lain I'm fine screen",
     topics: [Topic.Reaction, Topic.Anime, Topic.SerialExperimentsLain],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 736,

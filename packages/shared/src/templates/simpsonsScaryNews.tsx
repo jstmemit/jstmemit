@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsScaryNews: Template = {
     name: "simpsonsScaryNews",
+    displayName: "Simpsons Scary news",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.News, Topic.Reaction],
     types: [Type.ObjectImage, Type.TextCenterWithBackground, Type.TwoOption],
     width: 1280,

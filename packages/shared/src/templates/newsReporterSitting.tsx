@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const newsReporterSitting: Template = {
     name: "newsReporterSitting",
+    displayName: "News reporter sitting",
     topics: [Topic.News],
     types: [Type.TextBottom, Type.TextTop, Type.BackgroundImage],
     width: 766,

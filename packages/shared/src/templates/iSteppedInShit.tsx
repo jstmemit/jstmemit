@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const iSteppedInShit: Template = {
     name: "iSteppedInShit",
+    displayName: "I stepped in shit",
     topics: [Topic.Cartoons],
     types: [Type.FaceImage, Type.DefaultText],
     width: 636,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const winnieThePooh1: Template = {
     name: "winnieThePooh1",
+    displayName: "Winnie The Pooh 1",
     topics: [Topic.Cartoons, Topic.Reaction, Topic.WinnieThePooh],
     types: [Type.ThreeOption, Type.TextRightWithBackground],
     width: 640,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfConfusedTravolta: Template = {
     name: "pfConfusedTravolta",
+    displayName: "PF Confused Travolta",
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,

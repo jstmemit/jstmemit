@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const noragamiYatoNoragamiMoneyFloor1: Template = {
     name: "noragamiYatoNoragamiMoneyFloor1",
+    displayName: "Noragami Yato Noragami money floor 1",
     topics: [Topic.Anime, Topic.Noragami],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 447,

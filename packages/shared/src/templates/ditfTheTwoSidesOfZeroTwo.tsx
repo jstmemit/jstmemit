@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ditfTheTwoSidesOfZeroTwo: Template = {
     name: "ditfTheTwoSidesOfZeroTwo",
+    displayName: "DITF The two sides of Zero Two",
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 906,

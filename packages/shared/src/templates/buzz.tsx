@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const buzz: Template = {
     name: "buzz",
+    displayName: "TS Buzz pointing",
     topics: [Topic.Reaction, Topic.Cartoons, Topic.ToyStory],
     types: [Type.FaceImage, Type.TextBottom],
     width: 800,

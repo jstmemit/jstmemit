@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSmugVsDark: Template = {
     name: "frierenSmugVsDark",
+    displayName: "Frieren smug vs dark",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 658,

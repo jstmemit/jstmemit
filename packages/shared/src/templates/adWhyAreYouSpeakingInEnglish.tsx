@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adWhyAreYouSpeakingInEnglish: Template = {
     name: "adWhyAreYouSpeakingInEnglish",
+    displayName: "AD Why are you speaking in English",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 480,

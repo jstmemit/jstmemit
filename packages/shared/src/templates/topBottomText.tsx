@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const topBottomText: Template = {
     name: "topBottomText",
+    displayName: "Top bottom text",
     topics: [Topic.Misc],
     types: [Type.BackgroundImage, Type.TextTopWithBackground, Type.TextBottomWithBackground],
     width: 800,

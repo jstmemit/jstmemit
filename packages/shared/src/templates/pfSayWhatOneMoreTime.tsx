@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfSayWhatOneMoreTime: Template = {
     name: "pfSayWhatOneMoreTime",
+    displayName: "PF Say what one more time",
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1920,

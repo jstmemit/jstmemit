@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobMonolith: Template = {
     name: "spongebobMonolith",
+    displayName: "Spongebob monolith",
     topics: [Topic.SpongeBob, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 1080,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsTanjiroSumiko: Template = {
     name: "dsTanjiroSumiko",
+    displayName: "DS Tanjiro Sumiko",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 600,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blooInBed: Template = {
     name: "blooInBed",
+    displayName: "Bloo in bed",
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 864,

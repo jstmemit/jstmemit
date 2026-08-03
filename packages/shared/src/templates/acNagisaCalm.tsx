@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acNagisaCalm: Template = {
     name: "acNagisaCalm",
+    displayName: "AC Nagisa calm",
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

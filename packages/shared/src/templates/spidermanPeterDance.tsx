@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spidermanPeterDance: Template = {
     name: "spidermanPeterDance",
+    displayName: "Spider-Man Peter dance",
     topics: [Topic.SpiderMan, Topic.Movies],
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,

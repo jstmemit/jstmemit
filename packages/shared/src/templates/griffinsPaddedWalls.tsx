@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPaddedWalls: Template = {
     name: "griffinsPaddedWalls",
+    displayName: "Griffins padded walls",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 640,

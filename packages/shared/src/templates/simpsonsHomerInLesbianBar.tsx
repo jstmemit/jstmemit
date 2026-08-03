@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsHomerInLesbianBar: Template = {
     name: "simpsonsHomerInLesbianBar",
+    displayName: "Simpsons Homer in lesbian bar",
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 800,

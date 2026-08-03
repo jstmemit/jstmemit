@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sfAnyaForgerSmugShush: Template = {
     name: "sfAnyaForgerSmugShush",
+    displayName: "SF Anya Forger smug shush",
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextRightWithBackground],
     width: 1400,

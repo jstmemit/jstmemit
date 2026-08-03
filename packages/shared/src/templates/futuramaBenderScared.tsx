@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaBenderScared: Template = {
     name: "futuramaBenderScared",
+    displayName: "Futurama Bender scared",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom, Type.ObjectImage],
     width: 480,

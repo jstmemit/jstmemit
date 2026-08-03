@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenBlowingKiss: Template = {
     name: "frierenBlowingKiss",
+    displayName: "Frieren blowing kiss",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextBottom, Type.FaceImage],
     width: 447,

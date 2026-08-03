@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceLucyHacking1: Template = {
     name: "ceLucyHacking1",
+    displayName: "CE Lucy hacking 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.DefaultText, Type.AvatarImage],
     width: 640,

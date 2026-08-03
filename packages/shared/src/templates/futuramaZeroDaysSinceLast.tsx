@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaZeroDaysSinceLast: Template = {
     name: "futuramaZeroDaysSinceLast",
+    displayName: "Futurama Zero days since last",
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.TextCenterWithBackground],
     width: 640,

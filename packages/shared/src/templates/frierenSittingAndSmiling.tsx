@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSittingAndSmiling: Template = {
     name: "frierenSittingAndSmiling",
+    displayName: "Frieren sitting and smiling",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextBottom],
     width: 735,

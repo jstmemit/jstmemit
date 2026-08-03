@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLStaring: Template = {
     name: "dnLStaring",
+    displayName: "DN L staring",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextLeftWithBackground],
     width: 1350,

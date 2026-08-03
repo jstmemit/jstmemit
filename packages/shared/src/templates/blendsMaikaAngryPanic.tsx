@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaikaAngryPanic: Template = {
     name: "blendsMaikaAngryPanic",
+    displayName: "BlendS Maika angry panic",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground],
     width: 1280,

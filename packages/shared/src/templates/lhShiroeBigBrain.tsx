@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const lhShiroeBigBrain: Template = {
     name: "lhShiroeBigBrain",
+    displayName: "LH Shiroe big brain",
     topics: [Topic.Reaction, Topic.Anime, Topic.LogHorizon],
     types: [Type.TextBottomWithBackground],
     width: 736,

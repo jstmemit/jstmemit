@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfAllToghether: Template = {
     name: "pfAllToghether",
+    displayName: "PF All together",
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 950,

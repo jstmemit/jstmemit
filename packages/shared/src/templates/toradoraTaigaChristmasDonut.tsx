@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaChristmasDonut: Template = {
     name: "toradoraTaigaChristmasDonut",
+    displayName: "Toradora Taiga christmas donut",
     topics: [Topic.Reaction, Topic.Movies, Topic.Toradora],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 534,

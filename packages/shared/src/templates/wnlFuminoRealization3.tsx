@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const wnlFuminoRealization3: Template = {
     name: "wnlFuminoRealization3",
+    displayName: "WNL Fumino realization 3",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 1088,

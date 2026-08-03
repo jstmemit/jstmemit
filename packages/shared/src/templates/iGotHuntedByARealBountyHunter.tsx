@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const iGotHuntedByARealBountyHunter: Template = {
     name: "iGotHuntedByARealBountyHunter",
+    displayName: "YouTube I got hunted by a real bounty hunter",
     topics: [Topic.YouTube],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 621,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceRebeccaDrake: Template = {
     name: "ceRebeccaDrake",
+    displayName: "CE Rebecca drake",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 592,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
     name: "toradoraTaigaCatchesRyuujiAndAmi",
+    displayName: "Toradora Taiga catches Ryuuji And Ami",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.FaceImage],
     width: 870,

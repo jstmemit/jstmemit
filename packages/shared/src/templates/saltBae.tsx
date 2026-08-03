@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const saltBae: Template = {
     name: "saltBae",
+    displayName: "Salt Bae",
     topics: [Topic.Misc],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1500,

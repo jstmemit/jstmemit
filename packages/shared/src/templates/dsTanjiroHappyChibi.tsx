@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsTanjiroHappyChibi: Template = {
     name: "dsTanjiroHappyChibi",
+    displayName: "DS Tanjiro happy chibi",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 500,

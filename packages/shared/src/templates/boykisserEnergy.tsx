@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const boykisserEnergy: Template = {
     name: "boykisserEnergy",
+    displayName: "Boykisser energy",
     topics: [Topic.Misc],
     types: [Type.FaceImage],
     width: 665,

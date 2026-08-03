@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adTomoBoasting: Template = {
     name: "adTomoBoasting",
+    displayName: "AD Tomo boasting",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

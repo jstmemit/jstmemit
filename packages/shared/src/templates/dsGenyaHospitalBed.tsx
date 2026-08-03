@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsGenyaHospitalBed: Template = {
     name: "dsGenyaHospitalBed",
+    displayName: "DS Genya hospital bed",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 500,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konAzusaNoThanks: Template = {
     name: "konAzusaNoThanks",
+    displayName: "K-On Azusa no thanks",
     topics: [Topic.Reaction, Topic.Anime, Topic.Kon],
     types: [Type.DefaultText, Type.FaceImage],
     width: 860,

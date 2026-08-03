@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const arobmiSistineBlush1: Template = {
     name: "arobmiSistineBlush1",
+    displayName: "AROBMI Sistine blush 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,

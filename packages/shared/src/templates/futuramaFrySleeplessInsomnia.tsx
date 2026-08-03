@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaFrySleeplessInsomnia: Template = {
     name: "futuramaFrySleeplessInsomnia",
+    displayName: "Futurama Fry sleepless insomnia",
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 604,

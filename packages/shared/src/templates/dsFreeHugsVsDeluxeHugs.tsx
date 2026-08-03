@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsFreeHugsVsDeluxeHugs: Template = {
     name: "dsFreeHugsVsDeluxeHugs",
+    displayName: "DS Free hugs vs deluxe hugs",
     topics: [Topic.Anime, Topic.DemonSlayer],
     types: [Type.FaceImage, Type.TwoOption],
     width: 438,

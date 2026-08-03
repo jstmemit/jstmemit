@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceRebeccaSquidward: Template = {
     name: "ceRebeccaSquidward",
+    displayName: "CE Rebecca squidward",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners, Topic.SpongeBob],
     types: [Type.TextTopWithBackground],
     width: 625,

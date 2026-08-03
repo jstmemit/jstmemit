@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const theyAllGoIntoSquareHole: Template = {
     name: "theyAllGoIntoSquareHole",
+    displayName: "They all go into square hole",
     topics: [Topic.Misc],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 854,

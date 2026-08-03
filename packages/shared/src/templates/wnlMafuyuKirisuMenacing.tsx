@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const wnlMafuyuKirisuMenacing: Template = {
     name: "wnlMafuyuKirisuMenacing",
+    displayName: "WNL Mafuyu Kirisu menacing",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TextBottom],
     width: 736,

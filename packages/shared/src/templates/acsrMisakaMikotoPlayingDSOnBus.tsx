@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acsrMisakaMikotoPlayingDSOnBus: Template = {
     name: "acsrMisakaMikotoPlayingDSOnBus",
+    displayName: "ACSR Misaka Mikoto playing DS on bus",
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 736,

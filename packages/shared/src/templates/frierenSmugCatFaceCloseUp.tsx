@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSmugCatFaceCloseUp: Template = {
     name: "frierenSmugCatFaceCloseUp",
+    displayName: "Frieren smug cat face close up",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground],
     width: 596,

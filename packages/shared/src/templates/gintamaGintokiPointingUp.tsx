@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiPointingUp: Template = {
     name: "gintamaGintokiPointingUp",
+    displayName: "Gintama Gintoki pointing up",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 500,

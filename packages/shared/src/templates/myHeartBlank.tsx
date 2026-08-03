@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const myHeartBlank: Template = {
     name: "myHeartBlank",
+    displayName: "My heart blank",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption, Type.DefaultText],
     width: 680,

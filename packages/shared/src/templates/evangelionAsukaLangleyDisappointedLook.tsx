@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionAsukaLangleyDisappointedLook: Template = {
     name: "evangelionAsukaLangleyDisappointedLook",
+    displayName: "Evangelion Asuka Langley disappointed look",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextBottom],
     width: 736,

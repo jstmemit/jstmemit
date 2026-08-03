@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraMinoriTwoMoods: Template = {
     name: "toradoraMinoriTwoMoods",
+    displayName: "Toradora Minori two moods",
     topics: [Topic.Reaction, Topic.Movies, Topic.Toradora],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 978,

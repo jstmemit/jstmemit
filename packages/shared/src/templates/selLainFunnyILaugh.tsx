@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const selLainFunnyILaugh: Template = {
     name: "selLainFunnyILaugh",
+    displayName: "SEL Lain funny I laugh",
     topics: [Topic.Reaction, Topic.Anime, Topic.SerialExperimentsLain],
     types: [Type.DefaultText, Type.TextRightWithBackground],
     width: 1000,

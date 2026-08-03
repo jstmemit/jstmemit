@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adOsakaWithSoap: Template = {
     name: "adOsakaWithSoap",
+    displayName: "AD Osaka with soap",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,

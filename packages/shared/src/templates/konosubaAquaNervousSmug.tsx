@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konosubaAquaNervousSmug: Template = {
     name: "konosubaAquaNervousSmug",
+    displayName: "Konosuba Aqua nervous smug",
     topics: [Topic.Reaction, Topic.Anime, Topic.KonoSuba],
     types: [Type.TextLeftWithBackground],
     width: 960,

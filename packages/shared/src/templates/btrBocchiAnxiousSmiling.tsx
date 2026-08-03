@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiAnxiousSmiling: Template = {
     name: "btrBocchiAnxiousSmiling",
+    displayName: "BTR Bocchi anxious smiling",
     topics: [Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 1020,

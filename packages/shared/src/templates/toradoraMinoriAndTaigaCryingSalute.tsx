@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraMinoriAndTaigaCryingSalute: Template = {
     name: "toradoraMinoriAndTaigaCryingSalute",
+    displayName: "Toradora Minori And Taiga сrying salute",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottom],
     width: 1080,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const hucUmaruHamsterHoodie: Template = {
     name: "hucUmaruHamsterHoodie",
+    displayName: "HUC Umaru hamster hoodie",
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TextTopWithBackground],
     width: 736,

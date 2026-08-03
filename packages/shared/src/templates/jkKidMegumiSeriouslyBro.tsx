@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkKidMegumiSeriouslyBro: Template = {
     name: "jkKidMegumiSeriouslyBro",
+    displayName: "JK Kid Megumi seriously bro",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 474,

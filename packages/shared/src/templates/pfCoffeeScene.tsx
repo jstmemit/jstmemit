@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfCoffeeScene: Template = {
     name: "pfCoffeeScene",
+    displayName: "PF Coffee scene",
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 600,

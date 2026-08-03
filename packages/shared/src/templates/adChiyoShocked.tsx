@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adChiyoShocked: Template = {
     name: "adChiyoShocked",
+    displayName: "AD Chiyo shocked",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

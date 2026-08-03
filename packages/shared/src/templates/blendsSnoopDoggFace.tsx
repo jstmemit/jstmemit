@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsSnoopDoggFace: Template = {
     name: "blendsSnoopDoggFace",
+    displayName: "BlendS Maid cast with Snoop Dogg faces",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground],
     width: 500,

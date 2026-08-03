@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const bbSayMyName: Template = {
     name: "bbSayMyName",
+    displayName: "BB Say my name",
     topics: [Topic.BreakingBad, Topic.Movies],
     types: [Type.FaceImage, Type.DefaultText],
     width: 1280,

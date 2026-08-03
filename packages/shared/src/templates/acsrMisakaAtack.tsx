@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acsrMisakaAtack: Template = {
     name: "acsrMisakaAtack",
+    displayName: "ACSR Misaka atack",
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 480,

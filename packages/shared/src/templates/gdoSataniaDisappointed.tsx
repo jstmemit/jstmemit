@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gdoSataniaDisappointed: Template = {
     name: "gdoSataniaDisappointed",
+    displayName: "GDO Satania disappointed",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextRightWithBackground],
     width: 2034,

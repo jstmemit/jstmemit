@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaHoldingLeek: Template = {
     name: "toradoraTaigaHoldingLeek",
+    displayName: "Toradora Taiga holding leek",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.DefaultText, Type.FaceImage],
     width: 519,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const wnlMafuyuKirisuIntrovert: Template = {
     name: "wnlMafuyuKirisuIntrovert",
+    displayName: "WNL Mafuyu Kirisu introvert",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TwoOption, Type.TextRightWithBackground, Type.DefaultText],
     width: 948,

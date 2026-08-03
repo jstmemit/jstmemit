@@ -7,6 +7,7 @@ import type { TemplateType } from "./TemplateType.ts";
 
 export interface Template {
     name: string;
+    displayName: string;
     topics: TemplateTopic[];
     types: TemplateType[];
     element: (props: TemplateProps) => ReactNode;

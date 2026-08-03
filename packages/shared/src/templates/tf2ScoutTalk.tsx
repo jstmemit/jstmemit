@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tf2ScoutTalk: Template = {
     name: "tf2ScoutTalk",
+    displayName: "TF2 Scout talk",
     topics: [Topic.TeamFortress2, Topic.Games],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 640,

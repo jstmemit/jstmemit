@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const monkeyThinking: Template = {
     name: "monkeyThinking",
+    displayName: "Monkey thinking",
     topics: [Topic.Animals, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 800,

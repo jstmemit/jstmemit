@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const kaguyasamaChikaFujiwaraHappyVsShocked: Template = {
     name: "kaguyasamaChikaFujiwaraHappyVsShocked",
+    displayName: "Kaguyasama Chika Fujiwara happy vs shocked",
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 630,

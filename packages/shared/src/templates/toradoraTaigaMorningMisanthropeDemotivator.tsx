@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaMorningMisanthropeDemotivator: Template = {
     name: "toradoraTaigaMorningMisanthropeDemotivator",
+    displayName: "Toradora Taiga morning misanthrope demotivator",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.FaceImage, Type.DefaultText],
     width: 500,

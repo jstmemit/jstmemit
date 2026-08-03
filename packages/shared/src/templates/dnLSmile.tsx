@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLSmile: Template = {
     name: "dnLSmile",
+    displayName: "DN L smile",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground],
     width: 420,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const animeTheThreeStagesOfApproval: Template = {
     name: "animeTheThreeStagesOfApproval",
+    displayName: "Anime The three stages of approval",
     topics: [Topic.Reaction, Topic.Anime],
     types: [Type.TextRightWithBackground, Type.ThreeOption],
     width: 1008,

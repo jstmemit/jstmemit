@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const bumperSticker: Template = {
     name: "bumperSticker",
+    displayName: "Bumper sticker",
     topics: [Topic.SocialPost],
     types: [Type.AvatarImage, Type.ObjectImage, Type.TextPost],
     width: 814,

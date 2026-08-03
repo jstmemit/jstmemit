@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tryingToExplain: Template = {
     name: "tryingToExplain",
+    displayName: "Trying to explain",
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,

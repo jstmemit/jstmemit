@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMafuyuHoshikawaSparkle: Template = {
     name: "blendsMafuyuHoshikawaSparkle",
+    displayName: "BlendS Mafuyu Hoshikawa sparkle",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground],
     width: 1280,

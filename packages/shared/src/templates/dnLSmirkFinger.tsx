@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLSmirkFinger: Template = {
     name: "dnLSmirkFinger",
+    displayName: "DN L smirk finger",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextRightWithBackground],
     width: 1472,

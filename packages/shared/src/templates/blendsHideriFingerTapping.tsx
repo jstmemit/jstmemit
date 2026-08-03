@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriFingerTapping: Template = {
     name: "blendsHideriFingerTapping",
+    displayName: "BlendS Hideri finger tapping",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.ObjectImage, Type.FaceImage],
     width: 801,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaBenderAsDrake: Template = {
     name: "futuramaBenderAsDrake",
+    displayName: "Futurama Bender as Drake",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 2048,

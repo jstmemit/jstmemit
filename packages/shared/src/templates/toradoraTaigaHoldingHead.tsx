@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaHoldingHead: Template = {
     name: "toradoraTaigaHoldingHead",
+    displayName: "Toradora Taiga holding head",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottom],
     width: 480,

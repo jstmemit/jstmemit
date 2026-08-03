@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const missingPiece: Template = {
     name: "missingPiece",
+    displayName: "Missing piece",
     topics: [Topic.Misc],
     types: [Type.TextRight, Type.FaceImage],
     width: 783,

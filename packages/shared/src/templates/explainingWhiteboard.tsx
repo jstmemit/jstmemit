@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const explainingWhiteboard: Template = {
     name: "explainingWhiteboard",
+    displayName: "Explaining whiteboard",
     topics: [Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1280,

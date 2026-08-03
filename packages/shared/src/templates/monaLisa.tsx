@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const monaLisa: Template = {
     name: "monaLisa",
+    displayName: "Mona Lisa",
     topics: [Topic.Art],
     types: [Type.TextBottom, Type.FaceImage],
     width: 960,

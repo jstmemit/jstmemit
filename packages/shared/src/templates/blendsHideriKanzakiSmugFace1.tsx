@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriKanzakiSmugFace1: Template = {
     name: "blendsHideriKanzakiSmugFace1",
+    displayName: "BlendS Hideri Kanzaki smug face 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground, Type.Animated],
     width: 1000,

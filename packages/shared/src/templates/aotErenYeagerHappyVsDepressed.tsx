@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const aotErenYeagerHappyVsDepressed: Template = {
     name: "aotErenYeagerHappyVsDepressed",
+    displayName: "AOT Eren Yeager happy vs depressed",
     topics: [Topic.Reaction, Topic.Anime, Topic.AttackOnTitan],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 718,

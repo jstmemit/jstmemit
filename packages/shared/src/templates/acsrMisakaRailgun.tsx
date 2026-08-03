@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acsrMisakaRailgun: Template = {
     name: "acsrMisakaRailgun",
+    displayName: "ACSR Misaka railgun",
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

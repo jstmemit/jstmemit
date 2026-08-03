@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const lightVsDark: Template = {
     name: "lightVsDark",
+    displayName: "Light vs dark",
     topics: [Topic.Misc],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 474,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adOsakaStaring: Template = {
     name: "adOsakaStaring",
+    displayName: "AD Osaka staring",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextLeftWithBackground],
     width: 948,

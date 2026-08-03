@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkSatoruGojoNahIdWin2: Template = {
     name: "jkSatoruGojoNahIdWin2",
+    displayName: "JK Satoru Gojo nah I'd win 2",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 350,

@@ -6,7 +6,8 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const isThisAPigeon: Template = {
     name: "isThisAPigeon",
-    topics: [Topic.Cartoons],
+    displayName: "Anime Is this a pigeon",
+    topics: [Topic.Anime],
     types: [Type.ObjectImage, Type.TextBottom],
     width: 1587,
     height: 1425,

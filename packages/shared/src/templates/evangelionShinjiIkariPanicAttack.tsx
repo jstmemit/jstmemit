@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiIkariPanicAttack: Template = {
     name: "evangelionShinjiIkariPanicAttack",
+    displayName: "Evangelion Shinji Ikari panic attack",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 509,

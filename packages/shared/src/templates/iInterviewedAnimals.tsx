@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const iInterviewedAnimals: Template = {
     name: "iInterviewedAnimals",
+    displayName: "YouTube I interviewed animals",
     topics: [Topic.YouTube, Topic.Animals],
     types: [Type.DefaultText, Type.ObjectImage, Type.TextRight],
     width: 621,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraMinoriHoldingDocument1: Template = {
     name: "toradoraMinoriHoldingDocument1",
+    displayName: "Toradora Minori holding document 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottomWithBackground, Type.ObjectImage],
     width: 640,

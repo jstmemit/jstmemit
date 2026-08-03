@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acNowKillHim: Template = {
     name: "acNowKillHim",
+    displayName: "AC Now kill him",
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
     types: [Type.TextTopWithBackground, Type.FaceImage, Type.DefaultText],
     width: 445,

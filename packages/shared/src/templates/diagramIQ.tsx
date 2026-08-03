@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const diagramIQ: Template = {
     name: "diagramIQ",
+    displayName: "Diagram IQ",
     topics: [Topic.Misc],
     types: [Type.TextTop, Type.TextLeft, Type.TextRight, Type.FaceImage, Type.ThreeOption],
     width: 1272,

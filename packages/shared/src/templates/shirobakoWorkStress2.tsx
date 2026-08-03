@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const shirobakoWorkStress2: Template = {
     name: "shirobakoWorkStress2",
+    displayName: "Shirobako Work stress 2",
     topics: [Topic.Reaction, Topic.Movies, Topic.Shirobako],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 952,

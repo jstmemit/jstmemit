@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiNosePickThumbsUp: Template = {
     name: "gintamaGintokiNosePickThumbsUp",
+    displayName: "Gintama Gintoki nose pick thumbs up",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 1084,

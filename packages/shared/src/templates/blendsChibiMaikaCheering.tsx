@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsChibiMaikaCheering: Template = {
     name: "blendsChibiMaikaCheering",
+    displayName: "BlendS Chibi Maika cheering",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground],
     width: 1472,

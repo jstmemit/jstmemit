@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const mhaDekuAllMightFace: Template = {
     name: "mhaDekuAllMightFace",
+    displayName: "MHA Deku All Might face",
     topics: [Topic.Reaction, Topic.Anime, Topic.MyHeroicAcademy],
     types: [Type.TextTopWithBackground],
     width: 1200,

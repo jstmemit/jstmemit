@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const kaguyasamaKaguyaDroppingPhone: Template = {
     name: "kaguyasamaKaguyaDroppingPhone",
+    displayName: "Kaguyasama Kaguya dropping phone",
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.DefaultText, Type.FaceImage],
     width: 640,

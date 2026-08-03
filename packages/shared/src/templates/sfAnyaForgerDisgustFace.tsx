@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sfAnyaForgerDisgustFace: Template = {
     name: "sfAnyaForgerDisgustFace",
+    displayName: "SF Anya Forger disgust face",
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextTopWithBackground],
     width: 596,

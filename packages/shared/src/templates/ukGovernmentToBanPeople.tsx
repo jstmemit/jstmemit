@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ukGovernmentToBanPeople: Template = {
     name: "ukGovernmentToBanPeople",
+    displayName: "UK government to ban people",
     topics: [Topic.SocialPost],
     types: [Type.ObjectImage, Type.TextPost],
     width: 1468,

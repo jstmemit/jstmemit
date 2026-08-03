@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const stonks: Template = {
     name: "stonks",
+    displayName: "Stonks",
     topics: [Topic.Reaction],
     types: [Type.BackgroundImage, Type.TextRight],
     width: 512,

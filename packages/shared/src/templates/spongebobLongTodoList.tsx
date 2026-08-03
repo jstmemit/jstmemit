@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobLongTodoList: Template = {
     name: "spongebobLongTodoList",
+    displayName: "Spongebob long todo list",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1000,

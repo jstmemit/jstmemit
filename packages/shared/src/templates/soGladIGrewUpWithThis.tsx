@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const soGladIGrewUpWithThis: Template = {
     name: "soGladIGrewUpWithThis",
+    displayName: "So glad I grew up with this",
     topics: [Topic.Misc],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 1313,

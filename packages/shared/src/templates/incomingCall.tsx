@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const incomingCall: Template = {
     name: "incomingCall",
+    displayName: "Incoming call",
     topics: [Topic.Misc],
     types: [Type.AvatarImage, Type.TextCenter],
     width: 640,

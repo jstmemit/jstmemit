@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsLemmyThinking: Template = {
     name: "simpsonsLemmyThinking",
+    displayName: "Simpsons Lenny thinking",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom],
     width: 638,

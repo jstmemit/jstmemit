@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaAndAmiChibiAnimalEars: Template = {
     name: "toradoraTaigaAndAmiChibiAnimalEars",
+    displayName: "Toradora Taiga And Ami chibi animal ears",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground],
     width: 848,

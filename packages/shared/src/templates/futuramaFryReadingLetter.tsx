@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaFryReadingLetter: Template = {
     name: "futuramaFryReadingLetter",
+    displayName: "Futurama Fry reading letter",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 720,

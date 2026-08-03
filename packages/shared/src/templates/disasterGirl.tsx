@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const disasterGirl: Template = {
     name: "disasterGirl",
+    displayName: "Disaster girl",
     topics: [Topic.Reaction, Topic.News],
     types: [Type.TextTop, Type.FaceImage],
     width: 2042,

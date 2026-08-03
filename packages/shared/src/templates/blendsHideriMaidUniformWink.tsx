@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriMaidUniformWink: Template = {
     name: "blendsHideriMaidUniformWink",
+    displayName: "BlendS Hideri maid uniform wink",
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextBottom],
     width: 425,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const monsterKenzoTenmaBeforeAfter: Template = {
     name: "monsterKenzoTenmaBeforeAfter",
+    displayName: "Monster Kenzo Tenma before after",
     topics: [Topic.Reaction, Topic.Anime, Topic.Monster],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 736,

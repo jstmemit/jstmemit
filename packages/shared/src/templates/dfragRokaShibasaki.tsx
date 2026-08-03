@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dfragRokaShibasaki: Template = {
     name: "dfragRokaShibasaki",
+    displayName: "D-Frag Roka Shibasaki",
     topics: [Topic.Anime, Topic.DFrag],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 750,

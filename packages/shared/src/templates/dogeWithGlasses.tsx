@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dogeWithGlasses: Template = {
     name: "dogeWithGlasses",
+    displayName: "Doge with glasses",
     topics: [Topic.Animals, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1024,

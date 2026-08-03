@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const worldsMostDangerousTrap: Template = {
     name: "worldsMostDangerousTrap",
+    displayName: "YouTube Worlds most dangerous trap",
     topics: [Topic.YouTube],
     types: [Type.DefaultText, Type.BackgroundImage],
     width: 621,

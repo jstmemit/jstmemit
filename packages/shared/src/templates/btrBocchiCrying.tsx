@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiCrying: Template = {
     name: "btrBocchiCrying",
+    displayName: "BTR Bocchi crying",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextRightWithBackground, Type.Animated],
     width: 996,

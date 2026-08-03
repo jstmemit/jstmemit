@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const post: Template = {
     name: "post",
+    displayName: "Post",
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.TextName, Type.AvatarImage],
     width: 1108,

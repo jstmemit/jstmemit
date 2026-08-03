@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sdFredUnmaskingGhost: Template = {
     name: "sdFredUnmaskingGhost",
+    displayName: "Scooby-Doo Fred unmasking ghost",
     topics: [Topic.Cartoons, Topic.ScoobyDoo],
     types: [Type.FaceImage, Type.TextBottom, Type.TwoOption],
     width: 474,

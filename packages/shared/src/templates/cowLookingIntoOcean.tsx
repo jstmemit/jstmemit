@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const cowLookingIntoOcean: Template = {
     name: "cowLookingIntoOcean",
+    displayName: "Horse looking into ocean",
     topics: [Topic.Animals],
     types: [Type.TextBottom, Type.FaceImage],
     width: 403,

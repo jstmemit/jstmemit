@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const wojackPoint: Template = {
     name: "wojackPoint",
+    displayName: "Wojack point",
     topics: [Topic.Reaction],
     types: [Type.BackgroundImage, Type.TextBottom],
     width: 512,

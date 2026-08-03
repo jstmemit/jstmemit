@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const parrotBarber1: Template = {
     name: "parrotBarber1",
+    displayName: "Parrot barber 1",
     topics: [Topic.Animals],
     types: [Type.TextBottom],
     width: 658,

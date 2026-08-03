@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const connor: Template = {
     name: "connor",
+    displayName: "Connor choosing",
     topics: [Topic.Games],
     types: [Type.TextTopWithBackground, Type.FourOption, Type.TextBottom, Type.FaceImage],
     width: 960,

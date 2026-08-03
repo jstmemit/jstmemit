@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaikaPlusEyes: Template = {
     name: "blendsMaikaPlusEyes",
+    displayName: "BlendS Maika plus eyes",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 675,

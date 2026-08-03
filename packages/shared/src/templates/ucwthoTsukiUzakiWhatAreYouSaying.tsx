@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ucwthoTsukiUzakiWhatAreYouSaying: Template = {
     name: "ucwthoTsukiUzakiWhatAreYouSaying",
+    displayName: "UCWTHO Tsuki Uzaki what are you saying",
     topics: [Topic.Reaction, Topic.Anime, Topic.UzakiChanWantsToHangOut],
     types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 1283,

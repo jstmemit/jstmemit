@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const myHonestReaction: Template = {
     name: "myHonestReaction",
+    displayName: "My honest reaction",
     topics: [Topic.Reaction],
     types: [Type.DefaultText, Type.FaceImage],
     width: 900,

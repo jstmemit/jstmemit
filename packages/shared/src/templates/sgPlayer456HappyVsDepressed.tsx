@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sgPlayer456HappyVsDepressed: Template = {
     name: "sgPlayer456HappyVsDepressed",
+    displayName: "SG Player 456 happy vs depressed",
     topics: [Topic.Reaction, Topic.Movies, Topic.SquidGame],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 718,

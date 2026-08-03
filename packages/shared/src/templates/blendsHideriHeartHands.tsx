@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriHeartHands: Template = {
     name: "blendsHideriHeartHands",
+    displayName: "BlendS Hideri heart hands",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground, Type.FaceImage],
     width: 1710,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiSeriousFace: Template = {
     name: "evangelionShinjiSeriousFace",
+    displayName: "Evangelion Shinji serious face",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 1000,

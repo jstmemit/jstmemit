@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const mrMcMahonReaction: Template = {
     name: "mrMcMahonReaction",
+    displayName: "Mr McMahon reaction",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.FourOption],
     width: 1000,

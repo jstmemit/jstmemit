@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const grokTweet: Template = {
     name: "grokTweet",
+    displayName: "Grok tweet",
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.AvatarImage, Type.DefaultText],
     width: 1280,

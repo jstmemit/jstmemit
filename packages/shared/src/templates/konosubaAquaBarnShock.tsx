@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konosubaAquaBarnShock: Template = {
     name: "konosubaAquaBarnShock",
+    displayName: "Konosuba Aqua barn shock",
     topics: [Topic.Reaction, Topic.Anime, Topic.KonoSuba],
     types: [Type.TextRightWithBackground],
     width: 1470,

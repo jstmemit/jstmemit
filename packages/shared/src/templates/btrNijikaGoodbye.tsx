@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrNijikaGoodbye: Template = {
     name: "btrNijikaGoodbye",
+    displayName: "BTR Nijika goodbye",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

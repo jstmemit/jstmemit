@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tqqNinoAndMikuLookingAtYou: Template = {
     name: "tqqNinoAndMikuLookingAtYou",
+    displayName: "TQQ Nino And Miku looking at you",
     topics: [Topic.Reaction, Topic.Anime, Topic.TheQuintessentialQuintuplets],
     types: [Type.TextTopWithBackground],
     width: 640,

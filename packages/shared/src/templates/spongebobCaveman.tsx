@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobCaveman: Template = {
     name: "spongebobCaveman",
+    displayName: "Spongebob caveman",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTop],
     width: 716,

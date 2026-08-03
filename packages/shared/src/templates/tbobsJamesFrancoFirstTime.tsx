@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tbobsJamesFrancoFirstTime: Template = {
     name: "tbobsJamesFrancoFirstTime",
+    displayName: "TBOBS James Franco first time",
     topics: [Topic.Reaction, Topic.Movies, Topic.TheBalladOfBusterScruggs],
     types: [Type.DefaultText, Type.FaceImage],
     width: 1200,

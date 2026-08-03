@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const falklandWolf: Template = {
     name: "falklandWolf",
+    displayName: "Falkland wolf",
     topics: [Topic.SocialPost],
     types: [Type.AvatarImage, Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 814,

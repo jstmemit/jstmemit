@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sleepyThinking: Template = {
     name: "sleepyThinking",
+    displayName: "Sleepy thinking",
     topics: [Topic.Misc],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 885,

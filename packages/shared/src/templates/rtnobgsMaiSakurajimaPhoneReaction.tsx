@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
     name: "rtnobgsMaiSakurajimaPhoneReaction",
+    displayName: "RTNOBGS Mai Sakurajima phone reaction",
     topics: [Topic.Reaction, Topic.Anime, Topic.RascalDoesNotDreamOfBunnyGirlSenpai],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 400,

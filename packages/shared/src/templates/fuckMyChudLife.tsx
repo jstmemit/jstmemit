@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
+    displayName: "Fuck my chud life",
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 776,

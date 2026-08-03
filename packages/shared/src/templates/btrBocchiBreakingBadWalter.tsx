@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiBreakingBadWalter: Template = {
     name: "btrBocchiBreakingBadWalter",
+    displayName: "BTR Bocchi Breaking Bad Walter",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock, Topic.BreakingBad],
     types: [Type.TextTopWithBackground],
     width: 800,

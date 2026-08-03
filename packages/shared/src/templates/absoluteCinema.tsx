@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const absoluteCinema: Template = {
     name: "absoluteCinema",
+    displayName: "Absolute cinema",
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTop, Type.FaceImage, Type.DefaultText],
     width: 1230,

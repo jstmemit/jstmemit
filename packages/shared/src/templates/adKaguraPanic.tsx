@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adKaguraPanic: Template = {
     name: "adKaguraPanic",
+    displayName: "AD Kagura panic",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 540,

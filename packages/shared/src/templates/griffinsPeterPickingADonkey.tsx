@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterPickingADonkey: Template = {
     name: "griffinsPeterPickingADonkey",
+    displayName: "Griffins Peter picking a donkey",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottom, Type.FaceImage],
     width: 1355,

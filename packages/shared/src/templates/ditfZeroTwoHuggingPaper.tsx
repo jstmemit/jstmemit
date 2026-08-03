@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ditfZeroTwoHuggingPaper: Template = {
     name: "ditfZeroTwoHuggingPaper",
+    displayName: "DITF Zero Two hugging paper",
     topics: [Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 732,

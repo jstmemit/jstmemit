@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraCriticalHit: Template = {
     name: "toradoraCriticalHit",
+    displayName: "Toradora Critical hit",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.DefaultText, Type.FaceImage],
     width: 500,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const hucUmaruSunglassesSmug: Template = {
     name: "hucUmaruSunglassesSmug",
+    displayName: "HUC Umaru sunglasses smug",
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TextTopWithBackground],
     width: 596,

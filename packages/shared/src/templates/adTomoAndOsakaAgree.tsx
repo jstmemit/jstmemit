@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adTomoAndOsakaAgree: Template = {
     name: "adTomoAndOsakaAgree",
+    displayName: "AD Tomo and Osaka agree",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobBeggingVsTuxedo: Template = {
     name: "spongebobBeggingVsTuxedo",
+    displayName: "Spongebob begging vs tuxedo",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 755,

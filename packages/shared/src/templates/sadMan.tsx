@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sadMan: Template = {
     name: "sadMan",
+    displayName: "Sad man",
     topics: [Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1600,

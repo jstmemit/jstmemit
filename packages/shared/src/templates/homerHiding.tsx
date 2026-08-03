@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const homerHiding: Template = {
     name: "homerHiding",
+    displayName: "Simpsons Homer hiding",
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.TextBottom, Type.FaceImage, Type.FourOption],
     width: 600,

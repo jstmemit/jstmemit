@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const awkwardLookMonkey: Template = {
     name: "awkwardLookMonkey",
+    displayName: "Awkward look monkey",
     topics: [Topic.Reaction, Topic.Animals],
     types: [Type.TextTopWithBackground],
     width: 750,
@@ -60,3 +61,4 @@ export const awkwardLookMonkey: Template = {
         </div>
     ),
 };
+export default awkwardLookMonkey;

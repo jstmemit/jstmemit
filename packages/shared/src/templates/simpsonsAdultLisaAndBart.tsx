@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsAdultLisaAndBart: Template = {
     name: "simpsonsAdultLisaAndBart",
+    displayName: "Simpsons Adult Lisa and Bart",
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 736,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const snkNekoNekoyamadaCuteSleeves: Template = {
     name: "snkNekoNekoyamadaCuteSleeves",
+    displayName: "SNK Neko Nekoyamada cute sleeves",
     topics: [Topic.Reaction, Topic.Anime, Topic.ShikanokoNokonokoKoshitantan],
     types: [Type.TextRightWithBackground],
     width: 1472,

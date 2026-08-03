@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const crowdFromAngryToHappy: Template = {
     name: "crowdFromAngryToHappy",
+    displayName: "Crowd from angry to happy",
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TwoOption, Type.TextLeft, Type.FaceImage],
     width: 716,

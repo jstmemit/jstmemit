@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const owlStareAtYou: Template = {
     name: "owlStareAtYou",
+    displayName: "Owl stare at you",
     topics: [Topic.Animals],
     types: [Type.TextTopWithBackground],
     width: 1600,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tqqNinoNakanoHappyVsSad: Template = {
     name: "tqqNinoNakanoHappyVsSad",
+    displayName: "TQQ Nino Nakano happy vs sad",
     topics: [Topic.Reaction, Topic.Movies, Topic.TheQuintessentialQuintuplets],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 1082,

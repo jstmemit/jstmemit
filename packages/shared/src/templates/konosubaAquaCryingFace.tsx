@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konosubaAquaCryingFace: Template = {
     name: "konosubaAquaCryingFace",
+    displayName: "Konosuba Aqua crying face",
     topics: [Topic.Reaction, Topic.Anime, Topic.KonoSuba],
     types: [Type.TextTopWithBackground],
     width: 596,

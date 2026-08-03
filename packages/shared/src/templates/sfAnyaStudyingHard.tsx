@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sfAnyaStudyingHard: Template = {
     name: "sfAnyaStudyingHard",
+    displayName: "SF Anya studying hard",
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextBottomWithBackground],
     width: 447,

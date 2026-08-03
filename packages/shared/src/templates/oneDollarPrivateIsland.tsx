@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const oneDollarPrivateIsland: Template = {
     name: "oneDollarPrivateIsland",
+    displayName: "YouTube One dollar private island",
     topics: [Topic.YouTube],
     types: [Type.ObjectImage, Type.DefaultText],
     width: 621,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnDarkRoomThinking: Template = {
     name: "dnDarkRoomThinking",
+    displayName: "DN Dark room thinking",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground],
     width: 640,

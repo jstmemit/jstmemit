@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pleaseBePatient: Template = {
     name: "pleaseBePatient",
+    displayName: "Please be patient",
     topics: [Topic.Anime, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.FaceImage, Type.DefaultText],
     width: 1051,

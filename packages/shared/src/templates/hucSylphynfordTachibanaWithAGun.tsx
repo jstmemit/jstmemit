@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const hucSylphynfordTachibanaWithAGun: Template = {
     name: "hucSylphynfordTachibanaWithAGun",
+    displayName: "HUC Sylphynford Tachibana with a gun",
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 874,

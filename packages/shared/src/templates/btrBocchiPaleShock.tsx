@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiPaleShock: Template = {
     name: "btrBocchiPaleShock",
+    displayName: "BTR Bocchi pale shock",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextLeftWithBackground],
     width: 1472,

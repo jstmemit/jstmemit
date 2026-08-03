@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dandadanShockedTurboGranny: Template = {
     name: "dandadanShockedTurboGranny",
+    displayName: "Dandadan Shocked Turbo Granny cat",
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextTopWithBackground],
     width: 1200,

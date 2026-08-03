@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLTwoFaces: Template = {
     name: "dnLTwoFaces",
+    displayName: "DN L two faces",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,

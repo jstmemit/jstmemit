@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const lsWindowsXPWallpaper: Template = {
     name: "lsWindowsXPWallpaper",
+    displayName: "LS Windows XP wallpaper",
     topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
     types: [Type.TextBottom, Type.FaceImage],
     width: 1014,

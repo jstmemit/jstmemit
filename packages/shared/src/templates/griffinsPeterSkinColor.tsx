@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterSkinColor: Template = {
     name: "griffinsPeterSkinColor",
+    displayName: "Griffins Peter skin color",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.FaceImage, Type.TwoOption],
     width: 1000,

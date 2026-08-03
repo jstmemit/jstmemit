@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adHowAreYouFineThankYouMeme: Template = {
     name: "adHowAreYouFineThankYouMeme",
+    displayName: "AD How are you fine thank you meme",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 480,

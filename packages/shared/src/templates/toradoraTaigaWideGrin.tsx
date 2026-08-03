@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaWideGrin: Template = {
     name: "toradoraTaigaWideGrin",
+    displayName: "Toradora Taiga wide grin",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground],
     width: 1078,

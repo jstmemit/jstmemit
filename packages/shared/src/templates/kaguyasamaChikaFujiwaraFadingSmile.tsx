@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
     name: "kaguyasamaChikaFujiwaraFadingSmile",
+    displayName: "Kaguyasama Chika Fujiwara fading smile",
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.ThreeOption, Type.TextLeftWithBackground],
     width: 630,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiTheRockMeltdownFace: Template = {
     name: "btrBocchiTheRockMeltdownFace",
+    displayName: "BTR Bocchi the rock meltdown face",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 640,

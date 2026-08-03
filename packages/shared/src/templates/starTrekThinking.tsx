@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const starTrekThinking: Template = {
     name: "starTrekThinking",
+    displayName: "Star Trek thinking",
     topics: [Topic.StarTrek, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.TextBottomWithBackground],
     width: 1200,
