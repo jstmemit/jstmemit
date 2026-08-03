@@ -53,7 +53,7 @@ import { myHonestReaction } from "#/templates/myHonestReaction.tsx";
 import { nerdDog } from "#/templates/nerdDog.tsx";
 import { owlStareAtYou } from "#/templates/owlStareAtYou.tsx";
 import { sadMan } from "#/templates/sadMan.tsx";
-import { spiderManDouble } from "#/templates/spiderManDouble.tsx";
+import { spidermanDouble } from "#/templates/spidermanDouble.tsx";
 import { starTrekThinking } from "#/templates/starTrekThinking.tsx";
 import { tf2ScoutTalk } from "#/templates/tf2ScoutTalk.tsx";
 import { tryingToExplain } from "#/templates/tryingToExplain.tsx";
@@ -451,7 +451,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             nerdDog,
             owlStareAtYou,
             sadMan,
-            spiderManDouble,
+            spidermanDouble,
             starTrekThinking,
             tf2ScoutTalk,
             tryingToExplain,

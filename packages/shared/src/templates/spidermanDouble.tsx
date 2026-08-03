@@ -4,7 +4,7 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const spiderManDouble: Template = {
+export const spidermanDouble: Template = {
     name: "spiderManDouble",
     topics: [Topic.SpiderMan, Topic.Cartoons],
     types: [Type.TextTopWithBackground, Type.FaceImage],
