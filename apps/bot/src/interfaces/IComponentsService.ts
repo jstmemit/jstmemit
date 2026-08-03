@@ -19,6 +19,11 @@ export abstract class IComponentsService {
         dislikes: number,
         channelId: string,
     ): ContainerBuilder;
+    public abstract getMilestoneButtonsComponent(
+        language: Locale,
+        likes: number,
+        dislikes: number,
+    ): ActionRowBuilder<ButtonBuilder>;
     public abstract getMissingBotPermissionsMessageComponent(
         language: Locale,
         permissions: RequiredBotPermissions,

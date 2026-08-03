@@ -148,10 +148,55 @@ export class ComponentsService implements IComponentsService {
                 new TextDisplayBuilder().setContent(`# 🎉 Yay! ${count} memes in **<#${channelId}>**!`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`**Total likes:** ${likes} 👍\n**Total dislikes${dislikes}:** 👎`),
+                new TextDisplayBuilder().setContent(
+                    `None of this would exist if you talked about normal things.\nBelow are some stats about how you reacted to them.`,
+                ),
             )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Next goal: ${count}/${count * 2} memes`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+    }
+
+    /**
+     * Returns back a row of channel stats buttons for
+     * milestone messages
+     *
+     * @param language
+     * @param likes
+     * @param dislikes
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMilestoneButtonsComponent(
+        language: Locale,
+        likes: number,
+        dislikes: number,
+    ): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`Likes placed: ${likes} 👍`)
+                    .setCustomId(`total-likes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`Dislikes placed: ${dislikes} 👎`)
+                    .setCustomId(`total-dislikes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`Templates used: 99 🖼️`)
+                    .setCustomId(`total-templates`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`Voices used: 2 🔊`)
+                    .setCustomId(`total-voices`),
+            );
     }
 
     /**
