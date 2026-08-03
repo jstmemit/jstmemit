@@ -17,6 +17,7 @@ import {
     Locale,
     MessageFlags,
     type TextBasedChannel,
+    type ApplicationCommandOptionChoiceData,
 } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
@@ -38,6 +39,8 @@ import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
+import ms from "ms";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -49,6 +52,7 @@ export class MemesController implements IMemesController {
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -60,6 +64,7 @@ export class MemesController implements IMemesController {
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
+        cacheService: ICacheService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -70,6 +75,7 @@ export class MemesController implements IMemesController {
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -435,22 +441,38 @@ export class MemesController implements IMemesController {
     }
 
     /**
-     * Searches for templates with a given text in their name
+     * Searches for templates with a given text in their name, displayName, topics
      * and sends them back to autocomplete
      *
      * @param interaction
      *
-     * @author Kyrylo Maliuha
+     * @author Kyrylo Maliuha & Oleksii Sych
      */
     public async handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void> {
+        const focused: string = interaction.options.getFocused().toLowerCase();
         const templates: Template[] = this._templatesRepository.getAll();
 
-        const focused: string = interaction.options.getFocused().toLowerCase();
+        const matches: ApplicationCommandOptionChoiceData[] = await this._cacheService.getOrSet(
+            `custom:${focused}`,
+            () => {
+                return templates
+                    .filter((template: Template): boolean => {
+                        const matchesName: boolean = template.name.toLowerCase().includes(focused);
+                        const matchesDisplayName: boolean = template.displayName.toLowerCase().includes(focused);
+                        const matchesTopics: boolean = template.topics.some((topic: string) =>
+                            topic.toLowerCase().includes(focused),
+                        );
 
-        const matches = templates
-            .filter((template: Template): boolean => template.name.toLowerCase().includes(focused))
-            .slice(0, 25)
-            .map((template: Template) => ({ name: template.name, value: template.name }));
+                        return Boolean(matchesName || matchesDisplayName || matchesTopics);
+                    })
+                    .slice(0, 25)
+                    .map((template: Template) => ({ name: template.displayName, value: template.name }))
+                    .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
+                        a.name.localeCompare(b.name),
+                    );
+            },
+            ms("1h"),
+        );
 
         await interaction.respond(matches);
     }
