@@ -101,6 +101,18 @@ export class MemesService implements IMemesService {
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
+        const parent: { depth: number; createdAt: number } | undefined = data.parentGenerationId
+            ? await this._cacheService.get(`chain:${data.parentGenerationId}`)
+            : undefined;
+
+        const regenerateDepth: number = data.parentGenerationId ? (parent?.depth ?? 0) + 1 : 0;
+
+        await this._cacheService.set(
+            `chain:${generationId}`,
+            { depth: regenerateDepth, createdAt: Date.now() },
+            ms("1h"),
+        );
+
         const renderTime: number = performance.now();
 
         analytics.capture({
@@ -131,13 +143,21 @@ export class MemesService implements IMemesService {
                 imageSlots: template.images?.length ?? 0,
                 textsFilled: props.texts.length,
                 imagesFilled: props.images.length,
-                pickedByBandit: !templateName,
 
                 trigger: data.trigger,
+                parentGenerationId: data.parentGenerationId,
+                regenerateDepth: regenerateDepth,
+                msSincePreviousGeneration: parent ? Date.now() - parent.createdAt : undefined,
+
                 topics: template.topics,
                 types: template.types,
+                pickedByBandit: !templateName,
                 selectedTopic: template?.selectedTopic,
                 selectedType: template?.selectedType,
+                banditPosteriorSource: template?.banditPosteriorSource,
+                banditCandidateCount: template?.banditCandidateCount,
+                banditScore: template?.banditScore,
+                banditPosteriorMean: template?.banditPosteriorMean,
             },
         });
 

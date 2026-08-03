@@ -4,6 +4,7 @@ import type { TemplateImage } from "./TemplateImage.ts";
 import type { TemplateProps } from "./TemplateProps.ts";
 import type { TemplateTopic } from "./TemplateTopic.ts";
 import type { TemplateType } from "./TemplateType.ts";
+import type { PosteriorSource } from "#/models/PosteriorSource.ts";
 
 export interface Template {
     name: string;
@@ -19,4 +20,8 @@ export interface Template {
     texts?: TemplateText[];
     selectedTopic?: TemplateTopic;
     selectedType?: TemplateType;
+    banditScore?: number;
+    banditPosteriorMean?: number;
+    banditCandidateCount?: number;
+    banditPosteriorSource?: PosteriorSource;
 }

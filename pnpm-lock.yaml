@@ -484,10 +484,16 @@ importers:
       bullmq:
         specifier: ^5.80.8
         version: 5.80.8(supports-color@7.2.0)
+      lodash:
+        specifier: ^4.18.1
+        version: 4.18.1
       ms:
         specifier: ^2.1.3
         version: 2.1.3
     devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.24
+        version: 4.17.24
       '@types/ms':
         specifier: ^2.1.0
         version: 2.1.0

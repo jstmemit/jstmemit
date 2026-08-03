@@ -17,9 +17,13 @@ export abstract class IComponentsService {
         permissions: RequiredBotPermissions,
     ): ContainerBuilder;
     public abstract getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder;
-    public abstract getHelpExplainMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpRightClickMessageComponent(language: Locale): ContainerBuilder;
     public abstract getHelpFaqMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getHelpVoiceMessageComponent(language: Locale): ContainerBuilder;
     public abstract getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder;
+    public abstract getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
+    public abstract getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,

@@ -194,6 +194,9 @@ export class EventsController implements IEventsController {
                             "pfTwoGangsterWithGuns",
                         );
                         return;
+                    case "Generate a voice message":
+                        await this._voiceController.handleNarrateTextInteraction(interaction);
+                        return;
                 }
                 return;
             }
@@ -260,6 +263,9 @@ export class EventsController implements IEventsController {
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
                         return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
+                        return;
                     case "voice":
                         await this._voiceController.handleNarrateTextInteraction(interaction);
                         return;
@@ -293,6 +299,12 @@ export class EventsController implements IEventsController {
                     case "like":
                     case "dislike":
                         await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
+                        return;
+                    case "faq":
+                        await this._helpController.handleFaqInteraction(interaction);
+                        return;
+                    case "help":
+                        await this._helpController.handleHelpInteraction(interaction);
                         return;
                 }
 
