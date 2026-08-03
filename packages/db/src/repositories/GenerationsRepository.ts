@@ -1,7 +1,7 @@
 import { generationsTable } from "../schema.ts";
 import { db } from "../index.ts";
 import type { IGenerationsRepository } from "../interfaces/IGenerationsRepository.ts";
-import { eq } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 
 export class GenerationsRepository implements IGenerationsRepository {
     public async add(channelId: string, templateName: string, date: Date): Promise<number> {
@@ -35,6 +35,22 @@ export class GenerationsRepository implements IGenerationsRepository {
             console.error(error);
 
             return undefined;
+        }
+    }
+
+    public async getCountPerChannel(channelId: string): Promise<number> {
+        try {
+            const generations = await db
+                .select({ count: count() })
+                .from(generationsTable)
+                .where(eq(generationsTable.channelId, channelId))
+                .limit(1);
+
+            return generations[0]?.count as number;
+        } catch (error) {
+            console.error(error);
+
+            return 0;
         }
     }
 }
