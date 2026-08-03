@@ -54,9 +54,9 @@ export const locale: Partial<TranslationString> = {
         "deleteData.button.cancel": "Cancel",
         "deleteData.button.delete": "Delete all data",
 
-        "settings.about.heading": "❓ About this bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hey, I'm Jstmemit",
         "settings.about.body":
-            "A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that.",
+            "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 300+ templates ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Enable Jstmemit below to start!",
         "settings.button.disable": "Disable",
         "settings.button.enable": "Enable",
@@ -107,15 +107,19 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Just talk and it will make memes",
-        "help.autoMemes.tldr": "**It basically puts your images, GIFs and messages on meme templates**",
+        "help.about.heading": `<:jstmemit:1533562196980797462> Hey, I'm Jstmemit`,
+        "help.about.commands.user":
+            "### 👤 Anywhere on Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  But how exactly does that work?",
         "help.autoMemes.description":
-            "Chat like you normally would. Once every few dozen messages Jstmemit picks a meme template, takes some images/gifs/messages from this channel and mixes it all together. You don’t have to pick a template, write captions, worry about image formats.",
-        "help.autoMemes.algorithm":
-            "Oh, and each generated meme has **`👍 Like`**, **`🔁 Regenerate`** and **`👎 Dislike`** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+            "Once every few dozen messages it picks a meme template, takes a few images/gifs/messages and mixes it all together into a meme.\n\nEach generated meme has **:thumbsup: Like**, **:repeat: Regenerate** and** :thumbsdown: Dislike** buttons that improve the quality of future memes by helping the bot to understand what was funny.",
+        "help.rightClick.heading": "## 🖱 Turn anything into a meme",
+        "help.rightClick.description":
+            'With it you can also remake any existing (even voice!) message into a quote, a fake news report or a Grok tweet. Or put someone\'s profile picture into a "MrBeast style" YouTube thumbnail.\n\nOpen the Apps menu after a right-click or long-press on mobile, choose Jstmemit and select the meme you want to get.',
+        "help.voice.heading": "## 🔊  Make voice messages",
+        "help.voice.description":
+            "Use `/voice` to narrate your text using one of 23 different voices. Perfect for making soundboard phrases or simply narrating funny messages.",
         "help.faq.heading": "## ❓ Frequently asked questions",
         "help.faq.description":
             "Can't find an answer to your question? We can help you in the [Support server](https://discord.gg/THRnn8fhkZ)",
@@ -140,6 +144,8 @@ export const locale: Partial<TranslationString> = {
         "help.faq.whatIfIWantToMakeACustomMeme.answer":
             "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
         "help.button.addJstmemit": "🔗 Add Jstmemit",
+        "help.button.faq": "❓ Frequently asked questions",
+        "help.button.features": "✨ Features list",
         "help.button.website": "🌐 Website",
     },
 
@@ -195,9 +201,9 @@ export const locale: Partial<TranslationString> = {
         "deleteData.button.cancel": "Отмена",
         "deleteData.button.delete": "Удалить все данные",
 
-        "settings.about.heading": "❓ Об этом боте",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Хэй, я Jstmemit",
         "settings.about.body":
-            "Jstmemit это бот который генерирует мемы на основе сообщений и картинок в чате. Обсуждаете рейд чей-то базы в расте? Бот сделает про это мемы.",
+            "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 300+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Включите Jstmemit чтобы начать!",
         "settings.button.disable": "Выключить",
         "settings.button.enable": "Включить",
@@ -247,15 +253,20 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Сообщите о баге, предложите идею или просто напишите что думаете",
         "modal.feedback.placeholder": "Привет, добавьте пожалуйста шаблон мема ...",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Просто общайтесь, а он будет делать мемы",
-        "help.autoMemes.tldr": "**По сути он ставит ваши картинки, GIF и сообщения на шаблоны мемов**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Хэй, я Jstmemit",
+        "help.about.commands.user": "### 👤 Везде в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  А как это вообще работает?",
         "help.autoMemes.description":
-            "Общайтесь как обычно. Раз в несколько десятков сообщений Jstmemit выбирает шаблон мема, берёт картинки/гифки/сообщения из этого канала и смешивает всё вместе. Вам не нужно выбирать шаблон, писать подписи или думать о форматах картинок.",
-        "help.autoMemes.algorithm":
-            "И да, у каждого сгенерированного мема есть кнопки **`👍 Нравится`**, **`🔁 Заново`** и **`👎 Не нравится`**. Они улучшают качество будущих мемов, помогая боту понять, что было смешно.",
+            "Раз в несколько десятков сообщений он выбирает шаблон мема, берёт несколько картинок/гифок/сообщений и смешивает всё это в мем.\n\nУ каждого сгенерированного мема есть кнопки **:thumbsup: Нравится**, **:repeat: Заново** и **:thumbsdown: Не нравится**, которые улучшают качество будущих мемов, помогая боту понять, что было смешно.",
+        "help.rightClick.heading": "## 🖱 Превратить что угодно в мем",
+        "help.rightClick.description":
+            "С ним ещё можно переделать любое существующее (даже голосовое!) сообщение в цитату, срочные новости или твит от Grok. Или поставить чью-то аватарку на превью YouTube в стиле MrBeast.\n\nОткройте меню «Приложения» правым кликом или долгим нажатием на телефоне, выберите Jstmemit и нужный мем.",
+        "help.voice.heading": "## 🔊  Голосовые сообщения",
+        "help.voice.description":
+            "Используйте `/voice`, чтобы озвучить свой текст одним из 23 разных голосов. Отлично подходит для фразочек в саундборд или просто озвучки смешных сообщений.",
+        "help.button.faq": "❓ Частые вопросы",
+        "help.button.features": "✨ Список возможностей",
         "help.faq.heading": "## ❓ Частые вопросы",
         "help.faq.description":
             "Не нашли ответ на свой вопрос? Мы поможем вам на [сервере поддержки](https://discord.gg/THRnn8fhkZ)",
@@ -381,15 +392,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Повідомте про баг, запропонуйте ідею або просто напишіть, що думаєте",
         "modal.feedback.placeholder": "Привіт, додайте будь ласка шаблон мема ...",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Просто спілкуйтесь, а він робитиме меми",
-        "help.autoMemes.tldr": "**По суті він ставить ваші картинки, GIF та повідомлення на шаблони мемів**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Хей, я Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Будь-де в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 На серверах із ботом: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  А як це взагалі працює?",
         "help.autoMemes.description":
-            "Спілкуйтесь як зазвичай. Раз на кілька десятків повідомлень Jstmemit обирає шаблон мема, бере картинки/гіфки/повідомлення з цього каналу та змішує все разом. Вам не треба обирати шаблон, писати підписи чи думати про формати картинок.",
-        "help.autoMemes.algorithm":
-            "І так, у кожного згенерованого мема є кнопки **`👍 Подобається`**, **`🔁 Заново`** та **`👎 Не подобається`**. Вони покращують якість майбутніх мемів, допомагаючи боту зрозуміти, що було смішно.",
+            "Раз на кілька десятків повідомлень він обирає шаблон мема, бере кілька картинок/гіфок/повідомлень і змішує все це в мем.\n\nУ кожного згенерованого мема є кнопки **:thumbsup: Подобається**, **:repeat: Заново** та **:thumbsdown: Не подобається**, які покращують якість майбутніх мемів, допомагаючи боту зрозуміти, що було смішно.",
+        "help.rightClick.heading": "## 🖱 Перетворити будь-що на мем",
+        "help.rightClick.description":
+            "З ним ще можна переробити будь-яке наявне (навіть голосове!) повідомлення на цитату, гарячі новини чи твіт від Grok. Або поставити чиюсь аватарку на прев'ю YouTube у стилі MrBeast.\n\nВідкрийте меню «Застосунки» правим кліком або довгим натисканням на телефоні, оберіть Jstmemit і потрібний мем.",
+        "help.voice.heading": "## 🔊  Голосові повідомлення",
+        "help.voice.description":
+            "Використовуйте `/voice`, щоб озвучити свій текст одним із 23 різних голосів. Чудово підходить для фразочок у саундборд або просто озвучки смішних повідомлень.",
+        "help.button.faq": "❓ Часті питання",
+        "help.button.features": "✨ Список можливостей",
         "help.faq.heading": "## ❓ Часті питання",
         "help.faq.description":
             "Не знайшли відповідь на своє питання? Ми допоможемо вам на [сервері підтримки](https://discord.gg/THRnn8fhkZ)",
@@ -466,9 +483,9 @@ export const locale: Partial<TranslationString> = {
             "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd. De bot staat nog aan en begint opnieuw te leren van nieuwe berichten. Zet hem uit met `/enable` als je hem niet meer wilt gebruiken.",
         "deleteData.button.cancel": "Annuleren",
         "deleteData.button.delete": "Alle data verwijderen",
-        "settings.about.heading": "❓ Over deze bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hey, ik ben Jstmemit",
         "settings.about.body":
-            "Jstmemit is een bot die memes maakt op basis van berichten en afbeeldingen in de chat. Praten jullie over een raid op iemands base in Rust? Dan maakt de bot daar memes over.",
+            "De bot die memes maakt van jullie chat. Praat waar je maar over wilt en...\nhij plakt het op een van zijn 300+ meme templates en pest je ermee ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Schakel Jstmemit in om te beginnen!",
         "settings.button.disable": "Uitschakelen",
         "settings.button.enable": "Inschakelen",
@@ -518,15 +535,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Meld een bug, stel een feature voor of laat weten wat je vindt",
         "modal.feedback.placeholder": "Hoi, kunnen jullie het ... meme template toevoegen?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Gewoon kletsen en hij maakt memes",
-        "help.autoMemes.tldr": "**Hij plakt eigenlijk je afbeeldingen, GIF's en berichten op meme templates**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Hey, ik ben Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Overal op Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 In servers met de bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Maar hoe werkt dat precies?",
         "help.autoMemes.description":
-            "Chat zoals je normaal doet. Eens per paar dozijn berichten kiest Jstmemit een meme template, pakt wat afbeeldingen/gifs/berichten uit dit kanaal en gooit alles door elkaar. Je hoeft geen template te kiezen, geen teksten te schrijven en je niet druk te maken om bestandsformaten.",
-        "help.autoMemes.algorithm":
-            "O ja, elke gegenereerde meme heeft **`👍 Like`**, **`🔁 Opnieuw`** en **`👎 Dislike`** knoppen die de kwaliteit van toekomstige memes verbeteren door de bot te laten snappen wat grappig was.",
+            "Eens per paar dozijn berichten kiest hij een meme template, pakt een paar afbeeldingen/gifs/berichten en gooit alles samen tot een meme.\n\nElke gegenereerde meme heeft **:thumbsup: Like**, **:repeat: Opnieuw** en **:thumbsdown: Dislike** knoppen die de kwaliteit van toekomstige memes verbeteren door de bot te laten snappen wat grappig was.",
+        "help.rightClick.heading": "## 🖱 Maak van alles een meme",
+        "help.rightClick.description":
+            'Je kunt er ook elk bestaand bericht (zelfs een spraakbericht!) mee omtoveren tot een quote, breaking news of een Grok tweet. Of iemands profielfoto in een YouTube thumbnail in "MrBeast stijl" plakken.\n\nOpen het Apps menu na een rechtsklik of lang indrukken op mobiel, kies Jstmemit en selecteer de meme die je wilt.',
+        "help.voice.heading": "## 🔊  Spraakberichten maken",
+        "help.voice.description":
+            "Gebruik `/voice` om je tekst te laten voorlezen door een van de 23 verschillende stemmen. Perfect voor soundboard kreten of gewoon om grappige berichten voor te lezen.",
+        "help.button.faq": "❓ Veelgestelde vragen",
+        "help.button.features": "✨ Lijst met features",
         "help.faq.heading": "## ❓ Veelgestelde vragen",
         "help.faq.description":
             "Kun je het antwoord op je vraag niet vinden? We helpen je graag in de [Support server](https://discord.gg/THRnn8fhkZ)",
@@ -602,9 +625,9 @@ export const locale: Partial<TranslationString> = {
             "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés. Le bot est toujours actif et recommencera à apprendre avec les nouveaux messages. Désactivez-le avec `/enable` si vous ne voulez plus l'utiliser.",
         "deleteData.button.cancel": "Annuler",
         "deleteData.button.delete": "Supprimer toutes les données",
-        "settings.about.heading": "❓ À propos de ce bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hey, moi c'est Jstmemit",
         "settings.about.body":
-            "Jstmemit est un bot qui génère des mèmes à partir des messages et images du chat. Vous parlez d'un raid sur la base de quelqu'un dans Rust ? Le bot en fera des mèmes.",
+            "Le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et...\nil en fera un mème sur un de ses 300+ modèles pour se moquer de vous ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Activez Jstmemit pour commencer !",
         "settings.button.disable": "Désactiver",
         "settings.button.enable": "Activer",
@@ -655,15 +678,22 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Signalez un bug, proposez une fonctionnalité ou donnez votre avis",
         "modal.feedback.placeholder": "Bonjour, pourriez-vous ajouter le modèle de mème ... ?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Discutez, il s'occupe des mèmes",
-        "help.autoMemes.tldr": "**En gros, il colle vos images, GIF et messages sur des modèles de mèmes**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Hey, moi c'est Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Partout sur Discord : **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild":
+            "### 🏠 Sur les serveurs avec le bot : **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Mais comment ça marche exactement ?",
         "help.autoMemes.description":
-            "Discutez comme d'habitude. Toutes les quelques dizaines de messages, Jstmemit choisit un modèle de mème, prend des images/gifs/messages de ce salon et mélange le tout. Pas besoin de choisir un modèle, d'écrire des légendes ou de vous soucier des formats d'image.",
-        "help.autoMemes.algorithm":
-            "Ah, et chaque mème généré a des boutons **`👍 J'aime`**, **`🔁 Regénérer`** et **`👎 Je n'aime pas`** qui améliorent la qualité des futurs mèmes en aidant le bot à comprendre ce qui était drôle.",
+            "Toutes les quelques dizaines de messages, il choisit un modèle de mème, prend quelques images/gifs/messages et mélange le tout en un mème.\n\nChaque mème généré a des boutons **:thumbsup: J'aime**, **:repeat: Regénérer** et **:thumbsdown: Je n'aime pas** qui améliorent la qualité des futurs mèmes en aidant le bot à comprendre ce qui était drôle.",
+        "help.rightClick.heading": "## 🖱 Transformez n'importe quoi en mème",
+        "help.rightClick.description":
+            "Vous pouvez aussi transformer n'importe quel message existant (même vocal !) en citation, en flash info ou en tweet de Grok. Ou mettre la photo de profil de quelqu'un dans une miniature YouTube « style MrBeast ».\n\nOuvrez le menu Applications après un clic droit ou un appui long sur mobile, choisissez Jstmemit et sélectionnez le mème que vous voulez.",
+        "help.voice.heading": "## 🔊  Créer des messages vocaux",
+        "help.voice.description":
+            "Utilisez `/voice` pour faire lire votre texte par une des 23 voix disponibles. Parfait pour des répliques de soundboard ou simplement pour lire des messages drôles.",
+        "help.button.faq": "❓ Questions fréquentes",
+        "help.button.features": "✨ Liste des fonctionnalités",
         "help.faq.heading": "## ❓ Questions fréquentes",
         "help.faq.description":
             "Vous ne trouvez pas la réponse à votre question ? On peut vous aider sur le [serveur de support](https://discord.gg/THRnn8fhkZ)",
@@ -741,9 +771,9 @@ export const locale: Partial<TranslationString> = {
             "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht. Der Bot ist noch an und beginnt, aus neuen Nachrichten neu zu lernen. Schalte ihn mit `/enable` aus, wenn du ihn nicht mehr nutzen möchtest.",
         "deleteData.button.cancel": "Abbrechen",
         "deleteData.button.delete": "Alle Daten löschen",
-        "settings.about.heading": "❓ Über diesen Bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hey, ich bin Jstmemit",
         "settings.about.body":
-            "Jstmemit ist ein Bot, der Memes basierend auf Nachrichten und Bildern im Chat erstellt. Ihr redet über einen Raid auf jemandes Base in Rust? Der Bot macht Memes darüber.",
+            "Der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und...\ner macht daraus ein Meme auf einer von 300+ Vorlagen und zieht euch damit auf ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Aktiviere Jstmemit, um loszulegen!",
         "settings.button.disable": "Deaktivieren",
         "settings.button.enable": "Aktivieren",
@@ -792,15 +822,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Melde einen Bug, schlag ein Feature vor oder sag uns deine Meinung",
         "modal.feedback.placeholder": "Hallo, könnt ihr bitte die Meme-Vorlage ... hinzufügen?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Einfach quatschen, er macht die Memes",
-        "help.autoMemes.tldr": "**Im Grunde packt er eure Bilder, GIFs und Nachrichten auf Meme-Vorlagen**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Hey, ich bin Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Überall auf Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Auf Servern mit dem Bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Aber wie funktioniert das genau?",
         "help.autoMemes.description":
-            "Chattet einfach wie immer. Alle paar Dutzend Nachrichten sucht Jstmemit eine Meme-Vorlage aus, nimmt ein paar Bilder/GIFs/Nachrichten aus diesem Kanal und mischt alles zusammen. Ihr müsst keine Vorlage aussuchen, keine Texte schreiben und euch nicht um Bildformate kümmern.",
-        "help.autoMemes.algorithm":
-            "Ach ja, jedes generierte Meme hat **`👍 Gefällt mir`**, **`🔁 Nochmal`** und **`👎 Gefällt mir nicht`** Buttons, die die Qualität zukünftiger Memes verbessern, weil der Bot dadurch versteht, was lustig war.",
+            "Alle paar Dutzend Nachrichten sucht er eine Meme-Vorlage aus, nimmt ein paar Bilder/GIFs/Nachrichten und mischt alles zu einem Meme zusammen.\n\nJedes generierte Meme hat **:thumbsup: Gefällt mir**, **:repeat: Nochmal** und **:thumbsdown: Gefällt mir nicht** Buttons, die die Qualität zukünftiger Memes verbessern, weil der Bot dadurch versteht, was lustig war.",
+        "help.rightClick.heading": "## 🖱 Mach aus allem ein Meme",
+        "help.rightClick.description":
+            'Damit kannst du auch jede vorhandene Nachricht (sogar Sprachnachrichten!) in ein Zitat, eine Eilmeldung oder einen Grok-Tweet verwandeln. Oder jemandes Profilbild in ein YouTube-Thumbnail im "MrBeast-Stil" packen.\n\nÖffne das Apps-Menü per Rechtsklick oder langem Drücken auf dem Handy, wähl Jstmemit und dann das Meme, das du haben willst.',
+        "help.voice.heading": "## 🔊  Sprachnachrichten erstellen",
+        "help.voice.description":
+            "Nutze `/voice`, um deinen Text von einer der 23 verschiedenen Stimmen vorlesen zu lassen. Perfekt für Soundboard-Sprüche oder einfach, um lustige Nachrichten vorzulesen.",
+        "help.button.faq": "❓ Häufige Fragen",
+        "help.button.features": "✨ Funktionsübersicht",
         "help.faq.heading": "## ❓ Häufige Fragen",
         "help.faq.description":
             "Keine Antwort auf deine Frage gefunden? Wir helfen dir auf dem [Support-Server](https://discord.gg/THRnn8fhkZ)",
@@ -875,9 +911,9 @@ export const locale: Partial<TranslationString> = {
             "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte. Bot jest nadal włączony i zacznie uczyć się od nowa z nowych wiadomości. Wyłącz go przez `/enable`, jeśli nie chcesz już z niego korzystać.",
         "deleteData.button.cancel": "Anuluj",
         "deleteData.button.delete": "Usuń wszystkie dane",
-        "settings.about.heading": "❓ O tym bocie",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hej, jestem Jstmemit",
         "settings.about.body":
-            "Jstmemit to bot, który generuje memy na podstawie wiadomości i obrazków na czacie. Rozmawiacie o raidzie czyjejś bazy w Ruście? Bot zrobi o tym memy.",
+            "Bot, który robi memy z waszego czatu. Gadajcie o czym chcecie, a on...\nwrzuci to na jeden z 300+ szablonów i zrobi sobie z was jaja ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Włącz Jstmemit, żeby zacząć!",
         "settings.button.disable": "Wyłącz",
         "settings.button.enable": "Włącz",
@@ -926,15 +962,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Zgłoś błąd, zaproponuj funkcję lub podziel się opinią",
         "modal.feedback.placeholder": "Cześć, moglibyście dodać szablon mema ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Po prostu gadajcie, a on zrobi memy",
-        "help.autoMemes.tldr": "**W skrócie: wkleja wasze obrazki, GIF-y i wiadomości na szablony memów**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Hej, jestem Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Wszędzie na Discordzie: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Na serwerach z botem: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Ale jak to właściwie działa?",
         "help.autoMemes.description":
-            "Piszcie tak jak zawsze. Raz na kilkadziesiąt wiadomości Jstmemit wybiera szablon mema, bierze trochę obrazków/gifów/wiadomości z tego kanału i miesza wszystko razem. Nie musisz wybierać szablonu, pisać podpisów ani martwić się o formaty obrazków.",
-        "help.autoMemes.algorithm":
-            "A, i każdy wygenerowany mem ma przyciski **`👍 Lubię to`**, **`🔁 Jeszcze raz`** i **`👎 Nie lubię`**, które poprawiają jakość przyszłych memów, pomagając botowi zrozumieć, co było śmieszne.",
+            "Raz na kilkadziesiąt wiadomości wybiera szablon mema, bierze kilka obrazków/gifów/wiadomości i miesza to wszystko w mema.\n\nKażdy wygenerowany mem ma przyciski **:thumbsup: Lubię to**, **:repeat: Jeszcze raz** i **:thumbsdown: Nie lubię**, które poprawiają jakość przyszłych memów, pomagając botowi zrozumieć, co było śmieszne.",
+        "help.rightClick.heading": "## 🖱 Zrób mema z czegokolwiek",
+        "help.rightClick.description":
+            "Możesz nim też przerobić dowolną istniejącą wiadomość (nawet głosową!) na cytat, pilne wiadomości albo tweeta Groka. Albo wstawić czyjeś zdjęcie profilowe na miniaturę YouTube „w stylu MrBeasta”.\n\nOtwórz menu Aplikacje prawym kliknięciem lub długim przytrzymaniem na telefonie, wybierz Jstmemit i mema, który cię interesuje.",
+        "help.voice.heading": "## 🔊  Twórz wiadomości głosowe",
+        "help.voice.description":
+            "Użyj `/voice`, żeby przeczytać swój tekst jednym z 23 różnych głosów. Świetne do tekstów na soundboard albo po prostu do czytania śmiesznych wiadomości.",
+        "help.button.faq": "❓ Częste pytania",
+        "help.button.features": "✨ Lista funkcji",
         "help.faq.heading": "## ❓ Częste pytania",
         "help.faq.description":
             "Nie możesz znaleźć odpowiedzi na swoje pytanie? Pomożemy ci na [serwerze supportu](https://discord.gg/THRnn8fhkZ)",
@@ -1011,9 +1053,9 @@ export const locale: Partial<TranslationString> = {
             "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
         "deleteData.button.cancel": "Cancelar",
         "deleteData.button.delete": "Borrar todos los datos",
-        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
         "settings.about.body":
-            "Jstmemit es un bot que genera memes basados en los mensajes e imágenes del chat. ¿Estáis hablando de un raid a la base de alguien en Rust? El bot hará memes sobre eso.",
+            "El bot que hace memes de vuestro chat. Hablad de lo que queráis y...\nlo convertirá en un meme con una de sus 300+ plantillas para reírse de vosotros ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "¡Activa Jstmemit para empezar!",
         "settings.button.disable": "Desactivar",
         "settings.button.enable": "Activar",
@@ -1063,15 +1105,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Informa de un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podríais añadir la plantilla de meme ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Vosotros habláis y él hace los memes",
-        "help.autoMemes.tldr": "**Básicamente pone vuestras imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
+        "help.about.commands.user":
+            "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Pero ¿cómo funciona exactamente?",
         "help.autoMemes.description":
-            "Chatead como siempre. Una vez cada varias docenas de mensajes, Jstmemit elige una plantilla de meme, coge imágenes/gifs/mensajes de este canal y lo mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
-        "help.autoMemes.algorithm":
-            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué tuvo gracia.",
+            "Una vez cada varias docenas de mensajes elige una plantilla de meme, coge un par de imágenes/gifs/mensajes y lo mezcla todo en un meme.\n\nCada meme generado tiene botones de **:thumbsup: Me gusta**, **:repeat: Regenerar** y **:thumbsdown: No me gusta** que mejoran la calidad de los memes futuros ayudando al bot a entender qué tuvo gracia.",
+        "help.rightClick.heading": "## 🖱 Convierte cualquier cosa en un meme",
+        "help.rightClick.description":
+            "Con él también puedes convertir cualquier mensaje ya enviado (¡incluso de voz!) en una cita, una noticia urgente o un tweet de Grok. O poner la foto de perfil de alguien en una miniatura de YouTube «estilo MrBeast».\n\nAbre el menú Aplicaciones con clic derecho o pulsación larga en el móvil, elige Jstmemit y selecciona el meme que quieras.",
+        "help.voice.heading": "## 🔊  Crea mensajes de voz",
+        "help.voice.description":
+            "Usa `/voice` para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
+        "help.button.faq": "❓ Preguntas frecuentes",
+        "help.button.features": "✨ Lista de funciones",
         "help.faq.heading": "## ❓ Preguntas frecuentes",
         "help.faq.description":
             "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
@@ -1148,9 +1196,9 @@ export const locale: Partial<TranslationString> = {
             "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
         "deleteData.button.cancel": "Cancelar",
         "deleteData.button.delete": "Borrar todos los datos",
-        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
         "settings.about.body":
-            "Jstmemit es un bot que genera memes basados en los mensajes e imágenes del chat. ¿Están hablando de un raid a la base de alguien en Rust? El bot hará memes sobre eso.",
+            "El bot que hace memes de su chat. Hablen de lo que quieran y...\nlo va a convertir en un meme con una de sus 300+ plantillas para burlarse de ustedes ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "¡Activa Jstmemit para empezar!",
         "settings.button.disable": "Desactivar",
         "settings.button.enable": "Activar",
@@ -1200,15 +1248,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Reporta un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podrían agregar la plantilla de meme ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Ustedes hablan y él hace los memes",
-        "help.autoMemes.tldr": "**Básicamente pone sus imágenes, GIFs y mensajes en plantillas de memes**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
+        "help.about.commands.user":
+            "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Pero ¿cómo funciona exactamente?",
         "help.autoMemes.description":
-            "Chateen como siempre. Una vez cada varias decenas de mensajes, Jstmemit elige una plantilla de meme, toma imágenes/gifs/mensajes de este canal y mezcla todo. No hace falta elegir plantilla, escribir textos ni preocuparse por los formatos de imagen.",
-        "help.autoMemes.algorithm":
-            "Ah, y cada meme generado tiene botones de **`👍 Me gusta`**, **`🔁 Regenerar`** y **`👎 No me gusta`** que mejoran la calidad de los memes futuros ayudando al bot a entender qué fue gracioso.",
+            "Una vez cada varias decenas de mensajes elige una plantilla de meme, toma un par de imágenes/gifs/mensajes y mezcla todo en un meme.\n\nCada meme generado tiene botones de **:thumbsup: Me gusta**, **:repeat: Regenerar** y **:thumbsdown: No me gusta** que mejoran la calidad de los memes futuros ayudando al bot a entender qué fue gracioso.",
+        "help.rightClick.heading": "## 🖱 Convierte cualquier cosa en un meme",
+        "help.rightClick.description":
+            "Con él también puedes convertir cualquier mensaje ya enviado (¡incluso de voz!) en una cita, una noticia urgente o un tweet de Grok. O poner la foto de perfil de alguien en una miniatura de YouTube «estilo MrBeast».\n\nAbre el menú Aplicaciones con clic derecho o dejando presionado en el celular, elige Jstmemit y selecciona el meme que quieras.",
+        "help.voice.heading": "## 🔊  Crea mensajes de voz",
+        "help.voice.description":
+            "Usa `/voice` para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
+        "help.button.faq": "❓ Preguntas frecuentes",
+        "help.button.features": "✨ Lista de funciones",
         "help.faq.heading": "## ❓ Preguntas frecuentes",
         "help.faq.description":
             "¿No encuentras respuesta a tu pregunta? Podemos ayudarte en el [servidor de soporte](https://discord.gg/THRnn8fhkZ)",
@@ -1284,9 +1338,9 @@ export const locale: Partial<TranslationString> = {
             "Todas as mensagens e links de imagens salvos deste canal foram apagados. O bot ainda está ligado e vai começar a aprender de novo com as mensagens novas. Desligue-o com `/enable` se não quiser mais usá-lo.",
         "deleteData.button.cancel": "Cancelar",
         "deleteData.button.delete": "Apagar todos os dados",
-        "settings.about.heading": "❓ Sobre este bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Ei, eu sou o Jstmemit",
         "settings.about.body":
-            "O Jstmemit é um bot que gera memes com base nas mensagens e imagens do chat. Estão falando de um raid na base de alguém no Rust? O bot vai fazer memes sobre isso.",
+            "O bot que faz memes do seu chat. Falem do que quiserem e...\nele transforma isso em meme com um dos 300+ templates pra tirar sarro de vocês ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Ative o Jstmemit para começar!",
         "settings.button.disable": "Desativar",
         "settings.button.enable": "Ativar",
@@ -1335,15 +1389,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Reporte um bug, sugira uma função ou diga o que você acha",
         "modal.feedback.placeholder": "Oi, vocês poderiam adicionar o template de meme ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 É só conversar que ele faz os memes",
-        "help.autoMemes.tldr": "**Basicamente ele coloca suas imagens, GIFs e mensagens em templates de memes**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Ei, eu sou o Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Em qualquer lugar do Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Em servidores com o bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Mas como isso funciona exatamente?",
         "help.autoMemes.description":
-            "Conversem como sempre. Uma vez a cada algumas dezenas de mensagens, o Jstmemit escolhe um template de meme, pega algumas imagens/gifs/mensagens deste canal e mistura tudo. Você não precisa escolher template, escrever legenda nem se preocupar com formato de imagem.",
-        "help.autoMemes.algorithm":
-            "Ah, e cada meme gerado tem botões de **`👍 Curtir`**, **`🔁 Gerar de novo`** e **`👎 Não curtir`** que melhoram a qualidade dos próximos memes ajudando o bot a entender o que foi engraçado.",
+            "Uma vez a cada algumas dezenas de mensagens ele escolhe um template de meme, pega algumas imagens/gifs/mensagens e mistura tudo em um meme.\n\nCada meme gerado tem botões de **:thumbsup: Curtir**, **:repeat: Gerar de novo** e **:thumbsdown: Não curtir** que melhoram a qualidade dos próximos memes ajudando o bot a entender o que foi engraçado.",
+        "help.rightClick.heading": "## 🖱 Transforme qualquer coisa em meme",
+        "help.rightClick.description":
+            'Com ele você também pode transformar qualquer mensagem já enviada (até de voz!) em uma citação, uma notícia urgente ou um tweet do Grok. Ou colocar a foto de perfil de alguém numa thumb do YouTube "estilo MrBeast".\n\nAbra o menu Aplicativos com o clique direito ou segurando a mensagem no celular, escolha o Jstmemit e selecione o meme que você quer.',
+        "help.voice.heading": "## 🔊  Faça mensagens de voz",
+        "help.voice.description":
+            "Use `/voice` para narrar seu texto com uma das 23 vozes diferentes. Perfeito para frases de soundboard ou só para narrar mensagens engraçadas.",
+        "help.button.faq": "❓ Perguntas frequentes",
+        "help.button.features": "✨ Lista de recursos",
         "help.faq.heading": "## ❓ Perguntas frequentes",
         "help.faq.description":
             "Não achou a resposta para a sua pergunta? A gente pode te ajudar no [servidor de suporte](https://discord.gg/THRnn8fhkZ)",
@@ -1420,9 +1480,9 @@ export const locale: Partial<TranslationString> = {
             "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi. Bot hâlâ açık ve yeni mesajlardan yeniden öğrenmeye başlayacak. Artık kullanmak istemiyorsan `/enable` ile kapat.",
         "deleteData.button.cancel": "İptal",
         "deleteData.button.delete": "Tüm verileri sil",
-        "settings.about.heading": "❓ Bu bot hakkında",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Selam, ben Jstmemit",
         "settings.about.body":
-            "Jstmemit, sohbetteki mesajlara ve görsellere göre caps üreten bir bot. Rust'ta birinin üssüne yapılan raidden mi bahsediyorsunuz? Bot bununla ilgili capsler yapar.",
+            "Sohbetinizden caps üreten bot. Ne konuşursanız konuşun...\nonu 300'den fazla şablondan biriyle capse çevirip sizinle dalga geçer ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Başlamak için Jstmemit'i etkinleştir!",
         "settings.button.disable": "Kapat",
         "settings.button.enable": "Etkinleştir",
@@ -1471,16 +1531,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Hata bildir, özellik öner veya ne düşündüğünü söyle",
         "modal.feedback.placeholder": "Merhaba, ... caps şablonunu ekler misiniz?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Siz sohbet edin, o caps yapsın",
-        "help.autoMemes.tldr":
-            "**Kısacası görsellerinizi, GIF'lerinizi ve mesajlarınızı caps şablonlarına yerleştiriyor**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Selam, ben Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Discord'un her yerinde: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Botun olduğu sunucularda: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Peki bu tam olarak nasıl çalışıyor?",
         "help.autoMemes.description":
-            "Her zamanki gibi sohbet edin. Birkaç düzine mesajda bir Jstmemit bir caps şablonu seçer, bu kanaldan görseller/gifler/mesajlar alır ve hepsini karıştırır. Şablon seçmenize, yazı yazmanıza veya görsel formatlarını dert etmenize gerek yok.",
-        "help.autoMemes.algorithm":
-            "Bu arada, üretilen her capste **`👍 Beğen`**, **`🔁 Yeniden`** ve **`👎 Beğenme`** butonları var. Bunlar botun neyin komik olduğunu anlamasına yardım ederek gelecekteki capslerin kalitesini artırıyor.",
+            "Birkaç düzine mesajda bir caps şablonu seçer, birkaç görsel/gif/mesaj alır ve hepsini karıştırıp bir caps yapar.\n\nÜretilen her capste **:thumbsup: Beğen**, **:repeat: Yeniden** ve **:thumbsdown: Beğenme** butonları var. Bunlar botun neyin komik olduğunu anlamasına yardım ederek gelecekteki capslerin kalitesini artırıyor.",
+        "help.rightClick.heading": "## 🖱 Her şeyi capse çevir",
+        "help.rightClick.description":
+            "Onunla mevcut herhangi bir mesajı (sesli mesajı bile!) alıntıya, son dakika haberine ya da Grok tweetine çevirebilirsin. Ya da birinin profil fotoğrafını \"MrBeast tarzı\" bir YouTube thumbnail'ine koyabilirsin.\n\nSağ tıklayarak ya da telefonda uzun basarak Uygulamalar menüsünü aç, Jstmemit'i seç ve istediğin capsi seç.",
+        "help.voice.heading": "## 🔊  Sesli mesaj oluştur",
+        "help.voice.description":
+            "Metnini 23 farklı sesten biriyle okutmak için `/voice` kullan. Soundboard cümleleri ya da komik mesajları seslendirmek için birebir.",
+        "help.button.faq": "❓ Sık sorulan sorular",
+        "help.button.features": "✨ Özellik listesi",
         "help.faq.heading": "## ❓ Sık sorulan sorular",
         "help.faq.description":
             "Sorunun cevabını bulamadın mı? [Destek sunucusunda](https://discord.gg/THRnn8fhkZ) yardımcı olabiliriz",
@@ -1555,9 +1620,9 @@ export const locale: Partial<TranslationString> = {
             "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati. Il bot è ancora acceso e ricomincerà a imparare dai nuovi messaggi. Spegnilo con `/enable` se non vuoi più usarlo.",
         "deleteData.button.cancel": "Annulla",
         "deleteData.button.delete": "Elimina tutti i dati",
-        "settings.about.heading": "❓ Su questo bot",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Ehi, sono Jstmemit",
         "settings.about.body":
-            "Jstmemit è un bot che genera meme basati sui messaggi e le immagini della chat. State parlando di un raid alla base di qualcuno su Rust? Il bot ci farà dei meme.",
+            "Il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e...\nlo trasforma in un meme con uno dei suoi 300+ template per prendervi in giro ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Attiva Jstmemit per iniziare!",
         "settings.button.disable": "Disattiva",
         "settings.button.enable": "Attiva",
@@ -1607,15 +1672,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Segnala un bug, suggerisci una funzione o dicci cosa ne pensi",
         "modal.feedback.placeholder": "Ciao, potreste aggiungere il template di meme ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Voi chiacchierate, lui fa i meme",
-        "help.autoMemes.tldr": "**In pratica mette le vostre immagini, GIF e messaggi sui template dei meme**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Ehi, sono Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Ovunque su Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Nei server con il bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Ma come funziona di preciso?",
         "help.autoMemes.description":
-            "Chattate come fate di solito. Una volta ogni qualche decina di messaggi, Jstmemit sceglie un template, prende immagini/gif/messaggi da questo canale e mescola tutto. Non dovete scegliere un template, scrivere didascalie o preoccuparvi dei formati delle immagini.",
-        "help.autoMemes.algorithm":
-            "Ah, e ogni meme generato ha i pulsanti **`👍 Mi piace`**, **`🔁 Rigenera`** e **`👎 Non mi piace`** che migliorano la qualità dei meme futuri aiutando il bot a capire cosa faceva ridere.",
+            "Una volta ogni qualche decina di messaggi sceglie un template, prende qualche immagine/gif/messaggio e mescola tutto in un meme.\n\nOgni meme generato ha i pulsanti **:thumbsup: Mi piace**, **:repeat: Rigenera** e **:thumbsdown: Non mi piace** che migliorano la qualità dei meme futuri aiutando il bot a capire cosa faceva ridere.",
+        "help.rightClick.heading": "## 🖱 Trasforma qualsiasi cosa in un meme",
+        "help.rightClick.description":
+            'Con lui puoi anche trasformare qualsiasi messaggio già inviato (anche vocale!) in una citazione, una notizia flash o un tweet di Grok. Oppure mettere la foto profilo di qualcuno in una miniatura YouTube "stile MrBeast".\n\nApri il menu App con il tasto destro o con un tocco prolungato su mobile, scegli Jstmemit e seleziona il meme che vuoi.',
+        "help.voice.heading": "## 🔊  Crea messaggi vocali",
+        "help.voice.description":
+            "Usa `/voice` per far leggere il tuo testo da una delle 23 voci disponibili. Perfetto per frasi da soundboard o semplicemente per leggere messaggi divertenti.",
+        "help.button.faq": "❓ Domande frequenti",
+        "help.button.features": "✨ Elenco delle funzioni",
         "help.faq.heading": "## ❓ Domande frequenti",
         "help.faq.description":
             "Non trovi la risposta alla tua domanda? Possiamo aiutarti sul [server di supporto](https://discord.gg/THRnn8fhkZ)",
@@ -1660,6 +1731,7 @@ export const locale: Partial<TranslationString> = {
         "enable.permissions.attachFiles": "Lampirkan File",
         "enable.permissions.embedLinks": "Sematkan Tautan",
         "enable.permissions.readHistory": "Baca Riwayat Pesan",
+        "enable.permissions.viewChannel": "Lihat Channel",
         "enable.button.turnOff": "Matikan",
         "enable.button.turnOn": "Nyalakan",
         "enable.button.settings": "⚙️ Buka pengaturan",
@@ -1688,9 +1760,9 @@ export const locale: Partial<TranslationString> = {
             "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus. Bot masih menyala dan akan mulai belajar lagi dari pesan baru. Matikan lewat `/enable` kalau tidak mau memakainya lagi.",
         "deleteData.button.cancel": "Batal",
         "deleteData.button.delete": "Hapus semua data",
-        "settings.about.heading": "❓ Tentang bot ini",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Hai, aku Jstmemit",
         "settings.about.body":
-            "Jstmemit adalah bot yang bikin meme berdasarkan pesan dan gambar di chat. Lagi ngobrolin raid base orang di Rust? Bot bakal bikin meme soal itu.",
+            "Bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan...\ndia bakal jadiin itu meme pakai salah satu dari 300+ template buat nyindir kalian ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Aktifkan Jstmemit untuk mulai!",
         "settings.button.disable": "Nonaktifkan",
         "settings.button.enable": "Aktifkan",
@@ -1739,15 +1811,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Laporkan bug, usulkan fitur, atau beri tahu pendapatmu",
         "modal.feedback.placeholder": "Halo, bisa tolong tambahkan template meme ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Kalian tinggal ngobrol, dia yang bikin meme",
-        "help.autoMemes.tldr": "**Intinya dia menempelkan gambar, GIF, dan pesan kalian ke template meme**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Hai, aku Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Di mana saja di Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Di server yang ada botnya: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Tapi cara kerjanya gimana?",
         "help.autoMemes.description":
-            "Ngobrol saja seperti biasa. Sekali tiap beberapa puluh pesan, Jstmemit memilih template meme, mengambil beberapa gambar/gif/pesan dari channel ini, lalu mencampur semuanya. Kamu tidak perlu pilih template, nulis caption, atau pusing soal format gambar.",
-        "help.autoMemes.algorithm":
-            "Oh iya, setiap meme yang dibuat punya tombol **`👍 Suka`**, **`🔁 Ulangi`**, dan **`👎 Tidak suka`** yang meningkatkan kualitas meme berikutnya dengan membantu bot paham mana yang lucu.",
+            "Sekali tiap beberapa puluh pesan dia memilih template meme, mengambil beberapa gambar/gif/pesan, lalu mencampur semuanya jadi satu meme.\n\nSetiap meme yang dibuat punya tombol **:thumbsup: Suka**, **:repeat: Ulangi**, dan **:thumbsdown: Tidak suka** yang meningkatkan kualitas meme berikutnya dengan membantu bot paham mana yang lucu.",
+        "help.rightClick.heading": "## 🖱 Ubah apa saja jadi meme",
+        "help.rightClick.description":
+            'Dengan bot ini kamu juga bisa mengubah pesan yang sudah ada (bahkan pesan suara!) jadi quote, berita terkini, atau tweet Grok. Atau menaruh foto profil seseorang di thumbnail YouTube "ala MrBeast".\n\nBuka menu Aplikasi lewat klik kanan atau tekan lama di HP, pilih Jstmemit, lalu pilih meme yang kamu mau.',
+        "help.voice.heading": "## 🔊  Bikin pesan suara",
+        "help.voice.description":
+            "Pakai `/voice` untuk membacakan teksmu dengan salah satu dari 23 suara berbeda. Cocok buat bikin potongan soundboard atau sekadar membacakan pesan lucu.",
+        "help.button.faq": "❓ Pertanyaan umum",
+        "help.button.features": "✨ Daftar fitur",
         "help.faq.heading": "## ❓ Pertanyaan yang sering ditanyakan",
         "help.faq.description":
             "Tidak menemukan jawaban untuk pertanyaanmu? Kami bisa bantu di [server support](https://discord.gg/THRnn8fhkZ)",
@@ -1821,9 +1899,9 @@ export const locale: Partial<TranslationString> = {
             "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány. Bot je pořád zapnutý a začne se znovu učit z nových zpráv. Vypni ho přes `/enable`, pokud ho už nechceš používat.",
         "deleteData.button.cancel": "Zrušit",
         "deleteData.button.delete": "Smazat všechna data",
-        "settings.about.heading": "❓ O tomto botovi",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
         "settings.about.body":
-            "Jstmemit je bot, který generuje memy na základě zpráv a obrázků v chatu. Řešíte raid něčí základny v Rustu? Bot o tom udělá memy.",
+            "Bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a...\nudělá z toho mem na jedné z 300+ šablon a utáhne si z vás ¯\\_(ツ)_/¯",
         "settings.about.enablePrompt": "Zapni Jstmemit a začni!",
         "settings.button.disable": "Vypnout",
         "settings.button.enable": "Zapnout",
@@ -1872,15 +1950,21 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.description": "Nahlaš chybu, navrhni funkci nebo nám řekni svůj názor",
         "modal.feedback.placeholder": "Ahoj, mohli byste přidat šablonu memu ...?",
 
-        "help.about.heading": "🤖 Jstmemit",
-        "help.about.commands":
-            "**`/meme`** - **`/enable`** - **`/settings`** - **`/custom`** - **`/help`** - **`/feedback`**",
-        "help.autoMemes.heading": "## 💬 Prostě si pište a on bude dělat memy",
-        "help.autoMemes.tldr": "**V podstatě dává vaše obrázky, GIFy a zprávy na šablony memů**",
+        "help.about.heading": "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
+        "help.about.commands.user":
+            "### 👤 Kdekoliv na Discordu: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "help.about.commands.guild": "### 🏠 Na serverech s botem: **`/meme`**, **`/enable`**, **`/settings`**",
+        "help.autoMemes.heading": "## 💬  Ale jak to přesně funguje?",
         "help.autoMemes.description":
-            "Pište si jako obvykle. Jednou za pár desítek zpráv si Jstmemit vybere šablonu memu, vezme nějaké obrázky/gify/zprávy z tohoto kanálu a všechno to smíchá dohromady. Nemusíš vybírat šablonu, psát popisky ani řešit formáty obrázků.",
-        "help.autoMemes.algorithm":
-            "Jo a každý vygenerovaný mem má tlačítka **`👍 Líbí`**, **`🔁 Znovu`** a **`👎 Nelíbí`**, která zlepšují kvalitu budoucích memů tím, že botovi pomáhají pochopit, co bylo vtipné.",
+            "Jednou za pár desítek zpráv si vybere šablonu memu, vezme pár obrázků/gifů/zpráv a všechno to smíchá do memu.\n\nKaždý vygenerovaný mem má tlačítka **:thumbsup: Líbí**, **:repeat: Znovu** a **:thumbsdown: Nelíbí**, která zlepšují kvalitu budoucích memů tím, že botovi pomáhají pochopit, co bylo vtipné.",
+        "help.rightClick.heading": "## 🖱 Udělej mem z čehokoliv",
+        "help.rightClick.description":
+            "Můžeš s ním taky předělat jakoukoliv existující zprávu (i hlasovou!) na citát, zprávy nebo tweet od Groka. Nebo dát něčí profilovku na YouTube náhled „ve stylu MrBeasta“.\n\nOtevři menu Aplikace pravým kliknutím nebo dlouhým podržením na mobilu, vyber Jstmemit a pak mem, který chceš.",
+        "help.voice.heading": "## 🔊  Vytvářej hlasové zprávy",
+        "help.voice.description":
+            "Použij `/voice` a nech svůj text přečíst jedním z 23 různých hlasů. Ideální na hlášky do soundboardu nebo prostě na čtení vtipných zpráv.",
+        "help.button.faq": "❓ Časté dotazy",
+        "help.button.features": "✨ Seznam funkcí",
         "help.faq.heading": "## ❓ Časté dotazy",
         "help.faq.description":
             "Nemůžeš najít odpověď na svou otázku? Pomůžeme ti na [serveru podpory](https://discord.gg/THRnn8fhkZ)",

@@ -1,5 +1,7 @@
-import type { ChatInputCommandInteraction } from "discord.js";
+import type { ChatInputCommandInteraction, MessageContextMenuCommandInteraction } from "discord.js";
 
 export abstract class IVoiceController {
-    public abstract handleNarrateTextInteraction(interaction: ChatInputCommandInteraction): Promise<void>;
+    public abstract handleNarrateTextInteraction(
+        interaction: ChatInputCommandInteraction | MessageContextMenuCommandInteraction,
+    ): Promise<void>;
 }

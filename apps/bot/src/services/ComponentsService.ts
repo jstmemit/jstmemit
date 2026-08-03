@@ -200,6 +200,38 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a row with Frequently Asked Questions button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.faq", language))
+                .setCustomId(`faq`),
+        );
+    }
+
+    /**
+     * Returns back a row with Features list button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.features", language))
+                .setCustomId(`help`),
+        );
+    }
+
+    /**
      * Returns back a message component for an unknown error
      *
      * @param language
@@ -419,23 +451,28 @@ export class ComponentsService implements IComponentsService {
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
-                        new TextDisplayBuilder().setContent(t("settings.about.body", language)),
-                        new TextDisplayBuilder().setContent(t("help.about.commands", language)),
+                        new TextDisplayBuilder().setContent(`${t("settings.about.body", language)}`),
                     ),
             )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language)}`,
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addActionRowComponents(
                 new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
                     ...(isEnabled === undefined
                         ? []
                         : [
                               new ButtonBuilder()
-                                  .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                                  .setStyle(isEnabled ? ButtonStyle.Secondary : ButtonStyle.Success)
                                   .setLabel(
                                       isEnabled
-                                          ? t("settings.button.disable", language)
+                                          ? t("enable.button.settings", language)
                                           : t("settings.button.enable", language),
                                   )
-                                  .setCustomId(isEnabled ? "disable" : "enable"),
+                                  .setCustomId(isEnabled ? "settings" : "enable"),
                           ]),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
@@ -451,23 +488,52 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
-     * Returns back a message component for Explain part of the /help command.
+     * Returns back a message component for explanation of the auto
+     * generated memes from channel context in /help
      *
      * @param language
      *
      * @author Kyrylo Maliuha
      */
-    public getHelpExplainMessageComponent(language: Locale): ContainerBuilder {
+    public getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`## ${t("help.autoMemes.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.autoMemes.tldr", language)}`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
+            );
+    }
+
+    /**
+     * Returns back a message component for explanation of the
+     * voice narration in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpVoiceMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.voice.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.voice.description", language)}`));
+    }
+
+    /**
+     * Returns back a message component for explanation of the
+     * right-click actions in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpRightClickMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`## ${t("help.rightClick.heading", language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.autoMemes.algorithm", language)}`),
+                new TextDisplayBuilder().setContent(`${t("help.rightClick.description", language)}`),
             );
     }
 

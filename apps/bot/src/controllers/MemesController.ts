@@ -93,6 +93,7 @@ export class MemesController implements IMemesController {
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
         trigger?: MemeGenerationTrigger,
     ): Promise<void> {
+        let parentGenerationId: number | undefined;
         const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
         const userId: MemeGenerationJob["userId"] =
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
@@ -101,6 +102,9 @@ export class MemesController implements IMemesController {
             trigger ??= "auto";
         } else if (interaction.isButton()) {
             trigger = "regenerate";
+
+            const id: string | undefined = interaction.customId.split(":")[1];
+            parentGenerationId = id ? Number(id) : undefined;
         } else {
             trigger = "command";
         }
@@ -161,6 +165,7 @@ export class MemesController implements IMemesController {
                 locale: interaction instanceof Message ? undefined : interaction?.locale,
                 userId,
                 trigger,
+                parentGenerationId,
                 turbo: channel.turbo,
             });
 
