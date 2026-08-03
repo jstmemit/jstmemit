@@ -1,17 +1,13 @@
 import type { MemeRatings } from "@jstmemit/shared/models/MemeRatings";
 import { db } from "../index.ts";
-import { ratingsTable } from "../schema.ts";
-import { eq, sql } from "drizzle-orm";
+import { messagesTable, ratingsTable } from "../schema.ts";
+import { eq, sql, sum } from "drizzle-orm";
 import type { IRatingsRepository } from "../interfaces/IRatingsRepository.ts";
 
 export class RatingsRepository implements IRatingsRepository {
     public async getMemeRatings(messageId: string): Promise<MemeRatings> {
         try {
-            const ratings = await db
-                .select()
-                .from(ratingsTable)
-                .where(eq(ratingsTable.messageId, messageId))
-                .limit(1);
+            const ratings = await db.select().from(ratingsTable).where(eq(ratingsTable.messageId, messageId)).limit(1);
 
             return {
                 likes: ratings[0]?.likes || 0,
@@ -58,5 +54,27 @@ export class RatingsRepository implements IRatingsRepository {
             .insert(ratingsTable)
             .values({ messageId, likes: 0, dislikes: 0 })
             .onConflictDoNothing({ target: ratingsTable.messageId });
+    }
+
+    public async getLikeDislikeChannelCount(channelId: string): Promise<MemeRatings> {
+        try {
+            const result = await db
+                .select({
+                    likes: sum(ratingsTable.likes),
+                    dislikes: sum(ratingsTable.dislikes),
+                })
+                .from(ratingsTable)
+                .innerJoin(messagesTable, eq(messagesTable.messageId, ratingsTable.messageId))
+                .where(eq(messagesTable.channelId, channelId));
+
+            return {
+                likes: Number(result[0]?.likes ?? 0),
+                dislikes: Number(result[0]?.dislikes ?? 0),
+            };
+        } catch (error) {
+            console.error(error);
+
+            return { likes: 0, dislikes: 0 };
+        }
     }
 }

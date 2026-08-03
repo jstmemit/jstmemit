@@ -128,16 +128,30 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param count
+     * @param likes
+     * @param dislikes
      * @param channelId
      *
      * @author Kyrylo Maliuha
      */
-    public getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder {
+    public getMilestoneMessageComponent(
+        language: Locale,
+        count: number,
+        likes: number,
+        dislikes: number,
+        channelId: string,
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(count, count * 2, 10);
+
         return new ContainerBuilder()
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# 🎉 ${count} memes in **<#${channelId}>**!`),
+                new TextDisplayBuilder().setContent(`# 🎉 Yay! ${count} memes in **<#${channelId}>**!`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`some text here woohoo hooray!!!`));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`**Total likes:** ${likes} 👍\n**Total dislikes${dislikes}:** 👎`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Next goal: ${count}/${count * 2} memes`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
     }
 
     /**

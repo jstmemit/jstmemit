@@ -39,6 +39,7 @@ import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerati
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
+import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -51,6 +52,7 @@ export class MemesController implements IMemesController {
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
     private readonly _generationsRepository: IGenerationsRepository;
+    private readonly _ratingsRepository: IRatingsRepository;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -63,6 +65,7 @@ export class MemesController implements IMemesController {
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
         generationsRepository: IGenerationsRepository,
+        ratingsRepository: IRatingsRepository,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -74,6 +77,7 @@ export class MemesController implements IMemesController {
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
         this._generationsRepository = generationsRepository;
+        this._ratingsRepository = ratingsRepository;
     }
 
     /**
@@ -214,6 +218,9 @@ export class MemesController implements IMemesController {
                 });
 
                 const count: number = await this._generationsRepository.getCountPerChannel(interaction.channelId);
+                const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(
+                    interaction.channelId,
+                );
 
                 await interaction.followUp({
                     flags: MessageFlags.IsComponentsV2,
@@ -221,6 +228,8 @@ export class MemesController implements IMemesController {
                         this._componentsService.getMilestoneMessageComponent(
                             interaction.locale,
                             count,
+                            likes,
+                            dislikes,
                             interaction.channelId,
                         ),
                     ],
