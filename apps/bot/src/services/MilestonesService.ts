@@ -13,20 +13,24 @@ import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGeneration
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import type { INarrationsRepository } from "@jstmemit/db/interfaces/INarrationsRepository";
 
 export class MilestonesService implements IMilestonesService {
     private readonly _generationsRepository: IGenerationsRepository;
     private readonly _componentsService: IComponentsService;
     private readonly _ratingsRepository: IRatingsRepository;
+    private readonly _narrationsRepository: INarrationsRepository;
 
     public constructor(
         generationsRepository: IGenerationsRepository,
         componentsService: IComponentsService,
         ratingsRepository: IRatingsRepository,
+        narrationsRepository: INarrationsRepository,
     ) {
         this._generationsRepository = generationsRepository;
         this._componentsService = componentsService;
         this._ratingsRepository = ratingsRepository;
+        this._narrationsRepository = narrationsRepository;
     }
 
     public async checkAndReplyWithMilestone(
@@ -46,12 +50,12 @@ export class MilestonesService implements IMilestonesService {
         const locale: Locale = this._getLocale(interaction);
 
         const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(interaction.channelId);
-
         const templates: number = await this._generationsRepository.getTemplateCountPerChannel(interaction.channelId);
+        const voices: number = await this._narrationsRepository.getVoiceCountPerChannel(interaction.channelId);
 
         const components: (ActionRowBuilder<ButtonBuilder> | ContainerBuilder)[] = [
             this._componentsService.getMilestoneMessageComponent(locale, count, interaction.channelId),
-            this._componentsService.getMilestoneButtonsComponent(locale, likes, dislikes, templates, 1),
+            this._componentsService.getMilestoneButtonsComponent(locale, likes, dislikes, templates, voices),
         ];
 
         if (interaction instanceof Message) {
