@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiIkariMentalBreakdown: Template = {
     name: "evangelionShinjiIkariMentalBreakdown",
+    displayName: "Evangelion Shinji Ikari mental breakdown",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 844,
@@ -23,7 +24,7 @@ export const evangelionShinjiIkariMentalBreakdown: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiIkariMentalBreakdown.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiIkariMentalBreakdown.png"
                 width={844}
                 height={551}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

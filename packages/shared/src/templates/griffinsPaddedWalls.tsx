@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPaddedWalls: Template = {
     name: "griffinsPaddedWalls",
+    displayName: "Griffins padded walls",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 640,
@@ -23,7 +24,7 @@ export const griffinsPaddedWalls: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsPaddedWalls.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsPaddedWalls.jpg"
                 width={640}
                 height={357}
                 style={{ position: "absolute", top: 0, left: 0 }}

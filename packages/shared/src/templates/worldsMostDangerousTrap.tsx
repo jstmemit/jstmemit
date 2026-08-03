@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const worldsMostDangerousTrap: Template = {
     name: "worldsMostDangerousTrap",
+    displayName: "YouTube Worlds most dangerous trap",
     topics: [Topic.YouTube],
     types: [Type.DefaultText, Type.BackgroundImage],
     width: 621,
@@ -34,7 +35,7 @@ export const worldsMostDangerousTrap: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail3.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail3.png"
                 width={621}
                 height={426}
                 style={{ position: "absolute", top: 0, left: 0 }}

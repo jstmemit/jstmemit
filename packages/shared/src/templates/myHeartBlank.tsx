@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const myHeartBlank: Template = {
     name: "myHeartBlank",
+    displayName: "My heart blank",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption, Type.DefaultText],
     width: 680,
@@ -27,7 +28,7 @@ export const myHeartBlank: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/myHeartBlank.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/myHeartBlank.jpg"
                 width={680}
                 height={602}
                 style={{ position: "absolute", top: 0, left: 0 }}

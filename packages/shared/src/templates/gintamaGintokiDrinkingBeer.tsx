@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiDrinkingBeer: Template = {
     name: "gintamaGintokiDrinkingBeer",
+    displayName: "Gintama Gintoki drinking beer",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextBottom],
     width: 1000,
@@ -23,7 +24,7 @@ export const gintamaGintokiDrinkingBeer: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiDrinkingBeer.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiDrinkingBeer.png"
                 width={1000}
                 height={1000}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

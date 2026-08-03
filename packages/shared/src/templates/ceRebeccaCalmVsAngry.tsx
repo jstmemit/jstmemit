@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceRebeccaCalmVsAngry: Template = {
     name: "ceRebeccaCalmVsAngry",
+    displayName: "CE Rebecca calm vs angry",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 928,
@@ -26,7 +27,7 @@ export const ceRebeccaCalmVsAngry: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaCalmVsAngry.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaCalmVsAngry.png"
                 width={464}
                 height={951}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

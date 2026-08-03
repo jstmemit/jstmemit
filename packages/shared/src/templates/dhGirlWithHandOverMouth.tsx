@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dhGirlWithHandOverMouth: Template = {
     name: "dhGirlWithHandOverMouth",
+    displayName: "DH Girl with hand over mouth",
     topics: [Topic.Misc],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 718,
@@ -23,7 +24,7 @@ export const dhGirlWithHandOverMouth: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dhGirlWithHandOverMouth.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dhGirlWithHandOverMouth.jpg"
                 width={718}
                 height={1131}
                 style={{ position: "absolute", top: 0, left: 0 }}

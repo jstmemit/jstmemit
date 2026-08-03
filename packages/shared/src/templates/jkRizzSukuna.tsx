@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkRizzSukuna: Template = {
     name: "jkRizzSukuna",
+    displayName: "JK Rizz Sukuna",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 692,
@@ -23,7 +24,7 @@ export const jkRizzSukuna: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/jkRizzSukuna.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/jkRizzSukuna.png"
                 width={692}
                 height={441}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

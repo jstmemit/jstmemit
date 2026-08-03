@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkHigurumaCoveringFaceStare: Template = {
     name: "jkHigurumaCoveringFaceStare",
+    displayName: "JK Higuruma covering face stare",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 446,
@@ -26,7 +27,7 @@ export const jkHigurumaCoveringFaceStare: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/jkHigurumaCoveringFaceStare.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/jkHigurumaCoveringFaceStare.png"
                 width={223}
                 height={447}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

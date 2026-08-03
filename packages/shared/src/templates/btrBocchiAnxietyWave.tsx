@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiAnxietyWave: Template = {
     name: "btrBocchiAnxietyWave",
+    displayName: "BTR Bocchi anxiety wave",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 686,
@@ -23,7 +24,7 @@ export const btrBocchiAnxietyWave: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiAnxietyWave.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiAnxietyWave.png"
                 width={686}
                 height={386}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

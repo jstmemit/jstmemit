@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const thisPersonIs100kmNearYourHouse: Template = {
     name: "thisPersonIs100kmNearYourHouse",
+    displayName: "This person is 100km near your house",
     topics: [Topic.Misc],
     types: [Type.FaceImage, Type.DefaultText],
     width: 498,
@@ -23,7 +24,7 @@ export const thisPersonIs100kmNearYourHouse: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/thisPersonIs100kmNearYourHouse.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/thisPersonIs100kmNearYourHouse.png"
                 width={498}
                 height={464}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

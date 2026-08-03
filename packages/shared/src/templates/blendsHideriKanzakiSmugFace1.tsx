@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriKanzakiSmugFace1: Template = {
     name: "blendsHideriKanzakiSmugFace1",
+    displayName: "BlendS Hideri Kanzaki smug face 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground, Type.Animated],
     width: 1000,
@@ -24,7 +25,7 @@ export const blendsHideriKanzakiSmugFace1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsHideriKanzakiSmugFace1.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsHideriKanzakiSmugFace1.gif"
                 width={500}
                 height={562}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiCalmVsPanic: Template = {
     name: "evangelionShinjiCalmVsPanic",
+    displayName: "Evangelion Shinji calm vs panic",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,
@@ -26,7 +27,7 @@ export const evangelionShinjiCalmVsPanic: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiCalmVsPanic.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiCalmVsPanic.png"
                 width={1200}
                 height={700}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

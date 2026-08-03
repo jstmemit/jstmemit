@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsTwoSidesOfMrBurns: Template = {
     name: "simpsonsTwoSidesOfMrBurns",
+    displayName: "Simpsons Two sides of Mr. Burns",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,
@@ -26,7 +27,7 @@ export const simpsonsTwoSidesOfMrBurns: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsTwoSidesOfMrBurns.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsTwoSidesOfMrBurns.png"
                 width={1200}
                 height={655}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

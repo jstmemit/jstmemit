@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const manLookingUp: Template = {
     name: "manLookingUp",
+    displayName: "Man looking up",
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTopWithBackground],
     width: 661,
@@ -23,7 +24,7 @@ export const manLookingUp: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/manlookingup.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/manlookingup.png"
                 width={661}
                 height={372}
                 style={{ position: "absolute", top: 0, left: 0 }}

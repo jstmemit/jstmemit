@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsKahoFlustered: Template = {
     name: "blendsKahoFlustered",
+    displayName: "BlendS Kaho flustered",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 512,
@@ -24,7 +25,7 @@ export const blendsKahoFlustered: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsKahoFlustered.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsKahoFlustered.gif"
                 width={512}
                 height={288}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

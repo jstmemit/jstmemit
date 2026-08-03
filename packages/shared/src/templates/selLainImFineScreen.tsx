@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const selLainImFineScreen: Template = {
     name: "selLainImFineScreen",
+    displayName: "SEL Lain I'm fine screen",
     topics: [Topic.Reaction, Topic.Anime, Topic.SerialExperimentsLain],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 736,
@@ -35,7 +36,7 @@ export const selLainImFineScreen: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/selLainImFineScreen.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/selLainImFineScreen.png"
                 width={736}
                 height={721}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

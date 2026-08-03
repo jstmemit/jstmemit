@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const crowdFromAngryToHappy: Template = {
     name: "crowdFromAngryToHappy",
+    displayName: "Crowd from angry to happy",
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TwoOption, Type.TextLeft, Type.FaceImage],
     width: 716,
@@ -26,7 +27,7 @@ export const crowdFromAngryToHappy: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
                 width={716}
                 height={700}
                 style={{ position: "absolute", top: 0, left: 0 }}

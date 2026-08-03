@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiBreakingBadWalter: Template = {
     name: "btrBocchiBreakingBadWalter",
+    displayName: "BTR Bocchi Breaking Bad Walter",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock, Topic.BreakingBad],
     types: [Type.TextTopWithBackground],
     width: 800,
@@ -23,7 +24,7 @@ export const btrBocchiBreakingBadWalter: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiBreakingBadWalter.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiBreakingBadWalter.png"
                 width={800}
                 height={650}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

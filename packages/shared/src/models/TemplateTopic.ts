@@ -64,6 +64,7 @@ export const Topic = {
     TheQuintessentialQuintuplets: "theQuintessentialQuintuplets",
     UzakiChanWantsToHangOut: "uzakiChanWantsToHangOut",
     ShikanokoNokonokoKoshitantan: "shikanokoNokonokoKoshitantan",
+    UmaMusume: "umaMusume",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const mrMcMahonReaction: Template = {
     name: "mrMcMahonReaction",
+    displayName: "Mr McMahon reaction",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.FourOption],
     width: 1000,
@@ -28,7 +29,7 @@ export const mrMcMahonReaction: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/mrMcMahonReaction.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/mrMcMahonReaction.png"
                 width={1000}
                 height={1500}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionShinjiSeriousFace: Template = {
     name: "evangelionShinjiSeriousFace",
+    displayName: "Evangelion Shinji serious face",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 1000,
@@ -23,7 +24,7 @@ export const evangelionShinjiSeriousFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiSeriousFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/evangelionShinjiSeriousFace.png"
                 width={1000}
                 height={600}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

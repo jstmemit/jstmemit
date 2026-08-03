@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriFingerTapping: Template = {
     name: "blendsHideriFingerTapping",
+    displayName: "BlendS Hideri finger tapping",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.ObjectImage, Type.FaceImage],
     width: 801,
@@ -26,7 +27,7 @@ export const blendsHideriFingerTapping: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriFingerTapping.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriFingerTapping.png"
                 width={801}
                 height={765}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

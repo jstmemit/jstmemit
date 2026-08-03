@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dsTanjiroSumiko: Template = {
     name: "dsTanjiroSumiko",
+    displayName: "DS Tanjiro Sumiko",
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 600,
@@ -23,7 +24,7 @@ export const dsTanjiroSumiko: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dsTanjiroSumiko.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dsTanjiroSumiko.png"
                 width={600}
                 height={609}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

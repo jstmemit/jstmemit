@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const disasterGirl: Template = {
     name: "disasterGirl",
+    displayName: "Disaster girl",
     topics: [Topic.Reaction, Topic.News],
     types: [Type.TextTop, Type.FaceImage],
     width: 2042,
@@ -23,7 +24,7 @@ export const disasterGirl: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/disasterGirl.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/disasterGirl.jpg"
                 width={2042}
                 height={1531}
                 style={{ position: "absolute", top: 0, left: 0 }}

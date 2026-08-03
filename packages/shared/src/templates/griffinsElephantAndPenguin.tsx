@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsElephantAndPenguin: Template = {
     name: "griffinsElephantAndPenguin",
+    displayName: "Griffins elephant and penguin",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextTopWithBackground, Type.FaceImage, Type.DefaultText],
     width: 450,
@@ -23,7 +24,7 @@ export const griffinsElephantAndPenguin: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsElephantAndPenguin.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsElephantAndPenguin.jpg"
                 width={450}
                 height={371}
                 style={{ position: "absolute", top: 0, left: 0 }}

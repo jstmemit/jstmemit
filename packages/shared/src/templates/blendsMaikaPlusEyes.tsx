@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaikaPlusEyes: Template = {
     name: "blendsMaikaPlusEyes",
+    displayName: "BlendS Maika plus eyes",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 675,
@@ -24,7 +25,7 @@ export const blendsMaikaPlusEyes: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsMaikaPlusEyes.webp"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/blendsMaikaPlusEyes.webp"
                 width={675}
                 height={375}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

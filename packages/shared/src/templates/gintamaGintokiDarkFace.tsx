@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiDarkFace: Template = {
     name: "gintamaGintokiDarkFace",
+    displayName: "Gintama Gintoki dark face",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground],
     width: 736,
@@ -23,7 +24,7 @@ export const gintamaGintokiDarkFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiDarkFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiDarkFace.png"
                 width={736}
                 height={414}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

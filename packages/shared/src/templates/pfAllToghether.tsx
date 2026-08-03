@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfAllToghether: Template = {
     name: "pfAllToghether",
+    displayName: "PF All together",
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 950,
@@ -28,7 +29,7 @@ export const pfAllToghether: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/pfAllToghether.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfAllToghether.jpg"
                 width={950}
                 height={632}
                 style={{ position: "absolute", top: 0, left: 0 }}

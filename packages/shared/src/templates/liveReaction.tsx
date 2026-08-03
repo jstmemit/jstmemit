@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const liveReaction: Template = {
     name: "liveReaction",
+    displayName: "Live reaction",
     topics: [Topic.Reaction],
     types: [Type.DefaultText, Type.FaceImage, Type.ObjectImage],
     width: 800,
@@ -27,7 +28,7 @@ export const liveReaction: Template = {
             <img src={images[0]} width={768} height={615} style={{ position: "absolute", top: 185, left: 17 }} />
             <img
                 src={
-                    "https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"
+                    "https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/livereaction.png"
                 }
                 width={800}
                 height={800}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiAnxiousSmiling: Template = {
     name: "btrBocchiAnxiousSmiling",
+    displayName: "BTR Bocchi anxious smiling",
     topics: [Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 1020,
@@ -23,7 +24,7 @@ export const btrBocchiAnxiousSmiling: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiAnxiousSmiling.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiAnxiousSmiling.png"
                 width={1020}
                 height={1061}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

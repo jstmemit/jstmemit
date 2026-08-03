@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const kaguyasamaKaguyaDroppingPhone: Template = {
     name: "kaguyasamaKaguyaDroppingPhone",
+    displayName: "Kaguyasama Kaguya dropping phone",
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.DefaultText, Type.FaceImage],
     width: 640,
@@ -23,7 +24,7 @@ export const kaguyasamaKaguyaDroppingPhone: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/kaguyasamaKaguyaDroppingPhone.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/kaguyasamaKaguyaDroppingPhone.png"
                 width={640}
                 height={831}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

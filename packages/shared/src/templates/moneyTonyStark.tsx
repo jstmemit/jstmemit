@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const moneyTonyStark: Template = {
     name: "moneyTonyStark",
+    displayName: "IronMan Money Tony Stark",
     topics: [Topic.Movies, Topic.IronMan],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1200,
@@ -23,7 +24,7 @@ export const moneyTonyStark: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/moneyTonyStark.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/moneyTonyStark.png"
                 width={1200}
                 height={1000}
                 style={{ position: "absolute", top: 0, left: 0 }}

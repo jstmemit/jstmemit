@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spidermanPeterDance: Template = {
     name: "spidermanPeterDance",
+    displayName: "Spider-Man Peter dance",
     topics: [Topic.SpiderMan, Topic.Movies],
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,
@@ -23,7 +24,7 @@ export const spidermanPeterDance: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spidermanPeterDance.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spidermanPeterDance.jpg"
                 width={735}
                 height={479}
                 style={{ position: "absolute", top: 0, left: 0 }}

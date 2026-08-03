@@ -8,6 +8,7 @@ import type { PosteriorSource } from "#/models/PosteriorSource.ts";
 
 export interface Template {
     name: string;
+    displayName: string;
     topics: TemplateTopic[];
     types: TemplateType[];
     element: (props: TemplateProps) => ReactNode;

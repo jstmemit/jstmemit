@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSmugVsDark: Template = {
     name: "frierenSmugVsDark",
+    displayName: "Frieren smug vs dark",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 658,
@@ -26,7 +27,7 @@ export const frierenSmugVsDark: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugVsDark.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugVsDark.png"
                 width={329}
                 height={493}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

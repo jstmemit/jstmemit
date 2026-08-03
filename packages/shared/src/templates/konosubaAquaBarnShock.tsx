@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konosubaAquaBarnShock: Template = {
     name: "konosubaAquaBarnShock",
+    displayName: "Konosuba Aqua barn shock",
     topics: [Topic.Reaction, Topic.Anime, Topic.KonoSuba],
     types: [Type.TextRightWithBackground],
     width: 1470,
@@ -23,7 +24,7 @@ export const konosubaAquaBarnShock: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/konosubaAquaBarnShock.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/konosubaAquaBarnShock.png"
                 width={735}
                 height={978}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

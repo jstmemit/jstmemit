@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceLucyHacking: Template = {
     name: "ceLucyHacking",
+    displayName: "CE Lucy hacking",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground, Type.AvatarImage],
     width: 640,
@@ -23,7 +24,7 @@ export const ceLucyHacking: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceLucyHacking.png"
                 width={640}
                 height={462}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

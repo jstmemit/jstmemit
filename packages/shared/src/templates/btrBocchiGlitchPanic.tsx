@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiGlitchPanic: Template = {
     name: "btrBocchiGlitchPanic",
+    displayName: "BTR Bocchi glitch panic",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 1200,
@@ -23,7 +24,7 @@ export const btrBocchiGlitchPanic: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiGlitchPanic.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiGlitchPanic.png"
                 width={1200}
                 height={805}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

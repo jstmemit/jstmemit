@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const looksAtPaperAngry: Template = {
     name: "looksAtPaperAngry",
+    displayName: "Looks at paper angry",
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 768,
@@ -26,7 +27,7 @@ export const looksAtPaperAngry: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/looksatpaperangry.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/looksatpaperangry.png"
                 width={768}
                 height={727}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adKaguraLaughing: Template = {
     name: "adKaguraLaughing",
+    displayName: "AD Kagura laughing",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,
@@ -24,7 +25,7 @@ export const adKaguraLaughing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/adKaguraLaughing.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adKaguraLaughing.gif"
                 width={498}
                 height={373}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

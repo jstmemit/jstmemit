@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const parrotBarber1: Template = {
     name: "parrotBarber1",
+    displayName: "Parrot barber 1",
     topics: [Topic.Animals],
     types: [Type.TextBottom],
     width: 658,
@@ -23,7 +24,7 @@ export const parrotBarber1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/parrotBarber1.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/parrotBarber1.jpg"
                 width={658}
                 height={969}
                 style={{ position: "absolute", top: 0, left: 0 }}

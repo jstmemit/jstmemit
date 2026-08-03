@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pfConfusedTravolta: Template = {
     name: "pfConfusedTravolta",
+    displayName: "PF Confused Travolta",
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,
@@ -23,7 +24,7 @@ export const pfConfusedTravolta: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/pfConfusedTravolta.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfConfusedTravolta.jpg"
                 width={735}
                 height={552}
                 style={{ position: "absolute", top: 0, left: 0 }}

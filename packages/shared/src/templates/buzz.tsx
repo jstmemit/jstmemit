@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const buzz: Template = {
     name: "buzz",
+    displayName: "TS Buzz pointing",
     topics: [Topic.Reaction, Topic.Cartoons, Topic.ToyStory],
     types: [Type.FaceImage, Type.TextBottom],
     width: 800,
@@ -23,7 +24,7 @@ export const buzz: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/buzz.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/buzz.png"
                 width={800}
                 height={544}
                 style={{ position: "absolute", top: 0, left: 0 }}

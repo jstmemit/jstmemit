@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsLisaStaring: Template = {
     name: "simpsonsLisaStaring",
+    displayName: "Simpsons Lisa staring",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1080,
@@ -23,7 +24,7 @@ export const simpsonsLisaStaring: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsLisaStaring.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsLisaStaring.png"
                 width={1080}
                 height={811}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const nerdDog: Template = {
     name: "nerdDog",
+    displayName: "Nerd dog",
     topics: [Topic.Animals],
     types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 890,
@@ -23,7 +24,7 @@ export const nerdDog: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/nerdDog.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/nerdDog.png"
                 width={890}
                 height={1085}
                 style={{ position: "absolute", top: 0, left: 0 }}

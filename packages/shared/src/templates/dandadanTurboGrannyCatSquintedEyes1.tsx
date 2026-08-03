@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dandadanTurboGrannyCatSquintedEyes1: Template = {
     name: "dandadanTurboGrannyCatSquintedEyes1",
+    displayName: "Dandadan Turbo Granny cat squinted eyes 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextTopWithBackground],
     width: 1395,
@@ -23,7 +24,7 @@ export const dandadanTurboGrannyCatSquintedEyes1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dandadanTurboGrannyCatSquintedEyes.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanTurboGrannyCatSquintedEyes.png"
                 width={1395}
                 height={1057}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

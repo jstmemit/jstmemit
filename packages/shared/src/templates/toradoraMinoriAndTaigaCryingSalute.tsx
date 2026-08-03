@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraMinoriAndTaigaCryingSalute: Template = {
     name: "toradoraMinoriAndTaigaCryingSalute",
+    displayName: "Toradora Minori And Taiga сrying salute",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottom],
     width: 1080,
@@ -23,7 +24,7 @@ export const toradoraMinoriAndTaigaCryingSalute: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriAndTaigaCryingSalute.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriAndTaigaCryingSalute.png"
                 width={1080}
                 height={727}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

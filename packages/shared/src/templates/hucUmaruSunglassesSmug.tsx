@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const hucUmaruSunglassesSmug: Template = {
     name: "hucUmaruSunglassesSmug",
+    displayName: "HUC Umaru sunglasses smug",
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TextTopWithBackground],
     width: 596,
@@ -23,7 +24,7 @@ export const hucUmaruSunglassesSmug: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruSunglassesSmug.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruSunglassesSmug.png"
                 width={596}
                 height={335}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

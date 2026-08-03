@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMafuyuHoshikawaSparkle: Template = {
     name: "blendsMafuyuHoshikawaSparkle",
+    displayName: "BlendS Mafuyu Hoshikawa sparkle",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground],
     width: 1280,
@@ -23,7 +24,7 @@ export const blendsMafuyuHoshikawaSparkle: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsMafuyuHoshikawaSparkle.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMafuyuHoshikawaSparkle.png"
                 width={1280}
                 height={720}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

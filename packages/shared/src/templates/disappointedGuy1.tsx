@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const disappointedGuy1: Template = {
     name: "disappointedGuy1",
+    displayName: "Disappointed guy 1",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption],
     width: 850,
@@ -27,7 +28,7 @@ export const disappointedGuy1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
                 width={850}
                 height={1097}
                 style={{ position: "absolute", top: 0, left: 0 }}

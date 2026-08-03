@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const absoluteCinema: Template = {
     name: "absoluteCinema",
+    displayName: "Absolute cinema",
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTop, Type.FaceImage, Type.DefaultText],
     width: 1230,
@@ -23,7 +24,7 @@ export const absoluteCinema: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/absoluteCinema.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/absoluteCinema.png"
                 width={1230}
                 height={1422}
                 style={{ position: "absolute", top: 0, left: 0 }}

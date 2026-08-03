@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ucwthoTsukiUzakiWhatAreYouSaying: Template = {
     name: "ucwthoTsukiUzakiWhatAreYouSaying",
+    displayName: "UCWTHO Tsuki Uzaki what are you saying",
     topics: [Topic.Reaction, Topic.Anime, Topic.UzakiChanWantsToHangOut],
     types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 1283,
@@ -23,7 +24,7 @@ export const ucwthoTsukiUzakiWhatAreYouSaying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ucwthoTsukiUzakiWhatAreYouSaying.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ucwthoTsukiUzakiWhatAreYouSaying.png"
                 width={1283}
                 height={674}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const womanYellingAtACat: Template = {
     name: "womanYellingAtACat",
+    displayName: "Woman yelling at a cat",
     topics: [Topic.Reaction, Topic.Animals],
     types: [Type.TwoOption, Type.TextRightWithBackground, Type.FaceImage],
     width: 1200,
@@ -26,7 +27,7 @@ export const womanYellingAtACat: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
                 width={1200}
                 height={1200}
                 style={{ position: "absolute", top: 0, left: 0 }}

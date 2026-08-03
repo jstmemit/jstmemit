@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const explainingWhiteboard: Template = {
     name: "explainingWhiteboard",
+    displayName: "Explaining whiteboard",
     topics: [Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1280,
@@ -23,7 +24,7 @@ export const explainingWhiteboard: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/explainingWhiteboard.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/explainingWhiteboard.jpg"
                 width={1280}
                 height={900}
                 style={{ position: "absolute", top: 0, left: 0 }}

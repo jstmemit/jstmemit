@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const iAdopted100Dogs: Template = {
     name: "iAdopted100Dogs",
+    displayName: "YouTube I adopted 100 dogs",
     topics: [Topic.YouTube],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 621,
@@ -34,7 +35,7 @@ export const iAdopted100Dogs: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail2.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ytthumbnail2.png"
                 width={621}
                 height={426}
                 style={{ position: "absolute", top: 0, left: 0 }}

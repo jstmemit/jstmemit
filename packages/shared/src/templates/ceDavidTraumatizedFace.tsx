@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ceDavidTraumatizedFace: Template = {
     name: "ceDavidTraumatizedFace",
+    displayName: "CE David traumatized face",
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const ceDavidTraumatizedFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ceDavidTraumatizedFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceDavidTraumatizedFace.png"
                 width={640}
                 height={633}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const theyAllGoIntoSquareHole: Template = {
     name: "theyAllGoIntoSquareHole",
+    displayName: "They all go into square hole",
     topics: [Topic.Misc],
     types: [Type.DefaultText, Type.ObjectImage],
     width: 854,
@@ -22,7 +23,7 @@ export const theyAllGoIntoSquareHole: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/theyAllGoIntoSquareHole.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/theyAllGoIntoSquareHole.png"
                 width={854}
                 height={1042}
                 style={{ position: "absolute", top: 0, left: 0 }}

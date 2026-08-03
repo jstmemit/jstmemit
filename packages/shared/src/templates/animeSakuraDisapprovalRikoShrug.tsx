@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const animeSakuraDisapprovalRikoShrug: Template = {
     name: "animeSakuraDisapprovalRikoShrug",
+    displayName: "Anime Sakura disapproval Riko shrug",
     topics: [Topic.Reaction, Topic.Anime],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 1008,
@@ -26,7 +27,7 @@ export const animeSakuraDisapprovalRikoShrug: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/animeSakuraDisapprovalRikoShrug.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/animeSakuraDisapprovalRikoShrug.png"
                 width={504}
                 height={993}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

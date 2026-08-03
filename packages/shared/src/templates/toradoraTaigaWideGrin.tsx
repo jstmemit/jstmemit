@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaWideGrin: Template = {
     name: "toradoraTaigaWideGrin",
+    displayName: "Toradora Taiga wide grin",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground],
     width: 1078,
@@ -23,7 +24,7 @@ export const toradoraTaigaWideGrin: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaWideGrin.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaWideGrin.png"
                 width={1078}
                 height={598}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

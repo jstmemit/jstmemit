@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const expandingBrain: Template = {
     name: "expandingBrain",
+    displayName: "Expanding brain",
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption],
     width: 1440,
@@ -27,7 +28,7 @@ export const expandingBrain: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/expandingBrain.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/expandingBrain.jpg"
                 width={1440}
                 height={1403}
                 style={{ position: "absolute", top: 0, left: 0 }}

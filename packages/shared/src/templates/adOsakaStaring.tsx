@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const adOsakaStaring: Template = {
     name: "adOsakaStaring",
+    displayName: "AD Osaka staring",
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextLeftWithBackground],
     width: 948,
@@ -23,7 +24,7 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
                 width={474}
                 height={577}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

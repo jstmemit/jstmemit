@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaZappBranniganAsDrake: Template = {
     name: "futuramaZappBranniganAsDrake",
+    displayName: "Futurama Zapp Brannigan as Drake",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 2048,
@@ -26,7 +27,7 @@ export const futuramaZappBranniganAsDrake: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaZappBranniganAsDrake.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaZappBranniganAsDrake.png"
                 width={2048}
                 height={1368}
                 style={{ position: "absolute", top: 0, left: 0 }}

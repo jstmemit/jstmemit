@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const cinemaGuys: Template = {
     name: "cinemaGuys",
+    displayName: "Cinema guys",
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 1280,
@@ -26,7 +27,7 @@ export const cinemaGuys: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/cinemaGuys.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/cinemaGuys.png"
                 width={1280}
                 height={947}
                 style={{ position: "absolute", top: 0, left: 0 }}

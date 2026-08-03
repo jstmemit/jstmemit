@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLSmirkFinger: Template = {
     name: "dnLSmirkFinger",
+    displayName: "DN L smirk finger",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextRightWithBackground],
     width: 1472,
@@ -23,7 +24,7 @@ export const dnLSmirkFinger: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnLSmirkFinger.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dnLSmirkFinger.png"
                 width={736}
                 height={736}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

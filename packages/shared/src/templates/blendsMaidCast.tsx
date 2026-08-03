@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaidCast: Template = {
     name: "blendsMaidCast",
+    displayName: "BlendS Maid cast",
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 849,
@@ -29,7 +30,7 @@ export const blendsMaidCast: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsMaidCast.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaidCast.png"
                 width={849}
                 height={630}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

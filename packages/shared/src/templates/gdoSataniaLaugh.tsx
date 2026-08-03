@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gdoSataniaLaugh: Template = {
     name: "gdoSataniaLaugh",
+    displayName: "GDO Satania laugh",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextTopWithBackground],
     width: 1200,
@@ -23,7 +24,7 @@ export const gdoSataniaLaugh: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaLaugh.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaLaugh.png"
                 width={1200}
                 height={675}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

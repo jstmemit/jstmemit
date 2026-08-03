@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tqqNinoAndMikuLookingAtYou: Template = {
     name: "tqqNinoAndMikuLookingAtYou",
+    displayName: "TQQ Nino And Miku looking at you",
     topics: [Topic.Reaction, Topic.Anime, Topic.TheQuintessentialQuintuplets],
     types: [Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const tqqNinoAndMikuLookingAtYou: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/tqqNinoAndMikuLookingAtYou.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tqqNinoAndMikuLookingAtYou.png"
                 width={640}
                 height={358}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

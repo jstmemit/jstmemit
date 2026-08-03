@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const bbSayMyName: Template = {
     name: "bbSayMyName",
+    displayName: "BB Say my name",
     topics: [Topic.BreakingBad, Topic.Movies],
     types: [Type.FaceImage, Type.DefaultText],
     width: 1280,
@@ -23,7 +24,7 @@ export const bbSayMyName: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/bbSayMyName.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bbSayMyName.jpg"
                 width={1280}
                 height={720}
                 style={{ position: "absolute", top: 0, left: 0 }}

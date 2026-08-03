@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
     name: "kaguyasamaChikaFujiwaraFadingSmile",
+    displayName: "Kaguyasama Chika Fujiwara fading smile",
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.ThreeOption, Type.TextLeftWithBackground],
     width: 630,
@@ -27,7 +28,7 @@ export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/kaguyasamaChikaFujiwaraFadingSmile.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/kaguyasamaChikaFujiwaraFadingSmile.png"
                 width={315}
                 height={551}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

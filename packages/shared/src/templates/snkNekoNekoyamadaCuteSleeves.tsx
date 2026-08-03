@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const snkNekoNekoyamadaCuteSleeves: Template = {
     name: "snkNekoNekoyamadaCuteSleeves",
+    displayName: "SNK Neko Nekoyamada cute sleeves",
     topics: [Topic.Reaction, Topic.Anime, Topic.ShikanokoNokonokoKoshitantan],
     types: [Type.TextRightWithBackground],
     width: 1472,
@@ -23,7 +24,7 @@ export const snkNekoNekoyamadaCuteSleeves: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/snkNekoNekoyamadaCuteSleeves.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/snkNekoNekoyamadaCuteSleeves.png"
                 width={736}
                 height={736}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

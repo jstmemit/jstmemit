@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterSkinColor: Template = {
     name: "griffinsPeterSkinColor",
+    displayName: "Griffins Peter skin color",
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.FaceImage, Type.TwoOption],
     width: 1000,
@@ -26,7 +27,7 @@ export const griffinsPeterSkinColor: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterSkinColor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterSkinColor.png"
                 width={1000}
                 height={539}
                 style={{ position: "absolute", top: 0, left: 0 }}

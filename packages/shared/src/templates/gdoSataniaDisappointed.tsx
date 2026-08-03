@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gdoSataniaDisappointed: Template = {
     name: "gdoSataniaDisappointed",
+    displayName: "GDO Satania disappointed",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextRightWithBackground],
     width: 2034,
@@ -23,7 +24,7 @@ export const gdoSataniaDisappointed: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaDisappointed.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaDisappointed.png"
                 width={1017}
                 height={900}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const connor: Template = {
     name: "connor",
+    displayName: "Connor choosing",
     topics: [Topic.Games],
     types: [Type.TextTopWithBackground, Type.FourOption, Type.TextBottom, Type.FaceImage],
     width: 960,
@@ -29,7 +30,7 @@ export const connor: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/connor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/connor.png"
                 width={960}
                 height={1211}
                 style={{ position: "absolute", top: 0, left: 0 }}

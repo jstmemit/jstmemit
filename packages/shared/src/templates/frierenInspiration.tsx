@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenInspiration: Template = {
     name: "frierenInspiration",
+    displayName: "Frieren inspiration",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 786,
@@ -23,7 +24,7 @@ export const frierenInspiration: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenInspiration.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenInspiration.png"
                 width={393}
                 height={508}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSmugPotion: Template = {
     name: "frierenSmugPotion",
+    displayName: "Frieren smug potion",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 739,
@@ -23,7 +24,7 @@ export const frierenSmugPotion: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugPotion.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugPotion.png"
                 width={739}
                 height={415}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

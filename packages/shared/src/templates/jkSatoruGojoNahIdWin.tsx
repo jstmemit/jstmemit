@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const jkSatoruGojoNahIdWin: Template = {
     name: "jkSatoruGojoNahIdWin",
+    displayName: "JK Satoru Gojo nah I'd win",
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.DefaultText, Type.FaceImage],
     width: 700,
@@ -23,7 +24,7 @@ export const jkSatoruGojoNahIdWin: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/jkSatoruGojoNahIdWin.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/jkSatoruGojoNahIdWin.png"
                 width={700}
                 height={368}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

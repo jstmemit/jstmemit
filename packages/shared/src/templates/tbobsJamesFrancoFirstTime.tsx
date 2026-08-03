@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tbobsJamesFrancoFirstTime: Template = {
     name: "tbobsJamesFrancoFirstTime",
+    displayName: "TBOBS James Franco first time",
     topics: [Topic.Reaction, Topic.Movies, Topic.TheBalladOfBusterScruggs],
     types: [Type.DefaultText, Type.FaceImage],
     width: 1200,
@@ -26,7 +27,7 @@ export const tbobsJamesFrancoFirstTime: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/tbobsJamesFrancoFirstTime.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tbobsJamesFrancoFirstTime.png"
                 width={1200}
                 height={1296}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

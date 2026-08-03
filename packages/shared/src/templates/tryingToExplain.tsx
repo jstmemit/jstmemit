@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tryingToExplain: Template = {
     name: "tryingToExplain",
+    displayName: "Trying to explain",
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,
@@ -23,7 +24,7 @@ export const tryingToExplain: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/tryingToExplain.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tryingToExplain.png"
                 width={1080}
                 height={1118}
                 style={{ position: "absolute", top: 0, left: 0 }}

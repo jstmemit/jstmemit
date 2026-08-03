@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const winnieThePooh1: Template = {
     name: "winnieThePooh1",
+    displayName: "Winnie The Pooh 1",
     topics: [Topic.Cartoons, Topic.Reaction, Topic.WinnieThePooh],
     types: [Type.ThreeOption, Type.TextRightWithBackground],
     width: 640,
@@ -27,7 +28,7 @@ export const winnieThePooh1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/winnieThePooh1.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/winnieThePooh1.jpg"
                 width={640}
                 height={731}
                 style={{ position: "absolute", top: 0, left: 0 }}

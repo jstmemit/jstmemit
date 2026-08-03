@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsKahoAndMaikaMaids: Template = {
     name: "blendsKahoAndMaikaMaids",
+    displayName: "BlendS Kaho and Maika maids",
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextBottom],
     width: 422,
@@ -26,7 +27,7 @@ export const blendsKahoAndMaikaMaids: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsKahoAndMaikaMaids.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsKahoAndMaikaMaids.png"
                 width={422}
                 height={600}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

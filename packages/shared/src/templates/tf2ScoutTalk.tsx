@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const tf2ScoutTalk: Template = {
     name: "tf2ScoutTalk",
+    displayName: "TF2 Scout talk",
     topics: [Topic.TeamFortress2, Topic.Games],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const tf2ScoutTalk: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/tf2ScoutTalk.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tf2ScoutTalk.jpg"
                 width={640}
                 height={857}
                 style={{ position: "absolute", top: 0, left: 0 }}

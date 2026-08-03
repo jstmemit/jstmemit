@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsMoeKickingOutBarney: Template = {
     name: "simpsonsMoeKickingOutBarney",
+    displayName: "Simpsons Moe kicking out Barney",
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.ThreeOption],
     width: 1470,
@@ -26,7 +27,7 @@ export const simpsonsMoeKickingOutBarney: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsMoeKickingOutBarney.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsMoeKickingOutBarney.jpg"
                 width={1470}
                 height={2506}
                 style={{ position: "absolute", top: 0, left: 0 }}

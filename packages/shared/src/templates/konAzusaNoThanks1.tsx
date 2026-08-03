@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const konAzusaNoThanks1: Template = {
     name: "konAzusaNoThanks1",
+    displayName: "K-On Azusa no thanks 1",
     topics: [Topic.Reaction, Topic.Anime, Topic.Kon],
     types: [Type.DefaultText, Type.FaceImage],
     width: 860,
@@ -23,7 +24,7 @@ export const konAzusaNoThanks1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/konAzusaNoThanks1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/konAzusaNoThanks1.png"
                 width={860}
                 height={550}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

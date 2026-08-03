@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const incomingCall: Template = {
     name: "incomingCall",
+    displayName: "Incoming call",
     topics: [Topic.Misc],
     types: [Type.AvatarImage, Type.TextCenter],
     width: 640,
@@ -23,7 +24,7 @@ export const incomingCall: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/incomingCall.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/incomingCall.jpg"
                 width={640}
                 height={1055}
                 style={{ position: "absolute", top: 0, left: 0 }}
