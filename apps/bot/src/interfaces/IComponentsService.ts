@@ -17,6 +17,8 @@ export abstract class IComponentsService {
         language: Locale,
         likes: number,
         dislikes: number,
+        templates: number,
+        voices: number,
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract getMissingBotPermissionsMessageComponent(
         language: Locale,

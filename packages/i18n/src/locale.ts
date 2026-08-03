@@ -147,6 +147,17 @@ export const locale: Partial<TranslationString> = {
         "help.button.faq": "❓ Frequently asked questions",
         "help.button.features": "✨ Features list",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yay! {{count}} memes in **<#{{channelId}}>**!`,
+        "milestones.description": `None of this would exist if you talked about normal things.\nBelow are some stats about how you reacted to them.`,
+        "milestones.nextGoal": "Next goal: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# If you don't want to receive these messages you can disable them in **/settings**",
+
+        "stats.likes": "Likes: {{count}}",
+        "stats.dislikes": "Dislikes: {{count}}",
+        "stats.templates": "Templates used: {{count}}",
+        "stats.voices": "Voices used: {{count}}",
     },
 
     [Locale.Russian]: {

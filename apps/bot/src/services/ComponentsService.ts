@@ -137,22 +137,20 @@ export class ComponentsService implements IComponentsService {
 
         return new ContainerBuilder()
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# 🎉 Yay! ${count} memes in **<#${channelId}>**!`),
-            )
-            .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `None of this would exist if you talked about normal things.\nBelow are some stats about how you reacted to them.`,
+                    `# 🎉 ${t("milestones.heading", language, { count: String(count), channelId })}`,
                 ),
             )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.description", language)))
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Next goal: ${count}/${count * 2} memes`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
+                ),
+            )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `-# If you don't want to receive these messages you can disable them in **/settings**`,
-                ),
-            );
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.turnOffInSettings", language)));
     }
 
     /**
@@ -162,6 +160,8 @@ export class ComponentsService implements IComponentsService {
      * @param language
      * @param likes
      * @param dislikes
+     * @param templates
+     * @param voices
      *
      * @author Kyrylo Maliuha
      */
@@ -169,33 +169,35 @@ export class ComponentsService implements IComponentsService {
         language: Locale,
         likes: number,
         dislikes: number,
+        templates: number,
+        voices: number,
     ): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Likes: ${likes} 👍`)
+                    .setLabel(`${t("stats.likes", language, { count: String(likes) })} 👍`)
                     .setDisabled(true)
                     .setCustomId(`total-likes`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Dislikes: ${dislikes} 👎`)
+                    .setLabel(`${t("stats.dislikes", language, { count: String(dislikes) })} 👎`)
                     .setDisabled(true)
                     .setCustomId(`total-dislikes`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Templates used: 99 🖼️`)
+                    .setLabel(`${t("stats.templates", language, { count: String(templates) })} 🖼️`)
                     .setDisabled(true)
                     .setCustomId(`total-templates`),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`Voices used: 2 🔊`)
+                    .setLabel(`${t("stats.voices", language, { count: String(voices) })} 🔊`)
                     .setDisabled(true)
                     .setCustomId(`total-voices`),
             );
