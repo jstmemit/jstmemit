@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sleepyThinking: Template = {
     name: "sleepyThinking",
+    displayName: "Sleepy thinking",
     topics: [Topic.Misc],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 885,
@@ -34,7 +35,7 @@ export const sleepyThinking: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/sleepythinking.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/sleepythinking.png"
                 width={885}
                 height={900}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaNotSureIfFry: Template = {
     name: "futuramaNotSureIfFry",
+    displayName: "Futurama Not sure if Fry",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 603,
@@ -23,7 +24,7 @@ export const futuramaNotSureIfFry: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaNotSureIfFry.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaNotSureIfFry.jpg"
                 width={603}
                 height={519}
                 style={{ position: "absolute", top: 0, left: 0 }}

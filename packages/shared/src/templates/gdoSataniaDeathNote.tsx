@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gdoSataniaDeathNote: Template = {
     name: "gdoSataniaDeathNote",
+    displayName: "GDO Satania Death Note",
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut, Topic.DeathNote],
     types: [Type.TextBottom],
     width: 500,
@@ -23,7 +24,7 @@ export const gdoSataniaDeathNote: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaDeathNote.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaDeathNote.png"
                 width={500}
                 height={484}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

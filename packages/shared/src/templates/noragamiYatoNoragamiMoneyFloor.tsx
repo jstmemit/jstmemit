@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const noragamiYatoNoragamiMoneyFloor: Template = {
     name: "noragamiYatoNoragamiMoneyFloor",
+    displayName: "Noragami Yato Noragami money floor",
     topics: [Topic.Anime, Topic.Noragami],
     types: [Type.DefaultText, Type.FaceImage],
     width: 447,
@@ -23,7 +24,7 @@ export const noragamiYatoNoragamiMoneyFloor: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/noragamiYatoNoragamiMoneyFloor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/noragamiYatoNoragamiMoneyFloor.png"
                 width={447}
                 height={447}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

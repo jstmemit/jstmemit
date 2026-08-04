@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const evangelionAsukaLangleyDisappointedLook: Template = {
     name: "evangelionAsukaLangleyDisappointedLook",
+    displayName: "Evangelion Asuka Langley disappointed look",
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextBottom],
     width: 736,
@@ -23,7 +24,7 @@ export const evangelionAsukaLangleyDisappointedLook: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/evangelionAsukaLangleyDisappointedLook.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/evangelionAsukaLangleyDisappointedLook.png"
                 width={736}
                 height={736}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acNagisaCalm: Template = {
     name: "acNagisaCalm",
+    displayName: "AC Nagisa calm",
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,
@@ -24,7 +25,7 @@ export const acNagisaCalm: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/acNagisaCalm.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/acNagisaCalm.gif"
                 width={498}
                 height={298}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

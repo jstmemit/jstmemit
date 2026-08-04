@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const catIsCalling: Template = {
     name: "catIsCalling",
+    displayName: "Cat is calling",
     topics: [Topic.Cartoons],
     types: [Type.TextTop],
     width: 1498,
@@ -22,7 +23,7 @@ export const catIsCalling: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/catIsCalling.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/catIsCalling.png"
                 width={1498}
                 height={936}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const ditfZeroTwoWhatever1: Template = {
     name: "ditfZeroTwoWhatever1",
+    displayName: "DITF Zero Two whatever 1",
     topics: [Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.ObjectImage, Type.TextBottomWithBackground, Type.TwoOption],
     width: 736,
@@ -26,7 +27,7 @@ export const ditfZeroTwoWhatever1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoWhatever.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoWhatever.png"
                 width={736}
                 height={414}
                 style={{ position: "absolute", top: 0, left: 0 }}

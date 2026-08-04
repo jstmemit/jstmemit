@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const animeTheThreeStagesOfApproval: Template = {
     name: "animeTheThreeStagesOfApproval",
+    displayName: "Anime The three stages of approval",
     topics: [Topic.Reaction, Topic.Anime],
     types: [Type.TextRightWithBackground, Type.ThreeOption],
     width: 1008,
@@ -27,7 +28,7 @@ export const animeTheThreeStagesOfApproval: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/animeTheThreeStagesOfApproval.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/animeTheThreeStagesOfApproval.png"
                 width={504}
                 height={1500}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

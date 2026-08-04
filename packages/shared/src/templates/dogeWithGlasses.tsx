@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dogeWithGlasses: Template = {
     name: "dogeWithGlasses",
+    displayName: "Doge with glasses",
     topics: [Topic.Animals, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1024,
@@ -23,7 +24,7 @@ export const dogeWithGlasses: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dogeWithGlasses.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dogeWithGlasses.png"
                 width={1024}
                 height={777}
                 style={{ position: "absolute", top: 0, left: 0 }}

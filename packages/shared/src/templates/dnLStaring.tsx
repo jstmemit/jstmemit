@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnLStaring: Template = {
     name: "dnLStaring",
+    displayName: "DN L staring",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextLeftWithBackground],
     width: 1350,
@@ -23,7 +24,7 @@ export const dnLStaring: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnLStaring.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dnLStaring.png"
                 width={675}
                 height={675}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

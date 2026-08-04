@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
     name: "toradoraTaigaCatchesRyuujiAndAmi",
+    displayName: "Toradora Taiga catches Ryuuji And Ami",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.FaceImage],
     width: 870,
@@ -27,7 +28,7 @@ export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaCatchesRyuujiAndAmi.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaCatchesRyuujiAndAmi.png"
                 width={870}
                 height={964}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sfAnyaForgerDisgustFace: Template = {
     name: "sfAnyaForgerDisgustFace",
+    displayName: "SF Anya Forger disgust face",
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextTopWithBackground],
     width: 596,
@@ -23,7 +24,7 @@ export const sfAnyaForgerDisgustFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/sfAnyaForgerDisgustFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/sfAnyaForgerDisgustFace.png"
                 width={596}
                 height={323}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

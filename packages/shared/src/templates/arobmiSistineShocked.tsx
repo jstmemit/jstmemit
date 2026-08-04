@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const arobmiSistineShocked: Template = {
     name: "arobmiSistineShocked",
+    displayName: "AROBMI Sistine shocked",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 432,
@@ -24,7 +25,7 @@ export const arobmiSistineShocked: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gifs/arobmiSistineShocked.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/arobmiSistineShocked.gif"
                 width={432}
                 height={281}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

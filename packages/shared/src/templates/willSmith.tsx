@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const willSmith: Template = {
     name: "willSmith",
+    displayName: "Will Smith",
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 891,
@@ -23,7 +24,7 @@ export const willSmith: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/willSmith.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/willSmith.jpg"
                 width={891}
                 height={891}
                 style={{ position: "absolute", top: 0, left: 0 }}

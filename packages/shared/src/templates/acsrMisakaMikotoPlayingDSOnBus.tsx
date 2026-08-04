@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const acsrMisakaMikotoPlayingDSOnBus: Template = {
     name: "acsrMisakaMikotoPlayingDSOnBus",
+    displayName: "ACSR Misaka Mikoto playing DS on bus",
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 736,
@@ -26,7 +27,7 @@ export const acsrMisakaMikotoPlayingDSOnBus: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/acsrMisakaMikotoPlayingDSOnBus.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/acsrMisakaMikotoPlayingDSOnBus.png"
                 width={368}
                 height={923}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

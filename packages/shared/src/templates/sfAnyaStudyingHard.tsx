@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sfAnyaStudyingHard: Template = {
     name: "sfAnyaStudyingHard",
+    displayName: "SF Anya studying hard",
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextBottomWithBackground],
     width: 447,
@@ -23,7 +24,7 @@ export const sfAnyaStudyingHard: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/sfAnyaStudyingHard.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/sfAnyaStudyingHard.png"
                 width={447}
                 height={290}
                 style={{ position: "absolute", top: 0, right: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaChristmasDonut: Template = {
     name: "toradoraTaigaChristmasDonut",
+    displayName: "Toradora Taiga christmas donut",
     topics: [Topic.Reaction, Topic.Movies, Topic.Toradora],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 534,
@@ -26,7 +27,7 @@ export const toradoraTaigaChristmasDonut: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaChristmasDonut.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaChristmasDonut.png"
                 width={267}
                 height={300}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

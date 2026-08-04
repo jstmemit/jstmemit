@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsRalphImInDanger: Template = {
     name: "simpsonsRalphImInDanger",
+    displayName: "Simpsons Ralph I'm in danger",
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1024,
@@ -23,7 +24,7 @@ export const simpsonsRalphImInDanger: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsRalphImInDanger.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsRalphImInDanger.jpg"
                 width={1024}
                 height={581}
                 style={{ position: "absolute", top: 0, left: 0 }}

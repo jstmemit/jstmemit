@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterWaitingForSomething: Template = {
     name: "griffinsPeterWaitingForSomething",
+    displayName: "Griffins Peter waiting for something",
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 568,
@@ -23,7 +24,7 @@ export const griffinsPeterWaitingForSomething: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterWaitingForSomething.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterWaitingForSomething.jpg"
                 width={568}
                 height={386}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const pleaseBePatient: Template = {
     name: "pleaseBePatient",
+    displayName: "Please be patient",
     topics: [Topic.Anime, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.FaceImage, Type.DefaultText],
     width: 1051,
@@ -42,7 +43,7 @@ export const pleaseBePatient: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/pleaseBePatient.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pleaseBePatient.png"
                 width={1051}
                 height={1032}
                 style={{ position: "absolute", top: 0, left: 0 }}

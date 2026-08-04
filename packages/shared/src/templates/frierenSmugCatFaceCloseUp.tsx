@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenSmugCatFaceCloseUp: Template = {
     name: "frierenSmugCatFaceCloseUp",
+    displayName: "Frieren smug cat face close up",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground],
     width: 596,
@@ -23,7 +24,7 @@ export const frierenSmugCatFaceCloseUp: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugCatFaceCloseUp.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenSmugCatFaceCloseUp.png"
                 width={596}
                 height={335}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

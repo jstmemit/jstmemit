@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const britishCuisine: Template = {
     name: "britishCuisine",
+    displayName: "British cuisine",
     topics: [Topic.SocialPost],
     types: [Type.TextName, Type.AvatarImage, Type.ObjectImage, Type.TextPost],
     width: 883,
@@ -66,7 +67,7 @@ export const britishCuisine: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/britishCuisine.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/britishCuisine.png"
                 width={933}
                 height={1051}
                 style={{ position: "absolute", top: 0, left: 0 }}

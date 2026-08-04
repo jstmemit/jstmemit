@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobShowsSign: Template = {
     name: "spongebobShowsSign",
+    displayName: "Spongebob shows sign",
     topics: [Topic.SpongeBob, Topic.Cartoons],
     types: [Type.ObjectImage, Type.TextLeft],
     width: 657,
@@ -24,7 +25,7 @@ export const spongebobShowsSign: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spongebobShowsSign.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobShowsSign.png"
                 width={657}
                 height={493}
                 style={{ position: "absolute", top: 0, left: 0 }}

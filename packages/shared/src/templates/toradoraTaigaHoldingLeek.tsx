@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraTaigaHoldingLeek: Template = {
     name: "toradoraTaigaHoldingLeek",
+    displayName: "Toradora Taiga holding leek",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.DefaultText, Type.FaceImage],
     width: 519,
@@ -23,7 +24,7 @@ export const toradoraTaigaHoldingLeek: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaHoldingLeek.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraTaigaHoldingLeek.png"
                 width={519}
                 height={385}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

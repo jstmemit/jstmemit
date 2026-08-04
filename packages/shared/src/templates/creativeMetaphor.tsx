@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const creativeMetaphor: Template = {
     name: "creativeMetaphor",
+    displayName: "Creative metaphor",
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.TextName, Type.DefaultText, Type.AvatarImage],
     width: 1202,
@@ -25,7 +26,7 @@ export const creativeMetaphor: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
                 width={1202}
                 height={1028}
                 style={{ position: "absolute", top: 0, left: 0 }}

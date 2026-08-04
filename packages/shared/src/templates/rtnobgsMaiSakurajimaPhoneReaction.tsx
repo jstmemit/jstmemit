@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
     name: "rtnobgsMaiSakurajimaPhoneReaction",
+    displayName: "RTNOBGS Mai Sakurajima phone reaction",
     topics: [Topic.Reaction, Topic.Anime, Topic.RascalDoesNotDreamOfBunnyGirlSenpai],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 400,
@@ -26,7 +27,7 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/rtnobgsMaiSakurajimaPhoneReaction.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/rtnobgsMaiSakurajimaPhoneReaction.png"
                 width={200}
                 height={400}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

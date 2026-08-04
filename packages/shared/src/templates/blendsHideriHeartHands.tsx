@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriHeartHands: Template = {
     name: "blendsHideriHeartHands",
+    displayName: "BlendS Hideri heart hands",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground, Type.FaceImage],
     width: 1710,
@@ -23,7 +24,7 @@ export const blendsHideriHeartHands: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriHeartHands.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriHeartHands.png"
                 width={1710}
                 height={900}
                 style={{ position: "absolute", top: 0, left: 0 }}

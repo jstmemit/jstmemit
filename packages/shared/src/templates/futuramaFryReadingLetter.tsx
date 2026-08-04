@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaFryReadingLetter: Template = {
     name: "futuramaFryReadingLetter",
+    displayName: "Futurama Fry reading letter",
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 720,
@@ -23,7 +24,7 @@ export const futuramaFryReadingLetter: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaFryReadingLetter.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaFryReadingLetter.jpg"
                 width={720}
                 height={1110}
                 style={{ position: "absolute", top: 0, left: 0 }}

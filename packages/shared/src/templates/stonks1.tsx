@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const stonks1: Template = {
     name: "stonks1",
+    displayName: "Stonks 1",
     topics: [Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 1858,
@@ -23,7 +24,7 @@ export const stonks1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/stonks-without-stonks.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/stonks-without-stonks.jpg"
                 width={1858}
                 height={1304}
                 style={{ position: "absolute", top: 0, left: 0 }}

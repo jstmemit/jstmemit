@@ -53,7 +53,7 @@ import { myHonestReaction } from "#/templates/myHonestReaction.tsx";
 import { nerdDog } from "#/templates/nerdDog.tsx";
 import { owlStareAtYou } from "#/templates/owlStareAtYou.tsx";
 import { sadMan } from "#/templates/sadMan.tsx";
-import { spiderManDouble } from "#/templates/spiderManDouble.tsx";
+import { spidermanDouble } from "#/templates/spidermanDouble.tsx";
 import { starTrekThinking } from "#/templates/starTrekThinking.tsx";
 import { tf2ScoutTalk } from "#/templates/tf2ScoutTalk.tsx";
 import { tryingToExplain } from "#/templates/tryingToExplain.tsx";
@@ -377,6 +377,7 @@ import { btrBocchiPanic } from "#/templates/btrBocchiPanic.tsx";
 import { btrBocchiPerform } from "#/templates/btrBocchiPerform.tsx";
 import { btrBocchiSpiralEyesPanic1 } from "#/templates/btrBocchiSpiralEyesPanic1.tsx";
 import { btrNijikaGoodbye } from "#/templates/btrNijikaGoodbye.tsx";
+import { umAgnesTachyonUncanny } from "#/templates/umAgnesTachyonUncanny.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -451,7 +452,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             nerdDog,
             owlStareAtYou,
             sadMan,
-            spiderManDouble,
+            spidermanDouble,
             starTrekThinking,
             tf2ScoutTalk,
             tryingToExplain,
@@ -775,6 +776,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiPerform,
             btrBocchiSpiralEyesPanic1,
             btrNijikaGoodbye,
+            umAgnesTachyonUncanny,
         ];
     }
 

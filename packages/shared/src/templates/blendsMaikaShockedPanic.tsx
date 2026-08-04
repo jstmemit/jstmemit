@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsMaikaShockedPanic: Template = {
     name: "blendsMaikaShockedPanic",
+    displayName: "BlendS Maika shocked panic",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground],
     width: 898,
@@ -23,7 +24,7 @@ export const blendsMaikaShockedPanic: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaShockedPanic.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaikaShockedPanic.png"
                 width={449}
                 height={412}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

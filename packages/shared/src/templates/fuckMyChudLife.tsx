@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
+    displayName: "Fuck my chud life",
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 776,
@@ -22,7 +23,7 @@ export const fuckMyChudLife: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/fuckMyChudLife.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/fuckMyChudLife.png"
                 width={776}
                 height={999}
                 style={{ position: "absolute", top: 0, left: 0 }}

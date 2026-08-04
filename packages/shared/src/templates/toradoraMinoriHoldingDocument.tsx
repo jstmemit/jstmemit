@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const toradoraMinoriHoldingDocument: Template = {
     name: "toradoraMinoriHoldingDocument",
+    displayName: "Toradora Minori holding document",
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextCenterWithBackground],
     width: 640,
@@ -54,7 +55,7 @@ export const toradoraMinoriHoldingDocument: Template = {
                 </div>
             </div>
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriHoldingDocument1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriHoldingDocument1.png"
                 width={640}
                 height={374}
                 style={{ position: "absolute", top: 0, right: 0 }}

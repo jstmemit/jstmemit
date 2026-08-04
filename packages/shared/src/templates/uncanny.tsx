@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const uncanny: Template = {
     name: "uncanny",
+    displayName: "Incredible uncanny",
     topics: [Topic.Cartoons, Topic.Reaction, Topic.Incredibles],
     types: [Type.TwoOption, Type.TextTopWithBackground],
     width: 950,
@@ -26,7 +27,7 @@ export const uncanny: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
                 width={950}
                 height={500}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

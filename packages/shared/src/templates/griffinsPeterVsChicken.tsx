@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const griffinsPeterVsChicken: Template = {
     name: "griffinsPeterVsChicken",
+    displayName: "Griffins Peter vs chicken",
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Animals],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 2000,
@@ -26,7 +27,7 @@ export const griffinsPeterVsChicken: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterVsChicken.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterVsChicken.png"
                 width={2000}
                 height={1125}
                 style={{ position: "absolute", top: 0, left: 0 }}

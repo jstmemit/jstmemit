@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const sgPlayer456HappyVsDepressed: Template = {
     name: "sgPlayer456HappyVsDepressed",
+    displayName: "SG Player 456 happy vs depressed",
     topics: [Topic.Reaction, Topic.Movies, Topic.SquidGame],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 718,
@@ -26,7 +27,7 @@ export const sgPlayer456HappyVsDepressed: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/sgPlayer456HappyVsDepressed.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/sgPlayer456HappyVsDepressed.png"
                 width={359}
                 height={714}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

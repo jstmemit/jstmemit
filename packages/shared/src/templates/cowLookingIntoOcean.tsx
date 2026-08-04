@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const cowLookingIntoOcean: Template = {
     name: "cowLookingIntoOcean",
+    displayName: "Horse looking into ocean",
     topics: [Topic.Animals],
     types: [Type.TextBottom, Type.FaceImage],
     width: 403,
@@ -23,7 +24,7 @@ export const cowLookingIntoOcean: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/cowlookingintoocean.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/cowlookingintoocean.png"
                 width={403}
                 height={352}
                 style={{ position: "absolute", top: 0, left: 0 }}

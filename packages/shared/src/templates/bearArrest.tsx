@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const bearArrest: Template = {
     name: "bearArrest",
+    displayName: "Bear arrest",
     topics: [Topic.News, Topic.Animals],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const bearArrest: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
                 width={640}
                 height={434}
                 style={{ position: "absolute", top: 0, left: 0 }}

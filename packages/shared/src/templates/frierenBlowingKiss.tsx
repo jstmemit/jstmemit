@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const frierenBlowingKiss: Template = {
     name: "frierenBlowingKiss",
+    displayName: "Frieren blowing kiss",
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextBottom, Type.FaceImage],
     width: 447,
@@ -23,7 +24,7 @@ export const frierenBlowingKiss: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKiss.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKiss.png"
                 width={447}
                 height={447}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

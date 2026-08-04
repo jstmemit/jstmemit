@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const wnlFuminoRealization2: Template = {
     name: "wnlFuminoRealization2",
+    displayName: "WNL Fumino realization 2",
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 1090,
@@ -26,7 +27,7 @@ export const wnlFuminoRealization2: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization2.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/wnlFuminoRealization2.png"
                 width={545}
                 height={608}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dnDarkRoomThinking: Template = {
     name: "dnDarkRoomThinking",
+    displayName: "DN Dark room thinking",
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const dnDarkRoomThinking: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dnDarkRoomThinking.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dnDarkRoomThinking.png"
                 width={640}
                 height={640}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

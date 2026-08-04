@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const spongebobCaveman: Template = {
     name: "spongebobCaveman",
+    displayName: "Spongebob caveman",
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTop],
     width: 716,
@@ -23,7 +24,7 @@ export const spongebobCaveman: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spongebobCaveman.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobCaveman.jpg"
                 width={716}
                 height={452}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

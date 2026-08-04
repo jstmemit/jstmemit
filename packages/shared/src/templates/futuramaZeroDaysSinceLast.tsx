@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaZeroDaysSinceLast: Template = {
     name: "futuramaZeroDaysSinceLast",
+    displayName: "Futurama Zero days since last",
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.TextCenterWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const futuramaZeroDaysSinceLast: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaZeroDaysSinceLast.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaZeroDaysSinceLast.jpg"
                 width={640}
                 height={469}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsChibiMaikaCheering: Template = {
     name: "blendsChibiMaikaCheering",
+    displayName: "BlendS Chibi Maika cheering",
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground],
     width: 1472,
@@ -23,7 +24,7 @@ export const blendsChibiMaikaCheering: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsChibiMaikaCheering.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsChibiMaikaCheering.png"
                 width={736}
                 height={986}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

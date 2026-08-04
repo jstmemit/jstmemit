@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const diagramIQ: Template = {
     name: "diagramIQ",
+    displayName: "Diagram IQ",
     topics: [Topic.Misc],
     types: [Type.TextTop, Type.TextLeft, Type.TextRight, Type.FaceImage, Type.ThreeOption],
     width: 1272,
@@ -31,7 +32,7 @@ export const diagramIQ: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
                 width={1272}
                 height={843}
                 style={{ position: "absolute", top: 0, left: 0 }}

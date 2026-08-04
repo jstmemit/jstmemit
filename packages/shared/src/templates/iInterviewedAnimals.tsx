@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const iInterviewedAnimals: Template = {
     name: "iInterviewedAnimals",
+    displayName: "YouTube I interviewed animals",
     topics: [Topic.YouTube, Topic.Animals],
     types: [Type.DefaultText, Type.ObjectImage, Type.TextRight],
     width: 621,
@@ -33,7 +34,7 @@ export const iInterviewedAnimals: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/iInterviewedAnimals.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/iInterviewedAnimals.png"
                 width={621}
                 height={426}
                 style={{ position: "absolute", top: 0, left: 0 }}

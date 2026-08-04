@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const gintamaGintokiScaredGhost: Template = {
     name: "gintamaGintokiScaredGhost",
+    displayName: "Gintama Gintoki scared ghost",
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const gintamaGintokiScaredGhost: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiScaredGhost.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiScaredGhost.png"
                 width={640}
                 height={360}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

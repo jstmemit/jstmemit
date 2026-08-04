@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blooInBed: Template = {
     name: "blooInBed",
+    displayName: "Bloo in bed",
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 864,
@@ -26,7 +27,7 @@ export const blooInBed: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blooInBed.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blooInBed.png"
                 width={864}
                 height={871}
                 style={{ position: "absolute", top: 0, left: 0 }}

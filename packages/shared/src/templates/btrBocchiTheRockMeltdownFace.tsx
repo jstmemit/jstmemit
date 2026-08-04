@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const btrBocchiTheRockMeltdownFace: Template = {
     name: "btrBocchiTheRockMeltdownFace",
+    displayName: "BTR Bocchi the rock meltdown face",
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 640,
@@ -23,7 +24,7 @@ export const btrBocchiTheRockMeltdownFace: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiTheRockMeltdownFace.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/btrBocchiTheRockMeltdownFace.png"
                 width={640}
                 height={357}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

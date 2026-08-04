@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const saltBae: Template = {
     name: "saltBae",
+    displayName: "Salt Bae",
     topics: [Topic.Misc],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1500,
@@ -23,7 +24,7 @@ export const saltBae: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/saltBae.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/saltBae.png"
                 width={1500}
                 height={1495}
                 style={{ position: "absolute", top: 0, left: 0 }}

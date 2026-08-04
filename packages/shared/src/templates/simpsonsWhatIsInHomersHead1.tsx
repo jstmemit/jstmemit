@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const simpsonsWhatIsInHomersHead1: Template = {
     name: "simpsonsWhatIsInHomersHead1",
+    displayName: "Simpsons What is in Homer's head 1",
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 525,
@@ -48,7 +49,7 @@ export const simpsonsWhatIsInHomersHead1: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/simpsonsWhatIsInHomersHead.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsWhatIsInHomersHead.png"
                 width={525}
                 height={682}
                 style={{ position: "absolute", top: 0, left: 0 }}

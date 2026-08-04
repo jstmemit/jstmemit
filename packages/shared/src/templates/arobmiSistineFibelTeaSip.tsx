@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const arobmiSistineFibelTeaSip: Template = {
     name: "arobmiSistineFibelTeaSip",
+    displayName: "AROBMI Sistine Fibel tea sip",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 1280,
@@ -23,7 +24,7 @@ export const arobmiSistineFibelTeaSip: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/arobmiSistineFibelTeaSip.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/arobmiSistineFibelTeaSip.png"
                 width={1280}
                 height={1032}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

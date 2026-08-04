@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const futuramaFrySleeplessInsomnia: Template = {
     name: "futuramaFrySleeplessInsomnia",
+    displayName: "Futurama Fry sleepless insomnia",
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 604,
@@ -23,7 +24,7 @@ export const futuramaFrySleeplessInsomnia: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/futuramaFrySleeplessInsomnia.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaFrySleeplessInsomnia.jpg"
                 width={604}
                 height={479}
                 style={{ position: "absolute", top: 0, left: 0 }}

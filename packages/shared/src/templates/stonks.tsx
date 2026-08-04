@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const stonks: Template = {
     name: "stonks",
+    displayName: "Stonks",
     topics: [Topic.Reaction],
     types: [Type.BackgroundImage, Type.TextRight],
     width: 512,
@@ -34,7 +35,7 @@ export const stonks: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/stonks.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/stonks.png"
                 width={512}
                 height={386}
                 style={{ position: "absolute", top: 0, left: 0 }}

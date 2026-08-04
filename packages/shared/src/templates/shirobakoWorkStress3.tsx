@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const shirobakoWorkStress3: Template = {
     name: "shirobakoWorkStress3",
+    displayName: "Shirobako Work stress 3",
     topics: [Topic.Reaction, Topic.Movies, Topic.Shirobako],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 950,
@@ -26,7 +27,7 @@ export const shirobakoWorkStress3: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/shirobakoWorkStress3.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/shirobakoWorkStress3.png"
                 width={475}
                 height={528}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

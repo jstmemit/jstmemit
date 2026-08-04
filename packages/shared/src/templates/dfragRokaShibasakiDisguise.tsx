@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const dfragRokaShibasakiDisguise: Template = {
     name: "dfragRokaShibasakiDisguise",
+    displayName: "D-Frag Roka Shibasaki disguise",
     topics: [Topic.Reaction, Topic.Anime, Topic.DFrag],
     types: [Type.TextTopWithBackground],
     width: 750,
@@ -23,7 +24,7 @@ export const dfragRokaShibasakiDisguise: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/dfragRokaShibasakiDisguise.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dfragRokaShibasakiDisguise.png"
                 width={750}
                 height={422}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

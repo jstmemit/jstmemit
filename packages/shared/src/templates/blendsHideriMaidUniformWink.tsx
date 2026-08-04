@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const blendsHideriMaidUniformWink: Template = {
     name: "blendsHideriMaidUniformWink",
+    displayName: "BlendS Hideri maid uniform wink",
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextBottom],
     width: 425,
@@ -23,7 +24,7 @@ export const blendsHideriMaidUniformWink: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriMaidUniformWink.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriMaidUniformWink.png"
                 width={425}
                 height={700}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

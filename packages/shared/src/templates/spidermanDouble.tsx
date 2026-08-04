@@ -4,8 +4,9 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 
-export const spiderManDouble: Template = {
+export const spidermanDouble: Template = {
     name: "spiderManDouble",
+    displayName: "Spider-Man double",
     topics: [Topic.SpiderMan, Topic.Cartoons],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 560,
@@ -26,7 +27,7 @@ export const spiderManDouble: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/spiderManDouble.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spiderManDouble.jpg"
                 width={560}
                 height={376}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const hucUmaruHamsterHoodie: Template = {
     name: "hucUmaruHamsterHoodie",
+    displayName: "HUC Umaru hamster hoodie",
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TextTopWithBackground],
     width: 736,
@@ -23,7 +24,7 @@ export const hucUmaruHamsterHoodie: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruHamsterHoodie.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruHamsterHoodie.png"
                 width={736}
                 height={724}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

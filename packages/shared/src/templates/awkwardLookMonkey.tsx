@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const awkwardLookMonkey: Template = {
     name: "awkwardLookMonkey",
+    displayName: "Awkward look monkey",
     topics: [Topic.Reaction, Topic.Animals],
     types: [Type.TextTopWithBackground],
     width: 750,
@@ -23,7 +24,7 @@ export const awkwardLookMonkey: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/awkwardLookMonkey.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/awkwardLookMonkey.jpg"
                 width={750}
                 height={750}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -60,3 +61,4 @@ export const awkwardLookMonkey: Template = {
         </div>
     ),
 };
+export default awkwardLookMonkey;

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const quoteTopText: Template = {
     name: "quoteTopText",
+    displayName: "Quote top text",
     topics: [Topic.Misc],
     types: [Type.BackgroundImage, Type.TextTopWithBackground],
     width: 800,

@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const lookAtThis: Template = {
     name: "lookAtThis",
+    displayName: "Look at this",
     topics: [Topic.Reaction],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 480,
@@ -23,7 +24,7 @@ export const lookAtThis: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/lookAtThis.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/lookAtThis.jpg"
                 width={480}
                 height={380}
                 style={{ position: "absolute", top: 0, left: 0 }}

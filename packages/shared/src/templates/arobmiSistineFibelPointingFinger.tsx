@@ -6,6 +6,7 @@ import { Type } from "#/models/TemplateType.ts";
 
 export const arobmiSistineFibelPointingFinger: Template = {
     name: "arobmiSistineFibelPointingFinger",
+    displayName: "AROBMI Sistine Fibel pointing finger",
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 400,
@@ -23,7 +24,7 @@ export const arobmiSistineFibelPointingFinger: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55/https://files.wideunits.nl/jstmemit/images/templates/arobmiSistineFibelPointingFinger.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/arobmiSistineFibelPointingFinger.png"
                 width={400}
                 height={234}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
