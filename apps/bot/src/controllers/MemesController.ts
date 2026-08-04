@@ -161,21 +161,6 @@ export class MemesController implements IMemesController {
         }
 
         try {
-            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({
-                channelId,
-                guildId: interaction?.guildId || undefined,
-                isUserInstall:
-                    interaction instanceof Message
-                        ? undefined
-                        : "1" in (interaction?.authorizingIntegrationOwners || {}),
-                locale: interaction instanceof Message ? undefined : interaction?.locale,
-                userId,
-                trigger,
-                parentGenerationId,
-                turbo: channel.turbo,
-            });
-
-            // if bot sent the meme without being prompted to do so
             if (interaction instanceof Message) {
                 if (!permissions.sendMessages) {
                     return;
@@ -197,7 +182,24 @@ export class MemesController implements IMemesController {
                     }
                     return;
                 }
+            }
 
+            const job: Promise<MemeGenerationResult> = this._addGenerateMemeJob({
+                channelId,
+                guildId: interaction?.guildId || undefined,
+                isUserInstall:
+                    interaction instanceof Message
+                        ? undefined
+                        : "1" in (interaction?.authorizingIntegrationOwners || {}),
+                locale: interaction instanceof Message ? undefined : interaction?.locale,
+                userId,
+                trigger,
+                parentGenerationId,
+                turbo: channel.turbo,
+            });
+
+            // if bot sent the meme without being prompted to do so
+            if (interaction instanceof Message) {
                 const jobResult: MemeGenerationResult = await job;
                 await interaction.reply({
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
