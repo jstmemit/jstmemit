@@ -1,7 +1,5 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { PollAnswer } from "discord.js";
-import { type GuildEmoji, type PartialPollAnswer } from "discord.js";
-import { type Guild, type Sticker } from "discord.js";
+import { type Guild } from "discord.js";
 import { type Collection, type GuildMember, type Message, type TextBasedChannel } from "discord.js";
 import { PermissionFlagsBits } from "discord.js";
 import type { IContextService } from "#/interfaces/IContextService.ts";
@@ -14,6 +12,8 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import ms from "ms";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 
 const env = Env.parse(process.env);
 
@@ -22,17 +22,20 @@ export class ContextController implements IContextController {
     private readonly _channelsService: IChannelsService;
     private readonly _memesController: IMemesController;
     private readonly _componentsService: IComponentsService;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         contextService: IContextService,
         channelsService: IChannelsService,
         memesController: IMemesController,
         componentsService: IComponentsService,
+        cacheService: ICacheService,
     ) {
         this._contextService = contextService;
         this._channelsService = channelsService;
         this._memesController = memesController;
         this._componentsService = componentsService;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -231,16 +234,7 @@ export class ContextController implements IContextController {
                     }
 
                     if (poll) {
-                        const answers: string = poll.answers
-                            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
-                            .filter((text: string | null): text is string => Boolean(text))
-                            .join(", ");
-
-                        const text: string = `${poll.question.text}, ${answers}`;
-
-                        if (text.length < 2000) {
-                            await this._contextService.saveContent(id, channelId, text);
-                        }
+                        await this._contextService.savePoll(id, channelId, poll);
                     }
 
                     if (content.length > 0 && content.length < 2000) {
@@ -266,19 +260,12 @@ export class ContextController implements IContextController {
                 }
             }
 
-            const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
+            await Promise.all([
+                this._contextService.saveEmojis(channel.id, guild),
+                this._contextService.saveStickers(channel.id, guild),
+            ]);
 
-            for (const emoji of emojis.values()) {
-                const url: string = emoji.imageURL({ size: 128 });
-
-                await this._contextService.saveAvatar(emoji.id, channel.id, url);
-            }
-
-            const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
-
-            for (const sticker of stickers.values()) {
-                await this._contextService.saveAvatar(sticker.id, channel.id, sticker.url);
-            }
+            await this._cacheService.set(`refresh`, true, ms("1w"));
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
