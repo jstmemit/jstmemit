@@ -266,19 +266,7 @@ export class ContextController implements IContextController {
                 }
             }
 
-            const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
-
-            for (const emoji of emojis.values()) {
-                const url: string = emoji.imageURL({ size: 128 });
-
-                await this._contextService.saveAvatar(emoji.id, channel.id, url);
-            }
-
-            const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
-
-            for (const sticker of stickers.values()) {
-                await this._contextService.saveAvatar(sticker.id, channel.id, sticker.url);
-            }
+            await Promise.all([this.saveEmojis(channel.id, guild), this.saveStickers(channel.id, guild)]);
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
@@ -292,5 +280,23 @@ export class ContextController implements IContextController {
         }
 
         return prefetched;
+    }
+
+    public async saveEmojis(channelId: string, guild: Guild): Promise<void> {
+        const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
+
+        for (const emoji of emojis.values()) {
+            const url: string = emoji.imageURL({ size: 128 });
+
+            await this._contextService.saveAvatar(emoji.id, channelId, url);
+        }
+    }
+
+    public async saveStickers(channelId: string, guild: Guild): Promise<void> {
+        const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
+
+        for (const sticker of stickers.values()) {
+            await this._contextService.saveAvatar(sticker.id, channelId, sticker.url);
+        }
     }
 }
