@@ -39,11 +39,10 @@ import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
-import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
-import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import type { IContextService } from "#/interfaces/IContextService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -55,10 +54,9 @@ export class MemesController implements IMemesController {
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
-    private readonly _generationsRepository: IGenerationsRepository;
-    private readonly _ratingsRepository: IRatingsRepository;
     private readonly _milestonesService: IMilestonesService;
     private readonly _cacheService: ICacheService;
+    private readonly _contextService: IContextService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -71,9 +69,8 @@ export class MemesController implements IMemesController {
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
         cacheService: ICacheService,
-        generationsRepository: IGenerationsRepository,
-        ratingsRepository: IRatingsRepository,
         milestonesService: IMilestonesService,
+        contextService: IContextService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -85,9 +82,8 @@ export class MemesController implements IMemesController {
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
         this._cacheService = cacheService;
-        this._generationsRepository = generationsRepository;
-        this._ratingsRepository = ratingsRepository;
         this._milestonesService = milestonesService;
+        this._contextService = contextService;
     }
 
     /**
@@ -215,6 +211,11 @@ export class MemesController implements IMemesController {
                 });
 
                 await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
+                await this._contextService.checkAndFetchGuildAssets(
+                    interaction.channelId,
+                    channel.enabled,
+                    interaction.guild,
+                );
 
                 return;
             }
@@ -254,6 +255,11 @@ export class MemesController implements IMemesController {
             }
 
             await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
+            await this._contextService.checkAndFetchGuildAssets(
+                interaction.channelId,
+                channel.enabled,
+                interaction.guild,
+            );
         } catch (error) {
             let message: ContainerBuilder;
             const reason: string = error instanceof Error ? error.message : "";

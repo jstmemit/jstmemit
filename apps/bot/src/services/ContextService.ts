@@ -1,14 +1,14 @@
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import type {
-    Attachment,
-    Collection,
-    Guild,
-    GuildEmoji,
-    PartialPollAnswer,
-    Poll,
-    PollAnswer,
-    Sticker,
+import {
+    type Attachment,
+    type Collection,
+    type Guild,
+    type GuildEmoji,
+    type PartialPollAnswer,
+    type Poll,
+    type PollAnswer,
+    type Sticker,
 } from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
@@ -17,6 +17,8 @@ import type { Job, Queue, QueueEvents } from "bullmq";
 import { logger } from "#/container.ts";
 import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
+import ms from "ms";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
@@ -25,6 +27,7 @@ export class ContextService implements IContextService {
     private readonly _gifService: IGifService;
     private readonly _voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>;
     private readonly _voiceTranscriptionQueueEvents: QueueEvents;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         messagesRepository: IMessagesRepository,
@@ -32,12 +35,14 @@ export class ContextService implements IContextService {
         gifService: IGifService,
         voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>,
         voiceTranscriptionQueueEvents: QueueEvents,
+        cacheService: ICacheService,
     ) {
         this._messagesRepository = messagesRepository;
         this._imagesRepository = imagesRepository;
         this._gifService = gifService;
         this._voiceTranscriptionQueue = voiceTranscriptionQueue;
         this._voiceTranscriptionQueueEvents = voiceTranscriptionQueueEvents;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -173,6 +178,20 @@ export class ContextService implements IContextService {
 
         for (const sticker of stickers.values()) {
             await this.saveAvatar(sticker.id, channelId, sticker.url);
+        }
+    }
+
+    public async checkAndFetchGuildAssets(channelId: string, enabled: boolean, guild: Guild | null): Promise<void> {
+        if (!enabled || !guild) {
+            return;
+        }
+
+        const isRefreshed: boolean | undefined = await this._cacheService.get(`refresh:${channelId}:${guild.id}`);
+
+        if (!isRefreshed) {
+            await Promise.all([this.saveEmojis(channelId, guild), this.saveStickers(channelId, guild)]);
+
+            await this._cacheService.set(`refresh:${channelId}:${guild.id}`, true, ms("1w"));
         }
     }
 

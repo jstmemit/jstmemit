@@ -20,4 +20,6 @@ export abstract class IContextService {
     public abstract saveEmojis(channelId: string, guild: Guild): Promise<void>;
 
     public abstract saveStickers(channelId: string, guild: Guild): Promise<void>;
+
+    public abstract checkAndFetchGuildAssets(channelId: string, enabled: boolean, guild: Guild | null): Promise<void>;
 }
