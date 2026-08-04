@@ -37,6 +37,7 @@ export abstract class IComponentsService {
         frequency: number,
         turbo: boolean,
         useAvatarsInMemes: boolean,
+        milestones: boolean,
     ): ContainerBuilder;
     public abstract getSettingsFooterMessageComponent(language: Locale): ContainerBuilder;
     public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;

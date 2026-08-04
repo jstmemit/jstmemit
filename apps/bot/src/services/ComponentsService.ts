@@ -609,6 +609,7 @@ export class ComponentsService implements IComponentsService {
      * @param frequency
      * @param turbo
      * @param useAvatarsInMemes
+     * @param milestones
      *
      * @author Kyrylo Maliuha
      */
@@ -617,6 +618,7 @@ export class ComponentsService implements IComponentsService {
         frequency: number,
         turbo: boolean,
         useAvatarsInMemes: boolean,
+        milestones: boolean,
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
         const modes: Mode[] = this._getModeOptions(language);
@@ -684,6 +686,31 @@ export class ComponentsService implements IComponentsService {
                                 .setDefault(!useAvatarsInMemes)
                                 .setEmoji({ name: "❌" })
                                 .setDescription(t("settings.avatars.no.description", language)),
+                        ),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.milestones.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.milestones.body", language)))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("milestones")
+                        .addOptions(
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.yes.label", language))
+                                .setValue("true")
+                                .setDefault(milestones)
+                                .setEmoji({ name: "🎉" })
+                                .setDescription(t("settings.milestones.yes.description", language)),
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.no.label", language))
+                                .setValue("false")
+                                .setDefault(!milestones)
+                                .setEmoji({ name: "🔇" })
+                                .setDescription(t("settings.milestones.no.description", language)),
                         ),
                 ),
             );

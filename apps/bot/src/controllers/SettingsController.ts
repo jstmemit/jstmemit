@@ -317,6 +317,7 @@ export class SettingsController implements ISettingsController {
                 channel.frequency,
                 channel.turbo,
                 channel.useAvatarsInMemes,
+                channel.milestones,
             ),
             this._componentsService.getSettingsFooterMessageComponent(interaction.locale),
         ]);
