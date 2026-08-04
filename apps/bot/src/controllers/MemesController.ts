@@ -203,12 +203,7 @@ export class MemesController implements IMemesController {
                 const jobResult: MemeGenerationResult = await job;
                 await interaction.reply({
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
-                    files: [
-                        {
-                            attachment: Buffer.from(jobResult.png, "base64"),
-                            name: "meme.webp",
-                        },
-                    ],
+                    files: this._getMemeAttachment(jobResult),
                     failIfNotExists: false,
                 });
 
@@ -233,12 +228,7 @@ export class MemesController implements IMemesController {
                 await interaction.reply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
-                    files: [
-                        {
-                            attachment: Buffer.from(fastResult.png, "base64"),
-                            name: "meme.webp",
-                        },
-                    ],
+                    files: this._getMemeAttachment(fastResult),
                 });
             } else {
                 await interaction.deferReply();
@@ -247,12 +237,7 @@ export class MemesController implements IMemesController {
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId)],
-                    files: [
-                        {
-                            attachment: Buffer.from(jobResult.png, "base64"),
-                            name: "meme.webp",
-                        },
-                    ],
+                    files: this._getMemeAttachment(jobResult),
                 });
             }
 
@@ -365,12 +350,7 @@ export class MemesController implements IMemesController {
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
-                files: [
-                    {
-                        attachment: Buffer.from(jobResult.png, "base64"),
-                        name: "meme.webp",
-                    },
-                ],
+                files: this._getMemeAttachment(jobResult),
             });
         } catch (error) {
             analytics.captureException(error);
@@ -427,12 +407,7 @@ export class MemesController implements IMemesController {
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
-                files: [
-                    {
-                        attachment: Buffer.from(jobResult.png, "base64"),
-                        name: "meme.webp",
-                    },
-                ],
+                files: this._getMemeAttachment(jobResult),
             });
         } catch (error) {
             analytics.captureException(error);
@@ -745,6 +720,15 @@ export class MemesController implements IMemesController {
         });
 
         return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+    }
+
+    private _getMemeAttachment(result: MemeGenerationResult) {
+        return [
+            {
+                attachment: Buffer.from(result.png, "base64"),
+                name: "meme.webp",
+            },
+        ];
     }
 
     private async _addVoiceTranscriptionJob(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
