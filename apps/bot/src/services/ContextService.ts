@@ -133,7 +133,7 @@ export class ContextService implements IContextService {
             return undefined;
         }
 
-        await this._imagesRepository.add(messageId, channelId, `${result}#${channelId}}`, "gif", new Date());
+        await this._imagesRepository.add(messageId, channelId, `${result}#${channelId}`, "gif", new Date());
     }
 
     /**
