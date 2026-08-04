@@ -1,6 +1,15 @@
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
-import type { Attachment, Collection } from "discord.js";
+import type {
+    Attachment,
+    Collection,
+    Guild,
+    GuildEmoji,
+    PartialPollAnswer,
+    Poll,
+    PollAnswer,
+    Sticker,
+} from "discord.js";
 import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IGifService } from "@jstmemit/images/interfaces/IGifService";
@@ -134,6 +143,37 @@ export class ContextService implements IContextService {
      */
     public async saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void> {
         await this._imagesRepository.add(messageId, channelId, `${avatarUrl}#${channelId}`, "avatar", new Date());
+    }
+
+    public async savePoll(messageId: string, channelId: string, poll: Poll): Promise<void> {
+        const answers: string = poll.answers
+            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
+            .filter((text: string | null): text is string => Boolean(text))
+            .join(", ");
+
+        const text: string = `${poll.question.text}, ${answers}`;
+
+        if (text.length < 2000) {
+            await this.saveContent(messageId, channelId, text);
+        }
+    }
+
+    public async saveEmojis(channelId: string, guild: Guild): Promise<void> {
+        const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
+
+        for (const emoji of emojis.values()) {
+            const url: string = emoji.imageURL({ size: 128 });
+
+            await this.saveAvatar(emoji.id, channelId, url);
+        }
+    }
+
+    public async saveStickers(channelId: string, guild: Guild): Promise<void> {
+        const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
+
+        for (const sticker of stickers.values()) {
+            await this.saveAvatar(sticker.id, channelId, sticker.url);
+        }
     }
 
     /**
