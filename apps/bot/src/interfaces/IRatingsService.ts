@@ -1,13 +1,10 @@
-import type {
-    ActionRowBuilder,
-    ButtonBuilder,
-    ButtonInteraction,
-} from "discord.js";
+import type { ActionRowBuilder, ButtonBuilder, ButtonInteraction } from "discord.js";
 
 export abstract class IRatingsService {
     public abstract addRating(
         userId: string,
         messageId: string,
+        channelId: string,
         rating: "like" | "dislike",
     ): Promise<boolean>;
     public abstract constructRatingButtons(
@@ -15,8 +12,5 @@ export abstract class IRatingsService {
         dislikes: number,
         generationId: number,
     ): ActionRowBuilder<ButtonBuilder>;
-    public abstract updateRatingButtons(
-        interaction: ButtonInteraction,
-        generationId: number,
-    ): Promise<void>;
+    public abstract updateRatingButtons(interaction: ButtonInteraction, generationId: number): Promise<void>;
 }

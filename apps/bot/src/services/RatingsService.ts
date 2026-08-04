@@ -19,11 +19,17 @@ export class RatingsService implements IRatingsService {
      *
      * @param userId
      * @param messageId
+     * @param channelId
      * @param rating
      *
      * @author Kyrylo Maliuha
      */
-    public async addRating(userId: string, messageId: string, rating: "like" | "dislike"): Promise<boolean> {
+    public async addRating(
+        userId: string,
+        messageId: string,
+        channelId: string,
+        rating: "like" | "dislike",
+    ): Promise<boolean> {
         const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
 
         if (alreadyRated) {
@@ -31,11 +37,11 @@ export class RatingsService implements IRatingsService {
         }
 
         if (rating === "like") {
-            await this._ratingsRepository.addLikeRating(messageId);
+            await this._ratingsRepository.addLikeRating(messageId, channelId);
         }
 
         if (rating === "dislike") {
-            await this._ratingsRepository.addDislikeRating(messageId);
+            await this._ratingsRepository.addDislikeRating(messageId, channelId);
         }
 
         this._ratings.get(messageId)?.add(userId);

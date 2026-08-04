@@ -47,6 +47,17 @@ export const generationsTable = sqliteTable(
     ],
 );
 
+export const narrationsTable = sqliteTable(
+    "narrations_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        channelId: text().notNull(),
+        voice: text().notNull(),
+        createdAt: int({ mode: "timestamp" }).notNull(),
+    },
+    (table) => [index("narrations_channel_idx").on(table.channelId)],
+);
+
 export const channelsTable = sqliteTable("channels_table", {
     id: int().primaryKey({ autoIncrement: true }),
     channelId: text().notNull().unique(),
@@ -55,14 +66,20 @@ export const channelsTable = sqliteTable("channels_table", {
     useAvatarsInMemes: int({ mode: "boolean" }).notNull().default(true),
     addedAt: int({ mode: "timestamp" }).notNull(),
     turbo: int({ mode: "boolean" }).notNull().default(false),
+    milestones: int({ mode: "boolean" }).notNull().default(true),
 });
 
-export const ratingsTable = sqliteTable("ratings_table", {
-    id: int().primaryKey({ autoIncrement: true }),
-    messageId: text().notNull().unique(),
-    likes: int().notNull().default(0),
-    dislikes: int().notNull().default(0),
-});
+export const ratingsTable = sqliteTable(
+    "ratings_table",
+    {
+        id: int().primaryKey({ autoIncrement: true }),
+        messageId: text().notNull().unique(),
+        channelId: text().notNull().default(""),
+        likes: int().notNull().default(0),
+        dislikes: int().notNull().default(0),
+    },
+    (table) => [index("ratings_channel_idx").on(table.channelId)],
+);
 
 export const banditStatsTable = sqliteTable(
     "bandit_stats_table",

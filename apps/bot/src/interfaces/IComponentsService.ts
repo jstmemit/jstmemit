@@ -12,6 +12,14 @@ export abstract class IComponentsService {
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder;
+    public abstract getMilestoneButtonsComponent(
+        language: Locale,
+        likes: number,
+        dislikes: number,
+        templates: number,
+        voices: number,
+    ): ActionRowBuilder<ButtonBuilder>;
     public abstract getMissingBotPermissionsMessageComponent(
         language: Locale,
         permissions: RequiredBotPermissions,
@@ -29,6 +37,7 @@ export abstract class IComponentsService {
         frequency: number,
         turbo: boolean,
         useAvatarsInMemes: boolean,
+        milestones: boolean,
     ): ContainerBuilder;
     public abstract getSettingsFooterMessageComponent(language: Locale): ContainerBuilder;
     public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;

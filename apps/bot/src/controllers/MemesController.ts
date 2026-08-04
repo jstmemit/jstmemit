@@ -39,6 +39,9 @@ import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
+import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 
@@ -52,6 +55,9 @@ export class MemesController implements IMemesController {
     private readonly _channelsService: IChannelsService;
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
+    private readonly _generationsRepository: IGenerationsRepository;
+    private readonly _ratingsRepository: IRatingsRepository;
+    private readonly _milestonesService: IMilestonesService;
     private readonly _cacheService: ICacheService;
 
     public constructor(
@@ -65,6 +71,9 @@ export class MemesController implements IMemesController {
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
         cacheService: ICacheService,
+        generationsRepository: IGenerationsRepository,
+        ratingsRepository: IRatingsRepository,
+        milestonesService: IMilestonesService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -76,6 +85,9 @@ export class MemesController implements IMemesController {
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
         this._cacheService = cacheService;
+        this._generationsRepository = generationsRepository;
+        this._ratingsRepository = ratingsRepository;
+        this._milestonesService = milestonesService;
     }
 
     /**
@@ -202,6 +214,8 @@ export class MemesController implements IMemesController {
                     failIfNotExists: false,
                 });
 
+                await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
+
                 return;
             }
 
@@ -238,6 +252,8 @@ export class MemesController implements IMemesController {
                     ],
                 });
             }
+
+            await this._milestonesService.checkAndReplyWithMilestone(interaction, channel);
         } catch (error) {
             let message: ContainerBuilder;
             const reason: string = error instanceof Error ? error.message : "";

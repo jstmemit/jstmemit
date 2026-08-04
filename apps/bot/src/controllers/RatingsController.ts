@@ -42,6 +42,7 @@ export class RatingsController implements IRatingsController {
             const success: boolean = await this._ratingsService.addRating(
                 interaction.user.id,
                 interaction.message.id,
+                interaction.channelId,
                 rating,
             );
 
