@@ -195,6 +195,21 @@ export class ContextController implements IContextController {
         let prefetched: number = 0;
 
         try {
+            const me: GuildMember | null = guild.members.me;
+
+            if (channel.isDMBased()) {
+                return 0;
+            }
+
+            if (
+                me &&
+                !channel
+                    .permissionsFor(me)
+                    ?.has([PermissionFlagsBits.ViewChannel, PermissionFlagsBits.ReadMessageHistory])
+            ) {
+                return 0;
+            }
+
             const messages: Collection<string, Message> = await channel.messages.fetch({ limit: 50 });
 
             for (const message of messages.values()) {
