@@ -13,7 +13,7 @@ export const frierenFlammeShowingSerieDrawing: Template = {
         [Locale.Ukrainian]: "Фламме показує малюнок Зеріє",
         [Locale.Dutch]: "Flamme toont Serie tekening",
         [Locale.French]: "Flamme montrant le dessin de Serie",
-        [Locale.German]: "Flamme zeigt Series Zeichnung",
+        [Locale.German]: "Flamme zeigt die Zeichnung von Serie",
         [Locale.Polish]: "Flamme pokazuje rysunek Serie",
         [Locale.SpanishES]: "Flamme mostrando el dibujo de Serie",
         [Locale.SpanishLATAM]: "Flamme mostrando el dibujo de Serie",

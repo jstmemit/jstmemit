@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const ditfZeroTwoWhatever1: Template = {
     name: "ditfZeroTwoWhatever1",
     displayName: buildLocales("Zero Two whatever 1", {
-        [Locale.Russian]: "Зеро Ту - да без разницы 1",
-        [Locale.Ukrainian]: "Зіро Ту - та байдуже 1",
+        [Locale.Russian]: "Зеро Ту: да без разницы 1",
+        [Locale.Ukrainian]: "Зіро Ту: та байдуже 1",
         [Locale.Dutch]: "Zero Two boeit me niet 1",
         [Locale.French]: "Zero Two peu importe 1",
         [Locale.German]: "Zero Two egal 1",

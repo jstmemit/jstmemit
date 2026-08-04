@@ -10,7 +10,7 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
     name: "rtnobgsMaiSakurajimaPhoneReaction",
     displayName: buildLocales("Mai Sakurajima phone reaction", {
         [Locale.Russian]: "Май Сакурадзима: реакция на телефон",
-        [Locale.Ukrainian]: "Маї Сакураджима: реакція на телефон",
+        [Locale.Ukrainian]: "Май Сакураджіма: реакція на телефон",
         [Locale.Dutch]: "Mai Sakurajima telefoonreactie",
         [Locale.French]: "Mai Sakurajima réaction téléphone",
         [Locale.German]: "Mai Sakurajima Handy-Reaktion",

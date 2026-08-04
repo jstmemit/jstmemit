@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const tf2Hahaha: Template = {
     name: "tf2Hahaha",
-    displayName: buildLocales("hahaha", {
+    displayName: buildLocales("Hahaha", {
         [Locale.Russian]: "хахаха",
         [Locale.Ukrainian]: "хахаха",
         [Locale.Dutch]: "hahaha",

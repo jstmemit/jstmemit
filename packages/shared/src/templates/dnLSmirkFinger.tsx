@@ -10,7 +10,7 @@ export const dnLSmirkFinger: Template = {
     name: "dnLSmirkFinger",
     displayName: buildLocales("L smirk finger", {
         [Locale.Russian]: "L ухмыляется, приложив палец",
-        [Locale.Ukrainian]: "L криво посміхається, притулившись пальцем",
+        [Locale.Ukrainian]: "L криво посміхається, приклавши палець",
         [Locale.Dutch]: "L grijnst met vinger",
         [Locale.French]: "L sourire narquois avec le doigt",
         [Locale.German]: "L grinst mit Finger",

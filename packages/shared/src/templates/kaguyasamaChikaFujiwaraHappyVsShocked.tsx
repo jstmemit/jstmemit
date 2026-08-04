@@ -18,7 +18,7 @@ export const kaguyasamaChikaFujiwaraHappyVsShocked: Template = {
         [Locale.SpanishES]: "Chika Fujiwara feliz vs en shock",
         [Locale.SpanishLATAM]: "Chika Fujiwara feliz vs en shock",
         [Locale.PortugueseBR]: "Chika Fujiwara feliz vs chocada",
-        [Locale.Turkish]: "Chika Fujiwara mutlu ve şokta",
+        [Locale.Turkish]: "Chika Fujiwara mutlu vs şokta",
         [Locale.Italian]: "Chika Fujiwara felice vs scioccata",
         [Locale.Indonesian]: "Chika Fujiwara senang vs terkejut",
         [Locale.Czech]: "Chika Fujiwara šťastná vs v šoku",

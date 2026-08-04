@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const selLainImFineScreen: Template = {
     name: "selLainImFineScreen",
     displayName: buildLocales("Lain I'm fine screen", {
-        [Locale.Russian]: 'Лэйн: экран "Я в порядке"',
-        [Locale.Ukrainian]: 'Лейн: екран "Я в порядку"',
+        [Locale.Russian]: "Лэйн: экран «я в порядке»",
+        [Locale.Ukrainian]: "Лейн: екран «я в порядку»",
         [Locale.Dutch]: "Lain ik ben in orde scherm",
         [Locale.French]: "Lain écran je vais bien",
         [Locale.German]: "Lain mir gehts gut Bildschirm",

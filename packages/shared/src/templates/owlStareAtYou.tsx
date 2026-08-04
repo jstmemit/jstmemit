@@ -21,7 +21,7 @@ export const owlStareAtYou: Template = {
         [Locale.Turkish]: "Sana dik dik bakan baykuş",
         [Locale.Italian]: "Gufo che ti fissa",
         [Locale.Indonesian]: "Burung hantu menatapmu",
-        [Locale.Czech]: "Sova zírá na tebe",
+        [Locale.Czech]: "Sova na tebe zírá",
         [Locale.Japanese]: "じっと見つめるフクロウ",
         [Locale.Korean]: "빤히 쳐다보는 올빼미",
         [Locale.ChineseCN]: "猫头鹰盯着你",

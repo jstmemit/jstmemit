@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const btrBocchiExplosion: Template = {
     name: "btrBocchiExplosion",
     displayName: buildLocales("Bocchi explosion", {
-        [Locale.Russian]: "Бокки - взрыв",
-        [Locale.Ukrainian]: "Боккі - вибух",
+        [Locale.Russian]: "Взрыв Бокки",
+        [Locale.Ukrainian]: "Вибух Боккі",
         [Locale.Dutch]: "Bocchi explosie",
         [Locale.French]: "Bocchi explosion",
         [Locale.German]: "Bocchi Explosion",

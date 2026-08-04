@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const sfAnyaForgerSmugShush: Template = {
     name: "sfAnyaForgerSmugShush",
     displayName: buildLocales("Anya Forger smug shush", {
-        [Locale.Russian]: 'Аня Форджер: довольное "тсс"',
-        [Locale.Ukrainian]: 'Аня Форджер: задоволене "тсс"',
+        [Locale.Russian]: "Аня Форджер: довольное «тс-с»",
+        [Locale.Ukrainian]: "Аня Форджер: задоволене «тс-с»",
         [Locale.Dutch]: "Anya Forger zelfingenomen sst",
         [Locale.French]: "Anya Forger chut suffisant",
         [Locale.German]: "Anya Forger selbstgefälliges pssht",

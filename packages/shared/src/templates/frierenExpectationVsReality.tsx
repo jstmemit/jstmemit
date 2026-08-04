@@ -18,7 +18,7 @@ export const frierenExpectationVsReality: Template = {
         [Locale.SpanishES]: "Frieren expectativa vs realidad",
         [Locale.SpanishLATAM]: "Frieren expectativa vs realidad",
         [Locale.PortugueseBR]: "Frieren expectativa vs realidade",
-        [Locale.Turkish]: "Frieren beklenti ve gerçekler",
+        [Locale.Turkish]: "Frieren beklenti vs gerçek",
         [Locale.Italian]: "Frieren aspettativa vs realtà",
         [Locale.Indonesian]: "Frieren ekspektasi vs realita",
         [Locale.Czech]: "Frieren očekávání vs realita",

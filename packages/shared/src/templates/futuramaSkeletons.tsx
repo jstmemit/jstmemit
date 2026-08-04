@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const futuramaSkeletons: Template = {
     name: "futuramaSkeletons",
-    displayName: buildLocales("skeletons", {
+    displayName: buildLocales("Skeletons", {
         [Locale.Russian]: "Скелеты",
         [Locale.Ukrainian]: "Скелети",
         [Locale.Dutch]: "Skeletten",

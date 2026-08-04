@@ -14,7 +14,7 @@ export const looksAtPaperAngry: Template = {
         [Locale.Dutch]: "Kijkt boos naar papier",
         [Locale.French]: "Regarde le papier en colère",
         [Locale.German]: "Schaut wütend aufs Papier",
-        [Locale.Polish]: "Patrzy złośliwie na papier",
+        [Locale.Polish]: "Patrzy ze złością na papier",
         [Locale.SpanishES]: "Mira el papel enojado",
         [Locale.SpanishLATAM]: "Mira el papel enojado",
         [Locale.PortugueseBR]: "Olha com raiva para o papel",

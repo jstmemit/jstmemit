@@ -21,7 +21,7 @@ export const gdoSataniaDeathNote: Template = {
         [Locale.Turkish]: "Satania Ölüm Defteri",
         [Locale.Italian]: "Death Note di Satania",
         [Locale.Indonesian]: "Death Note Satania",
-        [Locale.Czech]: "Zápisník smrti Satanii",
+        [Locale.Czech]: "Zápisník smrti Satanie",
         [Locale.Japanese]: "サターニャのデスノート",
         [Locale.Korean]: "사타냐 데스노트",
         [Locale.ChineseCN]: "萨塔妮亚死亡笔记",

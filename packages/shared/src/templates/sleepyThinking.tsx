@@ -20,7 +20,7 @@ export const sleepyThinking: Template = {
         [Locale.PortugueseBR]: "Pensando com sono",
         [Locale.Turkish]: "Uykulu düşünme",
         [Locale.Italian]: "Pensiero assonnato",
-        [Locale.Indonesian]: "Mengantuk memikirkan",
+        [Locale.Indonesian]: "Mengantuk sambil berpikir",
         [Locale.Czech]: "Ospalé přemýšlení",
         [Locale.Japanese]: "眠そうに考える",
         [Locale.Korean]: "졸면서 생각하기",

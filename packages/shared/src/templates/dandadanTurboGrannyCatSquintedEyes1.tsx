@@ -14,7 +14,7 @@ export const dandadanTurboGrannyCatSquintedEyes1: Template = {
         [Locale.Dutch]: "Turbo Granny kat met toegeknepen ogen 1",
         [Locale.French]: "Chat Turbo Granny les yeux plissés 1",
         [Locale.German]: "Turbo-Granny-Katze mit zusammengekniffenen Augen 1",
-        [Locale.Polish]: "Kot Turbo Babcia z zmrużonymi oczami 1",
+        [Locale.Polish]: "Kot Turbo Babcia ze zmrużonymi oczami 1",
         [Locale.SpanishES]: "Gato Turbo Granny con ojos entrecerrados 1",
         [Locale.SpanishLATAM]: "Gato Turbo Granny con ojos entrecerrados 1",
         [Locale.PortugueseBR]: "Gato Turbo Granny com olhos semicerrados 1",

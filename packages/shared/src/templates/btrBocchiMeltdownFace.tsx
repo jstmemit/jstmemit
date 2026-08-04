@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const btrBocchiMeltdownFace: Template = {
     name: "btrBocchiMeltdownFace",
-    displayName: buildLocales("btrBocchiMeltdownFace", {
+    displayName: buildLocales("Bocchi meltdown face", {
         [Locale.Russian]: "Лицо нервного срыва Бокки",
         [Locale.Ukrainian]: "Обличчя нервового зриву Боккі",
         [Locale.Dutch]: "Bocchi meltdown gezicht",

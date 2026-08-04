@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const btrBocchiExhaustedFace: Template = {
     name: "btrBocchiExhaustedFace",
     displayName: buildLocales("Bocchi exhausted face", {
-        [Locale.Russian]: "Бокки - измождённое лицо",
-        [Locale.Ukrainian]: "Боккі - виснажене обличчя",
+        [Locale.Russian]: "Измождённое лицо Бокки",
+        [Locale.Ukrainian]: "Виснажене обличчя Боккі",
         [Locale.Dutch]: "Bocchi uitgeput gezicht",
         [Locale.French]: "Bocchi visage épuisé",
         [Locale.German]: "Bocchi erschöpftes Gesicht",

@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const griffinsPaddedWalls: Template = {
     name: "griffinsPaddedWalls",
-    displayName: buildLocales("padded walls", {
+    displayName: buildLocales("Padded walls", {
         [Locale.Russian]: "Мягкие стены",
         [Locale.Ukrainian]: "М'які стіни",
         [Locale.Dutch]: "Gewatteerde muren",

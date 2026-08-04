@@ -10,7 +10,7 @@ export const blendsChibiMaikaCheering: Template = {
     name: "blendsChibiMaikaCheering",
     displayName: buildLocales("Chibi Maika cheering", {
         [Locale.Russian]: "Чиби Майка ликует",
-        [Locale.Ukrainian]: "Чіબі Майка тішиться",
+        [Locale.Ukrainian]: "Чібі Майка тішиться",
         [Locale.Dutch]: "Chibi Maika juicht",
         [Locale.French]: "Chibi Maika en liesse",
         [Locale.German]: "Chibi Maika jubelt",

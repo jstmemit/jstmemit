@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const worldsMostDangerousTrap: Template = {
     name: "worldsMostDangerousTrap",
-    displayName: buildLocales("Worlds most dangerous trap", {
+    displayName: buildLocales("World's most dangerous trap", {
         [Locale.Russian]: "Самая опасная ловушка в мире",
         [Locale.Ukrainian]: "Найнебезпечніша пастка у світі",
         [Locale.Dutch]: "Gevaarlijkste valstrik ter wereld",

@@ -19,7 +19,7 @@ export const bbSayMyName: Template = {
         [Locale.SpanishLATAM]: "Di mi nombre",
         [Locale.PortugueseBR]: "Diga meu nome",
         [Locale.Turkish]: "Adımı söyle",
-        [Locale.Italian]: "Dici il mio nome",
+        [Locale.Italian]: "Di' il mio nome",
         [Locale.Indonesian]: "Sebutkan nama saya",
         [Locale.Czech]: "Řekni moje jméno",
         [Locale.Japanese]: "俺の名前を言え",

@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const dnLTwoFaces: Template = {
     name: "dnLTwoFaces",
     displayName: buildLocales("L two faces", {
-        [Locale.Russian]: "L - два лица",
-        [Locale.Ukrainian]: "L - два обличчя",
+        [Locale.Russian]: "Два лица L",
+        [Locale.Ukrainian]: "Два обличчя L",
         [Locale.Dutch]: "L twee gezichten",
         [Locale.French]: "L deux visages",
         [Locale.German]: "L zwei Gesichter",

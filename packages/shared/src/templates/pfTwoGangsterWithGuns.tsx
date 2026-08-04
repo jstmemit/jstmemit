@@ -10,7 +10,7 @@ export const pfTwoGangsterWithGuns: Template = {
     name: "pfTwoGangsterWithGuns",
     displayName: buildLocales("Two gangsters with guns", {
         [Locale.Russian]: "Два гангстера с пушками",
-        [Locale.Ukrainian]: "Два гангстери з гарматами",
+        [Locale.Ukrainian]: "Два гангстери зі стволами",
         [Locale.Dutch]: "Twee gangsters met geweren",
         [Locale.French]: "Deux gangsters avec des flingues",
         [Locale.German]: "Zwei Gangster mit Waffen",

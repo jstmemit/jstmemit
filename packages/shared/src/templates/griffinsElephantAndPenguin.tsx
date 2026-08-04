@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const griffinsElephantAndPenguin: Template = {
     name: "griffinsElephantAndPenguin",
-    displayName: buildLocales("elephant and penguin", {
+    displayName: buildLocales("Elephant and penguin", {
         [Locale.Russian]: "Слон и пингвин",
         [Locale.Ukrainian]: "Слон і пінгвін",
         [Locale.Dutch]: "Olifant en pinguïn",

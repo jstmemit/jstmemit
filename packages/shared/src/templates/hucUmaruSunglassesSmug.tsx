@@ -21,7 +21,7 @@ export const hucUmaruSunglassesSmug: Template = {
         [Locale.Turkish]: "Gözlüklü ukala Umaru",
         [Locale.Italian]: "Umaru compiaciuta con gli occhiali",
         [Locale.Indonesian]: "Umaru sombong pakai kacamata hitam",
-        [Locale.Czech]: "Umaru s brýlemi drsňačka",
+        [Locale.Czech]: "Drsňačka Umaru ve slunečních brýlích",
         [Locale.Japanese]: "サングラスでドヤ顔のうまる",
         [Locale.Korean]: "선글라스 끼고 거만한 우마루",
         [Locale.ChineseCN]: "戴墨镜得意的小埋",

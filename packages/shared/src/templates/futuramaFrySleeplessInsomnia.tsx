@@ -13,7 +13,7 @@ export const futuramaFrySleeplessInsomnia: Template = {
         [Locale.Ukrainian]: "Безсоння Фрая",
         [Locale.Dutch]: "Fry slapeloosheid",
         [Locale.French]: "Insomnie de Fry",
-        [Locale.German]: "Fry schlaflos Insomnie",
+        [Locale.German]: "Frys Schlaflosigkeit",
         [Locale.Polish]: "Bezsenność Fry'a",
         [Locale.SpanishES]: "Insomnio de Fry",
         [Locale.SpanishLATAM]: "Insomnio de Fry",

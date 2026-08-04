@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const simpsonsWhatIsInHomersHead: Template = {
     name: "simpsonsWhatIsInHomersHead",
-    displayName: buildLocales(" What is in Homer's head", {
+    displayName: buildLocales("What is in Homer's head", {
         [Locale.Russian]: "Что в голове у Гомера",
         [Locale.Ukrainian]: "Що в голові у Гомера",
         [Locale.Dutch]: "Wat zit er in Homers hoofd",

@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const toradoraMinoriAndTaigaCryingSalute: Template = {
     name: "toradoraMinoriAndTaigaCryingSalute",
-    displayName: buildLocales("Minori And Taiga сrying salute", {
+    displayName: buildLocales("Minori and Taiga crying salute", {
         [Locale.Russian]: "Минори и Тайга отдают честь со слезами",
         [Locale.Ukrainian]: "Мінорі та Тайга віддають честь зі сльозами",
         [Locale.Dutch]: "Minori en Taiga huilend salueren",

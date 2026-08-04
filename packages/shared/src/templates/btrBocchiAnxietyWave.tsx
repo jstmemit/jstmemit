@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const btrBocchiAnxietyWave: Template = {
     name: "btrBocchiAnxietyWave",
     displayName: buildLocales("Bocchi anxiety wave", {
-        [Locale.Russian]: "Бокки - волна тревоги",
-        [Locale.Ukrainian]: "Боккі - хвиля тривоги",
+        [Locale.Russian]: "Волна тревоги у Бокки",
+        [Locale.Ukrainian]: "Хвиля тривоги у Боккі",
         [Locale.Dutch]: "Bocchi angstgolf",
         [Locale.French]: "Bocchi vague d'angoisse",
         [Locale.German]: "Bocchi Angstwelle",

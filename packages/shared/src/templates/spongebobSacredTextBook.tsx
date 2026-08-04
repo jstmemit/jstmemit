@@ -13,7 +13,7 @@ export const spongebobSacredTextBook: Template = {
         [Locale.Ukrainian]: "Священна книга",
         [Locale.Dutch]: "Heilige teksten boek",
         [Locale.French]: "Livre des textes sacrés",
-        [Locale.German]: "Heiliges Textbuch",
+        [Locale.German]: "Buch der heiligen Texte",
         [Locale.Polish]: "Święta księga",
         [Locale.SpanishES]: "Libro de textos sagrados",
         [Locale.SpanishLATAM]: "Libro de textos sagrados",

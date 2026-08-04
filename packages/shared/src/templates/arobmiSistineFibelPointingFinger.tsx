@@ -24,7 +24,7 @@ export const arobmiSistineFibelPointingFinger: Template = {
         [Locale.Czech]: "Sistine Fibel ukazuje prstem",
         [Locale.Japanese]: "指を差すシスティーナ・フィーベル",
         [Locale.Korean]: "손가락으로 가리키는 시스티나 피벨",
-        [Locale.ChineseCN]: "希丝缇娜·斐伊贝尔指着手指",
+        [Locale.ChineseCN]: "希丝缇娜·斐伊贝尔伸手指着",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],

@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const wojackPoint: Template = {
     name: "wojackPoint",
-    displayName: buildLocales("Wojack point", {
+    displayName: buildLocales("Wojak pointing", {
         [Locale.Russian]: "Вояк указывает",
         [Locale.Ukrainian]: "Вояк вказує",
         [Locale.Dutch]: "Wojak wijst",

@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const ceLucyCryingDavidChad: Template = {
     name: "ceLucyCryingDavidChad",
     displayName: buildLocales("Lucy crying David chad", {
-        [Locale.Russian]: "Люси плачет, Дэвид - чад",
-        [Locale.Ukrainian]: "Люсі плаче, Девід - чад",
+        [Locale.Russian]: "Люси плачет, Дэвид чад",
+        [Locale.Ukrainian]: "Люсі плаче, Девід чад",
         [Locale.Dutch]: "Lucy huilend, David chad",
         [Locale.French]: "Lucy en pleurs, David chad",
         [Locale.German]: "Lucy weint, David Chad",

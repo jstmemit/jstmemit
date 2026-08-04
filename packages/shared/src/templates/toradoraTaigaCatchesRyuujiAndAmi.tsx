@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
     name: "toradoraTaigaCatchesRyuujiAndAmi",
-    displayName: buildLocales("Taiga catches Ryuuji And Ami", {
+    displayName: buildLocales("Taiga catches Ryuuji and Ami", {
         [Locale.Russian]: "Тайга застукала Рюджи и Ами",
         [Locale.Ukrainian]: "Тайга застукала Рюдзі та Амі",
         [Locale.Dutch]: "Taiga betrapt Ryuuji en Ami",

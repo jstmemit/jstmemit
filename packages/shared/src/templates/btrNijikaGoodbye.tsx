@@ -9,7 +9,7 @@ import { Locale } from "discord.js";
 export const btrNijikaGoodbye: Template = {
     name: "btrNijikaGoodbye",
     displayName: buildLocales("Nijika goodbye", {
-        [Locale.Russian]: "Никка прощается",
+        [Locale.Russian]: "Нидзика прощается",
         [Locale.Ukrainian]: "Ніджіка прощається",
         [Locale.Dutch]: "Nijika neemt afscheid",
         [Locale.French]: "Nijika dit au revoir",
@@ -24,7 +24,7 @@ export const btrNijikaGoodbye: Template = {
         [Locale.Czech]: "Nijika se loučí",
         [Locale.Japanese]: "さよならのニジカ",
         [Locale.Korean]: "안녕 니지카",
-        [Locale.ChineseCN]: "喜多郁代告别",
+        [Locale.ChineseCN]: "虹夏告别",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],

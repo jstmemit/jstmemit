@@ -9,8 +9,8 @@ import { Locale } from "discord.js";
 export const simpsonsRalphImInDanger: Template = {
     name: "simpsonsRalphImInDanger",
     displayName: buildLocales("Ralph I'm in danger", {
-        [Locale.Russian]: 'Ральф: "Я в опасности"',
-        [Locale.Ukrainian]: 'Ральф: "Я в небезпеці"',
+        [Locale.Russian]: "Ральф: «я в опасности»",
+        [Locale.Ukrainian]: "Ральф: «я в небезпеці»",
         [Locale.Dutch]: "Ralph ik ben in gevaar",
         [Locale.French]: "Ralph je suis en danger",
         [Locale.German]: "Ralph Ich bin in Gefahr",

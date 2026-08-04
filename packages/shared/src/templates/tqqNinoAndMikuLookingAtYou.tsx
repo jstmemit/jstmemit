@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const tqqNinoAndMikuLookingAtYou: Template = {
     name: "tqqNinoAndMikuLookingAtYou",
-    displayName: buildLocales("Nino And Miku looking at you", {
+    displayName: buildLocales("Nino and Miku looking at you", {
         [Locale.Russian]: "Нино и Мику смотрят на тебя",
         [Locale.Ukrainian]: "Ніно та Міку дивляться на тебе",
         [Locale.Dutch]: "Nino en Miku kijken naar jou",

@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 
 export const tqqNinoNakanoHappyVsSad: Template = {
     name: "tqqNinoNakanoHappyVsSad",
-    displayName: buildLocales(" Nino Nakano happy vs sad", {
+    displayName: buildLocales("Nino Nakano happy vs sad", {
         [Locale.Russian]: "Нино Накано счастливая против грустной",
         [Locale.Ukrainian]: "Ніно Накано щаслива проти сумної",
         [Locale.Dutch]: "Nino Nakano blij vs verdrietig",
@@ -18,7 +18,7 @@ export const tqqNinoNakanoHappyVsSad: Template = {
         [Locale.SpanishES]: "Nino Nakano feliz vs triste",
         [Locale.SpanishLATAM]: "Nino Nakano feliz vs triste",
         [Locale.PortugueseBR]: "Nino Nakano feliz vs triste",
-        [Locale.Turkish]: "Nino Nakano mutlu ve üzgün",
+        [Locale.Turkish]: "Nino Nakano mutlu vs üzgün",
         [Locale.Italian]: "Nino Nakano felice vs triste",
         [Locale.Indonesian]: "Nino Nakano bahagia vs sedih",
         [Locale.Czech]: "Nino Nakano šťastná vs smutná",

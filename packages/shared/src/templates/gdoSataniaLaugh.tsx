@@ -21,7 +21,7 @@ export const gdoSataniaLaugh: Template = {
         [Locale.Turkish]: "Satania gülüşü",
         [Locale.Italian]: "Risata di Satania",
         [Locale.Indonesian]: "Tawa Satania",
-        [Locale.Czech]: "Smích Satanii",
+        [Locale.Czech]: "Smích Satanie",
         [Locale.Japanese]: "笑うサターニャ",
         [Locale.Korean]: "사타냐 웃음",
         [Locale.ChineseCN]: "萨塔妮亚大笑",
