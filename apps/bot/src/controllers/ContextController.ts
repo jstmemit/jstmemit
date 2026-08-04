@@ -1,5 +1,6 @@
 import type { IContextController } from "#/interfaces/IContextController.ts";
-import type { PollAnswer } from "discord.js";
+import type { Poll } from "discord.js";
+import { type PollAnswer } from "discord.js";
 import { type GuildEmoji, type PartialPollAnswer } from "discord.js";
 import { type Guild, type Sticker } from "discord.js";
 import { type Collection, type GuildMember, type Message, type TextBasedChannel } from "discord.js";
@@ -231,16 +232,7 @@ export class ContextController implements IContextController {
                     }
 
                     if (poll) {
-                        const answers: string = poll.answers
-                            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
-                            .filter((text: string | null): text is string => Boolean(text))
-                            .join(", ");
-
-                        const text: string = `${poll.question.text}, ${answers}`;
-
-                        if (text.length < 2000) {
-                            await this._contextService.saveContent(id, channelId, text);
-                        }
+                        await this.savePoll(id, channelId, poll);
                     }
 
                     if (content.length > 0 && content.length < 2000) {
@@ -280,6 +272,19 @@ export class ContextController implements IContextController {
         }
 
         return prefetched;
+    }
+
+    public async savePoll(messageId: string, channelId: string, poll: Poll): Promise<void> {
+        const answers: string = poll.answers
+            .map((answer: PartialPollAnswer | PollAnswer): string | null => answer.text)
+            .filter((text: string | null): text is string => Boolean(text))
+            .join(", ");
+
+        const text: string = `${poll.question.text}, ${answers}`;
+
+        if (text.length < 2000) {
+            await this._contextService.saveContent(messageId, channelId, text);
+        }
     }
 
     public async saveEmojis(channelId: string, guild: Guild): Promise<void> {
