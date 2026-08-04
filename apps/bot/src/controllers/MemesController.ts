@@ -179,10 +179,14 @@ export class MemesController implements IMemesController {
                     !permissions.readHistory ||
                     !permissions.embedLinks
                 ) {
-                    const permissionError: ContainerBuilder =
-                        this._componentsService.getMissingBotPermissionsMessageComponent(locale, permissions);
-
-                    await respond(interaction, [permissionError]);
+                    if (interaction.channel?.isSendable()) {
+                        await interaction.channel.send({
+                            flags: MessageFlags.IsComponentsV2,
+                            components: [
+                                this._componentsService.getMissingBotPermissionsMessageComponent(locale, permissions),
+                            ],
+                        });
+                    }
                     return;
                 }
 
