@@ -37,13 +37,13 @@ export class MilestonesService implements IMilestonesService {
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
         channel: typeof channelsTable.$inferSelect,
     ): Promise<void> {
-        const count: number = await this._generationsRepository.getCountPerChannel(interaction.channelId);
-
-        if (!this._isMilestoneCount(count)) {
+        if (!channel.milestones) {
             return;
         }
 
-        if (!channel.milestones) {
+        const count: number = await this._generationsRepository.getCountPerChannel(interaction.channelId);
+
+        if (!this._isMilestoneCount(count)) {
             return;
         }
 
