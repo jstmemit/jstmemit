@@ -343,6 +343,9 @@ export class EventsController implements IEventsController {
                     case "mode":
                         await this._settingsController.handleModeSelect(interaction);
                         return;
+                    case "milestones":
+                        await this._settingsController.handleMilestonesSelect(interaction);
+                        return;
                     case "avatar":
                         await this._settingsController.handleUserAvatarsSelect(interaction);
                         return;

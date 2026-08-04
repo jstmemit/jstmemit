@@ -91,8 +91,12 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot will use avatars for memes (recommended)",
         "settings.avatars.no.label": "No",
         "settings.avatars.no.description": "Bot won't use avatars for memes",
+        "settings.milestones.heading": "Milestones",
+        "settings.milestones.body":
+            "Get a celebration recap when the channel hits a meme count milestone.\nSomething similar to a Spotify Wrapped, but about memes.",
         "settings.milestones.yes.label": "Yes",
-        "settings.milestones.yes.description": "Get a celebration recap when the channel hits a meme count milestone",
+        "settings.milestones.yes.description":
+            "Bot will send a recap every time the channel hits a meme count milestone.",
         "settings.milestones.no.label": "No",
         "settings.milestones.no.description": "Turn off milestone notifications to keep channel quiet",
         "settings.footer.body": "Want to remove all message data about this channel?",

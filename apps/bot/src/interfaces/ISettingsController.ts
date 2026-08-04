@@ -9,4 +9,5 @@ export abstract class ISettingsController {
     public abstract handleUserAvatarsSelect(interaction: StringSelectMenuInteraction): Promise<void>;
     public abstract handleOpenDeleteDataConfirmationInteraction(interaction: ButtonInteraction): Promise<void>;
     public abstract handleDeleteDataInteraction(interaction: ButtonInteraction): Promise<void>;
+    public abstract handleMilestonesSelect(interaction: StringSelectMenuInteraction): Promise<void>;
 }
