@@ -12,6 +12,8 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { respond } from "#/helpers/respond.ts";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import ms from "ms";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 
 const env = Env.parse(process.env);
 
@@ -20,17 +22,20 @@ export class ContextController implements IContextController {
     private readonly _channelsService: IChannelsService;
     private readonly _memesController: IMemesController;
     private readonly _componentsService: IComponentsService;
+    private readonly _cacheService: ICacheService;
 
     public constructor(
         contextService: IContextService,
         channelsService: IChannelsService,
         memesController: IMemesController,
         componentsService: IComponentsService,
+        cacheService: ICacheService,
     ) {
         this._contextService = contextService;
         this._channelsService = channelsService;
         this._memesController = memesController;
         this._componentsService = componentsService;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -259,6 +264,8 @@ export class ContextController implements IContextController {
                 this._contextService.saveEmojis(channel.id, guild),
                 this._contextService.saveStickers(channel.id, guild),
             ]);
+
+            await this._cacheService.set(`refresh`, true, ms("1w"));
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
