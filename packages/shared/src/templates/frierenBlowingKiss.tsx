@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenBlowingKiss: Template = {
     name: "frierenBlowingKiss",
-    displayName: "Frieren blowing kiss",
+    displayName: buildLocales("Frieren blowing kiss", {
+        [Locale.Russian]: "Фрирен посылает воздушный поцелуй",
+        [Locale.Ukrainian]: "Фрірен посилає повітряний поцілунок",
+        [Locale.Dutch]: "Frieren blaast een kus",
+        [Locale.French]: "Frieren envoie un baiser",
+        [Locale.German]: "Frieren wirft einen Kuss",
+        [Locale.Polish]: "Frieren przesyła całusa",
+        [Locale.SpanishES]: "Frieren lanzando un beso",
+        [Locale.SpanishLATAM]: "Frieren lanzando un beso",
+        [Locale.PortugueseBR]: "Frieren mandando beijo",
+        [Locale.Turkish]: "Frieren öpücük gönderiyor",
+        [Locale.Italian]: "Frieren manda un bacio",
+        [Locale.Indonesian]: "Frieren meniup ciuman",
+        [Locale.Czech]: "Frieren posílá vzdušnou pusu",
+        [Locale.Japanese]: "投げキッスをするフリーレン",
+        [Locale.Korean]: "손키스 날리는 프리렌",
+        [Locale.ChineseCN]: "芙莉莲飞吻",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextBottom, Type.FaceImage],
     width: 447,

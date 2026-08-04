@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsHideriHeartHands: Template = {
     name: "blendsHideriHeartHands",
-    displayName: "BlendS Hideri heart hands",
+    displayName: buildLocales("Hideri heart hands", {
+        [Locale.Russian]: "Хидери показывает сердечко руками",
+        [Locale.Ukrainian]: "Хідері показує сердечко руками",
+        [Locale.Dutch]: "Hideri maakt een hartje met haar handen",
+        [Locale.French]: "Hideri fait un cœur avec les mains",
+        [Locale.German]: "Hideri formt ein Herz mit den Händen",
+        [Locale.Polish]: "Hideri robi serduszko rękami",
+        [Locale.SpanishES]: "Hideri haciendo un corazón con las manos",
+        [Locale.SpanishLATAM]: "Hideri haciendo un corazón con las manos",
+        [Locale.PortugueseBR]: "Hideri fazendo coração com as mãos",
+        [Locale.Turkish]: "Hideri elleriyle kalp yapıyor",
+        [Locale.Italian]: "Hideri che fa un cuore con le mani",
+        [Locale.Indonesian]: "Hideri membuat hati dengan tangan",
+        [Locale.Czech]: "Hideri dělá srdíčko rukama",
+        [Locale.Japanese]: "ヒデリのハートハンド",
+        [Locale.Korean]: "히데리 손가락 하트",
+        [Locale.ChineseCN]: "绯多莉比爱心手势",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground, Type.FaceImage],
     width: 1710,

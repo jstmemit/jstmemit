@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const crowdFromAngryToHappy: Template = {
     name: "crowdFromAngryToHappy",
-    displayName: "Crowd from angry to happy",
+    displayName: buildLocales("Crowd from angry to happy", {
+        [Locale.Russian]: "Толпа от злости к радости",
+        [Locale.Ukrainian]: "Натовп від злості до радості",
+        [Locale.Dutch]: "Menigte van boos naar blij",
+        [Locale.French]: "Foule de la colère à la joie",
+        [Locale.German]: "Menge von wütend zu glücklich",
+        [Locale.Polish]: "Tłum od złości do radości",
+        [Locale.SpanishES]: "Multitud de enfado a alegría",
+        [Locale.SpanishLATAM]: "Multitud de enojo a alegría",
+        [Locale.PortugueseBR]: "Multidão de raiva para felicidade",
+        [Locale.Turkish]: "Kalabalık kızgınlıktan mutluluğa",
+        [Locale.Italian]: "Folla dalla rabbia alla felicità",
+        [Locale.Indonesian]: "Kerumunan dari marah ke bahagia",
+        [Locale.Czech]: "Dav od vzteku k radosti",
+        [Locale.Japanese]: "怒りから喜びに変わる群衆",
+        [Locale.Korean]: "화남에서 기쁨으로 변하는 군중",
+        [Locale.ChineseCN]: "人群从愤怒到开心",
+    }),
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TwoOption, Type.TextLeft, Type.FaceImage],
     width: 716,

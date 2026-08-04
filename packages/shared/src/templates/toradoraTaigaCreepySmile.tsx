@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaCreepySmile: Template = {
     name: "toradoraTaigaCreepySmile",
-    displayName: "Toradora Taiga creepy smile",
+    displayName: buildLocales("Taiga creepy smile", {
+        [Locale.Russian]: "Жуткая улыбка Тайги",
+        [Locale.Ukrainian]: "Моторошна усмішка Тайги",
+        [Locale.Dutch]: "Taiga enge glimlach",
+        [Locale.French]: "Sourire effrayant de Taiga",
+        [Locale.German]: "Taigas gruseliges Lächeln",
+        [Locale.Polish]: "Przerażający uśmiech Taigi",
+        [Locale.SpanishES]: "Sonrisa espeluznante de Taiga",
+        [Locale.SpanishLATAM]: "Sonrisa espeluznante de Taiga",
+        [Locale.PortugueseBR]: "Sorriso assustador da Taiga",
+        [Locale.Turkish]: "Taiga ürpertici gülümseme",
+        [Locale.Italian]: "Sorriso inquietante di Taiga",
+        [Locale.Indonesian]: "Senyum menyeramkan Taiga",
+        [Locale.Czech]: "Taigin děsivý úsměv",
+        [Locale.Japanese]: "大河の不気味な笑顔",
+        [Locale.Korean]: "타이가의 소름 돋는 미소",
+        [Locale.ChineseCN]: "大河令人毛骨悚然的微笑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextRightWithBackground, Type.DefaultText],
     width: 1102,

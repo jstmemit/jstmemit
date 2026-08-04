@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gdoSataniaShocked: Template = {
     name: "gdoSataniaShocked",
-    displayName: "GDO Satania shocked",
+    displayName: buildLocales("Satania shocked", {
+        [Locale.Russian]: "Сатания в шоке",
+        [Locale.Ukrainian]: "Сатанія в шоці",
+        [Locale.Dutch]: "Satania in shock",
+        [Locale.French]: "Satania choquée",
+        [Locale.German]: "Satania geschockt",
+        [Locale.Polish]: "Satania w szoku",
+        [Locale.SpanishES]: "Satania en shock",
+        [Locale.SpanishLATAM]: "Satania en shock",
+        [Locale.PortugueseBR]: "Satania chocada",
+        [Locale.Turkish]: "Satania şokta",
+        [Locale.Italian]: "Satania scioccata",
+        [Locale.Indonesian]: "Satania terkejut",
+        [Locale.Czech]: "Satania v šoku",
+        [Locale.Japanese]: "ショックを受けるサターニャ",
+        [Locale.Korean]: "충격받은 사타냐",
+        [Locale.ChineseCN]: "萨塔妮亚震惊",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextRightWithBackground],
     width: 1800,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const quote: Template = {
     name: "quote",
-    displayName: "Quote",
+    displayName: buildLocales("Quote", {
+        [Locale.Russian]: "Цитата",
+        [Locale.Ukrainian]: "Цитата",
+        [Locale.Dutch]: "Citaat",
+        [Locale.French]: "Citation",
+        [Locale.German]: "Zitat",
+        [Locale.Polish]: "Cytat",
+        [Locale.SpanishES]: "Cita",
+        [Locale.SpanishLATAM]: "Cita",
+        [Locale.PortugueseBR]: "Citação",
+        [Locale.Turkish]: "Alıntı",
+        [Locale.Italian]: "Citazione",
+        [Locale.Indonesian]: "Kutipan",
+        [Locale.Czech]: "Citát",
+        [Locale.Japanese]: "引用",
+        [Locale.Korean]: "인용",
+        [Locale.ChineseCN]: "引用",
+    }),
     topics: [Topic.Misc],
     types: [Type.BackgroundImage, Type.TextCenterWithBackground],
     width: 800,

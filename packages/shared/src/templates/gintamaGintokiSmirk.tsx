@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiSmirk: Template = {
     name: "gintamaGintokiSmirk",
-    displayName: "Gintama Gintoki smirk",
+    displayName: buildLocales("Gintoki smirk", {
+        [Locale.Russian]: "Ухмылка Гинтоки",
+        [Locale.Ukrainian]: "Усмішка Гінтокі",
+        [Locale.Dutch]: "Gintoki grijns",
+        [Locale.French]: "Sourire en coin de Gintoki",
+        [Locale.German]: "Gintokis Grinsen",
+        [Locale.Polish]: "Uśmieszek Gintokiego",
+        [Locale.SpanishES]: "Sonrisa petulante de Gintoki",
+        [Locale.SpanishLATAM]: "Sonrisa petulante de Gintoki",
+        [Locale.PortugueseBR]: "Sorrisinho do Gintoki",
+        [Locale.Turkish]: "Gintoki sırıtışı",
+        [Locale.Italian]: "Sorrisetto di Gintoki",
+        [Locale.Indonesian]: "Seringai Gintoki",
+        [Locale.Czech]: "Úšklebek Gintokiho",
+        [Locale.Japanese]: "銀時のニヤリ顔",
+        [Locale.Korean]: "긴토키 썩소",
+        [Locale.ChineseCN]: "银时坏笑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextBottom],
     width: 736,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const acsrMisakaRailgun: Template = {
     name: "acsrMisakaRailgun",
-    displayName: "ACSR Misaka railgun",
+    displayName: buildLocales("Misaka railgun", {
+        [Locale.Russian]: "Рейлган Мисаки",
+        [Locale.Ukrainian]: "Рейлган Місаки",
+        [Locale.Dutch]: "Misaka railgun",
+        [Locale.French]: "Railgun de Misaka",
+        [Locale.German]: "Misaka Railgun",
+        [Locale.Polish]: "Railgun Misaki",
+        [Locale.SpanishES]: "Railgun de Misaka",
+        [Locale.SpanishLATAM]: "Railgun de Misaka",
+        [Locale.PortugueseBR]: "Railgun da Misaka",
+        [Locale.Turkish]: "Misaka railgun",
+        [Locale.Italian]: "Railgun di Misaka",
+        [Locale.Indonesian]: "Railgun Misaka",
+        [Locale.Czech]: "Misaka railgun",
+        [Locale.Japanese]: "御坂の超電磁砲",
+        [Locale.Korean]: "미사카 레일건",
+        [Locale.ChineseCN]: "御坂超电磁炮",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

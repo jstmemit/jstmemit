@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterVsChicken: Template = {
     name: "griffinsPeterVsChicken",
-    displayName: "Griffins Peter vs chicken",
+    displayName: buildLocales("Peter vs chicken", {
+        [Locale.Russian]: "Питер против курицы",
+        [Locale.Ukrainian]: "Пітер проти курки",
+        [Locale.Dutch]: "Peter vs kip",
+        [Locale.French]: "Peter contre le poulet",
+        [Locale.German]: "Peter gegen Huhn",
+        [Locale.Polish]: "Peter vs kurczak",
+        [Locale.SpanishES]: "Peter vs pollo",
+        [Locale.SpanishLATAM]: "Peter vs pollo",
+        [Locale.PortugueseBR]: "Peter vs frango",
+        [Locale.Turkish]: "Peter tavuğa karşı",
+        [Locale.Italian]: "Peter vs pollo",
+        [Locale.Indonesian]: "Peter vs ayam",
+        [Locale.Czech]: "Peter vs kuře",
+        [Locale.Japanese]: "ピーター vs ニワトリ",
+        [Locale.Korean]: "피터 대 닭",
+        [Locale.ChineseCN]: "彼得对战大公鸡",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Animals],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 2000,

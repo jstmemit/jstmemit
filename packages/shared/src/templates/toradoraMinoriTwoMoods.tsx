@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraMinoriTwoMoods: Template = {
     name: "toradoraMinoriTwoMoods",
-    displayName: "Toradora Minori two moods",
+    displayName: buildLocales("Minori two moods", {
+        [Locale.Russian]: "Два настроения Минори",
+        [Locale.Ukrainian]: "Два настрої Мінорі",
+        [Locale.Dutch]: "Minori twee stemmingen",
+        [Locale.French]: "Minori deux humeurs",
+        [Locale.German]: "Minori zwei Stimmungen",
+        [Locale.Polish]: "Dwa nastroje Minori",
+        [Locale.SpanishES]: "Minori dos estados de ánimo",
+        [Locale.SpanishLATAM]: "Minori dos estados de ánimo",
+        [Locale.PortugueseBR]: "Minori dois humores",
+        [Locale.Turkish]: "Minori'nin iki ruh hali",
+        [Locale.Italian]: "Minori due umori",
+        [Locale.Indonesian]: "Dua suasana hati Minori",
+        [Locale.Czech]: "Minori dvě nálady",
+        [Locale.Japanese]: "実乃梨の2つの気分",
+        [Locale.Korean]: "미노리의 두 가지 기분",
+        [Locale.ChineseCN]: "实乃梨的两种心情",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.Toradora],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 978,

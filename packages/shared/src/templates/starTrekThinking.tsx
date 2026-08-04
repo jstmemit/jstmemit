@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const starTrekThinking: Template = {
     name: "starTrekThinking",
-    displayName: "Star Trek thinking",
+    displayName: buildLocales("Thinking", {
+        [Locale.Russian]: "Думает",
+        [Locale.Ukrainian]: "Думає",
+        [Locale.Dutch]: "Denkend",
+        [Locale.French]: "Réfléchit",
+        [Locale.German]: "Denkend",
+        [Locale.Polish]: "Myślenie",
+        [Locale.SpanishES]: "Pensando",
+        [Locale.SpanishLATAM]: "Pensando",
+        [Locale.PortugueseBR]: "Pensando",
+        [Locale.Turkish]: "Düşünüyor",
+        [Locale.Italian]: "Pensando",
+        [Locale.Indonesian]: "Berpikir",
+        [Locale.Czech]: "Přemýšlí",
+        [Locale.Japanese]: "考え中",
+        [Locale.Korean]: "생각 중",
+        [Locale.ChineseCN]: "思考中",
+    }),
     topics: [Topic.StarTrek, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.TextBottomWithBackground],
     width: 1200,

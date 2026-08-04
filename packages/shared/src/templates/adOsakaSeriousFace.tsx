@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adOsakaSeriousFace: Template = {
     name: "adOsakaSeriousFace",
-    displayName: "AD Osaka serious face",
+    displayName: buildLocales("Osaka serious face", {
+        [Locale.Russian]: "Серьезное лицо Осаки",
+        [Locale.Ukrainian]: "Серйозне обличчя Осаки",
+        [Locale.Dutch]: "Osaka serieus gezicht",
+        [Locale.French]: "Visage sérieux d'Osaka",
+        [Locale.German]: "Osakas ernstes Gesicht",
+        [Locale.Polish]: "Poważna twarz Osaki",
+        [Locale.SpanishES]: "Cara seria de Osaka",
+        [Locale.SpanishLATAM]: "Cara seria de Osaka",
+        [Locale.PortugueseBR]: "Rosto sério da Osaka",
+        [Locale.Turkish]: "Osaka ciddi yüzü",
+        [Locale.Italian]: "Faccia seria di Osaka",
+        [Locale.Indonesian]: "Wajah serius Osaka",
+        [Locale.Czech]: "Vážný obličej Osaky",
+        [Locale.Japanese]: "大阪 真顔",
+        [Locale.Korean]: "오사카 진지한 얼굴",
+        [Locale.ChineseCN]: "大阪严肃脸",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextBottom],
     width: 500,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobRainbow: Template = {
     name: "spongebobRainbow",
-    displayName: "Spongebob rainbow",
+    displayName: buildLocales("Rainbow", {
+        [Locale.Russian]: "Радуга",
+        [Locale.Ukrainian]: "Веселка",
+        [Locale.Dutch]: "Regenboog",
+        [Locale.French]: "Arc-en-ciel",
+        [Locale.German]: "Regenbogen",
+        [Locale.Polish]: "Tęcza",
+        [Locale.SpanishES]: "Arcoíris",
+        [Locale.SpanishLATAM]: "Arcoíris",
+        [Locale.PortugueseBR]: "Arco-íris",
+        [Locale.Turkish]: "Gökkuşağı",
+        [Locale.Italian]: "Arcobaleno",
+        [Locale.Indonesian]: "Pelangi",
+        [Locale.Czech]: "Duha",
+        [Locale.Japanese]: "虹",
+        [Locale.Korean]: "무지개",
+        [Locale.ChineseCN]: "彩虹",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 1920,

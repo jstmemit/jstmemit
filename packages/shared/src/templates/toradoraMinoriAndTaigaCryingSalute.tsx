@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraMinoriAndTaigaCryingSalute: Template = {
     name: "toradoraMinoriAndTaigaCryingSalute",
-    displayName: "Toradora Minori And Taiga сrying salute",
+    displayName: buildLocales("Minori And Taiga сrying salute", {
+        [Locale.Russian]: "Минори и Тайга отдают честь со слезами",
+        [Locale.Ukrainian]: "Мінорі та Тайга віддають честь зі сльозами",
+        [Locale.Dutch]: "Minori en Taiga huilend salueren",
+        [Locale.French]: "Minori et Taiga saluant en pleurant",
+        [Locale.German]: "Minori und Taiga salutieren weinend",
+        [Locale.Polish]: "Płaczące Minori i Taiga salutują",
+        [Locale.SpanishES]: "Minori y Taiga saludando llorando",
+        [Locale.SpanishLATAM]: "Minori y Taiga saludando llorando",
+        [Locale.PortugueseBR]: "Minori e Taiga saudando e chorando",
+        [Locale.Turkish]: "Ağlayarak selam veren Minori ve Taiga",
+        [Locale.Italian]: "Minori e Taiga che salutano piangendo",
+        [Locale.Indonesian]: "Minori dan Taiga menangis memberi hormat",
+        [Locale.Czech]: "Plačící Minori a Taiga salutují",
+        [Locale.Japanese]: "泣きながら敬礼する実乃梨と大河",
+        [Locale.Korean]: "울면서 경례하는 미노리와 타이가",
+        [Locale.ChineseCN]: "实乃梨和大河哭着敬礼",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottom],
     width: 1080,

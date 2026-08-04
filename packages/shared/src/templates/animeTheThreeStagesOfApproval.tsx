@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const animeTheThreeStagesOfApproval: Template = {
     name: "animeTheThreeStagesOfApproval",
-    displayName: "Anime The three stages of approval",
+    displayName: buildLocales("The three stages of approval", {
+        [Locale.Russian]: "Три стадии одобрения",
+        [Locale.Ukrainian]: "Три стадії схвалення",
+        [Locale.Dutch]: "De drie stadia van goedkeuring",
+        [Locale.French]: "Les trois étapes de l'approbation",
+        [Locale.German]: "Die drei Phasen der Zustimmung",
+        [Locale.Polish]: "Trzy etapy aprobaty",
+        [Locale.SpanishES]: "Las tres etapas de aprobación",
+        [Locale.SpanishLATAM]: "Las tres etapas de aprobación",
+        [Locale.PortugueseBR]: "Os três estágios de aprovação",
+        [Locale.Turkish]: "Onayın üç aşaması",
+        [Locale.Italian]: "Le tre fasi dell'approvazione",
+        [Locale.Indonesian]: "Tiga tahap persetujuan",
+        [Locale.Czech]: "Tři fáze schválení",
+        [Locale.Japanese]: "承認の3段階",
+        [Locale.Korean]: "승인의 3단계",
+        [Locale.ChineseCN]: "赞同的三个阶段",
+    }),
     topics: [Topic.Reaction, Topic.Anime],
     types: [Type.TextRightWithBackground, Type.ThreeOption],
     width: 1008,

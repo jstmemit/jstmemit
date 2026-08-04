@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const pfCoffeeScene: Template = {
     name: "pfCoffeeScene",
-    displayName: "PF Coffee scene",
+    displayName: buildLocales("Coffee scene", {
+        [Locale.Russian]: "Сцена с кофе",
+        [Locale.Ukrainian]: "Сцена з кавою",
+        [Locale.Dutch]: "Koffiescène",
+        [Locale.French]: "Scène de café",
+        [Locale.German]: "Kaffee-Szene",
+        [Locale.Polish]: "Scena z kawą",
+        [Locale.SpanishES]: "Escena de café",
+        [Locale.SpanishLATAM]: "Escena de café",
+        [Locale.PortugueseBR]: "Cena do café",
+        [Locale.Turkish]: "Kahve sahnesi",
+        [Locale.Italian]: "Scena del caffè",
+        [Locale.Indonesian]: "Adegan kopi",
+        [Locale.Czech]: "Scéna s kávou",
+        [Locale.Japanese]: "コーヒーのシーン",
+        [Locale.Korean]: "커피 씬",
+        [Locale.ChineseCN]: "咖啡场景",
+    }),
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 600,

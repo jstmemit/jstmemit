@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const arobmiSurprisedSistine: Template = {
     name: "arobmiSurprisedSistine",
-    displayName: "AROBMI Surprised Sistine",
+    displayName: buildLocales("Surprised Sistine", {
+        [Locale.Russian]: "Удивленная Систина",
+        [Locale.Ukrainian]: "Здивована Сістіна",
+        [Locale.Dutch]: "Verraste Sistine",
+        [Locale.French]: "Sistine surprise",
+        [Locale.German]: "Überraschte Sistine",
+        [Locale.Polish]: "Zaskoczona Sistine",
+        [Locale.SpanishES]: "Sistine sorprendida",
+        [Locale.SpanishLATAM]: "Sistine sorprendida",
+        [Locale.PortugueseBR]: "Sistine surpresa",
+        [Locale.Turkish]: "Şaşırmış Sistine",
+        [Locale.Italian]: "Sistine sorpresa",
+        [Locale.Indonesian]: "Sistine terkejut",
+        [Locale.Czech]: "Překvapená Sistine",
+        [Locale.Japanese]: "驚くシスティーナ",
+        [Locale.Korean]: "놀란 시스티나",
+        [Locale.ChineseCN]: "惊讶的希丝缇娜",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextBottomWithBackground],
     width: 537,

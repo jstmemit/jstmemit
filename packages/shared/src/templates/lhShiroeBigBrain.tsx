@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const lhShiroeBigBrain: Template = {
     name: "lhShiroeBigBrain",
-    displayName: "LH Shiroe big brain",
+    displayName: buildLocales("Shiroe big brain", {
+        [Locale.Russian]: "Широэ: большой мозг",
+        [Locale.Ukrainian]: "Шірое: великий мозок",
+        [Locale.Dutch]: "Shiroe groot brein",
+        [Locale.French]: "Shiroe gros cerveau",
+        [Locale.German]: "Shiroe großes Gehirn",
+        [Locale.Polish]: "Shiroe wielki mózg",
+        [Locale.SpanishES]: "Shiroe gran cerebro",
+        [Locale.SpanishLATAM]: "Shiroe gran cerebro",
+        [Locale.PortugueseBR]: "Shiroe cérebro grande",
+        [Locale.Turkish]: "Shiroe büyük beyin",
+        [Locale.Italian]: "Shiroe cervellone",
+        [Locale.Indonesian]: "Shiroe otak besar",
+        [Locale.Czech]: "Shiroe velký mozek",
+        [Locale.Japanese]: "シロエ 悪巧み顔",
+        [Locale.Korean]: "시로에 큰 그림",
+        [Locale.ChineseCN]: "城惠 腹黑推眼镜",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.LogHorizon],
     types: [Type.TextBottomWithBackground],
     width: 736,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaZeroDaysSinceLast: Template = {
     name: "futuramaZeroDaysSinceLast",
-    displayName: "Futurama Zero days since last",
+    displayName: buildLocales("Zero days since last", {
+        [Locale.Russian]: "Ноль дней с последнего",
+        [Locale.Ukrainian]: "Нуль днів з останнього",
+        [Locale.Dutch]: "Nul dagen sinds de laatste",
+        [Locale.French]: "Zéro jour depuis le dernier",
+        [Locale.German]: "Null Tage seit dem letzten",
+        [Locale.Polish]: "Zero dni od ostatniego",
+        [Locale.SpanishES]: "Cero días desde el último",
+        [Locale.SpanishLATAM]: "Cero días desde el último",
+        [Locale.PortugueseBR]: "Zero dias desde o último",
+        [Locale.Turkish]: "Son seferden bu yana sıfır gün",
+        [Locale.Italian]: "Zero giorni dall'ultimo",
+        [Locale.Indonesian]: "Nol hari sejak terakhir",
+        [Locale.Czech]: "Nula dní od posledního",
+        [Locale.Japanese]: "最後から0日",
+        [Locale.Korean]: "마지막 이후 0일째",
+        [Locale.ChineseCN]: "距上次已过0天",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.TextCenterWithBackground],
     width: 640,

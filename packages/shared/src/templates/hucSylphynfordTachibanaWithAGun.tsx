@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const hucSylphynfordTachibanaWithAGun: Template = {
     name: "hucSylphynfordTachibanaWithAGun",
-    displayName: "HUC Sylphynford Tachibana with a gun",
+    displayName: buildLocales("Sylphynford Tachibana with a gun", {
+        [Locale.Russian]: "Сильфинфорд Тачибана с пистолетом",
+        [Locale.Ukrainian]: "Сільфінфорд Тачібана з пістолетом",
+        [Locale.Dutch]: "Sylphynford Tachibana met een pistool",
+        [Locale.French]: "Sylphynford Tachibana avec un pistolet",
+        [Locale.German]: "Sylphynford Tachibana mit Waffe",
+        [Locale.Polish]: "Sylphynford Tachibana z pistoletem",
+        [Locale.SpanishES]: "Sylphynford Tachibana con un arma",
+        [Locale.SpanishLATAM]: "Sylphynford Tachibana con un arma",
+        [Locale.PortugueseBR]: "Sylphynford Tachibana com uma arma",
+        [Locale.Turkish]: "Silahlı Sylphynford Tachibana",
+        [Locale.Italian]: "Sylphynford Tachibana con una pistola",
+        [Locale.Indonesian]: "Sylphynford Tachibana dengan pistol",
+        [Locale.Czech]: "Sylphynford Tachibana se zbraní",
+        [Locale.Japanese]: "銃を持つ橘・シルフィンフォード",
+        [Locale.Korean]: "총을 든 타치바나 실핀포드",
+        [Locale.ChineseCN]: "拿枪的橘·希尔芬福特",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 874,

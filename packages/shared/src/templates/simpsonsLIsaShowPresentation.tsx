@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsLIsaShowPresentation: Template = {
     name: "simpsonsLIsaShowPresentation",
-    displayName: "Simpsons Lisa show presentation",
+    displayName: buildLocales("Lisa show presentation", {
+        [Locale.Russian]: "Лиза показывает презентацию",
+        [Locale.Ukrainian]: "Ліза показує презентацію",
+        [Locale.Dutch]: "Lisa toont presentatie",
+        [Locale.French]: "Lisa montrant une présentation",
+        [Locale.German]: "Lisa zeigt Präsentation",
+        [Locale.Polish]: "Lisa pokazuje prezentację",
+        [Locale.SpanishES]: "Lisa mostrando presentación",
+        [Locale.SpanishLATAM]: "Lisa mostrando presentación",
+        [Locale.PortugueseBR]: "Lisa mostrando apresentação",
+        [Locale.Turkish]: "Lisa sunum yapıyor",
+        [Locale.Italian]: "Lisa mostra una presentazione",
+        [Locale.Indonesian]: "Lisa menunjukkan presentasi",
+        [Locale.Czech]: "Lisa ukazuje prezentaci",
+        [Locale.Japanese]: "プレゼンするリサ",
+        [Locale.Korean]: "발표하는 리사",
+        [Locale.ChineseCN]: "丽莎展示PPT",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 736,

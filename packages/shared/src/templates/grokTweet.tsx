@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const grokTweet: Template = {
     name: "grokTweet",
-    displayName: "Grok tweet",
+    displayName: buildLocales("Grok tweet", {
+        [Locale.Russian]: "Твит Grok",
+        [Locale.Ukrainian]: "Твіт Grok",
+        [Locale.Dutch]: "Grok tweet",
+        [Locale.French]: "Tweet de Grok",
+        [Locale.German]: "Grok Tweet",
+        [Locale.Polish]: "Tweet Groka",
+        [Locale.SpanishES]: "Tuit de Grok",
+        [Locale.SpanishLATAM]: "Tuit de Grok",
+        [Locale.PortugueseBR]: "Tweet do Grok",
+        [Locale.Turkish]: "Grok tweeti",
+        [Locale.Italian]: "Tweet di Grok",
+        [Locale.Indonesian]: "Cuitan Grok",
+        [Locale.Czech]: "Grok tweet",
+        [Locale.Japanese]: "Grokのツイート",
+        [Locale.Korean]: "그록 트윗",
+        [Locale.ChineseCN]: "Grok 推文",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.AvatarImage, Type.DefaultText],
     width: 1280,

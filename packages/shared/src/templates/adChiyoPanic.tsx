@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adChiyoPanic: Template = {
     name: "adChiyoPanic",
-    displayName: "AD Chiyo panic",
+    displayName: buildLocales("Chiyo panic", {
+        [Locale.Russian]: "Чиё в панике",
+        [Locale.Ukrainian]: "Чійо в паніці",
+        [Locale.Dutch]: "Chiyo in paniek",
+        [Locale.French]: "Chiyo en panique",
+        [Locale.German]: "Chiyo in Panik",
+        [Locale.Polish]: "Chiyo w panice",
+        [Locale.SpanishES]: "Chiyo en pánico",
+        [Locale.SpanishLATAM]: "Chiyo en pánico",
+        [Locale.PortugueseBR]: "Chiyo em pânico",
+        [Locale.Turkish]: "Chiyo panikte",
+        [Locale.Italian]: "Chiyo nel panico",
+        [Locale.Indonesian]: "Chiyo panik",
+        [Locale.Czech]: "Chiyo panikaří",
+        [Locale.Japanese]: "ちよ パニック",
+        [Locale.Korean]: "치요 패닉",
+        [Locale.ChineseCN]: "千代慌乱",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

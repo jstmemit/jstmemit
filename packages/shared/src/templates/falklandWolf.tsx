@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const falklandWolf: Template = {
     name: "falklandWolf",
-    displayName: "Falkland wolf",
+    displayName: buildLocales("Falkland wolf", {
+        [Locale.Russian]: "Фолклендский волк",
+        [Locale.Ukrainian]: "Фолклендський вовк",
+        [Locale.Dutch]: "Falklandwolf",
+        [Locale.French]: "Loup des Malouines",
+        [Locale.German]: "Falklandwolf",
+        [Locale.Polish]: "Wilk falklandzki",
+        [Locale.SpanishES]: "Lobo de las Malvinas",
+        [Locale.SpanishLATAM]: "Lobo de las Malvinas",
+        [Locale.PortugueseBR]: "Lobo das Malvinas",
+        [Locale.Turkish]: "Falkland kurdu",
+        [Locale.Italian]: "Lupo delle Falkland",
+        [Locale.Indonesian]: "Serigala Falkland",
+        [Locale.Czech]: "Falklandský vlk",
+        [Locale.Japanese]: "フォークランドオオカミ",
+        [Locale.Korean]: "포클랜드늑대",
+        [Locale.ChineseCN]: "福克兰狼",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.AvatarImage, Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 814,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const pfAllToghether: Template = {
     name: "pfAllToghether",
-    displayName: "PF All together",
+    displayName: buildLocales("All together", {
+        [Locale.Russian]: "Все вместе",
+        [Locale.Ukrainian]: "Всі разом",
+        [Locale.Dutch]: "Allemaal samen",
+        [Locale.French]: "Tous ensemble",
+        [Locale.German]: "Alle zusammen",
+        [Locale.Polish]: "Wszyscy razem",
+        [Locale.SpanishES]: "Todos juntos",
+        [Locale.SpanishLATAM]: "Todos juntos",
+        [Locale.PortugueseBR]: "Todos juntos",
+        [Locale.Turkish]: "Hep birlikte",
+        [Locale.Italian]: "Tutti insieme",
+        [Locale.Indonesian]: "Bersama-sama",
+        [Locale.Czech]: "Všichni společně",
+        [Locale.Japanese]: "みんな一緒に",
+        [Locale.Korean]: "다 함께",
+        [Locale.ChineseCN]: "大家一起",
+    }),
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 950,

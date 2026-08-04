@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const newsReporterSitting: Template = {
     name: "newsReporterSitting",
-    displayName: "News reporter sitting",
+    displayName: buildLocales("News reporter sitting", {
+        [Locale.Russian]: "Сидящий репортер",
+        [Locale.Ukrainian]: "Репортер, що сидить",
+        [Locale.Dutch]: "Zittende nieuwslezer",
+        [Locale.French]: "Journaliste assis",
+        [Locale.German]: "Sitzender Nachrichtenreporter",
+        [Locale.Polish]: "Siedzący reporter wiadomości",
+        [Locale.SpanishES]: "Reportero de noticias sentado",
+        [Locale.SpanishLATAM]: "Reportero de noticias sentado",
+        [Locale.PortugueseBR]: "Repórter de notícias sentado",
+        [Locale.Turkish]: "Oturan haber muhabiri",
+        [Locale.Italian]: "Giornalista seduto",
+        [Locale.Indonesian]: "Reporter berita duduk",
+        [Locale.Czech]: "Sedící reportér",
+        [Locale.Japanese]: "座っているニュースレポーター",
+        [Locale.Korean]: "앉아있는 뉴스 리포터",
+        [Locale.ChineseCN]: "坐着的新闻记者",
+    }),
     topics: [Topic.News],
     types: [Type.TextBottom, Type.TextTop, Type.BackgroundImage],
     width: 766,

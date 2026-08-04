@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiExhaustedFace: Template = {
     name: "btrBocchiExhaustedFace",
-    displayName: "BTR Bocchi exhausted face",
+    displayName: buildLocales("Bocchi exhausted face", {
+        [Locale.Russian]: "Бокки - измождённое лицо",
+        [Locale.Ukrainian]: "Боккі - виснажене обличчя",
+        [Locale.Dutch]: "Bocchi uitgeput gezicht",
+        [Locale.French]: "Bocchi visage épuisé",
+        [Locale.German]: "Bocchi erschöpftes Gesicht",
+        [Locale.Polish]: "Bocchi wyczerpana twarz",
+        [Locale.SpanishES]: "Bocchi cara de agotamiento",
+        [Locale.SpanishLATAM]: "Bocchi cara de agotamiento",
+        [Locale.PortugueseBR]: "Bocchi rosto exausto",
+        [Locale.Turkish]: "Bocchi bitkin yüz ifadesi",
+        [Locale.Italian]: "Bocchi faccia esausta",
+        [Locale.Indonesian]: "Bocchi wajah kelelahan",
+        [Locale.Czech]: "Bocchi vyčerpaný výraz",
+        [Locale.Japanese]: "疲れ果てたぼっちの顔",
+        [Locale.Korean]: "지친 봇치 얼굴",
+        [Locale.ChineseCN]: "波奇疲惫的表情",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottom],
     width: 400,

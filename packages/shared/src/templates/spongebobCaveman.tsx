@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobCaveman: Template = {
     name: "spongebobCaveman",
-    displayName: "Spongebob caveman",
+    displayName: buildLocales("Spongebob caveman", {
+        [Locale.Russian]: "Пещерный Губка Боб",
+        [Locale.Ukrainian]: "Печерний Губка Боб",
+        [Locale.Dutch]: "Spongebob holbewoner",
+        [Locale.French]: "Bob l'éponge homme des cavernes",
+        [Locale.German]: "Spongebob Höhlenmensch",
+        [Locale.Polish]: "SpongeBob jaskiniowiec",
+        [Locale.SpanishES]: "Bob Esponja cavernícola",
+        [Locale.SpanishLATAM]: "Bob Esponja cavernícola",
+        [Locale.PortugueseBR]: "Bob Esponja homem das cavernas",
+        [Locale.Turkish]: "Mağara adamı SüngerBob",
+        [Locale.Italian]: "SpongeBob cavernicolo",
+        [Locale.Indonesian]: "Spongebob manusia purba",
+        [Locale.Czech]: "Pravěký Spongebob",
+        [Locale.Japanese]: "原始人スポンジ・ボブ",
+        [Locale.Korean]: "원시인 스폰지밥",
+        [Locale.ChineseCN]: "原始人海绵宝宝",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTop],
     width: 716,

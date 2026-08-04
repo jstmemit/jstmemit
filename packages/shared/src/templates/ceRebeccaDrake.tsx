@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ceRebeccaDrake: Template = {
     name: "ceRebeccaDrake",
-    displayName: "CE Rebecca drake",
+    displayName: buildLocales("Rebecca drake", {
+        [Locale.Russian]: "Ребекка в формате Дрейка",
+        [Locale.Ukrainian]: "Ребекка у форматі Дрейка",
+        [Locale.Dutch]: "Rebecca drake-formaat",
+        [Locale.French]: "Rebecca format Drake",
+        [Locale.German]: "Rebecca im Drake-Format",
+        [Locale.Polish]: "Rebecca w formacie Drake'a",
+        [Locale.SpanishES]: "Rebecca formato Drake",
+        [Locale.SpanishLATAM]: "Rebecca formato Drake",
+        [Locale.PortugueseBR]: "Rebecca formato Drake",
+        [Locale.Turkish]: "Rebecca Drake formatı",
+        [Locale.Italian]: "Rebecca formato Drake",
+        [Locale.Indonesian]: "Rebecca format Drake",
+        [Locale.Czech]: "Rebecca ve formátu Drake",
+        [Locale.Japanese]: "ドレイク形式のレベッカ",
+        [Locale.Korean]: "드레이크 포맷 레베카",
+        [Locale.ChineseCN]: "丽贝卡Drake表情包格式",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 592,

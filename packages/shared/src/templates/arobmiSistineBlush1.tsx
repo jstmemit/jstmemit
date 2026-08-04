@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const arobmiSistineBlush1: Template = {
     name: "arobmiSistineBlush1",
-    displayName: "AROBMI Sistine blush 1",
+    displayName: buildLocales("Sistine blush 1", {
+        [Locale.Russian]: "Систина краснеет 1",
+        [Locale.Ukrainian]: "Сістіна червоніє 1",
+        [Locale.Dutch]: "Sistine bloost 1",
+        [Locale.French]: "Sistine rougit 1",
+        [Locale.German]: "Sistine errötet 1",
+        [Locale.Polish]: "Sistine się rumieni 1",
+        [Locale.SpanishES]: "Sistine sonrojada 1",
+        [Locale.SpanishLATAM]: "Sistine sonrojada 1",
+        [Locale.PortugueseBR]: "Sistine corada 1",
+        [Locale.Turkish]: "Sistine kızarıyor 1",
+        [Locale.Italian]: "Sistine arrossisce 1",
+        [Locale.Indonesian]: "Sistine tersipu 1",
+        [Locale.Czech]: "Sistine se červená 1",
+        [Locale.Japanese]: "システィーナ 照れ 1",
+        [Locale.Korean]: "시스티나 얼굴 붉힘 1",
+        [Locale.ChineseCN]: "希丝缇娜脸红 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,

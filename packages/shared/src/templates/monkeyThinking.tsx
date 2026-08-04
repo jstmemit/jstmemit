@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const monkeyThinking: Template = {
     name: "monkeyThinking",
-    displayName: "Monkey thinking",
+    displayName: buildLocales("Monkey thinking", {
+        [Locale.Russian]: "Задумавшаяся обезьяна",
+        [Locale.Ukrainian]: "Замислена мавпа",
+        [Locale.Dutch]: "Nadenkende aap",
+        [Locale.French]: "Singe pensif",
+        [Locale.German]: "Nachdenklicher Affe",
+        [Locale.Polish]: "Myśląca małpa",
+        [Locale.SpanishES]: "Mono pensando",
+        [Locale.SpanishLATAM]: "Mono pensando",
+        [Locale.PortugueseBR]: "Macaco pensando",
+        [Locale.Turkish]: "Düşünen maymun",
+        [Locale.Italian]: "Scimmia che pensa",
+        [Locale.Indonesian]: "Monyet berpikir",
+        [Locale.Czech]: "Přemýšlející opice",
+        [Locale.Japanese]: "考えるサル",
+        [Locale.Korean]: "생각하는 원숭이",
+        [Locale.ChineseCN]: "思考的猴子",
+    }),
     topics: [Topic.Animals, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 800,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const konAzusaNoThanks1: Template = {
     name: "konAzusaNoThanks1",
-    displayName: "K-On Azusa no thanks 1",
+    displayName: buildLocales("Azusa no thanks 1", {
+        [Locale.Russian]: "Азуса: нет, спасибо 1",
+        [Locale.Ukrainian]: "Азуса: ні, дякую 1",
+        [Locale.Dutch]: "Azusa nee bedankt 1",
+        [Locale.French]: "Azusa non merci 1",
+        [Locale.German]: "Azusa nein danke 1",
+        [Locale.Polish]: "Azusa nie dziękuję 1",
+        [Locale.SpanishES]: "Azusa no gracias 1",
+        [Locale.SpanishLATAM]: "Azusa no gracias 1",
+        [Locale.PortugueseBR]: "Azusa não, obrigado 1",
+        [Locale.Turkish]: "Azusa hayır teşekkürler 1",
+        [Locale.Italian]: "Azusa no grazie 1",
+        [Locale.Indonesian]: "Azusa tidak terima kasih 1",
+        [Locale.Czech]: "Azusa ne díky 1",
+        [Locale.Japanese]: "あずにゃん 結構です 1",
+        [Locale.Korean]: "아즈사 사양할게요 1",
+        [Locale.ChineseCN]: "梓 丑拒 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Kon],
     types: [Type.DefaultText, Type.FaceImage],
     width: 860,

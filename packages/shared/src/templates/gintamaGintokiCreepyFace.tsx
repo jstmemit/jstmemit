@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiCreepyFace: Template = {
     name: "gintamaGintokiCreepyFace",
-    displayName: "Gintama Gintoki creepy face",
+    displayName: buildLocales("Gintoki creepy face", {
+        [Locale.Russian]: "Жуткое лицо Гинтоки",
+        [Locale.Ukrainian]: "Моторошне обличчя Гінтокі",
+        [Locale.Dutch]: "Gintoki eng gezicht",
+        [Locale.French]: "Visage effrayant de Gintoki",
+        [Locale.German]: "Gintokis gruseliges Gesicht",
+        [Locale.Polish]: "Przerażająca twarz Gintokiego",
+        [Locale.SpanishES]: "Cara espeluznante de Gintoki",
+        [Locale.SpanishLATAM]: "Cara espeluznante de Gintoki",
+        [Locale.PortugueseBR]: "Rosto assustador do Gintoki",
+        [Locale.Turkish]: "Gintoki ürpertici yüz",
+        [Locale.Italian]: "Faccia inquietante di Gintoki",
+        [Locale.Indonesian]: "Wajah menyeramkan Gintoki",
+        [Locale.Czech]: "Děsivý obličej Gintokiho",
+        [Locale.Japanese]: "銀時の不気味な顔",
+        [Locale.Korean]: "긴토키 소름 돋는 표정",
+        [Locale.ChineseCN]: "银时惊悚脸",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground],
     width: 1200,

@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobBurningTheNote: Template = {
     name: "spongebobBurningTheNote",
-    displayName: "Spongebob burning the note",
+    displayName: buildLocales("Spongebob burning the note", {
+        [Locale.Russian]: "Губка Боб сжигает записку",
+        [Locale.Ukrainian]: "Губка Боб спалює записку",
+        [Locale.Dutch]: "Spongebob verbrandt de notitie",
+        [Locale.French]: "Bob l'éponge brûle le papier",
+        [Locale.German]: "Spongebob verbrennt Notiz",
+        [Locale.Polish]: "SpongeBob palący notatkę",
+        [Locale.SpanishES]: "Bob Esponja quemando la nota",
+        [Locale.SpanishLATAM]: "Bob Esponja quemando la nota",
+        [Locale.PortugueseBR]: "Bob Esponja queimando o bilhete",
+        [Locale.Turkish]: "Notu yakan SüngerBob",
+        [Locale.Italian]: "SpongeBob che brucia il biglietto",
+        [Locale.Indonesian]: "Spongebob membakar catatan",
+        [Locale.Czech]: "Spongebob pálí dopis",
+        [Locale.Japanese]: "手紙を燃やすスポンジ・ボブ",
+        [Locale.Korean]: "쪽지 태우는 스폰지밥",
+        [Locale.ChineseCN]: "海绵宝宝烧纸条",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextCenterWithBackground, Type.ObjectImage, Type.FourOption],
     width: 622,

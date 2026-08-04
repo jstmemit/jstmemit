@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterGriffinThinking: Template = {
     name: "griffinsPeterGriffinThinking",
-    displayName: "Griffins Peter Griffin thinking",
+    displayName: buildLocales("Peter Griffin thinking", {
+        [Locale.Russian]: "Питер Гриффин думает",
+        [Locale.Ukrainian]: "Пітер Гріффін думає",
+        [Locale.Dutch]: "Nadenkende Peter Griffin",
+        [Locale.French]: "Peter Griffin pensif",
+        [Locale.German]: "Nachdenklicher Peter Griffin",
+        [Locale.Polish]: "Myślący Peter Griffin",
+        [Locale.SpanishES]: "Peter Griffin pensando",
+        [Locale.SpanishLATAM]: "Peter Griffin pensando",
+        [Locale.PortugueseBR]: "Peter Griffin pensando",
+        [Locale.Turkish]: "Düşünen Peter Griffin",
+        [Locale.Italian]: "Peter Griffin che pensa",
+        [Locale.Indonesian]: "Peter Griffin berpikir",
+        [Locale.Czech]: "Přemýšlející Peter Griffin",
+        [Locale.Japanese]: "考えるピーター・グリフィン",
+        [Locale.Korean]: "생각하는 피터 그리핀",
+        [Locale.ChineseCN]: "思考中的彼得·格里芬",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottom, Type.FaceImage],
     width: 604,

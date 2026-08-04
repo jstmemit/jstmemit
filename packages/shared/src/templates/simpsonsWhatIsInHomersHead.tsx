@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsWhatIsInHomersHead: Template = {
     name: "simpsonsWhatIsInHomersHead",
-    displayName: "Simpsons What is in Homer's head",
+    displayName: buildLocales(" What is in Homer's head", {
+        [Locale.Russian]: "Что в голове у Гомера",
+        [Locale.Ukrainian]: "Що в голові у Гомера",
+        [Locale.Dutch]: "Wat zit er in Homers hoofd",
+        [Locale.French]: "Ce qu'il y a dans la tête d'Homer",
+        [Locale.German]: "Was in Homers Kopf ist",
+        [Locale.Polish]: "Co jest w głowie Homera",
+        [Locale.SpanishES]: "Qué hay en la cabeza de Homer",
+        [Locale.SpanishLATAM]: "Qué hay en la cabeza de Homero",
+        [Locale.PortugueseBR]: "O que está na cabeça do Homer",
+        [Locale.Turkish]: "Homer'ın kafasının içinde ne var",
+        [Locale.Italian]: "Cosa c'è nella testa di Homer",
+        [Locale.Indonesian]: "Apa yang ada di kepala Homer",
+        [Locale.Czech]: "Co je v Homerově hlavě",
+        [Locale.Japanese]: "ホーマーの頭の中にあるもの",
+        [Locale.Korean]: "호머 머릿속에 있는 것",
+        [Locale.ChineseCN]: "霍默脑子里在想什么",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 525,

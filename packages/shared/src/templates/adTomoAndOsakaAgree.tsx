@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adTomoAndOsakaAgree: Template = {
     name: "adTomoAndOsakaAgree",
-    displayName: "AD Tomo and Osaka agree",
+    displayName: buildLocales("Tomo and Osaka agree", {
+        [Locale.Russian]: "Томо и Осака согласны",
+        [Locale.Ukrainian]: "Томо і Осака згодні",
+        [Locale.Dutch]: "Tomo en Osaka zijn het eens",
+        [Locale.French]: "Tomo et Osaka sont d'accord",
+        [Locale.German]: "Tomo und Osaka sind sich einig",
+        [Locale.Polish]: "Tomo i Osaka się zgadzają",
+        [Locale.SpanishES]: "Tomo y Osaka están de acuerdo",
+        [Locale.SpanishLATAM]: "Tomo y Osaka están de acuerdo",
+        [Locale.PortugueseBR]: "Tomo e Osaka concordam",
+        [Locale.Turkish]: "Tomo ve Osaka aynı fikirde",
+        [Locale.Italian]: "Tomo e Osaka sono d'accordo",
+        [Locale.Indonesian]: "Tomo dan Osaka setuju",
+        [Locale.Czech]: "Tomo a Osaka souhlasí",
+        [Locale.Japanese]: "智と大阪が同意",
+        [Locale.Korean]: "토모와 오사카가 동의함",
+        [Locale.ChineseCN]: "智和大阪同意",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

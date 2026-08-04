@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const bernieSandersLive: Template = {
     name: "bernieSandersLive",
-    displayName: "Bernie Sanders live",
+    displayName: buildLocales("Bernie Sanders live", {
+        [Locale.Russian]: "Берни Сандерс в прямом эфире",
+        [Locale.Ukrainian]: "Берні Сандерс у прямому ефірі",
+        [Locale.Dutch]: "Bernie Sanders live",
+        [Locale.French]: "Bernie Sanders en direct",
+        [Locale.German]: "Bernie Sanders live",
+        [Locale.Polish]: "Bernie Sanders na żywo",
+        [Locale.SpanishES]: "Bernie Sanders en vivo",
+        [Locale.SpanishLATAM]: "Bernie Sanders en vivo",
+        [Locale.PortugueseBR]: "Bernie Sanders ao vivo",
+        [Locale.Turkish]: "Bernie Sanders canlı",
+        [Locale.Italian]: "Bernie Sanders in diretta",
+        [Locale.Indonesian]: "Bernie Sanders langsung",
+        [Locale.Czech]: "Bernie Sanders živě",
+        [Locale.Japanese]: "バーニー・サンダース ライブ",
+        [Locale.Korean]: "버니 샌더스 라이브",
+        [Locale.ChineseCN]: "伯尼·桑德斯直播",
+    }),
     topics: [Topic.YouTube],
     types: [Type.FaceImage, Type.TextCenter],
     width: 981,

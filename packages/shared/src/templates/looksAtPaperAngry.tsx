@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const looksAtPaperAngry: Template = {
     name: "looksAtPaperAngry",
-    displayName: "Looks at paper angry",
+    displayName: buildLocales("Looks at paper angry", {
+        [Locale.Russian]: "Злобно смотрит на бумагу",
+        [Locale.Ukrainian]: "Злісно дивиться на папір",
+        [Locale.Dutch]: "Kijkt boos naar papier",
+        [Locale.French]: "Regarde le papier en colère",
+        [Locale.German]: "Schaut wütend aufs Papier",
+        [Locale.Polish]: "Patrzy złośliwie na papier",
+        [Locale.SpanishES]: "Mira el papel enojado",
+        [Locale.SpanishLATAM]: "Mira el papel enojado",
+        [Locale.PortugueseBR]: "Olha com raiva para o papel",
+        [Locale.Turkish]: "Kâğıda sinirle bakıyor",
+        [Locale.Italian]: "Guarda il foglio arrabbiato",
+        [Locale.Indonesian]: "Melihat kertas dengan marah",
+        [Locale.Czech]: "Naštvaně se dívá na papír",
+        [Locale.Japanese]: "怒って紙を見る",
+        [Locale.Korean]: "화난 채로 종이를 봄",
+        [Locale.ChineseCN]: "生气地看纸",
+    }),
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 768,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraCriticalHit: Template = {
     name: "toradoraCriticalHit",
-    displayName: "Toradora Critical hit",
+    displayName: buildLocales("Critical hit", {
+        [Locale.Russian]: "Критический удар",
+        [Locale.Ukrainian]: "Критичний удар",
+        [Locale.Dutch]: "Kritieke treffer",
+        [Locale.French]: "Coup critique",
+        [Locale.German]: "Kritischer Treffer",
+        [Locale.Polish]: "Trafienie krytyczne",
+        [Locale.SpanishES]: "Golpe crítico",
+        [Locale.SpanishLATAM]: "Golpe crítico",
+        [Locale.PortugueseBR]: "Acerto crítico",
+        [Locale.Turkish]: "Kritik vuruş",
+        [Locale.Italian]: "Colpo critico",
+        [Locale.Indonesian]: "Serangan kritis",
+        [Locale.Czech]: "Kritický zásah",
+        [Locale.Japanese]: "クリティカルヒット",
+        [Locale.Korean]: "치명타",
+        [Locale.ChineseCN]: "暴击",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.DefaultText, Type.FaceImage],
     width: 500,

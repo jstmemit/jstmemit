@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dfragRokaShibasakiDisguise: Template = {
     name: "dfragRokaShibasakiDisguise",
-    displayName: "D-Frag Roka Shibasaki disguise",
+    displayName: buildLocales("Roka Shibasaki disguise", {
+        [Locale.Russian]: "Рока Сибасаки в маскировке",
+        [Locale.Ukrainian]: "Рока Шібасакі в маскуванні",
+        [Locale.Dutch]: "Roka Shibasaki vermomd",
+        [Locale.French]: "Roka Shibasaki déguisée",
+        [Locale.German]: "Roka Shibasaki verkleidet",
+        [Locale.Polish]: "Roka Shibasaki w przebraniu",
+        [Locale.SpanishES]: "Roka Shibasaki disfrazada",
+        [Locale.SpanishLATAM]: "Roka Shibasaki disfrazada",
+        [Locale.PortugueseBR]: "Roka Shibasaki disfarçada",
+        [Locale.Turkish]: "Roka Shibasaki kılık değiştirmiş",
+        [Locale.Italian]: "Roka Shibasaki travestita",
+        [Locale.Indonesian]: "Roka Shibasaki menyamar",
+        [Locale.Czech]: "Roka Shibasaki v přestrojení",
+        [Locale.Japanese]: "変装した柴崎ロカ",
+        [Locale.Korean]: "변장한 시바사키 로카",
+        [Locale.ChineseCN]: "柴崎萝卡伪装",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DFrag],
     types: [Type.TextTopWithBackground],
     width: 750,

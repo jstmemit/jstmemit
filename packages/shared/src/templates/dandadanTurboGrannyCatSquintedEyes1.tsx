@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dandadanTurboGrannyCatSquintedEyes1: Template = {
     name: "dandadanTurboGrannyCatSquintedEyes1",
-    displayName: "Dandadan Turbo Granny cat squinted eyes 1",
+    displayName: buildLocales("Turbo Granny cat squinted eyes 1", {
+        [Locale.Russian]: "Кот Турбо Бабуля прищурился 1",
+        [Locale.Ukrainian]: "Кіт Турбо Бабуся примружився 1",
+        [Locale.Dutch]: "Turbo Granny kat met toegeknepen ogen 1",
+        [Locale.French]: "Chat Turbo Granny les yeux plissés 1",
+        [Locale.German]: "Turbo-Granny-Katze mit zusammengekniffenen Augen 1",
+        [Locale.Polish]: "Kot Turbo Babcia z zmrużonymi oczami 1",
+        [Locale.SpanishES]: "Gato Turbo Granny con ojos entrecerrados 1",
+        [Locale.SpanishLATAM]: "Gato Turbo Granny con ojos entrecerrados 1",
+        [Locale.PortugueseBR]: "Gato Turbo Granny com olhos semicerrados 1",
+        [Locale.Turkish]: "Turbo Granny kedisi gözleri kısık 1",
+        [Locale.Italian]: "Gatto Turbo Granny con occhi socchiusi 1",
+        [Locale.Indonesian]: "Kucing Turbo Granny mata menyipit 1",
+        [Locale.Czech]: "Kocour Turbo Granny s přimhouřenýma očima 1",
+        [Locale.Japanese]: "目を細めるターボグラニー猫 1",
+        [Locale.Korean]: "눈을 가늘게 뜬 터보 그래니 고양이 1",
+        [Locale.ChineseCN]: "Turbo Granny猫眯眼 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextTopWithBackground],
     width: 1395,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsTanjiroLookingAtPhone: Template = {
     name: "dsTanjiroLookingAtPhone",
-    displayName: "DS Tanjiro looking at phone",
+    displayName: buildLocales("Tanjiro looking at phone", {
+        [Locale.Russian]: "Тандзиро смотрит в телефон",
+        [Locale.Ukrainian]: "Тандзіро дивиться в телефон",
+        [Locale.Dutch]: "Tanjiro kijkt naar telefoon",
+        [Locale.French]: "Tanjiro regarde son téléphone",
+        [Locale.German]: "Tanjiro schaut aufs Handy",
+        [Locale.Polish]: "Tanjiro patrzy w telefon",
+        [Locale.SpanishES]: "Tanjiro mirando el teléfono",
+        [Locale.SpanishLATAM]: "Tanjiro mirando el teléfono",
+        [Locale.PortugueseBR]: "Tanjiro olhando o celular",
+        [Locale.Turkish]: "Tanjiro telefona bakıyor",
+        [Locale.Italian]: "Tanjiro che guarda il telefono",
+        [Locale.Indonesian]: "Tanjiro melihat ponsel",
+        [Locale.Czech]: "Tanjiro se dívá na telefon",
+        [Locale.Japanese]: "スマホを見る炭治郎",
+        [Locale.Korean]: "휴대폰을 보는 탄지로",
+        [Locale.ChineseCN]: "炭治郎看手机",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer, Topic.SocialPost],
     types: [Type.TextPost, Type.TextName, Type.AvatarImage, Type.FaceImage],
     width: 400,

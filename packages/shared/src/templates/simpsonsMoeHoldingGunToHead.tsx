@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsMoeHoldingGunToHead: Template = {
     name: "simpsonsMoeHoldingGunToHead",
-    displayName: "Simpsons Moe holding gun to head",
+    displayName: buildLocales("Moe holding gun to head", {
+        [Locale.Russian]: "Мо приставил пистолет к голове",
+        [Locale.Ukrainian]: "Мо приставив пістолет до голови",
+        [Locale.Dutch]: "Moe houdt pistool tegen hoofd",
+        [Locale.French]: "Moe tenant une arme sur la tête",
+        [Locale.German]: "Moe hält sich Waffe an den Kopf",
+        [Locale.Polish]: "Moe trzymający pistolet przy głowie",
+        [Locale.SpanishES]: "Moe con un arma en la cabeza",
+        [Locale.SpanishLATAM]: "Moe con un arma en la cabeza",
+        [Locale.PortugueseBR]: "Moe apontando arma para a cabeça",
+        [Locale.Turkish]: "Moe kafasına silah dayıyor",
+        [Locale.Italian]: "Moe si punta una pistola alla testa",
+        [Locale.Indonesian]: "Moe menodongkan pistol ke kepala",
+        [Locale.Czech]: "Moe drží zbraň u hlavy",
+        [Locale.Japanese]: "銃を頭に当てるモー",
+        [Locale.Korean]: "머리에 총을 겨눈 모",
+        [Locale.ChineseCN]: "莫伊拿枪指着头",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 500,

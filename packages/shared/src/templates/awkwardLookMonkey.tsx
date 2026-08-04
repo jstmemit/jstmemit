@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const awkwardLookMonkey: Template = {
     name: "awkwardLookMonkey",
-    displayName: "Awkward look monkey",
+    displayName: buildLocales("Awkward look monkey", {
+        [Locale.Russian]: "Неловкий взгляд обезьяны",
+        [Locale.Ukrainian]: "Незручний погляд мавпи",
+        [Locale.Dutch]: "Ongemakkelijk kijkende aap",
+        [Locale.French]: "Singe au regard gêné",
+        [Locale.German]: "Unangenehmer Blick Affe",
+        [Locale.Polish]: "Niezręczne spojrzenie małpy",
+        [Locale.SpanishES]: "Mono con mirada incómoda",
+        [Locale.SpanishLATAM]: "Mono con mirada incómoda",
+        [Locale.PortugueseBR]: "Macaco com olhar constrangedor",
+        [Locale.Turkish]: "Garip bakışlı maymun",
+        [Locale.Italian]: "Scimmia con sguardo imbarazzato",
+        [Locale.Indonesian]: "Monyet tatapan canggung",
+        [Locale.Czech]: "Trapný pohled opice",
+        [Locale.Japanese]: "気まずい顔のサル",
+        [Locale.Korean]: "어색한 표정의 원숭이",
+        [Locale.ChineseCN]: "尴尬的猴子",
+    }),
     topics: [Topic.Reaction, Topic.Animals],
     types: [Type.TextTopWithBackground],
     width: 750,

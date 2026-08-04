@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const wnlFuminoRealization: Template = {
     name: "wnlFuminoRealization",
-    displayName: "WNL Fumino realization",
+    displayName: buildLocales("Fumino realization", {
+        [Locale.Russian]: "Осознание Фумино",
+        [Locale.Ukrainian]: "Усвідомлення Фуміно",
+        [Locale.Dutch]: "Fumino realisatie",
+        [Locale.French]: "Réalisation de Fumino",
+        [Locale.German]: "Fumino Erkenntnis",
+        [Locale.Polish]: "Uświadomienie Fumino",
+        [Locale.SpanishES]: "Fumino dándose cuenta",
+        [Locale.SpanishLATAM]: "Fumino dándose cuenta",
+        [Locale.PortugueseBR]: "Fumino percebendo",
+        [Locale.Turkish]: "Fumino'nun farkına varması",
+        [Locale.Italian]: "Fumino che realizza",
+        [Locale.Indonesian]: "Fumino menyadari",
+        [Locale.Czech]: "Fumino si uvědomuje",
+        [Locale.Japanese]: "文乃の気づき",
+        [Locale.Korean]: "후미노 깨달음",
+        [Locale.ChineseCN]: "文乃的觉悟",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.WeNeverLearn],
     types: [Type.FourOption, Type.TextRightWithBackground],
     width: 1088,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaFrySleeplessInsomnia: Template = {
     name: "futuramaFrySleeplessInsomnia",
-    displayName: "Futurama Fry sleepless insomnia",
+    displayName: buildLocales("Fry sleepless insomnia", {
+        [Locale.Russian]: "Бессонница Фрая",
+        [Locale.Ukrainian]: "Безсоння Фрая",
+        [Locale.Dutch]: "Fry slapeloosheid",
+        [Locale.French]: "Insomnie de Fry",
+        [Locale.German]: "Fry schlaflos Insomnie",
+        [Locale.Polish]: "Bezsenność Fry'a",
+        [Locale.SpanishES]: "Insomnio de Fry",
+        [Locale.SpanishLATAM]: "Insomnio de Fry",
+        [Locale.PortugueseBR]: "Insônia do Fry",
+        [Locale.Turkish]: "Uykusuz Fry",
+        [Locale.Italian]: "Insonnia di Fry",
+        [Locale.Indonesian]: "Fry insomnia tak bisa tidur",
+        [Locale.Czech]: "Nespavost Frye",
+        [Locale.Japanese]: "不眠症のフライ",
+        [Locale.Korean]: "불면증 프라이",
+        [Locale.ChineseCN]: "弗莱失眠",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 604,

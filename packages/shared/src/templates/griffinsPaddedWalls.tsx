@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPaddedWalls: Template = {
     name: "griffinsPaddedWalls",
-    displayName: "Griffins padded walls",
+    displayName: buildLocales("padded walls", {
+        [Locale.Russian]: "Мягкие стены",
+        [Locale.Ukrainian]: "М'які стіни",
+        [Locale.Dutch]: "Gewatteerde muren",
+        [Locale.French]: "Murs capitonnés",
+        [Locale.German]: "Gummizelle",
+        [Locale.Polish]: "Wyściełane ściany",
+        [Locale.SpanishES]: "Paredes acolchadas",
+        [Locale.SpanishLATAM]: "Paredes acolchadas",
+        [Locale.PortugueseBR]: "Paredes acolchoadas",
+        [Locale.Turkish]: "Yumuşak duvarlar",
+        [Locale.Italian]: "Muri imbottiti",
+        [Locale.Indonesian]: "Dinding berlapis empuk",
+        [Locale.Czech]: "Polstrované zdi",
+        [Locale.Japanese]: "クッション壁",
+        [Locale.Korean]: "푹신한 벽",
+        [Locale.ChineseCN]: "软包墙",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 640,

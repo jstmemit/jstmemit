@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adChiyoAngryCrying: Template = {
     name: "adChiyoAngryCrying",
-    displayName: "AD Chiyo angry crying",
+    displayName: buildLocales("Chiyo angry crying", {
+        [Locale.Russian]: "Чиё плачет от злости",
+        [Locale.Ukrainian]: "Чійо плаче від злості",
+        [Locale.Dutch]: "Chiyo huilt boos",
+        [Locale.French]: "Chiyo pleurant de colère",
+        [Locale.German]: "Chiyo weint wütend",
+        [Locale.Polish]: "Chiyo płacze ze złości",
+        [Locale.SpanishES]: "Chiyo llorando enojada",
+        [Locale.SpanishLATAM]: "Chiyo llorando enojada",
+        [Locale.PortugueseBR]: "Chiyo chorando de raiva",
+        [Locale.Turkish]: "Chiyo sinirle ağlıyor",
+        [Locale.Italian]: "Chiyo piange di rabbia",
+        [Locale.Indonesian]: "Chiyo menangis marah",
+        [Locale.Czech]: "Chiyo pláče vzteky",
+        [Locale.Japanese]: "ちよ 怒り泣き",
+        [Locale.Korean]: "화나서 우는 치요",
+        [Locale.ChineseCN]: "千代气哭",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

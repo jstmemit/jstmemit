@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const sdFredUnmaskingGhost: Template = {
     name: "sdFredUnmaskingGhost",
-    displayName: "Scooby-Doo Fred unmasking ghost",
+    displayName: buildLocales("Fred unmasking ghost", {
+        [Locale.Russian]: "Фред снимает маску с призрака",
+        [Locale.Ukrainian]: "Фред знімає маску з привида",
+        [Locale.Dutch]: "Fred ontmaskert spook",
+        [Locale.French]: "Fred démasquant le fantôme",
+        [Locale.German]: "Fred entlarvt Geist",
+        [Locale.Polish]: "Fred demaskujący ducha",
+        [Locale.SpanishES]: "Fred desenmascarando al fantasma",
+        [Locale.SpanishLATAM]: "Fred desenmascarando al fantasma",
+        [Locale.PortugueseBR]: "Fred desmascarando o fantasma",
+        [Locale.Turkish]: "Hayaletin maskesini çıkaran Fred",
+        [Locale.Italian]: "Fred che smaschera il fantasma",
+        [Locale.Indonesian]: "Fred membuka topeng hantu",
+        [Locale.Czech]: "Fred demaskuje ducha",
+        [Locale.Japanese]: "フレッド 幽霊のマスクを剥がす",
+        [Locale.Korean]: "유령 가면 벗기는 프레드",
+        [Locale.ChineseCN]: "弗雷德揭开鬼魂面具",
+    }),
     topics: [Topic.Cartoons, Topic.ScoobyDoo],
     types: [Type.FaceImage, Type.TextBottom, Type.TwoOption],
     width: 474,

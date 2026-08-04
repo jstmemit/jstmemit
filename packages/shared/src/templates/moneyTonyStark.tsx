@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const moneyTonyStark: Template = {
     name: "moneyTonyStark",
-    displayName: "IronMan Money Tony Stark",
+    displayName: buildLocales("Money Tony Stark", {
+        [Locale.Russian]: "Деньги Тони Старка",
+        [Locale.Ukrainian]: "Гроші Тоні Старка",
+        [Locale.Dutch]: "Geld Tony Stark",
+        [Locale.French]: "Argent Tony Stark",
+        [Locale.German]: "Geld Tony Stark",
+        [Locale.Polish]: "Pieniądze Tony'ego Starka",
+        [Locale.SpanishES]: "Dinero Tony Stark",
+        [Locale.SpanishLATAM]: "Dinero Tony Stark",
+        [Locale.PortugueseBR]: "Dinheiro Tony Stark",
+        [Locale.Turkish]: "Para Tony Stark",
+        [Locale.Italian]: "Soldi Tony Stark",
+        [Locale.Indonesian]: "Uang Tony Stark",
+        [Locale.Czech]: "Peníze Tony Stark",
+        [Locale.Japanese]: "トニー・スターク お金",
+        [Locale.Korean]: "돈 뿌리는 토니 스타크",
+        [Locale.ChineseCN]: "托尼·史塔克撒钱",
+    }),
     topics: [Topic.Movies, Topic.IronMan],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1200,

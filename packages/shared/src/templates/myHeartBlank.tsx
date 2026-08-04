@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const myHeartBlank: Template = {
     name: "myHeartBlank",
-    displayName: "My heart blank",
+    displayName: buildLocales("My heart blank", {
+        [Locale.Russian]: "В моем сердце пустота",
+        [Locale.Ukrainian]: "У моєму серці порожнеча",
+        [Locale.Dutch]: "Mijn hart leeg",
+        [Locale.French]: "Mon cœur vide",
+        [Locale.German]: "Mein Herz leer",
+        [Locale.Polish]: "Moje serce puste",
+        [Locale.SpanishES]: "Mi corazón en blanco",
+        [Locale.SpanishLATAM]: "Mi corazón en blanco",
+        [Locale.PortugueseBR]: "Meu coração vazio",
+        [Locale.Turkish]: "Kalbim boş",
+        [Locale.Italian]: "Il mio cuore vuoto",
+        [Locale.Indonesian]: "Hatiku kosong",
+        [Locale.Czech]: "Mé srdce prázdné",
+        [Locale.Japanese]: "私の心は空っぽ",
+        [Locale.Korean]: "내 마음 공백",
+        [Locale.ChineseCN]: "我的心空空的",
+    }),
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption, Type.DefaultText],
     width: 680,

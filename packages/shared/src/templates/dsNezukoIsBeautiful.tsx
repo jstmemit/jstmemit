@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsNezukoIsBeautiful: Template = {
     name: "dsNezukoIsBeautiful",
-    displayName: "DS Nezuko is beautiful",
+    displayName: buildLocales("Nezuko is beautiful", {
+        [Locale.Russian]: "Нэдзуко прекрасна",
+        [Locale.Ukrainian]: "Незуко прекрасна",
+        [Locale.Dutch]: "Nezuko is prachtig",
+        [Locale.French]: "Nezuko est magnifique",
+        [Locale.German]: "Nezuko ist wunderschön",
+        [Locale.Polish]: "Nezuko jest piękna",
+        [Locale.SpanishES]: "Nezuko es hermosa",
+        [Locale.SpanishLATAM]: "Nezuko es hermosa",
+        [Locale.PortugueseBR]: "Nezuko é linda",
+        [Locale.Turkish]: "Nezuko çok güzel",
+        [Locale.Italian]: "Nezuko è bellissima",
+        [Locale.Indonesian]: "Nezuko cantik",
+        [Locale.Czech]: "Nezuko je krásná",
+        [Locale.Japanese]: "禰豆子は美しい",
+        [Locale.Korean]: "네즈코는 아름답다",
+        [Locale.ChineseCN]: "祢豆子好美",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1710,

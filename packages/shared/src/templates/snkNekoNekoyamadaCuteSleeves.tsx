@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const snkNekoNekoyamadaCuteSleeves: Template = {
     name: "snkNekoNekoyamadaCuteSleeves",
-    displayName: "SNK Neko Nekoyamada cute sleeves",
+    displayName: buildLocales("Neko Nekoyamada cute sleeves", {
+        [Locale.Russian]: "Милые рукава Нэко Нэкоямады",
+        [Locale.Ukrainian]: "Милі рукава Неко Некоямади",
+        [Locale.Dutch]: "Neko Nekoyamada schattige mouwen",
+        [Locale.French]: "Neko Nekoyamada manches mignonnes",
+        [Locale.German]: "Neko Nekoyamada süße Ärmel",
+        [Locale.Polish]: "Urocze rękawy Neko Nekoyamady",
+        [Locale.SpanishES]: "Mangas lindas de Neko Nekoyamada",
+        [Locale.SpanishLATAM]: "Mangas lindas de Neko Nekoyamada",
+        [Locale.PortugueseBR]: "Neko Nekoyamada mangas fofas",
+        [Locale.Turkish]: "Neko Nekoyamada tatlı kollar",
+        [Locale.Italian]: "Neko Nekoyamada maniche carine",
+        [Locale.Indonesian]: "Lengan imut Neko Nekoyamada",
+        [Locale.Czech]: "Neko Nekoyamada roztomilé rukávy",
+        [Locale.Japanese]: "猫柳田 萌え袖",
+        [Locale.Korean]: "네코 네코야마다 귀여운 소매",
+        [Locale.ChineseCN]: "猫猫山田 可爱袖子",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.ShikanokoNokonokoKoshitantan],
     types: [Type.TextRightWithBackground],
     width: 1472,

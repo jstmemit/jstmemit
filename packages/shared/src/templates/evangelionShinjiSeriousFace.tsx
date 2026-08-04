@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const evangelionShinjiSeriousFace: Template = {
     name: "evangelionShinjiSeriousFace",
-    displayName: "Evangelion Shinji serious face",
+    displayName: buildLocales("Shinji serious face", {
+        [Locale.Russian]: "Синдзи с серьёзным лицом",
+        [Locale.Ukrainian]: "Шінджі із серйозним обличчям",
+        [Locale.Dutch]: "Shinji serieus gezicht",
+        [Locale.French]: "Shinji visage sérieux",
+        [Locale.German]: "Shinji ernstes Gesicht",
+        [Locale.Polish]: "Shinji z poważną miną",
+        [Locale.SpanishES]: "Shinji con cara seria",
+        [Locale.SpanishLATAM]: "Shinji con cara seria",
+        [Locale.PortugueseBR]: "Shinji com rosto sério",
+        [Locale.Turkish]: "Shinji ciddi yüz ifadesiyle",
+        [Locale.Italian]: "Shinji faccia seria",
+        [Locale.Indonesian]: "Shinji wajah serius",
+        [Locale.Czech]: "Shinji s vážným výrazem",
+        [Locale.Japanese]: "真剣な顔のシンジ",
+        [Locale.Korean]: "진지한 표정 신지",
+        [Locale.ChineseCN]: "真嗣严肃的表情",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 1000,

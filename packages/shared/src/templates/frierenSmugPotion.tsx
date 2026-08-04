@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenSmugPotion: Template = {
     name: "frierenSmugPotion",
-    displayName: "Frieren smug potion",
+    displayName: buildLocales("Frieren smug potion", {
+        [Locale.Russian]: "Довольная Фрирен с зельем",
+        [Locale.Ukrainian]: "Задоволена Фрірен із зіллям",
+        [Locale.Dutch]: "Frieren met zelfingenomen drankje",
+        [Locale.French]: "Frieren suffisante avec une potion",
+        [Locale.German]: "Frieren selbstgefällig mit Trank",
+        [Locale.Polish]: "Zadowolona Frieren z eliksirem",
+        [Locale.SpanishES]: "Frieren engreída con poción",
+        [Locale.SpanishLATAM]: "Frieren engreída con poción",
+        [Locale.PortugueseBR]: "Frieren presunçosa com poção",
+        [Locale.Turkish]: "İksirli ukala Frieren",
+        [Locale.Italian]: "Frieren compiaciuta con pozione",
+        [Locale.Indonesian]: "Frieren sombong bawa ramuan",
+        [Locale.Czech]: "Spokojená Frieren s lektvarem",
+        [Locale.Japanese]: "ポーションを持ってドヤ顔のフリーレン",
+        [Locale.Korean]: "포션 들고 썩소 짓는 프리렌",
+        [Locale.ChineseCN]: "拿魔药得意的芙莉莲",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 739,

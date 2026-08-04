@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const post: Template = {
     name: "post",
-    displayName: "Post",
+    displayName: buildLocales("Post", {
+        [Locale.Russian]: "Пост",
+        [Locale.Ukrainian]: "Пост",
+        [Locale.Dutch]: "Post",
+        [Locale.French]: "Publication",
+        [Locale.German]: "Beitrag",
+        [Locale.Polish]: "Post",
+        [Locale.SpanishES]: "Publicación",
+        [Locale.SpanishLATAM]: "Publicación",
+        [Locale.PortugueseBR]: "Postagem",
+        [Locale.Turkish]: "Gönderi",
+        [Locale.Italian]: "Post",
+        [Locale.Indonesian]: "Postingan",
+        [Locale.Czech]: "Příspěvek",
+        [Locale.Japanese]: "投稿",
+        [Locale.Korean]: "게시물",
+        [Locale.ChineseCN]: "帖子",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.TextName, Type.AvatarImage],
     width: 1108,

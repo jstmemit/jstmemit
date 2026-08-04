@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsGenyaHospitalBed: Template = {
     name: "dsGenyaHospitalBed",
-    displayName: "DS Genya hospital bed",
+    displayName: buildLocales("Genya hospital bed", {
+        [Locale.Russian]: "Генья на больничной койке",
+        [Locale.Ukrainian]: "Ґенья на лікарняному ліжку",
+        [Locale.Dutch]: "Genya in ziekenhuisbed",
+        [Locale.French]: "Genya sur son lit d'hôpital",
+        [Locale.German]: "Genya im Krankenhausbett",
+        [Locale.Polish]: "Genya w łóżku szpitalnym",
+        [Locale.SpanishES]: "Genya en la cama del hospital",
+        [Locale.SpanishLATAM]: "Genya en la cama del hospital",
+        [Locale.PortugueseBR]: "Genya na cama do hospital",
+        [Locale.Turkish]: "Genya hastane yatağında",
+        [Locale.Italian]: "Genya nel letto d'ospedale",
+        [Locale.Indonesian]: "Genya di ranjang rumah sakit",
+        [Locale.Czech]: "Genya na nemocničním lůžku",
+        [Locale.Japanese]: "病院のベッドの玄弥",
+        [Locale.Korean]: "병원 침대의 겐야",
+        [Locale.ChineseCN]: "玄弥躺在病床上",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 500,

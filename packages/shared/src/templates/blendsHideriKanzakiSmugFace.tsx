@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsHideriKanzakiSmugFace: Template = {
     name: "blendsHideriKanzakiSmugFace",
-    displayName: "BlendS Hideri Kanzaki smug face",
+    displayName: buildLocales("Hideri Kanzaki smug face", {
+        [Locale.Russian]: "Хидери Канзаки с самодовольным лицом",
+        [Locale.Ukrainian]: "Хідері Канзакі з самовдоволеним обличчям",
+        [Locale.Dutch]: "Hideri Kanzaki met zelfvoldane blik",
+        [Locale.French]: "Hideri Kanzaki avec un air satisfait",
+        [Locale.German]: "Hideri Kanzaki mit selbstgefälligem Gesicht",
+        [Locale.Polish]: "Hideri Kanzaki z zadowoloną z siebie miną",
+        [Locale.SpanishES]: "Hideri Kanzaki con cara de suficiencia",
+        [Locale.SpanishLATAM]: "Hideri Kanzaki con cara de suficiencia",
+        [Locale.PortugueseBR]: "Hideri Kanzaki com cara convencida",
+        [Locale.Turkish]: "Hideri Kanzaki kendini beğenmiş yüz ifadesiyle",
+        [Locale.Italian]: "Hideri Kanzaki con faccia compiaciuta",
+        [Locale.Indonesian]: "Hideri Kanzaki dengan wajah sombong",
+        [Locale.Czech]: "Hideri Kanzaki se samolibým výrazem",
+        [Locale.Japanese]: "神崎ヒデリのドヤ顔",
+        [Locale.Korean]: "칸자키 히데리 우쭐한 표정",
+        [Locale.ChineseCN]: "神崎绯多莉得意的表情",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextLeftWithBackground],
     width: 1440,

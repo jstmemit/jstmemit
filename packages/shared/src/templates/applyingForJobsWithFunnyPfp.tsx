@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const applyingForJobsWithFunnyPfp: Template = {
     name: "applyingForJobsWithFunnyPfp",
-    displayName: "Applying for jobs with funny pfp",
+    displayName: buildLocales("Applying for jobs with funny pfp", {
+        [Locale.Russian]: "Отклик на вакансию со смешной аватаркой",
+        [Locale.Ukrainian]: "Відгук на вакансію зі смішною аватаркою",
+        [Locale.Dutch]: "Solliciteren met een grappige profielfoto",
+        [Locale.French]: "Postuler à des emplois avec une drôle de photo de profil",
+        [Locale.German]: "Bewerben auf Jobs mit lustigem Profilbild",
+        [Locale.Polish]: "Aplikowanie o pracę ze śmiesznym profilowym",
+        [Locale.SpanishES]: "Buscando trabajo con foto de perfil graciosa",
+        [Locale.SpanishLATAM]: "Buscando trabajo con foto de perfil graciosa",
+        [Locale.PortugueseBR]: "Candidatando-se a vagas com foto de perfil engraçada",
+        [Locale.Turkish]: "Komik profil fotoğrafıyla işe başvurmak",
+        [Locale.Italian]: "Candidarsi per un lavoro con una foto profilo divertente",
+        [Locale.Indonesian]: "Melamar pekerjaan dengan foto profil lucu",
+        [Locale.Czech]: "Hledání práce se vtipnou profilovkou",
+        [Locale.Japanese]: "面白いアイコンで求人に応募する",
+        [Locale.Korean]: "웃긴 프사로 구직하기",
+        [Locale.ChineseCN]: "带着搞笑头像求职",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextName, Type.TextPost, Type.ObjectImage, Type.AvatarImage],
     width: 933,

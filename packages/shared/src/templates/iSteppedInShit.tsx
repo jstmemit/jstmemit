@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const iSteppedInShit: Template = {
     name: "iSteppedInShit",
-    displayName: "I stepped in shit",
+    displayName: buildLocales("I stepped in shit", {
+        [Locale.Russian]: "Я наступил в дерьмо",
+        [Locale.Ukrainian]: "Я наступив у лайно",
+        [Locale.Dutch]: "Ik ben in de stront gestapt",
+        [Locale.French]: "J'ai marché dans la merde",
+        [Locale.German]: "Ich bin in Scheiße getreten",
+        [Locale.Polish]: "Wdepnąłem w gówno",
+        [Locale.SpanishES]: "Pisé mierda",
+        [Locale.SpanishLATAM]: "Pisé caca",
+        [Locale.PortugueseBR]: "Eu pisei em merda",
+        [Locale.Turkish]: "Boka bastım",
+        [Locale.Italian]: "Ho pestato una cacca",
+        [Locale.Indonesian]: "Saya menginjak kotoran",
+        [Locale.Czech]: "Šlápl jsem do hovna",
+        [Locale.Japanese]: "クソを踏んじゃった",
+        [Locale.Korean]: "똥을 밟았어",
+        [Locale.ChineseCN]: "我踩到屎了",
+    }),
     topics: [Topic.Cartoons],
     types: [Type.FaceImage, Type.DefaultText],
     width: 636,

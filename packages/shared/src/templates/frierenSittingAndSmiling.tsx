@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenSittingAndSmiling: Template = {
     name: "frierenSittingAndSmiling",
-    displayName: "Frieren sitting and smiling",
+    displayName: buildLocales("Frieren sitting and smiling", {
+        [Locale.Russian]: "Фрирен сидит и улыбается",
+        [Locale.Ukrainian]: "Фрірен сидить і посміхається",
+        [Locale.Dutch]: "Frieren zit en glimlacht",
+        [Locale.French]: "Frieren assise et souriante",
+        [Locale.German]: "Frieren sitzt und lächelt",
+        [Locale.Polish]: "Frieren siedzi i się uśmiecha",
+        [Locale.SpanishES]: "Frieren sentada y sonriendo",
+        [Locale.SpanishLATAM]: "Frieren sentada y sonriendo",
+        [Locale.PortugueseBR]: "Frieren sentada e sorrindo",
+        [Locale.Turkish]: "Oturan ve gülümseyen Frieren",
+        [Locale.Italian]: "Frieren seduta e sorridente",
+        [Locale.Indonesian]: "Frieren duduk dan tersenyum",
+        [Locale.Czech]: "Frieren sedí a usmívá se",
+        [Locale.Japanese]: "座って微笑むフリーレン",
+        [Locale.Korean]: "앉아서 미소 짓는 프리렌",
+        [Locale.ChineseCN]: "坐着微笑的芙莉莲",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextBottom],
     width: 735,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const konosubaAquaPanic: Template = {
     name: "konosubaAquaPanic",
-    displayName: "Konosuba Aqua panic",
+    displayName: buildLocales("Aqua panic", {
+        [Locale.Russian]: "Паника Аквы",
+        [Locale.Ukrainian]: "Паніка Акви",
+        [Locale.Dutch]: "Aqua paniek",
+        [Locale.French]: "Aqua en panique",
+        [Locale.German]: "Aqua Panik",
+        [Locale.Polish]: "Panika Aquy",
+        [Locale.SpanishES]: "Aqua en pánico",
+        [Locale.SpanishLATAM]: "Aqua en pánico",
+        [Locale.PortugueseBR]: "Aqua em pânico",
+        [Locale.Turkish]: "Aqua panik",
+        [Locale.Italian]: "Panico di Aqua",
+        [Locale.Indonesian]: "Aqua panik",
+        [Locale.Czech]: "Aqua v panice",
+        [Locale.Japanese]: "パニックになるアクア",
+        [Locale.Korean]: "패닉에 빠진 아쿠아",
+        [Locale.ChineseCN]: "阿库娅慌乱",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.KonoSuba],
     types: [Type.TextTopWithBackground],
     width: 1024,

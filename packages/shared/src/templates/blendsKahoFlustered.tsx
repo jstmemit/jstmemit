@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsKahoFlustered: Template = {
     name: "blendsKahoFlustered",
-    displayName: "BlendS Kaho flustered",
+    displayName: buildLocales("Kaho flustered", {
+        [Locale.Russian]: "Кахо смущена",
+        [Locale.Ukrainian]: "Кахо збентежена",
+        [Locale.Dutch]: "Kaho in de war",
+        [Locale.French]: "Kaho troublée",
+        [Locale.German]: "Kaho verlegen",
+        [Locale.Polish]: "Kaho zakłopotana",
+        [Locale.SpanishES]: "Kaho aturdida",
+        [Locale.SpanishLATAM]: "Kaho aturdida",
+        [Locale.PortugueseBR]: "Kaho atrapalhada",
+        [Locale.Turkish]: "Kaho şaşkın",
+        [Locale.Italian]: "Kaho imbarazzata",
+        [Locale.Indonesian]: "Kaho salah tingkah",
+        [Locale.Czech]: "Kaho zmatená",
+        [Locale.Japanese]: "動揺するカホ",
+        [Locale.Korean]: "당황한 카호",
+        [Locale.ChineseCN]: "佳穗慌张",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 512,

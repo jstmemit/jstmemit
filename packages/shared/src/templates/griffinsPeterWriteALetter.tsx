@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterWriteALetter: Template = {
     name: "griffinsPeterWriteALetter",
-    displayName: "Griffins Peter write a letter",
+    displayName: buildLocales("Peter write a letter", {
+        [Locale.Russian]: "Питер пишет письмо",
+        [Locale.Ukrainian]: "Пітер пише листа",
+        [Locale.Dutch]: "Peter schrijft een brief",
+        [Locale.French]: "Peter écrit une lettre",
+        [Locale.German]: "Peter schreibt einen Brief",
+        [Locale.Polish]: "Peter pisze list",
+        [Locale.SpanishES]: "Peter escribe una carta",
+        [Locale.SpanishLATAM]: "Peter escribe una carta",
+        [Locale.PortugueseBR]: "Peter escreve uma carta",
+        [Locale.Turkish]: "Peter mektup yazıyor",
+        [Locale.Italian]: "Peter scrive una lettera",
+        [Locale.Indonesian]: "Peter menulis surat",
+        [Locale.Czech]: "Peter píše dopis",
+        [Locale.Japanese]: "手紙を書くピーター",
+        [Locale.Korean]: "편지 쓰는 피터",
+        [Locale.ChineseCN]: "彼得写信",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextTop, Type.FaceImage],
     width: 1080,

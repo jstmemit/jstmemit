@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiPaleShock: Template = {
     name: "btrBocchiPaleShock",
-    displayName: "BTR Bocchi pale shock",
+    displayName: buildLocales("Bocchi pale shock", {
+        [Locale.Russian]: "Бокки бледнеет от шока",
+        [Locale.Ukrainian]: "Боккі блідне від шоку",
+        [Locale.Dutch]: "Bocchi bleek geschokt",
+        [Locale.French]: "Bocchi pâle de choc",
+        [Locale.German]: "Bocchi blass vor Schock",
+        [Locale.Polish]: "Bocchi blada z szoku",
+        [Locale.SpanishES]: "Bocchi pálida por el shock",
+        [Locale.SpanishLATAM]: "Bocchi pálida por el shock",
+        [Locale.PortugueseBR]: "Bocchi pálida de choque",
+        [Locale.Turkish]: "Bocchi şoktan sararıyor",
+        [Locale.Italian]: "Bocchi pallida per lo shock",
+        [Locale.Indonesian]: "Bocchi pucat terkejut",
+        [Locale.Czech]: "Bocchi bledá šokem",
+        [Locale.Japanese]: "青ざめてショックのぼっち",
+        [Locale.Korean]: "창백해진 충격 봇치",
+        [Locale.ChineseCN]: "波奇震惊脸色苍白",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextLeftWithBackground],
     width: 1472,

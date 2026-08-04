@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spidermanDouble: Template = {
     name: "spiderManDouble",
-    displayName: "Spider-Man double",
+    displayName: buildLocales("Spider-Man double", {
+        [Locale.Russian]: "Двойник Человека-паука",
+        [Locale.Ukrainian]: "Двійник Людини-павука",
+        [Locale.Dutch]: "Spider-Man dubbelganger",
+        [Locale.French]: "Double de Spider-Man",
+        [Locale.German]: "Spider-Man Doppelgänger",
+        [Locale.Polish]: "Sobowtór Spider-Mana",
+        [Locale.SpanishES]: "Doble de Spider-Man",
+        [Locale.SpanishLATAM]: "Doble de Spider-Man",
+        [Locale.PortugueseBR]: "Sósia do Homem-Aranha",
+        [Locale.Turkish]: "Örümcek Adam ikizi",
+        [Locale.Italian]: "Doppio Spider-Man",
+        [Locale.Indonesian]: "Spider-Man ganda",
+        [Locale.Czech]: "Dvojník Spider-Mana",
+        [Locale.Japanese]: "スパイダーマンの偽物",
+        [Locale.Korean]: "스파이더맨 도플갱어",
+        [Locale.ChineseCN]: "真假蜘蛛侠",
+    }),
     topics: [Topic.SpiderMan, Topic.Cartoons],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 560,

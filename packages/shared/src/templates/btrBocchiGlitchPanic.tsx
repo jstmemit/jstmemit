@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiGlitchPanic: Template = {
     name: "btrBocchiGlitchPanic",
-    displayName: "BTR Bocchi glitch panic",
+    displayName: buildLocales("Bocchi glitch panic", {
+        [Locale.Russian]: "Бокки в панике глючит",
+        [Locale.Ukrainian]: "Боккі в паніці глючить",
+        [Locale.Dutch]: "Bocchi glitcht in paniek",
+        [Locale.French]: "Bocchi bug et panique",
+        [Locale.German]: "Bocchi glitcht in Panik",
+        [Locale.Polish]: "Bocchi glitchuje w panice",
+        [Locale.SpanishES]: "Bocchi con glitch y pánico",
+        [Locale.SpanishLATAM]: "Bocchi con glitch y pánico",
+        [Locale.PortugueseBR]: "Bocchi bugando em pânico",
+        [Locale.Turkish]: "Bocchi panikte bozuluyor",
+        [Locale.Italian]: "Bocchi in glitch e panico",
+        [Locale.Indonesian]: "Bocchi glitch panik",
+        [Locale.Czech]: "Bocchi glitchuje v panice",
+        [Locale.Japanese]: "パニックでグリッチするぼっち",
+        [Locale.Korean]: "패닉 글리치 봇치",
+        [Locale.ChineseCN]: "波奇故障恐慌",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 1200,

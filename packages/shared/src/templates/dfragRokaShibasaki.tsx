@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dfragRokaShibasaki: Template = {
     name: "dfragRokaShibasaki",
-    displayName: "D-Frag Roka Shibasaki",
+    displayName: buildLocales("Roka Shibasaki", {
+        [Locale.Russian]: "Рока Сибасаки",
+        [Locale.Ukrainian]: "Рока Шібасакі",
+        [Locale.Dutch]: "Roka Shibasaki",
+        [Locale.French]: "Roka Shibasaki",
+        [Locale.German]: "Roka Shibasaki",
+        [Locale.Polish]: "Roka Shibasaki",
+        [Locale.SpanishES]: "Roka Shibasaki",
+        [Locale.SpanishLATAM]: "Roka Shibasaki",
+        [Locale.PortugueseBR]: "Roka Shibasaki",
+        [Locale.Turkish]: "Roka Shibasaki",
+        [Locale.Italian]: "Roka Shibasaki",
+        [Locale.Indonesian]: "Roka Shibasaki",
+        [Locale.Czech]: "Roka Shibasaki",
+        [Locale.Japanese]: "柴崎ロカ",
+        [Locale.Korean]: "시바사키 로카",
+        [Locale.ChineseCN]: "柴崎萝卡",
+    }),
     topics: [Topic.Anime, Topic.DFrag],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 750,

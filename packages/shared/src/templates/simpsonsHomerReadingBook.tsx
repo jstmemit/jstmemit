@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsHomerReadingBook: Template = {
     name: "simpsonsHomerReadingBook",
-    displayName: "Simpsons Homer reading book",
+    displayName: buildLocales("Homer reading book", {
+        [Locale.Russian]: "Гомер читает книгу",
+        [Locale.Ukrainian]: "Гомер читає книгу",
+        [Locale.Dutch]: "Homer leest boek",
+        [Locale.French]: "Homer lisant un livre",
+        [Locale.German]: "Homer liest Buch",
+        [Locale.Polish]: "Homer czyta książkę",
+        [Locale.SpanishES]: "Homer leyendo un libro",
+        [Locale.SpanishLATAM]: "Homero leyendo un libro",
+        [Locale.PortugueseBR]: "Homer lendo livro",
+        [Locale.Turkish]: "Homer kitap okuyor",
+        [Locale.Italian]: "Homer che legge un libro",
+        [Locale.Indonesian]: "Homer membaca buku",
+        [Locale.Czech]: "Homer čte knihu",
+        [Locale.Japanese]: "本を読むホーマー",
+        [Locale.Korean]: "책 읽는 호머",
+        [Locale.ChineseCN]: "霍默看书",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextTopWithBackground, Type.DefaultText],
     width: 400,

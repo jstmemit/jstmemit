@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adKaguraPanic: Template = {
     name: "adKaguraPanic",
-    displayName: "AD Kagura panic",
+    displayName: buildLocales("Kagura panic", {
+        [Locale.Russian]: "Кагура в панике",
+        [Locale.Ukrainian]: "Кагура в паніці",
+        [Locale.Dutch]: "Kagura in paniek",
+        [Locale.French]: "Kagura en panique",
+        [Locale.German]: "Kagura in Panik",
+        [Locale.Polish]: "Kagura w panice",
+        [Locale.SpanishES]: "Kagura en pánico",
+        [Locale.SpanishLATAM]: "Kagura en pánico",
+        [Locale.PortugueseBR]: "Kagura em pânico",
+        [Locale.Turkish]: "Kagura panikte",
+        [Locale.Italian]: "Kagura nel panico",
+        [Locale.Indonesian]: "Kagura panik",
+        [Locale.Czech]: "Kagura v panice",
+        [Locale.Japanese]: "神楽 パニック",
+        [Locale.Korean]: "카구라 패닉",
+        [Locale.ChineseCN]: "神乐慌乱",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 540,

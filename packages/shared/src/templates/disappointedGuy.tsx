@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const disappointedGuy: Template = {
     name: "disappointedGuy",
-    displayName: "Disappointed guy",
+    displayName: buildLocales("Disappointed guy", {
+        [Locale.Russian]: "Разочарованный парень",
+        [Locale.Ukrainian]: "Розчарований хлопець",
+        [Locale.Dutch]: "Teleurgestelde man",
+        [Locale.French]: "Gars déçu",
+        [Locale.German]: "Enttäuschter Typ",
+        [Locale.Polish]: "Rozczarowany facet",
+        [Locale.SpanishES]: "Chico decepcionado",
+        [Locale.SpanishLATAM]: "Chico decepcionado",
+        [Locale.PortugueseBR]: "Cara decepcionado",
+        [Locale.Turkish]: "Hayal kırıklığına uğramış adam",
+        [Locale.Italian]: "Ragazzo deluso",
+        [Locale.Indonesian]: "Cowok kecewa",
+        [Locale.Czech]: "Zklamaný chlap",
+        [Locale.Japanese]: "がっかりする男",
+        [Locale.Korean]: "실망한 남자",
+        [Locale.ChineseCN]: "失望的男人",
+    }),
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 775,

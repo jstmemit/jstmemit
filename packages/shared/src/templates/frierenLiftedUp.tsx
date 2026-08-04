@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenLiftedUp: Template = {
     name: "frierenLiftedUp",
-    displayName: "Frieren lifted up",
+    displayName: buildLocales("Frieren lifted up", {
+        [Locale.Russian]: "Фрирен подняли",
+        [Locale.Ukrainian]: "Фрірен підняли",
+        [Locale.Dutch]: "Frieren opgetild",
+        [Locale.French]: "Frieren soulevée",
+        [Locale.German]: "Frieren hochgehoben",
+        [Locale.Polish]: "Podniesiona Frieren",
+        [Locale.SpanishES]: "Frieren levantada",
+        [Locale.SpanishLATAM]: "Frieren levantada",
+        [Locale.PortugueseBR]: "Frieren sendo levantada",
+        [Locale.Turkish]: "Havaya kaldırılan Frieren",
+        [Locale.Italian]: "Frieren sollevata",
+        [Locale.Indonesian]: "Frieren diangkat",
+        [Locale.Czech]: "Frieren zvednuta",
+        [Locale.Japanese]: "持ち上げられるフリーレン",
+        [Locale.Korean]: "들어올려진 프리렌",
+        [Locale.ChineseCN]: "被举起的芙莉莲",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTop, Type.FaceImage],
     width: 335,

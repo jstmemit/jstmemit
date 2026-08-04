@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsTanjiroSumiko: Template = {
     name: "dsTanjiroSumiko",
-    displayName: "DS Tanjiro Sumiko",
+    displayName: buildLocales("Tanjiro Sumiko", {
+        [Locale.Russian]: "Тандзиро Сумико",
+        [Locale.Ukrainian]: "Тандзіро Суміко",
+        [Locale.Dutch]: "Tanjiro Sumiko",
+        [Locale.French]: "Tanjiro Sumiko",
+        [Locale.German]: "Tanjiro Sumiko",
+        [Locale.Polish]: "Tanjiro Sumiko",
+        [Locale.SpanishES]: "Tanjiro Sumiko",
+        [Locale.SpanishLATAM]: "Tanjiro Sumiko",
+        [Locale.PortugueseBR]: "Tanjiro Sumiko",
+        [Locale.Turkish]: "Tanjiro Sumiko",
+        [Locale.Italian]: "Tanjiro Sumiko",
+        [Locale.Indonesian]: "Tanjiro Sumiko",
+        [Locale.Czech]: "Tanjiro Sumiko",
+        [Locale.Japanese]: "炭治郎とすみ子",
+        [Locale.Korean]: "탄지로와 스미코",
+        [Locale.ChineseCN]: "炭治郎与澄子",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 600,

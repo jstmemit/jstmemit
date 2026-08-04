@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const yesChad: Template = {
     name: "yesChad",
-    displayName: "Yes Chad",
+    displayName: buildLocales("Yes Chad", {
+        [Locale.Russian]: "Да, Чад",
+        [Locale.Ukrainian]: "Так, Чад",
+        [Locale.Dutch]: "Ja Chad",
+        [Locale.French]: "Oui Chad",
+        [Locale.German]: "Ja Chad",
+        [Locale.Polish]: "Tak, Chad",
+        [Locale.SpanishES]: "Sí Chad",
+        [Locale.SpanishLATAM]: "Sí Chad",
+        [Locale.PortugueseBR]: "Sim Chad",
+        [Locale.Turkish]: "Evet Chad",
+        [Locale.Italian]: "Sì Chad",
+        [Locale.Indonesian]: "Ya Chad",
+        [Locale.Czech]: "Ano Chad",
+        [Locale.Japanese]: "イエス・チャド",
+        [Locale.Korean]: "예스 채드",
+        [Locale.ChineseCN]: "是的查德",
+    }),
     topics: [Topic.Misc],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1400,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaHoldingHead: Template = {
     name: "toradoraTaigaHoldingHead",
-    displayName: "Toradora Taiga holding head",
+    displayName: buildLocales("Taiga holding head", {
+        [Locale.Russian]: "Тайга держится за голову",
+        [Locale.Ukrainian]: "Тайга тримається за голову",
+        [Locale.Dutch]: "Taiga houdt hoofd vast",
+        [Locale.French]: "Taiga se tenant la tête",
+        [Locale.German]: "Taiga hält sich den Kopf",
+        [Locale.Polish]: "Taiga trzyma się za głowę",
+        [Locale.SpanishES]: "Taiga sosteniéndose la cabeza",
+        [Locale.SpanishLATAM]: "Taiga sosteniéndose la cabeza",
+        [Locale.PortugueseBR]: "Taiga segurando a cabeça",
+        [Locale.Turkish]: "Kafasını tutan Taiga",
+        [Locale.Italian]: "Taiga che si tiene la testa",
+        [Locale.Indonesian]: "Taiga memegang kepala",
+        [Locale.Czech]: "Taiga se drží za hlavu",
+        [Locale.Japanese]: "頭を抱える大河",
+        [Locale.Korean]: "머리를 감싸쥔 타이가",
+        [Locale.ChineseCN]: "大河抱头",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottom],
     width: 480,

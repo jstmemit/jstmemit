@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaWideGrin: Template = {
     name: "toradoraTaigaWideGrin",
-    displayName: "Toradora Taiga wide grin",
+    displayName: buildLocales("Taiga wide grin", {
+        [Locale.Russian]: "Широкая ухмылка Тайги",
+        [Locale.Ukrainian]: "Широка усмішка Тайги",
+        [Locale.Dutch]: "Taiga brede grijns",
+        [Locale.French]: "Grand sourire de Taiga",
+        [Locale.German]: "Taigas breites Grinsen",
+        [Locale.Polish]: "Szeroki uśmiech Taigi",
+        [Locale.SpanishES]: "Taiga con gran sonrisa",
+        [Locale.SpanishLATAM]: "Taiga con gran sonrisa",
+        [Locale.PortugueseBR]: "Taiga com um largo sorriso",
+        [Locale.Turkish]: "Taiga geniş sırıtış",
+        [Locale.Italian]: "Ampio sorriso di Taiga",
+        [Locale.Indonesian]: "Seringai lebar Taiga",
+        [Locale.Czech]: "Taigin široký úsměv",
+        [Locale.Japanese]: "満面の笑みの大河",
+        [Locale.Korean]: "타이가의 환한 미소",
+        [Locale.ChineseCN]: "大河大笑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground],
     width: 1078,

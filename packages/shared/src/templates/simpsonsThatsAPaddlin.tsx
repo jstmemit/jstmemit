@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsThatsAPaddlin: Template = {
     name: "simpsonsThatsAPaddlin",
-    displayName: "Simpsons That's a paddlin",
+    displayName: buildLocales("That's a paddlin", {
+        [Locale.Russian]: "За это полагается порка",
+        [Locale.Ukrainian]: "За це буде прочуханка",
+        [Locale.Dutch]: "Dat betekent straf",
+        [Locale.French]: "Ça mérite une fessée",
+        [Locale.German]: "Das gibt Schläge",
+        [Locale.Polish]: "Za to jest lanie",
+        [Locale.SpanishES]: "Golpe de remo",
+        [Locale.SpanishLATAM]: "Golpe de remo",
+        [Locale.PortugueseBR]: "Isso dá castigo",
+        [Locale.Turkish]: "Bunun cezası var",
+        [Locale.Italian]: "Questa è una sculacciata",
+        [Locale.Indonesian]: "Itu berarti hukuman",
+        [Locale.Czech]: "Za to dostaneš na zadek",
+        [Locale.Japanese]: "それはお仕置きだ",
+        [Locale.Korean]: "그건 매맞을 짓이야",
+        [Locale.ChineseCN]: "这得挨板子",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 500,

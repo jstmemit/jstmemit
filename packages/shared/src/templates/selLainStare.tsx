@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const selLainStare: Template = {
     name: "selLainStare",
-    displayName: "SEL Lain stare",
+    displayName: buildLocales("Lain stare", {
+        [Locale.Russian]: "Взгляд Лэйн",
+        [Locale.Ukrainian]: "Погляд Лейн",
+        [Locale.Dutch]: "Lain staart",
+        [Locale.French]: "Lain regarde fixement",
+        [Locale.German]: "Lain starrt",
+        [Locale.Polish]: "Spojrzenie Lain",
+        [Locale.SpanishES]: "Lain mirando fijamente",
+        [Locale.SpanishLATAM]: "Lain mirando fijamente",
+        [Locale.PortugueseBR]: "Lain encarando",
+        [Locale.Turkish]: "Lain bakışı",
+        [Locale.Italian]: "Lain che fissa",
+        [Locale.Indonesian]: "Lain menatap",
+        [Locale.Czech]: "Lain zírá",
+        [Locale.Japanese]: "見つめる玲音",
+        [Locale.Korean]: "레인 응시",
+        [Locale.ChineseCN]: "玲音凝视",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.SerialExperimentsLain],
     types: [Type.TextBottom],
     width: 500,

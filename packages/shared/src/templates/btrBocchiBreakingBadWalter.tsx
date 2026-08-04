@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiBreakingBadWalter: Template = {
     name: "btrBocchiBreakingBadWalter",
-    displayName: "BTR Bocchi Breaking Bad Walter",
+    displayName: buildLocales("Bocchi Breaking Bad Walter", {
+        [Locale.Russian]: "Бокки в образе Уолтера из Breaking Bad",
+        [Locale.Ukrainian]: "Боккі в образі Волтера з Breaking Bad",
+        [Locale.Dutch]: "Bocchi als Walter uit Breaking Bad",
+        [Locale.French]: "Bocchi en Walter de Breaking Bad",
+        [Locale.German]: "Bocchi als Walter aus Breaking Bad",
+        [Locale.Polish]: "Bocchi jako Walter z Breaking Bad",
+        [Locale.SpanishES]: "Bocchi como Walter de Breaking Bad",
+        [Locale.SpanishLATAM]: "Bocchi como Walter de Breaking Bad",
+        [Locale.PortugueseBR]: "Bocchi como Walter de Breaking Bad",
+        [Locale.Turkish]: "Bocchi, Breaking Bad'den Walter olarak",
+        [Locale.Italian]: "Bocchi nei panni di Walter di Breaking Bad",
+        [Locale.Indonesian]: "Bocchi sebagai Walter dari Breaking Bad",
+        [Locale.Czech]: "Bocchi jako Walter z Breaking Bad",
+        [Locale.Japanese]: "ブレイキング・バッドのウォルター風ぼっち",
+        [Locale.Korean]: "브레이킹 배드 월터 봇치",
+        [Locale.ChineseCN]: "波奇扮演绝命毒师沃尔特",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock, Topic.BreakingBad],
     types: [Type.TextTopWithBackground],
     width: 800,

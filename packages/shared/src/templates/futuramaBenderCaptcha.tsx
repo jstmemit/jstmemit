@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaBenderCaptcha: Template = {
     name: "futuramaBenderCaptcha",
-    displayName: "Futurama Bender captcha",
+    displayName: buildLocales("Bender captcha", {
+        [Locale.Russian]: "Капча с Бендером",
+        [Locale.Ukrainian]: "Капча з Бендером",
+        [Locale.Dutch]: "Bender captcha",
+        [Locale.French]: "Captcha Bender",
+        [Locale.German]: "Bender Captcha",
+        [Locale.Polish]: "Captcha Bendera",
+        [Locale.SpanishES]: "Captcha de Bender",
+        [Locale.SpanishLATAM]: "Captcha de Bender",
+        [Locale.PortugueseBR]: "Captcha do Bender",
+        [Locale.Turkish]: "Bender captcha",
+        [Locale.Italian]: "Captcha Bender",
+        [Locale.Indonesian]: "Captcha Bender",
+        [Locale.Czech]: "Bender captcha",
+        [Locale.Japanese]: "ベンダーのキャプチャ",
+        [Locale.Korean]: "벤더 캡차",
+        [Locale.ChineseCN]: "本德验证码",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom],
     width: 480,

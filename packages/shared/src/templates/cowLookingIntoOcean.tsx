@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const cowLookingIntoOcean: Template = {
     name: "cowLookingIntoOcean",
-    displayName: "Horse looking into ocean",
+    displayName: buildLocales("Horse looking into ocean", {
+        [Locale.Russian]: "Лошадь смотрит на океан",
+        [Locale.Ukrainian]: "Кінь дивиться на океан",
+        [Locale.Dutch]: "Paard kijkt naar de oceaan",
+        [Locale.French]: "Cheval regardant l'océan",
+        [Locale.German]: "Pferd blickt auf den Ozean",
+        [Locale.Polish]: "Koń patrzy na ocean",
+        [Locale.SpanishES]: "Caballo mirando al océano",
+        [Locale.SpanishLATAM]: "Caballo mirando al océano",
+        [Locale.PortugueseBR]: "Cavalo olhando para o oceano",
+        [Locale.Turkish]: "Okyanusa bakan at",
+        [Locale.Italian]: "Cavallo che guarda l'oceano",
+        [Locale.Indonesian]: "Kuda memandang lautan",
+        [Locale.Czech]: "Kůň se dívá na oceán",
+        [Locale.Japanese]: "海を見つめる馬",
+        [Locale.Korean]: "바다를 바라보는 말",
+        [Locale.ChineseCN]: "马凝望大海",
+    }),
     topics: [Topic.Animals],
     types: [Type.TextBottom, Type.FaceImage],
     width: 403,

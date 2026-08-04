@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsScaryNews: Template = {
     name: "simpsonsScaryNews",
-    displayName: "Simpsons Scary news",
+    displayName: buildLocales("Scary news", {
+        [Locale.Russian]: "Страшные новости",
+        [Locale.Ukrainian]: "Страшні новини",
+        [Locale.Dutch]: "Eng nieuws",
+        [Locale.French]: "Nouvelles effrayantes",
+        [Locale.German]: "Gruselige Nachrichten",
+        [Locale.Polish]: "Straszne wiadomości",
+        [Locale.SpanishES]: "Noticias de miedo",
+        [Locale.SpanishLATAM]: "Noticias de miedo",
+        [Locale.PortugueseBR]: "Notícias assustadoras",
+        [Locale.Turkish]: "Korkutucu haberler",
+        [Locale.Italian]: "Notizie spaventose",
+        [Locale.Indonesian]: "Berita menakutkan",
+        [Locale.Czech]: "Děsivé zprávy",
+        [Locale.Japanese]: "怖いニュース",
+        [Locale.Korean]: "무서운 뉴스",
+        [Locale.ChineseCN]: "可怕的新闻",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.News, Topic.Reaction],
     types: [Type.ObjectImage, Type.TextCenterWithBackground, Type.TwoOption],
     width: 1280,

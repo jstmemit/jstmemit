@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const lsWindowsXPWallpaper: Template = {
     name: "lsWindowsXPWallpaper",
-    displayName: "LS Windows XP wallpaper",
+    displayName: buildLocales("Windows XP wallpaper", {
+        [Locale.Russian]: "Обои Windows XP",
+        [Locale.Ukrainian]: "Шпалери Windows XP",
+        [Locale.Dutch]: "Windows XP achtergrond",
+        [Locale.French]: "Fond d'écran Windows XP",
+        [Locale.German]: "Windows XP Hintergrundbild",
+        [Locale.Polish]: "Tapeta Windows XP",
+        [Locale.SpanishES]: "Fondo de pantalla de Windows XP",
+        [Locale.SpanishLATAM]: "Fondo de pantalla de Windows XP",
+        [Locale.PortugueseBR]: "Papel de parede do Windows XP",
+        [Locale.Turkish]: "Windows XP duvar kağıdı",
+        [Locale.Italian]: "Sfondo Windows XP",
+        [Locale.Indonesian]: "Wallpaper Windows XP",
+        [Locale.Czech]: "Tapeta Windows XP",
+        [Locale.Japanese]: "Windows XPの壁紙",
+        [Locale.Korean]: "Windows XP 배경화면",
+        [Locale.ChineseCN]: "Windows XP 壁纸",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
     types: [Type.TextBottom, Type.FaceImage],
     width: 1014,

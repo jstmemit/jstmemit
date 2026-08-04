@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const kaguyasamaKaguyaDroppingPhone: Template = {
     name: "kaguyasamaKaguyaDroppingPhone",
-    displayName: "Kaguyasama Kaguya dropping phone",
+    displayName: buildLocales("Kaguya dropping phone", {
+        [Locale.Russian]: "Кагуя роняет телефон",
+        [Locale.Ukrainian]: "Кагуя впускає телефон",
+        [Locale.Dutch]: "Kaguya laat telefoon vallen",
+        [Locale.French]: "Kaguya fait tomber son téléphone",
+        [Locale.German]: "Kaguya lässt Handy fallen",
+        [Locale.Polish]: "Kaguya upuszcza telefon",
+        [Locale.SpanishES]: "Kaguya dejando caer el teléfono",
+        [Locale.SpanishLATAM]: "Kaguya dejando caer el teléfono",
+        [Locale.PortugueseBR]: "Kaguya derrubando o telefone",
+        [Locale.Turkish]: "Kaguya telefonunu düşürüyor",
+        [Locale.Italian]: "Kaguya fa cadere il telefono",
+        [Locale.Indonesian]: "Kaguya menjatuhkan ponsel",
+        [Locale.Czech]: "Kaguya upouští telefon",
+        [Locale.Japanese]: "スマホを落とすかぐや",
+        [Locale.Korean]: "핸드폰 떨어뜨리는 카구야",
+        [Locale.ChineseCN]: "辉夜掉手机",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.DefaultText, Type.FaceImage],
     width: 640,

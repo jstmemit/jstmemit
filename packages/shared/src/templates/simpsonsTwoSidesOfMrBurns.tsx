@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsTwoSidesOfMrBurns: Template = {
     name: "simpsonsTwoSidesOfMrBurns",
-    displayName: "Simpsons Two sides of Mr. Burns",
+    displayName: buildLocales("Two sides of Mr. Burns", {
+        [Locale.Russian]: "Две стороны мистера Бернса",
+        [Locale.Ukrainian]: "Дві сторони містера Бернса",
+        [Locale.Dutch]: "Twee kanten van Mr. Burns",
+        [Locale.French]: "Les deux visages de M. Burns",
+        [Locale.German]: "Zwei Seiten von Mr. Burns",
+        [Locale.Polish]: "Dwie twarze pana Burnsa",
+        [Locale.SpanishES]: "Dos lados de Mr. Burns",
+        [Locale.SpanishLATAM]: "Dos lados del Sr. Burns",
+        [Locale.PortugueseBR]: "Dois lados do Sr. Burns",
+        [Locale.Turkish]: "Bay Burns'ün iki yüzü",
+        [Locale.Italian]: "I due lati del signor Burns",
+        [Locale.Indonesian]: "Dua sisi Tuan Burns",
+        [Locale.Czech]: "Dvě tváře pana Burnse",
+        [Locale.Japanese]: "バーンズ社長の二面性",
+        [Locale.Korean]: "번즈 사장의 두 얼굴",
+        [Locale.ChineseCN]: "伯恩斯先生的两面",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,

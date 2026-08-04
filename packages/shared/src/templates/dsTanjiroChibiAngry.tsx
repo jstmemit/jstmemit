@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsTanjiroChibiAngry: Template = {
     name: "dsTanjiroChibiAngry",
-    displayName: "DS Tanjiro chibi angry",
+    displayName: buildLocales("Tanjiro chibi angry", {
+        [Locale.Russian]: "Чиби Тандзиро злится",
+        [Locale.Ukrainian]: "Чібі Тандзіро злиться",
+        [Locale.Dutch]: "Chibi Tanjiro boos",
+        [Locale.French]: "Chibi Tanjiro en colère",
+        [Locale.German]: "Chibi Tanjiro wütend",
+        [Locale.Polish]: "Chibi Tanjiro zły",
+        [Locale.SpanishES]: "Chibi Tanjiro enfadado",
+        [Locale.SpanishLATAM]: "Chibi Tanjiro enojado",
+        [Locale.PortugueseBR]: "Chibi Tanjiro bravo",
+        [Locale.Turkish]: "Chibi Tanjiro kızgın",
+        [Locale.Italian]: "Chibi Tanjiro arrabbiato",
+        [Locale.Indonesian]: "Chibi Tanjiro marah",
+        [Locale.Czech]: "Chibi Tanjiro naštvaný",
+        [Locale.Japanese]: "怒るチビ炭治郎",
+        [Locale.Korean]: "화난 치비 탄지로",
+        [Locale.ChineseCN]: "Q版炭治郎生气",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextRightWithBackground],
     width: 1780,

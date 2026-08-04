@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiAnxiousSmiling: Template = {
     name: "btrBocchiAnxiousSmiling",
-    displayName: "BTR Bocchi anxious smiling",
+    displayName: buildLocales("Bocchi anxious smiling", {
+        [Locale.Russian]: "Бокки тревожно улыбается",
+        [Locale.Ukrainian]: "Боккі тривожно посміхається",
+        [Locale.Dutch]: "Bocchi angstig glimlachend",
+        [Locale.French]: "Bocchi souriant avec angoisse",
+        [Locale.German]: "Bocchi ängstlich lächelnd",
+        [Locale.Polish]: "Bocchi uśmiecha się z lękiem",
+        [Locale.SpanishES]: "Bocchi sonriendo con ansiedad",
+        [Locale.SpanishLATAM]: "Bocchi sonriendo con ansiedad",
+        [Locale.PortugueseBR]: "Bocchi sorrindo ansiosa",
+        [Locale.Turkish]: "Bocchi kaygıyla gülümsüyor",
+        [Locale.Italian]: "Bocchi che sorride ansiosa",
+        [Locale.Indonesian]: "Bocchi tersenyum cemas",
+        [Locale.Czech]: "Bocchi úzkostně se usmívá",
+        [Locale.Japanese]: "ぼっちの不安げな笑み",
+        [Locale.Korean]: "봇치 불안한 미소",
+        [Locale.ChineseCN]: "波奇焦虑地微笑",
+    }),
     topics: [Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 1020,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spidermanPeterDance: Template = {
     name: "spidermanPeterDance",
-    displayName: "Spider-Man Peter dance",
+    displayName: buildLocales("Peter dance", {
+        [Locale.Russian]: "Танец Питера",
+        [Locale.Ukrainian]: "Танець Пітера",
+        [Locale.Dutch]: "Peter dans",
+        [Locale.French]: "Danse de Peter",
+        [Locale.German]: "Peter tanzt",
+        [Locale.Polish]: "Taniec Petera",
+        [Locale.SpanishES]: "Baile de Peter",
+        [Locale.SpanishLATAM]: "Baile de Peter",
+        [Locale.PortugueseBR]: "Dança do Peter",
+        [Locale.Turkish]: "Peter dansı",
+        [Locale.Italian]: "Ballo di Peter",
+        [Locale.Indonesian]: "Tarian Peter",
+        [Locale.Czech]: "Peterův tanec",
+        [Locale.Japanese]: "ピーターのダンス",
+        [Locale.Korean]: "피터 댄스",
+        [Locale.ChineseCN]: "彼得跳舞",
+    }),
     topics: [Topic.SpiderMan, Topic.Movies],
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,

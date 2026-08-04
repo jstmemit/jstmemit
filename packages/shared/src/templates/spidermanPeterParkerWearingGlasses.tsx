@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spidermanPeterParkerWearingGlasses: Template = {
     name: "spidermanPeterParkerWearingGlasses",
-    displayName: "Spider-Man Peter Parker wearing glasses",
+    displayName: buildLocales("Peter Parker wearing glasses", {
+        [Locale.Russian]: "Питер Паркер надевает очки",
+        [Locale.Ukrainian]: "Пітер Паркер одягає окуляри",
+        [Locale.Dutch]: "Peter Parker draagt bril",
+        [Locale.French]: "Peter Parker mettant ses lunettes",
+        [Locale.German]: "Peter Parker setzt Brille auf",
+        [Locale.Polish]: "Peter Parker zakłada okulary",
+        [Locale.SpanishES]: "Peter Parker poniéndose las gafas",
+        [Locale.SpanishLATAM]: "Peter Parker poniéndose los lentes",
+        [Locale.PortugueseBR]: "Peter Parker de óculos",
+        [Locale.Turkish]: "Gözlük takan Peter Parker",
+        [Locale.Italian]: "Peter Parker con gli occhiali",
+        [Locale.Indonesian]: "Peter Parker memakai kacamata",
+        [Locale.Czech]: "Peter Parker s brýlemi",
+        [Locale.Japanese]: "眼鏡をかけるピーター・パーカー",
+        [Locale.Korean]: "안경 쓰는 피터 파커",
+        [Locale.ChineseCN]: "彼得·帕克戴眼镜",
+    }),
     topics: [Topic.SpiderMan, Topic.Movies, Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 1020,

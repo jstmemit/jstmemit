@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const willSmith: Template = {
     name: "willSmith",
-    displayName: "Will Smith",
+    displayName: buildLocales("Will Smith", {
+        [Locale.Russian]: "Уилл Смит",
+        [Locale.Ukrainian]: "Вілл Сміт",
+        [Locale.Dutch]: "Will Smith",
+        [Locale.French]: "Will Smith",
+        [Locale.German]: "Will Smith",
+        [Locale.Polish]: "Will Smith",
+        [Locale.SpanishES]: "Will Smith",
+        [Locale.SpanishLATAM]: "Will Smith",
+        [Locale.PortugueseBR]: "Will Smith",
+        [Locale.Turkish]: "Will Smith",
+        [Locale.Italian]: "Will Smith",
+        [Locale.Indonesian]: "Will Smith",
+        [Locale.Czech]: "Will Smith",
+        [Locale.Japanese]: "ウィル・スミス",
+        [Locale.Korean]: "윌 스미스",
+        [Locale.ChineseCN]: "威尔·史密斯",
+    }),
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 891,

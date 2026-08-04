@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const evangelionShinjiIkariMentalBreakdown: Template = {
     name: "evangelionShinjiIkariMentalBreakdown",
-    displayName: "Evangelion Shinji Ikari mental breakdown",
+    displayName: buildLocales("Shinji Ikari mental breakdown", {
+        [Locale.Russian]: "У Синдзи Икари нервный срыв",
+        [Locale.Ukrainian]: "У Шінджі Ікарі нервовий зрив",
+        [Locale.Dutch]: "Shinji Ikari mentale instorting",
+        [Locale.French]: "Shinji Ikari effondrement mental",
+        [Locale.German]: "Shinji Ikari mentaler Zusammenbruch",
+        [Locale.Polish]: "Shinji Ikari załamanie nerwowe",
+        [Locale.SpanishES]: "Shinji Ikari crisis mental",
+        [Locale.SpanishLATAM]: "Shinji Ikari crisis mental",
+        [Locale.PortugueseBR]: "Shinji Ikari crise mental",
+        [Locale.Turkish]: "Shinji Ikari ruhsal çöküntü",
+        [Locale.Italian]: "Shinji Ikari crollo mentale",
+        [Locale.Indonesian]: "Shinji Ikari gangguan mental",
+        [Locale.Czech]: "Shinji Ikari psychické zhroucení",
+        [Locale.Japanese]: "精神崩壊するシンジ・イカリ",
+        [Locale.Korean]: "정신붕괴 신지 이카리",
+        [Locale.ChineseCN]: "碇真嗣精神崩溃",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 844,

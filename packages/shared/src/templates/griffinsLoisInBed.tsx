@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsLoisInBed: Template = {
     name: "griffinsLoisInBed",
-    displayName: "Griffins Lois in bed",
+    displayName: buildLocales("Lois in bed", {
+        [Locale.Russian]: "Лоис в постели",
+        [Locale.Ukrainian]: "Лоїс у ліжку",
+        [Locale.Dutch]: "Lois in bed",
+        [Locale.French]: "Lois au lit",
+        [Locale.German]: "Lois im Bett",
+        [Locale.Polish]: "Lois w łóżku",
+        [Locale.SpanishES]: "Lois en la cama",
+        [Locale.SpanishLATAM]: "Lois en la cama",
+        [Locale.PortugueseBR]: "Lois na cama",
+        [Locale.Turkish]: "Lois yatakta",
+        [Locale.Italian]: "Lois a letto",
+        [Locale.Indonesian]: "Lois di tempat tidur",
+        [Locale.Czech]: "Lois v posteli",
+        [Locale.Japanese]: "ベッドにいるルイス",
+        [Locale.Korean]: "침대에 있는 로이스",
+        [Locale.ChineseCN]: "洛伊斯在床上",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextTop, Type.FaceImage],
     width: 735,

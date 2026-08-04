@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const pfTwoGangsterWithGuns: Template = {
     name: "pfTwoGangsterWithGuns",
-    displayName: "PF Two gangsters with guns",
+    displayName: buildLocales("Two gangsters with guns", {
+        [Locale.Russian]: "Два гангстера с пушками",
+        [Locale.Ukrainian]: "Два гангстери з гарматами",
+        [Locale.Dutch]: "Twee gangsters met geweren",
+        [Locale.French]: "Deux gangsters avec des flingues",
+        [Locale.German]: "Zwei Gangster mit Waffen",
+        [Locale.Polish]: "Dwaj gangsterzy z bronią",
+        [Locale.SpanishES]: "Dos gánsteres con armas",
+        [Locale.SpanishLATAM]: "Dos gánsteres con armas",
+        [Locale.PortugueseBR]: "Dois gângsteres com armas",
+        [Locale.Turkish]: "Silahlı iki gangster",
+        [Locale.Italian]: "Due gangster con le pistole",
+        [Locale.Indonesian]: "Dua gangster dengan pistol",
+        [Locale.Czech]: "Dva gangsteři se zbraněmi",
+        [Locale.Japanese]: "銃を持った2人のギャング",
+        [Locale.Korean]: "총 든 갱스터 두 명",
+        [Locale.ChineseCN]: "两名拿枪的黑帮",
+    }),
     topics: [Topic.PulpFiction, Topic.Movies],
     types: [Type.TextBottom, Type.FaceImage],
     width: 1461,

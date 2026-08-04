@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const explainingWhiteboard: Template = {
     name: "explainingWhiteboard",
-    displayName: "Explaining whiteboard",
+    displayName: buildLocales("Explaining whiteboard", {
+        [Locale.Russian]: "Объяснение у доски",
+        [Locale.Ukrainian]: "Пояснення біля дошки",
+        [Locale.Dutch]: "Uitleg op whiteboard",
+        [Locale.French]: "Explication au tableau blanc",
+        [Locale.German]: "Erklärung am Whiteboard",
+        [Locale.Polish]: "Wyjaśnianie na tablicy",
+        [Locale.SpanishES]: "Explicando en la pizarra",
+        [Locale.SpanishLATAM]: "Explicando en la pizarra",
+        [Locale.PortugueseBR]: "Explicando no quadro branco",
+        [Locale.Turkish]: "Beyaz tahtada anlatım",
+        [Locale.Italian]: "Spiegazione alla lavagna",
+        [Locale.Indonesian]: "Menjelaskan di papan tulis",
+        [Locale.Czech]: "Vysvětlování na tabuli",
+        [Locale.Japanese]: "ホワイトボードで説明",
+        [Locale.Korean]: "화이트보드로 설명",
+        [Locale.ChineseCN]: "白板讲解",
+    }),
     topics: [Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1280,

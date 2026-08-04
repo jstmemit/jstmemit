@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const explains: Template = {
     name: "explains",
-    displayName: "Office Jim explains",
+    displayName: buildLocales("Jim explains", {
+        [Locale.Russian]: "Джим объясняет",
+        [Locale.Ukrainian]: "Джим пояснює",
+        [Locale.Dutch]: "Jim legt uit",
+        [Locale.French]: "Jim explique",
+        [Locale.German]: "Jim erklärt",
+        [Locale.Polish]: "Jim tłumaczy",
+        [Locale.SpanishES]: "Jim explica",
+        [Locale.SpanishLATAM]: "Jim explica",
+        [Locale.PortugueseBR]: "Jim explica",
+        [Locale.Turkish]: "Jim açıklıyor",
+        [Locale.Italian]: "Jim spiega",
+        [Locale.Indonesian]: "Jim menjelaskan",
+        [Locale.Czech]: "Jim vysvětluje",
+        [Locale.Japanese]: "説明するジム",
+        [Locale.Korean]: "설명하는 짐",
+        [Locale.ChineseCN]: "吉姆解释",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.Office],
     types: [Type.ObjectImage, Type.TwoOption, Type.TextBottom],
     width: 700,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const saltBae: Template = {
     name: "saltBae",
-    displayName: "Salt Bae",
+    displayName: buildLocales("Salt Bae", {
+        [Locale.Russian]: "Солт Бэ",
+        [Locale.Ukrainian]: "Солт Бе",
+        [Locale.Dutch]: "Salt Bae",
+        [Locale.French]: "Salt Bae",
+        [Locale.German]: "Salt Bae",
+        [Locale.Polish]: "Salt Bae",
+        [Locale.SpanishES]: "Salt Bae",
+        [Locale.SpanishLATAM]: "Salt Bae",
+        [Locale.PortugueseBR]: "Salt Bae",
+        [Locale.Turkish]: "Salt Bae",
+        [Locale.Italian]: "Salt Bae",
+        [Locale.Indonesian]: "Salt Bae",
+        [Locale.Czech]: "Salt Bae",
+        [Locale.Japanese]: "ソルトベエ",
+        [Locale.Korean]: "솔트배",
+        [Locale.ChineseCN]: "撒盐哥",
+    }),
     topics: [Topic.Misc],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1500,

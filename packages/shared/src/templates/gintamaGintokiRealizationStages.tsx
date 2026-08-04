@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiRealizationStages: Template = {
     name: "gintamaGintokiRealizationStages",
-    displayName: "Gintama Gintoki realization stages",
+    displayName: buildLocales("Gintoki realization stages", {
+        [Locale.Russian]: "Стадии осознания Гинтоки",
+        [Locale.Ukrainian]: "Стадії усвідомлення Гінтокі",
+        [Locale.Dutch]: "Gintoki realisatie stadia",
+        [Locale.French]: "Étapes de réalisation de Gintoki",
+        [Locale.German]: "Gintokis Phasen der Erkenntnis",
+        [Locale.Polish]: "Etapy uświadamiania sobie przez Gintokiego",
+        [Locale.SpanishES]: "Fases de realización de Gintoki",
+        [Locale.SpanishLATAM]: "Fases de realización de Gintoki",
+        [Locale.PortugueseBR]: "Estágios de realização do Gintoki",
+        [Locale.Turkish]: "Gintoki idrak aşamaları",
+        [Locale.Italian]: "Fasi di realizzazione di Gintoki",
+        [Locale.Indonesian]: "Tahap kesadaran Gintoki",
+        [Locale.Czech]: "Fáze uvědomění Gintokiho",
+        [Locale.Japanese]: "銀時の気づきの段階",
+        [Locale.Korean]: "긴토키 깨달음의 단계",
+        [Locale.ChineseCN]: "银时认知的几个阶段",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.ThreeOption, Type.TextRightWithBackground],
     width: 1084,

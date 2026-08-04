@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const jkRizzSukuna: Template = {
     name: "jkRizzSukuna",
-    displayName: "JK Rizz Sukuna",
+    displayName: buildLocales("Rizz Sukuna", {
+        [Locale.Russian]: "Ризз Сукуна",
+        [Locale.Ukrainian]: "Різз Сукуна",
+        [Locale.Dutch]: "Rizz Sukuna",
+        [Locale.French]: "Rizz Sukuna",
+        [Locale.German]: "Rizz Sukuna",
+        [Locale.Polish]: "Rizz Sukuna",
+        [Locale.SpanishES]: "Rizz Sukuna",
+        [Locale.SpanishLATAM]: "Rizz Sukuna",
+        [Locale.PortugueseBR]: "Rizz Sukuna",
+        [Locale.Turkish]: "Rizz Sukuna",
+        [Locale.Italian]: "Rizz Sukuna",
+        [Locale.Indonesian]: "Rizz Sukuna",
+        [Locale.Czech]: "Rizz Sukuna",
+        [Locale.Japanese]: "宿儺 リズ",
+        [Locale.Korean]: "리즈 스쿠나",
+        [Locale.ChineseCN]: "两面宿傩 Rizz",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 692,

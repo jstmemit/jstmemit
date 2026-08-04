@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiNosePickThumbsUp: Template = {
     name: "gintamaGintokiNosePickThumbsUp",
-    displayName: "Gintama Gintoki nose pick thumbs up",
+    displayName: buildLocales("Gintoki nose pick thumbs up", {
+        [Locale.Russian]: "Гинтоки ковыряет в носу и показывает класс",
+        [Locale.Ukrainian]: "Гінтокі копирсається в носі і показує клас",
+        [Locale.Dutch]: "Gintoki neuspeuteren duim omhoog",
+        [Locale.French]: "Gintoki se cure le nez avec un pouce en l'air",
+        [Locale.German]: "Gintoki popelt in der Nase Daumen hoch",
+        [Locale.Polish]: "Gintoki dłubie w nosie i kciuk w górę",
+        [Locale.SpanishES]: "Gintoki hurgándose la nariz y pulgar arriba",
+        [Locale.SpanishLATAM]: "Gintoki hurgándose la nariz y pulgar arriba",
+        [Locale.PortugueseBR]: "Gintoki cutucando o nariz e polegar para cima",
+        [Locale.Turkish]: "Gintoki burnunu karıştırıyor ve başparmak havada",
+        [Locale.Italian]: "Gintoki si scaccola e fa pollice in su",
+        [Locale.Indonesian]: "Gintoki ngupil jempol ke atas",
+        [Locale.Czech]: "Gintoki se dloube v nose a dává palec nahoru",
+        [Locale.Japanese]: "鼻ほじりながらサムズアップする銀時",
+        [Locale.Korean]: "코 파면서 엄지 척하는 긴토키",
+        [Locale.ChineseCN]: "银时抠鼻屎竖大拇指",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 1084,

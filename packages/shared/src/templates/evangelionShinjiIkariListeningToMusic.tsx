@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const evangelionShinjiIkariListeningToMusic: Template = {
     name: "evangelionShinjiIkariListeningToMusic",
-    displayName: "Evangelion Shinji Ikari listening to music",
+    displayName: buildLocales("Shinji Ikari listening to music", {
+        [Locale.Russian]: "Синдзи Икари слушает музыку",
+        [Locale.Ukrainian]: "Шінджі Ікарі слухає музику",
+        [Locale.Dutch]: "Shinji Ikari luistert naar muziek",
+        [Locale.French]: "Shinji Ikari écoute de la musique",
+        [Locale.German]: "Shinji Ikari hört Musik",
+        [Locale.Polish]: "Shinji Ikari słucha muzyki",
+        [Locale.SpanishES]: "Shinji Ikari escuchando música",
+        [Locale.SpanishLATAM]: "Shinji Ikari escuchando música",
+        [Locale.PortugueseBR]: "Shinji Ikari ouvindo música",
+        [Locale.Turkish]: "Shinji Ikari müzik dinliyor",
+        [Locale.Italian]: "Shinji Ikari ascolta musica",
+        [Locale.Indonesian]: "Shinji Ikari mendengarkan musik",
+        [Locale.Czech]: "Shinji Ikari poslouchá hudbu",
+        [Locale.Japanese]: "音楽を聴くシンジ・イカリ",
+        [Locale.Korean]: "음악을 듣는 신지 이카리",
+        [Locale.ChineseCN]: "碇真嗣听音乐",
+    }),
     topics: [Topic.Anime, Topic.Evangelion],
     types: [Type.TextBottom, Type.FaceImage],
     width: 640,

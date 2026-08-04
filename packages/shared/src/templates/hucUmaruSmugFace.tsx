@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const hucUmaruSmugFace: Template = {
     name: "hucUmaruSmugFace",
-    displayName: "HUC Umaru smug face",
+    displayName: buildLocales("Umaru smug face", {
+        [Locale.Russian]: "Довольное лицо Умару",
+        [Locale.Ukrainian]: "Задоволене обличчя Умару",
+        [Locale.Dutch]: "Umaru zelfingenomen gezicht",
+        [Locale.French]: "Visage suffisant d'Umaru",
+        [Locale.German]: "Umaru selbstgefälliges Gesicht",
+        [Locale.Polish]: "Zadowolona twarz Umaru",
+        [Locale.SpanishES]: "Cara engreída de Umaru",
+        [Locale.SpanishLATAM]: "Cara engreída de Umaru",
+        [Locale.PortugueseBR]: "Rosto presunçoso da Umaru",
+        [Locale.Turkish]: "Umaru ukala yüz",
+        [Locale.Italian]: "Faccia compiaciuta di Umaru",
+        [Locale.Indonesian]: "Wajah sombong Umaru",
+        [Locale.Czech]: "Spokojený obličej Umaru",
+        [Locale.Japanese]: "うまるのドヤ顔",
+        [Locale.Korean]: "우마루 의기양양한 표정",
+        [Locale.ChineseCN]: "得意的小埋",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
     types: [Type.TextLeftWithBackground],
     width: 1224,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsRalphImInDanger: Template = {
     name: "simpsonsRalphImInDanger",
-    displayName: "Simpsons Ralph I'm in danger",
+    displayName: buildLocales("Ralph I'm in danger", {
+        [Locale.Russian]: 'Ральф: "Я в опасности"',
+        [Locale.Ukrainian]: 'Ральф: "Я в небезпеці"',
+        [Locale.Dutch]: "Ralph ik ben in gevaar",
+        [Locale.French]: "Ralph je suis en danger",
+        [Locale.German]: "Ralph Ich bin in Gefahr",
+        [Locale.Polish]: "Ralph jestem w niebezpieczeństwie",
+        [Locale.SpanishES]: "Ralph estoy en peligro",
+        [Locale.SpanishLATAM]: "Ralph estoy en peligro",
+        [Locale.PortugueseBR]: "Ralph estou em perigo",
+        [Locale.Turkish]: "Ralph tehlikedeyim",
+        [Locale.Italian]: "Ralph sono in pericolo",
+        [Locale.Indonesian]: "Ralph aku dalam bahaya",
+        [Locale.Czech]: "Ralph jsem v nebezpečí",
+        [Locale.Japanese]: "ラルフ 危険な状態",
+        [Locale.Korean]: "랄프 난 위험해",
+        [Locale.ChineseCN]: "拉尔夫 我有危险了",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1024,

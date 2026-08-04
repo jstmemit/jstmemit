@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const lookAtThis: Template = {
     name: "lookAtThis",
-    displayName: "Look at this",
+    displayName: buildLocales("Look at this", {
+        [Locale.Russian]: "Посмотри на это",
+        [Locale.Ukrainian]: "Подивись на це",
+        [Locale.Dutch]: "Kijk hiernaar",
+        [Locale.French]: "Regarde ça",
+        [Locale.German]: "Sieh dir das an",
+        [Locale.Polish]: "Spójrz na to",
+        [Locale.SpanishES]: "Mira esto",
+        [Locale.SpanishLATAM]: "Mira esto",
+        [Locale.PortugueseBR]: "Olhe para isso",
+        [Locale.Turkish]: "Şuna bak",
+        [Locale.Italian]: "Guarda questo",
+        [Locale.Indonesian]: "Lihat ini",
+        [Locale.Czech]: "Podívej se na to",
+        [Locale.Japanese]: "これを見て",
+        [Locale.Korean]: "이것 좀 봐",
+        [Locale.ChineseCN]: "看这个",
+    }),
     topics: [Topic.Reaction],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 480,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaikaSadisticSmile: Template = {
     name: "blendsMaikaSadisticSmile",
-    displayName: "BlendS Maika sadistic smile",
+    displayName: buildLocales("Maika sadistic smile", {
+        [Locale.Russian]: "Майка с садистской улыбкой",
+        [Locale.Ukrainian]: "Майка із садистською посмішкою",
+        [Locale.Dutch]: "Maika met sadistische glimlach",
+        [Locale.French]: "Maika avec un sourire sadique",
+        [Locale.German]: "Maika mit sadistischem Lächeln",
+        [Locale.Polish]: "Maika z sadystycznym uśmiechem",
+        [Locale.SpanishES]: "Maika con sonrisa sádica",
+        [Locale.SpanishLATAM]: "Maika con sonrisa sádica",
+        [Locale.PortugueseBR]: "Maika com sorriso sádico",
+        [Locale.Turkish]: "Maika sadist gülümsemesiyle",
+        [Locale.Italian]: "Maika con sorriso sadico",
+        [Locale.Indonesian]: "Maika dengan senyum sadis",
+        [Locale.Czech]: "Maika se sadistickým úsměvem",
+        [Locale.Japanese]: "マイカのサディスティックな笑み",
+        [Locale.Korean]: "마이카 사디스틱한 미소",
+        [Locale.ChineseCN]: "麻衣花施虐的微笑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextBottomWithBackground],
     width: 787,

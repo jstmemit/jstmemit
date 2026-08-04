@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ceRebeccaSquidward: Template = {
     name: "ceRebeccaSquidward",
-    displayName: "CE Rebecca squidward",
+    displayName: buildLocales("Rebecca squidward", {
+        [Locale.Russian]: "Ребекка в образе Сквидварда",
+        [Locale.Ukrainian]: "Ребекка в образі Сквідварда",
+        [Locale.Dutch]: "Rebecca als Squidward",
+        [Locale.French]: "Rebecca en Carlo",
+        [Locale.German]: "Rebecca als Thaddäus",
+        [Locale.Polish]: "Rebecca jako Squidward",
+        [Locale.SpanishES]: "Rebecca como Calamardo",
+        [Locale.SpanishLATAM]: "Rebecca como Calamardo",
+        [Locale.PortugueseBR]: "Rebecca como Lula Molusco",
+        [Locale.Turkish]: "Rebecca Sünger Bob'taki Sedat gibi",
+        [Locale.Italian]: "Rebecca come Squiddi",
+        [Locale.Indonesian]: "Rebecca sebagai Squidward",
+        [Locale.Czech]: "Rebecca jako Chobotnice Chad",
+        [Locale.Japanese]: "イカルドのレベッカ",
+        [Locale.Korean]: "징징이 레베카",
+        [Locale.ChineseCN]: "丽贝卡扮演章鱼哥",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners, Topic.SpongeBob],
     types: [Type.TextTopWithBackground],
     width: 625,

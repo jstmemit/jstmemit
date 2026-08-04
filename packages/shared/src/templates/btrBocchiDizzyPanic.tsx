@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiDizzyPanic: Template = {
     name: "btrBocchiDizzyPanic",
-    displayName: "BTR Bocchi dizzy panic",
+    displayName: buildLocales("Bocchi dizzy panic", {
+        [Locale.Russian]: "Бокки в панике от головокружения",
+        [Locale.Ukrainian]: "Боккі в паніці від запаморочення",
+        [Locale.Dutch]: "Bocchi duizelig in paniek",
+        [Locale.French]: "Bocchi étourdie et paniquée",
+        [Locale.German]: "Bocchi schwindelig in Panik",
+        [Locale.Polish]: "Bocchi oszołomiona w panice",
+        [Locale.SpanishES]: "Bocchi mareada y en pánico",
+        [Locale.SpanishLATAM]: "Bocchi mareada y en pánico",
+        [Locale.PortugueseBR]: "Bocchi tonta em pânico",
+        [Locale.Turkish]: "Bocchi baş dönmesiyle panikte",
+        [Locale.Italian]: "Bocchi stordita e in preda al panico",
+        [Locale.Indonesian]: "Bocchi pusing dan panik",
+        [Locale.Czech]: "Bocchi v panice, točí se jí hlava",
+        [Locale.Japanese]: "めまいでパニックのぼっち",
+        [Locale.Korean]: "어지러워 패닉인 봇치",
+        [Locale.ChineseCN]: "波奇晕眩恐慌",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottom],
     width: 1080,

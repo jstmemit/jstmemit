@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const stonks1: Template = {
     name: "stonks1",
-    displayName: "Stonks 1",
+    displayName: buildLocales("Stonks 1", {
+        [Locale.Russian]: "Stonks 1",
+        [Locale.Ukrainian]: "Stonks 1",
+        [Locale.Dutch]: "Stonks 1",
+        [Locale.French]: "Stonks 1",
+        [Locale.German]: "Stonks 1",
+        [Locale.Polish]: "Stonks 1",
+        [Locale.SpanishES]: "Stonks 1",
+        [Locale.SpanishLATAM]: "Stonks 1",
+        [Locale.PortugueseBR]: "Stonks 1",
+        [Locale.Turkish]: "Stonks 1",
+        [Locale.Italian]: "Stonks 1",
+        [Locale.Indonesian]: "Stonks 1",
+        [Locale.Czech]: "Stonks 1",
+        [Locale.Japanese]: "ストンクス 1",
+        [Locale.Korean]: "스통크스 1",
+        [Locale.ChineseCN]: "Stonks 1",
+    }),
     topics: [Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 1858,

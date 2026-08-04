@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenInspiration: Template = {
     name: "frierenInspiration",
-    displayName: "Frieren inspiration",
+    displayName: buildLocales("Frieren inspiration", {
+        [Locale.Russian]: "Вдохновение Фрирен",
+        [Locale.Ukrainian]: "Натхнення Фрірен",
+        [Locale.Dutch]: "Frieren inspiratie",
+        [Locale.French]: "Inspiration de Frieren",
+        [Locale.German]: "Frieren Inspiration",
+        [Locale.Polish]: "Inspiracja Frieren",
+        [Locale.SpanishES]: "Inspiración de Frieren",
+        [Locale.SpanishLATAM]: "Inspiración de Frieren",
+        [Locale.PortugueseBR]: "Inspiração da Frieren",
+        [Locale.Turkish]: "Frieren ilhamı",
+        [Locale.Italian]: "Ispirazione di Frieren",
+        [Locale.Indonesian]: "Inspirasi Frieren",
+        [Locale.Czech]: "Inspirace Frieren",
+        [Locale.Japanese]: "フリーレンのひらめき",
+        [Locale.Korean]: "프리렌의 영감",
+        [Locale.ChineseCN]: "芙莉莲的灵感",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 786,

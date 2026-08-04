@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const manLookingUp: Template = {
     name: "manLookingUp",
-    displayName: "Man looking up",
+    displayName: buildLocales("Man looking up", {
+        [Locale.Russian]: "Мужчина смотрит вверх",
+        [Locale.Ukrainian]: "Чоловік дивиться вгору",
+        [Locale.Dutch]: "Man kijkt omhoog",
+        [Locale.French]: "Homme regardant vers le haut",
+        [Locale.German]: "Mann blickt nach oben",
+        [Locale.Polish]: "Mężczyzna patrzący w górę",
+        [Locale.SpanishES]: "Hombre mirando hacia arriba",
+        [Locale.SpanishLATAM]: "Hombre mirando hacia arriba",
+        [Locale.PortugueseBR]: "Homem olhando para cima",
+        [Locale.Turkish]: "Yukarı bakan adam",
+        [Locale.Italian]: "Uomo che guarda in alto",
+        [Locale.Indonesian]: "Pria melihat ke atas",
+        [Locale.Czech]: "Muž dívající se nahoru",
+        [Locale.Japanese]: "見上げる男",
+        [Locale.Korean]: "위를 올려다보는 남자",
+        [Locale.ChineseCN]: "抬头看的男人",
+    }),
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTopWithBackground],
     width: 661,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const acNowKillHim: Template = {
     name: "acNowKillHim",
-    displayName: "AC Now kill him",
+    displayName: buildLocales("Now kill him", {
+        [Locale.Russian]: "Теперь убей его",
+        [Locale.Ukrainian]: "Тепер вбий його",
+        [Locale.Dutch]: "Dood hem nu",
+        [Locale.French]: "Maintenant, tue-le",
+        [Locale.German]: "Jetzt töte ihn",
+        [Locale.Polish]: "Teraz go zabij",
+        [Locale.SpanishES]: "Ahora mátalo",
+        [Locale.SpanishLATAM]: "Ahora mátalo",
+        [Locale.PortugueseBR]: "Agora mate-o",
+        [Locale.Turkish]: "Şimdi onu öldür",
+        [Locale.Italian]: "Ora uccidilo",
+        [Locale.Indonesian]: "Sekarang bunuh dia",
+        [Locale.Czech]: "Teď ho zabij",
+        [Locale.Japanese]: "今すぐ奴を殺せ",
+        [Locale.Korean]: "이제 그를 죽여",
+        [Locale.ChineseCN]: "现在杀了他",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
     types: [Type.TextTopWithBackground, Type.FaceImage, Type.DefaultText],
     width: 445,

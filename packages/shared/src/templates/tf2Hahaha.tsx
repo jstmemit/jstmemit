@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const tf2Hahaha: Template = {
     name: "tf2Hahaha",
-    displayName: "TF2 hahaha",
+    displayName: buildLocales("hahaha", {
+        [Locale.Russian]: "хахаха",
+        [Locale.Ukrainian]: "хахаха",
+        [Locale.Dutch]: "hahaha",
+        [Locale.French]: "hahaha",
+        [Locale.German]: "hahaha",
+        [Locale.Polish]: "hahaha",
+        [Locale.SpanishES]: "jajaja",
+        [Locale.SpanishLATAM]: "jajaja",
+        [Locale.PortugueseBR]: "hahaha",
+        [Locale.Turkish]: "hahaha",
+        [Locale.Italian]: "ahahah",
+        [Locale.Indonesian]: "hahaha",
+        [Locale.Czech]: "hahaha",
+        [Locale.Japanese]: "ハハハ",
+        [Locale.Korean]: "하하하",
+        [Locale.ChineseCN]: "哈哈哈",
+    }),
     topics: [Topic.TeamFortress2, Topic.Games, Topic.Reaction],
     types: [Type.FaceImage, Type.TextRight],
     width: 1732,

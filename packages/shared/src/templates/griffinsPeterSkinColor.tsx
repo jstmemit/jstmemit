@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterSkinColor: Template = {
     name: "griffinsPeterSkinColor",
-    displayName: "Griffins Peter skin color",
+    displayName: buildLocales("Peter skin color", {
+        [Locale.Russian]: "Цвет кожи Питера",
+        [Locale.Ukrainian]: "Колір шкіри Пітера",
+        [Locale.Dutch]: "Huidskleur van Peter",
+        [Locale.French]: "Couleur de peau de Peter",
+        [Locale.German]: "Peters Hautfarbe",
+        [Locale.Polish]: "Kolor skóry Petera",
+        [Locale.SpanishES]: "Color de piel de Peter",
+        [Locale.SpanishLATAM]: "Color de piel de Peter",
+        [Locale.PortugueseBR]: "Cor da pele do Peter",
+        [Locale.Turkish]: "Peter cilt rengi",
+        [Locale.Italian]: "Colore della pelle di Peter",
+        [Locale.Indonesian]: "Warna kulit Peter",
+        [Locale.Czech]: "Barva pleti Petera",
+        [Locale.Japanese]: "ピーターの肌の色",
+        [Locale.Korean]: "피터 피부색",
+        [Locale.ChineseCN]: "彼得肤色",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.FaceImage, Type.TwoOption],
     width: 1000,

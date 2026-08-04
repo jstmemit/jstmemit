@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaNotSureIfFry: Template = {
     name: "futuramaNotSureIfFry",
-    displayName: "Futurama Not sure if Fry",
+    displayName: buildLocales("Not sure if Fry", {
+        [Locale.Russian]: "Не уверен (Фрай)",
+        [Locale.Ukrainian]: "Не впевнений (Фрай)",
+        [Locale.Dutch]: "Niet zeker of Fry",
+        [Locale.French]: "Pas sûr (Fry)",
+        [Locale.German]: "Nicht sicher, ob Fry",
+        [Locale.Polish]: "Nie jestem pewien (Fry)",
+        [Locale.SpanishES]: "No estoy seguro (Fry)",
+        [Locale.SpanishLATAM]: "No estoy seguro (Fry)",
+        [Locale.PortugueseBR]: "Não tenho certeza (Fry)",
+        [Locale.Turkish]: "Emin değilim (Fry)",
+        [Locale.Italian]: "Non sono sicuro (Fry)",
+        [Locale.Indonesian]: "Tidak yakin (Fry)",
+        [Locale.Czech]: "Nejsem si jistý (Fry)",
+        [Locale.Japanese]: "フライ 疑いの目",
+        [Locale.Korean]: "확신이 안 서는 프라이",
+        [Locale.ChineseCN]: "不确定（弗莱）",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 603,

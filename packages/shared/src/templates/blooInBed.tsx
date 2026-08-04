@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blooInBed: Template = {
     name: "blooInBed",
-    displayName: "Bloo in bed",
+    displayName: buildLocales("Bloo in bed", {
+        [Locale.Russian]: "Блу в кровати",
+        [Locale.Ukrainian]: "Блу в ліжку",
+        [Locale.Dutch]: "Bloo in bed",
+        [Locale.French]: "Bloo au lit",
+        [Locale.German]: "Bloo im Bett",
+        [Locale.Polish]: "Bloo w łóżku",
+        [Locale.SpanishES]: "Bloo en la cama",
+        [Locale.SpanishLATAM]: "Bloo en la cama",
+        [Locale.PortugueseBR]: "Bloo na cama",
+        [Locale.Turkish]: "Bloo yatakta",
+        [Locale.Italian]: "Bloo a letto",
+        [Locale.Indonesian]: "Bloo di tempat tidur",
+        [Locale.Czech]: "Bloo v posteli",
+        [Locale.Japanese]: "ベッドのブルー",
+        [Locale.Korean]: "침대의 블루",
+        [Locale.ChineseCN]: "床上的布鲁",
+    }),
     topics: [Topic.Reaction, Topic.Cartoons],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 864,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const sfAnyaStudyingHard: Template = {
     name: "sfAnyaStudyingHard",
-    displayName: "SF Anya studying hard",
+    displayName: buildLocales("Anya studying hard", {
+        [Locale.Russian]: "Аня усердно учится",
+        [Locale.Ukrainian]: "Аня старанно вчиться",
+        [Locale.Dutch]: "Anya hard aan het studeren",
+        [Locale.French]: "Anya étudiant dur",
+        [Locale.German]: "Anya lernt fleißig",
+        [Locale.Polish]: "Anya pilnie się uczy",
+        [Locale.SpanishES]: "Anya estudiando duro",
+        [Locale.SpanishLATAM]: "Anya estudiando duro",
+        [Locale.PortugueseBR]: "Anya estudando muito",
+        [Locale.Turkish]: "Anya sıkı ders çalışıyor",
+        [Locale.Italian]: "Anya studia duramente",
+        [Locale.Indonesian]: "Anya belajar keras",
+        [Locale.Czech]: "Anya se pilně učí",
+        [Locale.Japanese]: "一生懸命勉強するアーニャ",
+        [Locale.Korean]: "열심히 공부하는 아냐",
+        [Locale.ChineseCN]: "阿尼亚努力学习",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.SpyFamily],
     types: [Type.TextBottomWithBackground],
     width: 447,

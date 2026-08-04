@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const sadMan: Template = {
     name: "sadMan",
-    displayName: "Sad man",
+    displayName: buildLocales("Sad man", {
+        [Locale.Russian]: "Грустный человек",
+        [Locale.Ukrainian]: "Сумний чоловік",
+        [Locale.Dutch]: "Verdrietige man",
+        [Locale.French]: "Homme triste",
+        [Locale.German]: "Trauriger Mann",
+        [Locale.Polish]: "Smutny mężczyzna",
+        [Locale.SpanishES]: "Hombre triste",
+        [Locale.SpanishLATAM]: "Hombre triste",
+        [Locale.PortugueseBR]: "Homem triste",
+        [Locale.Turkish]: "Üzgün adam",
+        [Locale.Italian]: "Uomo triste",
+        [Locale.Indonesian]: "Pria sedih",
+        [Locale.Czech]: "Smutný muž",
+        [Locale.Japanese]: "悲しい男",
+        [Locale.Korean]: "슬픈 남자",
+        [Locale.ChineseCN]: "悲伤的男人",
+    }),
     topics: [Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1600,
