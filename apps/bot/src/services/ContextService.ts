@@ -186,12 +186,12 @@ export class ContextService implements IContextService {
             return;
         }
 
-        const isRefreshed: boolean | undefined = await this._cacheService.get(`refresh:${channelId}:${guild.id}`);
+        const isRefreshed: boolean | undefined = await this._cacheService.get(`refresh:${channelId}`);
 
         if (!isRefreshed) {
             await Promise.all([this.saveEmojis(channelId, guild), this.saveStickers(channelId, guild)]);
 
-            await this._cacheService.set(`refresh:${channelId}:${guild.id}`, true, ms("1w"));
+            await this._cacheService.set(`refresh:${channelId}`, true, ms("1w"));
         }
     }
 
