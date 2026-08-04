@@ -157,7 +157,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Website",
 
         "milestones.heading": `Yay! {{count}} memes in **<#{{channelId}}>**!`,
-        "milestones.description": `None of this would exist if you talked about normal things.\nBelow are some stats about how you reacted to them.`,
+        "milestones.description": `Below are some stats about how you reacted to them.`,
         "milestones.nextGoal": "Next goal: {{currentGoal}}/{{nextGoal}} memes",
         "milestones.turnOffInSettings":
             "-# If you don't want to receive these messages you can disable them in **/settings**",
@@ -320,7 +320,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Сайт",
 
         "milestones.heading": `Ура! {{count}} мемов в **<#{{channelId}}>**!`,
-        "milestones.description": `Ничего этого не было бы, если бы вы говорили о нормальных вещах.\nНиже немного статистики о том, как вы на них реагировали.`,
+        "milestones.description": `Ниже немного статистики о том, как вы на них реагировали.`,
         "milestones.nextGoal": "Следующая цель: {{currentGoal}}/{{nextGoal}} мемов",
         "milestones.turnOffInSettings":
             "-# Если вы не хотите получать такие сообщения, их можно отключить в **/settings**",
@@ -478,7 +478,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Сайт",
 
         "milestones.heading": `Ура! {{count}} мемів у **<#{{channelId}}>**!`,
-        "milestones.description": `Нічого з цього не було б, якби ви говорили про нормальні речі.\nНижче трохи статистики про те, як ви на них реагували.`,
+        "milestones.description": `Нижче трохи статистики про те, як ви на них реагували.`,
         "milestones.nextGoal": "Наступна ціль: {{currentGoal}}/{{nextGoal}} мемів",
         "milestones.turnOffInSettings":
             "-# Якщо ви не хочете отримувати такі повідомлення, їх можна вимкнути в **/settings**",
@@ -638,7 +638,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Website",
 
         "milestones.heading": `Yes! {{count}} memes in **<#{{channelId}}>**!`,
-        "milestones.description": `Niks hiervan had bestaan als jullie het over normale dingen hadden gehad.\nHieronder wat stats over hoe jullie erop reageerden.`,
+        "milestones.description": `Hieronder wat stats over hoe jullie erop reageerden.`,
         "milestones.nextGoal": "Volgend doel: {{currentGoal}}/{{nextGoal}} memes",
         "milestones.turnOffInSettings":
             "-# Wil je deze berichten niet ontvangen, dan kun je ze uitzetten in **/settings**",
@@ -802,7 +802,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Site web",
 
         "milestones.heading": `Youpi ! {{count}} mèmes dans **<#{{channelId}}>** !`,
-        "milestones.description": `Rien de tout ça n'existerait si vous parliez de choses normales.\nVoici quelques stats sur la façon dont vous y avez réagi.`,
+        "milestones.description": `Voici quelques stats sur la façon dont vous y avez réagi.`,
         "milestones.nextGoal": "Prochain objectif : {{currentGoal}}/{{nextGoal}} mèmes",
         "milestones.turnOffInSettings":
             "-# Si vous ne voulez pas recevoir ces messages, vous pouvez les désactiver dans **/settings**",
@@ -962,7 +962,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Website",
 
         "milestones.heading": `Yay! {{count}} Memes in **<#{{channelId}}>**!`,
-        "milestones.description": `Nichts davon würde existieren, wenn ihr über normale Dinge reden würdet.\nUnten ein paar Statistiken dazu, wie ihr darauf reagiert habt.`,
+        "milestones.description": `Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt.`,
         "milestones.nextGoal": "Nächstes Ziel: {{currentGoal}}/{{nextGoal}} Memes",
         "milestones.turnOffInSettings":
             "-# Wenn du diese Nachrichten nicht bekommen willst, kannst du sie in **/settings** deaktivieren",
@@ -1120,7 +1120,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Strona",
 
         "milestones.heading": `Hurra! {{count}} memów w **<#{{channelId}}>**!`,
-        "milestones.description": `Nic z tego by nie powstało, gdybyście gadali o normalnych rzeczach.\nPoniżej trochę statystyk o tym, jak na nie reagowaliście.`,
+        "milestones.description": `Poniżej trochę statystyk o tym, jak na nie reagowaliście.`,
         "milestones.nextGoal": "Następny cel: {{currentGoal}}/{{nextGoal}} memów",
         "milestones.turnOffInSettings":
             "-# Jeśli nie chcesz dostawać takich wiadomości, możesz je wyłączyć w **/settings**",
@@ -1281,7 +1281,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Web",
 
         "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
-        "milestones.description": `Nada de esto existiría si hablarais de cosas normales.\nAbajo tienes algunas estadísticas de cómo reaccionasteis a ellos.`,
+        "milestones.description": `Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos.`,
         "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
         "milestones.turnOffInSettings":
             "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
@@ -1442,7 +1442,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Sitio web",
 
         "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
-        "milestones.description": `Nada de esto existiría si hablaran de cosas normales.\nAbajo hay algunas estadísticas de cómo reaccionaron a ellos.`,
+        "milestones.description": `Abajo hay algunas estadísticas de cómo reaccionaron a ellos.`,
         "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
         "milestones.turnOffInSettings":
             "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
@@ -1601,7 +1601,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Site",
 
         "milestones.heading": `Eba! {{count}} memes em **<#{{channelId}}>**!`,
-        "milestones.description": `Nada disso existiria se vocês falassem de coisas normais.\nAbaixo estão algumas estatísticas de como vocês reagiram a eles.`,
+        "milestones.description": `Abaixo estão algumas estatísticas de como vocês reagiram a eles.`,
         "milestones.nextGoal": "Próxima meta: {{currentGoal}}/{{nextGoal}} memes",
         "milestones.turnOffInSettings":
             "-# Se você não quiser receber essas mensagens, dá para desativá-las em **/settings**",
@@ -1760,7 +1760,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Web sitesi",
 
         "milestones.heading": `Yaşasın! **<#{{channelId}}>** kanalında {{count}} caps!`,
-        "milestones.description": `Normal şeylerden konuşsaydınız bunların hiçbiri olmazdı.\nAşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.`,
+        "milestones.description": `Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.`,
         "milestones.nextGoal": "Sonraki hedef: {{currentGoal}}/{{nextGoal}} caps",
         "milestones.turnOffInSettings": "-# Bu mesajları almak istemiyorsan **/settings** üzerinden kapatabilirsin",
 
@@ -1919,7 +1919,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Sito web",
 
         "milestones.heading": `Evviva! {{count}} meme in **<#{{channelId}}>**!`,
-        "milestones.description": `Niente di tutto questo esisterebbe se parlaste di cose normali.\nQui sotto qualche statistica su come ci avete reagito.`,
+        "milestones.description": `Qui sotto qualche statistica su come ci avete reagito.`,
         "milestones.nextGoal": "Prossimo obiettivo: {{currentGoal}}/{{nextGoal}} meme",
         "milestones.turnOffInSettings": "-# Se non vuoi ricevere questi messaggi, puoi disattivarli in **/settings**",
 
@@ -2075,7 +2075,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Situs web",
 
         "milestones.heading": `Yeay! {{count}} meme di **<#{{channelId}}>**!`,
-        "milestones.description": `Semua ini tidak akan ada kalau kalian ngobrolin hal-hal normal.\nDi bawah ada beberapa statistik soal cara kalian menanggapinya.`,
+        "milestones.description": `Di bawah ada beberapa statistik soal cara kalian menanggapinya.`,
         "milestones.nextGoal": "Target berikutnya: {{currentGoal}}/{{nextGoal}} meme",
         "milestones.turnOffInSettings":
             "-# Kalau tidak mau menerima pesan seperti ini, kamu bisa mematikannya di **/settings**",
@@ -2231,7 +2231,7 @@ export const locale: Partial<TranslationString> = {
         "help.button.website": "🌐 Web",
 
         "milestones.heading": `Hurá! {{count}} memů v **<#{{channelId}}>**!`,
-        "milestones.description": `Nic z toho by neexistovalo, kdybyste se bavili o normálních věcech.\nNíže je pár statistik o tom, jak jste na ně reagovali.`,
+        "milestones.description": `Níže je pár statistik o tom, jak jste na ně reagovali.`,
         "milestones.nextGoal": "Další cíl: {{currentGoal}}/{{nextGoal}} memů",
         "milestones.turnOffInSettings": "-# Pokud tyhle zprávy nechceš dostávat, můžeš je vypnout v **/settings**",
 
