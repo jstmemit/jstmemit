@@ -25,7 +25,7 @@ export class ImagesRepository extends IImagesRepository {
 
             await db.insert(imagesTable).values(image).onConflictDoUpdate({
                 target: imagesTable.imageUrl,
-                set: { imageUrl },
+                set: { timestamp, expiresAt },
             });
         } catch (error) {
             analytics.captureException(error);
