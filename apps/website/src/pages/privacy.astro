@@ -71,7 +71,7 @@ import Separator from "#/components/ui/Separator.astro";
 
             <Paragraph>
                 When a setting was changed using <b>/settings</b> command:<br />
-                <b>frequency, useAvatarsInMemes, turbo</b>
+                <b>frequency, useAvatarsInMemes, turbo, milestones</b>
             </Paragraph>
             <Paragraph>
                 They are used to change the bot's behaviour based on set settings. For example, if a server owner
@@ -109,6 +109,17 @@ import Separator from "#/components/ui/Separator.astro";
             <Paragraph>
                 Their transcription is used as text content when applied to meme templates. Speech-to-text happens using
                 a local Whisper model (see chapter 4)
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a voice message is generated from text:<br />
+                <b>channelId, voice, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to understand which voices are used for text-to-speech the most. Information about used
+                voices also appears in milestone messages.
             </Paragraph>
 
             <Separator variant="hr" />
