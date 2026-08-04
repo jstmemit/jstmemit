@@ -52,7 +52,7 @@ export class MemesRepository implements IMemesRepository {
                     fontFamilies,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache },
+                    images: { fetchCache: this._fetchCache, timeout: 12000 },
                     quality: turbo ? 35 : 45,
                     fps: 12,
                     scenes: [{ durationMs: animationDuration, node: template.element(props) }],
@@ -67,7 +67,7 @@ export class MemesRepository implements IMemesRepository {
                     quality: turbo ? 30 : 55,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache },
+                    images: { fetchCache: this._fetchCache, timeout: 12000 },
                     devicePixelRatio: 2,
                 });
             }
