@@ -43,6 +43,7 @@ export class VoiceService implements IVoiceService {
 
         return {
             audio: await this._narrateText(data.text, data.voiceId),
+            voice: data.voiceId,
         };
     }
 

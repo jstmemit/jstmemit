@@ -160,7 +160,7 @@ export class VoiceController implements IVoiceController {
             },
         });
 
-        await this._narrationsRepository.add(interaction.channelId, voice, new Date());
+        await this._narrationsRepository.add(interaction.channelId, result.voice, new Date());
 
         await interaction.followUp({
             files: [
