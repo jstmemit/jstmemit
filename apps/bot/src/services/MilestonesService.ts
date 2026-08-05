@@ -16,6 +16,7 @@ import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsReposit
 import type { INarrationsRepository } from "@jstmemit/db/interfaces/INarrationsRepository";
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import { analytics } from "@jstmemit/analytics";
 
 export class MilestonesService implements IMilestonesService {
     private readonly _generationsRepository: IGenerationsRepository;
@@ -90,6 +91,20 @@ export class MilestonesService implements IMilestonesService {
                 components,
             });
         }
+
+        analytics.capture({
+            event: "milestone_reached",
+            distinctId: interaction instanceof Message ? interaction.author.id : interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+                count,
+                likes,
+                dislikes,
+                templates,
+                voices,
+            },
+        });
     }
 
     private _getLocale(interaction: ChatInputCommandInteraction | ButtonInteraction | Message): Locale {
