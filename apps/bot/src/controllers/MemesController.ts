@@ -18,6 +18,7 @@ import {
     MessageFlags,
     type TextBasedChannel,
     type ApplicationCommandOptionChoiceData,
+    type AttachmentPayload,
 } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
 import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
@@ -265,15 +266,7 @@ export class MemesController implements IMemesController {
                     message = this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id);
                     break;
                 default:
-                    analytics.captureException(error);
-                    logger.emit({
-                        severityText: "error",
-                        body: "generate_meme.job.failed",
-                        attributes: {
-                            trigger,
-                            ...this._getTelemetryProperties(interaction),
-                        },
-                    });
+                    this._captureMemeGenerationError(error, interaction, trigger);
                     message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
             }
 
@@ -353,14 +346,7 @@ export class MemesController implements IMemesController {
                 files: this._getMemeAttachment(jobResult),
             });
         } catch (error) {
-            analytics.captureException(error);
-            logger.emit({
-                severityText: "error",
-                body: "generate_meme.job.failed",
-                attributes: {
-                    ...this._getTelemetryProperties(interaction),
-                },
-            });
+            this._captureMemeGenerationError(error, interaction, "custom");
             await interaction.editReply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
             });
@@ -410,14 +396,7 @@ export class MemesController implements IMemesController {
                 files: this._getMemeAttachment(jobResult),
             });
         } catch (error) {
-            analytics.captureException(error);
-            logger.emit({
-                severityText: "error",
-                body: "generate_meme.job.failed",
-                attributes: {
-                    ...this._getTelemetryProperties(interaction),
-                },
-            });
+            this._captureMemeGenerationError(error, interaction, "context");
             await interaction.editReply({
                 components: [this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id)],
                 flags: MessageFlags.IsComponentsV2,
@@ -722,13 +701,35 @@ export class MemesController implements IMemesController {
         return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
     }
 
-    private _getMemeAttachment(result: MemeGenerationResult) {
+    private _getMemeAttachment(result: MemeGenerationResult): AttachmentPayload[] {
         return [
             {
                 attachment: Buffer.from(result.png, "base64"),
                 name: "meme.webp",
             },
         ];
+    }
+
+    private _captureMemeGenerationError(
+        error: unknown,
+        interaction:
+            | MessageContextMenuCommandInteraction
+            | UserContextMenuCommandInteraction
+            | ChatInputCommandInteraction
+            | ButtonInteraction
+            | Message
+            | ModalSubmitInteraction,
+        trigger?: MemeGenerationTrigger,
+    ): void {
+        analytics.captureException(error);
+        logger.emit({
+            severityText: "error",
+            body: "generate_meme.job.failed",
+            attributes: {
+                trigger,
+                ...this._getTelemetryProperties(interaction),
+            },
+        });
     }
 
     private async _addVoiceTranscriptionJob(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
