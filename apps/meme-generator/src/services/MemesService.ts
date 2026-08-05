@@ -219,7 +219,7 @@ export class MemesService implements IMemesService {
             return undefined;
         }
 
-        if (channelTexts.length <= 1 || channelImages.length <= 1) {
+        if (channelTexts.length <= 1 || (templateImages.length > 0 && channelImages.length <= 1)) {
             logger.emit({
                 severityText: "warn",
                 body: "generate_meme.context.insufficient",
