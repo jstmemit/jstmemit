@@ -39,6 +39,7 @@ import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscr
 import { MilestonesService } from "#/services/MilestonesService.ts";
 import { NarrationsRepository } from "@jstmemit/db/repositories/NarrationsRepository";
 import { AutocompleteService } from "#/services/AutocompleteService.ts";
+import { AutocompleteController } from "#/controllers/AutocompleteController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -95,6 +96,7 @@ container.register({
     milestonesService: asClass(MilestonesService).singleton(),
     narrationsRepository: asClass(NarrationsRepository).singleton(),
     autocompleteService: asClass(AutocompleteService).singleton(),
+    autocompleteController: asClass(AutocompleteController).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");

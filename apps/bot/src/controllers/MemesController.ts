@@ -9,7 +9,6 @@ import {
     type ContainerBuilder,
     type ActionRowBuilder,
     type ButtonBuilder,
-    type AutocompleteInteraction,
     type ChatInputCommandInteraction,
     ChannelType,
     Message,
@@ -17,7 +16,6 @@ import {
     Locale,
     MessageFlags,
     type TextBasedChannel,
-    type ApplicationCommandOptionChoiceData,
     type AttachmentPayload,
 } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -42,7 +40,6 @@ import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBot
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
-import type { IAutocompleteService } from "#/interfaces/IAutocompleteService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -56,7 +53,6 @@ export class MemesController implements IMemesController {
     private readonly _modalsService: IModalsService;
     private readonly _milestonesService: IMilestonesService;
     private readonly _contextService: IContextService;
-    private readonly _autocompleteService: IAutocompleteService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -70,7 +66,6 @@ export class MemesController implements IMemesController {
         modalsService: IModalsService,
         milestonesService: IMilestonesService,
         contextService: IContextService,
-        autocompleteService: IAutocompleteService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -83,7 +78,6 @@ export class MemesController implements IMemesController {
         this._modalsService = modalsService;
         this._milestonesService = milestonesService;
         this._contextService = contextService;
-        this._autocompleteService = autocompleteService;
     }
 
     /**
@@ -419,26 +413,6 @@ export class MemesController implements IMemesController {
         );
 
         await interaction.showModal(modal);
-    }
-
-    /**
-     * Searches for templates with a given text
-     * in their name,displayName, topics in all languages
-     * and sends them back to autocomplete
-     *
-     * @param interaction
-     *
-     * @author Kyrylo Maliuha & Oleksii Sych
-     */
-    public async handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void> {
-        const focused: string = interaction.options.getFocused().toLowerCase();
-
-        const matches: ApplicationCommandOptionChoiceData[] = this._autocompleteService.getTemplateMatches(
-            focused,
-            interaction.locale,
-        );
-
-        await interaction.respond(matches);
     }
 
     private async _getTemplate(
