@@ -1,8 +1,9 @@
 import type { IAutocompleteService } from "#/interfaces/IAutocompleteService.ts";
-import { type ApplicationCommandOptionChoiceData, Locale } from "discord.js";
+import { Locale } from "discord.js";
+import { type ApplicationCommandOptionChoiceData } from "discord.js";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { type TemplateTopic, TopicLocalizationMap } from "@jstmemit/shared/models/TemplateTopic";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { isNonNullish } from "remeda";
 
 export class AutocompleteService implements IAutocompleteService {
     private readonly _templatesRepository: ITemplatesRepository;
@@ -12,40 +13,38 @@ export class AutocompleteService implements IAutocompleteService {
     }
 
     public getTemplateMatches(query: string, locale: Locale): ApplicationCommandOptionChoiceData[] {
-        const templates: Template[] = this._templatesRepository.getAll();
+        const templates: Template[] = this._templatesRepository.findTemplates(query);
+        const matches: ApplicationCommandOptionChoiceData[] = templates.map(
+            (template: Template): ApplicationCommandOptionChoiceData => this._toChoice(template, locale),
+        );
 
-        return templates
-            .filter((template: Template): boolean => {
-                const matchesName: boolean = template.name.toLowerCase().includes(query);
-                const matchesDisplayName: boolean = Object.values(template.displayName).some(
-                    (localizedName: string | null) => localizedName?.toLowerCase().includes(query) ?? false,
-                );
-                const matchesTopics: boolean = template.topics.some((topic: TemplateTopic) => {
-                    const topicLocalizations = TopicLocalizationMap[topic];
-                    return topicLocalizations
-                        ? Object.values(topicLocalizations).some(
-                              (localizedTopic: string | null) => localizedTopic?.toLowerCase().includes(query) ?? false,
-                          )
-                        : false;
-                });
+        return this._sortMatches(matches, locale);
+    }
 
-                return Boolean(matchesName || matchesDisplayName || matchesTopics);
-            })
-            .map((template: Template): ApplicationCommandOptionChoiceData => {
-                const localizedName: string =
-                    template.displayName[locale] ??
-                    template.displayName[Locale.EnglishUS] ??
-                    Object.values(template.displayName)[0] ??
-                    template.name;
+    private _localizeName(template: Template, locale: Locale): string {
+        return (
+            template.displayName[locale] ??
+            template.displayName[Locale.EnglishUS] ??
+            Object.values(template.displayName).find(isNonNullish) ??
+            template.name
+        );
+    }
 
-                return {
-                    name: localizedName,
-                    nameLocalizations: template.displayName,
-                    value: template.name,
-                };
-            })
-            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
-                a.name.localeCompare(b.name),
+    private _toChoice(template: Template, locale: Locale): ApplicationCommandOptionChoiceData {
+        return {
+            name: this._localizeName(template, locale),
+            nameLocalizations: template.displayName,
+            value: template.name,
+        };
+    }
+
+    private _sortMatches(
+        matches: ApplicationCommandOptionChoiceData[],
+        locale: Locale,
+    ): ApplicationCommandOptionChoiceData[] {
+        return matches
+            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData): number =>
+                a.name.localeCompare(b.name, locale),
             )
             .slice(0, 25);
     }
