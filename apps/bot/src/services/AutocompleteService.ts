@@ -11,6 +11,16 @@ export class AutocompleteService implements IAutocompleteService {
         this._templatesRepository = templatesRepository;
     }
 
+    /**
+     * Finds templates that match the query, converts them
+     * into an array of Discord's autocomplete match options,
+     * sorts and returns them
+     *
+     * @param query
+     * @param locale
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     public getTemplateMatches(query: string, locale: Locale): ApplicationCommandOptionChoiceData[] {
         const templates: Template[] = this._templatesRepository.findTemplates(query);
         const matches: ApplicationCommandOptionChoiceData[] = this._convertTemplatesIntoMatches(templates, locale);
@@ -18,10 +28,29 @@ export class AutocompleteService implements IAutocompleteService {
         return this._sortTemplateMatches(matches, locale);
     }
 
+    /**
+     * Tries to get a localized display name and fallbacks
+     * to using template name if it doesn't exist
+     *
+     * @param template
+     * @param locale
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _localizeTemplateName(template: Template, locale: Locale): string {
         return template.displayName[locale] || template.name;
     }
 
+    /**
+     * Makes an array of autocomplete matches from an array of templates
+     *
+     * @param templates
+     * @param locale
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _convertTemplatesIntoMatches(templates: Template[], locale: Locale): ApplicationCommandOptionChoiceData[] {
         return templates.map((template: Template): ApplicationCommandOptionChoiceData => {
             return {
@@ -31,6 +60,16 @@ export class AutocompleteService implements IAutocompleteService {
         });
     }
 
+    /**
+     * Sorts matches and returns a slice with
+     * 25 of them or less
+     *
+     * @param matches
+     * @param locale
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _sortTemplateMatches(
         matches: ApplicationCommandOptionChoiceData[],
         locale: Locale,
