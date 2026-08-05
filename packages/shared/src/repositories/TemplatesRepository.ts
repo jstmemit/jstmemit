@@ -782,24 +782,69 @@ export class TemplatesRepository implements ITemplatesRepository {
         ];
     }
 
+    /**
+     * Puts all localizations into an array of strings
+     * and returns it
+     *
+     * @param map
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _getLocalizedValues(map: LocalizationMap): string[] {
         return Object.values(map).filter(isNonNullish);
     }
 
+    /**
+     * Checks if a lowercased value includes searched string
+     *
+     * @param value
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _matchesValue(value: string, search: string): boolean {
         return value.toLowerCase().includes(search);
     }
 
+    /**
+     * Checks if a template has searched name
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _matchesName(template: Template, search: string): boolean {
         return this._matchesValue(template.name, search);
     }
 
+    /**
+     * Checks if a template has searched display name
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _matchesDisplayName(template: Template, search: string): boolean {
         return this._getLocalizedValues(template.displayName).some((localizedName: string): boolean =>
             this._matchesValue(localizedName, search),
         );
     }
 
+    /**
+     * Checks if a template has searched topic
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     private _matchesTopics(template: Template, search: string): boolean {
         return template.topics.some((topic: TemplateTopic): boolean =>
             this._getLocalizedValues(TopicLocalizationMap[topic]).some((localizedTopic: string): boolean =>
@@ -808,6 +853,13 @@ export class TemplatesRepository implements ITemplatesRepository {
         );
     }
 
+    /**
+     * Returns all matching templates by name, display name and topics
+     *
+     * @param query
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     public findTemplates(query: string): Template[] {
         const search: string = query.toLowerCase();
         return this.getAll().filter(
