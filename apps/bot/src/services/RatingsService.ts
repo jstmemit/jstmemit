@@ -1,16 +1,16 @@
 import { ActionRowBuilder, ButtonBuilder, type ButtonInteraction, ButtonStyle } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import ms from "ms";
 
 export class RatingsService implements IRatingsService {
-    // doesn't have to persist because template analytics is stored in database anyway
-    // and who exactly voted doesn't matter that much
-    private _ratings: Map<string, Set<string>> = new Map();
-
     private readonly _ratingsRepository: IRatingsRepository;
+    private readonly _cacheService: ICacheService;
 
-    public constructor(ratingsRepository: IRatingsRepository) {
+    public constructor(ratingsRepository: IRatingsRepository, cacheService: ICacheService) {
         this._ratingsRepository = ratingsRepository;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -19,26 +19,32 @@ export class RatingsService implements IRatingsService {
      *
      * @param userId
      * @param messageId
+     * @param channelId
      * @param rating
      *
      * @author Kyrylo Maliuha
      */
-    public async addRating(userId: string, messageId: string, rating: "like" | "dislike"): Promise<boolean> {
-        const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
+    public async addRating(
+        userId: string,
+        messageId: string,
+        channelId: string,
+        rating: "like" | "dislike",
+    ): Promise<boolean> {
+        const alreadyRated: boolean | undefined = await this._cacheService.get(`rating:${messageId}:${userId}`);
 
         if (alreadyRated) {
             return false;
         }
 
         if (rating === "like") {
-            await this._ratingsRepository.addLikeRating(messageId);
+            await this._ratingsRepository.addLikeRating(messageId, channelId);
         }
 
         if (rating === "dislike") {
-            await this._ratingsRepository.addDislikeRating(messageId);
+            await this._ratingsRepository.addDislikeRating(messageId, channelId);
         }
 
-        this._ratings.get(messageId)?.add(userId);
+        await this._cacheService.set(`rating:${messageId}:${userId}`, true, ms("1d"));
 
         return true;
     }
@@ -92,28 +98,5 @@ export class RatingsService implements IRatingsService {
         await interaction.editReply({
             components: [this.constructRatingButtons(likes, dislikes, generationId)],
         });
-    }
-
-    /**
-     * Gets a Set of users who rated the meme with passed messageId,
-     * if Set doesn't exist returns false (didn't rate) and creates one.
-     * If exists, checks if a passed userId is there and returns true (rated)
-     * if it is.
-     *
-     * @param userId
-     * @param messageId
-     * @private
-     *
-     * @author Kyrylo Maliuha
-     */
-    private _checkIfUserRated(userId: string, messageId: string): boolean {
-        const userRatings: Set<string> | undefined = this._ratings.get(messageId);
-
-        if (!userRatings) {
-            this._ratings.set(messageId, new Set());
-            return false;
-        }
-
-        return userRatings.has(userId);
     }
 }

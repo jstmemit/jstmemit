@@ -15,20 +15,24 @@ import { analytics } from "@jstmemit/analytics";
 import type { Job, Queue, QueueEvents } from "bullmq";
 import type { TextNarrationJob } from "@jstmemit/shared/models/TextNarrationJob";
 import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationResult";
+import type { INarrationsRepository } from "@jstmemit/db/interfaces/INarrationsRepository";
 
 export class VoiceController implements IVoiceController {
     private readonly _textNarrationQueue: Queue<TextNarrationJob, TextNarrationResult>;
     private readonly _textNarrationQueueEvents: QueueEvents;
     private readonly _componentsService: IComponentsService;
+    private readonly _narrationsRepository: INarrationsRepository;
 
     public constructor(
         componentsService: IComponentsService,
         textNarrationQueue: Queue<TextNarrationJob, TextNarrationResult>,
         textNarrationQueueEvents: QueueEvents,
+        narrationsRepository: INarrationsRepository,
     ) {
         this._componentsService = componentsService;
         this._textNarrationQueue = textNarrationQueue;
         this._textNarrationQueueEvents = textNarrationQueueEvents;
+        this._narrationsRepository = narrationsRepository;
     }
 
     public async handleNarrateTextInteraction(
@@ -155,6 +159,8 @@ export class VoiceController implements IVoiceController {
                 voice,
             },
         });
+
+        await this._narrationsRepository.add(interaction.channelId, voice, new Date());
 
         await interaction.followUp({
             files: [

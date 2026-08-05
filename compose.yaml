@@ -85,8 +85,12 @@ services:
         depends_on:
             redis:
                 condition: service_healthy
+            redis-cache:
+                condition: service_healthy
             sqld:
-                condition: service_started
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
 
     website:
         image: ghcr.io/jstmemit/website
@@ -120,8 +124,12 @@ services:
         depends_on:
             redis:
                 condition: service_healthy
+            redis-cache:
+                condition: service_healthy
             sqld:
-                condition: service_started
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
 
     voice:
         image: ghcr.io/jstmemit/voice
@@ -139,15 +147,22 @@ services:
             resources:
                 limits: { cpus: "1.5", memory: 1g }
         depends_on:
+            sqld:
+                condition: service_started
             redis:
                 condition: service_healthy
-            sqld:
+            redis-cache:
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
+            kokoro:
+                condition: service_healthy
+            whisper:
                 condition: service_started
 
     whisper:
         image: hwdsl2/whisper-server@sha256:120e4b7835898715d97b16e54e991e5226535fdfad506863a3b9cd4dd6d6377f
         logging: *default-logging
-        container_name: whisper
         restart: unless-stopped
         deploy:
             resources:

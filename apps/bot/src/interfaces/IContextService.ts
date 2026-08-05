@@ -1,4 +1,4 @@
-import type { Attachment, Collection } from "discord.js";
+import type { Attachment, Collection, Guild, Poll } from "discord.js";
 
 export abstract class IContextService {
     public abstract saveContent(messageId: string, channelId: string, content: string): Promise<void>;
@@ -14,4 +14,12 @@ export abstract class IContextService {
     public abstract saveGif(messageId: string, channelId: string, content: string): Promise<void>;
 
     public abstract saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void>;
+
+    public abstract savePoll(messageId: string, channelId: string, poll: Poll): Promise<void>;
+
+    public abstract saveEmojis(channelId: string, guild: Guild): Promise<void>;
+
+    public abstract saveStickers(channelId: string, guild: Guild): Promise<void>;
+
+    public abstract checkAndFetchGuildAssets(channelId: string, enabled: boolean, guild: Guild | null): Promise<void>;
 }

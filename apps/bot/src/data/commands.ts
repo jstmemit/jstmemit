@@ -1,5 +1,8 @@
-import { voicesRepository } from "#/container.ts";
+import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
 import type { Voice } from "@jstmemit/shared/models/Voice";
+import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
+
+const voicesRepository: IVoicesRepository = new VoicesRepository();
 
 export const commands = [
     {

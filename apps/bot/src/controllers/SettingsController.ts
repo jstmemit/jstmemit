@@ -246,6 +246,57 @@ export class SettingsController implements ISettingsController {
     }
 
     /**
+     * Handles changing of the milestone messages
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleMilestonesSelect(interaction: StringSelectMenuInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const old: boolean = channel.milestones;
+            channel.milestones = interaction.values[0] === "true";
+
+            await this._channelsService.setChannel(interaction.channelId, channel);
+
+            analytics.capture({
+                event: "milestones_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    language: interaction.locale,
+                    old: old,
+                    new: channel.milestones,
+                    enabled: channel.enabled,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    turbo: channel.turbo,
+                    frequency: channel.frequency,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
+                },
+            });
+
+            await this._replyWithSettings(interaction, channel);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+                action: "milestones",
+            });
+        }
+    }
+
+    /**
      * Handles changing if the bot can use avatars
      * in memes that are generated in the channel
      *
@@ -317,6 +368,7 @@ export class SettingsController implements ISettingsController {
                 channel.frequency,
                 channel.turbo,
                 channel.useAvatarsInMemes,
+                channel.milestones,
             ),
             this._componentsService.getSettingsFooterMessageComponent(interaction.locale),
         ]);

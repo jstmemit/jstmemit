@@ -91,6 +91,14 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot will use avatars for memes (recommended)",
         "settings.avatars.no.label": "No",
         "settings.avatars.no.description": "Bot won't use avatars for memes",
+        "settings.milestones.heading": "Milestones",
+        "settings.milestones.body":
+            "Get a celebration recap when the channel hits a meme count milestone.\nSomething similar to a Spotify Wrapped, but about memes.",
+        "settings.milestones.yes.label": "Yes",
+        "settings.milestones.yes.description":
+            "Bot will send a recap every time the channel hits a meme count milestone.",
+        "settings.milestones.no.label": "No",
+        "settings.milestones.no.description": "Turn off milestone notifications to keep channel quiet",
         "settings.footer.body": "Want to remove all message data about this channel?",
         "settings.footer.deleteButton": "Delete all data",
         "feedback.submit.heading": "💬 Feedback submitted!",
@@ -147,6 +155,17 @@ export const locale: Partial<TranslationString> = {
         "help.button.faq": "❓ Frequently asked questions",
         "help.button.features": "✨ Features list",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yay! {{count}} memes in **<#{{channelId}}>**!`,
+        "milestones.description": `Below are some stats about how you reacted to them.`,
+        "milestones.nextGoal": "Next goal: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# If you don't want to receive these messages you can disable them in **/settings**",
+
+        "stats.likes": "Likes: {{count}}",
+        "stats.dislikes": "Dislikes: {{count}}",
+        "stats.templates": "Templates used: {{count}}",
+        "stats.voices": "Voices used: {{count}}",
     },
 
     [Locale.Russian]: {
@@ -237,6 +256,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Бот будет использовать аватары для мемов (рекомендуется)",
         "settings.avatars.no.label": "Нет",
         "settings.avatars.no.description": "Бот не будет использовать аватары для мемов",
+        "settings.milestones.heading": "Достижения",
+        "settings.milestones.body":
+            "Итоги канала, когда он берёт новую отметку по мемам.\nЧто-то вроде Spotify Wrapped, только про мемы.",
+        "settings.milestones.yes.label": "Да",
+        "settings.milestones.yes.description": "Бот пришлёт итоги, когда канал возьмёт новую отметку",
+        "settings.milestones.no.label": "Нет",
+        "settings.milestones.no.description": "Отключить их, чтобы в канале было тихо",
         "settings.footer.body": "Хотите удалить все данные сообщений этого канала?",
         "settings.footer.deleteButton": "Удалить все данные",
         "feedback.submit.heading": "💬 Идея отправлена!",
@@ -292,6 +318,17 @@ export const locale: Partial<TranslationString> = {
             "**Используйте `/custom`!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
         "help.button.addJstmemit": "🔗 Добавить Jstmemit",
         "help.button.website": "🌐 Сайт",
+
+        "milestones.heading": `Ура! {{count}} мемов в **<#{{channelId}}>**!`,
+        "milestones.description": `Ниже немного статистики о том, как вы на них реагировали.`,
+        "milestones.nextGoal": "Следующая цель: {{currentGoal}}/{{nextGoal}} мемов",
+        "milestones.turnOffInSettings":
+            "-# Если вы не хотите получать такие сообщения, их можно отключить в **/settings**",
+
+        "stats.likes": "Лайки: {{count}}",
+        "stats.dislikes": "Дизлайки: {{count}}",
+        "stats.templates": "Использовано шаблонов: {{count}}",
+        "stats.voices": "Использовано голосов: {{count}}",
     },
     [Locale.Ukrainian]: {
         "enable.heading.enabled": "🎉 Бот готовий до роботи!",
@@ -377,6 +414,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Бот буде використовувати аватари для мемів (рекомендовано)",
         "settings.avatars.no.label": "Ні",
         "settings.avatars.no.description": "Бот не буде використовувати аватари для мемів",
+        "settings.milestones.heading": "Досягнення",
+        "settings.milestones.body":
+            "Підсумки каналу, коли він бере нову позначку за мемами.\nЩось на кшталт Spotify Wrapped, тільки про меми.",
+        "settings.milestones.yes.label": "Так",
+        "settings.milestones.yes.description": "Бот надішле підсумки, коли канал візьме нову позначку",
+        "settings.milestones.no.label": "Ні",
+        "settings.milestones.no.description": "Вимкнути їх, щоб у каналі було тихо",
         "settings.footer.body": "Хочете видалити всі дані повідомлень цього каналу?",
         "settings.footer.deleteButton": "Видалити всі дані",
         "feedback.submit.heading": "💬 Ідею відправлено!",
@@ -432,6 +476,17 @@ export const locale: Partial<TranslationString> = {
             "**Використовуйте `/custom`!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
         "help.button.addJstmemit": "🔗 Додати Jstmemit",
         "help.button.website": "🌐 Сайт",
+
+        "milestones.heading": `Ура! {{count}} мемів у **<#{{channelId}}>**!`,
+        "milestones.description": `Нижче трохи статистики про те, як ви на них реагували.`,
+        "milestones.nextGoal": "Наступна ціль: {{currentGoal}}/{{nextGoal}} мемів",
+        "milestones.turnOffInSettings":
+            "-# Якщо ви не хочете отримувати такі повідомлення, їх можна вимкнути в **/settings**",
+
+        "stats.likes": "Лайки: {{count}}",
+        "stats.dislikes": "Дизлайки: {{count}}",
+        "stats.templates": "Використано шаблонів: {{count}}",
+        "stats.voices": "Використано голосів: {{count}}",
     },
     [Locale.Dutch]: {
         "enable.heading.enabled": "🎉 De bot is er klaar voor!",
@@ -520,6 +575,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "De bot gebruikt avatars voor memes (aanbevolen)",
         "settings.avatars.no.label": "Nee",
         "settings.avatars.no.description": "De bot gebruikt geen avatars voor memes",
+        "settings.milestones.heading": "Mijlpalen",
+        "settings.milestones.body":
+            "Een recap als het kanaal een meme-mijlpaal haalt.\nEen soort Spotify Wrapped, maar dan over memes.",
+        "settings.milestones.yes.label": "Ja",
+        "settings.milestones.yes.description": "De bot stuurt een recap als het kanaal een mijlpaal haalt",
+        "settings.milestones.no.label": "Nee",
+        "settings.milestones.no.description": "Zet ze uit om het kanaal rustig te houden",
         "settings.footer.body": "Wil je alle berichtdata van dit kanaal verwijderen?",
         "settings.footer.deleteButton": "Alle data verwijderen",
         "feedback.submit.heading": "💬 Feedback verstuurd!",
@@ -574,6 +636,17 @@ export const locale: Partial<TranslationString> = {
             "**Gebruik `/custom`!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
         "help.button.addJstmemit": "🔗 Jstmemit toevoegen",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yes! {{count}} memes in **<#{{channelId}}>**!`,
+        "milestones.description": `Hieronder wat stats over hoe jullie erop reageerden.`,
+        "milestones.nextGoal": "Volgend doel: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Wil je deze berichten niet ontvangen, dan kun je ze uitzetten in **/settings**",
+
+        "stats.likes": "Likes: {{count}}",
+        "stats.dislikes": "Dislikes: {{count}}",
+        "stats.templates": "Gebruikte templates: {{count}}",
+        "stats.voices": "Gebruikte stemmen: {{count}}",
     },
     [Locale.French]: {
         "enable.heading.enabled": "🎉 Le bot est prêt !",
@@ -663,6 +736,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Le bot utilisera les avatars pour les mèmes (recommandé)",
         "settings.avatars.no.label": "Non",
         "settings.avatars.no.description": "Le bot n'utilisera pas les avatars pour les mèmes",
+        "settings.milestones.heading": "Paliers",
+        "settings.milestones.body":
+            "Un récap quand le salon atteint un palier de mèmes.\nUn peu comme un Spotify Wrapped, mais sur les mèmes.",
+        "settings.milestones.yes.label": "Oui",
+        "settings.milestones.yes.description": "Le bot enverra un récap quand le salon atteint un palier",
+        "settings.milestones.no.label": "Non",
+        "settings.milestones.no.description": "Les désactiver pour garder le salon calme",
         "settings.footer.body": "Vous voulez supprimer toutes les données de messages de ce salon ?",
         "settings.footer.deleteButton": "Supprimer toutes les données",
         "feedback.submit.heading": "💬 Avis envoyé !",
@@ -720,6 +800,17 @@ export const locale: Partial<TranslationString> = {
             "**Utilisez `/custom` !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
         "help.button.addJstmemit": "🔗 Ajouter Jstmemit",
         "help.button.website": "🌐 Site web",
+
+        "milestones.heading": `Youpi ! {{count}} mèmes dans **<#{{channelId}}>** !`,
+        "milestones.description": `Voici quelques stats sur la façon dont vous y avez réagi.`,
+        "milestones.nextGoal": "Prochain objectif : {{currentGoal}}/{{nextGoal}} mèmes",
+        "milestones.turnOffInSettings":
+            "-# Si vous ne voulez pas recevoir ces messages, vous pouvez les désactiver dans **/settings**",
+
+        "stats.likes": "J'aime : {{count}}",
+        "stats.dislikes": "Je n'aime pas : {{count}}",
+        "stats.templates": "Modèles utilisés : {{count}}",
+        "stats.voices": "Voix utilisées : {{count}}",
     },
     [Locale.German]: {
         "enable.heading.enabled": "🎉 Der Bot ist bereit!",
@@ -807,6 +898,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Der Bot verwendet Avatare für Memes (empfohlen)",
         "settings.avatars.no.label": "Nein",
         "settings.avatars.no.description": "Der Bot verwendet keine Avatare für Memes",
+        "settings.milestones.heading": "Meilensteine",
+        "settings.milestones.body":
+            "Ein Rückblick, wenn der Kanal einen Meme-Meilenstein erreicht.\nSo ähnlich wie Spotify Wrapped, nur mit Memes.",
+        "settings.milestones.yes.label": "Ja",
+        "settings.milestones.yes.description": "Der Bot schickt einen Rückblick, wenn ein Meilenstein erreicht ist",
+        "settings.milestones.no.label": "Nein",
+        "settings.milestones.no.description": "Ausschalten, damit der Kanal ruhig bleibt",
         "settings.footer.body": "Möchtest du alle Nachrichtendaten dieses Kanals entfernen?",
         "settings.footer.deleteButton": "Alle Daten löschen",
         "feedback.submit.heading": "💬 Feedback abgeschickt!",
@@ -862,6 +960,17 @@ export const locale: Partial<TranslationString> = {
             "**Nutze `/custom`!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
         "help.button.addJstmemit": "🔗 Jstmemit hinzufügen",
         "help.button.website": "🌐 Website",
+
+        "milestones.heading": `Yay! {{count}} Memes in **<#{{channelId}}>**!`,
+        "milestones.description": `Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt.`,
+        "milestones.nextGoal": "Nächstes Ziel: {{currentGoal}}/{{nextGoal}} Memes",
+        "milestones.turnOffInSettings":
+            "-# Wenn du diese Nachrichten nicht bekommen willst, kannst du sie in **/settings** deaktivieren",
+
+        "stats.likes": "Gefällt mir: {{count}}",
+        "stats.dislikes": "Gefällt mir nicht: {{count}}",
+        "stats.templates": "Verwendete Vorlagen: {{count}}",
+        "stats.voices": "Verwendete Stimmen: {{count}}",
     },
     [Locale.Polish]: {
         "enable.heading.enabled": "🎉 Bot jest gotowy!",
@@ -947,6 +1056,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot będzie używać awatarów do memów (zalecane)",
         "settings.avatars.no.label": "Nie",
         "settings.avatars.no.description": "Bot nie będzie używać awatarów do memów",
+        "settings.milestones.heading": "Kamienie milowe",
+        "settings.milestones.body":
+            "Podsumowanie, gdy kanał osiągnie kolejny próg memów.\nCoś jak Spotify Wrapped, tylko o memach.",
+        "settings.milestones.yes.label": "Tak",
+        "settings.milestones.yes.description": "Bot wyśle podsumowanie, gdy kanał osiągnie kolejny próg",
+        "settings.milestones.no.label": "Nie",
+        "settings.milestones.no.description": "Wyłącz je, żeby na kanale było cicho",
         "settings.footer.body": "Chcesz usunąć wszystkie dane wiadomości tego kanału?",
         "settings.footer.deleteButton": "Usuń wszystkie dane",
         "feedback.submit.heading": "💬 Opinia wysłana!",
@@ -1002,6 +1118,17 @@ export const locale: Partial<TranslationString> = {
             "**Użyj `/custom`!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
         "help.button.addJstmemit": "🔗 Dodaj Jstmemit",
         "help.button.website": "🌐 Strona",
+
+        "milestones.heading": `Hurra! {{count}} memów w **<#{{channelId}}>**!`,
+        "milestones.description": `Poniżej trochę statystyk o tym, jak na nie reagowaliście.`,
+        "milestones.nextGoal": "Następny cel: {{currentGoal}}/{{nextGoal}} memów",
+        "milestones.turnOffInSettings":
+            "-# Jeśli nie chcesz dostawać takich wiadomości, możesz je wyłączyć w **/settings**",
+
+        "stats.likes": "Polubienia: {{count}}",
+        "stats.dislikes": "Łapki w dół: {{count}}",
+        "stats.templates": "Użyte szablony: {{count}}",
+        "stats.voices": "Użyte głosy: {{count}}",
     },
     [Locale.SpanishES]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -1090,6 +1217,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "El bot usará avatares para los memes (recomendado)",
         "settings.avatars.no.label": "No",
         "settings.avatars.no.description": "El bot no usará avatares para los memes",
+        "settings.milestones.heading": "Hitos",
+        "settings.milestones.body":
+            "Un resumen cuando el canal alcanza un hito de memes.\nAlgo parecido a un Spotify Wrapped, pero de memes.",
+        "settings.milestones.yes.label": "Sí",
+        "settings.milestones.yes.description": "El bot enviará un resumen cuando el canal alcance un hito",
+        "settings.milestones.no.label": "No",
+        "settings.milestones.no.description": "Desactivarlos para mantener el canal tranquilo",
         "settings.footer.body": "¿Quieres eliminar todos los datos de mensajes de este canal?",
         "settings.footer.deleteButton": "Borrar todos los datos",
         "feedback.submit.heading": "💬 ¡Sugerencia enviada!",
@@ -1145,6 +1279,17 @@ export const locale: Partial<TranslationString> = {
             "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
         "help.button.addJstmemit": "🔗 Añadir Jstmemit",
         "help.button.website": "🌐 Web",
+
+        "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
+        "milestones.description": `Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos.`,
+        "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
+
+        "stats.likes": "Me gusta: {{count}}",
+        "stats.dislikes": "No me gusta: {{count}}",
+        "stats.templates": "Plantillas usadas: {{count}}",
+        "stats.voices": "Voces usadas: {{count}}",
     },
     [Locale.SpanishLATAM]: {
         "enable.heading.enabled": "🎉 ¡El bot está listo!",
@@ -1233,6 +1378,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "El bot usará avatares para los memes (recomendado)",
         "settings.avatars.no.label": "No",
         "settings.avatars.no.description": "El bot no usará avatares para los memes",
+        "settings.milestones.heading": "Hitos",
+        "settings.milestones.body":
+            "Un resumen cuando el canal alcanza un hito de memes.\nAlgo parecido a un Spotify Wrapped, pero de memes.",
+        "settings.milestones.yes.label": "Sí",
+        "settings.milestones.yes.description": "El bot enviará un resumen cuando el canal alcance un hito",
+        "settings.milestones.no.label": "No",
+        "settings.milestones.no.description": "Desactivarlos para que el canal quede tranquilo",
         "settings.footer.body": "¿Quieres eliminar todos los datos de mensajes de este canal?",
         "settings.footer.deleteButton": "Borrar todos los datos",
         "feedback.submit.heading": "💬 ¡Sugerencia enviada!",
@@ -1288,6 +1440,17 @@ export const locale: Partial<TranslationString> = {
             "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
         "help.button.addJstmemit": "🔗 Agregar Jstmemit",
         "help.button.website": "🌐 Sitio web",
+
+        "milestones.heading": `¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!`,
+        "milestones.description": `Abajo hay algunas estadísticas de cómo reaccionaron a ellos.`,
+        "milestones.nextGoal": "Próximo objetivo: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
+
+        "stats.likes": "Me gusta: {{count}}",
+        "stats.dislikes": "No me gusta: {{count}}",
+        "stats.templates": "Plantillas usadas: {{count}}",
+        "stats.voices": "Voces usadas: {{count}}",
     },
     [Locale.PortugueseBR]: {
         "enable.heading.enabled": "🎉 O bot está pronto!",
@@ -1374,6 +1537,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "O bot vai usar avatares nos memes (recomendado)",
         "settings.avatars.no.label": "Não",
         "settings.avatars.no.description": "O bot não vai usar avatares nos memes",
+        "settings.milestones.heading": "Marcos",
+        "settings.milestones.body":
+            "Um resumo quando o canal atinge um marco de memes.\nAlgo tipo um Spotify Wrapped, mas de memes.",
+        "settings.milestones.yes.label": "Sim",
+        "settings.milestones.yes.description": "O bot vai mandar um resumo quando o canal atingir um marco",
+        "settings.milestones.no.label": "Não",
+        "settings.milestones.no.description": "Desligar para manter o canal quieto",
         "settings.footer.body": "Quer remover todos os dados de mensagens deste canal?",
         "settings.footer.deleteButton": "Apagar todos os dados",
         "feedback.submit.heading": "💬 Feedback enviado!",
@@ -1429,6 +1599,17 @@ export const locale: Partial<TranslationString> = {
             "**Use o `/custom`!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
         "help.button.addJstmemit": "🔗 Adicionar o Jstmemit",
         "help.button.website": "🌐 Site",
+
+        "milestones.heading": `Eba! {{count}} memes em **<#{{channelId}}>**!`,
+        "milestones.description": `Abaixo estão algumas estatísticas de como vocês reagiram a eles.`,
+        "milestones.nextGoal": "Próxima meta: {{currentGoal}}/{{nextGoal}} memes",
+        "milestones.turnOffInSettings":
+            "-# Se você não quiser receber essas mensagens, dá para desativá-las em **/settings**",
+
+        "stats.likes": "Curtidas: {{count}}",
+        "stats.dislikes": "Descurtidas: {{count}}",
+        "stats.templates": "Templates usados: {{count}}",
+        "stats.voices": "Vozes usadas: {{count}}",
     },
     [Locale.Turkish]: {
         "enable.heading.enabled": "🎉 Bot hazır!",
@@ -1516,6 +1697,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot capsler için avatarları kullanır (önerilir)",
         "settings.avatars.no.label": "Hayır",
         "settings.avatars.no.description": "Bot capsler için avatarları kullanmaz",
+        "settings.milestones.heading": "Dönüm noktaları",
+        "settings.milestones.body":
+            "Kanal belli bir caps sayısına ulaştığında bir özet.\nSpotify Wrapped gibi bir şey, ama capsler hakkında.",
+        "settings.milestones.yes.label": "Evet",
+        "settings.milestones.yes.description": "Kanal yeni bir eşiğe ulaştığında bot özet gönderir",
+        "settings.milestones.no.label": "Hayır",
+        "settings.milestones.no.description": "Kanalı sessiz tutmak için kapat",
         "settings.footer.body": "Bu kanalla ilgili tüm mesaj verilerini kaldırmak ister misin?",
         "settings.footer.deleteButton": "Tüm verileri sil",
         "feedback.submit.heading": "💬 Geri bildirim gönderildi!",
@@ -1570,6 +1758,16 @@ export const locale: Partial<TranslationString> = {
             "**`/custom` kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
         "help.button.addJstmemit": "🔗 Jstmemit'i ekle",
         "help.button.website": "🌐 Web sitesi",
+
+        "milestones.heading": `Yaşasın! **<#{{channelId}}>** kanalında {{count}} caps!`,
+        "milestones.description": `Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.`,
+        "milestones.nextGoal": "Sonraki hedef: {{currentGoal}}/{{nextGoal}} caps",
+        "milestones.turnOffInSettings": "-# Bu mesajları almak istemiyorsan **/settings** üzerinden kapatabilirsin",
+
+        "stats.likes": "Beğeni: {{count}}",
+        "stats.dislikes": "Beğenmeme: {{count}}",
+        "stats.templates": "Kullanılan şablonlar: {{count}}",
+        "stats.voices": "Kullanılan sesler: {{count}}",
     },
     [Locale.Italian]: {
         "enable.heading.enabled": "🎉 Il bot è pronto!",
@@ -1657,6 +1855,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Il bot userà gli avatar per i meme (consigliato)",
         "settings.avatars.no.label": "No",
         "settings.avatars.no.description": "Il bot non userà gli avatar per i meme",
+        "settings.milestones.heading": "Traguardi",
+        "settings.milestones.body":
+            "Un riepilogo quando il canale raggiunge un traguardo di meme.\nUna specie di Spotify Wrapped, ma sui meme.",
+        "settings.milestones.yes.label": "Sì",
+        "settings.milestones.yes.description": "Il bot manderà un riepilogo quando il canale raggiunge un traguardo",
+        "settings.milestones.no.label": "No",
+        "settings.milestones.no.description": "Disattivarli per tenere il canale tranquillo",
         "settings.footer.body": "Vuoi rimuovere tutti i dati dei messaggi di questo canale?",
         "settings.footer.deleteButton": "Elimina tutti i dati",
         "feedback.submit.heading": "💬 Feedback inviato!",
@@ -1712,6 +1917,16 @@ export const locale: Partial<TranslationString> = {
             "**Usa `/custom`!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
         "help.button.addJstmemit": "🔗 Aggiungi Jstmemit",
         "help.button.website": "🌐 Sito web",
+
+        "milestones.heading": `Evviva! {{count}} meme in **<#{{channelId}}>**!`,
+        "milestones.description": `Qui sotto qualche statistica su come ci avete reagito.`,
+        "milestones.nextGoal": "Prossimo obiettivo: {{currentGoal}}/{{nextGoal}} meme",
+        "milestones.turnOffInSettings": "-# Se non vuoi ricevere questi messaggi, puoi disattivarli in **/settings**",
+
+        "stats.likes": "Mi piace: {{count}}",
+        "stats.dislikes": "Non mi piace: {{count}}",
+        "stats.templates": "Template usati: {{count}}",
+        "stats.voices": "Voci usate: {{count}}",
     },
     [Locale.Indonesian]: {
         "enable.heading.enabled": "🎉 Bot siap!",
@@ -1796,6 +2011,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot akan pakai avatar untuk meme (disarankan)",
         "settings.avatars.no.label": "Tidak",
         "settings.avatars.no.description": "Bot tidak akan pakai avatar untuk meme",
+        "settings.milestones.heading": "Pencapaian",
+        "settings.milestones.body":
+            "Rangkuman saat channel mencapai jumlah meme tertentu.\nMirip Spotify Wrapped, tapi soal meme.",
+        "settings.milestones.yes.label": "Ya",
+        "settings.milestones.yes.description": "Bot akan mengirim rangkuman saat channel mencapai target baru",
+        "settings.milestones.no.label": "Tidak",
+        "settings.milestones.no.description": "Matikan supaya channel tetap tenang",
         "settings.footer.body": "Mau menghapus semua data pesan channel ini?",
         "settings.footer.deleteButton": "Hapus semua data",
         "feedback.submit.heading": "💬 Masukan terkirim!",
@@ -1851,6 +2073,17 @@ export const locale: Partial<TranslationString> = {
             "**Pakai `/custom`!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
         "help.button.addJstmemit": "🔗 Tambahkan Jstmemit",
         "help.button.website": "🌐 Situs web",
+
+        "milestones.heading": `Yeay! {{count}} meme di **<#{{channelId}}>**!`,
+        "milestones.description": `Di bawah ada beberapa statistik soal cara kalian menanggapinya.`,
+        "milestones.nextGoal": "Target berikutnya: {{currentGoal}}/{{nextGoal}} meme",
+        "milestones.turnOffInSettings":
+            "-# Kalau tidak mau menerima pesan seperti ini, kamu bisa mematikannya di **/settings**",
+
+        "stats.likes": "Suka: {{count}}",
+        "stats.dislikes": "Tidak suka: {{count}}",
+        "stats.templates": "Template terpakai: {{count}}",
+        "stats.voices": "Suara terpakai: {{count}}",
     },
     [Locale.Czech]: {
         "enable.heading.enabled": "🎉 Bot je připraven!",
@@ -1935,6 +2168,13 @@ export const locale: Partial<TranslationString> = {
         "settings.avatars.yes.description": "Bot bude používat avatary pro memy (doporučeno)",
         "settings.avatars.no.label": "Ne",
         "settings.avatars.no.description": "Bot nebude používat avatary pro memy",
+        "settings.milestones.heading": "Milníky",
+        "settings.milestones.body":
+            "Shrnutí, když kanál dosáhne dalšího milníku v počtu memů.\nNěco jako Spotify Wrapped, ale o memech.",
+        "settings.milestones.yes.label": "Ano",
+        "settings.milestones.yes.description": "Bot pošle shrnutí, když kanál dosáhne dalšího milníku",
+        "settings.milestones.no.label": "Ne",
+        "settings.milestones.no.description": "Vypnout, ať je v kanálu klid",
         "settings.footer.body": "Chceš odstranit všechna data zpráv tohoto kanálu?",
         "settings.footer.deleteButton": "Smazat všechna data",
         "feedback.submit.heading": "💬 Zpětná vazba odeslána!",
@@ -1989,5 +2229,15 @@ export const locale: Partial<TranslationString> = {
             "**Použij `/custom`!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
         "help.button.addJstmemit": "🔗 Přidat Jstmemit",
         "help.button.website": "🌐 Web",
+
+        "milestones.heading": `Hurá! {{count}} memů v **<#{{channelId}}>**!`,
+        "milestones.description": `Níže je pár statistik o tom, jak jste na ně reagovali.`,
+        "milestones.nextGoal": "Další cíl: {{currentGoal}}/{{nextGoal}} memů",
+        "milestones.turnOffInSettings": "-# Pokud tyhle zprávy nechceš dostávat, můžeš je vypnout v **/settings**",
+
+        "stats.likes": "Líbí: {{count}}",
+        "stats.dislikes": "Nelíbí: {{count}}",
+        "stats.templates": "Použité šablony: {{count}}",
+        "stats.voices": "Použité hlasy: {{count}}",
     },
 };

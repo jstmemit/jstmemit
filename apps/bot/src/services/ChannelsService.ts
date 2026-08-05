@@ -31,7 +31,7 @@ export class ChannelsService implements IChannelsService {
      * @author Jia Miao Hui
      */
     public async getChannel(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
-        return await this._channelsRepository.upsert(channelId, new Date());
+        return await this._getCachedChannel(channelId);
     }
 
     /**
@@ -81,6 +81,8 @@ export class ChannelsService implements IChannelsService {
     public async setChannel(channelId: string, channel: typeof channelsTable.$inferSelect): Promise<boolean> {
         try {
             await this._channelsRepository.set(channelId, channel);
+
+            await this._cacheService.delete(`context:channel:${channelId}`);
 
             return true;
         } catch (error) {
@@ -154,10 +156,12 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     private async _getCachedChannel(channelId: string): Promise<typeof channelsTable.$inferSelect> {
-        return await this._cacheService.getOrSet(
+        const channel: typeof channelsTable.$inferSelect = await this._cacheService.getOrSet(
             `context:channel:${channelId}`,
             (): Promise<typeof channelsTable.$inferSelect> => this._channelsRepository.upsert(channelId, new Date()),
             ms("1m"),
         );
+
+        return { ...channel, addedAt: new Date(channel.addedAt) };
     }
 }

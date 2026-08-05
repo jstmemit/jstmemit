@@ -234,7 +234,7 @@ export class ImageService implements IImageService {
             primary.map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
         );
 
-        const images: string[] = converted.filter((image: string): boolean => this._isTransparent(image));
+        const images: string[] = converted.filter((image: string): boolean => this._isNotTransparent(image));
 
         if (images.length < slotCount) {
             const missing: number = slotCount - images.length;
@@ -243,7 +243,7 @@ export class ImageService implements IImageService {
                 backups.slice(0, missing + 2).map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
             );
 
-            images.push(...retried.filter((image: string): boolean => this._isTransparent(image)).slice(0, missing));
+            images.push(...retried.filter((image: string): boolean => this._isNotTransparent(image)).slice(0, missing));
         }
 
         while (images.length < slotCount) {
@@ -261,7 +261,7 @@ export class ImageService implements IImageService {
      *
      * @author Kyrylo Maliuha
      */
-    private _isTransparent(image: string): boolean {
+    private _isNotTransparent(image: string): boolean {
         return image !== this._transparentImage;
     }
 }

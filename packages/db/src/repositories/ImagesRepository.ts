@@ -1,7 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
+import { and, desc, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
 import { analytics } from "@jstmemit/analytics";
 
 export class ImagesRepository extends IImagesRepository {
@@ -25,7 +25,7 @@ export class ImagesRepository extends IImagesRepository {
 
             await db.insert(imagesTable).values(image).onConflictDoUpdate({
                 target: imagesTable.imageUrl,
-                set: { imageUrl },
+                set: { timestamp, expiresAt },
             });
         } catch (error) {
             analytics.captureException(error);
@@ -49,15 +49,16 @@ export class ImagesRepository extends IImagesRepository {
 
             return images.map((image) => image.imageUrl);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
             return [];
         }
     }
 
     public async getAvatarsByChannelId(channelId: string, timestamp: Date, limit: number = 100): Promise<string[]> {
         try {
-            const avatars = await db
-                .select()
+            const recent = db
+                .select({ imageUrl: imagesTable.imageUrl })
                 .from(imagesTable)
                 .where(
                     and(
@@ -66,12 +67,20 @@ export class ImagesRepository extends IImagesRepository {
                         or(isNull(imagesTable.expiresAt), gt(imagesTable.expiresAt, timestamp)),
                     ),
                 )
+                .orderBy(desc(imagesTable.timestamp))
+                .limit(500)
+                .as("recent");
+
+            const avatars = await db
+                .select({ imageUrl: recent.imageUrl })
+                .from(recent)
                 .orderBy(sql`random()`)
                 .limit(limit);
 
-            return avatars.map((avatar) => avatar.imageUrl);
+            return avatars.map((avatar): string => avatar.imageUrl);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
             return [];
         }
     }
@@ -93,7 +102,7 @@ export class ImagesRepository extends IImagesRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

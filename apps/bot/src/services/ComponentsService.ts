@@ -124,6 +124,86 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns back a milestone message component
+     *
+     * @param language
+     * @param count
+     * @param channelId
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(count, count * 2, 10);
+
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# 🎉 ${t("milestones.heading", language, { count: String(count), channelId })}`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.description", language)))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.turnOffInSettings", language)));
+    }
+
+    /**
+     * Returns back a row of channel stats buttons for
+     * milestone messages
+     *
+     * @param language
+     * @param likes
+     * @param dislikes
+     * @param templates
+     * @param voices
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMilestoneButtonsComponent(
+        language: Locale,
+        likes: number,
+        dislikes: number,
+        templates: number,
+        voices: number,
+    ): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.likes", language, { count: String(likes) })} 👍`)
+                    .setDisabled(true)
+                    .setCustomId(`total-likes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.dislikes", language, { count: String(dislikes) })} 👎`)
+                    .setDisabled(true)
+                    .setCustomId(`total-dislikes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.templates", language, { count: String(templates) })} 🖼️`)
+                    .setDisabled(true)
+                    .setCustomId(`total-templates`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.voices", language, { count: String(voices) })} 🔊`)
+                    .setDisabled(true)
+                    .setCustomId(`total-voices`),
+            );
+    }
+
+    /**
      * Returns back a row with Frequently Asked Questions button
      *
      * @param language
@@ -529,6 +609,7 @@ export class ComponentsService implements IComponentsService {
      * @param frequency
      * @param turbo
      * @param useAvatarsInMemes
+     * @param milestones
      *
      * @author Kyrylo Maliuha
      */
@@ -537,6 +618,7 @@ export class ComponentsService implements IComponentsService {
         frequency: number,
         turbo: boolean,
         useAvatarsInMemes: boolean,
+        milestones: boolean,
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
         const modes: Mode[] = this._getModeOptions(language);
@@ -604,6 +686,31 @@ export class ComponentsService implements IComponentsService {
                                 .setDefault(!useAvatarsInMemes)
                                 .setEmoji({ name: "❌" })
                                 .setDescription(t("settings.avatars.no.description", language)),
+                        ),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.milestones.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.milestones.body", language)))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("milestones")
+                        .addOptions(
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.yes.label", language))
+                                .setValue("true")
+                                .setDefault(milestones)
+                                .setEmoji({ name: "🎉" })
+                                .setDescription(t("settings.milestones.yes.description", language)),
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.no.label", language))
+                                .setValue("false")
+                                .setDefault(!milestones)
+                                .setEmoji({ name: "🔇" })
+                                .setDescription(t("settings.milestones.no.description", language)),
                         ),
                 ),
             );
