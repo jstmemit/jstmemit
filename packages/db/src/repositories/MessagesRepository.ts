@@ -2,6 +2,7 @@ import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
 import { and, count, eq, gte, lte, sql, lt, desc } from "drizzle-orm";
 import { db } from "../index.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export class MessagesRepository implements IMessagesRepository {
     public async new(messageId: string, channelId: string, content: string, timestamp: Date): Promise<boolean> {
@@ -21,7 +22,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return inserted.length > 0;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }
@@ -36,7 +37,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return messages[0]?.amount || 0;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
@@ -71,7 +72,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return messages.map((message): string => message.content);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return [];
         }
@@ -83,7 +84,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }
@@ -98,7 +99,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

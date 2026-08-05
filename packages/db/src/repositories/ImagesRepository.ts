@@ -49,7 +49,8 @@ export class ImagesRepository extends IImagesRepository {
 
             return images.map((image) => image.imageUrl);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
             return [];
         }
     }
@@ -78,7 +79,8 @@ export class ImagesRepository extends IImagesRepository {
 
             return avatars.map((avatar): string => avatar.imageUrl);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
             return [];
         }
     }
@@ -100,7 +102,7 @@ export class ImagesRepository extends IImagesRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

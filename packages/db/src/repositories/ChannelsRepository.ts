@@ -2,6 +2,7 @@ import type { IChannelsRepository } from "../interfaces/IChannelsRepository.ts";
 import { channelsTable } from "../schema.ts";
 import { db } from "../index.ts";
 import { eq } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class ChannelsRepository implements IChannelsRepository {
     public async get(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
@@ -14,7 +15,7 @@ export class ChannelsRepository implements IChannelsRepository {
 
             return channels[0] || undefined;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
         }
@@ -56,7 +57,7 @@ export class ChannelsRepository implements IChannelsRepository {
 
             return channels[0] || undefined;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
         }
@@ -68,7 +69,7 @@ export class ChannelsRepository implements IChannelsRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

@@ -3,6 +3,7 @@ import { db } from "../index.ts";
 import { ratingsTable } from "../schema.ts";
 import { eq, sql, sum } from "drizzle-orm";
 import type { IRatingsRepository } from "../interfaces/IRatingsRepository.ts";
+import { analytics } from "@jstmemit/analytics";
 
 export class RatingsRepository implements IRatingsRepository {
     public async getMemeRatings(messageId: string): Promise<MemeRatings> {
@@ -14,7 +15,7 @@ export class RatingsRepository implements IRatingsRepository {
                 dislikes: ratings[0]?.dislikes || 0,
             };
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return {
                 likes: 0,
@@ -32,7 +33,7 @@ export class RatingsRepository implements IRatingsRepository {
                 .set({ likes: sql`${ratingsTable.likes} + 1` })
                 .where(eq(ratingsTable.messageId, messageId));
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
         }
     }
 
@@ -45,7 +46,7 @@ export class RatingsRepository implements IRatingsRepository {
                 .set({ dislikes: sql`${ratingsTable.dislikes} + 1` })
                 .where(eq(ratingsTable.messageId, messageId));
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
         }
     }
 
@@ -71,7 +72,7 @@ export class RatingsRepository implements IRatingsRepository {
                 dislikes: Number(result[0]?.dislikes ?? 0),
             };
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return { likes: 0, dislikes: 0 };
         }
