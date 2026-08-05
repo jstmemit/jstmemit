@@ -1,3 +1,4 @@
+import { Locale } from "discord.js";
 import {
     type User,
     type UserContextMenuCommandInteraction,
@@ -14,7 +15,6 @@ import {
     ChannelType,
     Message,
     InteractionContextType,
-    Locale,
     MessageFlags,
     type TextBasedChannel,
     type ApplicationCommandOptionChoiceData,
@@ -125,7 +125,7 @@ export class MemesController implements IMemesController {
             },
         });
 
-        let locale: Locale = Locale.EnglishUS;
+        let locale: Locale = interaction?.guild?.preferredLocale || Locale.EnglishUS;
 
         const channel = await this._channelsService.getChannel(channelId);
         const permissions: RequiredBotPermissions = getRequiredBotPermissions(interaction);
