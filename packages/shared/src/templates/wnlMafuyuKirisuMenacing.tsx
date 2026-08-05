@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const wnlMafuyuKirisuMenacing: Template = {
     name: "wnlMafuyuKirisuMenacing",
-    displayName: "WNL Mafuyu Kirisu menacing",
+    displayName: buildLocales("Mafuyu Kirisu menacing", {
+        [Locale.Russian]: "Угрожающая Мафую Кирису",
+        [Locale.Ukrainian]: "Загрозлива Мафую Кірісу",
+        [Locale.Dutch]: "Mafuyu Kirisu dreigend",
+        [Locale.French]: "Mafuyu Kirisu menaçante",
+        [Locale.German]: "Mafuyu Kirisu bedrohlich",
+        [Locale.Polish]: "Groźna Mafuyu Kirisu",
+        [Locale.SpanishES]: "Mafuyu Kirisu amenazante",
+        [Locale.SpanishLATAM]: "Mafuyu Kirisu amenazante",
+        [Locale.PortugueseBR]: "Mafuyu Kirisu ameaçadora",
+        [Locale.Turkish]: "Tehditkar Mafuyu Kirisu",
+        [Locale.Italian]: "Mafuyu Kirisu minacciosa",
+        [Locale.Indonesian]: "Mafuyu Kirisu mengancam",
+        [Locale.Czech]: "Hrozivá Mafuyu Kirisu",
+        [Locale.Japanese]: "威圧的な桐須真冬",
+        [Locale.Korean]: "위협적인 키리수 마후유",
+        [Locale.ChineseCN]: "桐须真冬 威慑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.WeNeverLearn],
     types: [Type.TextBottom],
     width: 736,

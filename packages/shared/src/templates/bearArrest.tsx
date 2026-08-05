@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const bearArrest: Template = {
     name: "bearArrest",
-    displayName: "Bear arrest",
+    displayName: buildLocales("Bear arrest", {
+        [Locale.Russian]: "Арест медведя",
+        [Locale.Ukrainian]: "Арешт ведмедя",
+        [Locale.Dutch]: "Beer gearresteerd",
+        [Locale.French]: "Arrestation d'ours",
+        [Locale.German]: "Bärenfestnahme",
+        [Locale.Polish]: "Aresztowanie niedźwiedzia",
+        [Locale.SpanishES]: "Arresto de oso",
+        [Locale.SpanishLATAM]: "Arresto de oso",
+        [Locale.PortugueseBR]: "Prisão de urso",
+        [Locale.Turkish]: "Ayı tutuklandı",
+        [Locale.Italian]: "Arresto di un orso",
+        [Locale.Indonesian]: "Beruang ditangkap",
+        [Locale.Czech]: "Zatčení medvěda",
+        [Locale.Japanese]: "クマの逮捕",
+        [Locale.Korean]: "곰 체포",
+        [Locale.ChineseCN]: "逮捕熊",
+    }),
     topics: [Topic.News, Topic.Animals],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 640,

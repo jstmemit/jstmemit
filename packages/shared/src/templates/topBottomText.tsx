@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const topBottomText: Template = {
     name: "topBottomText",
-    displayName: "Top bottom text",
+    displayName: buildLocales("Top bottom text", {
+        [Locale.Russian]: "Верхний и нижний текст",
+        [Locale.Ukrainian]: "Верхній та нижній текст",
+        [Locale.Dutch]: "Boven onder tekst",
+        [Locale.French]: "Texte haut bas",
+        [Locale.German]: "Oben Unten Text",
+        [Locale.Polish]: "Górny i dolny tekst",
+        [Locale.SpanishES]: "Texto superior e inferior",
+        [Locale.SpanishLATAM]: "Texto superior e inferior",
+        [Locale.PortugueseBR]: "Texto superior e inferior",
+        [Locale.Turkish]: "Üst ve alt metin",
+        [Locale.Italian]: "Testo superiore e inferiore",
+        [Locale.Indonesian]: "Teks atas dan bawah",
+        [Locale.Czech]: "Horní a dolní text",
+        [Locale.Japanese]: "上と下のテキスト",
+        [Locale.Korean]: "상단 및 하단 텍스트",
+        [Locale.ChineseCN]: "顶部和底部文字",
+    }),
     topics: [Topic.Misc],
     types: [Type.BackgroundImage, Type.TextTopWithBackground, Type.TextBottomWithBackground],
     width: 800,

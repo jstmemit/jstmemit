@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const mrBeanWaiting1: Template = {
     name: "mrBeanWaiting1",
-    displayName: "Mr Bean waiting 1",
+    displayName: buildLocales("Mr Bean waiting 1", {
+        [Locale.Russian]: "Мистер Бин ждет 1",
+        [Locale.Ukrainian]: "Містер Бін чекає 1",
+        [Locale.Dutch]: "Mr Bean wacht 1",
+        [Locale.French]: "Mr Bean qui attend 1",
+        [Locale.German]: "Mr Bean wartet 1",
+        [Locale.Polish]: "Jaś Fasola czeka 1",
+        [Locale.SpanishES]: "Mr Bean esperando 1",
+        [Locale.SpanishLATAM]: "Mr Bean esperando 1",
+        [Locale.PortugueseBR]: "Mr Bean esperando 1",
+        [Locale.Turkish]: "Bekleyen Mr Bean 1",
+        [Locale.Italian]: "Mr Bean che aspetta 1",
+        [Locale.Indonesian]: "Mr Bean menunggu 1",
+        [Locale.Czech]: "Mr Bean čeká 1",
+        [Locale.Japanese]: "待っているミスター・ビーン 1",
+        [Locale.Korean]: "기다리는 미스터 빈 1",
+        [Locale.ChineseCN]: "憨豆先生等待 1",
+    }),
     topics: [Topic.Movies, Topic.MrBean],
     types: [Type.TextCenterWithBackground, Type.FaceImage, Type.FourOption],
     width: 736,

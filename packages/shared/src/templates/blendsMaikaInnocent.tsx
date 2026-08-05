@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaikaInnocent: Template = {
     name: "blendsMaikaInnocent",
-    displayName: "BlendS Maika innocent",
+    displayName: buildLocales("Maika innocent", {
+        [Locale.Russian]: "Майка невинная",
+        [Locale.Ukrainian]: "Майка невинна",
+        [Locale.Dutch]: "Maika onschuldig",
+        [Locale.French]: "Maika innocente",
+        [Locale.German]: "Maika unschuldig",
+        [Locale.Polish]: "Maika niewinna",
+        [Locale.SpanishES]: "Maika inocente",
+        [Locale.SpanishLATAM]: "Maika inocente",
+        [Locale.PortugueseBR]: "Maika inocente",
+        [Locale.Turkish]: "Maika masum",
+        [Locale.Italian]: "Maika innocente",
+        [Locale.Indonesian]: "Maika polos",
+        [Locale.Czech]: "Maika nevinná",
+        [Locale.Japanese]: "無邪気なマイカ",
+        [Locale.Korean]: "순진한 마이카",
+        [Locale.ChineseCN]: "麻衣花天真无邪",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextRightWithBackground, Type.Animated],
     width: 1380,

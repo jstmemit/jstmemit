@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const expandingBrain: Template = {
     name: "expandingBrain",
-    displayName: "Expanding brain",
+    displayName: buildLocales("Expanding brain", {
+        [Locale.Russian]: "Расширяющийся мозг",
+        [Locale.Ukrainian]: "Мозок, що розширюється",
+        [Locale.Dutch]: "Groeiend brein",
+        [Locale.French]: "Cerveau en expansion",
+        [Locale.German]: "Expandierendes Gehirn",
+        [Locale.Polish]: "Rozszerzający się mózg",
+        [Locale.SpanishES]: "Cerebro expandiéndose",
+        [Locale.SpanishLATAM]: "Cerebro expandiéndose",
+        [Locale.PortugueseBR]: "Cérebro em expansão",
+        [Locale.Turkish]: "Genişleyen beyin",
+        [Locale.Italian]: "Cervello in espansione",
+        [Locale.Indonesian]: "Otak yang membesar",
+        [Locale.Czech]: "Rozšiřující se mozek",
+        [Locale.Japanese]: "拡大する脳",
+        [Locale.Korean]: "확장되는 뇌",
+        [Locale.ChineseCN]: "膨胀的大脑",
+    }),
     topics: [Topic.Reaction],
     types: [Type.TextLeftWithBackground, Type.ThreeOption],
     width: 1440,

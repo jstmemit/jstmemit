@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiScaredGhost: Template = {
     name: "gintamaGintokiScaredGhost",
-    displayName: "Gintama Gintoki scared ghost",
+    displayName: buildLocales("Gintoki scared ghost", {
+        [Locale.Russian]: "Гинтоки испугался призрака",
+        [Locale.Ukrainian]: "Гінтокі злякався привида",
+        [Locale.Dutch]: "Gintoki bang voor spook",
+        [Locale.French]: "Gintoki a peur du fantôme",
+        [Locale.German]: "Gintoki Angst vor Geist",
+        [Locale.Polish]: "Gintoki przerażony duchem",
+        [Locale.SpanishES]: "Gintoki asustado de un fantasma",
+        [Locale.SpanishLATAM]: "Gintoki asustado de un fantasma",
+        [Locale.PortugueseBR]: "Gintoki com medo de fantasma",
+        [Locale.Turkish]: "Gintoki hayaletten korkuyor",
+        [Locale.Italian]: "Gintoki spaventato dal fantasma",
+        [Locale.Indonesian]: "Gintoki takut hantu",
+        [Locale.Czech]: "Gintoki vystrašený duchem",
+        [Locale.Japanese]: "幽霊に怯える銀時",
+        [Locale.Korean]: "귀신 보고 놀란 긴토키",
+        [Locale.ChineseCN]: "银时怕鬼",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground],
     width: 640,

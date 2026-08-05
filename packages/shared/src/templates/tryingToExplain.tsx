@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const tryingToExplain: Template = {
     name: "tryingToExplain",
-    displayName: "Trying to explain",
+    displayName: buildLocales("Trying to explain", {
+        [Locale.Russian]: "Пытается объяснить",
+        [Locale.Ukrainian]: "Намагається пояснити",
+        [Locale.Dutch]: "Proberen uit te leggen",
+        [Locale.French]: "Essayant d'expliquer",
+        [Locale.German]: "Versuchen zu erklären",
+        [Locale.Polish]: "Próba wyjaśnienia",
+        [Locale.SpanishES]: "Intentando explicar",
+        [Locale.SpanishLATAM]: "Intentando explicar",
+        [Locale.PortugueseBR]: "Tentando explicar",
+        [Locale.Turkish]: "Açıklamaya çalışıyor",
+        [Locale.Italian]: "Cercando di spiegare",
+        [Locale.Indonesian]: "Mencoba menjelaskan",
+        [Locale.Czech]: "Snaží se vysvětlit",
+        [Locale.Japanese]: "必死に説明しようとする",
+        [Locale.Korean]: "설명하려는 중",
+        [Locale.ChineseCN]: "试图解释",
+    }),
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobBeggingVsTuxedo: Template = {
     name: "spongebobBeggingVsTuxedo",
-    displayName: "Spongebob begging vs tuxedo",
+    displayName: buildLocales("Spongebob begging vs tuxedo", {
+        [Locale.Russian]: "Губка Боб: умоляет и в смокинге",
+        [Locale.Ukrainian]: "Губка Боб: благає і в смокінгу",
+        [Locale.Dutch]: "Spongebob smekend vs smoking",
+        [Locale.French]: "Bob l'éponge suppliant vs smoking",
+        [Locale.German]: "Spongebob bettelt vs Smoking",
+        [Locale.Polish]: "SpongeBob błagający vs w smokingu",
+        [Locale.SpanishES]: "Bob Esponja suplicando vs smoking",
+        [Locale.SpanishLATAM]: "Bob Esponja rogando vs esmoquin",
+        [Locale.PortugueseBR]: "Bob Esponja implorando vs smoking",
+        [Locale.Turkish]: "SüngerBob yalvaran vs smokinli",
+        [Locale.Italian]: "SpongeBob che implora vs in smoking",
+        [Locale.Indonesian]: "Spongebob memohon vs tuksedo",
+        [Locale.Czech]: "Spongebob prosí vs smoking",
+        [Locale.Japanese]: "スポンジ・ボブ 懇願 vs タキシード",
+        [Locale.Korean]: "스폰지밥 구걸 vs 턱시도",
+        [Locale.ChineseCN]: "海绵宝宝乞求与穿燕尾服",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 755,

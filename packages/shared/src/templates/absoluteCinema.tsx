@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const absoluteCinema: Template = {
     name: "absoluteCinema",
-    displayName: "Absolute cinema",
+    displayName: buildLocales("Absolute cinema", {
+        [Locale.Russian]: "Абсолютное кино",
+        [Locale.Ukrainian]: "Абсолютне кіно",
+        [Locale.Dutch]: "Absolute cinema",
+        [Locale.French]: "Cinéma absolu",
+        [Locale.German]: "Absolutes Kino",
+        [Locale.Polish]: "Absolutne kino",
+        [Locale.SpanishES]: "Cine absoluto",
+        [Locale.SpanishLATAM]: "Cine absoluto",
+        [Locale.PortugueseBR]: "Cinema absoluto",
+        [Locale.Turkish]: "Mutlak sinema",
+        [Locale.Italian]: "Cinema assoluto",
+        [Locale.Indonesian]: "Sinema mutlak",
+        [Locale.Czech]: "Absolutní kino",
+        [Locale.Japanese]: "アブソリュート・シネマ",
+        [Locale.Korean]: "앱솔루트 시네마",
+        [Locale.ChineseCN]: "绝对的电影",
+    }),
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTop, Type.FaceImage, Type.DefaultText],
     width: 1230,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gdoSataniaThumbsUp: Template = {
     name: "gdoSataniaThumbsUp",
-    displayName: "GDO Satania thumbs up",
+    displayName: buildLocales("Satania thumbs up", {
+        [Locale.Russian]: "Сатания показывает большой палец",
+        [Locale.Ukrainian]: "Сатанія показує великий палець",
+        [Locale.Dutch]: "Satania duim omhoog",
+        [Locale.French]: "Satania pouce en l'air",
+        [Locale.German]: "Satania Daumen hoch",
+        [Locale.Polish]: "Satania z kciukiem w górę",
+        [Locale.SpanishES]: "Satania pulgar arriba",
+        [Locale.SpanishLATAM]: "Satania pulgar arriba",
+        [Locale.PortugueseBR]: "Satania polegar para cima",
+        [Locale.Turkish]: "Satania başparmak havaya",
+        [Locale.Italian]: "Satania pollice in su",
+        [Locale.Indonesian]: "Satania jempol ke atas",
+        [Locale.Czech]: "Satania palec nahoru",
+        [Locale.Japanese]: "サムズアップするサターニャ",
+        [Locale.Korean]: "사타냐 엄지 척",
+        [Locale.ChineseCN]: "萨塔妮亚竖大拇指",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextTopWithBackground],
     width: 1200,

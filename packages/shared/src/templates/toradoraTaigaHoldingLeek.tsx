@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaHoldingLeek: Template = {
     name: "toradoraTaigaHoldingLeek",
-    displayName: "Toradora Taiga holding leek",
+    displayName: buildLocales("Taiga holding leek", {
+        [Locale.Russian]: "Тайга держит лук-порей",
+        [Locale.Ukrainian]: "Тайга тримає цибулю-порей",
+        [Locale.Dutch]: "Taiga houdt prei vast",
+        [Locale.French]: "Taiga tenant un poireau",
+        [Locale.German]: "Taiga hält Lauch",
+        [Locale.Polish]: "Taiga trzymająca por",
+        [Locale.SpanishES]: "Taiga sosteniendo un puerro",
+        [Locale.SpanishLATAM]: "Taiga sosteniendo un puerro",
+        [Locale.PortugueseBR]: "Taiga segurando alho-poró",
+        [Locale.Turkish]: "Pırasa tutan Taiga",
+        [Locale.Italian]: "Taiga con in mano un porro",
+        [Locale.Indonesian]: "Taiga memegang daun bawang",
+        [Locale.Czech]: "Taiga drží pórek",
+        [Locale.Japanese]: "ネギを持つ大河",
+        [Locale.Korean]: "대파를 든 타이가",
+        [Locale.ChineseCN]: "大河拿着大葱",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.DefaultText, Type.FaceImage],
     width: 519,

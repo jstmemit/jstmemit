@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsHomerInLesbianBar: Template = {
     name: "simpsonsHomerInLesbianBar",
-    displayName: "Simpsons Homer in lesbian bar",
+    displayName: buildLocales("Homer in lesbian bar", {
+        [Locale.Russian]: "Гомер в лесбийском баре",
+        [Locale.Ukrainian]: "Гомер у лесбійському барі",
+        [Locale.Dutch]: "Homer in lesbische bar",
+        [Locale.French]: "Homer dans un bar lesbien",
+        [Locale.German]: "Homer in Lesbenbar",
+        [Locale.Polish]: "Homer w barze dla lesbijek",
+        [Locale.SpanishES]: "Homer en bar de lesbianas",
+        [Locale.SpanishLATAM]: "Homero en bar de lesbianas",
+        [Locale.PortugueseBR]: "Homer em bar de lésbicas",
+        [Locale.Turkish]: "Homer lezbiyen barında",
+        [Locale.Italian]: "Homer nel bar per lesbiche",
+        [Locale.Indonesian]: "Homer di bar lesbian",
+        [Locale.Czech]: "Homer v lesbickém baru",
+        [Locale.Japanese]: "レズビアンバーにいるホーマー",
+        [Locale.Korean]: "레즈비언 바에 간 호머",
+        [Locale.ChineseCN]: "霍默在女同性恋酒吧",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 800,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const evangelionAsukaLangleyDisappointedLook: Template = {
     name: "evangelionAsukaLangleyDisappointedLook",
-    displayName: "Evangelion Asuka Langley disappointed look",
+    displayName: buildLocales("Asuka Langley disappointed look", {
+        [Locale.Russian]: "Аска Лэнгли разочарована",
+        [Locale.Ukrainian]: "Аска Ленглі розчарована",
+        [Locale.Dutch]: "Asuka Langley teleurgestelde blik",
+        [Locale.French]: "Asuka Langley regard déçu",
+        [Locale.German]: "Asuka Langley enttäuschter Blick",
+        [Locale.Polish]: "Asuka Langley rozczarowane spojrzenie",
+        [Locale.SpanishES]: "Asuka Langley mirada decepcionada",
+        [Locale.SpanishLATAM]: "Asuka Langley mirada decepcionada",
+        [Locale.PortugueseBR]: "Asuka Langley olhar decepcionado",
+        [Locale.Turkish]: "Asuka Langley hayal kırıklığı bakışı",
+        [Locale.Italian]: "Asuka Langley sguardo deluso",
+        [Locale.Indonesian]: "Asuka Langley tatapan kecewa",
+        [Locale.Czech]: "Asuka Langley zklamaný pohled",
+        [Locale.Japanese]: "がっかりするアスカ・ラングレー",
+        [Locale.Korean]: "실망한 아스카 랑그레이",
+        [Locale.ChineseCN]: "明日香失望的眼神",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextBottom],
     width: 736,

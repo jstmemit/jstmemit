@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiUnderstood: Template = {
     name: "gintamaGintokiUnderstood",
-    displayName: "Gintama Gintoki understood",
+    displayName: buildLocales("Gintoki understood", {
+        [Locale.Russian]: "Гинтоки понял",
+        [Locale.Ukrainian]: "Гінтокі зрозумів",
+        [Locale.Dutch]: "Gintoki begrijpt het",
+        [Locale.French]: "Gintoki a compris",
+        [Locale.German]: "Gintoki hat verstanden",
+        [Locale.Polish]: "Gintoki zrozumiał",
+        [Locale.SpanishES]: "Gintoki entendió",
+        [Locale.SpanishLATAM]: "Gintoki entendió",
+        [Locale.PortugueseBR]: "Gintoki entendeu",
+        [Locale.Turkish]: "Gintoki anladı",
+        [Locale.Italian]: "Gintoki ha capito",
+        [Locale.Indonesian]: "Gintoki mengerti",
+        [Locale.Czech]: "Gintoki pochopil",
+        [Locale.Japanese]: "理解した銀時",
+        [Locale.Korean]: "이해한 긴토키",
+        [Locale.ChineseCN]: "银时懂了",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextRightWithBackground],
     width: 1470,

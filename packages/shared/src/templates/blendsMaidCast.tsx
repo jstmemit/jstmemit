@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaidCast: Template = {
     name: "blendsMaidCast",
-    displayName: "BlendS Maid cast",
+    displayName: buildLocales("Maid cast", {
+        [Locale.Russian]: "Актёрский состав горничных",
+        [Locale.Ukrainian]: "Акторський склад покоївок",
+        [Locale.Dutch]: "Cast als dienstmeisjes",
+        [Locale.French]: "Le casting en tenue de bonnes",
+        [Locale.German]: "Cast als Maids",
+        [Locale.Polish]: "Obsada jako pokojówki",
+        [Locale.SpanishES]: "Elenco de maids",
+        [Locale.SpanishLATAM]: "Elenco de maids",
+        [Locale.PortugueseBR]: "Elenco de maids",
+        [Locale.Turkish]: "Maid kostümlü kadro",
+        [Locale.Italian]: "Il cast in versione maid",
+        [Locale.Indonesian]: "Para karakter berseragam maid",
+        [Locale.Czech]: "Obsazení jako servírky",
+        [Locale.Japanese]: "メイド服キャスト",
+        [Locale.Korean]: "메이드복 캐스트",
+        [Locale.ChineseCN]: "全员女仆装",
+    }),
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 849,

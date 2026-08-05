@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const missingPiece: Template = {
     name: "missingPiece",
-    displayName: "Missing piece",
+    displayName: buildLocales("Missing piece", {
+        [Locale.Russian]: "Недостающий кусок",
+        [Locale.Ukrainian]: "Деталь, якої не вистачає",
+        [Locale.Dutch]: "Ontbrekend stukje",
+        [Locale.French]: "Pièce manquante",
+        [Locale.German]: "Fehlendes Puzzleteil",
+        [Locale.Polish]: "Brakujący element",
+        [Locale.SpanishES]: "Pieza faltante",
+        [Locale.SpanishLATAM]: "Pieza faltante",
+        [Locale.PortugueseBR]: "Peça faltando",
+        [Locale.Turkish]: "Eksik parça",
+        [Locale.Italian]: "Pezzo mancante",
+        [Locale.Indonesian]: "Bagian yang hilang",
+        [Locale.Czech]: "Chybějící kousek",
+        [Locale.Japanese]: "足りないピース",
+        [Locale.Korean]: "잃어버린 조각",
+        [Locale.ChineseCN]: "缺失的一角",
+    }),
     topics: [Topic.Misc],
     types: [Type.TextRight, Type.FaceImage],
     width: 783,

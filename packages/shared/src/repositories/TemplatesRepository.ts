@@ -193,7 +193,7 @@ import { btrBocchiPaleShock } from "#/templates/btrBocchiPaleShock.tsx";
 import { btrBocchiScaredScream } from "#/templates/btrBocchiScaredScream.tsx";
 import { btrBocchiSoulLeavingBody } from "#/templates/btrBocchiSoulLeavingBody.tsx";
 import { btrBocchiSpiralEyesPanic } from "#/templates/btrBocchiSpiralEyesPanic.tsx";
-import { btrBocchiTheRockMeltdownFace } from "#/templates/btrBocchiTheRockMeltdownFace.tsx";
+import { btrBocchiMeltdownFace } from "#/templates/btrBocchiMeltdownFace.tsx";
 import { ceDavidTraumatizedFace } from "#/templates/ceDavidTraumatizedFace.tsx";
 import { ceLucyCryingDavidChad } from "#/templates/ceLucyCryingDavidChad.tsx";
 import { ceLucyHacking } from "#/templates/ceLucyHacking.tsx";
@@ -592,7 +592,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiScaredScream,
             btrBocchiSoulLeavingBody,
             btrBocchiSpiralEyesPanic,
-            btrBocchiTheRockMeltdownFace,
+            btrBocchiMeltdownFace,
             ceDavidTraumatizedFace,
             ceLucyCryingDavidChad,
             ceLucyHacking,

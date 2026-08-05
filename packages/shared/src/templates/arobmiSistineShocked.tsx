@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const arobmiSistineShocked: Template = {
     name: "arobmiSistineShocked",
-    displayName: "AROBMI Sistine shocked",
+    displayName: buildLocales("Sistine shocked", {
+        [Locale.Russian]: "Систина в шоке",
+        [Locale.Ukrainian]: "Сістіна в шоці",
+        [Locale.Dutch]: "Sistine geschokt",
+        [Locale.French]: "Sistine choquée",
+        [Locale.German]: "Sistine geschockt",
+        [Locale.Polish]: "Sistine w szoku",
+        [Locale.SpanishES]: "Sistine en shock",
+        [Locale.SpanishLATAM]: "Sistine en shock",
+        [Locale.PortugueseBR]: "Sistine chocada",
+        [Locale.Turkish]: "Sistine şokta",
+        [Locale.Italian]: "Sistine scioccata",
+        [Locale.Indonesian]: "Sistine terkejut",
+        [Locale.Czech]: "Sistine v šoku",
+        [Locale.Japanese]: "ショックを受けるシスティーナ",
+        [Locale.Korean]: "시스티나 충격",
+        [Locale.ChineseCN]: "希丝缇娜震惊",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 432,

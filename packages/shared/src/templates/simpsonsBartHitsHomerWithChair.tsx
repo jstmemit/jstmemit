@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsBartHitsHomerWithChair: Template = {
     name: "simpsonsBartHitsHomerWithChair",
-    displayName: "Simpsons Bart hits Homer with chair",
+    displayName: buildLocales("Bart hits Homer with chair", {
+        [Locale.Russian]: "Барт бьет Гомера стулом",
+        [Locale.Ukrainian]: "Барт б'є Гомера стільцем",
+        [Locale.Dutch]: "Bart slaat Homer met stoel",
+        [Locale.French]: "Bart frappe Homer avec une chaise",
+        [Locale.German]: "Bart schlägt Homer mit Stuhl",
+        [Locale.Polish]: "Bart uderza Homera krzesłem",
+        [Locale.SpanishES]: "Bart golpea a Homer con una silla",
+        [Locale.SpanishLATAM]: "Bart golpea a Homero con una silla",
+        [Locale.PortugueseBR]: "Bart bate em Homer com cadeira",
+        [Locale.Turkish]: "Bart Homer'a sandalyeyle vuruyor",
+        [Locale.Italian]: "Bart colpisce Homer con una sedia",
+        [Locale.Indonesian]: "Bart memukul Homer dengan kursi",
+        [Locale.Czech]: "Bart praští Homera židlí",
+        [Locale.Japanese]: "バートがホーマーを椅子で殴る",
+        [Locale.Korean]: "의자로 호머를 때리는 바트",
+        [Locale.ChineseCN]: "巴特用椅子打霍默",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 2180,

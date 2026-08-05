@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ditfTheTwoSidesOfZeroTwo: Template = {
     name: "ditfTheTwoSidesOfZeroTwo",
-    displayName: "DITF The two sides of Zero Two",
+    displayName: buildLocales("The two sides of Zero Two", {
+        [Locale.Russian]: "Две стороны Зеро Ту",
+        [Locale.Ukrainian]: "Дві сторони Зіро Ту",
+        [Locale.Dutch]: "De twee kanten van Zero Two",
+        [Locale.French]: "Les deux facettes de Zero Two",
+        [Locale.German]: "Die zwei Seiten von Zero Two",
+        [Locale.Polish]: "Dwie strony Zero Two",
+        [Locale.SpanishES]: "Las dos caras de Zero Two",
+        [Locale.SpanishLATAM]: "Las dos caras de Zero Two",
+        [Locale.PortugueseBR]: "Os dois lados de Zero Two",
+        [Locale.Turkish]: "Zero Two'nun iki yüzü",
+        [Locale.Italian]: "I due lati di Zero Two",
+        [Locale.Indonesian]: "Dua sisi Zero Two",
+        [Locale.Czech]: "Dvě strany Zero Two",
+        [Locale.Japanese]: "ゼロツーの二面性",
+        [Locale.Korean]: "제로투의 두 얼굴",
+        [Locale.ChineseCN]: "02的两面性",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 906,

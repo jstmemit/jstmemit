@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gdoSataniaDeathNote: Template = {
     name: "gdoSataniaDeathNote",
-    displayName: "GDO Satania Death Note",
+    displayName: buildLocales("Satania Death Note", {
+        [Locale.Russian]: "Тетрадь смерти Сатании",
+        [Locale.Ukrainian]: "Зошит смерті Сатанії",
+        [Locale.Dutch]: "Satania Death Note",
+        [Locale.French]: "Death Note de Satania",
+        [Locale.German]: "Satania Death Note",
+        [Locale.Polish]: "Notatnik Śmierci Satanii",
+        [Locale.SpanishES]: "Death Note de Satania",
+        [Locale.SpanishLATAM]: "Death Note de Satania",
+        [Locale.PortugueseBR]: "Death Note da Satania",
+        [Locale.Turkish]: "Satania Ölüm Defteri",
+        [Locale.Italian]: "Death Note di Satania",
+        [Locale.Indonesian]: "Death Note Satania",
+        [Locale.Czech]: "Zápisník smrti Satanie",
+        [Locale.Japanese]: "サターニャのデスノート",
+        [Locale.Korean]: "사타냐 데스노트",
+        [Locale.ChineseCN]: "萨塔妮亚死亡笔记",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut, Topic.DeathNote],
     types: [Type.TextBottom],
     width: 500,

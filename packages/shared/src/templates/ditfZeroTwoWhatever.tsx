@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ditfZeroTwoWhatever: Template = {
     name: "ditfZeroTwoWhatever",
-    displayName: "DITF Zero Two whatever",
+    displayName: buildLocales("Zero Two whatever", {
+        [Locale.Russian]: "Зеро Ту: да без разницы",
+        [Locale.Ukrainian]: "Зіро Ту: та байдуже",
+        [Locale.Dutch]: "Zero Two boeit me niet",
+        [Locale.French]: "Zero Two peu importe",
+        [Locale.German]: "Zero Two egal",
+        [Locale.Polish]: "Zero Two obojętnie",
+        [Locale.SpanishES]: "Zero Two lo que sea",
+        [Locale.SpanishLATAM]: "Zero Two lo que sea",
+        [Locale.PortugueseBR]: "Zero Two tanto faz",
+        [Locale.Turkish]: "Zero Two her neyse",
+        [Locale.Italian]: "Zero Two fa lo stesso",
+        [Locale.Indonesian]: "Zero Two terserah",
+        [Locale.Czech]: "Zero Two je to jedno",
+        [Locale.Japanese]: "どうでもいいゼロツー",
+        [Locale.Korean]: "아무래도 상관없는 제로투",
+        [Locale.ChineseCN]: "02无所谓",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 736,

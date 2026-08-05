@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiDefeated: Template = {
     name: "btrBocchiDefeated",
-    displayName: "BTR Bocchi defeated",
+    displayName: buildLocales("Bocchi defeated", {
+        [Locale.Russian]: "Бокки повержена",
+        [Locale.Ukrainian]: "Боккі переможена",
+        [Locale.Dutch]: "Bocchi verslagen",
+        [Locale.French]: "Bocchi vaincue",
+        [Locale.German]: "Bocchi geschlagen",
+        [Locale.Polish]: "Bocchi pokonana",
+        [Locale.SpanishES]: "Bocchi derrotada",
+        [Locale.SpanishLATAM]: "Bocchi derrotada",
+        [Locale.PortugueseBR]: "Bocchi derrotada",
+        [Locale.Turkish]: "Bocchi yenilmiş",
+        [Locale.Italian]: "Bocchi sconfitta",
+        [Locale.Indonesian]: "Bocchi kalah",
+        [Locale.Czech]: "Bocchi poražená",
+        [Locale.Japanese]: "打ちひしがれるぼっち",
+        [Locale.Korean]: "패배한 봇치",
+        [Locale.ChineseCN]: "波奇被击垮",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 498,

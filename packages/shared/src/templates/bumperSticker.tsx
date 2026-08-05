@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const bumperSticker: Template = {
     name: "bumperSticker",
-    displayName: "Bumper sticker",
+    displayName: buildLocales("Bumper sticker", {
+        [Locale.Russian]: "Наклейка на бампер",
+        [Locale.Ukrainian]: "Наклейка на бампер",
+        [Locale.Dutch]: "Bumpersticker",
+        [Locale.French]: "Autocollant de pare-chocs",
+        [Locale.German]: "Stoßstangenaufkleber",
+        [Locale.Polish]: "Naklejka na zderzak",
+        [Locale.SpanishES]: "Pegatina de parachoques",
+        [Locale.SpanishLATAM]: "Calcomanía de parachoques",
+        [Locale.PortugueseBR]: "Adesivo de para-choque",
+        [Locale.Turkish]: "Tampon çıkartması",
+        [Locale.Italian]: "Adesivo per paraurti",
+        [Locale.Indonesian]: "Stiker bumper",
+        [Locale.Czech]: "Nálepka na nárazník",
+        [Locale.Japanese]: "バンパーステッカー",
+        [Locale.Korean]: "범퍼 스티커",
+        [Locale.ChineseCN]: "保险杠贴纸",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.AvatarImage, Type.ObjectImage, Type.TextPost],
     width: 814,

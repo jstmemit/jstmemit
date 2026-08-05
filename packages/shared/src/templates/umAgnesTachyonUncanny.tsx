@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const umAgnesTachyonUncanny: Template = {
     name: "umAgnesTachyonUncanny",
-    displayName: "UM Agnes Tachyon Uncanny",
+    displayName: buildLocales("Agnes Tachyon Uncanny", {
+        [Locale.Russian]: "Жуткая Агнес Тахион",
+        [Locale.Ukrainian]: "Моторошна Агнес Тахіон",
+        [Locale.Dutch]: "Agnes Tachyon griezelig",
+        [Locale.French]: "Agnes Tachyon troublante",
+        [Locale.German]: "Agnes Tachyon unheimlich",
+        [Locale.Polish]: "Niepokojąca Agnes Tachyon",
+        [Locale.SpanishES]: "Agnes Tachyon inquietante",
+        [Locale.SpanishLATAM]: "Agnes Tachyon inquietante",
+        [Locale.PortugueseBR]: "Agnes Tachyon sinistra",
+        [Locale.Turkish]: "Tekinsiz Agnes Tachyon",
+        [Locale.Italian]: "Agnes Tachyon inquietante",
+        [Locale.Indonesian]: "Agnes Tachyon menakutkan",
+        [Locale.Czech]: "Děsivá Agnes Tachyon",
+        [Locale.Japanese]: "アグネスタキオン アンキャニー",
+        [Locale.Korean]: "아그네스 타키온 불쾌한 골짜기",
+        [Locale.ChineseCN]: "爱丽速子 惊悚",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.UmaMusume],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1280,

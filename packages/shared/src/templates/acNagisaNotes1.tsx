@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const acNagisaNotes1: Template = {
     name: "acNagisaNotes1",
-    displayName: "AC Nagisa notes 1",
+    displayName: buildLocales("Nagisa notes 1", {
+        [Locale.Russian]: "Нагиса записывает 1",
+        [Locale.Ukrainian]: "Нагіса занотовує 1",
+        [Locale.Dutch]: "Nagisa maakt notities 1",
+        [Locale.French]: "Nagisa prend des notes 1",
+        [Locale.German]: "Nagisa macht Notizen 1",
+        [Locale.Polish]: "Nagisa notuje 1",
+        [Locale.SpanishES]: "Nagisa toma notas 1",
+        [Locale.SpanishLATAM]: "Nagisa toma notas 1",
+        [Locale.PortugueseBR]: "Nagisa anotando 1",
+        [Locale.Turkish]: "Nagisa not alıyor 1",
+        [Locale.Italian]: "Nagisa prende appunti 1",
+        [Locale.Indonesian]: "Nagisa mencatat 1",
+        [Locale.Czech]: "Nagisa si dělá poznámky 1",
+        [Locale.Japanese]: "渚 メモ 1",
+        [Locale.Korean]: "나기사 메모 1",
+        [Locale.ChineseCN]: "渚 记笔记 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AssassinationClassroom],
     types: [Type.TextLeftWithBackground, Type.FaceImage, Type.Animated],
     width: 938,

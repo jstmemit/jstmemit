@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const arobmiSistineFibelTeaSip: Template = {
     name: "arobmiSistineFibelTeaSip",
-    displayName: "AROBMI Sistine Fibel tea sip",
+    displayName: buildLocales("Sistine Fibel tea sip", {
+        [Locale.Russian]: "Систина Фибель пьет чай",
+        [Locale.Ukrainian]: "Сістіна Фібель п'є чай",
+        [Locale.Dutch]: "Sistine Fibel drinkt thee",
+        [Locale.French]: "Sistine Fibel boit du thé",
+        [Locale.German]: "Sistine Fibel trinkt Tee",
+        [Locale.Polish]: "Sistine Fibel pije herbatę",
+        [Locale.SpanishES]: "Sistine Fibel bebiendo té",
+        [Locale.SpanishLATAM]: "Sistine Fibel bebiendo té",
+        [Locale.PortugueseBR]: "Sistine Fibel bebendo chá",
+        [Locale.Turkish]: "Sistine Fibel çay içiyor",
+        [Locale.Italian]: "Sistine Fibel beve il tè",
+        [Locale.Indonesian]: "Sistine Fibel minum teh",
+        [Locale.Czech]: "Sistine Fibel pije čaj",
+        [Locale.Japanese]: "お茶を飲むシスティーナ・フィーベル",
+        [Locale.Korean]: "차를 마시는 시스티나 피벨",
+        [Locale.ChineseCN]: "希丝缇娜·斐伊贝尔喝茶",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 1280,

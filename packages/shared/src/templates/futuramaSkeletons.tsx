@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaSkeletons: Template = {
     name: "futuramaSkeletons",
-    displayName: "Futurama skeletons",
+    displayName: buildLocales("Skeletons", {
+        [Locale.Russian]: "Скелеты",
+        [Locale.Ukrainian]: "Скелети",
+        [Locale.Dutch]: "Skeletten",
+        [Locale.French]: "Squelettes",
+        [Locale.German]: "Skelette",
+        [Locale.Polish]: "Szkielety",
+        [Locale.SpanishES]: "Esqueletos",
+        [Locale.SpanishLATAM]: "Esqueletos",
+        [Locale.PortugueseBR]: "Esqueletos",
+        [Locale.Turkish]: "İskeletler",
+        [Locale.Italian]: "Scheletri",
+        [Locale.Indonesian]: "Kerangka",
+        [Locale.Czech]: "Kostlivci",
+        [Locale.Japanese]: "スケルトン",
+        [Locale.Korean]: "해골",
+        [Locale.ChineseCN]: "骷髅",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottom],
     width: 480,

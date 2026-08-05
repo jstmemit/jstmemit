@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsKahoAndMaikaMaids: Template = {
     name: "blendsKahoAndMaikaMaids",
-    displayName: "BlendS Kaho and Maika maids",
+    displayName: buildLocales("Kaho and Maika maids", {
+        [Locale.Russian]: "Кахо и Майка в форме горничных",
+        [Locale.Ukrainian]: "Кахо і Майка в формі покоївок",
+        [Locale.Dutch]: "Kaho en Maika als dienstmeisjes",
+        [Locale.French]: "Kaho et Maika en tenues de bonnes",
+        [Locale.German]: "Kaho und Maika als Maids",
+        [Locale.Polish]: "Kaho i Maika jako pokojówki",
+        [Locale.SpanishES]: "Kaho y Maika de maids",
+        [Locale.SpanishLATAM]: "Kaho y Maika de maids",
+        [Locale.PortugueseBR]: "Kaho e Maika de maids",
+        [Locale.Turkish]: "Kaho ve Maika maid kıyafetiyle",
+        [Locale.Italian]: "Kaho e Maika in versione maid",
+        [Locale.Indonesian]: "Kaho dan Maika berseragam maid",
+        [Locale.Czech]: "Kaho a Maika jako servírky",
+        [Locale.Japanese]: "カホとマイカのメイド服",
+        [Locale.Korean]: "카호와 마이카 메이드복",
+        [Locale.ChineseCN]: "佳穗和麻衣花的女仆装",
+    }),
     topics: [Topic.Anime, Topic.BlendS],
     types: [Type.FaceImage, Type.TextBottom],
     width: 422,

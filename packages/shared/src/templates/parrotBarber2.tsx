@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const parrotBarber2: Template = {
     name: "parrotBarber2",
-    displayName: "Parrot barber 2",
+    displayName: buildLocales("Parrot barber 2", {
+        [Locale.Russian]: "Попугай-парикмахер 2",
+        [Locale.Ukrainian]: "Папуга-перукар 2",
+        [Locale.Dutch]: "Papegaai kapper 2",
+        [Locale.French]: "Perroquet barbier 2",
+        [Locale.German]: "Papagei Barbier 2",
+        [Locale.Polish]: "Papuga fryzjer 2",
+        [Locale.SpanishES]: "Loro barbero 2",
+        [Locale.SpanishLATAM]: "Loro barbero 2",
+        [Locale.PortugueseBR]: "Papagaio barbeiro 2",
+        [Locale.Turkish]: "Papağan berber 2",
+        [Locale.Italian]: "Pappagallo barbiere 2",
+        [Locale.Indonesian]: "Burung beo tukang cukur 2",
+        [Locale.Czech]: "Papoušek holič 2",
+        [Locale.Japanese]: "オウムの床屋 2",
+        [Locale.Korean]: "앵무새 이발사 2",
+        [Locale.ChineseCN]: "鹦鹉理发师 2",
+    }),
     topics: [Topic.Animals],
     types: [Type.TextBottom, Type.FaceImage],
     width: 672,

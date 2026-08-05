@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ditfZeroTwoHuggingPaper: Template = {
     name: "ditfZeroTwoHuggingPaper",
-    displayName: "DITF Zero Two hugging paper",
+    displayName: buildLocales("Zero Two hugging paper", {
+        [Locale.Russian]: "Зеро Ту обнимает бумагу",
+        [Locale.Ukrainian]: "Зіро Ту обіймає папір",
+        [Locale.Dutch]: "Zero Two knuffelt papier",
+        [Locale.French]: "Zero Two enlace une feuille de papier",
+        [Locale.German]: "Zero Two umarmt ein Blatt Papier",
+        [Locale.Polish]: "Zero Two przytula kartkę",
+        [Locale.SpanishES]: "Zero Two abrazando un papel",
+        [Locale.SpanishLATAM]: "Zero Two abrazando un papel",
+        [Locale.PortugueseBR]: "Zero Two abraçando um papel",
+        [Locale.Turkish]: "Zero Two kağıda sarılıyor",
+        [Locale.Italian]: "Zero Two abbraccia un foglio",
+        [Locale.Indonesian]: "Zero Two memeluk kertas",
+        [Locale.Czech]: "Zero Two objímá papír",
+        [Locale.Japanese]: "紙を抱きしめるゼロツー",
+        [Locale.Korean]: "종이를 껴안는 제로투",
+        [Locale.ChineseCN]: "02抱着纸",
+    }),
     topics: [Topic.Anime, Topic.DarlingInTheFranxx],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 732,

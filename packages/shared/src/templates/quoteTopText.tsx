@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const quoteTopText: Template = {
     name: "quoteTopText",
-    displayName: "Quote top text",
+    displayName: buildLocales("Quote top text", {
+        [Locale.Russian]: "Верхний текст цитаты",
+        [Locale.Ukrainian]: "Верхній текст цитати",
+        [Locale.Dutch]: "Citaat tekst boven",
+        [Locale.French]: "Texte du haut de la citation",
+        [Locale.German]: "Zitat oberer Text",
+        [Locale.Polish]: "Górny tekst cytatu",
+        [Locale.SpanishES]: "Texto superior de la cita",
+        [Locale.SpanishLATAM]: "Texto superior de la cita",
+        [Locale.PortugueseBR]: "Texto superior da citação",
+        [Locale.Turkish]: "Alıntı üst metni",
+        [Locale.Italian]: "Testo superiore della citazione",
+        [Locale.Indonesian]: "Teks atas kutipan",
+        [Locale.Czech]: "Horní text citátu",
+        [Locale.Japanese]: "引用 上部テキスト",
+        [Locale.Korean]: "인용구 상단 텍스트",
+        [Locale.ChineseCN]: "引用顶部文本",
+    }),
     topics: [Topic.Misc],
     types: [Type.BackgroundImage, Type.TextTopWithBackground],
     width: 800,

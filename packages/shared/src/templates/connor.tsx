@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const connor: Template = {
     name: "connor",
-    displayName: "Connor choosing",
+    displayName: buildLocales("Connor choosing", {
+        [Locale.Russian]: "Коннор выбирает",
+        [Locale.Ukrainian]: "Коннор обирає",
+        [Locale.Dutch]: "Connor kiest",
+        [Locale.French]: "Connor fait son choix",
+        [Locale.German]: "Connor entscheidet sich",
+        [Locale.Polish]: "Connor wybiera",
+        [Locale.SpanishES]: "Connor eligiendo",
+        [Locale.SpanishLATAM]: "Connor eligiendo",
+        [Locale.PortugueseBR]: "Connor escolhendo",
+        [Locale.Turkish]: "Connor seçim yapıyor",
+        [Locale.Italian]: "Connor che sceglie",
+        [Locale.Indonesian]: "Connor memilih",
+        [Locale.Czech]: "Connor si vybírá",
+        [Locale.Japanese]: "選択するコナー",
+        [Locale.Korean]: "선택하는 코너",
+        [Locale.ChineseCN]: "康纳做出选择",
+    }),
     topics: [Topic.Games],
     types: [Type.TextTopWithBackground, Type.FourOption, Type.TextBottom, Type.FaceImage],
     width: 960,

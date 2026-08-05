@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaChristmasDonut: Template = {
     name: "toradoraTaigaChristmasDonut",
-    displayName: "Toradora Taiga christmas donut",
+    displayName: buildLocales("Taiga christmas donut", {
+        [Locale.Russian]: "Тайга и рождественский пончик",
+        [Locale.Ukrainian]: "Тайга і різдвяний пончик",
+        [Locale.Dutch]: "Taiga kerstdonut",
+        [Locale.French]: "Taiga beignet de Noël",
+        [Locale.German]: "Taiga Weihnachts-Donut",
+        [Locale.Polish]: "Taiga i świąteczny pączek",
+        [Locale.SpanishES]: "Taiga dona de Navidad",
+        [Locale.SpanishLATAM]: "Taiga dona de Navidad",
+        [Locale.PortugueseBR]: "Taiga rosquinha de Natal",
+        [Locale.Turkish]: "Taiga yılbaşı çöreği",
+        [Locale.Italian]: "Taiga ciambella di Natale",
+        [Locale.Indonesian]: "Taiga donat Natal",
+        [Locale.Czech]: "Taiga a vánoční kobliha",
+        [Locale.Japanese]: "大河とクリスマスドーナツ",
+        [Locale.Korean]: "타이가 크리스마스 도넛",
+        [Locale.ChineseCN]: "大河和圣诞甜甜圈",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.Toradora],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 534,

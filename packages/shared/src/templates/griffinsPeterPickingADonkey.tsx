@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterPickingADonkey: Template = {
     name: "griffinsPeterPickingADonkey",
-    displayName: "Griffins Peter picking a donkey",
+    displayName: buildLocales("Peter picking a donkey", {
+        [Locale.Russian]: "Питер выбирает осла",
+        [Locale.Ukrainian]: "Пітер обирає віслюка",
+        [Locale.Dutch]: "Peter kiest een ezel",
+        [Locale.French]: "Peter choisit un âne",
+        [Locale.German]: "Peter wählt einen Esel",
+        [Locale.Polish]: "Peter wybiera osła",
+        [Locale.SpanishES]: "Peter eligiendo un burro",
+        [Locale.SpanishLATAM]: "Peter eligiendo un burro",
+        [Locale.PortugueseBR]: "Peter escolhendo um burro",
+        [Locale.Turkish]: "Peter bir eşek seçiyor",
+        [Locale.Italian]: "Peter sceglie un asino",
+        [Locale.Indonesian]: "Peter memilih keledai",
+        [Locale.Czech]: "Peter si vybírá osla",
+        [Locale.Japanese]: "ロバを選ぶピーター",
+        [Locale.Korean]: "당나귀를 고르는 피터",
+        [Locale.ChineseCN]: "彼得挑驴",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottom, Type.FaceImage],
     width: 1355,

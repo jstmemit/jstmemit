@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const bbLetsCook: Template = {
     name: "bbLetsCook",
-    displayName: "BB Lets cook",
+    displayName: buildLocales("Lets cook", {
+        [Locale.Russian]: "Давай готовить",
+        [Locale.Ukrainian]: "Давай готувати",
+        [Locale.Dutch]: "Laten we koken",
+        [Locale.French]: "Cuisinons",
+        [Locale.German]: "Lass uns kochen",
+        [Locale.Polish]: "Ugotujmy coś",
+        [Locale.SpanishES]: "A cocinar",
+        [Locale.SpanishLATAM]: "A cocinar",
+        [Locale.PortugueseBR]: "Vamos cozinhar",
+        [Locale.Turkish]: "Hadi yemek pişirelim",
+        [Locale.Italian]: "Cuciniamo",
+        [Locale.Indonesian]: "Ayo memasak",
+        [Locale.Czech]: "Pojďme vařit",
+        [Locale.Japanese]: "料理しよう",
+        [Locale.Korean]: "요리하자",
+        [Locale.ChineseCN]: "开始做饭",
+    }),
     topics: [Topic.BreakingBad, Topic.Movies],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 498,

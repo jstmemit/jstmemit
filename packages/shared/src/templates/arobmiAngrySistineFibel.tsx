@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { Locale } from "discord.js";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 
 export const arobmiAngrySistineFibel: Template = {
     name: "arobmiAngrySistineFibel",
-    displayName: "AROBMI Angry Sistine Fibel",
+    displayName: buildLocales("Angry Sistine Fibel", {
+        [Locale.Russian]: "Злая Систина Фибель",
+        [Locale.Ukrainian]: "Зла Сістіна Фібель",
+        [Locale.Dutch]: "Boze Sistine Fibel",
+        [Locale.French]: "Sistine Fibel en colère",
+        [Locale.German]: "Wütende Sistine Fibel",
+        [Locale.Polish]: "Zła Sistine Fibel",
+        [Locale.SpanishES]: "Sistine Fibel enojada",
+        [Locale.SpanishLATAM]: "Sistine Fibel enojada",
+        [Locale.PortugueseBR]: "Sistine Fibel irritada",
+        [Locale.Turkish]: "Sinirli Sistine Fibel",
+        [Locale.Italian]: "Sistine Fibel arrabbiata",
+        [Locale.Indonesian]: "Sistine Fibel marah",
+        [Locale.Czech]: "Naštvaná Sistine Fibel",
+        [Locale.Japanese]: "怒るシスティーナ・フィーベル",
+        [Locale.Korean]: "화난 시스티나 피벨",
+        [Locale.ChineseCN]: "生气的希丝缇娜·斐伊贝尔",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 658,

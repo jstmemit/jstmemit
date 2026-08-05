@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const diagramIQ: Template = {
     name: "diagramIQ",
-    displayName: "Diagram IQ",
+    displayName: buildLocales("Diagram IQ", {
+        [Locale.Russian]: "Диаграмма IQ",
+        [Locale.Ukrainian]: "Діаграма IQ",
+        [Locale.Dutch]: "IQ-diagram",
+        [Locale.French]: "Diagramme QI",
+        [Locale.German]: "IQ-Diagramm",
+        [Locale.Polish]: "Diagram IQ",
+        [Locale.SpanishES]: "Diagrama de CI",
+        [Locale.SpanishLATAM]: "Diagrama de CI",
+        [Locale.PortugueseBR]: "Diagrama de QI",
+        [Locale.Turkish]: "IQ diyagramı",
+        [Locale.Italian]: "Diagramma del QI",
+        [Locale.Indonesian]: "Diagram IQ",
+        [Locale.Czech]: "Diagram IQ",
+        [Locale.Japanese]: "IQ図",
+        [Locale.Korean]: "IQ 다이어그램",
+        [Locale.ChineseCN]: "智商图表",
+    }),
     topics: [Topic.Misc],
     types: [Type.TextTop, Type.TextLeft, Type.TextRight, Type.FaceImage, Type.ThreeOption],
     width: 1272,

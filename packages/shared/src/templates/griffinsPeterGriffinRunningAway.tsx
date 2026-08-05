@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterGriffinRunningAway: Template = {
     name: "griffinsPeterGriffinRunningAway",
-    displayName: "Griffins Peter Griffin running away",
+    displayName: buildLocales("Peter Griffin running away", {
+        [Locale.Russian]: "Питер Гриффин убегает",
+        [Locale.Ukrainian]: "Пітер Гріффін тікає",
+        [Locale.Dutch]: "Peter Griffin rent weg",
+        [Locale.French]: "Peter Griffin s'enfuyant",
+        [Locale.German]: "Peter Griffin rennt weg",
+        [Locale.Polish]: "Uciekający Peter Griffin",
+        [Locale.SpanishES]: "Peter Griffin huyendo",
+        [Locale.SpanishLATAM]: "Peter Griffin huyendo",
+        [Locale.PortugueseBR]: "Peter Griffin fugindo",
+        [Locale.Turkish]: "Kaçan Peter Griffin",
+        [Locale.Italian]: "Peter Griffin che scappa",
+        [Locale.Indonesian]: "Peter Griffin melarikan diri",
+        [Locale.Czech]: "Peter Griffin utíká",
+        [Locale.Japanese]: "逃げるピーター・グリフィン",
+        [Locale.Korean]: "도망치는 피터 그리핀",
+        [Locale.ChineseCN]: "彼得·格里芬逃跑",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextTop, Type.FaceImage],
     width: 800,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const homerHiding: Template = {
     name: "homerHiding",
-    displayName: "Simpsons Homer hiding",
+    displayName: buildLocales("Homer hiding", {
+        [Locale.Russian]: "Гомер прячется",
+        [Locale.Ukrainian]: "Гомер ховається",
+        [Locale.Dutch]: "Zich verstoppende Homer",
+        [Locale.French]: "Homer se cache",
+        [Locale.German]: "Homer versteckt sich",
+        [Locale.Polish]: "Homer się ukrywa",
+        [Locale.SpanishES]: "Homer escondiéndose",
+        [Locale.SpanishLATAM]: "Homero escondiéndose",
+        [Locale.PortugueseBR]: "Homer se escondendo",
+        [Locale.Turkish]: "Homer saklanıyor",
+        [Locale.Italian]: "Homer che si nasconde",
+        [Locale.Indonesian]: "Homer bersembunyi",
+        [Locale.Czech]: "Homer se schovává",
+        [Locale.Japanese]: "茂みに隠れるホーマー",
+        [Locale.Korean]: "숨는 호머",
+        [Locale.ChineseCN]: "霍默躲藏",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.TextBottom, Type.FaceImage, Type.FourOption],
     width: 600,

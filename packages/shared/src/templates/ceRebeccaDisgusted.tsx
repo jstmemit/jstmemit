@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ceRebeccaDisgusted: Template = {
     name: "ceRebeccaDisgusted",
-    displayName: "CE Rebecca disgusted",
+    displayName: buildLocales("Rebecca disgusted", {
+        [Locale.Russian]: "Ребекка испытывает отвращение",
+        [Locale.Ukrainian]: "Ребекку нудить від огиди",
+        [Locale.Dutch]: "Rebecca vol walging",
+        [Locale.French]: "Rebecca dégoûtée",
+        [Locale.German]: "Rebecca angewidert",
+        [Locale.Polish]: "Rebecca ze wstrętem",
+        [Locale.SpanishES]: "Rebecca con asco",
+        [Locale.SpanishLATAM]: "Rebecca con asco",
+        [Locale.PortugueseBR]: "Rebecca enojada",
+        [Locale.Turkish]: "Rebecca iğrenmiş",
+        [Locale.Italian]: "Rebecca disgustata",
+        [Locale.Indonesian]: "Rebecca jijik",
+        [Locale.Czech]: "Rebecca znechucená",
+        [Locale.Japanese]: "うんざりするレベッカ",
+        [Locale.Korean]: "역겨워하는 레베카",
+        [Locale.ChineseCN]: "丽贝卡厌恶",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextLeftWithBackground],
     width: 852,

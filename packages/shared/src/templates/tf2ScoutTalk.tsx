@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const tf2ScoutTalk: Template = {
     name: "tf2ScoutTalk",
-    displayName: "TF2 Scout talk",
+    displayName: buildLocales("Scout talk", {
+        [Locale.Russian]: "Разведчик говорит",
+        [Locale.Ukrainian]: "Розвідник говорить",
+        [Locale.Dutch]: "Scout praten",
+        [Locale.French]: "Scout parle",
+        [Locale.German]: "Scout spricht",
+        [Locale.Polish]: "Scout gada",
+        [Locale.SpanishES]: "Scout hablando",
+        [Locale.SpanishLATAM]: "Scout hablando",
+        [Locale.PortugueseBR]: "Scout falando",
+        [Locale.Turkish]: "Scout konuşuyor",
+        [Locale.Italian]: "Scout che parla",
+        [Locale.Indonesian]: "Scout bicara",
+        [Locale.Czech]: "Scout mluví",
+        [Locale.Japanese]: "スカウトの会話",
+        [Locale.Korean]: "스카웃 이야기",
+        [Locale.ChineseCN]: "侦察兵谈话",
+    }),
     topics: [Topic.TeamFortress2, Topic.Games],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 640,

@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const creativeMetaphor: Template = {
     name: "creativeMetaphor",
-    displayName: "Creative metaphor",
+    displayName: buildLocales("Creative metaphor", {
+        [Locale.Russian]: "Креативная метафора",
+        [Locale.Ukrainian]: "Креативна метафора",
+        [Locale.Dutch]: "Creatieve metafoor",
+        [Locale.French]: "Métaphore créative",
+        [Locale.German]: "Kreative Metapher",
+        [Locale.Polish]: "Kreatywna metafora",
+        [Locale.SpanishES]: "Metáfora creativa",
+        [Locale.SpanishLATAM]: "Metáfora creativa",
+        [Locale.PortugueseBR]: "Metáfora criativa",
+        [Locale.Turkish]: "Yaratıcı metafor",
+        [Locale.Italian]: "Metafora creativa",
+        [Locale.Indonesian]: "Metafora kreatif",
+        [Locale.Czech]: "Kreativní metafora",
+        [Locale.Japanese]: "クリエイティブな比喩",
+        [Locale.Korean]: "창의적인 비유",
+        [Locale.ChineseCN]: "创意比喻",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.TextName, Type.DefaultText, Type.AvatarImage],
     width: 1202,

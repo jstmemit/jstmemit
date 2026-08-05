@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaikaWithCat: Template = {
     name: "blendsMaikaWithCat",
-    displayName: "BlendS Maika with cat",
+    displayName: buildLocales("Maika with cat", {
+        [Locale.Russian]: "Майка с котом",
+        [Locale.Ukrainian]: "Майка з котом",
+        [Locale.Dutch]: "Maika met kat",
+        [Locale.French]: "Maika avec un chat",
+        [Locale.German]: "Maika mit Katze",
+        [Locale.Polish]: "Maika z kotem",
+        [Locale.SpanishES]: "Maika con gato",
+        [Locale.SpanishLATAM]: "Maika con gato",
+        [Locale.PortugueseBR]: "Maika com gato",
+        [Locale.Turkish]: "Maika kediyle",
+        [Locale.Italian]: "Maika con il gatto",
+        [Locale.Indonesian]: "Maika dengan kucing",
+        [Locale.Czech]: "Maika s kočkou",
+        [Locale.Japanese]: "猫と一緒のマイカ",
+        [Locale.Korean]: "고양이와 마이카",
+        [Locale.ChineseCN]: "麻衣花和猫",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,

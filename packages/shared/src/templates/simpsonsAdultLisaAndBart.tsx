@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsAdultLisaAndBart: Template = {
     name: "simpsonsAdultLisaAndBart",
-    displayName: "Simpsons Adult Lisa and Bart",
+    displayName: buildLocales("Adult Lisa and Bart", {
+        [Locale.Russian]: "Взрослые Лиза и Барт",
+        [Locale.Ukrainian]: "Дорослі Ліза та Барт",
+        [Locale.Dutch]: "Volwassen Lisa en Bart",
+        [Locale.French]: "Lisa et Bart adultes",
+        [Locale.German]: "Erwachsene Lisa und Bart",
+        [Locale.Polish]: "Dorośli Lisa i Bart",
+        [Locale.SpanishES]: "Lisa y Bart adultos",
+        [Locale.SpanishLATAM]: "Lisa y Bart adultos",
+        [Locale.PortugueseBR]: "Lisa e Bart adultos",
+        [Locale.Turkish]: "Yetişkin Lisa ve Bart",
+        [Locale.Italian]: "Lisa e Bart adulti",
+        [Locale.Indonesian]: "Lisa dan Bart dewasa",
+        [Locale.Czech]: "Dospělí Lisa a Bart",
+        [Locale.Japanese]: "大人のリサとバート",
+        [Locale.Korean]: "어른이 된 리사와 바트",
+        [Locale.ChineseCN]: "成年的丽莎和巴特",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 736,

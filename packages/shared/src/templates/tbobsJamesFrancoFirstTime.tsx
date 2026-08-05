@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const tbobsJamesFrancoFirstTime: Template = {
     name: "tbobsJamesFrancoFirstTime",
-    displayName: "TBOBS James Franco first time",
+    displayName: buildLocales("James Franco first time", {
+        [Locale.Russian]: "Джеймс Франко: первый раз?",
+        [Locale.Ukrainian]: "Джеймс Франко: перший раз?",
+        [Locale.Dutch]: "James Franco eerste keer",
+        [Locale.French]: "James Franco première fois",
+        [Locale.German]: "James Franco erstes Mal",
+        [Locale.Polish]: "James Franco pierwszy raz",
+        [Locale.SpanishES]: "James Franco primera vez",
+        [Locale.SpanishLATAM]: "James Franco primera vez",
+        [Locale.PortugueseBR]: "James Franco primeira vez",
+        [Locale.Turkish]: "James Franco ilk defa",
+        [Locale.Italian]: "James Franco prima volta",
+        [Locale.Indonesian]: "James Franco pertama kali",
+        [Locale.Czech]: "James Franco poprvé",
+        [Locale.Japanese]: "ジェームズ・フランコ 初めて？",
+        [Locale.Korean]: "제임스 프랭코 처음이야?",
+        [Locale.ChineseCN]: "詹姆斯·弗兰科 第一次吗",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.TheBalladOfBusterScruggs],
     types: [Type.DefaultText, Type.FaceImage],
     width: 1200,

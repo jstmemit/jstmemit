@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const britishCuisine: Template = {
     name: "britishCuisine",
-    displayName: "British cuisine",
+    displayName: buildLocales("British cuisine", {
+        [Locale.Russian]: "Британская кухня",
+        [Locale.Ukrainian]: "Британська кухня",
+        [Locale.Dutch]: "Britse keuken",
+        [Locale.French]: "Cuisine britannique",
+        [Locale.German]: "Britische Küche",
+        [Locale.Polish]: "Kuchnia brytyjska",
+        [Locale.SpanishES]: "Cocina británica",
+        [Locale.SpanishLATAM]: "Cocina británica",
+        [Locale.PortugueseBR]: "Culinária britânica",
+        [Locale.Turkish]: "İngiliz mutfağı",
+        [Locale.Italian]: "Cucina britannica",
+        [Locale.Indonesian]: "Masakan Inggris",
+        [Locale.Czech]: "Britská kuchyně",
+        [Locale.Japanese]: "イギリス料理",
+        [Locale.Korean]: "영국 요리",
+        [Locale.ChineseCN]: "英国美食",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextName, Type.AvatarImage, Type.ObjectImage, Type.TextPost],
     width: 883,

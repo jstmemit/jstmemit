@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiAnxietyWave: Template = {
     name: "btrBocchiAnxietyWave",
-    displayName: "BTR Bocchi anxiety wave",
+    displayName: buildLocales("Bocchi anxiety wave", {
+        [Locale.Russian]: "Волна тревоги у Бокки",
+        [Locale.Ukrainian]: "Хвиля тривоги у Боккі",
+        [Locale.Dutch]: "Bocchi angstgolf",
+        [Locale.French]: "Bocchi vague d'angoisse",
+        [Locale.German]: "Bocchi Angstwelle",
+        [Locale.Polish]: "Bocchi fala lęku",
+        [Locale.SpanishES]: "Bocchi ola de ansiedad",
+        [Locale.SpanishLATAM]: "Bocchi ola de ansiedad",
+        [Locale.PortugueseBR]: "Bocchi onda de ansiedade",
+        [Locale.Turkish]: "Bocchi kaygı dalgası",
+        [Locale.Italian]: "Bocchi ondata d'ansia",
+        [Locale.Indonesian]: "Bocchi gelombang cemas",
+        [Locale.Czech]: "Bocchi vlna úzkosti",
+        [Locale.Japanese]: "ぼっちの不安の波",
+        [Locale.Korean]: "봇치 불안의 파도",
+        [Locale.ChineseCN]: "波奇焦虑波动",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 686,

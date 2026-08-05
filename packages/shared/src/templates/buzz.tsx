@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const buzz: Template = {
     name: "buzz",
-    displayName: "TS Buzz pointing",
+    displayName: buildLocales("Buzz pointing", {
+        [Locale.Russian]: "Базз показывает пальцем",
+        [Locale.Ukrainian]: "Базз показує пальцем",
+        [Locale.Dutch]: "Buzz wijst",
+        [Locale.French]: "Buzz qui pointe du doigt",
+        [Locale.German]: "Buzz zeigt mit dem Finger",
+        [Locale.Polish]: "Buzz wskazuje palcem",
+        [Locale.SpanishES]: "Buzz señalando",
+        [Locale.SpanishLATAM]: "Buzz señalando",
+        [Locale.PortugueseBR]: "Buzz apontando",
+        [Locale.Turkish]: "Buzz parmakla işaret ediyor",
+        [Locale.Italian]: "Buzz che indica",
+        [Locale.Indonesian]: "Buzz menunjuk",
+        [Locale.Czech]: "Buzz ukazuje prstem",
+        [Locale.Japanese]: "指をさすバズ",
+        [Locale.Korean]: "가리키는 버즈",
+        [Locale.ChineseCN]: "巴斯光年指着",
+    }),
     topics: [Topic.Reaction, Topic.Cartoons, Topic.ToyStory],
     types: [Type.FaceImage, Type.TextBottom],
     width: 800,

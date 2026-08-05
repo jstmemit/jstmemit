@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const myHonestReaction: Template = {
     name: "myHonestReaction",
-    displayName: "My honest reaction",
+    displayName: buildLocales("My honest reaction", {
+        [Locale.Russian]: "Моя честная реакция",
+        [Locale.Ukrainian]: "Моя чесна реакція",
+        [Locale.Dutch]: "Mijn eerlijke reactie",
+        [Locale.French]: "Ma réaction honnête",
+        [Locale.German]: "Meine ehrliche Reaktion",
+        [Locale.Polish]: "Moja szczera reakcja",
+        [Locale.SpanishES]: "Mi reacción honesta",
+        [Locale.SpanishLATAM]: "Mi reacción honesta",
+        [Locale.PortugueseBR]: "Minha reação honesta",
+        [Locale.Turkish]: "Dürüst tepkim",
+        [Locale.Italian]: "La mia reazione onesta",
+        [Locale.Indonesian]: "Reaksi jujurku",
+        [Locale.Czech]: "Moje upřímná reakce",
+        [Locale.Japanese]: "私の正直なリアクション",
+        [Locale.Korean]: "나의 솔직한 반응",
+        [Locale.ChineseCN]: "我的真实反应",
+    }),
     topics: [Topic.Reaction],
     types: [Type.DefaultText, Type.FaceImage],
     width: 900,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaZappBranniganAsDrake: Template = {
     name: "futuramaZappBranniganAsDrake",
-    displayName: "Futurama Zapp Brannigan as Drake",
+    displayName: buildLocales("Zapp Brannigan as Drake", {
+        [Locale.Russian]: "Зепп Бранниган в роли Дрейка",
+        [Locale.Ukrainian]: "Запп Бранніган у ролі Дрейка",
+        [Locale.Dutch]: "Zapp Brannigan als Drake",
+        [Locale.French]: "Zapp Brannigan en Drake",
+        [Locale.German]: "Zapp Brannigan als Drake",
+        [Locale.Polish]: "Zapp Brannigan jako Drake",
+        [Locale.SpanishES]: "Zapp Brannigan como Drake",
+        [Locale.SpanishLATAM]: "Zapp Brannigan como Drake",
+        [Locale.PortugueseBR]: "Zapp Brannigan como Drake",
+        [Locale.Turkish]: "Drake olarak Zapp Brannigan",
+        [Locale.Italian]: "Zapp Brannigan come Drake",
+        [Locale.Indonesian]: "Zapp Brannigan sebagai Drake",
+        [Locale.Czech]: "Zapp Brannigan jako Drake",
+        [Locale.Japanese]: "ドレイクのザップ・ブラニガン",
+        [Locale.Korean]: "드레이크로 분한 잽 브래니건",
+        [Locale.ChineseCN]: "扮演德雷克的扎普·布兰尼根",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 2048,

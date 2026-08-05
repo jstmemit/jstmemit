@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsElephantAndPenguin: Template = {
     name: "griffinsElephantAndPenguin",
-    displayName: "Griffins elephant and penguin",
+    displayName: buildLocales("Elephant and penguin", {
+        [Locale.Russian]: "Слон и пингвин",
+        [Locale.Ukrainian]: "Слон і пінгвін",
+        [Locale.Dutch]: "Olifant en pinguïn",
+        [Locale.French]: "Éléphant et pingouin",
+        [Locale.German]: "Elefant und Pinguin",
+        [Locale.Polish]: "Słoń i pingwin",
+        [Locale.SpanishES]: "Elefante y pingüino",
+        [Locale.SpanishLATAM]: "Elefante y pingüino",
+        [Locale.PortugueseBR]: "Elefante e pinguim",
+        [Locale.Turkish]: "Fil ve penguen",
+        [Locale.Italian]: "Elefante e pinguino",
+        [Locale.Indonesian]: "Gajah dan penguin",
+        [Locale.Czech]: "Slon a tučňák",
+        [Locale.Japanese]: "ゾウとペンギン",
+        [Locale.Korean]: "코끼리와 펭귄",
+        [Locale.ChineseCN]: "大象和企鹅",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextTopWithBackground, Type.FaceImage, Type.DefaultText],
     width: 450,

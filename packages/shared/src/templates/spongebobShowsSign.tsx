@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobShowsSign: Template = {
     name: "spongebobShowsSign",
-    displayName: "Spongebob shows sign",
+    displayName: buildLocales("Spongebob shows sign", {
+        [Locale.Russian]: "Губка Боб показывает знак",
+        [Locale.Ukrainian]: "Губка Боб показує знак",
+        [Locale.Dutch]: "Spongebob toont bord",
+        [Locale.French]: "Bob l'éponge montre un panneau",
+        [Locale.German]: "Spongebob zeigt Schild",
+        [Locale.Polish]: "SpongeBob pokazuje znak",
+        [Locale.SpanishES]: "Bob Esponja muestra cartel",
+        [Locale.SpanishLATAM]: "Bob Esponja muestra un letrero",
+        [Locale.PortugueseBR]: "Bob Esponja mostrando placa",
+        [Locale.Turkish]: "SüngerBob tabela gösteriyor",
+        [Locale.Italian]: "SpongeBob mostra un cartello",
+        [Locale.Indonesian]: "Spongebob menunjukkan papan",
+        [Locale.Czech]: "Spongebob ukazuje ceduli",
+        [Locale.Japanese]: "看板を見せるスポンジ・ボブ",
+        [Locale.Korean]: "표지판 보여주는 스폰지밥",
+        [Locale.ChineseCN]: "海绵宝宝展示牌子",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons],
     types: [Type.ObjectImage, Type.TextLeft],
     width: 657,

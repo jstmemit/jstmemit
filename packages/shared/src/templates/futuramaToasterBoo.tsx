@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaToasterBoo: Template = {
     name: "futuramaToasterBoo",
-    displayName: "Futurama toaster boo",
+    displayName: buildLocales("Toaster boo", {
+        [Locale.Russian]: "Тостер бу",
+        [Locale.Ukrainian]: "Тостер бу",
+        [Locale.Dutch]: "Broodrooster boe",
+        [Locale.French]: "Grille-pain bouh",
+        [Locale.German]: "Toaster Buh",
+        [Locale.Polish]: "Toster bu",
+        [Locale.SpanishES]: "Tostadora bu",
+        [Locale.SpanishLATAM]: "Tostadora bu",
+        [Locale.PortugueseBR]: "Torradeira boo",
+        [Locale.Turkish]: "Tost makinesi böö",
+        [Locale.Italian]: "Tostapane bu",
+        [Locale.Indonesian]: "Pemanggang roti boo",
+        [Locale.Czech]: "Toustovač baf",
+        [Locale.Japanese]: "トースター いないいないばあ",
+        [Locale.Korean]: "토스터 까꿍",
+        [Locale.ChineseCN]: "烤面包机 boo",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 539,

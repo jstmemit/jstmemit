@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraMinoriHoldingDocument: Template = {
     name: "toradoraMinoriHoldingDocument",
-    displayName: "Toradora Minori holding document",
+    displayName: buildLocales("Minori holding document", {
+        [Locale.Russian]: "Минори держит документ",
+        [Locale.Ukrainian]: "Мінорі тримає документ",
+        [Locale.Dutch]: "Minori houdt document vast",
+        [Locale.French]: "Minori tenant un document",
+        [Locale.German]: "Minori hält Dokument",
+        [Locale.Polish]: "Minori trzyma dokument",
+        [Locale.SpanishES]: "Minori sosteniendo un documento",
+        [Locale.SpanishLATAM]: "Minori sosteniendo un documento",
+        [Locale.PortugueseBR]: "Minori segurando documento",
+        [Locale.Turkish]: "Belge tutan Minori",
+        [Locale.Italian]: "Minori con in mano un documento",
+        [Locale.Indonesian]: "Minori memegang dokumen",
+        [Locale.Czech]: "Minori drží dokument",
+        [Locale.Japanese]: "書類を持つ実乃梨",
+        [Locale.Korean]: "서류를 들고 있는 미노리",
+        [Locale.ChineseCN]: "拿着文件的实乃梨",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextCenterWithBackground],
     width: 640,

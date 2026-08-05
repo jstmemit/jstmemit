@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const isThisAPigeon: Template = {
     name: "isThisAPigeon",
-    displayName: "Anime Is this a pigeon",
+    displayName: buildLocales("Is this a pigeon", {
+        [Locale.Russian]: "Это голубь?",
+        [Locale.Ukrainian]: "Це голуб?",
+        [Locale.Dutch]: "Is dit een duif",
+        [Locale.French]: "Est-ce un pigeon",
+        [Locale.German]: "Ist das eine Taube",
+        [Locale.Polish]: "Czy to gołąb",
+        [Locale.SpanishES]: "¿Es esto una paloma?",
+        [Locale.SpanishLATAM]: "¿Es esto una paloma?",
+        [Locale.PortugueseBR]: "Isso é um pombo",
+        [Locale.Turkish]: "Bu bir güvercin mi",
+        [Locale.Italian]: "È questo un piccione",
+        [Locale.Indonesian]: "Apakah ini merpati",
+        [Locale.Czech]: "Je to holub",
+        [Locale.Japanese]: "これは鳩ですか",
+        [Locale.Korean]: "이것은 비둘기입니까",
+        [Locale.ChineseCN]: "这是一只鸽子吗",
+    }),
     topics: [Topic.Anime],
     types: [Type.ObjectImage, Type.TextBottom],
     width: 1587,

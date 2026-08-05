@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaBenderScared: Template = {
     name: "futuramaBenderScared",
-    displayName: "Futurama Bender scared",
+    displayName: buildLocales("Bender scared", {
+        [Locale.Russian]: "Испуганный Бендер",
+        [Locale.Ukrainian]: "Наляканий Бендер",
+        [Locale.Dutch]: "Bange Bender",
+        [Locale.French]: "Bender effrayé",
+        [Locale.German]: "Bender verängstigt",
+        [Locale.Polish]: "Przestraszony Bender",
+        [Locale.SpanishES]: "Bender asustado",
+        [Locale.SpanishLATAM]: "Bender asustado",
+        [Locale.PortugueseBR]: "Bender assustado",
+        [Locale.Turkish]: "Korkan Bender",
+        [Locale.Italian]: "Bender spaventato",
+        [Locale.Indonesian]: "Bender ketakutan",
+        [Locale.Czech]: "Vyděšený Bender",
+        [Locale.Japanese]: "怯えるベンダー",
+        [Locale.Korean]: "겁먹은 벤더",
+        [Locale.ChineseCN]: "害怕的本德",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom, Type.ObjectImage],
     width: 480,

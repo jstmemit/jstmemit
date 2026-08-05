@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiHappy: Template = {
     name: "btrBocchiHappy",
-    displayName: "BTR Bocchi happy",
+    displayName: buildLocales("Bocchi happy", {
+        [Locale.Russian]: "Бокки счастлива",
+        [Locale.Ukrainian]: "Боккі щаслива",
+        [Locale.Dutch]: "Bocchi blij",
+        [Locale.French]: "Bocchi heureuse",
+        [Locale.German]: "Bocchi glücklich",
+        [Locale.Polish]: "Bocchi szczęśliwa",
+        [Locale.SpanishES]: "Bocchi feliz",
+        [Locale.SpanishLATAM]: "Bocchi feliz",
+        [Locale.PortugueseBR]: "Bocchi feliz",
+        [Locale.Turkish]: "Bocchi mutlu",
+        [Locale.Italian]: "Bocchi felice",
+        [Locale.Indonesian]: "Bocchi senang",
+        [Locale.Czech]: "Bocchi šťastná",
+        [Locale.Japanese]: "嬉しいぼっち",
+        [Locale.Korean]: "행복한 봇치",
+        [Locale.ChineseCN]: "波奇开心",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextLeftWithBackground],
     width: 1280,

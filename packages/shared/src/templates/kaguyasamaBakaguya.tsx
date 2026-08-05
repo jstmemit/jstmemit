@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const kaguyasamaBakaguya: Template = {
     name: "kaguyasamaBakaguya",
-    displayName: "Kaguyasama Bakaguya",
+    displayName: buildLocales("Bakaguya", {
+        [Locale.Russian]: "Бакагуя",
+        [Locale.Ukrainian]: "Бакагуя",
+        [Locale.Dutch]: "Bakaguya",
+        [Locale.French]: "Bakaguya",
+        [Locale.German]: "Bakaguya",
+        [Locale.Polish]: "Bakaguya",
+        [Locale.SpanishES]: "Bakaguya",
+        [Locale.SpanishLATAM]: "Bakaguya",
+        [Locale.PortugueseBR]: "Bakaguya",
+        [Locale.Turkish]: "Bakaguya",
+        [Locale.Italian]: "Bakaguya",
+        [Locale.Indonesian]: "Bakaguya",
+        [Locale.Czech]: "Bakaguya",
+        [Locale.Japanese]: "バカぐや",
+        [Locale.Korean]: "바카구야",
+        [Locale.ChineseCN]: "笨蛋辉夜",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.KaguyaSama],
     types: [Type.TextTopWithBackground, Type.DefaultText],
     width: 750,

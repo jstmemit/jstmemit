@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobMonolith: Template = {
     name: "spongebobMonolith",
-    displayName: "Spongebob monolith",
+    displayName: buildLocales("Spongebob monolith", {
+        [Locale.Russian]: "Монолит Губки Боба",
+        [Locale.Ukrainian]: "Моноліт Губки Боба",
+        [Locale.Dutch]: "Spongebob monoliet",
+        [Locale.French]: "Monolithe Bob l'éponge",
+        [Locale.German]: "Spongebob Monolith",
+        [Locale.Polish]: "Monolit SpongeBoba",
+        [Locale.SpanishES]: "Monolito de Bob Esponja",
+        [Locale.SpanishLATAM]: "Monolito de Bob Esponja",
+        [Locale.PortugueseBR]: "Monólito do Bob Esponja",
+        [Locale.Turkish]: "SüngerBob dikilitaşı",
+        [Locale.Italian]: "Monolito di SpongeBob",
+        [Locale.Indonesian]: "Monolit Spongebob",
+        [Locale.Czech]: "Spongebob monolit",
+        [Locale.Japanese]: "スポンジ・ボブのモノリス",
+        [Locale.Korean]: "스폰지밥 모놀리스",
+        [Locale.ChineseCN]: "海绵宝宝巨石碑",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 1080,

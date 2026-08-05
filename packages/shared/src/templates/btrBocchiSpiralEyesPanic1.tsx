@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiSpiralEyesPanic1: Template = {
     name: "btrBocchiSpiralEyesPanic1",
-    displayName: "BTR Bocchi spiral eyes panic 1",
+    displayName: buildLocales("Bocchi spiral eyes panic 1", {
+        [Locale.Russian]: "Бокки в панике с глазами-спиралями 1",
+        [Locale.Ukrainian]: "Боккі в паніці з очима-спіралями 1",
+        [Locale.Dutch]: "Bocchi in paniek met spiraalogen 1",
+        [Locale.French]: "Bocchi paniquée avec des yeux en spirale 1",
+        [Locale.German]: "Bocchi in Panik mit Spiralaugen 1",
+        [Locale.Polish]: "Bocchi w panice z oczami-spiralami 1",
+        [Locale.SpanishES]: "Bocchi en pánico con ojos en espiral 1",
+        [Locale.SpanishLATAM]: "Bocchi en pánico con ojos en espiral 1",
+        [Locale.PortugueseBR]: "Bocchi em pânico com olhos em espiral 1",
+        [Locale.Turkish]: "Bocchi panikte spiral gözlerle 1",
+        [Locale.Italian]: "Bocchi in preda al panico con occhi a spirale 1",
+        [Locale.Indonesian]: "Bocchi panik dengan mata spiral 1",
+        [Locale.Czech]: "Bocchi v panice se spirálovýma očima 1",
+        [Locale.Japanese]: "目がぐるぐるでパニックのぼっち 1",
+        [Locale.Korean]: "소용돌이 눈 패닉 봇치 1",
+        [Locale.ChineseCN]: "波奇漩涡眼恐慌 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 498,

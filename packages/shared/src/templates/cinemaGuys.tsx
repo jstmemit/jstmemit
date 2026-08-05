@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const cinemaGuys: Template = {
     name: "cinemaGuys",
-    displayName: "Cinema guys",
+    displayName: buildLocales("Cinema guys", {
+        [Locale.Russian]: "Парни в кино",
+        [Locale.Ukrainian]: "Хлопці в кіно",
+        [Locale.Dutch]: "Jongens in de bioscoop",
+        [Locale.French]: "Gars au cinéma",
+        [Locale.German]: "Jungs im Kino",
+        [Locale.Polish]: "Chłopaki w kinie",
+        [Locale.SpanishES]: "Chicos en el cine",
+        [Locale.SpanishLATAM]: "Chicos en el cine",
+        [Locale.PortugueseBR]: "Caras no cinema",
+        [Locale.Turkish]: "Sinemadaki adamlar",
+        [Locale.Italian]: "Ragazzi al cinema",
+        [Locale.Indonesian]: "Cowok-cowok di bioskop",
+        [Locale.Czech]: "Kluci v kině",
+        [Locale.Japanese]: "映画館の男たち",
+        [Locale.Korean]: "영화관 남자들",
+        [Locale.ChineseCN]: "电影院的家伙们",
+    }),
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 1280,

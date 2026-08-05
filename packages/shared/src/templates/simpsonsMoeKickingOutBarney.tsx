@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsMoeKickingOutBarney: Template = {
     name: "simpsonsMoeKickingOutBarney",
-    displayName: "Simpsons Moe kicking out Barney",
+    displayName: buildLocales("Moe kicking out Barney", {
+        [Locale.Russian]: "Мо выкидывает Барни",
+        [Locale.Ukrainian]: "Мо викидає Барні",
+        [Locale.Dutch]: "Moe schopt Barney eruit",
+        [Locale.French]: "Moe jette Barney",
+        [Locale.German]: "Moe wirft Barney raus",
+        [Locale.Polish]: "Moe wyrzuca Barneya",
+        [Locale.SpanishES]: "Moe echando a Barney",
+        [Locale.SpanishLATAM]: "Moe echando a Barney",
+        [Locale.PortugueseBR]: "Moe expulsando o Barney",
+        [Locale.Turkish]: "Moe Barney'i dışarı atıyor",
+        [Locale.Italian]: "Moe caccia fuori Barney",
+        [Locale.Indonesian]: "Moe mengusir Barney",
+        [Locale.Czech]: "Moe vyhazuje Barneyho",
+        [Locale.Japanese]: "バーニーを追い出すモー",
+        [Locale.Korean]: "바니를 내쫓는 모",
+        [Locale.ChineseCN]: "莫伊把巴尼扔出去",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.ThreeOption],
     width: 1470,

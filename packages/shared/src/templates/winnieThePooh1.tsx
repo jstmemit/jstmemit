@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const winnieThePooh1: Template = {
     name: "winnieThePooh1",
-    displayName: "Winnie The Pooh 1",
+    displayName: buildLocales("Winnie The Pooh 1", {
+        [Locale.Russian]: "Винни-Пух 1",
+        [Locale.Ukrainian]: "Вінні-Пух 1",
+        [Locale.Dutch]: "Winnie de Poeh 1",
+        [Locale.French]: "Winnie l'ourson 1",
+        [Locale.German]: "Winnie Puuh 1",
+        [Locale.Polish]: "Kubuś Puchatek 1",
+        [Locale.SpanishES]: "Winnie the Pooh 1",
+        [Locale.SpanishLATAM]: "Winnie Pooh 1",
+        [Locale.PortugueseBR]: "Ursinho Pooh 1",
+        [Locale.Turkish]: "Winnie The Pooh 1",
+        [Locale.Italian]: "Winnie the Pooh 1",
+        [Locale.Indonesian]: "Winnie The Pooh 1",
+        [Locale.Czech]: "Medvídek Pú 1",
+        [Locale.Japanese]: "くまのプーさん 1",
+        [Locale.Korean]: "곰돌이 푸 1",
+        [Locale.ChineseCN]: "小熊维尼 1",
+    }),
     topics: [Topic.Cartoons, Topic.Reaction, Topic.WinnieThePooh],
     types: [Type.ThreeOption, Type.TextRightWithBackground],
     width: 640,

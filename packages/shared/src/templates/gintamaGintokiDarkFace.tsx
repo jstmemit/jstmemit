@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiDarkFace: Template = {
     name: "gintamaGintokiDarkFace",
-    displayName: "Gintama Gintoki dark face",
+    displayName: buildLocales("Gintoki dark face", {
+        [Locale.Russian]: "Мрачное лицо Гинтоки",
+        [Locale.Ukrainian]: "Похмуре обличчя Гінтокі",
+        [Locale.Dutch]: "Gintoki donker gezicht",
+        [Locale.French]: "Visage sombre de Gintoki",
+        [Locale.German]: "Gintokis finsteres Gesicht",
+        [Locale.Polish]: "Mroczna twarz Gintokiego",
+        [Locale.SpanishES]: "Cara oscura de Gintoki",
+        [Locale.SpanishLATAM]: "Cara oscura de Gintoki",
+        [Locale.PortugueseBR]: "Rosto sombrio do Gintoki",
+        [Locale.Turkish]: "Gintoki karanlık yüz",
+        [Locale.Italian]: "Faccia scura di Gintoki",
+        [Locale.Indonesian]: "Wajah gelap Gintoki",
+        [Locale.Czech]: "Temný obličej Gintokiho",
+        [Locale.Japanese]: "銀時の闇落ち顔",
+        [Locale.Korean]: "긴토키 어두운 표정",
+        [Locale.ChineseCN]: "银时黑化脸",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextTopWithBackground],
     width: 736,

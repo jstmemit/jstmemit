@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dnLSmile: Template = {
     name: "dnLSmile",
-    displayName: "DN L smile",
+    displayName: buildLocales("L smile", {
+        [Locale.Russian]: "L улыбается",
+        [Locale.Ukrainian]: "L посміхається",
+        [Locale.Dutch]: "L glimlacht",
+        [Locale.French]: "L sourit",
+        [Locale.German]: "L lächelt",
+        [Locale.Polish]: "L się uśmiecha",
+        [Locale.SpanishES]: "L sonriendo",
+        [Locale.SpanishLATAM]: "L sonriendo",
+        [Locale.PortugueseBR]: "L sorrindo",
+        [Locale.Turkish]: "L gülümsüyor",
+        [Locale.Italian]: "L sorride",
+        [Locale.Indonesian]: "L tersenyum",
+        [Locale.Czech]: "L se usmívá",
+        [Locale.Japanese]: "Lの笑顔",
+        [Locale.Korean]: "L의 미소",
+        [Locale.ChineseCN]: "L微笑",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground],
     width: 420,

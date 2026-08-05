@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dnLTwoFaces: Template = {
     name: "dnLTwoFaces",
-    displayName: "DN L two faces",
+    displayName: buildLocales("L two faces", {
+        [Locale.Russian]: "Два лица L",
+        [Locale.Ukrainian]: "Два обличчя L",
+        [Locale.Dutch]: "L twee gezichten",
+        [Locale.French]: "L deux visages",
+        [Locale.German]: "L zwei Gesichter",
+        [Locale.Polish]: "L dwie twarze",
+        [Locale.SpanishES]: "L dos caras",
+        [Locale.SpanishLATAM]: "L dos caras",
+        [Locale.PortugueseBR]: "L duas caras",
+        [Locale.Turkish]: "L iki yüz",
+        [Locale.Italian]: "L due facce",
+        [Locale.Indonesian]: "L dua wajah",
+        [Locale.Czech]: "L dvě tváře",
+        [Locale.Japanese]: "Lの二面性",
+        [Locale.Korean]: "L의 두 얼굴",
+        [Locale.ChineseCN]: "L的两副面孔",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,

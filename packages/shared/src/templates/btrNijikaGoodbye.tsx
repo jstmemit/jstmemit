@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrNijikaGoodbye: Template = {
     name: "btrNijikaGoodbye",
-    displayName: "BTR Nijika goodbye",
+    displayName: buildLocales("Nijika goodbye", {
+        [Locale.Russian]: "Нидзика прощается",
+        [Locale.Ukrainian]: "Ніджіка прощається",
+        [Locale.Dutch]: "Nijika neemt afscheid",
+        [Locale.French]: "Nijika dit au revoir",
+        [Locale.German]: "Nijika verabschiedet sich",
+        [Locale.Polish]: "Nijika żegna się",
+        [Locale.SpanishES]: "Nijika se despide",
+        [Locale.SpanishLATAM]: "Nijika se despide",
+        [Locale.PortugueseBR]: "Nijika se despedindo",
+        [Locale.Turkish]: "Nijika veda ediyor",
+        [Locale.Italian]: "Nijika saluta",
+        [Locale.Indonesian]: "Nijika mengucapkan selamat tinggal",
+        [Locale.Czech]: "Nijika se loučí",
+        [Locale.Japanese]: "さよならのニジカ",
+        [Locale.Korean]: "안녕 니지카",
+        [Locale.ChineseCN]: "虹夏告别",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

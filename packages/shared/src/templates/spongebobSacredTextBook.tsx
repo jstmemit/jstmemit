@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobSacredTextBook: Template = {
     name: "spongebobSacredTextBook",
-    displayName: "Spongebob sacred text book",
+    displayName: buildLocales("Sacred text book", {
+        [Locale.Russian]: "Священная книга",
+        [Locale.Ukrainian]: "Священна книга",
+        [Locale.Dutch]: "Heilige teksten boek",
+        [Locale.French]: "Livre des textes sacrés",
+        [Locale.German]: "Buch der heiligen Texte",
+        [Locale.Polish]: "Święta księga",
+        [Locale.SpanishES]: "Libro de textos sagrados",
+        [Locale.SpanishLATAM]: "Libro de textos sagrados",
+        [Locale.PortugueseBR]: "Livro de textos sagrados",
+        [Locale.Turkish]: "Kutsal metin kitabı",
+        [Locale.Italian]: "Libro sacro",
+        [Locale.Indonesian]: "Buku teks suci",
+        [Locale.Czech]: "Posvátná kniha",
+        [Locale.Japanese]: "神聖な書物",
+        [Locale.Korean]: "신성한 책",
+        [Locale.ChineseCN]: "神圣法典",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground, Type.DefaultText],
     width: 1280,

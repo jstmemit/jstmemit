@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenSmilingCrying: Template = {
     name: "frierenSmilingCrying",
-    displayName: "Frieren smiling crying",
+    displayName: buildLocales("Frieren smiling crying", {
+        [Locale.Russian]: "Фрирен улыбается и плачет",
+        [Locale.Ukrainian]: "Фрірен посміхається і плаче",
+        [Locale.Dutch]: "Frieren lacht en huilt",
+        [Locale.French]: "Frieren sourit et pleure",
+        [Locale.German]: "Frieren lächelt und weint",
+        [Locale.Polish]: "Frieren uśmiecha się i płacze",
+        [Locale.SpanishES]: "Frieren sonriendo y llorando",
+        [Locale.SpanishLATAM]: "Frieren sonriendo y llorando",
+        [Locale.PortugueseBR]: "Frieren sorrindo e chorando",
+        [Locale.Turkish]: "Hem gülümseyip hem ağlayan Frieren",
+        [Locale.Italian]: "Frieren sorride e piange",
+        [Locale.Indonesian]: "Frieren tersenyum sambil menangis",
+        [Locale.Czech]: "Frieren se usmívá a pláče",
+        [Locale.Japanese]: "泣き笑いするフリーレン",
+        [Locale.Korean]: "웃으며 우는 프리렌",
+        [Locale.ChineseCN]: "微笑流泪的芙莉莲",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 686,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const wojackPoint: Template = {
     name: "wojackPoint",
-    displayName: "Wojack point",
+    displayName: buildLocales("Wojak pointing", {
+        [Locale.Russian]: "Вояк указывает",
+        [Locale.Ukrainian]: "Вояк вказує",
+        [Locale.Dutch]: "Wojak wijst",
+        [Locale.French]: "Wojak qui pointe",
+        [Locale.German]: "Wojak zeigt",
+        [Locale.Polish]: "Wojak wskazujący",
+        [Locale.SpanishES]: "Wojak señalando",
+        [Locale.SpanishLATAM]: "Wojak señalando",
+        [Locale.PortugueseBR]: "Wojak apontando",
+        [Locale.Turkish]: "İşaret eden Wojak",
+        [Locale.Italian]: "Wojak che punta il dito",
+        [Locale.Indonesian]: "Wojak menunjuk",
+        [Locale.Czech]: "Wojak ukazuje",
+        [Locale.Japanese]: "指差すウォジャック",
+        [Locale.Korean]: "손가락질하는 워잭",
+        [Locale.ChineseCN]: "Wojak指人",
+    }),
     topics: [Topic.Reaction],
     types: [Type.BackgroundImage, Type.TextBottom],
     width: 512,

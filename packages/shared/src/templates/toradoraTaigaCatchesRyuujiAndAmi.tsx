@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
     name: "toradoraTaigaCatchesRyuujiAndAmi",
-    displayName: "Toradora Taiga catches Ryuuji And Ami",
+    displayName: buildLocales("Taiga catches Ryuuji and Ami", {
+        [Locale.Russian]: "Тайга застукала Рюджи и Ами",
+        [Locale.Ukrainian]: "Тайга застукала Рюдзі та Амі",
+        [Locale.Dutch]: "Taiga betrapt Ryuuji en Ami",
+        [Locale.French]: "Taiga surprend Ryuuji et Ami",
+        [Locale.German]: "Taiga erwischt Ryuuji und Ami",
+        [Locale.Polish]: "Taiga przyłapuje Ryuujiego i Ami",
+        [Locale.SpanishES]: "Taiga atrapa a Ryuuji y Ami",
+        [Locale.SpanishLATAM]: "Taiga atrapa a Ryuuji y Ami",
+        [Locale.PortugueseBR]: "Taiga pega Ryuuji e Ami",
+        [Locale.Turkish]: "Taiga, Ryuuji ve Ami'yi yakalar",
+        [Locale.Italian]: "Taiga sorprende Ryuuji e Ami",
+        [Locale.Indonesian]: "Taiga memergoki Ryuuji dan Ami",
+        [Locale.Czech]: "Taiga přistihne Ryuujiho a Ami",
+        [Locale.Japanese]: "竜児と亜美を捕まえる大河",
+        [Locale.Korean]: "류지와 아미를 잡는 타이가",
+        [Locale.ChineseCN]: "大河抓住龙儿和亚美",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.FaceImage],
     width: 870,

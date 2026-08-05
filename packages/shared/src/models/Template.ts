@@ -5,10 +5,11 @@ import type { TemplateProps } from "./TemplateProps.ts";
 import type { TemplateTopic } from "./TemplateTopic.ts";
 import type { TemplateType } from "./TemplateType.ts";
 import type { PosteriorSource } from "#/models/PosteriorSource.ts";
+import type { LocalizationMap } from "discord.js";
 
 export interface Template {
     name: string;
-    displayName: string;
+    displayName: LocalizationMap;
     topics: TemplateTopic[];
     types: TemplateType[];
     element: (props: TemplateProps) => ReactNode;

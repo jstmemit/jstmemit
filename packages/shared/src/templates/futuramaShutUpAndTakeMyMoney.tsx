@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaShutUpAndTakeMyMoney: Template = {
     name: "futuramaShutUpAndTakeMyMoney",
-    displayName: "Futurama Shut up and take my money",
+    displayName: buildLocales("Shut up and take my money", {
+        [Locale.Russian]: "Заткнись и возьми мои деньги",
+        [Locale.Ukrainian]: "Замовкни і візьми мої гроші",
+        [Locale.Dutch]: "Kop dicht en neem mijn geld",
+        [Locale.French]: "Tais-toi et prends mon argent",
+        [Locale.German]: "Halt die Klappe und nimm mein Geld",
+        [Locale.Polish]: "Zamknij się i bierz moje pieniądze",
+        [Locale.SpanishES]: "Cállate y toma mi dinero",
+        [Locale.SpanishLATAM]: "Cállate y toma mi dinero",
+        [Locale.PortugueseBR]: "Cale a boca e pegue meu dinheiro",
+        [Locale.Turkish]: "Çeneni kapa ve paramı al",
+        [Locale.Italian]: "Stai zitto e prendi i miei soldi",
+        [Locale.Indonesian]: "Diam dan ambil uangku",
+        [Locale.Czech]: "Sklapni a vezmi si mý peníze",
+        [Locale.Japanese]: "黙って俺の金を持っていけ",
+        [Locale.Korean]: "닥치고 내 돈이나 가져가",
+        [Locale.ChineseCN]: "闭嘴，拿着我的钱",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextTopWithBackground, Type.DefaultText],
     width: 735,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dogAndTeblet: Template = {
     name: "dogAndTeblet",
-    displayName: "Dog and tablet",
+    displayName: buildLocales("Dog and tablet", {
+        [Locale.Russian]: "Собака и планшет",
+        [Locale.Ukrainian]: "Собака і планшет",
+        [Locale.Dutch]: "Hond en tablet",
+        [Locale.French]: "Chien et tablette",
+        [Locale.German]: "Hund und Tablet",
+        [Locale.Polish]: "Pies i tablet",
+        [Locale.SpanishES]: "Perro y tablet",
+        [Locale.SpanishLATAM]: "Perro y tablet",
+        [Locale.PortugueseBR]: "Cachorro e tablet",
+        [Locale.Turkish]: "Köpek ve tablet",
+        [Locale.Italian]: "Cane e tablet",
+        [Locale.Indonesian]: "Anjing dan tablet",
+        [Locale.Czech]: "Pes a tablet",
+        [Locale.Japanese]: "犬とタブレット",
+        [Locale.Korean]: "강아지와 태블릿",
+        [Locale.ChineseCN]: "狗和平板电脑",
+    }),
     topics: [Topic.Animals],
     types: [Type.TextCenter, Type.FaceImage],
     width: 1000,

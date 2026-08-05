@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaikaBlush: Template = {
     name: "blendsMaikaBlush",
-    displayName: "BlendS Maika blush",
+    displayName: buildLocales("Maika blush", {
+        [Locale.Russian]: "Майка краснеет",
+        [Locale.Ukrainian]: "Майка червоніє",
+        [Locale.Dutch]: "Maika bloost",
+        [Locale.French]: "Maika qui rougit",
+        [Locale.German]: "Maika errötet",
+        [Locale.Polish]: "Maika się rumieni",
+        [Locale.SpanishES]: "Maika sonrojada",
+        [Locale.SpanishLATAM]: "Maika sonrojada",
+        [Locale.PortugueseBR]: "Maika corada",
+        [Locale.Turkish]: "Maika kızarıyor",
+        [Locale.Italian]: "Maika arrossisce",
+        [Locale.Indonesian]: "Maika tersipu",
+        [Locale.Czech]: "Maika se červená",
+        [Locale.Japanese]: "マイカの照れ顔",
+        [Locale.Korean]: "마이카 얼굴 빨개짐",
+        [Locale.ChineseCN]: "麻衣花脸红",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 640,

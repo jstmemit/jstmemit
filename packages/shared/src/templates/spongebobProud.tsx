@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobProud: Template = {
     name: "spongebobProud",
-    displayName: "Spongebob proud",
+    displayName: buildLocales("Spongebob proud", {
+        [Locale.Russian]: "Гордый Губка Боб",
+        [Locale.Ukrainian]: "Гордий Губка Боб",
+        [Locale.Dutch]: "Spongebob trots",
+        [Locale.French]: "Bob l'éponge fier",
+        [Locale.German]: "Spongebob stolz",
+        [Locale.Polish]: "Dumny SpongeBob",
+        [Locale.SpanishES]: "Bob Esponja orgulloso",
+        [Locale.SpanishLATAM]: "Bob Esponja orgulloso",
+        [Locale.PortugueseBR]: "Bob Esponja orgulhoso",
+        [Locale.Turkish]: "Gururlu SüngerBob",
+        [Locale.Italian]: "SpongeBob orgoglioso",
+        [Locale.Indonesian]: "Spongebob bangga",
+        [Locale.Czech]: "Hrdý Spongebob",
+        [Locale.Japanese]: "誇らしげなスポンジ・ボブ",
+        [Locale.Korean]: "자랑스러운 스폰지밥",
+        [Locale.ChineseCN]: "自豪的海绵宝宝",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom],
     width: 554,

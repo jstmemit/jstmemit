@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const acsrMisakaMikotoDrakeMeme: Template = {
     name: "acsrMisakaMikotoDrakeMeme",
-    displayName: "ACSR Misaka Mikoto drake meme",
+    displayName: buildLocales("Misaka Mikoto drake meme", {
+        [Locale.Russian]: "Мем Дрейка с Мисакой Микото",
+        [Locale.Ukrainian]: "Мем Дрейка з Місакою Мікото",
+        [Locale.Dutch]: "Misaka Mikoto Drake-meme",
+        [Locale.French]: "Mème Drake avec Misaka Mikoto",
+        [Locale.German]: "Misaka Mikoto Drake-Meme",
+        [Locale.Polish]: "Mem Drake'a z Misaką Mikoto",
+        [Locale.SpanishES]: "Meme de Drake con Misaka Mikoto",
+        [Locale.SpanishLATAM]: "Meme de Drake con Misaka Mikoto",
+        [Locale.PortugueseBR]: "Meme do Drake com Misaka Mikoto",
+        [Locale.Turkish]: "Misaka Mikoto Drake capsi",
+        [Locale.Italian]: "Meme di Drake con Misaka Mikoto",
+        [Locale.Indonesian]: "Meme Drake Misaka Mikoto",
+        [Locale.Czech]: "Misaka Mikoto Drake meme",
+        [Locale.Japanese]: "御坂美琴 ドレイクミーム",
+        [Locale.Korean]: "미사카 미코토 드레이크 밈",
+        [Locale.ChineseCN]: "御坂美琴德雷克梗图",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.ACertainScientificRailgun],
     types: [Type.TextRightWithBackground, Type.TwoOption],
     width: 964,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const evangelionShinjiCalmVsPanic: Template = {
     name: "evangelionShinjiCalmVsPanic",
-    displayName: "Evangelion Shinji calm vs panic",
+    displayName: buildLocales("Shinji calm vs panic", {
+        [Locale.Russian]: "Синдзи спокоен vs в панике",
+        [Locale.Ukrainian]: "Шінджі спокійний vs в паніці",
+        [Locale.Dutch]: "Shinji kalm vs paniek",
+        [Locale.French]: "Shinji calme vs paniqué",
+        [Locale.German]: "Shinji ruhig vs. panisch",
+        [Locale.Polish]: "Shinji spokojny vs w panice",
+        [Locale.SpanishES]: "Shinji tranquilo vs en pánico",
+        [Locale.SpanishLATAM]: "Shinji tranquilo vs en pánico",
+        [Locale.PortugueseBR]: "Shinji calmo vs em pânico",
+        [Locale.Turkish]: "Shinji sakin vs panikte",
+        [Locale.Italian]: "Shinji calmo vs in preda al panico",
+        [Locale.Indonesian]: "Shinji tenang vs panik",
+        [Locale.Czech]: "Shinji klidný vs v panice",
+        [Locale.Japanese]: "冷静なシンジ vs パニックのシンジ",
+        [Locale.Korean]: "차분한 신지 vs 패닉 신지",
+        [Locale.ChineseCN]: "真嗣冷静vs恐慌",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,

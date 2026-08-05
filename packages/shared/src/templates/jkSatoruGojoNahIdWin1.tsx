@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const jkSatoruGojoNahIdWin1: Template = {
     name: "jkSatoruGojoNahIdWin1",
-    displayName: "JK Satoru Gojo nah I'd win 1",
+    displayName: buildLocales("Satoru Gojo nah I'd win 1", {
+        [Locale.Russian]: "Сатору Годжо: нет, я бы победил 1",
+        [Locale.Ukrainian]: "Сатору Годжо: ні, я б переміг 1",
+        [Locale.Dutch]: "Satoru Gojo nah ik zou winnen 1",
+        [Locale.French]: "Satoru Gojo nah je gagnerais 1",
+        [Locale.German]: "Satoru Gojo nah ich würde gewinnen 1",
+        [Locale.Polish]: "Satoru Gojo nah wygrałbym 1",
+        [Locale.SpanishES]: "Satoru Gojo nah, ganaría 1",
+        [Locale.SpanishLATAM]: "Satoru Gojo nah, ganaría 1",
+        [Locale.PortugueseBR]: "Satoru Gojo nah, eu venceria 1",
+        [Locale.Turkish]: "Satoru Gojo hayır kazanırdım 1",
+        [Locale.Italian]: "Satoru Gojo nah vincerei 1",
+        [Locale.Indonesian]: "Satoru Gojo nah aku akan menang 1",
+        [Locale.Czech]: "Satoru Gojo ne vyhrál bych 1",
+        [Locale.Japanese]: "五条悟 勝つさ 1",
+        [Locale.Korean]: "고죠 사토루 이겨 1",
+        [Locale.ChineseCN]: "五条悟 会赢的 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 700,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsAtLeastYouTried: Template = {
     name: "simpsonsAtLeastYouTried",
-    displayName: "Simpsons at least you tried",
+    displayName: buildLocales("At least you tried", {
+        [Locale.Russian]: "По крайней мере, ты пытался",
+        [Locale.Ukrainian]: "Принаймні, ти намагався",
+        [Locale.Dutch]: "Je hebt het tenminste geprobeerd",
+        [Locale.French]: "Au moins tu as essayé",
+        [Locale.German]: "Wenigstens hast du es versucht",
+        [Locale.Polish]: "Przynajmniej spróbowałeś",
+        [Locale.SpanishES]: "Al menos lo intentaste",
+        [Locale.SpanishLATAM]: "Al menos lo intentaste",
+        [Locale.PortugueseBR]: "Pelo menos você tentou",
+        [Locale.Turkish]: "En azından denedin",
+        [Locale.Italian]: "Almeno ci hai provato",
+        [Locale.Indonesian]: "Setidaknya kamu sudah mencoba",
+        [Locale.Czech]: "Alespoň jsi to zkusil",
+        [Locale.Japanese]: "少なくとも努力はした",
+        [Locale.Korean]: "적어도 노력은 했잖아",
+        [Locale.ChineseCN]: "至少你尝试过",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.DefaultText],
     width: 736,

@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const catIsCalling: Template = {
     name: "catIsCalling",
-    displayName: "Cat is calling",
+    displayName: buildLocales("Cat is calling", {
+        [Locale.Russian]: "Кот звонит",
+        [Locale.Ukrainian]: "Кіт телефонує",
+        [Locale.Dutch]: "Kat belt",
+        [Locale.French]: "Le chat appelle",
+        [Locale.German]: "Katze ruft an",
+        [Locale.Polish]: "Kot dzwoni",
+        [Locale.SpanishES]: "El gato está llamando",
+        [Locale.SpanishLATAM]: "El gato está llamando",
+        [Locale.PortugueseBR]: "O gato está ligando",
+        [Locale.Turkish]: "Kedi arıyor",
+        [Locale.Italian]: "Il gatto sta chiamando",
+        [Locale.Indonesian]: "Kucing menelepon",
+        [Locale.Czech]: "Kočka volá",
+        [Locale.Japanese]: "電話する猫",
+        [Locale.Korean]: "전화하는 고양이",
+        [Locale.ChineseCN]: "猫咪打电话",
+    }),
     topics: [Topic.Cartoons],
     types: [Type.TextTop],
     width: 1498,

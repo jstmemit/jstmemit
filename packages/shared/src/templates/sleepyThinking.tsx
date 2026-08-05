@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const sleepyThinking: Template = {
     name: "sleepyThinking",
-    displayName: "Sleepy thinking",
+    displayName: buildLocales("Sleepy thinking", {
+        [Locale.Russian]: "Сонные мысли",
+        [Locale.Ukrainian]: "Сонні думки",
+        [Locale.Dutch]: "Slaperig nadenken",
+        [Locale.French]: "Pensée endormie",
+        [Locale.German]: "Schläfrig nachdenken",
+        [Locale.Polish]: "Senny i zamyślony",
+        [Locale.SpanishES]: "Pensando con sueño",
+        [Locale.SpanishLATAM]: "Pensando con sueño",
+        [Locale.PortugueseBR]: "Pensando com sono",
+        [Locale.Turkish]: "Uykulu düşünme",
+        [Locale.Italian]: "Pensiero assonnato",
+        [Locale.Indonesian]: "Mengantuk sambil berpikir",
+        [Locale.Czech]: "Ospalé přemýšlení",
+        [Locale.Japanese]: "眠そうに考える",
+        [Locale.Korean]: "졸면서 생각하기",
+        [Locale.ChineseCN]: "困倦思考",
+    }),
     topics: [Topic.Misc],
     types: [Type.TextBottom, Type.ObjectImage],
     width: 885,

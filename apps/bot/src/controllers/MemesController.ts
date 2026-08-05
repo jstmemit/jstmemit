@@ -1,4 +1,3 @@
-import { Locale } from "discord.js";
 import {
     type User,
     type UserContextMenuCommandInteraction,
@@ -15,6 +14,7 @@ import {
     ChannelType,
     Message,
     InteractionContextType,
+    Locale,
     MessageFlags,
     type TextBasedChannel,
     type ApplicationCommandOptionChoiceData,
@@ -41,9 +41,9 @@ import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerati
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
-import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { IContextService } from "#/interfaces/IContextService.ts";
+import { type TemplateTopic, TopicLocalizationMap } from "@jstmemit/shared/models/TemplateTopic";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -423,7 +423,8 @@ export class MemesController implements IMemesController {
     }
 
     /**
-     * Searches for templates with a given text in their name, displayName, topics
+     * Searches for templates with a given text
+     * in their name,displayName, topics in all languages
      * and sends them back to autocomplete
      *
      * @param interaction
@@ -432,29 +433,44 @@ export class MemesController implements IMemesController {
      */
     public async handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void> {
         const focused: string = interaction.options.getFocused().toLowerCase();
+        const userLocale: string = interaction.locale;
         const templates: Template[] = this._templatesRepository.getAll();
 
-        const matches: ApplicationCommandOptionChoiceData[] = await this._cacheService.getOrSet(
-            `custom:${focused}`,
-            () => {
-                return templates
-                    .filter((template: Template): boolean => {
-                        const matchesName: boolean = template.name.toLowerCase().includes(focused);
-                        const matchesDisplayName: boolean = template.displayName.toLowerCase().includes(focused);
-                        const matchesTopics: boolean = template.topics.some((topic: string) =>
-                            topic.toLowerCase().includes(focused),
-                        );
+        const matches: ApplicationCommandOptionChoiceData[] = templates
+            .filter((template: Template): boolean => {
+                const matchesName: boolean = template.name.toLowerCase().includes(focused);
+                const matchesDisplayName: boolean = Object.values(template.displayName).some(
+                    (localizedName: string | null) => localizedName?.toLowerCase().includes(focused) ?? false,
+                );
+                const matchesTopics: boolean = template.topics.some((topic: TemplateTopic) => {
+                    const topicLocalizations = TopicLocalizationMap[topic];
+                    return topicLocalizations
+                        ? Object.values(topicLocalizations).some(
+                              (localizedTopic: string | null) =>
+                                  localizedTopic?.toLowerCase().includes(focused) ?? false,
+                          )
+                        : false;
+                });
 
-                        return Boolean(matchesName || matchesDisplayName || matchesTopics);
-                    })
-                    .slice(0, 25)
-                    .map((template: Template) => ({ name: template.displayName, value: template.name }))
-                    .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
-                        a.name.localeCompare(b.name),
-                    );
-            },
-            ms("1h"),
-        );
+                return Boolean(matchesName || matchesDisplayName || matchesTopics);
+            })
+            .map((template: Template): ApplicationCommandOptionChoiceData => {
+                const localizedName: string =
+                    template.displayName[userLocale as Locale] ??
+                    template.displayName[Locale.EnglishUS] ??
+                    Object.values(template.displayName)[0] ??
+                    template.name;
+
+                return {
+                    name: localizedName,
+                    nameLocalizations: template.displayName,
+                    value: template.name,
+                };
+            })
+            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
+                a.name.localeCompare(b.name),
+            )
+            .slice(0, 25);
 
         await interaction.respond(matches);
     }

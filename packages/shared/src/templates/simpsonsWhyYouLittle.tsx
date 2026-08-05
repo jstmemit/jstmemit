@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsWhyYouLittle: Template = {
     name: "simpsonsWhyYouLittle",
-    displayName: "Simpsons Why you little",
+    displayName: buildLocales("Why you little", {
+        [Locale.Russian]: "Ах ты мелкий",
+        [Locale.Ukrainian]: "Ах ти ж дрібний",
+        [Locale.Dutch]: "Jij kleine etter",
+        [Locale.French]: "Espèce de petit garnement",
+        [Locale.German]: "Na warte, du kleiner",
+        [Locale.Polish]: "Ty mały gnojku",
+        [Locale.SpanishES]: "¡Serás mocoso!",
+        [Locale.SpanishLATAM]: "Pequeño demonio",
+        [Locale.PortugueseBR]: "Seu pestinha",
+        [Locale.Turkish]: "Seni velet",
+        [Locale.Italian]: "Brutto moccioso",
+        [Locale.Indonesian]: "Dasar anak nakal",
+        [Locale.Czech]: "Ty malej spratku",
+        [Locale.Japanese]: "このガキ",
+        [Locale.Korean]: "이 꼬마 녀석아",
+        [Locale.ChineseCN]: "你这个小鬼",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 498,

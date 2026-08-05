@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsLemmyThinking: Template = {
     name: "simpsonsLemmyThinking",
-    displayName: "Simpsons Lenny thinking",
+    displayName: buildLocales("Lenny thinking", {
+        [Locale.Russian]: "Задумавшийся Ленни",
+        [Locale.Ukrainian]: "Замислений Ленні",
+        [Locale.Dutch]: "Lenny denkt na",
+        [Locale.French]: "Lenny pensif",
+        [Locale.German]: "Lenny denkt nach",
+        [Locale.Polish]: "Myślący Lenny",
+        [Locale.SpanishES]: "Lenny pensando",
+        [Locale.SpanishLATAM]: "Lenny pensando",
+        [Locale.PortugueseBR]: "Lenny pensando",
+        [Locale.Turkish]: "Düşünen Lenny",
+        [Locale.Italian]: "Lenny che pensa",
+        [Locale.Indonesian]: "Lenny berpikir",
+        [Locale.Czech]: "Přemýšlející Lenny",
+        [Locale.Japanese]: "考えるレニー",
+        [Locale.Korean]: "생각하는 레니",
+        [Locale.ChineseCN]: "思考的伦尼",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom],
     width: 638,

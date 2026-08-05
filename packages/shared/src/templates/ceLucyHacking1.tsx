@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ceLucyHacking1: Template = {
     name: "ceLucyHacking1",
-    displayName: "CE Lucy hacking 1",
+    displayName: buildLocales("Lucy hacking 1", {
+        [Locale.Russian]: "Люси взламывает 1",
+        [Locale.Ukrainian]: "Люсі зламує 1",
+        [Locale.Dutch]: "Lucy hackt 1",
+        [Locale.French]: "Lucy en train de hacker 1",
+        [Locale.German]: "Lucy hackt 1",
+        [Locale.Polish]: "Lucy hakuje 1",
+        [Locale.SpanishES]: "Lucy hackeando 1",
+        [Locale.SpanishLATAM]: "Lucy hackeando 1",
+        [Locale.PortugueseBR]: "Lucy hackeando 1",
+        [Locale.Turkish]: "Lucy hackliyor 1",
+        [Locale.Italian]: "Lucy che hacka 1",
+        [Locale.Indonesian]: "Lucy meretas 1",
+        [Locale.Czech]: "Lucy hackuje 1",
+        [Locale.Japanese]: "ハッキングするルーシー 1",
+        [Locale.Korean]: "해킹하는 루시 1",
+        [Locale.ChineseCN]: "露西黑入系统 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.DefaultText, Type.AvatarImage],
     width: 640,

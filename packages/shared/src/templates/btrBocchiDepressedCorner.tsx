@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiDepressedCorner: Template = {
     name: "btrBocchiDepressedCorner",
-    displayName: "BTR Bocchi depressed corner",
+    displayName: buildLocales("Bocchi depressed corner", {
+        [Locale.Russian]: "Бокки грустит в углу",
+        [Locale.Ukrainian]: "Боккі сумує в кутку",
+        [Locale.Dutch]: "Bocchi in de depressiehoek",
+        [Locale.French]: "Bocchi déprimée dans son coin",
+        [Locale.German]: "Bocchi in der Depri-Ecke",
+        [Locale.Polish]: "Bocchi w depresyjnym kącie",
+        [Locale.SpanishES]: "Bocchi deprimida en el rincón",
+        [Locale.SpanishLATAM]: "Bocchi deprimida en el rincón",
+        [Locale.PortugueseBR]: "Bocchi deprimida no canto",
+        [Locale.Turkish]: "Bocchi köşede çökmüş",
+        [Locale.Italian]: "Bocchi depressa nell'angolo",
+        [Locale.Indonesian]: "Bocchi murung di sudut",
+        [Locale.Czech]: "Bocchi sklíčená v koutě",
+        [Locale.Japanese]: "体育座りで落ち込むぼっち",
+        [Locale.Korean]: "구석에서 우울한 봇치",
+        [Locale.ChineseCN]: "波奇蹲角落沮丧",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 1920,

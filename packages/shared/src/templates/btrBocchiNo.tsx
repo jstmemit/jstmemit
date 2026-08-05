@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiNo: Template = {
     name: "btrBocchiNo",
-    displayName: "BTR Bocchi no",
+    displayName: buildLocales("Bocchi no", {
+        [Locale.Russian]: "Бокки говорит нет",
+        [Locale.Ukrainian]: "Боккі каже ні",
+        [Locale.Dutch]: "Bocchi zegt nee",
+        [Locale.French]: "Bocchi dit non",
+        [Locale.German]: "Bocchi sagt nein",
+        [Locale.Polish]: "Bocchi mówi nie",
+        [Locale.SpanishES]: "Bocchi dice que no",
+        [Locale.SpanishLATAM]: "Bocchi dice que no",
+        [Locale.PortugueseBR]: "Bocchi diz não",
+        [Locale.Turkish]: "Bocchi hayır diyor",
+        [Locale.Italian]: "Bocchi dice no",
+        [Locale.Indonesian]: "Bocchi bilang tidak",
+        [Locale.Czech]: "Bocchi říká ne",
+        [Locale.Japanese]: "「イヤ」のぼっち",
+        [Locale.Korean]: "봇치 노",
+        [Locale.ChineseCN]: "波奇说不",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,

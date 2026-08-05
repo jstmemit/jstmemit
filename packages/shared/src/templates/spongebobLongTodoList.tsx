@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobLongTodoList: Template = {
     name: "spongebobLongTodoList",
-    displayName: "Spongebob long todo list",
+    displayName: buildLocales("Long todo list", {
+        [Locale.Russian]: "Длинный список дел",
+        [Locale.Ukrainian]: "Довгий список справ",
+        [Locale.Dutch]: "Lange to-do lijst",
+        [Locale.French]: "Longue liste de choses à faire",
+        [Locale.German]: "Lange To-Do-Liste",
+        [Locale.Polish]: "Długa lista rzeczy do zrobienia",
+        [Locale.SpanishES]: "Larga lista de tareas",
+        [Locale.SpanishLATAM]: "Larga lista de quehaceres",
+        [Locale.PortugueseBR]: "Lista de tarefas longa",
+        [Locale.Turkish]: "Uzun yapılacaklar listesi",
+        [Locale.Italian]: "Lunga lista di cose da fare",
+        [Locale.Indonesian]: "Daftar tugas panjang",
+        [Locale.Czech]: "Dlouhý seznam úkolů",
+        [Locale.Japanese]: "長いToDoリスト",
+        [Locale.Korean]: "긴 할 일 목록",
+        [Locale.ChineseCN]: "长长的待办事项清单",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1000,

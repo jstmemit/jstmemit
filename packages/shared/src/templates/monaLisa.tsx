@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const monaLisa: Template = {
     name: "monaLisa",
-    displayName: "Mona Lisa",
+    displayName: buildLocales("Mona Lisa", {
+        [Locale.Russian]: "Мона Лиза",
+        [Locale.Ukrainian]: "Мона Ліза",
+        [Locale.Dutch]: "Mona Lisa",
+        [Locale.French]: "Mona Lisa",
+        [Locale.German]: "Mona Lisa",
+        [Locale.Polish]: "Mona Lisa",
+        [Locale.SpanishES]: "Mona Lisa",
+        [Locale.SpanishLATAM]: "Mona Lisa",
+        [Locale.PortugueseBR]: "Mona Lisa",
+        [Locale.Turkish]: "Mona Lisa",
+        [Locale.Italian]: "Gioconda",
+        [Locale.Indonesian]: "Mona Lisa",
+        [Locale.Czech]: "Mona Lisa",
+        [Locale.Japanese]: "モナ・リザ",
+        [Locale.Korean]: "모나리자",
+        [Locale.ChineseCN]: "蒙娜丽莎",
+    }),
     topics: [Topic.Art],
     types: [Type.TextBottom, Type.FaceImage],
     width: 960,

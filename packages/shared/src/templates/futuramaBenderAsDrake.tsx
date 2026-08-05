@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaBenderAsDrake: Template = {
     name: "futuramaBenderAsDrake",
-    displayName: "Futurama Bender as Drake",
+    displayName: buildLocales("Bender as Drake", {
+        [Locale.Russian]: "Бендер в роли Дрейка",
+        [Locale.Ukrainian]: "Бендер у ролі Дрейка",
+        [Locale.Dutch]: "Bender als Drake",
+        [Locale.French]: "Bender en Drake",
+        [Locale.German]: "Bender als Drake",
+        [Locale.Polish]: "Bender jako Drake",
+        [Locale.SpanishES]: "Bender como Drake",
+        [Locale.SpanishLATAM]: "Bender como Drake",
+        [Locale.PortugueseBR]: "Bender como Drake",
+        [Locale.Turkish]: "Drake olarak Bender",
+        [Locale.Italian]: "Bender come Drake",
+        [Locale.Indonesian]: "Bender sebagai Drake",
+        [Locale.Czech]: "Bender jako Drake",
+        [Locale.Japanese]: "ドレイクのベンダー",
+        [Locale.Korean]: "드레이크로 분한 벤더",
+        [Locale.ChineseCN]: "扮演德雷克的本德",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 2048,

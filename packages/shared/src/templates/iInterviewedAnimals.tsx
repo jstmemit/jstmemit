@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const iInterviewedAnimals: Template = {
     name: "iInterviewedAnimals",
-    displayName: "YouTube I interviewed animals",
+    displayName: buildLocales("I interviewed animals", {
+        [Locale.Russian]: "Я взял интервью у животных",
+        [Locale.Ukrainian]: "Я взяв інтерв'ю у тварин",
+        [Locale.Dutch]: "Ik interviewde dieren",
+        [Locale.French]: "J'ai interviewé des animaux",
+        [Locale.German]: "Ich habe Tiere interviewt",
+        [Locale.Polish]: "Przeprowadziłem wywiad ze zwierzętami",
+        [Locale.SpanishES]: "Entrevisté a animales",
+        [Locale.SpanishLATAM]: "Entrevisté a animales",
+        [Locale.PortugueseBR]: "Eu entrevistei animais",
+        [Locale.Turkish]: "Hayvanlarla röportaj yaptım",
+        [Locale.Italian]: "Ho intervistato degli animali",
+        [Locale.Indonesian]: "Saya mewawancarai hewan",
+        [Locale.Czech]: "Udělal jsem rozhovor se zvířaty",
+        [Locale.Japanese]: "動物にインタビューしました",
+        [Locale.Korean]: "동물들과 인터뷰했습니다",
+        [Locale.ChineseCN]: "我采访了动物",
+    }),
     topics: [Topic.YouTube, Topic.Animals],
     types: [Type.DefaultText, Type.ObjectImage, Type.TextRight],
     width: 621,

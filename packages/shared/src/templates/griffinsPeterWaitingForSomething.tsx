@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterWaitingForSomething: Template = {
     name: "griffinsPeterWaitingForSomething",
-    displayName: "Griffins Peter waiting for something",
+    displayName: buildLocales("Peter waiting for something", {
+        [Locale.Russian]: "Питер чего-то ждет",
+        [Locale.Ukrainian]: "Пітер чогось чекає",
+        [Locale.Dutch]: "Peter wacht op iets",
+        [Locale.French]: "Peter attendant quelque chose",
+        [Locale.German]: "Peter wartet auf etwas",
+        [Locale.Polish]: "Peter czekający na coś",
+        [Locale.SpanishES]: "Peter esperando algo",
+        [Locale.SpanishLATAM]: "Peter esperando algo",
+        [Locale.PortugueseBR]: "Peter esperando por algo",
+        [Locale.Turkish]: "Peter bir şey bekliyor",
+        [Locale.Italian]: "Peter aspetta qualcosa",
+        [Locale.Indonesian]: "Peter menunggu sesuatu",
+        [Locale.Czech]: "Peter na něco čeká",
+        [Locale.Japanese]: "何かを待つピーター",
+        [Locale.Korean]: "뭔가를 기다리는 피터",
+        [Locale.ChineseCN]: "等待中的彼得",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 568,

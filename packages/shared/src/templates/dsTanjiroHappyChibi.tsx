@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dsTanjiroHappyChibi: Template = {
     name: "dsTanjiroHappyChibi",
-    displayName: "DS Tanjiro happy chibi",
+    displayName: buildLocales("Tanjiro happy chibi", {
+        [Locale.Russian]: "Чиби Тандзиро счастлив",
+        [Locale.Ukrainian]: "Чібі Тандзіро щасливий",
+        [Locale.Dutch]: "Chibi Tanjiro blij",
+        [Locale.French]: "Chibi Tanjiro heureux",
+        [Locale.German]: "Chibi Tanjiro glücklich",
+        [Locale.Polish]: "Chibi Tanjiro szczęśliwy",
+        [Locale.SpanishES]: "Chibi Tanjiro feliz",
+        [Locale.SpanishLATAM]: "Chibi Tanjiro feliz",
+        [Locale.PortugueseBR]: "Chibi Tanjiro feliz",
+        [Locale.Turkish]: "Chibi Tanjiro mutlu",
+        [Locale.Italian]: "Chibi Tanjiro felice",
+        [Locale.Indonesian]: "Chibi Tanjiro senang",
+        [Locale.Czech]: "Chibi Tanjiro šťastný",
+        [Locale.Japanese]: "嬉しいチビ炭治郎",
+        [Locale.Korean]: "행복한 치비 탄지로",
+        [Locale.ChineseCN]: "Q版炭治郎开心",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.DemonSlayer],
     types: [Type.TextTopWithBackground],
     width: 500,

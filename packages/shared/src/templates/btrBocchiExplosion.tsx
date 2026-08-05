@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiExplosion: Template = {
     name: "btrBocchiExplosion",
-    displayName: "BTR Bocchi explosion",
+    displayName: buildLocales("Bocchi explosion", {
+        [Locale.Russian]: "Взрыв Бокки",
+        [Locale.Ukrainian]: "Вибух Боккі",
+        [Locale.Dutch]: "Bocchi explosie",
+        [Locale.French]: "Bocchi explosion",
+        [Locale.German]: "Bocchi Explosion",
+        [Locale.Polish]: "Bocchi eksplozja",
+        [Locale.SpanishES]: "Bocchi explosión",
+        [Locale.SpanishLATAM]: "Bocchi explosión",
+        [Locale.PortugueseBR]: "Bocchi explosão",
+        [Locale.Turkish]: "Bocchi patlama",
+        [Locale.Italian]: "Bocchi esplosione",
+        [Locale.Indonesian]: "Bocchi meledak",
+        [Locale.Czech]: "Bocchi exploze",
+        [Locale.Japanese]: "ぼっちの爆発",
+        [Locale.Korean]: "봇치 폭발",
+        [Locale.ChineseCN]: "波奇爆炸",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 600,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const pfSayWhatOneMoreTime: Template = {
     name: "pfSayWhatOneMoreTime",
-    displayName: "PF Say what one more time",
+    displayName: buildLocales("Say what one more time", {
+        [Locale.Russian]: "Скажи «что» ещё раз",
+        [Locale.Ukrainian]: "Скажи «що» ще раз",
+        [Locale.Dutch]: "Zeg nog één keer “wat”",
+        [Locale.French]: "Dis « quoi » encore une fois",
+        [Locale.German]: "Sag noch einmal „was“",
+        [Locale.Polish]: "Powiedz „co” jeszcze raz",
+        [Locale.SpanishES]: "Di «qué» una vez más",
+        [Locale.SpanishLATAM]: "Di «qué» una vez más",
+        [Locale.PortugueseBR]: "Diga “o quê” mais uma vez",
+        [Locale.Turkish]: "Bir kez daha “ne” de",
+        [Locale.Italian]: "Dì «cosa» un'altra volta",
+        [Locale.Indonesian]: "Katakan “apa” sekali lagi",
+        [Locale.Czech]: "Řekni „co“ ještě jednou",
+        [Locale.Japanese]: "もう一度「何」って言ってみろ",
+        [Locale.Korean]: "뭐라고 한 번만 더 말해봐",
+        [Locale.ChineseCN]: "再说一遍“什么”试试",
+    }),
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1920,

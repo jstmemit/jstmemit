@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiPerform: Template = {
     name: "btrBocchiPerform",
-    displayName: "BTR Bocchi perform",
+    displayName: buildLocales("Bocchi perform", {
+        [Locale.Russian]: "Бокки выступает",
+        [Locale.Ukrainian]: "Боккі виступає",
+        [Locale.Dutch]: "Bocchi optreden",
+        [Locale.French]: "Bocchi sur scène",
+        [Locale.German]: "Bocchi tritt auf",
+        [Locale.Polish]: "Bocchi na scenie",
+        [Locale.SpanishES]: "Bocchi actuando",
+        [Locale.SpanishLATAM]: "Bocchi actuando",
+        [Locale.PortugueseBR]: "Bocchi se apresentando",
+        [Locale.Turkish]: "Bocchi sahne alıyor",
+        [Locale.Italian]: "Bocchi si esibisce",
+        [Locale.Indonesian]: "Bocchi tampil",
+        [Locale.Czech]: "Bocchi vystupuje",
+        [Locale.Japanese]: "演奏するぼっち",
+        [Locale.Korean]: "공연하는 봇치",
+        [Locale.ChineseCN]: "波奇表演",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 540,

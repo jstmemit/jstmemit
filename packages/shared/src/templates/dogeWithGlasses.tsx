@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dogeWithGlasses: Template = {
     name: "dogeWithGlasses",
-    displayName: "Doge with glasses",
+    displayName: buildLocales("Doge with glasses", {
+        [Locale.Russian]: "Пес в очках",
+        [Locale.Ukrainian]: "Пес в окулярах",
+        [Locale.Dutch]: "Doge met bril",
+        [Locale.French]: "Doge avec lunettes",
+        [Locale.German]: "Doge mit Brille",
+        [Locale.Polish]: "Doge w okularach",
+        [Locale.SpanishES]: "Doge con gafas",
+        [Locale.SpanishLATAM]: "Doge con lentes",
+        [Locale.PortugueseBR]: "Doge de óculos",
+        [Locale.Turkish]: "Gözlüklü Doge",
+        [Locale.Italian]: "Doge con gli occhiali",
+        [Locale.Indonesian]: "Doge berkacamata",
+        [Locale.Czech]: "Doge s brýlemi",
+        [Locale.Japanese]: "メガネのドージ",
+        [Locale.Korean]: "안경 쓴 도지",
+        [Locale.ChineseCN]: "戴眼镜的Doge",
+    }),
     topics: [Topic.Animals, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1024,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const nerdDog: Template = {
     name: "nerdDog",
-    displayName: "Nerd dog",
+    displayName: buildLocales("Nerd dog", {
+        [Locale.Russian]: "Собака-ботаник",
+        [Locale.Ukrainian]: "Собака-ботан",
+        [Locale.Dutch]: "Nerd hond",
+        [Locale.French]: "Chien nerd",
+        [Locale.German]: "Nerd-Hund",
+        [Locale.Polish]: "Pies kujon",
+        [Locale.SpanishES]: "Perro nerd",
+        [Locale.SpanishLATAM]: "Perro nerd",
+        [Locale.PortugueseBR]: "Cachorro nerd",
+        [Locale.Turkish]: "İnek köpek",
+        [Locale.Italian]: "Cane nerd",
+        [Locale.Indonesian]: "Anjing nerd",
+        [Locale.Czech]: "Nerd pes",
+        [Locale.Japanese]: "オタク犬",
+        [Locale.Korean]: "너드 강아지",
+        [Locale.ChineseCN]: "书呆子狗",
+    }),
     topics: [Topic.Animals],
     types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 890,

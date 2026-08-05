@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const jkKidMegumiSeriouslyBro: Template = {
     name: "jkKidMegumiSeriouslyBro",
-    displayName: "JK Kid Megumi seriously bro",
+    displayName: buildLocales("Kid Megumi seriously bro", {
+        [Locale.Russian]: "Маленький Мегуми: серьезно, бро?",
+        [Locale.Ukrainian]: "Малий Мегумі: серйозно, бро?",
+        [Locale.Dutch]: "Kind Megumi serieus gast",
+        [Locale.French]: "Enfant Megumi sérieusement mec",
+        [Locale.German]: "Kind Megumi im Ernst Bro",
+        [Locale.Polish]: "Dziecko Megumi serio stary",
+        [Locale.SpanishES]: "Niño Megumi en serio hermano",
+        [Locale.SpanishLATAM]: "Niño Megumi en serio hermano",
+        [Locale.PortugueseBR]: "Criança Megumi sério mano",
+        [Locale.Turkish]: "Çocuk Megumi cidden mi kardeşim",
+        [Locale.Italian]: "Bambino Megumi seriamente frate",
+        [Locale.Indonesian]: "Anak Megumi serius bro",
+        [Locale.Czech]: "Dítě Megumi vážně brácho",
+        [Locale.Japanese]: "子供の伏黒 呆れ顔",
+        [Locale.Korean]: "어린 메구미 진심이냐",
+        [Locale.ChineseCN]: "小伏黑 无语",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 474,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const gintamaGintokiDrinkingBeer: Template = {
     name: "gintamaGintokiDrinkingBeer",
-    displayName: "Gintama Gintoki drinking beer",
+    displayName: buildLocales("Gintoki drinking beer", {
+        [Locale.Russian]: "Гинтоки пьет пиво",
+        [Locale.Ukrainian]: "Гінтокі п'є пиво",
+        [Locale.Dutch]: "Gintoki drinkt bier",
+        [Locale.French]: "Gintoki boit de la bière",
+        [Locale.German]: "Gintoki trinkt Bier",
+        [Locale.Polish]: "Gintoki pije piwo",
+        [Locale.SpanishES]: "Gintoki bebiendo cerveza",
+        [Locale.SpanishLATAM]: "Gintoki bebiendo cerveza",
+        [Locale.PortugueseBR]: "Gintoki bebendo cerveja",
+        [Locale.Turkish]: "Gintoki bira içiyor",
+        [Locale.Italian]: "Gintoki che beve birra",
+        [Locale.Indonesian]: "Gintoki minum bir",
+        [Locale.Czech]: "Gintoki pije pivo",
+        [Locale.Japanese]: "ビールを飲む銀時",
+        [Locale.Korean]: "맥주 마시는 긴토키",
+        [Locale.ChineseCN]: "银时喝啤酒",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
     types: [Type.TextBottom],
     width: 1000,

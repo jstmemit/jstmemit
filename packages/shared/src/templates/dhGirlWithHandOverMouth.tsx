@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const dhGirlWithHandOverMouth: Template = {
     name: "dhGirlWithHandOverMouth",
-    displayName: "DH Girl with hand over mouth",
+    displayName: buildLocales("Girl with hand over mouth", {
+        [Locale.Russian]: "Девушка прикрывает рот рукой",
+        [Locale.Ukrainian]: "Дівчина прикриває рот рукою",
+        [Locale.Dutch]: "Meisje met hand voor mond",
+        [Locale.French]: "Fille avec la main sur la bouche",
+        [Locale.German]: "Mädchen mit Hand vor dem Mund",
+        [Locale.Polish]: "Dziewczyna z dłonią na ustach",
+        [Locale.SpanishES]: "Chica con la mano en la boca",
+        [Locale.SpanishLATAM]: "Chica con la mano en la boca",
+        [Locale.PortugueseBR]: "Garota com a mão na boca",
+        [Locale.Turkish]: "Elini ağzına götüren kız",
+        [Locale.Italian]: "Ragazza con la mano sulla bocca",
+        [Locale.Indonesian]: "Gadis menutup mulut dengan tangan",
+        [Locale.Czech]: "Dívka s rukou na ústech",
+        [Locale.Japanese]: "口元を手で覆う女の子",
+        [Locale.Korean]: "입을 손으로 가리는 소녀",
+        [Locale.ChineseCN]: "女孩捂嘴",
+    }),
     topics: [Topic.Misc],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 718,

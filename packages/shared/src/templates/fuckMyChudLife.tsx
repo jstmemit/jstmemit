@@ -3,10 +3,29 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const fuckMyChudLife: Template = {
     name: "fuckMyChudLife",
-    displayName: "Fuck my chud life",
+    displayName: buildLocales("Fuck my chud life", {
+        [Locale.Russian]: "К черту мою уродскую жизнь",
+        [Locale.Ukrainian]: "До біса моє потворне життя",
+        [Locale.Dutch]: "Krijg de klere met mijn chud-leven",
+        [Locale.French]: "Au diable ma vie de loser",
+        [Locale.German]: "Scheiß auf mein Chud-Leben",
+        [Locale.Polish]: "Jebać moje przegrane życie",
+        [Locale.SpanishES]: "Al diablo mi vida de perdedor",
+        [Locale.SpanishLATAM]: "Al diablo mi vida de perdedor",
+        [Locale.PortugueseBR]: "Foda-se minha vida de fracassado",
+        [Locale.Turkish]: "Lanet olası ezik hayatım",
+        [Locale.Italian]: "Al diavolo la mia vita da sfigato",
+        [Locale.Indonesian]: "Persetan dengan hidup chud-ku",
+        [Locale.Czech]: "Kašlu na svůj loserskej život",
+        [Locale.Japanese]: "俺のクソみたいな人生",
+        [Locale.Korean]: "내 좆같은 인생",
+        [Locale.ChineseCN]: "去他妈的我这失败的人生",
+    }),
     topics: [Topic.SocialPost],
     types: [Type.TextPost, Type.ObjectImage, Type.TextBottom],
     width: 776,

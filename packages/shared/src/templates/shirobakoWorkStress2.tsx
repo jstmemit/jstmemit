@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const shirobakoWorkStress2: Template = {
     name: "shirobakoWorkStress2",
-    displayName: "Shirobako Work stress 2",
+    displayName: buildLocales("Work stress 2", {
+        [Locale.Russian]: "Стресс на работе 2",
+        [Locale.Ukrainian]: "Стрес на роботі 2",
+        [Locale.Dutch]: "Werkstress 2",
+        [Locale.French]: "Stress au travail 2",
+        [Locale.German]: "Arbeitsstress 2",
+        [Locale.Polish]: "Stres w pracy 2",
+        [Locale.SpanishES]: "Estrés laboral 2",
+        [Locale.SpanishLATAM]: "Estrés laboral 2",
+        [Locale.PortugueseBR]: "Estresse no trabalho 2",
+        [Locale.Turkish]: "İş stresi 2",
+        [Locale.Italian]: "Stress da lavoro 2",
+        [Locale.Indonesian]: "Stres kerja 2",
+        [Locale.Czech]: "Pracovní stres 2",
+        [Locale.Japanese]: "仕事のストレス 2",
+        [Locale.Korean]: "직장 스트레스 2",
+        [Locale.ChineseCN]: "工作压力 2",
+    }),
     topics: [Topic.Reaction, Topic.Movies, Topic.Shirobako],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 952,

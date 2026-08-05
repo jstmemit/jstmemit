@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsMaikaAngryPanic1: Template = {
     name: "blendsMaikaAngryPanic1",
-    displayName: "BlendS Maika angry panic 1",
+    displayName: buildLocales("Maika angry panic 1", {
+        [Locale.Russian]: "Майка в гневной панике 1",
+        [Locale.Ukrainian]: "Майка в гнівній паніці 1",
+        [Locale.Dutch]: "Maika boos in paniek 1",
+        [Locale.French]: "Maika en panique furieuse 1",
+        [Locale.German]: "Maika wütend in Panik 1",
+        [Locale.Polish]: "Maika w gniewnej panice 1",
+        [Locale.SpanishES]: "Maika en pánico furioso 1",
+        [Locale.SpanishLATAM]: "Maika en pánico furioso 1",
+        [Locale.PortugueseBR]: "Maika em pânico furioso 1",
+        [Locale.Turkish]: "Maika öfkeli panik içinde 1",
+        [Locale.Italian]: "Maika in preda al panico furioso 1",
+        [Locale.Indonesian]: "Maika panik dan marah 1",
+        [Locale.Czech]: "Maika v naštvané panice 1",
+        [Locale.Japanese]: "マイカの怒りパニック 1",
+        [Locale.Korean]: "마이카 화난 패닉 1",
+        [Locale.ChineseCN]: "麻衣花愤怒恐慌 1",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,

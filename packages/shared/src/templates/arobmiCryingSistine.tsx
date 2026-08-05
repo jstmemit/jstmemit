@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const arobmiCryingSistine: Template = {
     name: "arobmiCryingSistine",
-    displayName: "AROBMI Crying Sistine",
+    displayName: buildLocales("Crying Sistine", {
+        [Locale.Russian]: "Плачущая Систина",
+        [Locale.Ukrainian]: "Сістіна плаче",
+        [Locale.Dutch]: "Huilende Sistine",
+        [Locale.French]: "Sistine pleurant",
+        [Locale.German]: "Weinende Sistine",
+        [Locale.Polish]: "Płacząca Sistine",
+        [Locale.SpanishES]: "Sistine llorando",
+        [Locale.SpanishLATAM]: "Sistine llorando",
+        [Locale.PortugueseBR]: "Sistine chorando",
+        [Locale.Turkish]: "Ağlayan Sistine",
+        [Locale.Italian]: "Sistine che piange",
+        [Locale.Indonesian]: "Sistine menangis",
+        [Locale.Czech]: "Plačící Sistine",
+        [Locale.Japanese]: "泣くシスティーナ",
+        [Locale.Korean]: "우는 시스티나",
+        [Locale.ChineseCN]: "哭泣的希丝缇娜",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextBottomWithBackground],
     width: 1200,

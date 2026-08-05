@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const incomingCall: Template = {
     name: "incomingCall",
-    displayName: "Incoming call",
+    displayName: buildLocales("Incoming call", {
+        [Locale.Russian]: "Входящий вызов",
+        [Locale.Ukrainian]: "Вхідний дзвінок",
+        [Locale.Dutch]: "Inkomende oproep",
+        [Locale.French]: "Appel entrant",
+        [Locale.German]: "Eingehender Anruf",
+        [Locale.Polish]: "Połączenie przychodzące",
+        [Locale.SpanishES]: "Llamada entrante",
+        [Locale.SpanishLATAM]: "Llamada entrante",
+        [Locale.PortugueseBR]: "Chamada recebida",
+        [Locale.Turkish]: "Gelen arama",
+        [Locale.Italian]: "Chiamata in arrivo",
+        [Locale.Indonesian]: "Panggilan masuk",
+        [Locale.Czech]: "Příchozí hovor",
+        [Locale.Japanese]: "着信",
+        [Locale.Korean]: "수신 전화",
+        [Locale.ChineseCN]: "来电",
+    }),
     topics: [Topic.Misc],
     types: [Type.AvatarImage, Type.TextCenter],
     width: 640,

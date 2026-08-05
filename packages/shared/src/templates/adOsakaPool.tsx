@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const adOsakaPool: Template = {
     name: "adOsakaPool",
-    displayName: "AD Osaka pool",
+    displayName: buildLocales("Osaka pool", {
+        [Locale.Russian]: "Осака в бассейне",
+        [Locale.Ukrainian]: "Осака в басейні",
+        [Locale.Dutch]: "Osaka in het zwembad",
+        [Locale.French]: "Osaka à la piscine",
+        [Locale.German]: "Osaka im Pool",
+        [Locale.Polish]: "Osaka na basenie",
+        [Locale.SpanishES]: "Osaka en la piscina",
+        [Locale.SpanishLATAM]: "Osaka en la piscina",
+        [Locale.PortugueseBR]: "Osaka na piscina",
+        [Locale.Turkish]: "Osaka havuzda",
+        [Locale.Italian]: "Osaka in piscina",
+        [Locale.Indonesian]: "Osaka di kolam renang",
+        [Locale.Czech]: "Osaka v bazénu",
+        [Locale.Japanese]: "大阪 プール",
+        [Locale.Korean]: "오사카 수영장",
+        [Locale.ChineseCN]: "大阪游泳池",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.AzumangaDaioh],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

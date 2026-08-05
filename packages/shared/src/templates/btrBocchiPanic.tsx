@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const btrBocchiPanic: Template = {
     name: "btrBocchiPanic",
-    displayName: "BTR Bocchi panic",
+    displayName: buildLocales("Bocchi panic", {
+        [Locale.Russian]: "Бокки в панике",
+        [Locale.Ukrainian]: "Боккі в паніці",
+        [Locale.Dutch]: "Bocchi in paniek",
+        [Locale.French]: "Bocchi paniquée",
+        [Locale.German]: "Bocchi in Panik",
+        [Locale.Polish]: "Bocchi w panice",
+        [Locale.SpanishES]: "Bocchi en pánico",
+        [Locale.SpanishLATAM]: "Bocchi en pánico",
+        [Locale.PortugueseBR]: "Bocchi em pânico",
+        [Locale.Turkish]: "Bocchi panikte",
+        [Locale.Italian]: "Bocchi in preda al panico",
+        [Locale.Indonesian]: "Bocchi panik",
+        [Locale.Czech]: "Bocchi v panice",
+        [Locale.Japanese]: "パニックのぼっち",
+        [Locale.Korean]: "패닉 봇치",
+        [Locale.ChineseCN]: "波奇恐慌",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 540,

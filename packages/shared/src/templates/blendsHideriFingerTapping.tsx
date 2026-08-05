@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const blendsHideriFingerTapping: Template = {
     name: "blendsHideriFingerTapping",
-    displayName: "BlendS Hideri finger tapping",
+    displayName: buildLocales("Hideri finger tapping", {
+        [Locale.Russian]: "Хидери постукивает пальцем",
+        [Locale.Ukrainian]: "Хідері постукує пальцем",
+        [Locale.Dutch]: "Hideri tikt met haar vinger",
+        [Locale.French]: "Hideri qui tapote du doigt",
+        [Locale.German]: "Hideri tippt mit dem Finger",
+        [Locale.Polish]: "Hideri stuka palcem",
+        [Locale.SpanishES]: "Hideri tamborileando con el dedo",
+        [Locale.SpanishLATAM]: "Hideri tamborileando el dedo",
+        [Locale.PortugueseBR]: "Hideri batendo o dedo",
+        [Locale.Turkish]: "Hideri parmağıyla vuruyor",
+        [Locale.Italian]: "Hideri che tamburella con il dito",
+        [Locale.Indonesian]: "Hideri mengetuk jari",
+        [Locale.Czech]: "Hideri ťuká prstem",
+        [Locale.Japanese]: "ヒデリの指タップ",
+        [Locale.Korean]: "히데리 손가락 톡톡",
+        [Locale.ChineseCN]: "绯多莉手指轻敲",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.ObjectImage, Type.FaceImage],
     width: 801,

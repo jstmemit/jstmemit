@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const disasterGirl: Template = {
     name: "disasterGirl",
-    displayName: "Disaster girl",
+    displayName: buildLocales("Disaster girl", {
+        [Locale.Russian]: "Девочка-катастрофа",
+        [Locale.Ukrainian]: "Дівчинка-катастрофа",
+        [Locale.Dutch]: "Ramp-meisje",
+        [Locale.French]: "Fille catastrophe",
+        [Locale.German]: "Katastrophen-Mädchen",
+        [Locale.Polish]: "Dziewczynka katastrofa",
+        [Locale.SpanishES]: "Niña del desastre",
+        [Locale.SpanishLATAM]: "Niña del desastre",
+        [Locale.PortugueseBR]: "Menina do desastre",
+        [Locale.Turkish]: "Felaket kız",
+        [Locale.Italian]: "Ragazza del disastro",
+        [Locale.Indonesian]: "Gadis bencana",
+        [Locale.Czech]: "Dívka katastrofa",
+        [Locale.Japanese]: "ディザスターガール",
+        [Locale.Korean]: "디재스터 걸",
+        [Locale.ChineseCN]: "灾难女孩",
+    }),
     topics: [Topic.Reaction, Topic.News],
     types: [Type.TextTop, Type.FaceImage],
     width: 2042,

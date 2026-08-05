@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const griffinsPeterHurtsHisKnee: Template = {
     name: "griffinsPeterHurtsHisKnee",
-    displayName: "Griffins Peter hurts his knee",
+    displayName: buildLocales("Peter hurts his knee", {
+        [Locale.Russian]: "Питер повредил колено",
+        [Locale.Ukrainian]: "Пітер пошкодив коліно",
+        [Locale.Dutch]: "Peter bezeert zijn knie",
+        [Locale.French]: "Peter se blesse au genou",
+        [Locale.German]: "Peter verletzt sich am Knie",
+        [Locale.Polish]: "Peter rani się w kolano",
+        [Locale.SpanishES]: "Peter se lastima la rodilla",
+        [Locale.SpanishLATAM]: "Peter se lastima la rodilla",
+        [Locale.PortugueseBR]: "Peter machuca o joelho",
+        [Locale.Turkish]: "Peter dizini incitiyor",
+        [Locale.Italian]: "Peter si fa male al ginocchio",
+        [Locale.Indonesian]: "Peter melukai lututnya",
+        [Locale.Czech]: "Peter si zranil koleno",
+        [Locale.Japanese]: "膝を痛めるピーター",
+        [Locale.Korean]: "무릎을 다친 피터",
+        [Locale.ChineseCN]: "彼得伤到膝盖",
+    }),
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextBottom, Type.FaceImage],
     width: 499,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const ceLucyCryingDavidChad: Template = {
     name: "ceLucyCryingDavidChad",
-    displayName: "CE Lucy crying David chad",
+    displayName: buildLocales("Lucy crying David chad", {
+        [Locale.Russian]: "Люси плачет, Дэвид чад",
+        [Locale.Ukrainian]: "Люсі плаче, Девід чад",
+        [Locale.Dutch]: "Lucy huilend, David chad",
+        [Locale.French]: "Lucy en pleurs, David chad",
+        [Locale.German]: "Lucy weint, David Chad",
+        [Locale.Polish]: "Lucy płacze, David chad",
+        [Locale.SpanishES]: "Lucy llorando, David chad",
+        [Locale.SpanishLATAM]: "Lucy llorando, David chad",
+        [Locale.PortugueseBR]: "Lucy chorando, David chad",
+        [Locale.Turkish]: "Lucy ağlıyor, David chad",
+        [Locale.Italian]: "Lucy che piange, David chad",
+        [Locale.Indonesian]: "Lucy menangis, David chad",
+        [Locale.Czech]: "Lucy pláče, David chad",
+        [Locale.Japanese]: "泣くルーシーとチャッドなデイビッド",
+        [Locale.Korean]: "우는 루시, 차드 데이비드",
+        [Locale.ChineseCN]: "露西哭泣，大卫是chad",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 736,

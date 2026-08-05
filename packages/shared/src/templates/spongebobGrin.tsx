@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const spongebobGrin: Template = {
     name: "spongebobGrin",
-    displayName: "Spongebob grin",
+    displayName: buildLocales("Spongebob grin", {
+        [Locale.Russian]: "Ухмылка Губки Боба",
+        [Locale.Ukrainian]: "Усмішка Губки Боба",
+        [Locale.Dutch]: "Spongebob grijns",
+        [Locale.French]: "Sourire de Bob l'éponge",
+        [Locale.German]: "Spongebob Grinsen",
+        [Locale.Polish]: "Uśmieszek SpongeBoba",
+        [Locale.SpanishES]: "Sonrisa de Bob Esponja",
+        [Locale.SpanishLATAM]: "Sonrisa de Bob Esponja",
+        [Locale.PortugueseBR]: "Sorriso do Bob Esponja",
+        [Locale.Turkish]: "SüngerBob sırıtışı",
+        [Locale.Italian]: "Sorriso di SpongeBob",
+        [Locale.Indonesian]: "Seringai Spongebob",
+        [Locale.Czech]: "Spongebobův úšklebek",
+        [Locale.Japanese]: "ニヤリと笑うスポンジ・ボブ",
+        [Locale.Korean]: "스폰지밥 썩소",
+        [Locale.ChineseCN]: "海绵宝宝坏笑",
+    }),
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 600,

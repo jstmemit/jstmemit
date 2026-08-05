@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const futuramaFryReadingLetter: Template = {
     name: "futuramaFryReadingLetter",
-    displayName: "Futurama Fry reading letter",
+    displayName: buildLocales("Fry reading letter", {
+        [Locale.Russian]: "Фрай читает письмо",
+        [Locale.Ukrainian]: "Фрай читає листа",
+        [Locale.Dutch]: "Fry leest een brief",
+        [Locale.French]: "Fry lit une lettre",
+        [Locale.German]: "Fry liest Brief",
+        [Locale.Polish]: "Fry czyta list",
+        [Locale.SpanishES]: "Fry leyendo una carta",
+        [Locale.SpanishLATAM]: "Fry leyendo una carta",
+        [Locale.PortugueseBR]: "Fry lendo carta",
+        [Locale.Turkish]: "Mektup okuyan Fry",
+        [Locale.Italian]: "Fry che legge una lettera",
+        [Locale.Indonesian]: "Fry membaca surat",
+        [Locale.Czech]: "Fry čte dopis",
+        [Locale.Japanese]: "手紙を読むフライ",
+        [Locale.Korean]: "편지 읽는 프라이",
+        [Locale.ChineseCN]: "弗莱读信",
+    }),
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 720,

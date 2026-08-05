@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const womanYellingAtACat: Template = {
     name: "womanYellingAtACat",
-    displayName: "Woman yelling at a cat",
+    displayName: buildLocales("Woman yelling at a cat", {
+        [Locale.Russian]: "Женщина кричит на кота",
+        [Locale.Ukrainian]: "Жінка кричить на кота",
+        [Locale.Dutch]: "Vrouw schreeuwt tegen kat",
+        [Locale.French]: "Femme criant sur un chat",
+        [Locale.German]: "Frau schreit Katze an",
+        [Locale.Polish]: "Kobieta krzycząca na kota",
+        [Locale.SpanishES]: "Mujer gritándole a un gato",
+        [Locale.SpanishLATAM]: "Mujer gritándole a un gato",
+        [Locale.PortugueseBR]: "Mulher gritando com gato",
+        [Locale.Turkish]: "Kediye bağıran kadın",
+        [Locale.Italian]: "Donna che urla a un gatto",
+        [Locale.Indonesian]: "Wanita berteriak pada kucing",
+        [Locale.Czech]: "Žena křičí na kočku",
+        [Locale.Japanese]: "猫に怒鳴る女",
+        [Locale.Korean]: "고양이에게 소리지르는 여자",
+        [Locale.ChineseCN]: "女人冲猫大吼",
+    }),
     topics: [Topic.Reaction, Topic.Animals],
     types: [Type.TwoOption, Type.TextRightWithBackground, Type.FaceImage],
     width: 1200,

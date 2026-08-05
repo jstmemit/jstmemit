@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const lightVsDark: Template = {
     name: "lightVsDark",
-    displayName: "Light vs dark",
+    displayName: buildLocales("Light vs dark", {
+        [Locale.Russian]: "Свет против тьмы",
+        [Locale.Ukrainian]: "Світло проти темряви",
+        [Locale.Dutch]: "Licht vs donker",
+        [Locale.French]: "Lumière vs ténèbres",
+        [Locale.German]: "Licht vs Dunkelheit",
+        [Locale.Polish]: "Światło vs ciemność",
+        [Locale.SpanishES]: "Luz vs oscuridad",
+        [Locale.SpanishLATAM]: "Luz vs oscuridad",
+        [Locale.PortugueseBR]: "Luz vs escuridão",
+        [Locale.Turkish]: "Aydınlık ve karanlık",
+        [Locale.Italian]: "Luce vs oscurità",
+        [Locale.Indonesian]: "Terang vs gelap",
+        [Locale.Czech]: "Světlo vs tma",
+        [Locale.Japanese]: "光と闇",
+        [Locale.Korean]: "빛과 어둠",
+        [Locale.ChineseCN]: "光明与黑暗",
+    }),
     topics: [Topic.Misc],
     types: [Type.TwoOption, Type.TextRightWithBackground],
     width: 474,

@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const simpsonsLisaStaring: Template = {
     name: "simpsonsLisaStaring",
-    displayName: "Simpsons Lisa staring",
+    displayName: buildLocales("Lisa staring", {
+        [Locale.Russian]: "Взгляд Лизы",
+        [Locale.Ukrainian]: "Погляд Лізи",
+        [Locale.Dutch]: "Lisa staart",
+        [Locale.French]: "Lisa regarde fixement",
+        [Locale.German]: "Lisa starrt",
+        [Locale.Polish]: "Spojrzenie Lisy",
+        [Locale.SpanishES]: "Lisa mirando fijamente",
+        [Locale.SpanishLATAM]: "Lisa mirando fijamente",
+        [Locale.PortugueseBR]: "Lisa encarando",
+        [Locale.Turkish]: "Lisa bakışı",
+        [Locale.Italian]: "Lisa che fissa",
+        [Locale.Indonesian]: "Lisa menatap",
+        [Locale.Czech]: "Lisa zírá",
+        [Locale.Japanese]: "見つめるリサ",
+        [Locale.Korean]: "빤히 쳐다보는 리사",
+        [Locale.ChineseCN]: "丽莎凝视",
+    }),
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottom],
     width: 1080,

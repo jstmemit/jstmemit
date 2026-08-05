@@ -3,10 +3,29 @@ import type { Template } from "#/models/Template.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
 
 export const frierenExpectationVsReality: Template = {
     name: "frierenExpectationVsReality",
-    displayName: "Frieren expectation vs reality",
+    displayName: buildLocales("Frieren expectation vs reality", {
+        [Locale.Russian]: "Фрирен ожидание и реальность",
+        [Locale.Ukrainian]: "Фрірен очікування та реальність",
+        [Locale.Dutch]: "Frieren verwachting vs realiteit",
+        [Locale.French]: "Frieren attente vs réalité",
+        [Locale.German]: "Frieren Erwartung vs Realität",
+        [Locale.Polish]: "Frieren oczekiwania vs rzeczywistość",
+        [Locale.SpanishES]: "Frieren expectativa vs realidad",
+        [Locale.SpanishLATAM]: "Frieren expectativa vs realidad",
+        [Locale.PortugueseBR]: "Frieren expectativa vs realidade",
+        [Locale.Turkish]: "Frieren beklenti vs gerçek",
+        [Locale.Italian]: "Frieren aspettativa vs realtà",
+        [Locale.Indonesian]: "Frieren ekspektasi vs realita",
+        [Locale.Czech]: "Frieren očekávání vs realita",
+        [Locale.Japanese]: "フリーレン 理想と現実",
+        [Locale.Korean]: "프리렌 이상과 현실",
+        [Locale.ChineseCN]: "芙莉莲期望与现实",
+    }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TwoOption, Type.TextLeftWithBackground],
     width: 638,
