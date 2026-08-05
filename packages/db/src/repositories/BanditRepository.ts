@@ -4,6 +4,7 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import { db } from "../index.ts";
 import type { BanditStat } from "@jstmemit/shared/models/BanditStat";
 import type { BanditScope } from "@jstmemit/shared/models/BanditScope";
+import { analytics } from "@jstmemit/analytics";
 
 export class BanditRepository implements IBanditRepository {
     public async getStats(scope: BanditScope, scopeId: string, templateNames: string[]): Promise<BanditStat[]> {
@@ -38,7 +39,7 @@ export class BanditRepository implements IBanditRepository {
                     },
             );
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return templateNames.map((templateName: string) => ({
                 name: templateName,
@@ -77,7 +78,7 @@ export class BanditRepository implements IBanditRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }
@@ -92,7 +93,7 @@ export class BanditRepository implements IBanditRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

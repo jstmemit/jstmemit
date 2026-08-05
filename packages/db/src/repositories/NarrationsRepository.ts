@@ -2,6 +2,7 @@ import { narrationsTable } from "../schema.ts";
 import type { INarrationsRepository } from "../interfaces/INarrationsRepository.ts";
 import { db } from "../index.ts";
 import { countDistinct, eq } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class NarrationsRepository implements INarrationsRepository {
     public async add(channelId: string, voice: string, date: Date): Promise<number> {
@@ -16,7 +17,7 @@ export class NarrationsRepository implements INarrationsRepository {
 
             return Number(result.lastInsertRowid);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
@@ -31,7 +32,7 @@ export class NarrationsRepository implements INarrationsRepository {
 
             return result[0]?.count as number;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }

@@ -2,6 +2,7 @@ import { generationsTable } from "../schema.ts";
 import { db } from "../index.ts";
 import type { IGenerationsRepository } from "../interfaces/IGenerationsRepository.ts";
 import { count, eq, countDistinct } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class GenerationsRepository implements IGenerationsRepository {
     public async add(channelId: string, templateName: string, date: Date): Promise<number> {
@@ -16,7 +17,7 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return Number(result.lastInsertRowid);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
@@ -32,7 +33,7 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return generations[0];
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
         }
@@ -48,7 +49,7 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return result[0]?.count as number;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
@@ -63,7 +64,7 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return result[0]?.count as number;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
