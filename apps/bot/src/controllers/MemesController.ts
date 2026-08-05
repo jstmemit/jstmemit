@@ -455,47 +455,41 @@ export class MemesController implements IMemesController {
         const userLocale: string = interaction.locale;
         const templates: Template[] = this._templatesRepository.getAll();
 
-        const matches: ApplicationCommandOptionChoiceData[] = await this._cacheService.getOrSet(
-            `custom:${userLocale}:${focused}`,
-            () => {
-                return templates
-                    .filter((template: Template): boolean => {
-                        const matchesName: boolean = template.name.toLowerCase().includes(focused);
-                        const matchesDisplayName: boolean = Object.values(template.displayName).some(
-                            (localizedName: string | null) => localizedName?.toLowerCase().includes(focused) ?? false,
-                        );
-                        const matchesTopics: boolean = template.topics.some((topic: TemplateTopic) => {
-                            const topicLocalizations = TopicLocalizationMap[topic];
-                            return topicLocalizations
-                                ? Object.values(topicLocalizations).some(
-                                      (localizedTopic: string | null) =>
-                                          localizedTopic?.toLowerCase().includes(focused) ?? false,
-                                  )
-                                : false;
-                        });
+        const matches: ApplicationCommandOptionChoiceData[] = templates
+            .filter((template: Template): boolean => {
+                const matchesName: boolean = template.name.toLowerCase().includes(focused);
+                const matchesDisplayName: boolean = Object.values(template.displayName).some(
+                    (localizedName: string | null) => localizedName?.toLowerCase().includes(focused) ?? false,
+                );
+                const matchesTopics: boolean = template.topics.some((topic: TemplateTopic) => {
+                    const topicLocalizations = TopicLocalizationMap[topic];
+                    return topicLocalizations
+                        ? Object.values(topicLocalizations).some(
+                              (localizedTopic: string | null) =>
+                                  localizedTopic?.toLowerCase().includes(focused) ?? false,
+                          )
+                        : false;
+                });
 
-                        return Boolean(matchesName || matchesDisplayName || matchesTopics);
-                    })
-                    .map((template: Template): ApplicationCommandOptionChoiceData => {
-                        const localizedName: string =
-                            template.displayName[userLocale as Locale] ??
-                            template.displayName[Locale.EnglishUS] ??
-                            Object.values(template.displayName)[0] ??
-                            template.name;
+                return Boolean(matchesName || matchesDisplayName || matchesTopics);
+            })
+            .map((template: Template): ApplicationCommandOptionChoiceData => {
+                const localizedName: string =
+                    template.displayName[userLocale as Locale] ??
+                    template.displayName[Locale.EnglishUS] ??
+                    Object.values(template.displayName)[0] ??
+                    template.name;
 
-                        return {
-                            name: localizedName,
-                            nameLocalizations: template.displayName,
-                            value: template.name,
-                        };
-                    })
-                    .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
-                        a.name.localeCompare(b.name),
-                    )
-                    .slice(0, 25);
-            },
-            ms("1h"),
-        );
+                return {
+                    name: localizedName,
+                    nameLocalizations: template.displayName,
+                    value: template.name,
+                };
+            })
+            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
+                a.name.localeCompare(b.name),
+            )
+            .slice(0, 25);
 
         await interaction.respond(matches);
     }
