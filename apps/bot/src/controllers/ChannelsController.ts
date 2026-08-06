@@ -130,6 +130,8 @@ export class ChannelsController implements IChannelsController {
                 );
             }
         } catch (error) {
+            const message: (ContainerBuilder | ActionRowBuilder<ButtonBuilder>)[] = [];
+
             analytics.captureException(error, interaction.user.id, {
                 channelId: interaction.channelId,
                 guildId: interaction?.guildId || "",
@@ -137,12 +139,10 @@ export class ChannelsController implements IChannelsController {
                 language: interaction.locale,
             });
 
-            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(
-                interaction.locale,
-                interaction.id,
-            );
+            message.push(this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id));
+            message.push(this._componentsService.getErrorButtonsComponent(interaction.locale, "enable"));
 
-            await respond(interaction, [message]);
+            await respond(interaction, [...message]);
         }
     }
 
