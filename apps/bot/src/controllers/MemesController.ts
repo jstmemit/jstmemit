@@ -40,6 +40,7 @@ import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBot
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
+import ms from "ms";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -654,7 +655,7 @@ export class MemesController implements IMemesController {
             },
         });
 
-        return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+        return job.waitUntilFinished(this._memeGenerationQueueEvents, ms("10m"));
     }
 
     private _getMemeAttachment(result: MemeGenerationResult): AttachmentPayload[] {
@@ -703,6 +704,6 @@ export class MemesController implements IMemesController {
             },
         });
 
-        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, 60000);
+        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, ms("10m"));
     }
 }

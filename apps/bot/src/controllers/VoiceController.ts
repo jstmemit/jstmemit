@@ -16,6 +16,7 @@ import type { Job, Queue, QueueEvents } from "bullmq";
 import type { TextNarrationJob } from "@jstmemit/shared/models/TextNarrationJob";
 import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationResult";
 import type { INarrationsRepository } from "@jstmemit/db/interfaces/INarrationsRepository";
+import ms from "ms";
 
 export class VoiceController implements IVoiceController {
     private readonly _textNarrationQueue: Queue<TextNarrationJob, TextNarrationResult>;
@@ -203,6 +204,6 @@ export class VoiceController implements IVoiceController {
             },
         });
 
-        return job.waitUntilFinished(this._textNarrationQueueEvents, 130000);
+        return job.waitUntilFinished(this._textNarrationQueueEvents, ms("10m"));
     }
 }
