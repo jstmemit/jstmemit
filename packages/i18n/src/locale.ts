@@ -25,11 +25,12 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
         "enable.button.settings": "⚙️ Open settings",
-        "error.heading": "🔴 Something went wrong!",
 
-        "error.body":
-            "Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.",
+        "error.heading": "⚠️ Something went wrong",
+        "error.body": "Please try again, and if it keeps happening, report the error so we can look into it.",
         "error.id": "**Error ID:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Try again",
+        "error.button.reportError": "💬 Report error",
 
         "notEnoughContext.heading": "🤔 Not enough context yet",
         "notEnoughContext.body":
@@ -111,9 +112,12 @@ export const locale: Partial<TranslationString> = {
         "modal.customMeme.text.placeholder": "Something funny here",
         "modal.customMeme.image.label": "Image #{{id}}",
         "modal.feedback.title": "Send feedback",
+        "modal.feedback.title.error": "Report error",
         "modal.feedback.label": "Your message",
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
+        "modal.feedback.description.error": "Please describe what you were doing when the error happened",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
+        "modal.feedback.placeholder.error": "I got an error after ...",
 
         "help.about.heading": `<:jstmemit:1533562196980797462> Hey, I'm Jstmemit`,
         "help.about.commands.user":
@@ -192,10 +196,11 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOn": "Включить",
         "enable.button.settings": "⚙️ Открыть настройки",
 
-        "error.heading": "🔴 Что-то пошло не так!",
-        "error.body":
-            "Бот не смог ответить на ваш запрос из-за неизвестной ошибки. Попробуйте ещё раз, и если это происходит часто, обратитесь в поддержку.",
-        "error.id": "**Ошибка:** {{interactionId}}",
+        "error.heading": "⚠️ Что-то пошло не так",
+        "error.body": "Попробуйте ещё раз, а если это повторяется, сообщите об ошибке, чтобы мы могли разобраться.",
+        "error.id": "**ID ошибки:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Попробовать снова",
+        "error.button.reportError": "💬 Сообщить об ошибке",
 
         "notEnoughContext.heading": "🤔 Пока недостаточно контекста",
         "notEnoughContext.body":
@@ -278,6 +283,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Ваше сообщение",
         "modal.feedback.description": "Сообщите о баге, предложите идею или просто напишите что думаете",
         "modal.feedback.placeholder": "Привет, добавьте пожалуйста шаблон мема ...",
+        "modal.feedback.title.error": "Сообщить об ошибке",
+        "modal.feedback.description.error": "Опишите, что вы делали, когда появилась ошибка",
+        "modal.feedback.placeholder.error": "Ошибка появилась после ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Хэй, я Jstmemit",
         "help.about.commands.user": "### 👤 Везде в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
@@ -353,10 +361,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Вимкнути",
         "enable.button.turnOn": "Увімкнути",
         "enable.button.settings": "⚙️ Відкрити налаштування",
-        "error.heading": "🔴 Щось пішло не так!",
-        "error.body":
-            "Бот не зміг відповісти на ваш запит через невідому помилку. Спробуйте ще раз, і якщо це трапляється часто, зверніться до підтримки.",
-        "error.id": "**Помилка:** {{interactionId}}",
+
+        "error.heading": "⚠️ Щось пішло не так",
+        "error.body": "Спробуйте ще раз, а якщо це повторюється, повідомте про помилку, щоб ми могли розібратися.",
+        "error.id": "**ID помилки:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Спробувати ще раз",
+        "error.button.reportError": "💬 Повідомити про помилку",
+
         "notEnoughContext.heading": "🤔 Поки що недостатньо контексту",
         "notEnoughContext.body":
             "Jstmemit потрібно більше часу, щоб вивчити ваш канал, перш ніж він зможе зробити мем. Поспілкуйтеся ще трохи і надішліть кілька GIF. Якщо помилка повторюється, зверніться до підтримки.",
@@ -378,10 +389,10 @@ export const locale: Partial<TranslationString> = {
             "Усі збережені повідомлення та посилання на зображення для цього каналу було видалено. Бот все ще увімкнений і почне навчатися заново на нових повідомленнях. Вимкніть його через `/enable`, якщо більше не хочете ним користуватися.",
         "deleteData.button.cancel": "Скасувати",
         "deleteData.button.delete": "Видалити всі дані",
-        "settings.about.heading": "❓ Про цього бота",
+        "settings.about.heading": "<:jstmemit:1533562196980797462> Хей, я Jstmemit",
         "settings.about.body":
-            "Jstmemit це бот, який генерує меми на основі повідомлень і картинок у чаті. Обговорюєте рейд чиєїсь бази у расті? Бот зробить про це меми.",
-        "settings.about.enablePrompt": "Увімкніть Jstmemit щоб почати!",
+            "Бот, який робить меми з вашого чату. Говоріть про що завгодно, а він...\nперетворить це на мем на одному з 300+ шаблонів і постібеться з вас ¯\\_(ツ)_/¯",
+        "settings.about.enablePrompt": "Увімкніть Jstmemit, щоб почати!",
         "settings.button.disable": "Вимкнути",
         "settings.button.enable": "Увімкнути",
         "settings.status.enabled": "**✅ Jstmemit увімкнено у цьому каналі!**",
@@ -435,6 +446,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Ваше повідомлення",
         "modal.feedback.description": "Повідомте про баг, запропонуйте ідею або просто напишіть, що думаєте",
         "modal.feedback.placeholder": "Привіт, додайте будь ласка шаблон мема ...",
+        "modal.feedback.title.error": "Повідомити про помилку",
+        "modal.feedback.description.error": "Опишіть, що ви робили, коли з'явилася помилка",
+        "modal.feedback.placeholder.error": "Помилка з'явилася після ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Хей, я Jstmemit",
         "help.about.commands.user":
@@ -511,10 +525,14 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Uitzetten",
         "enable.button.turnOn": "Aanzetten",
         "enable.button.settings": "⚙️ Instellingen openen",
-        "error.heading": "🔴 Er ging iets mis!",
+
+        "error.heading": "⚠️ Er ging iets mis",
         "error.body":
-            "De bot kon je verzoek niet beantwoorden door een onbekende fout. Probeer het opnieuw en neem contact op met support als dit vaak gebeurt.",
-        "error.id": "**Fout:** {{interactionId}}",
+            "Probeer het opnieuw en als het blijft gebeuren, meld de fout dan even zodat we ernaar kunnen kijken.",
+        "error.id": "**Fout-ID:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Opnieuw proberen",
+        "error.button.reportError": "💬 Fout melden",
+
         "notEnoughContext.heading": "🤔 Nog niet genoeg context",
         "notEnoughContext.body":
             "Jstmemit heeft meer tijd nodig om je kanaal te leren kennen voordat hij een meme kan maken. Chat nog wat verder en stuur een paar GIF's. Blijft deze fout terugkomen, neem dan contact op met support.",
@@ -596,6 +614,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Jouw bericht",
         "modal.feedback.description": "Meld een bug, stel een feature voor of laat weten wat je vindt",
         "modal.feedback.placeholder": "Hoi, kunnen jullie het ... meme template toevoegen?",
+        "modal.feedback.title.error": "Fout melden",
+        "modal.feedback.description.error": "Beschrijf wat je deed toen de fout optrad",
+        "modal.feedback.placeholder.error": "Ik kreeg een fout nadat ik ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Hey, ik ben Jstmemit",
         "help.about.commands.user":
@@ -671,10 +692,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Désactiver",
         "enable.button.turnOn": "Activer",
         "enable.button.settings": "⚙️ Ouvrir les paramètres",
-        "error.heading": "🔴 Quelque chose s'est mal passé !",
-        "error.body":
-            "Le bot n'a pas pu répondre à votre demande à cause d'une erreur inconnue. Réessayez et si cela arrive souvent, contactez le support.",
-        "error.id": "**Erreur :** {{interactionId}}",
+
+        "error.heading": "⚠️ Quelque chose s'est mal passé",
+        "error.body": "Réessayez, et si cela continue, signalez l'erreur pour qu'on puisse regarder ça.",
+        "error.id": "**ID d'erreur :** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Réessayer",
+        "error.button.reportError": "💬 Signaler l'erreur",
+
         "notEnoughContext.heading": "🤔 Pas encore assez de contexte",
         "notEnoughContext.body":
             "Jstmemit a besoin de plus de temps pour apprendre à connaître votre salon avant de pouvoir faire un mème. Discutez encore un peu et envoyez quelques GIF. Si cette erreur persiste, contactez le support.",
@@ -757,6 +781,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Votre message",
         "modal.feedback.description": "Signalez un bug, proposez une fonctionnalité ou donnez votre avis",
         "modal.feedback.placeholder": "Bonjour, pourriez-vous ajouter le modèle de mème ... ?",
+        "modal.feedback.title.error": "Signaler l'erreur",
+        "modal.feedback.description.error": "Décrivez ce que vous faisiez quand l'erreur est apparue",
+        "modal.feedback.placeholder.error": "J'ai eu une erreur après ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Hey, moi c'est Jstmemit",
         "help.about.commands.user":
@@ -835,10 +862,14 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Ausschalten",
         "enable.button.turnOn": "Einschalten",
         "enable.button.settings": "⚙️ Einstellungen öffnen",
-        "error.heading": "🔴 Etwas ist schiefgelaufen!",
+
+        "error.heading": "⚠️ Etwas ist schiefgelaufen",
         "error.body":
-            "Der Bot konnte deine Anfrage wegen eines unbekannten Fehlers nicht beantworten. Versuche es erneut und wenn das öfter passiert, wende dich an den Support.",
-        "error.id": "**Fehler:** {{interactionId}}",
+            "Versuche es erneut, und wenn es weiterhin passiert, melde den Fehler, damit wir uns das ansehen können.",
+        "error.id": "**Fehler-ID:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Erneut versuchen",
+        "error.button.reportError": "💬 Fehler melden",
+
         "notEnoughContext.heading": "🤔 Noch nicht genug Kontext",
         "notEnoughContext.body":
             "Jstmemit braucht mehr Zeit, um deinen Kanal kennenzulernen, bevor er ein Meme machen kann. Chattet noch ein bisschen und schickt ein paar GIFs. Wenn dieser Fehler weiterhin auftritt, wende dich an den Support.",
@@ -919,6 +950,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Deine Nachricht",
         "modal.feedback.description": "Melde einen Bug, schlag ein Feature vor oder sag uns deine Meinung",
         "modal.feedback.placeholder": "Hallo, könnt ihr bitte die Meme-Vorlage ... hinzufügen?",
+        "modal.feedback.title.error": "Fehler melden",
+        "modal.feedback.description.error": "Beschreibe, was du gemacht hast, als der Fehler auftrat",
+        "modal.feedback.placeholder.error": "Ich habe einen Fehler bekommen, nachdem ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Hey, ich bin Jstmemit",
         "help.about.commands.user":
@@ -995,10 +1029,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Wyłącz",
         "enable.button.turnOn": "Włącz",
         "enable.button.settings": "⚙️ Otwórz ustawienia",
-        "error.heading": "🔴 Coś poszło nie tak!",
-        "error.body":
-            "Bot nie mógł odpowiedzieć na twoje żądanie z powodu nieznanego błędu. Spróbuj ponownie, a jeśli to się często zdarza, skontaktuj się z supportem.",
-        "error.id": "**Błąd:** {{interactionId}}",
+
+        "error.heading": "⚠️ Coś poszło nie tak",
+        "error.body": "Spróbuj ponownie, a jeśli to się powtarza, zgłoś błąd, żebyśmy mogli się temu przyjrzeć.",
+        "error.id": "**ID błędu:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Spróbuj ponownie",
+        "error.button.reportError": "💬 Zgłoś błąd",
+
         "notEnoughContext.heading": "🤔 Jeszcze za mało kontekstu",
         "notEnoughContext.body":
             "Jstmemit potrzebuje więcej czasu, żeby poznać twój kanał, zanim będzie mógł zrobić mema. Porozmawiajcie jeszcze trochę i wyślijcie kilka GIF-ów. Jeśli ten błąd się powtarza, skontaktuj się z supportem.",
@@ -1077,6 +1114,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Twoja wiadomość",
         "modal.feedback.description": "Zgłoś błąd, zaproponuj funkcję lub podziel się opinią",
         "modal.feedback.placeholder": "Cześć, moglibyście dodać szablon mema ...?",
+        "modal.feedback.title.error": "Zgłoś błąd",
+        "modal.feedback.description.error": "Opisz, co się działo, gdy pojawił się błąd",
+        "modal.feedback.placeholder.error": "Dostałem błąd po ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Hej, jestem Jstmemit",
         "help.about.commands.user":
@@ -1153,10 +1193,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir ajustes",
-        "error.heading": "🔴 ¡Algo ha salido mal!",
-        "error.body":
-            "El bot no pudo responder a tu solicitud por un error desconocido. Inténtalo de nuevo y si pasa a menudo, contacta con soporte.",
-        "error.id": "**Error:** {{interactionId}}",
+
+        "error.heading": "⚠️ Algo ha salido mal",
+        "error.body": "Inténtalo de nuevo y si sigue pasando, informa del error para que podamos investigarlo.",
+        "error.id": "**ID de error:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Intentar de nuevo",
+        "error.button.reportError": "💬 Informar del error",
+
         "notEnoughContext.heading": "🤔 Aún no hay suficiente contexto",
         "notEnoughContext.body":
             "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chatead un poco más y enviad un par de GIFs. Si este error persiste, contacta con soporte.",
@@ -1238,6 +1281,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tu mensaje",
         "modal.feedback.description": "Informa de un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podríais añadir la plantilla de meme ...?",
+        "modal.feedback.title.error": "Informar del error",
+        "modal.feedback.description.error": "Cuéntanos qué estabas haciendo cuando apareció el error",
+        "modal.feedback.placeholder.error": "Me dio un error después de ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
         "help.about.commands.user":
@@ -1314,10 +1360,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Desactivar",
         "enable.button.turnOn": "Activar",
         "enable.button.settings": "⚙️ Abrir configuración",
-        "error.heading": "🔴 ¡Algo salió mal!",
-        "error.body":
-            "El bot no pudo responder a tu solicitud por un error desconocido. Intenta de nuevo y si pasa seguido, contacta a soporte.",
-        "error.id": "**Error:** {{interactionId}}",
+
+        "error.heading": "⚠️ Algo salió mal",
+        "error.body": "Intenta de nuevo y si sigue pasando, reporta el error para que podamos revisarlo.",
+        "error.id": "**ID de error:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Intentar de nuevo",
+        "error.button.reportError": "💬 Reportar el error",
+
         "notEnoughContext.heading": "🤔 Todavía no hay suficiente contexto",
         "notEnoughContext.body":
             "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chateen un poco más y manden un par de GIFs. Si este error persiste, contacta a soporte.",
@@ -1399,6 +1448,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tu mensaje",
         "modal.feedback.description": "Reporta un error, sugiere una función o dinos qué opinas",
         "modal.feedback.placeholder": "Hola, ¿podrían agregar la plantilla de meme ...?",
+        "modal.feedback.title.error": "Reportar el error",
+        "modal.feedback.description.error": "Cuéntanos qué estabas haciendo cuando salió el error",
+        "modal.feedback.placeholder.error": "Me salió un error después de ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Ey, soy Jstmemit",
         "help.about.commands.user":
@@ -1475,10 +1527,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Desligar",
         "enable.button.turnOn": "Ligar",
         "enable.button.settings": "⚙️ Abrir configurações",
-        "error.heading": "🔴 Algo deu errado!",
-        "error.body":
-            "O bot não conseguiu responder ao seu pedido por causa de um erro desconhecido. Tente de novo e se isso acontecer com frequência, entre em contato com o suporte.",
-        "error.id": "**Erro:** {{interactionId}}",
+
+        "error.heading": "⚠️ Algo deu errado",
+        "error.body": "Tente de novo e, se continuar acontecendo, reporte o erro para a gente dar uma olhada.",
+        "error.id": "**ID do erro:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Tentar de novo",
+        "error.button.reportError": "💬 Reportar erro",
+
         "notEnoughContext.heading": "🤔 Ainda não há contexto suficiente",
         "notEnoughContext.body":
             "O Jstmemit precisa de mais tempo para conhecer o seu canal antes de poder fazer um meme. Conversem um pouco mais e mandem alguns GIFs. Se esse erro persistir, entre em contato com o suporte.",
@@ -1558,6 +1613,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Sua mensagem",
         "modal.feedback.description": "Reporte um bug, sugira uma função ou diga o que você acha",
         "modal.feedback.placeholder": "Oi, vocês poderiam adicionar o template de meme ...?",
+        "modal.feedback.title.error": "Reportar erro",
+        "modal.feedback.description.error": "Conte o que você estava fazendo quando o erro apareceu",
+        "modal.feedback.placeholder.error": "Deu erro depois que eu ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Ei, eu sou o Jstmemit",
         "help.about.commands.user":
@@ -1634,10 +1692,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Kapat",
         "enable.button.turnOn": "Aç",
         "enable.button.settings": "⚙️ Ayarları aç",
-        "error.heading": "🔴 Bir şeyler ters gitti!",
-        "error.body":
-            "Bot, bilinmeyen bir hata yüzünden isteğine yanıt veremedi. Tekrar dene, sık sık oluyorsa destek ekibine ulaş.",
-        "error.id": "**Hata:** {{interactionId}}",
+
+        "error.heading": "⚠️ Bir şeyler ters gitti",
+        "error.body": "Tekrar dene, sorun devam ederse hatayı bildir ki inceleyebilelim.",
+        "error.id": "**Hata ID'si:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Tekrar dene",
+        "error.button.reportError": "💬 Hatayı bildir",
+
         "notEnoughContext.heading": "🤔 Henüz yeterli bağlam yok",
         "notEnoughContext.body":
             "Jstmemit'in caps yapabilmesi için kanalını tanımaya biraz daha zamanı olması gerekiyor. Biraz daha sohbet edin ve birkaç GIF gönderin. Bu hata devam ederse destek ekibine ulaş.",
@@ -1718,6 +1779,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Mesajın",
         "modal.feedback.description": "Hata bildir, özellik öner veya ne düşündüğünü söyle",
         "modal.feedback.placeholder": "Merhaba, ... caps şablonunu ekler misiniz?",
+        "modal.feedback.title.error": "Hatayı bildir",
+        "modal.feedback.description.error": "Hata çıktığında ne yaptığını yaz",
+        "modal.feedback.placeholder.error": "... yaptıktan sonra hata aldım",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Selam, ben Jstmemit",
         "help.about.commands.user":
@@ -1792,10 +1856,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Spegni",
         "enable.button.turnOn": "Accendi",
         "enable.button.settings": "⚙️ Apri impostazioni",
-        "error.heading": "🔴 Qualcosa è andato storto!",
-        "error.body":
-            "Il bot non è riuscito a rispondere alla tua richiesta per un errore sconosciuto. Riprova e se succede spesso, contatta il supporto.",
-        "error.id": "**Errore:** {{interactionId}}",
+
+        "error.heading": "⚠️ Qualcosa è andato storto",
+        "error.body": "Riprova e, se continua a succedere, segnala l'errore così possiamo dare un'occhiata.",
+        "error.id": "**ID errore:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Riprova",
+        "error.button.reportError": "💬 Segnala l'errore",
+
         "notEnoughContext.heading": "🤔 Non c'è ancora abbastanza contesto",
         "notEnoughContext.body":
             "Jstmemit ha bisogno di più tempo per conoscere il tuo canale prima di poter fare un meme. Chattate ancora un po' e mandate qualche GIF. Se l'errore persiste, contatta il supporto.",
@@ -1876,6 +1943,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Il tuo messaggio",
         "modal.feedback.description": "Segnala un bug, suggerisci una funzione o dicci cosa ne pensi",
         "modal.feedback.placeholder": "Ciao, potreste aggiungere il template di meme ...?",
+        "modal.feedback.title.error": "Segnala l'errore",
+        "modal.feedback.description.error": "Descrivi cosa stavi facendo quando è comparso l'errore",
+        "modal.feedback.placeholder.error": "Ho ricevuto un errore dopo ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Ehi, sono Jstmemit",
         "help.about.commands.user":
@@ -1950,10 +2020,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Matikan",
         "enable.button.turnOn": "Nyalakan",
         "enable.button.settings": "⚙️ Buka pengaturan",
-        "error.heading": "🔴 Ada yang salah!",
-        "error.body":
-            "Bot gagal menjawab permintaanmu karena error yang tidak diketahui. Coba lagi, dan kalau sering terjadi, hubungi support.",
-        "error.id": "**Error:** {{interactionId}}",
+
+        "error.heading": "⚠️ Ada yang salah",
+        "error.body": "Coba lagi, dan kalau terus terjadi, laporkan errornya biar kami bisa cek.",
+        "error.id": "**ID error:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Coba lagi",
+        "error.button.reportError": "💬 Laporkan error",
+
         "notEnoughContext.heading": "🤔 Konteksnya belum cukup",
         "notEnoughContext.body":
             "Jstmemit butuh waktu lebih untuk mengenal channel kamu sebelum bisa bikin meme. Coba ngobrol lagi dan kirim beberapa GIF. Kalau error ini terus muncul, hubungi support.",
@@ -2032,6 +2105,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Pesanmu",
         "modal.feedback.description": "Laporkan bug, usulkan fitur, atau beri tahu pendapatmu",
         "modal.feedback.placeholder": "Halo, bisa tolong tambahkan template meme ...?",
+        "modal.feedback.title.error": "Laporkan error",
+        "modal.feedback.description.error": "Ceritakan apa yang kamu lakukan saat error muncul",
+        "modal.feedback.placeholder.error": "Aku dapat error setelah ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Hai, aku Jstmemit",
         "help.about.commands.user":
@@ -2107,11 +2183,13 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Vypnout",
         "enable.button.turnOn": "Zapnout",
         "enable.button.settings": "⚙️ Otevřít nastavení",
-        "error.heading": "🔴 Něco se pokazilo!",
-        "error.body":
-            "Bot nedokázal odpovědět na tvůj požadavek kvůli neznámé chybě. Zkus to znovu, a pokud se to stává často, obrať se na podporu.",
-        "error.id": "**Chyba:** {{interactionId}}",
-        "notEnoughContext.heading": "🤔 Zatím není dost kontextu",
+
+        "error.heading": "⚠️ Něco se pokazilo",
+        "error.body": "Zkus to znovu, a pokud se to opakuje, nahlas chybu, ať se na to můžeme podívat.",
+        "error.id": "**ID chyby:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Zkusit znovu",
+        "error.button.reportError": "💬 Nahlásit chybu",
+
         "notEnoughContext.body":
             "Jstmemit potřebuje víc času, aby poznal tvůj kanál, než dokáže udělat mem. Zkuste si ještě chvíli psát a pošlete pár GIFů. Pokud chyba přetrvává, obrať se na podporu.",
         "unknownTemplate.heading": "🤔 Takovou šablonu neznám",
@@ -2189,6 +2267,9 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Tvoje zpráva",
         "modal.feedback.description": "Nahlaš chybu, navrhni funkci nebo nám řekni svůj názor",
         "modal.feedback.placeholder": "Ahoj, mohli byste přidat šablonu memu ...?",
+        "modal.feedback.title.error": "Nahlásit chybu",
+        "modal.feedback.description.error": "Popiš, co se dělo, když se chyba objevila",
+        "modal.feedback.placeholder.error": "Chyba se objevila po ...",
 
         "help.about.heading": "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
         "help.about.commands.user":

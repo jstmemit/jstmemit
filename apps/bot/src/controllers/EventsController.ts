@@ -135,6 +135,9 @@ export class EventsController implements IEventsController {
                     case "feedback":
                         await this._feedbackController.handleNewFeedbackSubmit(interaction);
                         return;
+                    case "feedback-error":
+                        await this._feedbackController.handleNewFeedbackSubmit(interaction, true);
+                        return;
                 }
             }
 
@@ -309,6 +312,9 @@ export class EventsController implements IEventsController {
                         return;
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
+                        return;
+                    case "feedback":
+                        await this._feedbackController.handleOpenFeedbackModal(interaction, true);
                         return;
                 }
 

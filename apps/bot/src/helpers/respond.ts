@@ -39,6 +39,7 @@ export const respond = async (
         if (interaction instanceof Message) {
             await interaction.reply({
                 flags: MessageFlags.IsComponentsV2,
+                failIfNotExists: false,
                 components,
             });
 
