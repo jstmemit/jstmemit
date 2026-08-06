@@ -114,6 +114,7 @@ export const locale: Partial<TranslationString> = {
         "modal.feedback.label": "Your message",
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
+        "modal.feedback.placeholder.error": "I got an error after ...",
 
         "help.about.heading": `<:jstmemit:1533562196980797462> Hey, I'm Jstmemit`,
         "help.about.commands.user":
