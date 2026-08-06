@@ -95,6 +95,7 @@ export class MemesController implements IMemesController {
         trigger?: MemeGenerationTrigger,
     ): Promise<void> {
         let parentGenerationId: number | undefined;
+        const startedAt: number = Date.now();
         const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
         const userId: MemeGenerationJob["userId"] =
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
@@ -212,22 +213,26 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const budget: number = 1200 - (Date.now() - interaction.createdTimestamp);
+            const budget: number = 1200 - (Date.now() - startedAt);
+
             const fastResult: MemeGenerationResult | undefined = await Promise.race([
                 job,
                 timeout(Math.max(0, budget)),
             ]);
 
             if (fastResult) {
-                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms
+                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 1200ms
                 await interaction.reply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
                     files: this._getMemeAttachment(fastResult),
                 });
             } else {
-                await interaction.deferReply();
-                const jobResult: MemeGenerationResult = await job;
+                if (!interaction.deferred && !interaction.replied) {
+                    await interaction.deferReply();
+                }
+
+                const jobResult: MemeGenerationResult = fastResult ?? (await job);
 
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
