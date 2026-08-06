@@ -21,27 +21,29 @@ export class ChannelsRepository implements IChannelsRepository {
         }
     }
 
-    public async upsert(channelId: string, addedAt: Date): Promise<typeof channelsTable.$inferSelect> {
-        const existing = await this.get(channelId);
+    public async upsert(channelId: string, addedAt: Date): Promise<typeof channelsTable.$inferSelect | undefined> {
+        try {
+            const existing = await this.get(channelId);
 
-        if (existing) {
-            return existing;
+            if (existing) {
+                return existing;
+            }
+
+            const [channel] = await db
+                .insert(channelsTable)
+                .values({ channelId, addedAt })
+                .onConflictDoUpdate({
+                    target: channelsTable.channelId,
+                    set: { channelId },
+                })
+                .returning();
+
+            return channel;
+        } catch (error) {
+            analytics.captureException(error);
+
+            return undefined;
         }
-
-        const [channel] = await db
-            .insert(channelsTable)
-            .values({ channelId, addedAt })
-            .onConflictDoUpdate({
-                target: channelsTable.channelId,
-                set: { channelId },
-            })
-            .returning();
-
-        if (!channel) {
-            throw new Error();
-        }
-
-        return channel;
     }
 
     public async set(

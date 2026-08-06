@@ -43,7 +43,14 @@ export class ChannelsService implements IChannelsService {
      * @author Kyrylo Maliuha
      */
     public async switchChannel(channelId: string): Promise<boolean> {
-        const channel: typeof channelsTable.$inferSelect = await this._channelsRepository.upsert(channelId, new Date());
+        const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsRepository.upsert(
+            channelId,
+            new Date(),
+        );
+
+        if (!channel) {
+            return false;
+        }
 
         await this._channelsRepository.switch(channelId, channel.enabled);
         await this._cacheService.delete(`context:channel:${channelId}`);
@@ -61,6 +68,10 @@ export class ChannelsService implements IChannelsService {
     public async isChannelEnabled(channelId: string): Promise<boolean> {
         try {
             const channel = await this._getCachedChannel(channelId);
+
+            if (!channel) {
+                return false;
+            }
 
             return channel.enabled;
         } catch (error) {
@@ -121,6 +132,10 @@ export class ChannelsService implements IChannelsService {
     public async rollChannelFrequency(channelId: string): Promise<boolean> {
         const channel = await this._getCachedChannel(channelId);
 
+        if (!channel) {
+            return false;
+        }
+
         if (channel.frequency <= 0) return false;
 
         const roll: number = Math.floor(Math.random() * channel.frequency);
@@ -155,12 +170,17 @@ export class ChannelsService implements IChannelsService {
      *
      * @author Kyrylo Maliuha
      */
-    private async _getCachedChannel(channelId: string): Promise<typeof channelsTable.$inferSelect> {
-        const channel: typeof channelsTable.$inferSelect = await this._cacheService.getOrSet(
+    private async _getCachedChannel(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
+        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
             `context:channel:${channelId}`,
-            (): Promise<typeof channelsTable.$inferSelect> => this._channelsRepository.upsert(channelId, new Date()),
+            (): Promise<typeof channelsTable.$inferSelect | undefined> =>
+                this._channelsRepository.upsert(channelId, new Date()),
             ms("1m"),
         );
+
+        if (!channel) {
+            return undefined;
+        }
 
         return { ...channel, addedAt: new Date(channel.addedAt) };
     }
