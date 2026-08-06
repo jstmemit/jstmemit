@@ -116,7 +116,9 @@ export class ComponentsService implements IComponentsService {
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
-                    .setStyle(showFirstMeme || isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                    .setStyle(
+                        showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
+                    )
                     .setLabel(
                         t(
                             showFirstMeme
