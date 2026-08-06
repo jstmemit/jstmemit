@@ -102,24 +102,38 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param isEnabled
+     * @param isFirstTime
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
+    public getEnableButtonsComponent(
+        language: Locale,
+        isEnabled: boolean,
+        isFirstTime?: boolean,
+    ): ActionRowBuilder<ButtonBuilder> {
+        const showFirstMeme: boolean | undefined = isEnabled && isFirstTime;
+
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
-                    .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                    .setStyle(showFirstMeme || isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
                     .setLabel(
-                        `${isEnabled ? t("enable.button.turnOff", language) : t("enable.button.turnOn", language)}`,
+                        t(
+                            showFirstMeme
+                                ? "enable.button.firstMeme"
+                                : isEnabled
+                                  ? "enable.button.turnOff"
+                                  : "enable.button.turnOn",
+                            language,
+                        ),
                     )
-                    .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+                    .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(t("enable.button.settings", language))
-                    .setCustomId(`settings`),
+                    .setCustomId("settings"),
             );
     }
 

@@ -24,6 +24,7 @@ export const locale: Partial<TranslationString> = {
 
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
+        "enable.button.firstMeme": "Generate your first meme",
         "enable.button.settings": "⚙️ Open settings",
 
         "error.heading": "⚠️ Something went wrong",

@@ -8,7 +8,11 @@ export abstract class IComponentsService {
         permissions: RequiredBotPermissions,
         messagesAmount?: number,
     ): ContainerBuilder;
-    public abstract getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder>;
+    public abstract getEnableButtonsComponent(
+        language: Locale,
+        isEnabled: boolean,
+        isFirstTime?: boolean,
+    ): ActionRowBuilder<ButtonBuilder>;
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getErrorButtonsComponent(
         language: Locale,
