@@ -9,7 +9,6 @@ import {
     type ContainerBuilder,
     type ActionRowBuilder,
     type ButtonBuilder,
-    type AutocompleteInteraction,
     type ChatInputCommandInteraction,
     ChannelType,
     Message,
@@ -17,7 +16,6 @@ import {
     Locale,
     MessageFlags,
     type TextBasedChannel,
-    type ApplicationCommandOptionChoiceData,
     type AttachmentPayload,
 } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -41,9 +39,7 @@ import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerati
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
-import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { IContextService } from "#/interfaces/IContextService.ts";
-import { type TemplateTopic, TopicLocalizationMap } from "@jstmemit/shared/models/TemplateTopic";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -56,7 +52,6 @@ export class MemesController implements IMemesController {
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _modalsService: IModalsService;
     private readonly _milestonesService: IMilestonesService;
-    private readonly _cacheService: ICacheService;
     private readonly _contextService: IContextService;
 
     public constructor(
@@ -69,7 +64,6 @@ export class MemesController implements IMemesController {
         channelsService: IChannelsService,
         templatesRepository: ITemplatesRepository,
         modalsService: IModalsService,
-        cacheService: ICacheService,
         milestonesService: IMilestonesService,
         contextService: IContextService,
     ) {
@@ -82,7 +76,6 @@ export class MemesController implements IMemesController {
         this._channelsService = channelsService;
         this._templatesRepository = templatesRepository;
         this._modalsService = modalsService;
-        this._cacheService = cacheService;
         this._milestonesService = milestonesService;
         this._contextService = contextService;
     }
@@ -420,59 +413,6 @@ export class MemesController implements IMemesController {
         );
 
         await interaction.showModal(modal);
-    }
-
-    /**
-     * Searches for templates with a given text
-     * in their name,displayName, topics in all languages
-     * and sends them back to autocomplete
-     *
-     * @param interaction
-     *
-     * @author Kyrylo Maliuha & Oleksii Sych
-     */
-    public async handleTemplateAutocompleteInteraction(interaction: AutocompleteInteraction): Promise<void> {
-        const focused: string = interaction.options.getFocused().toLowerCase();
-        const userLocale: string = interaction.locale;
-        const templates: Template[] = this._templatesRepository.getAll();
-
-        const matches: ApplicationCommandOptionChoiceData[] = templates
-            .filter((template: Template): boolean => {
-                const matchesName: boolean = template.name.toLowerCase().includes(focused);
-                const matchesDisplayName: boolean = Object.values(template.displayName).some(
-                    (localizedName: string | null) => localizedName?.toLowerCase().includes(focused) ?? false,
-                );
-                const matchesTopics: boolean = template.topics.some((topic: TemplateTopic) => {
-                    const topicLocalizations = TopicLocalizationMap[topic];
-                    return topicLocalizations
-                        ? Object.values(topicLocalizations).some(
-                              (localizedTopic: string | null) =>
-                                  localizedTopic?.toLowerCase().includes(focused) ?? false,
-                          )
-                        : false;
-                });
-
-                return Boolean(matchesName || matchesDisplayName || matchesTopics);
-            })
-            .map((template: Template): ApplicationCommandOptionChoiceData => {
-                const localizedName: string =
-                    template.displayName[userLocale as Locale] ??
-                    template.displayName[Locale.EnglishUS] ??
-                    Object.values(template.displayName)[0] ??
-                    template.name;
-
-                return {
-                    name: localizedName,
-                    nameLocalizations: template.displayName,
-                    value: template.name,
-                };
-            })
-            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData) =>
-                a.name.localeCompare(b.name),
-            )
-            .slice(0, 25);
-
-        await interaction.respond(matches);
     }
 
     private async _getTemplate(

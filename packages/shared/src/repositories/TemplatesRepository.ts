@@ -1,7 +1,8 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
-import type { TemplateTopic } from "#/models/TemplateTopic.ts";
+import { type TemplateTopic, TopicLocalizationMap } from "#/models/TemplateTopic.ts";
+import { isNonNullish } from "remeda";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -378,6 +379,7 @@ import { btrBocchiPerform } from "#/templates/btrBocchiPerform.tsx";
 import { btrBocchiSpiralEyesPanic1 } from "#/templates/btrBocchiSpiralEyesPanic1.tsx";
 import { btrNijikaGoodbye } from "#/templates/btrNijikaGoodbye.tsx";
 import { umAgnesTachyonUncanny } from "#/templates/umAgnesTachyonUncanny.tsx";
+import type { LocalizationMap } from "discord.js";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -778,6 +780,94 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrNijikaGoodbye,
             umAgnesTachyonUncanny,
         ];
+    }
+
+    /**
+     * Puts all localizations into an array of strings
+     * and returns it
+     *
+     * @param map
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _getLocalizedValues(map: LocalizationMap): string[] {
+        return Object.values(map).filter(isNonNullish);
+    }
+
+    /**
+     * Checks if a lowercased value includes searched string
+     *
+     * @param value
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _matchesValue(value: string, search: string): boolean {
+        return value.toLowerCase().includes(search);
+    }
+
+    /**
+     * Checks if a template has searched name
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _matchesName(template: Template, search: string): boolean {
+        return this._matchesValue(template.name, search);
+    }
+
+    /**
+     * Checks if a template has searched display name
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _matchesDisplayName(template: Template, search: string): boolean {
+        return this._getLocalizedValues(template.displayName).some((localizedName: string): boolean =>
+            this._matchesValue(localizedName, search),
+        );
+    }
+
+    /**
+     * Checks if a template has searched topic
+     *
+     * @param template
+     * @param search
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _matchesTopics(template: Template, search: string): boolean {
+        return template.topics.some((topic: TemplateTopic): boolean =>
+            this._getLocalizedValues(TopicLocalizationMap[topic]).some((localizedTopic: string): boolean =>
+                this._matchesValue(localizedTopic, search),
+            ),
+        );
+    }
+
+    /**
+     * Returns all matching templates by name, display name and topics
+     *
+     * @param query
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    public findTemplates(query: string): Template[] {
+        const search: string = query.toLowerCase();
+        return this.getAll().filter(
+            (template: Template): boolean =>
+                this._matchesName(template, search) ||
+                this._matchesDisplayName(template, search) ||
+                this._matchesTopics(template, search),
+        );
     }
 
     /**

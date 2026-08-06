@@ -16,6 +16,7 @@ import type { IHelpController } from "#/interfaces/IHelpController.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { logger } from "#/container.ts";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
+import type { IAutocompleteController } from "#/interfaces/IAutocompleteController.ts";
 
 const env = Env.parse(process.env);
 
@@ -29,6 +30,7 @@ export class EventsController implements IEventsController {
     private readonly _templateRepository: ITemplatesRepository;
     private readonly _helpController: IHelpController;
     private readonly _voiceController: IVoiceController;
+    private readonly _autocompleteController: IAutocompleteController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -41,6 +43,7 @@ export class EventsController implements IEventsController {
         helpController: IHelpController,
         voiceController: IVoiceController,
         templatesRepository: ITemplatesRepository,
+        autocompleteController: IAutocompleteController,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
@@ -51,6 +54,7 @@ export class EventsController implements IEventsController {
         this._helpController = helpController;
         this._voiceController = voiceController;
         this._templateRepository = templatesRepository;
+        this._autocompleteController = autocompleteController;
     }
 
     /**
@@ -114,7 +118,7 @@ export class EventsController implements IEventsController {
             if (interaction.isAutocomplete()) {
                 switch (interaction.commandName) {
                     case "custom":
-                        await this._memesController.handleTemplateAutocompleteInteraction(interaction);
+                        await this._autocompleteController.handleTemplateAutocompleteInteraction(interaction);
                         return;
                 }
                 return;
