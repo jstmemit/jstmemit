@@ -254,14 +254,19 @@ export class ComponentsService implements IComponentsService {
      * Returns a row with send feedback button
      *
      * @param language
+     * @param retryInteraction
      *
      * @author Kyrylo Maliuha
      */
-    public getErrorButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+    public getErrorButtonsComponent(language: Locale, retryInteraction: string): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
-                .setStyle(ButtonStyle.Primary)
-                .setLabel(t("modal.feedback.title", language))
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("error.button.tryAgain", language))
+                .setCustomId(retryInteraction),
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("error.button.reportError", language))
                 .setCustomId(`feedback`),
         );
     }

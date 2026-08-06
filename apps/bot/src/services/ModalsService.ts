@@ -53,11 +53,13 @@ export class ModalsService implements IModalsService {
     public getSendFeedbackModal(language: Locale, userId: string, error: boolean): ModalBuilder {
         const modal: ModalBuilder = new ModalBuilder()
             .setCustomId(`${error ? "error-feedback" : "feedback"}:${userId}`)
-            .setTitle(t("modal.feedback.title", language));
+            .setTitle(error ? t("modal.feedback.title.error", language) : t("modal.feedback.title", language));
 
         const input: LabelBuilder = new LabelBuilder()
             .setLabel(t("modal.feedback.label", language))
-            .setDescription(t("modal.feedback.description", language))
+            .setDescription(
+                error ? t("modal.feedback.description.error", language) : t("modal.feedback.description", language),
+            )
             .setTextInputComponent(
                 new TextInputBuilder()
                     .setCustomId(`text`)

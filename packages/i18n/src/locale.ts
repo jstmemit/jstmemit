@@ -25,11 +25,12 @@ export const locale: Partial<TranslationString> = {
         "enable.button.turnOff": "Turn off",
         "enable.button.turnOn": "Turn on",
         "enable.button.settings": "⚙️ Open settings",
-        "error.heading": "🔴 Something went wrong!",
 
-        "error.body":
-            "Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.",
+        "error.heading": "⚠️ Something went wrong",
+        "error.body": "Please try again and If it keeps happening, report the error so that we can look into it.",
         "error.id": "**Error ID:** {{interactionId}}",
+        "error.button.tryAgain": "🔁 Try again",
+        "error.button.reportError": "💬 Report error",
 
         "notEnoughContext.heading": "🤔 Not enough context yet",
         "notEnoughContext.body":
@@ -111,8 +112,10 @@ export const locale: Partial<TranslationString> = {
         "modal.customMeme.text.placeholder": "Something funny here",
         "modal.customMeme.image.label": "Image #{{id}}",
         "modal.feedback.title": "Send feedback",
+        "modal.feedback.title.error": "Report error",
         "modal.feedback.label": "Your message",
         "modal.feedback.description": "Report a bug, suggest a feature or tell us what you think",
+        "modal.feedback.description.error": "Please describe when does the error happend",
         "modal.feedback.placeholder": "Hello, could you please add ... meme template?",
         "modal.feedback.placeholder.error": "I got an error after ...",
 

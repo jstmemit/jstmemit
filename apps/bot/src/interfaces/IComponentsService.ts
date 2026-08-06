@@ -10,7 +10,10 @@ export abstract class IComponentsService {
     ): ContainerBuilder;
     public abstract getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder>;
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
-    public abstract getErrorButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
+    public abstract getErrorButtonsComponent(
+        language: Locale,
+        retryInteraction: string,
+    ): ActionRowBuilder<ButtonBuilder>;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
     public abstract getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder;

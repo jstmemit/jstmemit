@@ -261,7 +261,7 @@ export class MemesController implements IMemesController {
                 default:
                     this._captureMemeGenerationError(error, interaction, trigger);
                     message.push(this._componentsService.getErrorMessageComponent(locale, interaction.id));
-                    message.push(this._componentsService.getErrorButtonsComponent(locale));
+                    message.push(this._componentsService.getErrorButtonsComponent(locale, "meme"));
             }
 
             if (trigger !== "auto") {
