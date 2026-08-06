@@ -34,11 +34,12 @@ import { type Logger, logs } from "@opentelemetry/api-logs";
 import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
 import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
-import type { IVoicesRepository } from "@jstmemit/shared/interfaces/IVoicesRepository";
 import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
 import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscription";
 import { MilestonesService } from "#/services/MilestonesService.ts";
 import { NarrationsRepository } from "@jstmemit/db/repositories/NarrationsRepository";
+import { AutocompleteService } from "#/services/AutocompleteService.ts";
+import { AutocompleteController } from "#/controllers/AutocompleteController.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -94,9 +95,10 @@ container.register({
     voicesRepository: asClass(VoicesRepository).singleton(),
     milestonesService: asClass(MilestonesService).singleton(),
     narrationsRepository: asClass(NarrationsRepository).singleton(),
+    autocompleteService: asClass(AutocompleteService).singleton(),
+    autocompleteController: asClass(AutocompleteController).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
-export const voicesRepository: IVoicesRepository = container.resolve<IVoicesRepository>("voicesRepository");
 export const logger: Logger = container.resolve<Logger>("logger");

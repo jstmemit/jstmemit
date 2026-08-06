@@ -13,4 +13,5 @@ export abstract class ITemplatesRepository {
         fieldName: K,
         value: TemplateMapKey<Template, K>,
     ): Template[];
+    public abstract findTemplates(query: string): Template[];
 }
