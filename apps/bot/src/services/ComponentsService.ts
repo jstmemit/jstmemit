@@ -251,6 +251,22 @@ export class ComponentsService implements IComponentsService {
     }
 
     /**
+     * Returns a row with send feedback button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getErrorButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Primary)
+                .setLabel(t("modal.feedback.title", language))
+                .setCustomId(`feedback`),
+        );
+    }
+
+    /**
      * Returns back a message component for a "not enough context" error
      *
      * @param language

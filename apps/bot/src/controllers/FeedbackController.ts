@@ -1,4 +1,5 @@
 import {
+    type ButtonInteraction,
     type ChatInputCommandInteraction,
     InteractionContextType,
     MessageFlags,
@@ -29,7 +30,7 @@ export class FeedbackController implements IFeedbackController {
         this._channelsService = channelsService;
     }
 
-    public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void> {
+    public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction | ButtonInteraction): Promise<void> {
         const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.locale, interaction.user.id);
 
         analytics.capture({

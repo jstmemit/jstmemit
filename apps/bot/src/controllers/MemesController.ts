@@ -242,7 +242,7 @@ export class MemesController implements IMemesController {
                 interaction.guild,
             );
         } catch (error) {
-            let message: ContainerBuilder;
+            const message: (ContainerBuilder | ActionRowBuilder<ButtonBuilder>)[] = [];
             const reason: string = error instanceof Error ? error.message : "";
 
             switch (reason) {
@@ -256,15 +256,16 @@ export class MemesController implements IMemesController {
                         },
                     });
 
-                    message = this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id);
+                    message.push(this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id));
                     break;
                 default:
                     this._captureMemeGenerationError(error, interaction, trigger);
-                    message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
+                    message.push(this._componentsService.getErrorMessageComponent(locale, interaction.id));
+                    message.push(this._componentsService.getErrorButtonsComponent(locale));
             }
 
             if (trigger !== "auto") {
-                await respond(interaction, [message]);
+                await respond(interaction, [...message]);
             }
         }
     }

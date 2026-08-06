@@ -310,6 +310,9 @@ export class EventsController implements IEventsController {
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
                         return;
+                    case "feedback":
+                        await this._feedbackController.handleOpenFeedbackModal(interaction);
+                        return;
                 }
 
                 if (await this._checkForMissingPermissions(interaction)) {
