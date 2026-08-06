@@ -42,7 +42,7 @@ export class MemesRepository implements IMemesRepository {
             const { fonts, fontFamilies }: { fonts?: FontOptions[]; fontFamilies: string[] } =
                 this._fontsService.getFontsFor(props.texts);
 
-            if (animated || template.animationDuration !== undefined) {
+            if (animated) {
                 const animationDuration: number = template.animationDuration ?? 1500;
                 return await renderAnimation({
                     width: template.width,
@@ -68,7 +68,6 @@ export class MemesRepository implements IMemesRepository {
                     format: "webp",
                     emoji: "twemoji",
                     images: { fetchCache: this._fetchCache, timeout: 12000 },
-                    devicePixelRatio: 2,
                 });
             }
         } catch (error) {
