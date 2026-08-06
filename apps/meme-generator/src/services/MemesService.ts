@@ -95,9 +95,14 @@ export class MemesService implements IMemesService {
         }
 
         const contextTime: number = performance.now();
+        const hasAnimatedImage: boolean = props.images.some((image: string): boolean =>
+            image.startsWith("data:image/gif"),
+        );
+
+        const animated: boolean = hasAnimatedImage || template.animationDuration != null;
 
         const [meme, generationId] = await Promise.all([
-            this._memesRepository.generateMeme(template, props, true, turbo),
+            this._memesRepository.generateMeme(template, props, animated, turbo),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
