@@ -230,6 +230,6 @@ export class ContextService implements IContextService {
             },
         });
 
-        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, 60000);
+        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, ms("10m"));
     }
 }

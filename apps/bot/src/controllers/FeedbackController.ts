@@ -1,4 +1,5 @@
 import {
+    type ButtonInteraction,
     type ChatInputCommandInteraction,
     InteractionContextType,
     MessageFlags,
@@ -29,8 +30,15 @@ export class FeedbackController implements IFeedbackController {
         this._channelsService = channelsService;
     }
 
-    public async handleOpenFeedbackModal(interaction: ChatInputCommandInteraction): Promise<void> {
-        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(interaction.locale, interaction.user.id);
+    public async handleOpenFeedbackModal(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        error: boolean = false,
+    ): Promise<void> {
+        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(
+            interaction.locale,
+            interaction.user.id,
+            error,
+        );
 
         analytics.capture({
             event: "feedback_modal_opened",
@@ -45,7 +53,7 @@ export class FeedbackController implements IFeedbackController {
         await interaction.showModal(modal);
     }
 
-    public async handleNewFeedbackSubmit(interaction: ModalSubmitInteraction): Promise<void> {
+    public async handleNewFeedbackSubmit(interaction: ModalSubmitInteraction, error: boolean = false): Promise<void> {
         try {
             const userId: string | undefined = interaction.customId.split(":")[1];
             const message: string | undefined = interaction.fields.getTextInputValue(`text`);

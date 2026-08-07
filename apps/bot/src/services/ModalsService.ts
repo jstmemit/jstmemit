@@ -50,20 +50,26 @@ export class ModalsService implements IModalsService {
         return modal;
     }
 
-    public getSendFeedbackModal(language: Locale, userId: string): ModalBuilder {
+    public getSendFeedbackModal(language: Locale, userId: string, error: boolean): ModalBuilder {
         const modal: ModalBuilder = new ModalBuilder()
-            .setCustomId(`feedback:${userId}`)
-            .setTitle(t("modal.feedback.title", language));
+            .setCustomId(`${error ? "error-feedback" : "feedback"}:${userId}`)
+            .setTitle(error ? t("modal.feedback.title.error", language) : t("modal.feedback.title", language));
 
         const input: LabelBuilder = new LabelBuilder()
             .setLabel(t("modal.feedback.label", language))
-            .setDescription(t("modal.feedback.description", language))
+            .setDescription(
+                error ? t("modal.feedback.description.error", language) : t("modal.feedback.description", language),
+            )
             .setTextInputComponent(
                 new TextInputBuilder()
                     .setCustomId(`text`)
                     .setStyle(TextInputStyle.Paragraph)
                     .setRequired(true)
-                    .setPlaceholder(t("modal.feedback.placeholder", language))
+                    .setPlaceholder(
+                        error
+                            ? t("modal.feedback.placeholder.error", language)
+                            : t("modal.feedback.placeholder", language),
+                    )
                     .setMaxLength(1000),
             );
 

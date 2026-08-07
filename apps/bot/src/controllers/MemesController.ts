@@ -40,6 +40,7 @@ import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBot
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
+import ms from "ms";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -94,6 +95,7 @@ export class MemesController implements IMemesController {
         trigger?: MemeGenerationTrigger,
     ): Promise<void> {
         let parentGenerationId: number | undefined;
+        const startedAt: number = Date.now();
         const channelId: MemeGenerationJob["channelId"] = interaction.channelId;
         const userId: MemeGenerationJob["userId"] =
             interaction instanceof Message ? interaction.author.id : interaction.user.id;
@@ -211,22 +213,26 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const budget: number = 1200 - (Date.now() - interaction.createdTimestamp);
+            const budget: number = 1200 - (Date.now() - startedAt);
+
             const fastResult: MemeGenerationResult | undefined = await Promise.race([
                 job,
                 timeout(Math.max(0, budget)),
             ]);
 
             if (fastResult) {
-                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 2000ms
+                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 1200ms
                 await interaction.reply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
                     files: this._getMemeAttachment(fastResult),
                 });
             } else {
-                await interaction.deferReply();
-                const jobResult: MemeGenerationResult = await job;
+                if (!interaction.deferred && !interaction.replied) {
+                    await interaction.deferReply();
+                }
+
+                const jobResult: MemeGenerationResult = fastResult ?? (await job);
 
                 await interaction.editReply({
                     content: `<@${interaction.user.id}>`,
@@ -242,7 +248,7 @@ export class MemesController implements IMemesController {
                 interaction.guild,
             );
         } catch (error) {
-            let message: ContainerBuilder;
+            const message: (ContainerBuilder | ActionRowBuilder<ButtonBuilder>)[] = [];
             const reason: string = error instanceof Error ? error.message : "";
 
             switch (reason) {
@@ -256,15 +262,16 @@ export class MemesController implements IMemesController {
                         },
                     });
 
-                    message = this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id);
+                    message.push(this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id));
                     break;
                 default:
                     this._captureMemeGenerationError(error, interaction, trigger);
-                    message = this._componentsService.getErrorMessageComponent(locale, interaction.id);
+                    message.push(this._componentsService.getErrorMessageComponent(locale, interaction.id));
+                    message.push(this._componentsService.getErrorButtonsComponent(locale, "meme"));
             }
 
             if (trigger !== "auto") {
-                await respond(interaction, [message]);
+                await respond(interaction, [...message]);
             }
         }
     }
@@ -654,7 +661,7 @@ export class MemesController implements IMemesController {
             },
         });
 
-        return job.waitUntilFinished(this._memeGenerationQueueEvents, 60000);
+        return job.waitUntilFinished(this._memeGenerationQueueEvents, ms("10m"));
     }
 
     private _getMemeAttachment(result: MemeGenerationResult): AttachmentPayload[] {
@@ -703,6 +710,6 @@ export class MemesController implements IMemesController {
             },
         });
 
-        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, 60000);
+        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, ms("10m"));
     }
 }
