@@ -2,7 +2,7 @@ import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts"
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
 import { type TemplateTopic, TopicLocalizationMap } from "#/models/TemplateTopic.ts";
-import { isNonNullish } from "remeda";
+import type { LocalizationMap } from "discord.js";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -792,7 +792,7 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
     private _getLocalizedValues(map: LocalizationMap): string[] {
-        return Object.values(map).filter(isNonNullish);
+        return Object.values(map).filter((value): value is string => value !== null && value !== undefined);
     }
 
     /**
