@@ -21,6 +21,7 @@ export class BanditService implements IBanditService {
     private readonly priorStrength: number = 4;
     private readonly likeWeight: number = 1;
     private readonly dislikeWeight: number = 1;
+    private readonly channelWeight: number = 0.35;
 
     public constructor(
         banditRepository: IBanditRepository,
@@ -299,8 +300,8 @@ export class BanditService implements IBanditService {
 
         // alpha value for positive activity, beta for negative
         return {
-            alpha: 1 + this.priorStrength * globalMean + channel.successes + user.successes,
-            beta: 1 + this.priorStrength * (1 - globalMean) + channel.failures + user.failures,
+            alpha: 1 + this.priorStrength * globalMean + channel.successes * this.channelWeight + user.successes,
+            beta: 1 + this.priorStrength * (1 - globalMean) + channel.failures * this.channelWeight + user.failures,
         };
     }
 
