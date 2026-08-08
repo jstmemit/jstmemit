@@ -2,7 +2,7 @@ import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts"
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
 import { type TemplateTopic, TopicLocalizationMap } from "#/models/TemplateTopic.ts";
-import { isNonNullish } from "remeda";
+import type { LocalizationMap } from "discord.js";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
 import { liveReaction } from "#/templates/liveReaction.tsx";
@@ -379,7 +379,40 @@ import { btrBocchiPerform } from "#/templates/btrBocchiPerform.tsx";
 import { btrBocchiSpiralEyesPanic1 } from "#/templates/btrBocchiSpiralEyesPanic1.tsx";
 import { btrNijikaGoodbye } from "#/templates/btrNijikaGoodbye.tsx";
 import { umAgnesTachyonUncanny } from "#/templates/umAgnesTachyonUncanny.tsx";
-import type { LocalizationMap } from "discord.js";
+import { dandadanJijiPoint } from "#/templates/dandadanJijiPoint.tsx";
+import { dandadanMomoSmug } from "#/templates/dandadanMomoSmug.tsx";
+import { dandadanOkarunAura } from "#/templates/dandadanOkarunAura.tsx";
+import { dandadanOkarunWriting } from "#/templates/dandadanOkarunWriting.tsx";
+import { dandadanTurboGrannyDance } from "#/templates/dandadanTurboGrannyDance.tsx";
+import { dandadanTurboGrannyHearingMusic } from "#/templates/dandadanTurboGrannyHearingMusic.tsx";
+import { dfragRokaDarkness } from "#/templates/dfragRokaDarkness.tsx";
+import { ditfZeroTwoCrying } from "#/templates/ditfZeroTwoCrying.tsx";
+import { ditfZeroTwoSmile } from "#/templates/ditfZeroTwoSmile.tsx";
+import { dnNearListening } from "#/templates/dnNearListening.tsx";
+import { dnNearShocked } from "#/templates/dnNearShocked.tsx";
+import { frierenCold } from "#/templates/frierenCold.tsx";
+import { frierenCrying } from "#/templates/frierenCrying.tsx";
+import { frierenFernFrustratedFrom67 } from "#/templates/frierenFernFrustratedFrom67.tsx";
+import { frierenFernFrustratedFrom671 } from "#/templates/frierenFernFrustratedFrom671.tsx";
+import { frierenLightning } from "#/templates/frierenLightning.tsx";
+import { frierenWarming } from "#/templates/frierenWarming.tsx";
+import { gdoGabrielCozy } from "#/templates/gdoGabrielCozy.tsx";
+import { gdoGabrielEating } from "#/templates/gdoGabrielEating.tsx";
+import { gdoRaphielAraAra } from "#/templates/gdoRaphielAraAra.tsx";
+import { gdoRaphielSmile } from "#/templates/gdoRaphielSmile.tsx";
+import { gdoSataniaAngryCrying } from "#/templates/gdoSataniaAngryCrying.tsx";
+import { gdoSataniaEvilSmart } from "#/templates/gdoSataniaEvilSmart.tsx";
+import { gdoSataniaEvilSmart1 } from "#/templates/gdoSataniaEvilSmart1.tsx";
+import { gdoSataniaLaughing } from "#/templates/gdoSataniaLaughing.tsx";
+import { gdoSataniaLaughing1 } from "#/templates/gdoSataniaLaughing1.tsx";
+import { gdoSataniaThumbsUp1 } from "#/templates/gdoSataniaThumbsUp1.tsx";
+import { gdoTapiocaPoint } from "#/templates/gdoTapiocaPoint.tsx";
+import { officeDwightScreaming } from "#/templates/officeDwightScreaming.tsx";
+import { officeKevinICant } from "#/templates/officeKevinICant.tsx";
+import { officeMichaelCringe } from "#/templates/officeMichaelCringe.tsx";
+import { officeMichaelExcited } from "#/templates/officeMichaelExcited.tsx";
+import { officeMichaelParkour } from "#/templates/officeMichaelParkour.tsx";
+import { officeStanleyBlinking } from "#/templates/officeStanleyBlinking.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -779,6 +812,40 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiSpiralEyesPanic1,
             btrNijikaGoodbye,
             umAgnesTachyonUncanny,
+            dandadanJijiPoint,
+            dandadanMomoSmug,
+            dandadanOkarunAura,
+            dandadanOkarunWriting,
+            dandadanTurboGrannyDance,
+            dandadanTurboGrannyHearingMusic,
+            dfragRokaDarkness,
+            ditfZeroTwoCrying,
+            ditfZeroTwoSmile,
+            dnNearListening,
+            dnNearShocked,
+            frierenCold,
+            frierenCrying,
+            frierenFernFrustratedFrom67,
+            frierenFernFrustratedFrom671,
+            frierenLightning,
+            frierenWarming,
+            gdoGabrielCozy,
+            gdoGabrielEating,
+            gdoRaphielAraAra,
+            gdoRaphielSmile,
+            gdoSataniaAngryCrying,
+            gdoSataniaEvilSmart,
+            gdoSataniaEvilSmart1,
+            gdoSataniaLaughing,
+            gdoSataniaLaughing1,
+            gdoSataniaThumbsUp1,
+            gdoTapiocaPoint,
+            officeDwightScreaming,
+            officeKevinICant,
+            officeMichaelCringe,
+            officeMichaelExcited,
+            officeMichaelParkour,
+            officeStanleyBlinking,
         ];
     }
 
@@ -792,7 +859,7 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
     private _getLocalizedValues(map: LocalizationMap): string[] {
-        return Object.values(map).filter(isNonNullish);
+        return Object.values(map).filter((value): value is string => value !== null && value !== undefined);
     }
 
     /**

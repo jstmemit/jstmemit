@@ -6,30 +6,31 @@ import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 
-export const dandadanShockedTurboGranny: Template = {
-    name: "dandadanShockedTurboGranny",
-    displayName: buildLocales("Shocked Turbo Granny cat", {
-        [Locale.Russian]: "Шокированный кот Турбо Бабуля",
-        [Locale.Ukrainian]: "Шокований кіт Турбо Бабуся",
-        [Locale.Dutch]: "Geschokte Turbo Granny kat",
-        [Locale.French]: "Chat Turbo Granny choqué",
-        [Locale.German]: "Schockierte Turbo-Granny-Katze",
-        [Locale.Polish]: "Zszokowany kot Turbo Babcia",
-        [Locale.SpanishES]: "Gato Turbo Granny en shock",
-        [Locale.SpanishLATAM]: "Gato Turbo Granny en shock",
-        [Locale.PortugueseBR]: "Gato Turbo Granny chocado",
-        [Locale.Turkish]: "Şoke olmuş Turbo Granny kedisi",
-        [Locale.Italian]: "Gatto Turbo Granny scioccato",
-        [Locale.Indonesian]: "Kucing Turbo Granny terkejut",
-        [Locale.Czech]: "Šokovaný kocour Turbo Granny",
-        [Locale.Japanese]: "ショックを受けたターボババア猫",
-        [Locale.Korean]: "충격받은 터보 할멈 고양이",
-        [Locale.ChineseCN]: "震惊的高速婆婆猫",
+export const dnNearListening: Template = {
+    name: "dnNearListening",
+    displayName: buildLocales("Near listening", {
+        [Locale.Russian]: "Ниа слушает",
+        [Locale.Ukrainian]: "Ніа слухає",
+        [Locale.Dutch]: "Near luistert",
+        [Locale.French]: "Near qui écoute",
+        [Locale.German]: "Near hört zu",
+        [Locale.Polish]: "Near słucha",
+        [Locale.SpanishES]: "Near escuchando",
+        [Locale.SpanishLATAM]: "Near escuchando",
+        [Locale.PortugueseBR]: "Near ouvindo",
+        [Locale.Turkish]: "Near dinliyor",
+        [Locale.Italian]: "Near che ascolta",
+        [Locale.Indonesian]: "Near mendengarkan",
+        [Locale.Czech]: "Near poslouchá",
+        [Locale.Japanese]: "話を聞くニア",
+        [Locale.Korean]: "듣고 있는 니아",
+        [Locale.ChineseCN]: "尼亚倾听",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
-    types: [Type.TextTopWithBackground],
-    width: 1200,
-    height: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.DeathNote],
+    types: [Type.TextTopWithBackground, Type.Animated],
+    width: 500,
+    height: 367,
+    animationDuration: 1200,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -43,9 +44,9 @@ export const dandadanShockedTurboGranny: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanShockedTurboGranny.png"
-                width={1200}
-                height={1250}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/dnNearListening.gif"
+                width={500}
+                height={277}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
@@ -54,12 +55,12 @@ export const dandadanShockedTurboGranny: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "250px",
+                    height: "90px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -69,7 +70,7 @@ export const dandadanShockedTurboGranny: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 70,
+                        fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",
