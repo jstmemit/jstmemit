@@ -6,30 +6,31 @@ import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 
-export const dandadanShockedTurboGranny: Template = {
-    name: "dandadanShockedTurboGranny",
-    displayName: buildLocales("Shocked Turbo Granny cat", {
-        [Locale.Russian]: "Шокированный кот Турбо Бабуля",
-        [Locale.Ukrainian]: "Шокований кіт Турбо Бабуся",
-        [Locale.Dutch]: "Geschokte Turbo Granny kat",
-        [Locale.French]: "Chat Turbo Granny choqué",
-        [Locale.German]: "Schockierte Turbo-Granny-Katze",
-        [Locale.Polish]: "Zszokowany kot Turbo Babcia",
-        [Locale.SpanishES]: "Gato Turbo Granny en shock",
-        [Locale.SpanishLATAM]: "Gato Turbo Granny en shock",
-        [Locale.PortugueseBR]: "Gato Turbo Granny chocado",
-        [Locale.Turkish]: "Şoke olmuş Turbo Granny kedisi",
-        [Locale.Italian]: "Gatto Turbo Granny scioccato",
-        [Locale.Indonesian]: "Kucing Turbo Granny terkejut",
-        [Locale.Czech]: "Šokovaný kocour Turbo Granny",
-        [Locale.Japanese]: "ショックを受けたターボババア猫",
-        [Locale.Korean]: "충격받은 터보 할멈 고양이",
-        [Locale.ChineseCN]: "震惊的高速婆婆猫",
+export const tf2PyroOnFire: Template = {
+    name: "tf2PyroOnFire",
+    displayName: buildLocales("Pyro on fire", {
+        [Locale.Russian]: "Пиро в огне",
+        [Locale.Ukrainian]: "Піро у вогні",
+        [Locale.Dutch]: "Pyro staat in brand",
+        [Locale.French]: "Pyro en feu",
+        [Locale.German]: "Pyro in Flammen",
+        [Locale.Polish]: "Pyro w ogniu",
+        [Locale.SpanishES]: "Pyro en llamas",
+        [Locale.SpanishLATAM]: "Pyro en llamas",
+        [Locale.PortugueseBR]: "Pyro em chamas",
+        [Locale.Turkish]: "Pyro yanıyor",
+        [Locale.Italian]: "Pyro in fiamme",
+        [Locale.Indonesian]: "Pyro terbakar",
+        [Locale.Czech]: "Pyro v plamenech",
+        [Locale.Japanese]: "燃えているパイロ",
+        [Locale.Korean]: "불타는 파이로",
+        [Locale.ChineseCN]: "着火的火焰兵",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
-    types: [Type.TextTopWithBackground],
-    width: 1200,
-    height: 1500,
+    topics: [Topic.Reaction, Topic.Games, Topic.TeamFortress2],
+    types: [Type.TextTopWithBackground, Type.Animated],
+    width: 640,
+    height: 450,
+    animationDuration: 3480,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts }: TemplateProps) => (
@@ -43,9 +44,9 @@ export const dandadanShockedTurboGranny: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanShockedTurboGranny.png"
-                width={1200}
-                height={1250}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/tf2PyroOnFire.gif"
+                width={640}
+                height={360}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
@@ -54,12 +55,12 @@ export const dandadanShockedTurboGranny: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "250px",
+                    height: "90px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -69,7 +70,7 @@ export const dandadanShockedTurboGranny: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 70,
+                        fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",
