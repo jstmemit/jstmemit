@@ -420,6 +420,13 @@ export const commands = [
         integration_types: [0, 1],
     },
     {
+        name: "achievements",
+        description: "View reached milestones and received achievements for them",
+        contexts: [0],
+        dm_permission: false,
+        integration_types: [0],
+    },
+    {
         name: "faq",
         name_localizations: buildLocales("faq", {
             [Locale.Russian]: "вопросы",
