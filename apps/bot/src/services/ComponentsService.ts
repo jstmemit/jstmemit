@@ -140,6 +140,11 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.view.description", language)))
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("milestones.view.unlockedAchievements", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`🥉 **Bronze medal:** 25/25 memes generated`))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
                 ),

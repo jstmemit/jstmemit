@@ -2243,6 +2243,7 @@ export const locale: Record<string, LocalizationMap> = {
         "Every time your channel hits a meme count milestone it unlocks an achievement.\nBelow you can see a list of them and statistics on how you used Jstmemit.",
         {},
     ),
+    "milestones.view.unlockedAchievements": buildLocales("Unlocked achievements", {}),
     "milestones.heading": buildLocales("Yay! {{count}} memes in **<#{{channelId}}>**!", {
         [Locale.Russian]: "Ура! {{count}} мемов в **<#{{channelId}}>**!",
         [Locale.Ukrainian]: "Ура! {{count}} мемів у **<#{{channelId}}>**!",
