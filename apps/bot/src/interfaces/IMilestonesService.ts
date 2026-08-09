@@ -7,4 +7,5 @@ export abstract class IMilestonesService {
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
         channel: typeof channelsTable.$inferSelect,
     ): Promise<void>;
+    public abstract getReachedMilestones(channelId: string): Promise<number[]>;
 }

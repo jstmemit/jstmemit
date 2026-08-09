@@ -133,6 +133,23 @@ export class MilestonesService implements IMilestonesService {
         }
     }
 
+    public async getReachedMilestones(channelId: string): Promise<number[]> {
+        const cached: number | undefined = await this._cacheService.get(`generations:${channelId}`);
+        const count: number =
+            cached !== undefined ? cached + 1 : await this._generationsRepository.getCountPerChannel(channelId);
+
+        await this._cacheService.set(`generations:${channelId}`, count, ms("7d"));
+
+        let milestone: number = 25;
+        const milestones: number[] = [];
+
+        for (milestone; milestone <= count; milestone *= 2) {
+            milestones.push(milestone);
+        }
+
+        return milestones;
+    }
+
     private _getLocale(interaction: ChatInputCommandInteraction | ButtonInteraction | Message): Locale {
         if (interaction instanceof Message) {
             if (interaction.inGuild()) {
