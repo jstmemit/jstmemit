@@ -102,6 +102,7 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param isEnabled
+     * @param count
      * @param isFirstTime
      *
      * @author Kyrylo Maliuha
@@ -109,9 +110,10 @@ export class ComponentsService implements IComponentsService {
     public getEnableButtonsComponent(
         language: Locale,
         isEnabled: boolean,
+        count: number,
         isFirstTime?: boolean,
     ): ActionRowBuilder<ButtonBuilder> {
-        const showFirstMeme: boolean | undefined = isEnabled && isFirstTime;
+        const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
 
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(

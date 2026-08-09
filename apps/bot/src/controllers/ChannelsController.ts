@@ -172,6 +172,7 @@ export class ChannelsController implements IChannelsController {
         const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
             interaction.locale,
             isEnabled,
+            contextAmount,
             generationsAmount < 1,
         );
 
