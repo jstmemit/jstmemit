@@ -413,6 +413,21 @@ import { officeMichaelCringe } from "#/templates/officeMichaelCringe.tsx";
 import { officeMichaelExcited } from "#/templates/officeMichaelExcited.tsx";
 import { officeMichaelParkour } from "#/templates/officeMichaelParkour.tsx";
 import { officeStanleyBlinking } from "#/templates/officeStanleyBlinking.tsx";
+import { robotVacuumArtist } from "#/templates/robotVacuumArtist.tsx";
+import { spongebobAlone } from "#/templates/spongebobAlone.tsx";
+import { spongebobBreathing } from "#/templates/spongebobBreathing.tsx";
+import { spongebobExam } from "#/templates/spongebobExam.tsx";
+import { spongebobFingerGuns } from "#/templates/spongebobFingerGuns.tsx";
+import { spongebobGrimace } from "#/templates/spongebobGrimace.tsx";
+import { tf2PyroOnFire } from "#/templates/tf2PyroOnFire.tsx";
+import { tf2PyroOnFire1 } from "#/templates/tf2PyroOnFire1.tsx";
+import { tf2WhatIsLove } from "#/templates/tf2WhatIsLove.tsx";
+import { toradoraTaigaAngryCrying } from "#/templates/toradoraTaigaAngryCrying.tsx";
+import { tsAngryKenClapping } from "#/templates/tsAngryKenClapping.tsx";
+import { tsAngryKenClapping1 } from "#/templates/tsAngryKenClapping1.tsx";
+import { tsWoodyCrazy } from "#/templates/tsWoodyCrazy.tsx";
+import { tsWoodyStare } from "#/templates/tsWoodyStare.tsx";
+import { wnlFuminoSoulLeaving } from "#/templates/wnlFuminoSoulLeaving.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -846,6 +861,21 @@ export class TemplatesRepository implements ITemplatesRepository {
             officeMichaelExcited,
             officeMichaelParkour,
             officeStanleyBlinking,
+            robotVacuumArtist,
+            spongebobAlone,
+            spongebobBreathing,
+            spongebobExam,
+            spongebobFingerGuns,
+            spongebobGrimace,
+            tf2PyroOnFire,
+            tf2PyroOnFire1,
+            tf2WhatIsLove,
+            toradoraTaigaAngryCrying,
+            tsAngryKenClapping,
+            tsAngryKenClapping1,
+            tsWoodyCrazy,
+            tsWoodyStare,
+            wnlFuminoSoulLeaving,
         ];
     }
 
