@@ -123,6 +123,30 @@ export class ComponentsService implements IComponentsService {
             );
     }
 
+    public getMilestoneViewMessageComponent(
+        language: Locale,
+        channelId: string,
+        count: number,
+        milestones: number[],
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(count, count * 2, 10);
+
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# 🎖️ ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.view.description", language)))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
+                ),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+    }
+
     /**
      * Returns back a milestone message component
      *

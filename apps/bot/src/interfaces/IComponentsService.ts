@@ -16,6 +16,12 @@ export abstract class IComponentsService {
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getMilestoneViewMessageComponent(
+        language: Locale,
+        channelId: string,
+        count: number,
+        milestones: number[],
+    ): ContainerBuilder;
     public abstract getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder;
     public abstract getMilestoneButtonsComponent(
         language: Locale,
