@@ -1,6 +1,4 @@
-import type { Emojis } from "#/models/Emojis.ts";
-
-export const emojis: Emojis = {
+export const emojis = {
     // development bot emojis
     // fill1: "<:fill1:1395826918019961014>",
     // fill2: "<:fill2:1395826899053445160>",
@@ -8,6 +6,19 @@ export const emojis: Emojis = {
     // empty1: "<:empty1:1395826909450993826>",
     // empty2: "<:empty2:1395826691129082017>",
     // empty3: "<:empty3:1395826703603077120>",
+    // jstmemit: "<:jstmemit:1533562305353220146>",
+    // wood: "<:Wood:1536301948079308830>",
+    // stone: "<:Stone:1536301931235123251>",
+    // iron: "<:Iron:1536301853266935838>",
+    // bronze: "<:Bronze:1536301788926451722>",
+    // silver: "<:Silver:1536301916634751116>",
+    // gold: "<:Gold:1536301840147292271>",
+    // platinum: "<:Platinum:1536301901312692284>",
+    // emerald: "<:Emerald:1536301822161977416>",
+    // diamond: "<:Diamond:1536301804361490462>",
+    // obsidian: "<:Obsidian:1536301885798219776>",
+    // mithril: "<:Mithril:1536301869780181022>",
+    // adamantite: "<:Adamantite:1536301760350785647>",
 
     // production bot emojis
     fill1: "<:fill1:1395787757749801091>",
@@ -16,4 +27,17 @@ export const emojis: Emojis = {
     empty1: "<:empty1:1395787747440197743>",
     empty2: "<:empty2:1395787699037667369>",
     empty3: "<:empty3:1395787710660087900>",
-};
+    jstmemit: "<:jstmemit:1533562196980797462>",
+    wood: "<:Wood:1536393188707930172>",
+    stone: "<:Stone:1536393173901770773>",
+    iron: "<:Iron:1536393089659314250>",
+    bronze: "<:Bronze:1536393029676564581>",
+    silver: "<:Silver:1536393158647353384>",
+    gold: "<:Gold:1536393076749242468>",
+    platinum: "<:Platinum:1536393141803032708>",
+    emerald: "<:Emerald:1536393063348568134>",
+    diamond: "<:Diamond:1536393046931808356>",
+    obsidian: "<:Obsidian:1536393126829232301>",
+    mithril: "<:Mithril:1536393110605664307>",
+    adamantite: "<:Adamantite:1536393012987301899>",
+} as const;

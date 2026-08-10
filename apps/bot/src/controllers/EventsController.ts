@@ -17,6 +17,7 @@ import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplate
 import { logger } from "#/container.ts";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 import type { IAutocompleteController } from "#/interfaces/IAutocompleteController.ts";
+import type { IMilestonesController } from "#/interfaces/IMilestonesController.ts";
 
 const env = Env.parse(process.env);
 
@@ -31,6 +32,7 @@ export class EventsController implements IEventsController {
     private readonly _helpController: IHelpController;
     private readonly _voiceController: IVoiceController;
     private readonly _autocompleteController: IAutocompleteController;
+    private readonly _milestonesController: IMilestonesController;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -44,6 +46,7 @@ export class EventsController implements IEventsController {
         voiceController: IVoiceController,
         templatesRepository: ITemplatesRepository,
         autocompleteController: IAutocompleteController,
+        milestonesController: IMilestonesController,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
@@ -55,6 +58,7 @@ export class EventsController implements IEventsController {
         this._voiceController = voiceController;
         this._templateRepository = templatesRepository;
         this._autocompleteController = autocompleteController;
+        this._milestonesController = milestonesController;
     }
 
     /**
@@ -275,6 +279,9 @@ export class EventsController implements IEventsController {
                         return;
                     case "voice":
                         await this._voiceController.handleNarrateTextInteraction(interaction);
+                        return;
+                    case "achievements":
+                        await this._milestonesController.handleViewMilestones(interaction);
                         return;
                 }
 

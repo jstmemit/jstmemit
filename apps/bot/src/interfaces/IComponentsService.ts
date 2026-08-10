@@ -1,5 +1,6 @@
 import type { ActionRowBuilder, ButtonBuilder, ContainerBuilder, Locale } from "discord.js";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import type { Achievement } from "@jstmemit/shared/models/Achievement";
 
 export abstract class IComponentsService {
     public abstract getEnableMessageComponent(
@@ -21,7 +22,18 @@ export abstract class IComponentsService {
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
-    public abstract getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder;
+    public abstract getMilestoneViewMessageComponent(
+        language: Locale,
+        channelId: string,
+        count: number,
+        milestones: Achievement[],
+    ): ContainerBuilder;
+    public abstract getMilestoneMessageComponent(
+        language: Locale,
+        count: number,
+        channelId: string,
+        achievement?: Achievement,
+    ): ContainerBuilder;
     public abstract getMilestoneButtonsComponent(
         language: Locale,
         likes: number,
