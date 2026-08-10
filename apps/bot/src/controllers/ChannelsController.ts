@@ -61,6 +61,10 @@ export class ChannelsController implements IChannelsController {
                 interaction.channelId,
             );
 
+            const generationsAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
+                interaction.channelId,
+            );
+
             if ((!isEnabled && messagesAmount < 1) || interaction.isButton()) {
                 isEnabled = await this._channelsService.switchChannel(interaction.channelId);
             }
@@ -113,12 +117,21 @@ export class ChannelsController implements IChannelsController {
                 }
             }
 
-            await this.sendEnableResponse(interaction, isEnabled, permissions, messagesAmount);
+            await this.sendEnableResponse(interaction, isEnabled, permissions, messagesAmount, generationsAmount);
 
             if (prefetchPromise && messagesAmount < 1) {
-                void this.updateAfterPrefetch(interaction, prefetchPromise, isEnabled, permissions, messagesAmount);
+                void this._updateAfterPrefetch(
+                    interaction,
+                    prefetchPromise,
+                    isEnabled,
+                    permissions,
+                    messagesAmount,
+                    generationsAmount,
+                );
             }
         } catch (error) {
+            const message: (ContainerBuilder | ActionRowBuilder<ButtonBuilder>)[] = [];
+
             analytics.captureException(error, interaction.user.id, {
                 channelId: interaction.channelId,
                 guildId: interaction?.guildId || "",
@@ -126,12 +139,10 @@ export class ChannelsController implements IChannelsController {
                 language: interaction.locale,
             });
 
-            const message: ContainerBuilder = this._componentsService.getErrorMessageComponent(
-                interaction.locale,
-                interaction.id,
-            );
+            message.push(this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id));
+            message.push(this._componentsService.getErrorButtonsComponent(interaction.locale, "enable"));
 
-            await respond(interaction, [message]);
+            await respond(interaction, [...message]);
         }
     }
 
@@ -142,12 +153,14 @@ export class ChannelsController implements IChannelsController {
      * @param isEnabled
      * @param permissions
      * @param contextAmount
+     * @param generationsAmount
      */
     private async sendEnableResponse(
         interaction: ChatInputCommandInteraction | ButtonInteraction,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
         contextAmount: number,
+        generationsAmount: number,
     ): Promise<void> {
         const message: ContainerBuilder = this._componentsService.getEnableMessageComponent(
             interaction.locale,
@@ -159,6 +172,8 @@ export class ChannelsController implements IChannelsController {
         const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getEnableButtonsComponent(
             interaction.locale,
             isEnabled,
+            contextAmount,
+            generationsAmount < 1,
         );
 
         await respond(interaction, [message, buttons]);
@@ -173,15 +188,17 @@ export class ChannelsController implements IChannelsController {
      * @param isEnabled
      * @param permissions
      * @param messagesAmount
+     * @param generationsAmount
      *
      * @author Kyrylo Maliuha
      */
-    private async updateAfterPrefetch(
+    private async _updateAfterPrefetch(
         interaction: ChatInputCommandInteraction | ButtonInteraction,
         prefetchPromise: Promise<number>,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
         messagesAmount: number,
+        generationsAmount: number,
     ): Promise<void> {
         const prefetchedContext: number = await prefetchPromise;
 
@@ -203,7 +220,13 @@ export class ChannelsController implements IChannelsController {
         }
 
         try {
-            await this.sendEnableResponse(interaction, isEnabled, permissions, messagesAmount + prefetchedContext);
+            await this.sendEnableResponse(
+                interaction,
+                isEnabled,
+                permissions,
+                messagesAmount + prefetchedContext,
+                generationsAmount,
+            );
         } catch (error) {
             analytics.captureException(error, interaction.user.id, {
                 channelId: interaction.channelId,

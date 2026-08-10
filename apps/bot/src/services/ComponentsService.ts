@@ -102,24 +102,42 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param isEnabled
+     * @param count
+     * @param isFirstTime
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableButtonsComponent(language: Locale, isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
+    public getEnableButtonsComponent(
+        language: Locale,
+        isEnabled: boolean,
+        count: number,
+        isFirstTime?: boolean,
+    ): ActionRowBuilder<ButtonBuilder> {
+        const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
+
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
-                    .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
-                    .setLabel(
-                        `${isEnabled ? t("enable.button.turnOff", language) : t("enable.button.turnOn", language)}`,
+                    .setStyle(
+                        showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
                     )
-                    .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+                    .setLabel(
+                        t(
+                            showFirstMeme
+                                ? "enable.button.firstMeme"
+                                : isEnabled
+                                  ? "enable.button.turnOff"
+                                  : "enable.button.turnOn",
+                            language,
+                        ),
+                    )
+                    .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(t("enable.button.settings", language))
-                    .setCustomId(`settings`),
+                    .setCustomId("settings"),
             );
     }
 
