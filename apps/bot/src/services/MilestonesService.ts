@@ -18,6 +18,9 @@ import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { analytics } from "@jstmemit/analytics";
 import { logger } from "#/container.ts";
+import type { Achievement } from "@jstmemit/shared/models/Achievement";
+import { achievementsList } from "#/data/achievementsList.ts";
+import type { StatsPerChannel } from "@jstmemit/shared/models/StatsPerChannel";
 
 export class MilestonesService implements IMilestonesService {
     private readonly _generationsRepository: IGenerationsRepository;
@@ -38,6 +41,21 @@ export class MilestonesService implements IMilestonesService {
         this._ratingsRepository = ratingsRepository;
         this._narrationsRepository = narrationsRepository;
         this._cacheService = cacheService;
+    }
+
+    /**
+     Returns back likes, dislikes, templates, voices in channel
+     *
+     * @param channelId
+     *
+     * @author Oleksii Sych
+     */
+    private async getStatsPerChannel(channelId: string): Promise<StatsPerChannel> {
+        const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(channelId);
+        const templates: number = await this._generationsRepository.getTemplateCountPerChannel(channelId);
+        const voices: number = await this._narrationsRepository.getVoiceCountPerChannel(channelId);
+
+        return { likes, dislikes, templates, voices };
     }
 
     public async checkAndReplyWithMilestone(
@@ -71,14 +89,13 @@ export class MilestonesService implements IMilestonesService {
             await this._cacheService.set(`milestone:${interaction.channelId}`, milestone, ms("90d"));
             const locale: Locale = this._getLocale(interaction);
 
-            const { likes, dislikes } = await this._ratingsRepository.getLikeDislikeChannelCount(interaction.channelId);
-            const templates: number = await this._generationsRepository.getTemplateCountPerChannel(
-                interaction.channelId,
+            const { likes, dislikes, templates, voices } = await this.getStatsPerChannel(interaction.channelId);
+            const achievement: Achievement | undefined = achievementsList.find(
+                (achievement) => achievement.requiredCount === count,
             );
-            const voices: number = await this._narrationsRepository.getVoiceCountPerChannel(interaction.channelId);
 
             const components: (ActionRowBuilder<ButtonBuilder> | ContainerBuilder)[] = [
-                this._componentsService.getMilestoneMessageComponent(locale, count, interaction.channelId),
+                this._componentsService.getMilestoneMessageComponent(locale, count, interaction.channelId, achievement),
                 this._componentsService.getMilestoneButtonsComponent(locale, likes, dislikes, templates, voices),
             ];
 
@@ -133,21 +150,23 @@ export class MilestonesService implements IMilestonesService {
         }
     }
 
-    public async getReachedMilestones(channelId: string): Promise<number[]> {
-        const cached: number | undefined = await this._cacheService.get(`generations:${channelId}`);
-        const count: number =
-            cached !== undefined ? cached + 1 : await this._generationsRepository.getCountPerChannel(channelId);
+    public async getReachedMilestones(
+        count: number,
+        channelId: string,
+    ): Promise<{ milestones: Achievement[] } & StatsPerChannel> {
+        const milestones: Achievement[] = [];
 
-        await this._cacheService.set(`generations:${channelId}`, count, ms("7d"));
-
-        let milestone: number = 25;
-        const milestones: number[] = [];
-
-        for (milestone; milestone <= count; milestone *= 2) {
-            milestones.push(milestone);
+        for (const achievement of achievementsList) {
+            if (count >= achievement.requiredCount) {
+                milestones.push(achievement);
+            } else {
+                break;
+            }
         }
 
-        return milestones;
+        const stats = await this.getStatsPerChannel(channelId);
+
+        return { milestones, ...stats };
     }
 
     private _getLocale(interaction: ChatInputCommandInteraction | ButtonInteraction | Message): Locale {
