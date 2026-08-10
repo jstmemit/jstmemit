@@ -112,7 +112,7 @@ export class ComponentsService implements IComponentsService {
     public getEnableButtonsComponent(
         language: Locale,
         isEnabled: boolean,
-        count: number,
+        count: number = 0,
         isFirstTime?: boolean,
     ): ActionRowBuilder<ButtonBuilder> {
         const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
