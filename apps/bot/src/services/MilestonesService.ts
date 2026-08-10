@@ -58,6 +58,15 @@ export class MilestonesService implements IMilestonesService {
         return { likes, dislikes, templates, voices };
     }
 
+    /**
+     * Checks if a channel his a milestone and if it did,
+     * then sends or follows up with a congratulations message
+     *
+     * @param interaction
+     * @param channel
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
     public async checkAndReplyWithMilestone(
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
         channel: typeof channelsTable.$inferSelect,
@@ -150,6 +159,15 @@ export class MilestonesService implements IMilestonesService {
         }
     }
 
+    /**
+     * Returns an array of reached milestones
+     * by using channelId and their count
+     *
+     * @param count
+     * @param channelId
+     *
+     * @authors Oleksii Sych & Kyrylo Maliuha
+     */
     public async getReachedMilestones(
         count: number,
         channelId: string,
