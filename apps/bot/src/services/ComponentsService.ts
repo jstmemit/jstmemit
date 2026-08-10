@@ -18,6 +18,8 @@ import type { Frequency } from "#/models/Frequency.ts";
 import { t } from "@jstmemit/i18n";
 import type { Mode } from "@jstmemit/shared/models/Mode";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import type { Achievement } from "@jstmemit/shared/models/Achievement";
+import { achievementsList } from "#/data/achievementsList.ts";
 
 export class ComponentsService implements IComponentsService {
     /**
@@ -123,33 +125,84 @@ export class ComponentsService implements IComponentsService {
             );
     }
 
+    /**
+     Returns back a milestone view message component
+     *
+     * @param language
+     * @param channelId
+     * @param count
+     * @param milestones
+     *
+     * @author Kyrylo Maliuha & Oleksii Sych
+     */
     public getMilestoneViewMessageComponent(
         language: Locale,
         channelId: string,
         count: number,
-        milestones: number[],
+        milestones: Achievement[],
     ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
-        return new ContainerBuilder()
+        const component = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# 🎖️ ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
+                    `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
                 ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.view.description", language)))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("milestones.view.description", language, {
+                        emoji: emojis.jstmemit,
+                    }),
+                ),
+            )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("milestones.view.unlockedAchievements", language)}`),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`🥉 **Bronze medal:** 25/25 memes generated`))
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
-                ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+            );
+
+        if (milestones.length !== 0) {
+            for (const milestone of milestones) {
+                component.addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${milestone.emoji} **${milestone.name[language]}:** ${milestone.requiredCount} ${t("milestones.generatedMemes", language)}`,
+                    ),
+                );
+            }
+        } else {
+            component.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("milestones.view.zeroAchievements", language)}`),
+            );
+        }
+
+        component.addSeparatorComponents(
+            new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
+        );
+
+        const nextAchievement: Achievement | undefined = achievementsList[milestones.length];
+
+        if (nextAchievement) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(nextAchievement.requiredCount) })}`,
+                    ),
+                )
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+        } else {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`### ${t("milestones.view.allAchievements", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.view.allAchievementsDescription", language, {
+                            emoji: emojis.jstmemit,
+                        }),
+                    ),
+                );
+        }
+        return component;
     }
 
     /**
@@ -158,28 +211,71 @@ export class ComponentsService implements IComponentsService {
      * @param language
      * @param count
      * @param channelId
+     * @param [achievement]
      *
-     * @author Kyrylo Maliuha
+     * @author Kyrylo Maliuha & Oleksii Sych
      */
-    public getMilestoneMessageComponent(language: Locale, count: number, channelId: string): ContainerBuilder {
+    public getMilestoneMessageComponent(
+        language: Locale,
+        count: number,
+        channelId: string,
+        achievement?: Achievement,
+    ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
-        return new ContainerBuilder()
+        const component = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# 🎉 ${t("milestones.heading", language, { count: String(count), channelId })}`,
+                    `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
                 ),
             )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.description", language)))
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
-                ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
-            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.turnOffInSettings", language)));
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false));
+
+        if (achievement) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`### ${t("milestones.newAchieve", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${achievement.emoji} **${achievement.name[language]}:** ${achievement.requiredCount} ${t("milestones.generatedMemes", language)}`,
+                    ),
+                )
+                .addSeparatorComponents(
+                    new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
+                );
+        }
+
+        const lastAchievement: Achievement | undefined = achievementsList[achievementsList.length - 1];
+
+        if (lastAchievement && lastAchievement.requiredCount < count) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`${t("milestones.view.allAchievements", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.view.allAchievementsDescription", language, {
+                            emoji: emojis.jstmemit,
+                        }),
+                    ),
+                );
+        } else {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
+                    ),
+                )
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
+                .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("milestones.turnOffInSettings", language)),
+                );
+        }
+
+        return component;
     }
 
     /**
