@@ -11,6 +11,7 @@ export abstract class IRatingsService {
         likes: number,
         dislikes: number,
         generationId: number,
+        templateName?: string,
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract updateRatingButtons(interaction: ButtonInteraction, generationId: number): Promise<void>;
 }

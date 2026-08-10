@@ -55,6 +55,7 @@ export class RatingsService implements IRatingsService {
      * @param likes
      * @param dislikes
      * @param generationId
+     * @param templateName
      *
      * @author Kyrylo Maliuha
      */
@@ -62,6 +63,7 @@ export class RatingsService implements IRatingsService {
         likes: number,
         dislikes: number,
         generationId: number,
+        templateName?: string,
     ): ActionRowBuilder<ButtonBuilder> {
         const likeButton: ButtonBuilder = new ButtonBuilder()
             .setCustomId(`like:${generationId}`)
@@ -70,7 +72,7 @@ export class RatingsService implements IRatingsService {
             .setStyle(ButtonStyle.Success);
 
         const regenerateButton: ButtonBuilder = new ButtonBuilder()
-            .setCustomId(`meme:${generationId}`)
+            .setCustomId(templateName ? `custom:${templateName}` : `meme:${generationId}`)
             .setEmoji("🔄")
             .setStyle(ButtonStyle.Primary);
 

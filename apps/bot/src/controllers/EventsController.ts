@@ -310,6 +310,9 @@ export class EventsController implements IEventsController {
                     case "meme":
                         await this._memesController.handleMemeInteraction(interaction);
                         return;
+                    case "custom":
+                        await this._memesController.handleGenerateCustomMemeInteraction(interaction, id);
+                        return;
                     case "like":
                     case "dislike":
                         await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
