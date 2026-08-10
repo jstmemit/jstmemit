@@ -1,5 +1,6 @@
 import type { IMilestonesController } from "#/interfaces/IMilestonesController.ts";
-import type { ChatInputCommandInteraction, ContainerBuilder } from "discord.js";
+import type { ActionRowBuilder, ButtonBuilder } from "discord.js";
+import { type ChatInputCommandInteraction, type ContainerBuilder } from "discord.js";
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import ms from "ms";
@@ -28,20 +29,28 @@ export class MilestonesController implements IMilestonesController {
     public async handleViewMilestones(interaction: ChatInputCommandInteraction): Promise<void> {
         const cached: number | undefined = await this._cacheService.get(`generations:${interaction.channelId}`);
         const count: number =
-            cached !== undefined
-                ? cached + 1
-                : await this._generationsRepository.getCountPerChannel(interaction.channelId);
+            cached !== undefined ? cached : await this._generationsRepository.getCountPerChannel(interaction.channelId);
 
         await this._cacheService.set(`generations:${interaction.channelId}`, count, ms("7d"));
 
-        const milestones: number[] = await this._milestonesService.getReachedMilestones(interaction.channelId);
+        const { milestones, likes, voices, templates, dislikes } = await this._milestonesService.getReachedMilestones(
+            count,
+            interaction.channelId,
+        );
         const message: ContainerBuilder = this._componentsService.getMilestoneViewMessageComponent(
             interaction.locale,
             interaction.channelId,
             count,
             milestones,
         );
+        const buttons: ActionRowBuilder<ButtonBuilder> = this._componentsService.getMilestoneButtonsComponent(
+            interaction.locale,
+            likes,
+            dislikes,
+            templates,
+            voices,
+        );
 
-        await respond(interaction, [message]);
+        await respond(interaction, [message, buttons]);
     }
 }
