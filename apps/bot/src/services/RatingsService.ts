@@ -73,7 +73,7 @@ export class RatingsService implements IRatingsService {
 
         const regenerateButton: ButtonBuilder = new ButtonBuilder()
             .setCustomId(templateName ? `custom:${templateName}` : `meme:${generationId}`)
-            .setEmoji("🔄")
+            .setEmoji(templateName ? "✏️" : "🔄")
             .setStyle(ButtonStyle.Primary);
 
         const dislikeButton: ButtonBuilder = new ButtonBuilder()
