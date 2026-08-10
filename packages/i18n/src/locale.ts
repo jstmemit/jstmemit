@@ -1695,21 +1695,34 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "help.about.commands.guild": buildLocales(
-        "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**",
+        "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
         {
-            [Locale.Russian]: "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Ukrainian]: "### 🏠 На серверах із ботом: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Dutch]: "### 🏠 In servers met de bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.French]: "### 🏠 Sur les serveurs avec le bot : **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.German]: "### 🏠 Auf Servern mit dem Bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Polish]: "### 🏠 Na serwerach z botem: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.SpanishES]: "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.SpanishLATAM]: "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.PortugueseBR]: "### 🏠 Em servidores com o bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Turkish]: "### 🏠 Botun olduğu sunucularda: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Italian]: "### 🏠 Nei server con il bot: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Indonesian]: "### 🏠 Di server yang ada botnya: **`/meme`**, **`/enable`**, **`/settings`**",
-            [Locale.Czech]: "### 🏠 Na serverech s botem: **`/meme`**, **`/enable`**, **`/settings`**",
+            [Locale.Russian]:
+                "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Ukrainian]:
+                "### 🏠 На серверах із ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Dutch]:
+                "### 🏠 In servers met de bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.French]:
+                "### 🏠 Sur les serveurs avec le bot : **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.German]:
+                "### 🏠 Auf Servern mit dem Bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Polish]:
+                "### 🏠 Na serwerach z botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.SpanishES]:
+                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.SpanishLATAM]:
+                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.PortugueseBR]:
+                "### 🏠 Em servidores com o bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Turkish]:
+                "### 🏠 Botun olduğu sunucularda: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Italian]:
+                "### 🏠 Nei server con il bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Indonesian]:
+                "### 🏠 Di server yang ada botnya: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+            [Locale.Czech]:
+                "### 🏠 Na serverech s botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
         },
     ),
     "help.autoMemes.heading": buildLocales("## 💬  But how exactly does that work?", {
@@ -2238,26 +2251,172 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🌐 Situs web",
         [Locale.Czech]: "🌐 Web",
     }),
-    "milestones.view.heading": buildLocales("Achievements of **<#{{channelId}}>**", {}),
+    "milestones.view.heading": buildLocales("🎖️ Achievements of **<#{{channelId}}>**", {
+        [Locale.Russian]: "🎖️ Достижения **<#{{channelId}}>**",
+        [Locale.Ukrainian]: "🎖️ Досягнення **<#{{channelId}}>**",
+        [Locale.Dutch]: "🎖️ Prestaties van **<#{{channelId}}>**",
+        [Locale.French]: "🎖️ Succès de **<#{{channelId}}>**",
+        [Locale.German]: "🎖️ Erfolge von **<#{{channelId}}>**",
+        [Locale.Polish]: "🎖️ Osiągnięcia **<#{{channelId}}>**",
+        [Locale.SpanishES]: "🎖️ Logros de **<#{{channelId}}>**",
+        [Locale.SpanishLATAM]: "🎖️ Logros de **<#{{channelId}}>**",
+        [Locale.PortugueseBR]: "🎖️ Conquistas de **<#{{channelId}}>**",
+        [Locale.Turkish]: "🎖️ **<#{{channelId}}>** başarıları",
+        [Locale.Italian]: "🎖️ Obiettivi di **<#{{channelId}}>**",
+        [Locale.Indonesian]: "🎖️ Pencapaian **<#{{channelId}}>**",
+        [Locale.Czech]: "🎖️ Úspěchy **<#{{channelId}}>**",
+    }),
     "milestones.view.description": buildLocales(
-        "Every time your channel hits a meme count milestone it unlocks an achievement.\nBelow you can see a list of them and statistics on how you used Jstmemit.",
-        {},
+        "Every time your channel hits a meme count milestone it unlocks an achievement.\nBelow you can see a list of them and statistics on how you used {{emoji}}Jstmemit.",
+        {
+            [Locale.Russian]:
+                "Каждый раз, когда ваш канал достигает определенного количества мемов, он открывает достижение.\nНиже вы можете увидеть их список и статистику использования {{emoji}}Jstmemit.",
+            [Locale.Ukrainian]:
+                "Щоразу, коли ваш канал досягає певної кількості мемів, він відкриває досягнення.\nНижче ви можете побачити їхній список та статистику використання {{emoji}}Jstmemit.",
+            [Locale.Dutch]:
+                "Elke keer dat je kanaal een mijlpaal in het aantal memes bereikt, wordt er een prestatie ontgrendeld.\nHieronder zie je een lijst hiervan en statistieken over hoe je {{emoji}}Jstmemit hebt gebruikt.",
+            [Locale.French]:
+                "Chaque fois que votre canal atteint un palier de mèmes, il débloque un succès.\nCi-dessous, vous pouvez voir leur liste et des statistiques sur la façon dont vous avez utilisé {{emoji}}Jstmemit.",
+            [Locale.German]:
+                "Jedes Mal, wenn dein Kanal einen Meilenstein bei der Anzahl der Memes erreicht, wird ein Erfolg freigeschaltet.\nUnten siehst du eine Liste davon und Statistiken darüber, wie du {{emoji}}Jstmemit genutzt hast.",
+            [Locale.Polish]:
+                "Za każdym razem, gdy Twój kanał osiągnie kamień milowy w liczbie memów, odblokowuje osiągnięcie.\nPoniżej znajduje się ich lista oraz statystyki dotyczące korzystania z {{emoji}}Jstmemit.",
+            [Locale.SpanishES]:
+                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro.\nA continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
+            [Locale.SpanishLATAM]:
+                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro.\nA continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
+            [Locale.PortugueseBR]:
+                "Toda vez que seu canal atinge um marco de quantidade de memes, ele desbloqueia uma conquista.\nAbaixo você pode ver uma lista delas e estatísticas de como você usou o {{emoji}}Jstmemit.",
+            [Locale.Turkish]:
+                "Kanalınız bir meme sayısı kilometre taşına her ulaştığında bir başarı kilidi açılır.\nAşağıda bunların bir listesini ve {{emoji}}Jstmemit'i nasıl kullandığınıza dair istatistikleri görebilirsiniz.",
+            [Locale.Italian]:
+                "Ogni volta che il tuo canale raggiunge un traguardo nel numero di meme, sblocca un obiettivo.\nDi seguito puoi vedere un loro elenco e le statistiche su come hai utilizzato {{emoji}}Jstmemit.",
+            [Locale.Indonesian]:
+                "Setiap kali saluran Anda mencapai tonggak jumlah meme, itu membuka pencapaian.\nDi bawah ini Anda dapat melihat daftarnya dan statistik tentang bagaimana Anda menggunakan {{emoji}}Jstmemit.",
+            [Locale.Czech]:
+                "Pokaždé, když tvůj kanál dosáhne milníku v počtu memů, odemkne se úspěch.\nNíže vidíš jejich seznam a statistiky o tom, jak jsi {{emoji}}Jstmemit používal.",
+        },
     ),
-    "milestones.view.unlockedAchievements": buildLocales("Unlocked achievements", {}),
-    "milestones.heading": buildLocales("Yay! {{count}} memes in **<#{{channelId}}>**!", {
-        [Locale.Russian]: "Ура! {{count}} мемов в **<#{{channelId}}>**!",
-        [Locale.Ukrainian]: "Ура! {{count}} мемів у **<#{{channelId}}>**!",
-        [Locale.Dutch]: "Yes! {{count}} memes in **<#{{channelId}}>**!",
-        [Locale.French]: "Youpi ! {{count}} mèmes dans **<#{{channelId}}>** !",
-        [Locale.German]: "Yay! {{count}} Memes in **<#{{channelId}}>**!",
-        [Locale.Polish]: "Hurra! {{count}} memów w **<#{{channelId}}>**!",
-        [Locale.SpanishES]: "¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!",
-        [Locale.SpanishLATAM]: "¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!",
-        [Locale.PortugueseBR]: "Eba! {{count}} memes em **<#{{channelId}}>**!",
-        [Locale.Turkish]: "Yaşasın! **<#{{channelId}}>** kanalında {{count}} caps!",
-        [Locale.Italian]: "Evviva! {{count}} meme in **<#{{channelId}}>**!",
-        [Locale.Indonesian]: "Yeay! {{count}} meme di **<#{{channelId}}>**!",
-        [Locale.Czech]: "Hurá! {{count}} memů v **<#{{channelId}}>**!",
+    "milestones.view.unlockedAchievements": buildLocales("Unlocked achievements", {
+        [Locale.Russian]: "Разблокированные достижения",
+        [Locale.Ukrainian]: "Розблоковані досягнення",
+        [Locale.Dutch]: "Ontgrendelde prestaties",
+        [Locale.French]: "Succès débloqués",
+        [Locale.German]: "Freigeschaltete Erfolge",
+        [Locale.Polish]: "Odblokowane osiągnięcia",
+        [Locale.SpanishES]: "Logros desbloqueados",
+        [Locale.SpanishLATAM]: "Logros desbloqueados",
+        [Locale.PortugueseBR]: "Conquistas desbloqueadas",
+        [Locale.Turkish]: "Kilitleri açılan başarılar",
+        [Locale.Italian]: "Obiettivi sbloccati",
+        [Locale.Indonesian]: "Pencapaian yang terbuka",
+        [Locale.Czech]: "Odemčené úspěchy",
+    }),
+    "milestones.view.zeroAchievements": buildLocales("No achievements yet", {
+        [Locale.Russian]: "У вас пока нет достижений",
+        [Locale.Ukrainian]: "У вас поки немає досягнень",
+        [Locale.Dutch]: "Nog geen prestaties",
+        [Locale.French]: "Aucun succès pour le moment",
+        [Locale.German]: "Noch keine Erfolge",
+        [Locale.Polish]: "Jeszcze brak osiągnięć",
+        [Locale.SpanishES]: "Aún no hay logros",
+        [Locale.SpanishLATAM]: "Aún no hay logros",
+        [Locale.PortugueseBR]: "Nenhuma conquista ainda",
+        [Locale.Turkish]: "Henüz hiçbir başarı yok",
+        [Locale.Italian]: "Ancora nessun obiettivo",
+        [Locale.Indonesian]: "Belum ada pencapaian",
+        [Locale.Czech]: "Zatím žádné úspěchy",
+    }),
+    "milestones.newAchieve": buildLocales("🎖️ New achievement", {
+        [Locale.Russian]: "🎖️ Новое достижение",
+        [Locale.Ukrainian]: "🎖️ Нове досягнення",
+        [Locale.Dutch]: "🎖️ Nieuwe prestatie",
+        [Locale.French]: "🎖️ Nouveau succès",
+        [Locale.German]: "🎖️ Neuer Erfolg",
+        [Locale.Polish]: "🎖️ Nowe osiągnięcie",
+        [Locale.SpanishES]: "🎖️ Nuevo logro",
+        [Locale.SpanishLATAM]: "🎖️ Nuevo logro",
+        [Locale.PortugueseBR]: "🎖️ Nova conquista",
+        [Locale.Turkish]: "🎖️ Yeni başarı",
+        [Locale.Italian]: "🎖️ Nuovo obiettivo",
+        [Locale.Indonesian]: "🎖️ Pencapaian baru",
+        [Locale.Czech]: "🎖️ Nový úspěch",
+    }),
+    "milestones.generatedMemes": buildLocales("memes generated", {
+        [Locale.Russian]: "мемов сгенерировано",
+        [Locale.Ukrainian]: "мемів згенеровано",
+        [Locale.Dutch]: "memes gegenereerd",
+        [Locale.French]: "mèmes générés",
+        [Locale.German]: "generierte Memes",
+        [Locale.Polish]: "wygenerowane memy",
+        [Locale.SpanishES]: "memes generados",
+        [Locale.SpanishLATAM]: "memes generados",
+        [Locale.PortugueseBR]: "memes gerados",
+        [Locale.Turkish]: "oluşturulan memler",
+        [Locale.Italian]: "meme generati",
+        [Locale.Indonesian]: "meme dibuat",
+        [Locale.Czech]: "vygenerované memy",
+    }),
+    "milestones.view.allAchievements": buildLocales("🎉 You unlocked all achievements", {
+        [Locale.Russian]: "🎉 Вы разблокировали все достижения",
+        [Locale.Ukrainian]: "🎉 Ви розблокували всі досягнення",
+        [Locale.Dutch]: "🎉 Je hebt alle prestaties ontgrendeld",
+        [Locale.French]: "🎉 Vous avez débloqué tous les succès",
+        [Locale.German]: "🎉 Du hast alle Erfolge freigeschaltet",
+        [Locale.Polish]: "🎉 Odblokowałeś wszystkie osiągnięcia",
+        [Locale.SpanishES]: "🎉 Has desbloqueado todos los logros",
+        [Locale.SpanishLATAM]: "🎉 Has desbloqueado todos los logros",
+        [Locale.PortugueseBR]: "🎉 Você desbloqueou todas as conquistas",
+        [Locale.Turkish]: "🎉 Tüm başarıların kilidini açtınız",
+        [Locale.Italian]: "🎉 Hai sbloccato tutti gli obiettivi",
+        [Locale.Indonesian]: "🎉 Anda membuka semua pencapaian",
+        [Locale.Czech]: "🎉 Odemkl jsi všechny úspěchy",
+    }),
+    "milestones.view.allAchievementsDescription": buildLocales(
+        "Thank you for your interest in {{emoji}}Jstmemit. Now you can rest, brew some coffee, and praise yourself.",
+        {
+            [Locale.Russian]:
+                "Спасибо за проявленный интерес к {{emoji}}Jstmemit. А теперь можете отдохнуть, заварить кофе и похвалить себя.",
+            [Locale.Ukrainian]:
+                "Дякуємо за виявлений інтерес до {{emoji}}Jstmemit. А тепер можете відпочити, заварити кави та похвалити себе.",
+            [Locale.Dutch]:
+                "Bedankt voor je interesse in {{emoji}}Jstmemit. Nu kun je rusten, koffie zetten en jezelf een schouderklopje geven.",
+            [Locale.French]:
+                "Merci pour votre intérêt envers {{emoji}}Jstmemit. Maintenant vous pouvez vous reposer, préparer un café et vous féliciter.",
+            [Locale.German]:
+                "Danke für dein Interesse an {{emoji}}Jstmemit. Jetzt kannst du dich ausruhen, Kaffee kochen und dich selbst loben.",
+            [Locale.Polish]:
+                "Dziękujemy za zainteresowanie {{emoji}}Jstmemit. Teraz możesz odpocząć, zaparzyć kawę i pochwalić samego siebie.",
+            [Locale.SpanishES]:
+                "Gracias por tu interés en {{emoji}}Jstmemit. Ahora puedes descansar, preparar un café y felicitarte a ti mismo.",
+            [Locale.SpanishLATAM]:
+                "Gracias por tu interés en J{{emoji}}stmemit. Ahora puedes descansar, preparar un café y felicitarte a ti mismo.",
+            [Locale.PortugueseBR]:
+                "Obrigado pelo seu interesse no {{emoji}}Jstmemit. Agora você pode descansar, fazer um café e se parabenizar.",
+            [Locale.Turkish]:
+                "{{emoji}}Jstmemit'e gösterdiğiniz ilgi için teşekkür ederiz. Artık dinlenebilir, kahve yapabilir ve kendinizi övebilirsiniz.",
+            [Locale.Italian]:
+                "Grazie per il tuo interesse in {{emoji}}Jstmemit. Ora puoi riposarti, preparare un caffè e farti i complimenti.",
+            [Locale.Indonesian]:
+                "Terima kasih atas minat Anda pada {{emoji}}Jstmemit. Sekarang Anda bisa beristirahat, menyeduh kopi, dan memuji diri sendiri.",
+            [Locale.Czech]:
+                "Děkujeme za tvůj zájem o {{emoji}}Jstmemit. Nyní si můžeš odpočinout, uvařit kávu a pochválit se.",
+        },
+    ),
+    "milestones.heading": buildLocales("🎉 Yay! {{count}} memes in **<#{{channelId}}>**!", {
+        [Locale.Russian]: "🎉 Ура! {{count}} мемов в **<#{{channelId}}>**!",
+        [Locale.Ukrainian]: "🎉 Ура! {{count}} мемів у **<#{{channelId}}>**!",
+        [Locale.Dutch]: "🎉 Yes! {{count}} memes in **<#{{channelId}}>**!",
+        [Locale.French]: "🎉 Youpi ! {{count}} mèmes dans **<#{{channelId}}>** !",
+        [Locale.German]: "🎉 Yay! {{count}} Memes in **<#{{channelId}}>**!",
+        [Locale.Polish]: "🎉 Hurra! {{count}} memów w **<#{{channelId}}>**!",
+        [Locale.SpanishES]: "🎉 ¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!",
+        [Locale.SpanishLATAM]: "🎉 ¡Yuju! ¡{{count}} memes en **<#{{channelId}}>**!",
+        [Locale.PortugueseBR]: "🎉 Eba! {{count}} memes em **<#{{channelId}}>**!",
+        [Locale.Turkish]: "🎉 Yaşasın! **<#{{channelId}}>** kanalında {{count}} caps!",
+        [Locale.Italian]: "🎉 Evviva! {{count}} meme in **<#{{channelId}}>**!",
+        [Locale.Indonesian]: "🎉 Yeay! {{count}} meme di **<#{{channelId}}>**!",
+        [Locale.Czech]: "🎉 Hurá! {{count}} memů v **<#{{channelId}}>**!",
     }),
     "milestones.description": buildLocales("Below are some stats about how you reacted to them.", {
         [Locale.Russian]: "Ниже немного статистики о том, как вы на них реагировали.",
