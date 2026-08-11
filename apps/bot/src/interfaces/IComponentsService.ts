@@ -20,7 +20,11 @@ export abstract class IComponentsService {
         language: Locale,
         retryInteraction: string,
     ): ActionRowBuilder<ButtonBuilder>;
-    public abstract getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
+    public abstract getNotEnoughContextMessageComponent(
+        language: Locale,
+        interactionId: string,
+        messagesAmount: number,
+    ): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
     public abstract getMilestoneViewMessageComponent(
         language: Locale,

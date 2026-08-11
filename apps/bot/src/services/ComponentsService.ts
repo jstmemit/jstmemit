@@ -432,16 +432,33 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param interactionId
+     * @param messagesAmount
      *
      * @author Kyrylo Maliuha
      */
-    public getNotEnoughContextMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
-        return new ContainerBuilder()
+    public getNotEnoughContextMessageComponent(
+        language: Locale,
+        interactionId: string,
+        messagesAmount: number,
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
+
+        const container: ContainerBuilder = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
             )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    messagesAmount < 30
+                        ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
+                        : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
+                ),
+            );
+
+        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+
+        return container;
     }
 
     /**
