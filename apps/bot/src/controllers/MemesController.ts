@@ -394,6 +394,7 @@ export class MemesController implements IMemesController {
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
+                components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId, templateName)],
                 files: this._getMemeAttachment(jobResult),
             });
         } catch (error) {
