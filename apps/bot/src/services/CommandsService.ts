@@ -22,6 +22,6 @@ export class CommandsService implements ICommandsService {
     }
 
     public getCommandMention(name: string): string {
-        return this._mentions[name] || name;
+        return this._mentions[name] || `\`/${name}\``;
     }
 }
