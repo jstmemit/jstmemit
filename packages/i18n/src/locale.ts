@@ -435,34 +435,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🤔 Konteksnya belum cukup",
     }),
     "notEnoughContext.body": buildLocales(
-        "Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs. If this error persists, please contact support.",
+        "Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs.",
         {
             [Locale.Russian]:
-                "Jstmemit нужно больше времени, чтобы изучить ваш канал, прежде чем он сможет сделать мем. Пообщайтесь ещё немного и отправьте пару GIF. Если ошибка повторяется, обратитесь в поддержку.",
+                "Jstmemit нужно больше времени, чтобы изучить ваш канал, прежде чем он сможет сделать мем. Пообщайтесь ещё немного и отправьте пару GIF.",
             [Locale.Ukrainian]:
-                "Jstmemit потрібно більше часу, щоб вивчити ваш канал, перш ніж він зможе зробити мем. Поспілкуйтеся ще трохи і надішліть кілька GIF. Якщо помилка повторюється, зверніться до підтримки.",
+                "Jstmemit потрібно більше часу, щоб вивчити ваш канал, перш ніж він зможе зробити мем. Поспілкуйтеся ще трохи і надішліть кілька GIF.",
             [Locale.Dutch]:
-                "Jstmemit heeft meer tijd nodig om je kanaal te leren kennen voordat hij een meme kan maken. Chat nog wat verder en stuur een paar GIF's. Blijft deze fout terugkomen, neem dan contact op met support.",
+                "Jstmemit heeft meer tijd nodig om je kanaal te leren kennen voordat hij een meme kan maken. Chat nog wat verder en stuur een paar GIF's.",
             [Locale.French]:
-                "Jstmemit a besoin de plus de temps pour apprendre à connaître votre salon avant de pouvoir faire un mème. Discutez encore un peu et envoyez quelques GIF. Si cette erreur persiste, contactez le support.",
+                "Jstmemit a besoin de plus de temps pour apprendre à connaître votre salon avant de pouvoir faire un mème. Discutez encore un peu et envoyez quelques GIF.",
             [Locale.German]:
-                "Jstmemit braucht mehr Zeit, um deinen Kanal kennenzulernen, bevor er ein Meme machen kann. Chattet noch ein bisschen und schickt ein paar GIFs. Wenn dieser Fehler weiterhin auftritt, wende dich an den Support.",
+                "Jstmemit braucht mehr Zeit, um deinen Kanal kennenzulernen, bevor er ein Meme machen kann. Chattet noch ein bisschen und schickt ein paar GIFs.",
             [Locale.Polish]:
-                "Jstmemit potrzebuje więcej czasu, żeby poznać twój kanał, zanim będzie mógł zrobić mema. Porozmawiajcie jeszcze trochę i wyślijcie kilka GIF-ów. Jeśli ten błąd się powtarza, skontaktuj się z supportem.",
+                "Jstmemit potrzebuje więcej czasu, żeby poznać twój kanał, zanim będzie mógł zrobić mema. Porozmawiajcie jeszcze trochę i wyślijcie kilka GIF-ów.",
             [Locale.SpanishES]:
-                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chatead un poco más y enviad un par de GIFs. Si este error persiste, contacta con soporte.",
+                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chatead un poco más y enviad un par de GIFs.",
             [Locale.SpanishLATAM]:
-                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chateen un poco más y manden un par de GIFs. Si este error persiste, contacta a soporte.",
+                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chateen un poco más y manden un par de GIFs.",
             [Locale.PortugueseBR]:
-                "O Jstmemit precisa de mais tempo para conhecer o seu canal antes de poder fazer um meme. Conversem um pouco mais e mandem alguns GIFs. Se esse erro persistir, entre em contato com o suporte.",
+                "O Jstmemit precisa de mais tempo para conhecer o seu canal antes de poder fazer um meme. Conversem um pouco mais e mandem alguns GIFs.",
             [Locale.Turkish]:
-                "Jstmemit'in caps yapabilmesi için kanalını tanımaya biraz daha zamanı olması gerekiyor. Biraz daha sohbet edin ve birkaç GIF gönderin. Bu hata devam ederse destek ekibine ulaş.",
+                "Jstmemit'in caps yapabilmesi için kanalını tanımaya biraz daha zamanı olması gerekiyor. Biraz daha sohbet edin ve birkaç GIF gönderin.",
             [Locale.Italian]:
-                "Jstmemit ha bisogno di più tempo per conoscere il tuo canale prima di poter fare un meme. Chattate ancora un po' e mandate qualche GIF. Se l'errore persiste, contatta il supporto.",
+                "Jstmemit ha bisogno di più tempo per conoscere il tuo canale prima di poter fare un meme. Chattate ancora un po' e mandate qualche GIF.",
             [Locale.Indonesian]:
-                "Jstmemit butuh waktu lebih untuk mengenal channel kamu sebelum bisa bikin meme. Coba ngobrol lagi dan kirim beberapa GIF. Kalau error ini terus muncul, hubungi support.",
+                "Jstmemit butuh waktu lebih untuk mengenal channel kamu sebelum bisa bikin meme. Coba ngobrol lagi dan kirim beberapa GIF.",
             [Locale.Czech]:
-                "Jstmemit potřebuje víc času, aby poznal tvůj kanál, než dokáže udělat mem. Zkuste si ještě chvíli psát a pošlete pár GIFů. Pokud chyba přetrvává, obrať se na podporu.",
+                "Jstmemit potřebuje víc času, aby poznal tvůj kanál, než dokáže udělat mem. Zkuste si ještě chvíli psát a pošlete pár GIFů.",
         },
     ),
     "unknownTemplate.heading": buildLocales("🤔 I don't know such template", {
