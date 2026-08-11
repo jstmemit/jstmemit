@@ -53,8 +53,10 @@ export class AutocompleteService implements IAutocompleteService {
      */
     private _convertTemplatesIntoMatches(templates: Template[], locale: Locale): ApplicationCommandOptionChoiceData[] {
         return templates.map((template: Template): ApplicationCommandOptionChoiceData => {
+            const isAnimated: boolean = (template.animationDuration ?? 0) > 0;
+
             return {
-                name: this._localizeTemplateName(template, locale),
+                name: `${this._localizeTemplateName(template, locale)} ${isAnimated ? "🎦" : ""}`,
                 value: template.name,
             };
         });
