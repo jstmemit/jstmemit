@@ -13,7 +13,10 @@ export abstract class IMemesController {
         interaction: ChatInputCommandInteraction | ButtonInteraction | Message,
         trigger?: MemeGenerationTrigger,
     ): Promise<void>;
-    public abstract handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void>;
+    public abstract handleGenerateCustomMemeInteraction(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        id?: string,
+    ): Promise<void>;
     public abstract handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void>;
     public abstract handleGenerateViaContextMenuInteraction(
         interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,

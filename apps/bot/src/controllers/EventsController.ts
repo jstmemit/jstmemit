@@ -316,6 +316,9 @@ export class EventsController implements IEventsController {
                     case "meme":
                         await this._memesController.handleMemeInteraction(interaction);
                         return;
+                    case "custom":
+                        await this._memesController.handleGenerateCustomMemeInteraction(interaction, id);
+                        return;
                     case "like":
                     case "dislike":
                         await this._ratingsController.handleRatingInteraction(interaction, customId, Number(id));
@@ -429,6 +432,10 @@ export class EventsController implements IEventsController {
      */
     public handleGuildDelete(guild: Guild): void {
         try {
+            if (!guild.available) {
+                return;
+            }
+
             analytics.capture({
                 distinctId: guild.id,
                 event: "guild_left",
@@ -436,7 +443,6 @@ export class EventsController implements IEventsController {
                     guildId: guild.id,
                     memberCount: guild.memberCount,
                     locale: guild.preferredLocale,
-                    available: guild.available,
                     lifetimeDays: guild.joinedTimestamp
                         ? Math.round((Date.now() - guild.joinedTimestamp) / 86400000)
                         : undefined,
