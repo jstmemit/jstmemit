@@ -1710,34 +1710,34 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "help.about.commands.guild": buildLocales(
-        "### 🏠 In servers with the bot: **{{meme}}**, **`/enable`**, **`/settings`**, **`/achievements`**",
+        "### 🏠 In servers with the bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
         {
             [Locale.Russian]:
-                "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 На серверах с ботом: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Ukrainian]:
-                "### 🏠 На серверах із ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 На серверах із ботом: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Dutch]:
-                "### 🏠 In servers met de bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 In servers met de bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.French]:
-                "### 🏠 Sur les serveurs avec le bot : **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Sur les serveurs avec le bot : **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.German]:
-                "### 🏠 Auf Servern mit dem Bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Auf Servern mit dem Bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Polish]:
-                "### 🏠 Na serwerach z botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Na serwerach z botem: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.SpanishES]:
-                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 En servidores con el bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.SpanishLATAM]:
-                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 En servidores con el bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.PortugueseBR]:
-                "### 🏠 Em servidores com o bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Em servidores com o bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Turkish]:
-                "### 🏠 Botun olduğu sunucularda: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Botun olduğu sunucularda: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Italian]:
-                "### 🏠 Nei server con il bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Nei server con il bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Indonesian]:
-                "### 🏠 Di server yang ada botnya: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Di server yang ada botnya: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Czech]:
-                "### 🏠 Na serverech s botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Na serverech s botem: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
         },
     ),
     "help.autoMemes.heading": buildLocales("## 💬  But how exactly does that work?", {
