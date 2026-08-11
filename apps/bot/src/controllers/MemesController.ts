@@ -41,6 +41,7 @@ import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.t
 import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import ms from "ms";
+import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -54,6 +55,7 @@ export class MemesController implements IMemesController {
     private readonly _modalsService: IModalsService;
     private readonly _milestonesService: IMilestonesService;
     private readonly _contextService: IContextService;
+    private readonly _messagesRepository: IMessagesRepository;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -67,6 +69,7 @@ export class MemesController implements IMemesController {
         modalsService: IModalsService,
         milestonesService: IMilestonesService,
         contextService: IContextService,
+        messagesRepository: IMessagesRepository,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -79,6 +82,7 @@ export class MemesController implements IMemesController {
         this._modalsService = modalsService;
         this._milestonesService = milestonesService;
         this._contextService = contextService;
+        this._messagesRepository = messagesRepository;
     }
 
     /**
@@ -262,7 +266,17 @@ export class MemesController implements IMemesController {
                         },
                     });
 
-                    message.push(this._componentsService.getNotEnoughContextMessageComponent(locale, interaction.id));
+                    const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
+                        interaction.channelId,
+                    );
+
+                    message.push(
+                        this._componentsService.getNotEnoughContextMessageComponent(
+                            locale,
+                            interaction.id,
+                            messagesAmount,
+                        ),
+                    );
                     break;
                 default:
                     this._captureMemeGenerationError(error, interaction, trigger);
