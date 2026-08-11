@@ -171,34 +171,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Chybí nějaká oprávnění!",
     }),
     "enable.permissions.description": buildLocales(
-        "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated, **View Channel** to get context for the memes or **Embed links** for the `/settings` menu to work properly:\n",
+        "Bot needs a couple permissions to work, such as **Attach Files** to be able to send the memes it generated, **View Channel** to get context for the memes or **Embed links** for the {{settings}} menu to work properly:\n",
         {
             [Locale.Russian]:
-                "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, **Просмотр канала**, чтобы получать контекст для мемов, или **Встраивать ссылки**, чтобы меню `/settings` работало нормально:\n",
+                "Боту нужна пара прав для работы, например **Прикреплять файлы**, чтобы отправлять сделанные мемы, **Просмотр канала**, чтобы получать контекст для мемов, или **Встраивать ссылки**, чтобы меню {{settings}} работало нормально:\n",
             [Locale.Ukrainian]:
-                "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, **Переглядати канал**, щоб отримувати контекст для мемів, або **Вставляти посилання**, щоб меню `/settings` працювало нормально:\n",
+                "Боту потрібна пара прав для роботи, наприклад **Прикріплювати файли**, щоб надсилати зроблені меми, **Переглядати канал**, щоб отримувати контекст для мемів, або **Вставляти посилання**, щоб меню {{settings}} працювало нормально:\n",
             [Locale.Dutch]:
-                "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen, **Kanaal bekijken** om context voor de memes op te halen of **Links insluiten** zodat het `/settings` menu goed werkt:\n",
+                "De bot heeft een paar permissies nodig om te werken, zoals **Bestanden bijvoegen** om de memes die hij maakt te kunnen sturen, **Kanaal bekijken** om context voor de memes op te halen of **Links insluiten** zodat het {{settings}} menu goed werkt:\n",
             [Locale.French]:
-                "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère, **Voir le salon** pour récupérer du contexte pour les mèmes ou **Intégrer des liens** pour que le menu `/settings` marche correctement :\n",
+                "Le bot a besoin de quelques permissions pour fonctionner, comme **Joindre des fichiers** pour pouvoir envoyer les mèmes qu'il génère, **Voir le salon** pour récupérer du contexte pour les mèmes ou **Intégrer des liens** pour que le menu {{settings}} marche correctement :\n",
             [Locale.German]:
-                "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, **Kanal anzeigen**, um Kontext für die Memes zu bekommen, oder **Links einbetten**, damit das `/settings` Menü richtig funktioniert:\n",
+                "Der Bot braucht ein paar Berechtigungen, um zu funktionieren, zum Beispiel **Dateien anhängen**, um die erstellten Memes senden zu können, **Kanal anzeigen**, um Kontext für die Memes zu bekommen, oder **Links einbetten**, damit das {{settings}} Menü richtig funktioniert:\n",
             [Locale.Polish]:
-                "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, **Wyświetlanie kanału**, żeby mieć kontekst do memów, albo **Osadzanie linków**, żeby menu `/settings` działało poprawnie:\n",
+                "Bot potrzebuje kilku uprawnień, żeby działać, na przykład **Załączanie plików**, żeby móc wysyłać zrobione memy, **Wyświetlanie kanału**, żeby mieć kontekst do memów, albo **Osadzanie linków**, żeby menu {{settings}} działało poprawnie:\n",
             [Locale.SpanishES]:
-                "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+                "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú {{settings}} funcione bien:\n",
             [Locale.SpanishLATAM]:
-                "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú `/settings` funcione bien:\n",
+                "El bot necesita un par de permisos para funcionar, como **Adjuntar archivos** para poder enviar los memes que genera, **Ver canal** para obtener contexto para los memes o **Insertar enlaces** para que el menú {{settings}} funcione bien:\n",
             [Locale.PortugueseBR]:
-                "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera, **Ver canal** para pegar contexto para os memes ou **Inserir links** para o menu `/settings` funcionar direito:\n",
+                "O bot precisa de algumas permissões para funcionar, como **Anexar arquivos** para conseguir enviar os memes que ele gera, **Ver canal** para pegar contexto para os memes ou **Inserir links** para o menu {{settings}} funcionar direito:\n",
             [Locale.Turkish]:
-                "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle**, capsler için bağlam alabilmek için **Kanalı Görüntüle** ya da `/settings` menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
+                "Botun çalışması için birkaç izne ihtiyacı var, örneğin ürettiği capsleri gönderebilmek için **Dosya Ekle**, capsler için bağlam alabilmek için **Kanalı Görüntüle** ya da {{settings}} menüsünün düzgün çalışması için **Bağlantı Yerleştir**:\n",
             [Locale.Italian]:
-                "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera, **Visualizza canale** per avere contesto per i meme o **Incorpora link** perché il menu `/settings` funzioni bene:\n",
+                "Al bot servono un paio di permessi per funzionare, come **Allega file** per poter inviare i meme che genera, **Visualizza canale** per avere contesto per i meme o **Incorpora link** perché il menu {{settings}} funzioni bene:\n",
             [Locale.Indonesian]:
-                "Bot butuh beberapa izin supaya bisa jalan, misalnya **Lampirkan File** untuk bisa mengirim meme yang dibuatnya atau **Sematkan Tautan** supaya menu `/settings` berfungsi dengan benar:\n",
+                "Bot butuh beberapa izin supaya bisa jalan, misalnya **Lampirkan File** untuk bisa mengirim meme yang dibuatnya atau **Sematkan Tautan** supaya menu {{settings}} berfungsi dengan benar:\n",
             [Locale.Czech]:
-                "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, **Zobrazit kanál**, aby měl kontext pro memy, nebo **Vkládat odkazy**, aby menu `/settings` fungovalo správně:\n",
+                "Bot potřebuje pár oprávnění, aby fungoval, třeba **Připojovat soubory**, aby mohl posílat vytvořené memy, **Zobrazit kanál**, aby měl kontext pro memy, nebo **Vkládat odkazy**, aby menu {{settings}} fungovalo správně:\n",
         },
     ),
     "enable.permissions.sendMessages": buildLocales("Send Messages", {
@@ -481,28 +481,28 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "🤔 Takovou šablonu neznám",
     }),
     "unknownTemplate.body": buildLocales(
-        "Make sure to select one of the autocomplete options when choosing a template in `/custom`",
+        "Make sure to select one of the autocomplete options when choosing a template in {{custom}}",
         {
-            [Locale.Russian]: "Обязательно выберите один из вариантов автодополнения при выборе шаблона в `/custom`",
-            [Locale.Ukrainian]: "Обов'язково оберіть один з варіантів автодоповнення при виборі шаблону в `/custom`",
-            [Locale.Dutch]: "Kies zeker een van de autocomplete opties bij het kiezen van een template in `/custom`",
+            [Locale.Russian]: "Обязательно выберите один из вариантов автодополнения при выборе шаблона в {{custom}}",
+            [Locale.Ukrainian]: "Обов'язково оберіть один з варіантів автодоповнення при виборі шаблону в {{custom}}",
+            [Locale.Dutch]: "Kies zeker een van de autocomplete opties bij het kiezen van een template in {{custom}}",
             [Locale.French]:
-                "Veillez à sélectionner une des options d'autocomplétion en choisissant un modèle dans `/custom`",
+                "Veillez à sélectionner une des options d'autocomplétion en choisissant un modèle dans {{custom}}",
             [Locale.German]:
-                "Wähle unbedingt eine der Autovervollständigungs-Optionen, wenn du eine Vorlage in `/custom` auswählst",
-            [Locale.Polish]: "Koniecznie wybierz jedną z opcji autouzupełniania przy wyborze szablonu w `/custom`",
+                "Wähle unbedingt eine der Autovervollständigungs-Optionen, wenn du eine Vorlage in {{custom}} auswählst",
+            [Locale.Polish]: "Koniecznie wybierz jedną z opcji autouzupełniania przy wyborze szablonu w {{custom}}",
             [Locale.SpanishES]:
-                "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en `/custom`",
+                "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en {{custom}}",
             [Locale.SpanishLATAM]:
-                "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en `/custom`",
+                "Asegúrate de seleccionar una de las opciones de autocompletado al elegir una plantilla en {{custom}}",
             [Locale.PortugueseBR]:
-                "Não esqueça de selecionar uma das opções do autocompletar ao escolher um template no `/custom`",
+                "Não esqueça de selecionar uma das opções do autocompletar ao escolher um template no {{custom}}",
             [Locale.Turkish]:
-                "`/custom` içinde şablon seçerken otomatik tamamlama seçeneklerinden birini seçtiğinden emin ol",
+                "{{custom}} içinde şablon seçerken otomatik tamamlama seçeneklerinden birini seçtiğinden emin ol",
             [Locale.Italian]:
-                "Assicurati di selezionare una delle opzioni di completamento automatico quando scegli un template in `/custom`",
-            [Locale.Indonesian]: "Pastikan memilih salah satu opsi autocomplete saat memilih template di `/custom`",
-            [Locale.Czech]: "Při výběru šablony v `/custom` určitě vyber jednu z možností automatického doplňování",
+                "Assicurati di selezionare una delle opzioni di completamento automatico quando scegli un template in {{custom}}",
+            [Locale.Indonesian]: "Pastikan memilih salah satu opsi autocomplete saat memilih template di {{custom}}",
+            [Locale.Czech]: "Při výběru šablony v {{custom}} určitě vyber jednu z možností automatického doplňování",
         },
     ),
     "wrongFileFormat.heading": buildLocales("🤔 Unknown image file format", {
@@ -603,34 +603,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "🔒 Jstmemit tady nemůže posílat memy",
     }),
     "missingBotPermissions.body": buildLocales(
-        "Bot is missing some permissions in this channel. Someone who can manage this channel can fix this by going into channel settings and giving them to the bot.\n\nIt's required for auto-generating memes during a conversation, but requesting memes with `/meme` or `/custom` is possible without them.",
+        "Bot is missing some permissions in this channel. Someone who can manage this channel can fix this by going into channel settings and giving them to the bot.\n\nIt's required for auto-generating memes during a conversation, but requesting memes with {{meme}} or {{custom}} is possible without them.",
         {
             [Locale.Russian]:
-                "У бота нет некоторых прав в этом канале. Любой, кто может управлять этим каналом, может это исправить, зайдя в настройки канала и выдав их боту.\n\nОни нужны для автогенерации мемов во время переписки, но генерировать мемы через `/meme` или `/custom` можно и без них.",
+                "У бота нет некоторых прав в этом канале. Любой, кто может управлять этим каналом, может это исправить, зайдя в настройки канала и выдав их боту.\n\nОни нужны для автогенерации мемов во время переписки, но генерировать мемы через {{meme}} или {{custom}} можно и без них.",
             [Locale.Ukrainian]:
-                "У бота немає деяких прав у цьому каналі. Будь-хто, хто може керувати цим каналом, може це виправити, зайшовши в налаштування каналу і надавши їх боту.\n\nВони потрібні для автогенерації мемів під час розмови, але запитувати меми через `/meme` чи `/custom` можна й без них.",
+                "У бота немає деяких прав у цьому каналі. Будь-хто, хто може керувати цим каналом, може це виправити, зайшовши в налаштування каналу і надавши їх боту.\n\nВони потрібні для автогенерації мемів під час розмови, але запитувати меми через {{meme}} чи {{custom}} можна й без них.",
             [Locale.Dutch]:
-                "De bot mist een paar permissies in dit kanaal. Iemand die dit kanaal kan beheren kan dit oplossen door naar de kanaalinstellingen te gaan en ze aan de bot te geven.\n\nZe zijn nodig om memes automatisch te maken tijdens een gesprek, maar memes genereren via `/meme` of `/custom` kan ook zonder.",
+                "De bot mist een paar permissies in dit kanaal. Iemand die dit kanaal kan beheren kan dit oplossen door naar de kanaalinstellingen te gaan en ze aan de bot te geven.\n\nZe zijn nodig om memes automatisch te maken tijdens een gesprek, maar memes genereren via {{meme}} of {{custom}} kan ook zonder.",
             [Locale.French]:
-                "Le bot n'a pas certaines permissions dans ce salon. Quelqu'un qui peut gérer ce salon peut corriger ça en allant dans les paramètres du salon et en les donnant au bot.\n\nElles sont nécessaires pour générer des mèmes automatiquement pendant une conversation, mais demander des mèmes avec `/meme` ou `/custom` reste possible sans elles.",
+                "Le bot n'a pas certaines permissions dans ce salon. Quelqu'un qui peut gérer ce salon peut corriger ça en allant dans les paramètres du salon et en les donnant au bot.\n\nElles sont nécessaires pour générer des mèmes automatiquement pendant une conversation, mais demander des mèmes avec {{meme}} ou {{custom}} reste possible sans elles.",
             [Locale.German]:
-                "Dem Bot fehlen ein paar Berechtigungen in diesem Kanal. Wer diesen Kanal verwalten kann, behebt das in den Kanaleinstellungen, indem er sie dem Bot gibt.\n\nSie sind nötig, um Memes während eines Gesprächs automatisch zu erstellen, aber Memes mit `/meme` oder `/custom` anzufordern geht auch ohne sie.",
+                "Dem Bot fehlen ein paar Berechtigungen in diesem Kanal. Wer diesen Kanal verwalten kann, behebt das in den Kanaleinstellungen, indem er sie dem Bot gibt.\n\nSie sind nötig, um Memes während eines Gesprächs automatisch zu erstellen, aber Memes mit {{meme}} oder {{custom}} anzufordern geht auch ohne sie.",
             [Locale.Polish]:
-                "Bot nie ma niektórych uprawnień na tym kanale. Ktoś, kto może zarządzać tym kanałem, może to naprawić, wchodząc w ustawienia kanału i nadając je botowi.\n\nSą one potrzebne do automatycznego robienia memów podczas rozmowy, ale zamawianie memów przez `/meme` lub `/custom` działa też bez nich.",
+                "Bot nie ma niektórych uprawnień na tym kanale. Ktoś, kto może zarządzać tym kanałem, może to naprawić, wchodząc w ustawienia kanału i nadając je botowi.\n\nSą one potrzebne do automatycznego robienia memów podczas rozmowy, ale zamawianie memów przez {{meme}} lub {{custom}} działa też bez nich.",
             [Locale.SpanishES]:
-                "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en los ajustes del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ellos.",
+                "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en los ajustes del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con {{meme}} o {{custom}} sigue siendo posible sin ellos.",
             [Locale.SpanishLATAM]:
-                "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en la configuración del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con `/meme` o `/custom` sigue siendo posible sin ellos.",
+                "Al bot le faltan algunos permisos en este canal. Cualquiera que pueda gestionar este canal puede arreglarlo entrando en la configuración del canal y dándoselos al bot.\n\nHacen falta para generar memes automáticamente durante una conversación, pero pedir memes con {{meme}} o {{custom}} sigue siendo posible sin ellos.",
             [Locale.PortugueseBR]:
-                "O bot está sem algumas permissões neste canal. Qualquer pessoa que possa gerenciar este canal consegue resolver isso indo nas configurações do canal e dando as permissões ao bot.\n\nElas são necessárias para gerar memes automaticamente durante uma conversa, mas pedir memes com `/meme` ou `/custom` funciona mesmo sem elas.",
+                "O bot está sem algumas permissões neste canal. Qualquer pessoa que possa gerenciar este canal consegue resolver isso indo nas configurações do canal e dando as permissões ao bot.\n\nElas são necessárias para gerar memes automaticamente durante uma conversa, mas pedir memes com {{meme}} ou {{custom}} funciona mesmo sem elas.",
             [Locale.Turkish]:
-                "Botun bu kanalda bazı izinleri yok. Bu kanalı yönetebilen biri, kanal ayarlarına girip bu izinleri bota vererek bunu düzeltebilir.\n\nSohbet sırasında capslerin otomatik üretilmesi için gerekli, ama `/meme` veya `/custom` ile caps istemek bu izinler olmadan da mümkün.",
+                "Botun bu kanalda bazı izinleri yok. Bu kanalı yönetebilen biri, kanal ayarlarına girip bu izinleri bota vererek bunu düzeltebilir.\n\nSohbet sırasında capslerin otomatik üretilmesi için gerekli, ama {{meme}} veya {{custom}} ile caps istemek bu izinler olmadan da mümkün.",
             [Locale.Italian]:
-                "Al bot mancano alcuni permessi in questo canale. Chiunque possa gestire questo canale può risolvere andando nelle impostazioni del canale e dandoglieli.\n\nServono per generare i meme automaticamente durante una conversazione, ma chiedere meme con `/meme` o `/custom` è possibile anche senza.",
+                "Al bot mancano alcuni permessi in questo canale. Chiunque possa gestire questo canale può risolvere andando nelle impostazioni del canale e dandoglieli.\n\nServono per generare i meme automaticamente durante una conversazione, ma chiedere meme con {{meme}} o {{custom}} è possibile anche senza.",
             [Locale.Indonesian]:
-                "Bot tidak punya beberapa izin di channel ini. Siapa saja yang bisa mengelola channel ini bisa memperbaikinya dengan masuk ke pengaturan channel dan memberikan izin-izin itu ke bot.\n\nIzin ini diperlukan untuk membuat meme otomatis selama obrolan, tapi meminta meme lewat `/meme` atau `/custom` tetap bisa tanpa izin tersebut.",
+                "Bot tidak punya beberapa izin di channel ini. Siapa saja yang bisa mengelola channel ini bisa memperbaikinya dengan masuk ke pengaturan channel dan memberikan izin-izin itu ke bot.\n\nIzin ini diperlukan untuk membuat meme otomatis selama obrolan, tapi meminta meme lewat {{meme}} atau {{custom}} tetap bisa tanpa izin tersebut.",
             [Locale.Czech]:
-                "Bot nemá v tomto kanálu některá oprávnění. Kdokoliv, kdo může tento kanál spravovat, to opraví v nastavení kanálu tím, že mu je udělí.\n\nJsou potřeba pro automatické generování memů během konverzace, ale vyžádat si memy přes `/meme` nebo `/custom` jde i bez nich.",
+                "Bot nemá v tomto kanálu některá oprávnění. Kdokoliv, kdo může tento kanál spravovat, to opraví v nastavení kanálu tím, že mu je udělí.\n\nJsou potřeba pro automatické generování memů během konverzace, ale vyžádat si memy přes {{meme}} nebo {{custom}} jde i bez nich.",
         },
     ),
     "deleteData.confirm.heading": buildLocales("🗑️ Delete all data for this channel?", {
@@ -649,34 +649,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "🗑️ Smazat všechna data tohoto kanálu?",
     }),
     "deleteData.confirm.body": buildLocales(
-        "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",
+        "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with {{enable}}.",
         {
             [Locale.Russian]:
-                "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот останется включённым и начнёт обучаться заново на новых сообщениях. Если после этого вы хотите полностью его остановить, выключите его через `/enable`.",
+                "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот останется включённым и начнёт обучаться заново на новых сообщениях. Если после этого вы хотите полностью его остановить, выключите его через {{enable}}.",
             [Locale.Ukrainian]:
-                "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот залишиться увімкненим і почне навчатися заново на нових повідомленнях. Якщо після цього ви хочете повністю його зупинити, вимкніть його через `/enable`.",
+                "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот залишиться увімкненим і почне навчатися заново на нових повідомленнях. Якщо після цього ви хочете повністю його зупинити, вимкніть його через {{enable}}.",
             [Locale.Dutch]:
-                "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot blijft ingeschakeld en begint opnieuw te leren van nieuwe berichten. Wil je hem daarna helemaal stoppen, zet hem dan uit met `/enable`.",
+                "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot blijft ingeschakeld en begint opnieuw te leren van nieuwe berichten. Wil je hem daarna helemaal stoppen, zet hem dan uit met {{enable}}.",
             [Locale.French]:
-                "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot reste activé et recommencera à apprendre avec les nouveaux messages. Si vous voulez l'arrêter complètement ensuite, désactivez-le avec `/enable`.",
+                "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot reste activé et recommencera à apprendre avec les nouveaux messages. Si vous voulez l'arrêter complètement ensuite, désactivez-le avec {{enable}}.",
             [Locale.German]:
-                "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot bleibt aktiviert und beginnt, aus neuen Nachrichten neu zu lernen. Wenn du ihn danach komplett stoppen willst, schalte ihn mit `/enable` aus.",
+                "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot bleibt aktiviert und beginnt, aus neuen Nachrichten neu zu lernen. Wenn du ihn danach komplett stoppen willst, schalte ihn mit {{enable}} aus.",
             [Locale.Polish]:
-                "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot pozostanie włączony i zacznie uczyć się od nowa z nowych wiadomości. Jeśli potem chcesz go całkowicie zatrzymać, wyłącz go przez `/enable`.",
+                "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot pozostanie włączony i zacznie uczyć się od nowa z nowych wiadomości. Jeśli potem chcesz go całkowicie zatrzymać, wyłącz go przez {{enable}}.",
             [Locale.SpanishES]:
-                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
+                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con {{enable}}.",
             [Locale.SpanishLATAM]:
-                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con `/enable`.",
+                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con {{enable}}.",
             [Locale.PortugueseBR]:
-                "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot continua ativado e vai começar a aprender de novo com as mensagens novas. Se depois quiser pará-lo de vez, desligue-o com `/enable`.",
+                "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot continua ativado e vai começar a aprender de novo com as mensagens novas. Se depois quiser pará-lo de vez, desligue-o com {{enable}}.",
             [Locale.Turkish]:
-                "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot açık kalır ve yeni mesajlardan yeniden öğrenmeye başlar. Sonrasında tamamen durdurmak istersen `/enable` ile kapat.",
+                "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot açık kalır ve yeni mesajlardan yeniden öğrenmeye başlar. Sonrasında tamamen durdurmak istersen {{enable}} ile kapat.",
             [Locale.Italian]:
-                "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot resta attivo e ricomincerà a imparare dai nuovi messaggi. Se poi vuoi fermarlo del tutto, spegnilo con `/enable`.",
+                "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot resta attivo e ricomincerà a imparare dai nuovi messaggi. Se poi vuoi fermarlo del tutto, spegnilo con {{enable}}.",
             [Locale.Indonesian]:
-                "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot tetap aktif dan akan mulai belajar lagi dari pesan baru. Kalau setelahnya mau berhenti total, matikan lewat `/enable`.",
+                "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot tetap aktif dan akan mulai belajar lagi dari pesan baru. Kalau setelahnya mau berhenti total, matikan lewat {{enable}}.",
             [Locale.Czech]:
-                "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot zůstane zapnutý a začne se znovu učit z nových zpráv. Pokud ho pak chceš úplně zastavit, vypni ho přes `/enable`.",
+                "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot zůstane zapnutý a začne se znovu učit z nových zpráv. Pokud ho pak chceš úplně zastavit, vypni ho přes {{enable}}.",
         },
     ),
     "deleteData.success.heading": buildLocales("✅ Data deleted!", {
@@ -695,34 +695,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "✅ Data smazána!",
     }),
     "deleteData.success.body": buildLocales(
-        "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with `/enable` if you wish to stop using it.",
+        "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with {{enable}} if you wish to stop using it.",
         {
             [Locale.Russian]:
-                "Все сохранённые сообщения и ссылки на изображения для этого канала были удалены. Бот всё ещё включён и начнёт обучаться заново на новых сообщениях. Выключите его через `/enable`, если больше не хотите им пользоваться.",
+                "Все сохранённые сообщения и ссылки на изображения для этого канала были удалены. Бот всё ещё включён и начнёт обучаться заново на новых сообщениях. Выключите его через {{enable}}, если больше не хотите им пользоваться.",
             [Locale.Ukrainian]:
-                "Усі збережені повідомлення та посилання на зображення для цього каналу було видалено. Бот все ще увімкнений і почне навчатися заново на нових повідомленнях. Вимкніть його через `/enable`, якщо більше не хочете ним користуватися.",
+                "Усі збережені повідомлення та посилання на зображення для цього каналу було видалено. Бот все ще увімкнений і почне навчатися заново на нових повідомленнях. Вимкніть його через {{enable}}, якщо більше не хочете ним користуватися.",
             [Locale.Dutch]:
-                "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd. De bot staat nog aan en begint opnieuw te leren van nieuwe berichten. Zet hem uit met `/enable` als je hem niet meer wilt gebruiken.",
+                "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd. De bot staat nog aan en begint opnieuw te leren van nieuwe berichten. Zet hem uit met {{enable}} als je hem niet meer wilt gebruiken.",
             [Locale.French]:
-                "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés. Le bot est toujours actif et recommencera à apprendre avec les nouveaux messages. Désactivez-le avec `/enable` si vous ne voulez plus l'utiliser.",
+                "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés. Le bot est toujours actif et recommencera à apprendre avec les nouveaux messages. Désactivez-le avec {{enable}} si vous ne voulez plus l'utiliser.",
             [Locale.German]:
-                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht. Der Bot ist noch an und beginnt, aus neuen Nachrichten neu zu lernen. Schalte ihn mit `/enable` aus, wenn du ihn nicht mehr nutzen möchtest.",
+                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht. Der Bot ist noch an und beginnt, aus neuen Nachrichten neu zu lernen. Schalte ihn mit {{enable}} aus, wenn du ihn nicht mehr nutzen möchtest.",
             [Locale.Polish]:
-                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte. Bot jest nadal włączony i zacznie uczyć się od nowa z nowych wiadomości. Wyłącz go przez `/enable`, jeśli nie chcesz już z niego korzystać.",
+                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte. Bot jest nadal włączony i zacznie uczyć się od nowa z nowych wiadomości. Wyłącz go przez {{enable}}, jeśli nie chcesz już z niego korzystać.",
             [Locale.SpanishES]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
+                "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con {{enable}} si ya no quieres usarlo.",
             [Locale.SpanishLATAM]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con `/enable` si ya no quieres usarlo.",
+                "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con {{enable}} si ya no quieres usarlo.",
             [Locale.PortugueseBR]:
-                "Todas as mensagens e links de imagens salvos deste canal foram apagados. O bot ainda está ligado e vai começar a aprender de novo com as mensagens novas. Desligue-o com `/enable` se não quiser mais usá-lo.",
+                "Todas as mensagens e links de imagens salvos deste canal foram apagados. O bot ainda está ligado e vai começar a aprender de novo com as mensagens novas. Desligue-o com {{enable}} se não quiser mais usá-lo.",
             [Locale.Turkish]:
-                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi. Bot hâlâ açık ve yeni mesajlardan yeniden öğrenmeye başlayacak. Artık kullanmak istemiyorsan `/enable` ile kapat.",
+                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi. Bot hâlâ açık ve yeni mesajlardan yeniden öğrenmeye başlayacak. Artık kullanmak istemiyorsan {{enable}} ile kapat.",
             [Locale.Italian]:
-                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati. Il bot è ancora acceso e ricomincerà a imparare dai nuovi messaggi. Spegnilo con `/enable` se non vuoi più usarlo.",
+                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati. Il bot è ancora acceso e ricomincerà a imparare dai nuovi messaggi. Spegnilo con {{enable}} se non vuoi più usarlo.",
             [Locale.Indonesian]:
-                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus. Bot masih menyala dan akan mulai belajar lagi dari pesan baru. Matikan lewat `/enable` kalau tidak mau memakainya lagi.",
+                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus. Bot masih menyala dan akan mulai belajar lagi dari pesan baru. Matikan lewat {{enable}} kalau tidak mau memakainya lagi.",
             [Locale.Czech]:
-                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány. Bot je pořád zapnutý a začne se znovu učit z nových zpráv. Vypni ho přes `/enable`, pokud ho už nechceš používat.",
+                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány. Bot je pořád zapnutý a začne se znovu učit z nových zpráv. Vypni ho přes {{enable}}, pokud ho už nechceš používat.",
         },
     ),
     "deleteData.button.cancel": buildLocales("Cancel", {
@@ -1687,57 +1687,63 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
     }),
     "help.about.commands.user": buildLocales(
-        "### 👤 Anywhere on Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "### 👤 Anywhere on Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
         {
-            [Locale.Russian]: "### 👤 Везде в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Ukrainian]: "### 👤 Будь-де в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Dutch]: "### 👤 Overal op Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.French]: "### 👤 Partout sur Discord : **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.German]: "### 👤 Überall auf Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Polish]: "### 👤 Wszędzie na Discordzie: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+            [Locale.Russian]: "### 👤 Везде в Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Ukrainian]:
+                "### 👤 Будь-де в Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Dutch]: "### 👤 Overal op Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.French]:
+                "### 👤 Partout sur Discord : **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.German]:
+                "### 👤 Überall auf Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Polish]:
+                "### 👤 Wszędzie na Discordzie: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.SpanishES]:
-                "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 En cualquier parte de Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.SpanishLATAM]:
-                "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 En cualquier parte de Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.PortugueseBR]:
-                "### 👤 Em qualquer lugar do Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Em qualquer lugar do Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.Turkish]:
-                "### 👤 Discord'un her yerinde: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Italian]: "### 👤 Ovunque su Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Discord'un her yerinde: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Italian]:
+                "### 👤 Ovunque su Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.Indonesian]:
-                "### 👤 Di mana saja di Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Czech]: "### 👤 Kdekoliv na Discordu: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Di mana saja di Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Czech]:
+                "### 👤 Kdekoliv na Discordu: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
         },
     ),
     "help.about.commands.guild": buildLocales(
-        "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+        "### 🏠 In servers with the bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
         {
             [Locale.Russian]:
-                "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 На серверах с ботом: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Ukrainian]:
-                "### 🏠 На серверах із ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 На серверах із ботом: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Dutch]:
-                "### 🏠 In servers met de bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 In servers met de bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.French]:
-                "### 🏠 Sur les serveurs avec le bot : **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Sur les serveurs avec le bot : **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.German]:
-                "### 🏠 Auf Servern mit dem Bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Auf Servern mit dem Bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Polish]:
-                "### 🏠 Na serwerach z botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Na serwerach z botem: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.SpanishES]:
-                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 En servidores con el bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.SpanishLATAM]:
-                "### 🏠 En servidores con el bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 En servidores con el bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.PortugueseBR]:
-                "### 🏠 Em servidores com o bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Em servidores com o bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Turkish]:
-                "### 🏠 Botun olduğu sunucularda: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Botun olduğu sunucularda: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Italian]:
-                "### 🏠 Nei server con il bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Nei server con il bot: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Indonesian]:
-                "### 🏠 Di server yang ada botnya: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Di server yang ada botnya: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
             [Locale.Czech]:
-                "### 🏠 Na serverech s botem: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+                "### 🏠 Na serverech s botem: **{{meme}}**, **{{enable}}**, **{{settings}}**, **{{achievements}}**",
         },
     ),
     "help.autoMemes.heading": buildLocales("## 💬  But how exactly does that work?", {
@@ -1848,34 +1854,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "## 🔊  Vytvářej hlasové zprávy",
     }),
     "help.voice.description": buildLocales(
-        "Use `/voice` to narrate your text using one of 23 different voices. Perfect for making soundboard phrases or simply narrating funny messages.",
+        "Use {{voice}} to narrate your text using one of 23 different voices. Perfect for making soundboard phrases or simply narrating funny messages.",
         {
             [Locale.Russian]:
-                "Используйте `/voice`, чтобы озвучить свой текст одним из 23 разных голосов. Отлично подходит для фразочек в саундборд или просто озвучки смешных сообщений.",
+                "Используйте {{voice}}, чтобы озвучить свой текст одним из 23 разных голосов. Отлично подходит для фразочек в саундборд или просто озвучки смешных сообщений.",
             [Locale.Ukrainian]:
-                "Використовуйте `/voice`, щоб озвучити свій текст одним із 23 різних голосів. Чудово підходить для фразочок у саундборд або просто озвучки смішних повідомлень.",
+                "Використовуйте {{voice}}, щоб озвучити свій текст одним із 23 різних голосів. Чудово підходить для фразочок у саундборд або просто озвучки смішних повідомлень.",
             [Locale.Dutch]:
-                "Gebruik `/voice` om je tekst te laten voorlezen door een van de 23 verschillende stemmen. Perfect voor soundboard kreten of gewoon om grappige berichten voor te lezen.",
+                "Gebruik {{voice}} om je tekst te laten voorlezen door een van de 23 verschillende stemmen. Perfect voor soundboard kreten of gewoon om grappige berichten voor te lezen.",
             [Locale.French]:
-                "Utilisez `/voice` pour faire lire votre texte par une des 23 voix disponibles. Parfait pour des répliques de soundboard ou simplement pour lire des messages drôles.",
+                "Utilisez {{voice}} pour faire lire votre texte par une des 23 voix disponibles. Parfait pour des répliques de soundboard ou simplement pour lire des messages drôles.",
             [Locale.German]:
-                "Nutze `/voice`, um deinen Text von einer der 23 verschiedenen Stimmen vorlesen zu lassen. Perfekt für Soundboard-Sprüche oder einfach, um lustige Nachrichten vorzulesen.",
+                "Nutze {{voice}}, um deinen Text von einer der 23 verschiedenen Stimmen vorlesen zu lassen. Perfekt für Soundboard-Sprüche oder einfach, um lustige Nachrichten vorzulesen.",
             [Locale.Polish]:
-                "Użyj `/voice`, żeby przeczytać swój tekst jednym z 23 różnych głosów. Świetne do tekstów na soundboard albo po prostu do czytania śmiesznych wiadomości.",
+                "Użyj {{voice}}, żeby przeczytać swój tekst jednym z 23 różnych głosów. Świetne do tekstów na soundboard albo po prostu do czytania śmiesznych wiadomości.",
             [Locale.SpanishES]:
-                "Usa `/voice` para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
+                "Usa {{voice}} para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
             [Locale.SpanishLATAM]:
-                "Usa `/voice` para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
+                "Usa {{voice}} para narrar tu texto con una de las 23 voces disponibles. Perfecto para frases de soundboard o simplemente para leer mensajes graciosos.",
             [Locale.PortugueseBR]:
-                "Use `/voice` para narrar seu texto com uma das 23 vozes diferentes. Perfeito para frases de soundboard ou só para narrar mensagens engraçadas.",
+                "Use {{voice}} para narrar seu texto com uma das 23 vozes diferentes. Perfeito para frases de soundboard ou só para narrar mensagens engraçadas.",
             [Locale.Turkish]:
-                "Metnini 23 farklı sesten biriyle okutmak için `/voice` kullan. Soundboard cümleleri ya da komik mesajları seslendirmek için birebir.",
+                "Metnini 23 farklı sesten biriyle okutmak için {{voice}} kullan. Soundboard cümleleri ya da komik mesajları seslendirmek için birebir.",
             [Locale.Italian]:
-                "Usa `/voice` per far leggere il tuo testo da una delle 23 voci disponibili. Perfetto per frasi da soundboard o semplicemente per leggere messaggi divertenti.",
+                "Usa {{voice}} per far leggere il tuo testo da una delle 23 voci disponibili. Perfetto per frasi da soundboard o semplicemente per leggere messaggi divertenti.",
             [Locale.Indonesian]:
-                "Pakai `/voice` untuk membacakan teksmu dengan salah satu dari 23 suara berbeda. Cocok buat bikin potongan soundboard atau sekadar membacakan pesan lucu.",
+                "Pakai {{voice}} untuk membacakan teksmu dengan salah satu dari 23 suara berbeda. Cocok buat bikin potongan soundboard atau sekadar membacakan pesan lucu.",
             [Locale.Czech]:
-                "Použij `/voice` a nech svůj text přečíst jedním z 23 různých hlasů. Ideální na hlášky do soundboardu nebo prostě na čtení vtipných zpráv.",
+                "Použij {{voice}} a nech svůj text přečíst jedním z 23 různých hlasů. Ideální na hlášky do soundboardu nebo prostě na čtení vtipných zpráv.",
         },
     ),
     "help.faq.heading": buildLocales("## ❓ Frequently asked questions", {
@@ -1940,34 +1946,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Přidal jsem bota, co teď?",
     }),
     "help.faq.iAddedTheBotWhatNow.answer": buildLocales(
-        "**Run /enable in a channel.** The bot will start learning from new messages there. After chatting for a bit run /meme to generate a meme. Memes will also come automatically when the channel is active and there is a conversation ongoing. You can change frequency for those in /settings.",
+        "**Run {{enable}} in a channel.** The bot will start learning from new messages there. After chatting for a bit run {{meme}} to generate a meme. Memes will also come automatically when the channel is active and there is a conversation ongoing. You can change frequency for those in {{settings}}.",
         {
             [Locale.Russian]:
-                "**Запустите /enable в канале.** Бот начнёт учиться на новых сообщениях там. Пообщайтесь немного и запустите /meme, чтобы сгенерировать мем. Мемы также будут приходить сами, когда канал активен и идёт разговор. Частоту таких мемов можно поменять в /settings.",
+                "**Запустите {{enable}} в канале.** Бот начнёт учиться на новых сообщениях там. Пообщайтесь немного и запустите {{meme}}, чтобы сгенерировать мем. Мемы также будут приходить сами, когда канал активен и идёт разговор. Частоту таких мемов можно поменять в {{settings}}.",
             [Locale.Ukrainian]:
-                "**Запустіть /enable у каналі.** Бот почне вчитися на нових повідомленнях там. Поспілкуйтесь трохи і запустіть /meme, щоб згенерувати мем. Меми також з'являтимуться самі, коли канал активний і триває розмова. Частоту таких мемів можна змінити в /settings.",
+                "**Запустіть {{enable}} у каналі.** Бот почне вчитися на нових повідомленнях там. Поспілкуйтесь трохи і запустіть {{meme}}, щоб згенерувати мем. Меми також з'являтимуться самі, коли канал активний і триває розмова. Частоту таких мемів можна змінити в {{settings}}.",
             [Locale.Dutch]:
-                "**Voer /enable uit in een kanaal.** De bot begint daar te leren van nieuwe berichten. Chat even en voer dan /meme uit om een meme te maken. Memes komen ook vanzelf wanneer het kanaal actief is en er een gesprek gaande is. De frequentie daarvan kun je aanpassen in /settings.",
+                "**Voer {{enable}} uit in een kanaal.** De bot begint daar te leren van nieuwe berichten. Chat even en voer dan {{meme}} uit om een meme te maken. Memes komen ook vanzelf wanneer het kanaal actief is en er een gesprek gaande is. De frequentie daarvan kun je aanpassen in {{settings}}.",
             [Locale.French]:
-                "**Lancez /enable dans un salon.** Le bot commencera à apprendre des nouveaux messages là-bas. Après avoir discuté un peu, lancez /meme pour générer un mème. Les mèmes arriveront aussi tout seuls quand le salon est actif et qu'une conversation est en cours. Vous pouvez régler leur fréquence dans /settings.",
+                "**Lancez {{enable}} dans un salon.** Le bot commencera à apprendre des nouveaux messages là-bas. Après avoir discuté un peu, lancez {{meme}} pour générer un mème. Les mèmes arriveront aussi tout seuls quand le salon est actif et qu'une conversation est en cours. Vous pouvez régler leur fréquence dans {{settings}}.",
             [Locale.German]:
-                "**Führe /enable in einem Kanal aus.** Der Bot fängt dort an, aus neuen Nachrichten zu lernen. Chattet ein bisschen und führe dann /meme aus, um ein Meme zu generieren. Memes kommen auch von selbst, wenn der Kanal aktiv ist und gerade eine Unterhaltung läuft. Die Häufigkeit dafür kannst du in /settings ändern.",
+                "**Führe {{enable}} in einem Kanal aus.** Der Bot fängt dort an, aus neuen Nachrichten zu lernen. Chattet ein bisschen und führe dann {{meme}} aus, um ein Meme zu generieren. Memes kommen auch von selbst, wenn der Kanal aktiv ist und gerade eine Unterhaltung läuft. Die Häufigkeit dafür kannst du in {{settings}} ändern.",
             [Locale.Polish]:
-                "**Uruchom /enable na kanale.** Bot zacznie się tam uczyć z nowych wiadomości. Po chwili rozmowy uruchom /meme, żeby wygenerować mema. Memy będą też pojawiać się same, gdy kanał jest aktywny i trwa rozmowa. Ich częstotliwość możesz zmienić w /settings.",
+                "**Uruchom {{enable}} na kanale.** Bot zacznie się tam uczyć z nowych wiadomości. Po chwili rozmowy uruchom {{meme}}, żeby wygenerować mema. Memy będą też pojawiać się same, gdy kanał jest aktywny i trwa rozmowa. Ich częstotliwość możesz zmienić w {{settings}}.",
             [Locale.SpanishES]:
-                "**Ejecuta /enable en un canal.** El bot empezará a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también llegarán solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+                "**Ejecuta {{enable}} en un canal.** El bot empezará a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta {{meme}} para generar un meme. Los memes también llegarán solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en {{settings}}.",
             [Locale.SpanishLATAM]:
-                "**Ejecuta /enable en un canal.** El bot va a empezar a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta /meme para generar un meme. Los memes también van a llegar solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en /settings.",
+                "**Ejecuta {{enable}} en un canal.** El bot va a empezar a aprender de los mensajes nuevos ahí. Después de chatear un rato, ejecuta {{meme}} para generar un meme. Los memes también van a llegar solos cuando el canal esté activo y haya una conversación en marcha. Puedes cambiar su frecuencia en {{settings}}.",
             [Locale.PortugueseBR]:
-                "**Rode /enable em um canal.** O bot vai começar a aprender com as mensagens novas por lá. Depois de conversar um pouco, rode /meme para gerar um meme. Os memes também vão chegar sozinhos quando o canal estiver ativo e tiver uma conversa rolando. Você pode mudar a frequência deles em /settings.",
+                "**Rode {{enable}} em um canal.** O bot vai começar a aprender com as mensagens novas por lá. Depois de conversar um pouco, rode {{meme}} para gerar um meme. Os memes também vão chegar sozinhos quando o canal estiver ativo e tiver uma conversa rolando. Você pode mudar a frequência deles em {{settings}}.",
             [Locale.Turkish]:
-                "**Bir kanalda /enable çalıştır.** Bot orada yeni mesajlardan öğrenmeye başlar. Biraz sohbet ettikten sonra caps üretmek için /meme çalıştır. Kanal aktifken ve bir sohbet dönüyorken capsler kendiliğinden de gelir. Bunların sıklığını /settings üzerinden değiştirebilirsin.",
+                "**Bir kanalda {{enable}} çalıştır.** Bot orada yeni mesajlardan öğrenmeye başlar. Biraz sohbet ettikten sonra caps üretmek için {{meme}} çalıştır. Kanal aktifken ve bir sohbet dönüyorken capsler kendiliğinden de gelir. Bunların sıklığını {{settings}} üzerinden değiştirebilirsin.",
             [Locale.Italian]:
-                "**Esegui /enable in un canale.** Il bot inizierà a imparare dai nuovi messaggi lì. Dopo aver chattato un po', esegui /meme per generare un meme. I meme arriveranno anche da soli quando il canale è attivo e c'è una conversazione in corso. Puoi cambiare la loro frequenza in /settings.",
+                "**Esegui {{enable}} in un canale.** Il bot inizierà a imparare dai nuovi messaggi lì. Dopo aver chattato un po', esegui {{meme}} per generare un meme. I meme arriveranno anche da soli quando il canale è attivo e c'è una conversazione in corso. Puoi cambiare la loro frequenza in {{settings}}.",
             [Locale.Indonesian]:
-                "**Jalankan /enable di sebuah channel.** Bot akan mulai belajar dari pesan baru di sana. Setelah ngobrol sebentar, jalankan /meme untuk membuat meme. Meme juga akan muncul sendiri saat channel aktif dan ada obrolan berlangsung. Frekuensinya bisa diubah di /settings.",
+                "**Jalankan {{enable}} di sebuah channel.** Bot akan mulai belajar dari pesan baru di sana. Setelah ngobrol sebentar, jalankan {{meme}} untuk membuat meme. Meme juga akan muncul sendiri saat channel aktif dan ada obrolan berlangsung. Frekuensinya bisa diubah di {{settings}}.",
             [Locale.Czech]:
-                "**Spusť /enable v kanálu.** Bot se tam začne učit z nových zpráv. Až si chvíli popíšete, spusť /meme a vygeneruje se mem. Memy budou chodit i samy, když je kanál aktivní a probíhá konverzace. Jejich frekvenci můžeš změnit v /settings.",
+                "**Spusť {{enable}} v kanálu.** Bot se tam začne učit z nových zpráv. Až si chvíli popíšete, spusť {{meme}} a vygeneruje se mem. Memy budou chodit i samy, když je kanál aktivní a probíhá konverzace. Jejich frekvenci můžeš změnit v {{settings}}.",
         },
     ),
     "help.faq.canIHaveDifferentQuestionsForEveryChannel.question": buildLocales(
@@ -2035,34 +2041,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Je nějaký limit, kolik memů může bot denně udělat?",
     }),
     "help.faq.isThereALimit.answer": buildLocales(
-        "**No, there are no limits.** You can run `/meme` as many times a day as you want. And it's free, because each generation only takes milliseconds to finish. There are also no watermarks on memes so that they look cleaner than if they were made with other meme generators.",
+        "**No, there are no limits.** You can run {{meme}} as many times a day as you want. And it's free, because each generation only takes milliseconds to finish. There are also no watermarks on memes so that they look cleaner than if they were made with other meme generators.",
         {
             [Locale.Russian]:
-                "**Нет, никаких лимитов.** Можете запускать `/meme` сколько угодно раз в день. И это бесплатно, потому что каждая генерация занимает лишь миллисекунды. А ещё на мемах нет водяных знаков, поэтому они выглядят чище, чем сделанные в других генераторах мемов.",
+                "**Нет, никаких лимитов.** Можете запускать {{meme}} сколько угодно раз в день. И это бесплатно, потому что каждая генерация занимает лишь миллисекунды. А ещё на мемах нет водяных знаков, поэтому они выглядят чище, чем сделанные в других генераторах мемов.",
             [Locale.Ukrainian]:
-                "**Ні, жодних лімітів.** Можете запускати `/meme` скільки завгодно разів на день. І це безкоштовно, бо кожна генерація займає лише мілісекунди. До того ж на мемах немає водяних знаків, тому вони виглядають чистіше, ніж зроблені в інших генераторах мемів.",
+                "**Ні, жодних лімітів.** Можете запускати {{meme}} скільки завгодно разів на день. І це безкоштовно, бо кожна генерація займає лише мілісекунди. До того ж на мемах немає водяних знаків, тому вони виглядають чистіше, ніж зроблені в інших генераторах мемів.",
             [Locale.Dutch]:
-                "**Nee, er zijn geen limieten.** Je kunt `/meme` zo vaak per dag uitvoeren als je wilt. En het is gratis, want elke generatie duurt maar milliseconden. Er staan ook geen watermerken op de memes, dus ze zien er strakker uit dan bij andere meme generators.",
+                "**Nee, er zijn geen limieten.** Je kunt {{meme}} zo vaak per dag uitvoeren als je wilt. En het is gratis, want elke generatie duurt maar milliseconden. Er staan ook geen watermerken op de memes, dus ze zien er strakker uit dan bij andere meme generators.",
             [Locale.French]:
-                "**Non, aucune limite.** Vous pouvez lancer `/meme` autant de fois par jour que vous voulez. Et c'est gratuit, car chaque génération ne prend que quelques millisecondes. Il n'y a pas non plus de filigrane sur les mèmes, donc ils sont plus propres que ceux faits avec d'autres générateurs.",
+                "**Non, aucune limite.** Vous pouvez lancer {{meme}} autant de fois par jour que vous voulez. Et c'est gratuit, car chaque génération ne prend que quelques millisecondes. Il n'y a pas non plus de filigrane sur les mèmes, donc ils sont plus propres que ceux faits avec d'autres générateurs.",
             [Locale.German]:
-                "**Nein, es gibt keine Limits.** Du kannst `/meme` so oft am Tag ausführen, wie du willst. Und es ist kostenlos, weil jede Generierung nur Millisekunden dauert. Auf den Memes sind auch keine Wasserzeichen, dadurch sehen sie sauberer aus als bei anderen Meme-Generatoren.",
+                "**Nein, es gibt keine Limits.** Du kannst {{meme}} so oft am Tag ausführen, wie du willst. Und es ist kostenlos, weil jede Generierung nur Millisekunden dauert. Auf den Memes sind auch keine Wasserzeichen, dadurch sehen sie sauberer aus als bei anderen Meme-Generatoren.",
             [Locale.Polish]:
-                "**Nie, nie ma żadnych limitów.** Możesz uruchamiać `/meme` ile razy dziennie chcesz. I to za darmo, bo każda generacja trwa tylko milisekundy. Na memach nie ma też znaków wodnych, więc wyglądają czyściej niż te zrobione w innych generatorach memów.",
+                "**Nie, nie ma żadnych limitów.** Możesz uruchamiać {{meme}} ile razy dziennie chcesz. I to za darmo, bo każda generacja trwa tylko milisekundy. Na memach nie ma też znaków wodnych, więc wyglądają czyściej niż te zrobione w innych generatorach memów.",
             [Locale.SpanishES]:
-                "**No, no hay límites.** Puedes ejecutar `/meme` tantas veces al día como quieras. Y es gratis, porque cada generación solo tarda milisegundos. Además los memes no llevan marca de agua, así que quedan más limpios que los hechos con otros generadores de memes.",
+                "**No, no hay límites.** Puedes ejecutar {{meme}} tantas veces al día como quieras. Y es gratis, porque cada generación solo tarda milisegundos. Además los memes no llevan marca de agua, así que quedan más limpios que los hechos con otros generadores de memes.",
             [Locale.SpanishLATAM]:
-                "**No, no hay límites.** Puedes ejecutar `/meme` todas las veces que quieras al día. Y es gratis, porque cada generación tarda solo milisegundos. Además los memes no llevan marca de agua, así que se ven más limpios que los hechos con otros generadores de memes.",
+                "**No, no hay límites.** Puedes ejecutar {{meme}} todas las veces que quieras al día. Y es gratis, porque cada generación tarda solo milisegundos. Además los memes no llevan marca de agua, así que se ven más limpios que los hechos con otros generadores de memes.",
             [Locale.PortugueseBR]:
-                "**Não, não tem limite nenhum.** Você pode rodar `/meme` quantas vezes quiser por dia. E é de graça, porque cada geração leva só alguns milissegundos. Os memes também não têm marca d'água, então ficam mais limpos do que os feitos em outros geradores de memes.",
+                "**Não, não tem limite nenhum.** Você pode rodar {{meme}} quantas vezes quiser por dia. E é de graça, porque cada geração leva só alguns milissegundos. Os memes também não têm marca d'água, então ficam mais limpos do que os feitos em outros geradores de memes.",
             [Locale.Turkish]:
-                "**Hayır, hiçbir sınır yok.** `/meme` komutunu günde istediğin kadar çalıştırabilirsin. Üstelik ücretsiz, çünkü her üretim sadece milisaniyeler sürüyor. Capslerde filigran da yok, o yüzden diğer caps üreticilerinde yapılanlardan daha temiz görünüyorlar.",
+                "**Hayır, hiçbir sınır yok.** {{meme}} komutunu günde istediğin kadar çalıştırabilirsin. Üstelik ücretsiz, çünkü her üretim sadece milisaniyeler sürüyor. Capslerde filigran da yok, o yüzden diğer caps üreticilerinde yapılanlardan daha temiz görünüyorlar.",
             [Locale.Italian]:
-                "**No, non ci sono limiti.** Puoi eseguire `/meme` quante volte vuoi al giorno. Ed è gratis, perché ogni generazione richiede solo qualche millisecondo. Inoltre i meme non hanno watermark, quindi risultano più puliti di quelli fatti con altri generatori di meme.",
+                "**No, non ci sono limiti.** Puoi eseguire {{meme}} quante volte vuoi al giorno. Ed è gratis, perché ogni generazione richiede solo qualche millisecondo. Inoltre i meme non hanno watermark, quindi risultano più puliti di quelli fatti con altri generatori di meme.",
             [Locale.Indonesian]:
-                "**Tidak, tidak ada batasan.** Kamu bisa menjalankan `/meme` sebanyak apa pun dalam sehari. Dan gratis, karena tiap pembuatan cuma butuh milidetik. Meme juga tanpa watermark, jadi terlihat lebih bersih dibanding buatan generator meme lain.",
+                "**Tidak, tidak ada batasan.** Kamu bisa menjalankan {{meme}} sebanyak apa pun dalam sehari. Dan gratis, karena tiap pembuatan cuma butuh milidetik. Meme juga tanpa watermark, jadi terlihat lebih bersih dibanding buatan generator meme lain.",
             [Locale.Czech]:
-                "**Ne, žádné limity nejsou.** Můžeš spouštět `/meme` kolikrát denně chceš. A je to zadarmo, protože každá generace trvá jen milisekundy. Na memech taky nejsou žádné vodoznaky, takže vypadají čistěji než ty z jiných generátorů memů.",
+                "**Ne, žádné limity nejsou.** Můžeš spouštět {{meme}} kolikrát denně chceš. A je to zadarmo, protože každá generace trvá jen milisekundy. Na memech taky nejsou žádné vodoznaky, takže vypadají čistěji než ty z jiných generátorů memů.",
         },
     ),
     "help.faq.canIDeleteStoredData.question": buildLocales("Can I delete stored meme generation data?", {
@@ -2081,34 +2087,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Můžu smazat uložená data pro generování memů?",
     }),
     "help.faq.canIDeleteStoredData.answer": buildLocales(
-        '**Yes, at any time.** Run `/settings` and then press the "Delete all data" button to delete everything that the bot stored for the channel.',
+        '**Yes, at any time.** Run {{settings}} and then press the "Delete all data" button to delete everything that the bot stored for the channel.',
         {
             [Locale.Russian]:
-                "**Да, в любой момент.** Запустите `/settings` и нажмите кнопку «Удалить все данные», чтобы стереть всё, что бот сохранил для канала.",
+                "**Да, в любой момент.** Запустите {{settings}} и нажмите кнопку «Удалить все данные», чтобы стереть всё, что бот сохранил для канала.",
             [Locale.Ukrainian]:
-                "**Так, будь-коли.** Запустіть `/settings` і натисніть кнопку «Видалити всі дані», щоб стерти все, що бот зберіг для каналу.",
+                "**Так, будь-коли.** Запустіть {{settings}} і натисніть кнопку «Видалити всі дані», щоб стерти все, що бот зберіг для каналу.",
             [Locale.Dutch]:
-                '**Ja, op elk moment.** Voer `/settings` uit en druk op de knop "Alle data verwijderen" om alles te wissen wat de bot voor het kanaal heeft opgeslagen.',
+                '**Ja, op elk moment.** Voer {{settings}} uit en druk op de knop "Alle data verwijderen" om alles te wissen wat de bot voor het kanaal heeft opgeslagen.',
             [Locale.French]:
-                "**Oui, à tout moment.** Lancez `/settings` puis appuyez sur le bouton « Supprimer toutes les données » pour effacer tout ce que le bot a stocké pour le salon.",
+                "**Oui, à tout moment.** Lancez {{settings}} puis appuyez sur le bouton « Supprimer toutes les données » pour effacer tout ce que le bot a stocké pour le salon.",
             [Locale.German]:
-                '**Ja, jederzeit.** Führe `/settings` aus und drücke den Button "Alle Daten löschen", um alles zu löschen, was der Bot für den Kanal gespeichert hat.',
+                '**Ja, jederzeit.** Führe {{settings}} aus und drücke den Button "Alle Daten löschen", um alles zu löschen, was der Bot für den Kanal gespeichert hat.',
             [Locale.Polish]:
-                "**Tak, w każdej chwili.** Uruchom `/settings` i naciśnij przycisk „Usuń wszystkie dane”, żeby skasować wszystko, co bot zapisał dla kanału.",
+                "**Tak, w każdej chwili.** Uruchom {{settings}} i naciśnij przycisk „Usuń wszystkie dane”, żeby skasować wszystko, co bot zapisał dla kanału.",
             [Locale.SpanishES]:
-                "**Sí, en cualquier momento.** Ejecuta `/settings` y pulsa el botón «Borrar todos los datos» para eliminar todo lo que el bot ha guardado del canal.",
+                "**Sí, en cualquier momento.** Ejecuta {{settings}} y pulsa el botón «Borrar todos los datos» para eliminar todo lo que el bot ha guardado del canal.",
             [Locale.SpanishLATAM]:
-                "**Sí, en cualquier momento.** Ejecuta `/settings` y presiona el botón «Borrar todos los datos» para eliminar todo lo que el bot guardó del canal.",
+                "**Sí, en cualquier momento.** Ejecuta {{settings}} y presiona el botón «Borrar todos los datos» para eliminar todo lo que el bot guardó del canal.",
             [Locale.PortugueseBR]:
-                '**Sim, a qualquer momento.** Rode `/settings` e aperte o botão "Apagar todos os dados" para excluir tudo que o bot guardou do canal.',
+                '**Sim, a qualquer momento.** Rode {{settings}} e aperte o botão "Apagar todos os dados" para excluir tudo que o bot guardou do canal.',
             [Locale.Turkish]:
-                '**Evet, istediğin zaman.** `/settings` çalıştır ve botun kanal için sakladığı her şeyi silmek için "Tüm verileri sil" butonuna bas.',
+                '**Evet, istediğin zaman.** {{settings}} çalıştır ve botun kanal için sakladığı her şeyi silmek için "Tüm verileri sil" butonuna bas.',
             [Locale.Italian]:
-                '**Sì, in qualsiasi momento.** Esegui `/settings` e premi il pulsante "Elimina tutti i dati" per cancellare tutto quello che il bot ha salvato per il canale.',
+                '**Sì, in qualsiasi momento.** Esegui {{settings}} e premi il pulsante "Elimina tutti i dati" per cancellare tutto quello che il bot ha salvato per il canale.',
             [Locale.Indonesian]:
-                '**Bisa, kapan saja.** Jalankan `/settings` lalu tekan tombol "Hapus semua data" untuk menghapus semua yang disimpan bot untuk channel itu.',
+                '**Bisa, kapan saja.** Jalankan {{settings}} lalu tekan tombol "Hapus semua data" untuk menghapus semua yang disimpan bot untuk channel itu.',
             [Locale.Czech]:
-                "**Ano, kdykoliv.** Spusť `/settings` a stiskni tlačítko „Smazat všechna data“, čímž smažeš všechno, co si bot pro kanál uložil.",
+                "**Ano, kdykoliv.** Spusť {{settings}} a stiskni tlačítko „Smazat všechna data“, čímž smažeš všechno, co si bot pro kanál uložil.",
         },
     ),
     "help.faq.addBotToMyApps.question": buildLocales('Can I add the bot to "My Apps" and use it anywhere?', {
@@ -2127,34 +2133,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Můžu si bota přidat do „Moje aplikace“ a používat ho kdekoliv?",
     }),
     "help.faq.addBotToMyApps.answer": buildLocales(
-        '**Yes, but without some features.** You\'ll be able to use `/custom` and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work for privacy reasons.',
+        '**Yes, but without some features.** You\'ll be able to use {{custom}} and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work for privacy reasons.',
         {
             [Locale.Russian]:
-                "**Да, но без части функций.** Вы сможете использовать `/custom` и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут из соображений приватности.",
+                "**Да, но без части функций.** Вы сможете использовать {{custom}} и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут из соображений приватности.",
             [Locale.Ukrainian]:
-                "**Так, але без частини функцій.** Ви зможете використовувати `/custom` та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть з міркувань приватності.",
+                "**Так, але без частини функцій.** Ви зможете використовувати {{custom}} та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть з міркувань приватності.",
             [Locale.Dutch]:
-                '**Ja, maar zonder sommige functies.** Je kunt `/custom` en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, vanwege privacy.',
+                '**Ja, maar zonder sommige functies.** Je kunt {{custom}} en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, vanwege privacy.',
             [Locale.French]:
-                "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser `/custom` et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, pour des raisons de confidentialité.",
+                "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser {{custom}} et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, pour des raisons de confidentialité.",
             [Locale.German]:
-                '**Ja, aber ohne manche Funktionen.** Du kannst `/custom` und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, aus Datenschutzgründen.',
+                '**Ja, aber ohne manche Funktionen.** Du kannst {{custom}} und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, aus Datenschutzgründen.',
             [Locale.Polish]:
-                "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać `/custom` i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać ze względu na prywatność.",
+                "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać {{custom}} i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać ze względu na prywatność.",
             [Locale.SpanishES]:
-                "**Sí, pero sin algunas funciones.** Podrás usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, por privacidad.",
+                "**Sí, pero sin algunas funciones.** Podrás usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, por privacidad.",
             [Locale.SpanishLATAM]:
-                "**Sí, pero sin algunas funciones.** Vas a poder usar `/custom` y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, por privacidad.",
+                "**Sí, pero sin algunas funciones.** Vas a poder usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, por privacidad.",
             [Locale.PortugueseBR]:
-                '**Sim, mas sem alguns recursos.** Você vai poder usar o `/custom` e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, por questões de privacidade.',
+                '**Sim, mas sem alguns recursos.** Você vai poder usar o {{custom}} e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, por questões de privacidade.',
             [Locale.Turkish]:
-                '**Evet, ama bazı özellikler olmadan.** `/custom` komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler gizlilik nedeniyle çalışmaz.',
+                '**Evet, ama bazı özellikler olmadan.** {{custom}} komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler gizlilik nedeniyle çalışmaz.',
             [Locale.Italian]:
-                '**Sì, ma senza alcune funzioni.** Potrai usare `/custom` e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, per motivi di privacy.',
+                '**Sì, ma senza alcune funzioni.** Potrai usare {{custom}} e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, per motivi di privacy.',
             [Locale.Indonesian]:
-                '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai `/custom` dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, demi privasi.',
+                '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai {{custom}} dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, demi privasi.',
             [Locale.Czech]:
-                "**Ano, ale bez některých funkcí.** Budeš moct používat `/custom` a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, kvůli soukromí.",
+                "**Ano, ale bez některých funkcí.** Budeš moct používat {{custom}} a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, kvůli soukromí.",
         },
     ),
     "help.faq.whatIfIWantToMakeACustomMeme.question": buildLocales(
@@ -2176,34 +2182,34 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "help.faq.whatIfIWantToMakeACustomMeme.answer": buildLocales(
-        "**Use `/custom`!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
+        "**Use {{custom}}!** It lets you use the giant meme template library of Jstmemit as an ordinary meme generator with your own text and images. And of course there are no limits or watermarks on memes generated this way too.",
         {
             [Locale.Russian]:
-                "**Используйте `/custom`!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
+                "**Используйте {{custom}}!** Эта команда позволяет использовать огромную библиотеку шаблонов Jstmemit как обычный генератор мемов с вашим текстом и картинками. И конечно, на таких мемах тоже нет ни лимитов, ни водяных знаков.",
             [Locale.Ukrainian]:
-                "**Використовуйте `/custom`!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
+                "**Використовуйте {{custom}}!** Ця команда дозволяє використовувати величезну бібліотеку шаблонів Jstmemit як звичайний генератор мемів з вашим текстом і картинками. І звісно, на таких мемах теж немає ні лімітів, ні водяних знаків.",
             [Locale.Dutch]:
-                "**Gebruik `/custom`!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
+                "**Gebruik {{custom}}!** Daarmee gebruik je de gigantische template bibliotheek van Jstmemit als een gewone meme generator met je eigen tekst en afbeeldingen. En natuurlijk zitten er ook op deze memes geen limieten of watermerken.",
             [Locale.French]:
-                "**Utilisez `/custom` !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
+                "**Utilisez {{custom}} !** Ça vous permet d'utiliser l'énorme bibliothèque de modèles de Jstmemit comme un générateur de mèmes classique avec vos propres textes et images. Et bien sûr, ces mèmes-là non plus n'ont ni limites ni filigranes.",
             [Locale.German]:
-                "**Nutze `/custom`!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
+                "**Nutze {{custom}}!** Damit kannst du die riesige Vorlagen-Bibliothek von Jstmemit als ganz normalen Meme-Generator mit eigenem Text und eigenen Bildern verwenden. Und natürlich gibt es auch bei diesen Memes keine Limits und keine Wasserzeichen.",
             [Locale.Polish]:
-                "**Użyj `/custom`!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
+                "**Użyj {{custom}}!** Ta komenda pozwala korzystać z ogromnej biblioteki szablonów Jstmemit jak ze zwykłego generatora memów z własnym tekstem i obrazkami. I oczywiście na tych memach też nie ma limitów ani znaków wodnych.",
             [Locale.SpanishES]:
-                "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
+                "**¡Usa {{custom}}!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y por supuesto, estos memes tampoco tienen límites ni marcas de agua.",
             [Locale.SpanishLATAM]:
-                "**¡Usa `/custom`!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
+                "**¡Usa {{custom}}!** Te permite usar la enorme biblioteca de plantillas de Jstmemit como un generador de memes normal con tus propios textos e imágenes. Y claro, estos memes tampoco tienen límites ni marcas de agua.",
             [Locale.PortugueseBR]:
-                "**Use o `/custom`!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
+                "**Use o {{custom}}!** Ele deixa você usar a biblioteca gigante de templates do Jstmemit como um gerador de memes comum, com seus próprios textos e imagens. E claro, esses memes também não têm limites nem marca d'água.",
             [Locale.Turkish]:
-                "**`/custom` kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
+                "**{{custom}} kullan!** Jstmemit'in devasa şablon kütüphanesini kendi metinlerin ve görsellerinle sıradan bir caps üreticisi gibi kullanmanı sağlar. Ve tabii ki bu şekilde üretilen capslerde de ne sınır ne de filigran var.",
             [Locale.Italian]:
-                "**Usa `/custom`!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
+                "**Usa {{custom}}!** Ti permette di usare l'enorme libreria di template di Jstmemit come un normale generatore di meme con i tuoi testi e le tue immagini. E ovviamente anche questi meme non hanno né limiti né watermark.",
             [Locale.Indonesian]:
-                "**Pakai `/custom`!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
+                "**Pakai {{custom}}!** Dengan itu kamu bisa memakai perpustakaan template raksasa Jstmemit sebagai generator meme biasa dengan teks dan gambarmu sendiri. Dan tentu saja meme yang dibuat begini juga tanpa batasan dan tanpa watermark.",
             [Locale.Czech]:
-                "**Použij `/custom`!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
+                "**Použij {{custom}}!** Umožní ti používat obrovskou knihovnu šablon Jstmemitu jako obyčejný generátor memů s vlastním textem a obrázky. A samozřejmě ani na takhle vytvořených memech nejsou žádné limity ani vodoznaky.",
         },
     ),
     "help.button.addJstmemit": buildLocales("🔗 Add Jstmemit", {
@@ -2464,25 +2470,26 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Další cíl: {{currentGoal}}/{{nextGoal}} memů",
     }),
     "milestones.turnOffInSettings": buildLocales(
-        "-# If you don't want to receive these messages you can disable them in **/settings**",
+        "-# If you don't want to receive these messages you can disable them in **{{settings}}**",
         {
-            [Locale.Russian]: "-# Если вы не хотите получать такие сообщения, их можно отключить в **/settings**",
-            [Locale.Ukrainian]: "-# Якщо ви не хочете отримувати такі повідомлення, їх можна вимкнути в **/settings**",
-            [Locale.Dutch]: "-# Wil je deze berichten niet ontvangen, dan kun je ze uitzetten in **/settings**",
+            [Locale.Russian]: "-# Если вы не хотите получать такие сообщения, их можно отключить в **{{settings}}**",
+            [Locale.Ukrainian]:
+                "-# Якщо ви не хочете отримувати такі повідомлення, їх можна вимкнути в **{{settings}}**",
+            [Locale.Dutch]: "-# Wil je deze berichten niet ontvangen, dan kun je ze uitzetten in **{{settings}}**",
             [Locale.French]:
-                "-# Si vous ne voulez pas recevoir ces messages, vous pouvez les désactiver dans **/settings**",
+                "-# Si vous ne voulez pas recevoir ces messages, vous pouvez les désactiver dans **{{settings}}**",
             [Locale.German]:
-                "-# Wenn du diese Nachrichten nicht bekommen willst, kannst du sie in **/settings** deaktivieren",
-            [Locale.Polish]: "-# Jeśli nie chcesz dostawać takich wiadomości, możesz je wyłączyć w **/settings**",
-            [Locale.SpanishES]: "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
-            [Locale.SpanishLATAM]: "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **/settings**",
+                "-# Wenn du diese Nachrichten nicht bekommen willst, kannst du sie in **{{settings}}** deaktivieren",
+            [Locale.Polish]: "-# Jeśli nie chcesz dostawać takich wiadomości, możesz je wyłączyć w **{{settings}}**",
+            [Locale.SpanishES]: "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **{{settings}}**",
+            [Locale.SpanishLATAM]: "-# Si no quieres recibir estos mensajes, puedes desactivarlos en **{{settings}}**",
             [Locale.PortugueseBR]:
-                "-# Se você não quiser receber essas mensagens, dá para desativá-las em **/settings**",
-            [Locale.Turkish]: "-# Bu mesajları almak istemiyorsan **/settings** üzerinden kapatabilirsin",
-            [Locale.Italian]: "-# Se non vuoi ricevere questi messaggi, puoi disattivarli in **/settings**",
+                "-# Se você não quiser receber essas mensagens, dá para desativá-las em **{{settings}}**",
+            [Locale.Turkish]: "-# Bu mesajları almak istemiyorsan **{{settings}}** üzerinden kapatabilirsin",
+            [Locale.Italian]: "-# Se non vuoi ricevere questi messaggi, puoi disattivarli in **{{settings}}**",
             [Locale.Indonesian]:
-                "-# Kalau tidak mau menerima pesan seperti ini, kamu bisa mematikannya di **/settings**",
-            [Locale.Czech]: "-# Pokud tyhle zprávy nechceš dostávat, můžeš je vypnout v **/settings**",
+                "-# Kalau tidak mau menerima pesan seperti ini, kamu bisa mematikannya di **{{settings}}**",
+            [Locale.Czech]: "-# Pokud tyhle zprávy nechceš dostávat, můžeš je vypnout v **{{settings}}**",
         },
     ),
     "stats.likes": buildLocales("Likes: {{count}}", {

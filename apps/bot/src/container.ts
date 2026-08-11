@@ -41,6 +41,7 @@ import { NarrationsRepository } from "@jstmemit/db/repositories/NarrationsReposi
 import { AutocompleteService } from "#/services/AutocompleteService.ts";
 import { AutocompleteController } from "#/controllers/AutocompleteController.ts";
 import { MilestonesController } from "#/controllers/MilestonesController.ts";
+import { CommandsService } from "#/services/CommandsService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -99,6 +100,7 @@ container.register({
     narrationsRepository: asClass(NarrationsRepository).singleton(),
     autocompleteService: asClass(AutocompleteService).singleton(),
     autocompleteController: asClass(AutocompleteController).singleton(),
+    commandsService: asClass(CommandsService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");

@@ -20,8 +20,15 @@ import type { Mode } from "@jstmemit/shared/models/Mode";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import type { Achievement } from "@jstmemit/shared/models/Achievement";
 import { achievementsList } from "#/data/achievementsList.ts";
+import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 
 export class ComponentsService implements IComponentsService {
+    private readonly _commandsService: ICommandsService;
+
+    public constructor(commandsService: ICommandsService) {
+        this._commandsService = commandsService;
+    }
+
     /**
      * Returns back a message component for /enable command with a progress bar
      * showing passed messages amount in the channel
@@ -74,7 +81,9 @@ export class ComponentsService implements IComponentsService {
             container.addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`\n### ${t("enable.permissions.heading", language)} ⚠️`),
                 new TextDisplayBuilder().setContent(
-                    `${t("enable.permissions.description", language)}\n${this._createPermissionsList(permissions, language)}`,
+                    `${t("enable.permissions.description", language, {
+                        settings: this._commandsService.getCommandMention("settings"),
+                    })}\n${this._createPermissionsList(permissions, language)}`,
                 ),
             );
         }
@@ -289,7 +298,11 @@ export class ComponentsService implements IComponentsService {
                 .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
                 .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
                 .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent(t("milestones.turnOffInSettings", language)),
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.turnOffInSettings", language, {
+                            settings: this._commandsService.getCommandMention("settings"),
+                        }),
+                    ),
                 );
         }
 
@@ -444,7 +457,13 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("unknownTemplate.body", language)))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("unknownTemplate.body", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
+                ),
+            )
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
     }
 
@@ -503,7 +522,10 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `${t("missingBotPermissions.body", language)}\n\n${this._createPermissionsList(permissions, language)}`,
+                    `${t("missingBotPermissions.body", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                        custom: this._commandsService.getCommandMention("custom"),
+                    })}\n\n${this._createPermissionsList(permissions, language)}`,
                 ),
             );
     }
@@ -520,7 +542,13 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("deleteData.confirm.body", language)));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("deleteData.confirm.body", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                    }),
+                ),
+            );
     }
 
     /**
@@ -535,7 +563,13 @@ export class ComponentsService implements IComponentsService {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("deleteData.success.body", language)));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("deleteData.success.body", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                    }),
+                ),
+            );
     }
 
     /**
@@ -624,7 +658,17 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language)}`,
+                    `${t("help.about.commands.user", language, {
+                        voice: this._commandsService.getCommandMention("voice"),
+                        custom: this._commandsService.getCommandMention("custom"),
+                        feedback: this._commandsService.getCommandMention("feedback"),
+                        help: this._commandsService.getCommandMention("help"),
+                    })}\n${t("help.about.commands.guild", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                        enable: this._commandsService.getCommandMention("enable"),
+                        settings: this._commandsService.getCommandMention("settings"),
+                        achievements: this._commandsService.getCommandMention("achievements"),
+                    })}`,
                 ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
@@ -684,7 +728,13 @@ export class ComponentsService implements IComponentsService {
     public getHelpVoiceMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.voice.heading", language)}`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.voice.description", language)}`));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.voice.description", language, {
+                        voice: this._commandsService.getCommandMention("voice"),
+                    }),
+                ),
+            );
     }
 
     /**
@@ -721,7 +771,13 @@ export class ComponentsService implements IComponentsService {
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.faq.iAddedTheBotWhatNow.answer", language)}`),
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.iAddedTheBotWhatNow.answer", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                        meme: this._commandsService.getCommandMention("meme"),
+                        settings: this._commandsService.getCommandMention("settings"),
+                    }),
+                ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
@@ -739,21 +795,33 @@ export class ComponentsService implements IComponentsService {
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.faq.isThereALimit.answer", language)}`),
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.isThereALimit.answer", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                    }),
+                ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.faq.canIDeleteStoredData.answer", language)}`),
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.canIDeleteStoredData.answer", language, {
+                        settings: this._commandsService.getCommandMention("settings"),
+                    }),
+                ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.faq.addBotToMyApps.answer", language)}`),
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.addBotToMyApps.answer", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
+                ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
@@ -762,7 +830,11 @@ export class ComponentsService implements IComponentsService {
                 ),
             )
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`${t("help.faq.whatIfIWantToMakeACustomMeme.answer", language)}`),
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.whatIfIWantToMakeACustomMeme.answer", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
+                ),
             );
     }
 
