@@ -423,6 +423,10 @@ export class EventsController implements IEventsController {
      */
     public handleGuildDelete(guild: Guild): void {
         try {
+            if (!guild.available) {
+                return;
+            }
+
             analytics.capture({
                 distinctId: guild.id,
                 event: "guild_left",
@@ -430,7 +434,6 @@ export class EventsController implements IEventsController {
                     guildId: guild.id,
                     memberCount: guild.memberCount,
                     locale: guild.preferredLocale,
-                    available: guild.available,
                     lifetimeDays: guild.joinedTimestamp
                         ? Math.round((Date.now() - guild.joinedTimestamp) / 86400000)
                         : undefined,
