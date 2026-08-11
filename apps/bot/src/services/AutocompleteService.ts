@@ -52,14 +52,18 @@ export class AutocompleteService implements IAutocompleteService {
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
     private _convertTemplatesIntoMatches(templates: Template[], locale: Locale): ApplicationCommandOptionChoiceData[] {
-        return templates.map((template: Template): ApplicationCommandOptionChoiceData => {
-            const isAnimated: boolean = (template.animationDuration ?? 0) > 0;
+        return templates
+            .filter(
+                (template: Template): boolean => (template.images?.length ?? 0) + (template.texts?.length ?? 0) <= 4,
+            )
+            .map((template: Template): ApplicationCommandOptionChoiceData => {
+                const isAnimated: boolean = (template.animationDuration ?? 0) > 0;
 
-            return {
-                name: `${this._localizeTemplateName(template, locale)} ${isAnimated ? "🎦" : ""}`,
-                value: template.name,
-            };
-        });
+                return {
+                    name: `${this._localizeTemplateName(template, locale)} ${isAnimated ? "🎦" : ""}`,
+                    value: template.name,
+                };
+            });
     }
 
     /**
