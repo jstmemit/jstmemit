@@ -1687,26 +1687,32 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
     }),
     "help.about.commands.user": buildLocales(
-        "### 👤 Anywhere on Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+        "### 👤 Anywhere on Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
         {
-            [Locale.Russian]: "### 👤 Везде в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Ukrainian]: "### 👤 Будь-де в Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Dutch]: "### 👤 Overal op Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.French]: "### 👤 Partout sur Discord : **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.German]: "### 👤 Überall auf Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Polish]: "### 👤 Wszędzie na Discordzie: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+            [Locale.Russian]: "### 👤 Везде в Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Ukrainian]:
+                "### 👤 Будь-де в Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Dutch]: "### 👤 Overal op Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.French]:
+                "### 👤 Partout sur Discord : **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.German]:
+                "### 👤 Überall auf Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Polish]:
+                "### 👤 Wszędzie na Discordzie: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.SpanishES]:
-                "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 En cualquier parte de Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.SpanishLATAM]:
-                "### 👤 En cualquier parte de Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 En cualquier parte de Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.PortugueseBR]:
-                "### 👤 Em qualquer lugar do Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Em qualquer lugar do Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.Turkish]:
-                "### 👤 Discord'un her yerinde: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Italian]: "### 👤 Ovunque su Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Discord'un her yerinde: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Italian]:
+                "### 👤 Ovunque su Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
             [Locale.Indonesian]:
-                "### 👤 Di mana saja di Discord: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
-            [Locale.Czech]: "### 👤 Kdekoliv na Discordu: **`/voice`**, **`/custom`**, **`/feedback`**, **`/help`**",
+                "### 👤 Di mana saja di Discord: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
+            [Locale.Czech]:
+                "### 👤 Kdekoliv na Discordu: **{{voice}}**, **{{custom}}**, **{{feedback}}**, **{{help}}**",
         },
     ),
     "help.about.commands.guild": buildLocales(

@@ -631,7 +631,12 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language, {
+                    `${t("help.about.commands.user", language, {
+                        voice: this._commandsService.getCommandMention("voice"),
+                        custom: this._commandsService.getCommandMention("custom"),
+                        feedback: this._commandsService.getCommandMention("feedback"),
+                        help: this._commandsService.getCommandMention("help"),
+                    })}\n${t("help.about.commands.guild", language, {
                         meme: this._commandsService.getCommandMention("meme"),
                         enable: this._commandsService.getCommandMention("enable"),
                         settings: this._commandsService.getCommandMention("settings"),
