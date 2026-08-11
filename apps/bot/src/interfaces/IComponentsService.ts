@@ -12,7 +12,7 @@ export abstract class IComponentsService {
     public abstract getEnableButtonsComponent(
         language: Locale,
         isEnabled: boolean,
-        count: number,
+        count?: number,
         isFirstTime?: boolean,
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder;

@@ -344,6 +344,7 @@ export class MemesController implements IMemesController {
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
                 files: this._getMemeAttachment(jobResult),
+                components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId, templateName)],
             });
         } catch (error) {
             this._captureMemeGenerationError(error, interaction, "custom");
@@ -404,8 +405,18 @@ export class MemesController implements IMemesController {
         }
     }
 
-    public async handleGenerateCustomMemeInteraction(interaction: ChatInputCommandInteraction): Promise<void> {
-        const templateName: string = interaction.options.getString("template", true);
+    public async handleGenerateCustomMemeInteraction(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        id: string,
+    ): Promise<void> {
+        let templateName: string;
+
+        if (interaction.isButton()) {
+            templateName = id;
+        } else {
+            templateName = interaction.options.getString("template", true);
+        }
+
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
 
         if (!template) {
@@ -427,7 +438,8 @@ export class MemesController implements IMemesController {
             | ModalSubmitInteraction
             | MessageContextMenuCommandInteraction
             | ChatInputCommandInteraction
-            | UserContextMenuCommandInteraction,
+            | UserContextMenuCommandInteraction
+            | ButtonInteraction,
         templateName: string | undefined,
     ): Promise<Template | undefined> {
         const template: Template | undefined = this._templatesRepository
