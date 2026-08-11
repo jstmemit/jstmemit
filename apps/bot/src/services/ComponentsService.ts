@@ -20,8 +20,15 @@ import type { Mode } from "@jstmemit/shared/models/Mode";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import type { Achievement } from "@jstmemit/shared/models/Achievement";
 import { achievementsList } from "#/data/achievementsList.ts";
+import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 
 export class ComponentsService implements IComponentsService {
+    private readonly _commandsService: ICommandsService;
+
+    public constructor(commandsService: ICommandsService) {
+        this._commandsService = commandsService;
+    }
+
     /**
      * Returns back a message component for /enable command with a progress bar
      * showing passed messages amount in the channel
@@ -624,7 +631,7 @@ export class ComponentsService implements IComponentsService {
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language)}`,
+                    `${t("help.about.commands.user", language)}\n${t("help.about.commands.guild", language, { meme: this._commandsService.getCommandMention("meme") })}`,
                 ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))

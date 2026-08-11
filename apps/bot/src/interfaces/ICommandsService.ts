@@ -1,3 +1,4 @@
 export abstract class ICommandsService {
-    public abstract getCommandMention(name: string): string | undefined;
+    public abstract getCommandMention(name: string): string;
+    public abstract fetchCommandMentions(): Promise<void>;
 }

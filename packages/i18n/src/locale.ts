@@ -1710,7 +1710,7 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "help.about.commands.guild": buildLocales(
-        "### 🏠 In servers with the bot: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",
+        "### 🏠 In servers with the bot: **{{meme}}**, **`/enable`**, **`/settings`**, **`/achievements`**",
         {
             [Locale.Russian]:
                 "### 🏠 На серверах с ботом: **`/meme`**, **`/enable`**, **`/settings`**, **`/achievements`**",

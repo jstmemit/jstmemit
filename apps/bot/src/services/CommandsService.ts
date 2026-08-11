@@ -5,11 +5,7 @@ import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 export class CommandsService implements ICommandsService {
     private _mentions: Record<string, string> = {};
 
-    public constructor() {
-        void this._fetchCommandMentions();
-    }
-
-    private async _fetchCommandMentions(): Promise<void> {
+    public async fetchCommandMentions(): Promise<void> {
         const commands: Collection<string, ApplicationCommand> | undefined =
             await client?.application?.commands.fetch();
 
@@ -25,7 +21,7 @@ export class CommandsService implements ICommandsService {
         );
     }
 
-    public getCommandMention(name: string): string | undefined {
-        return this._mentions[name];
+    public getCommandMention(name: string): string {
+        return this._mentions[name] || name;
     }
 }

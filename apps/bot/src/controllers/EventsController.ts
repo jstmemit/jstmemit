@@ -18,6 +18,7 @@ import { logger } from "#/container.ts";
 import type { IVoiceController } from "#/interfaces/IVoiceController.ts";
 import type { IAutocompleteController } from "#/interfaces/IAutocompleteController.ts";
 import type { IMilestonesController } from "#/interfaces/IMilestonesController.ts";
+import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
 
 const env = Env.parse(process.env);
 
@@ -33,6 +34,7 @@ export class EventsController implements IEventsController {
     private readonly _voiceController: IVoiceController;
     private readonly _autocompleteController: IAutocompleteController;
     private readonly _milestonesController: IMilestonesController;
+    private readonly _commandsService: ICommandsService;
     private readonly _isProduction: boolean = env.DISCORD_CLIENT_ID === env.DISCORD_CLIENT_ID_PRODUCTION;
 
     public constructor(
@@ -47,6 +49,7 @@ export class EventsController implements IEventsController {
         templatesRepository: ITemplatesRepository,
         autocompleteController: IAutocompleteController,
         milestonesController: IMilestonesController,
+        commandsService: ICommandsService,
     ) {
         this._contextController = contextController;
         this._channelsController = channelsController;
@@ -59,6 +62,7 @@ export class EventsController implements IEventsController {
         this._templateRepository = templatesRepository;
         this._autocompleteController = autocompleteController;
         this._milestonesController = milestonesController;
+        this._commandsService = commandsService;
     }
 
     /**
@@ -88,6 +92,8 @@ export class EventsController implements IEventsController {
                 });
             });
         }
+
+        void this._commandsService.fetchCommandMentions();
     }
 
     /**
