@@ -157,55 +157,55 @@ export class EventsController implements IEventsController {
                     case "Make it a Quote":
                         await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
                         return;
-                    case "Make reaction meme":
+                    case "Make a reaction meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("reaction", 1, 1)),
                         );
                         return;
-                    case "Make social post meme":
+                    case "Make a social media post meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("socialPost", 1, 1)),
                         );
                         return;
-                    case "Make YouTube meme":
+                    case "Make a YouTube thumbnail meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("youtube", 1, 1)),
                         );
                         return;
-                    case "Make animals meme":
+                    case "Make an animal meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("animals", 1, 1)),
                         );
                         return;
-                    case "Make movies meme":
+                    case "Make a movie meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("movies", 1, 1)),
                         );
                         return;
-                    case "Make cartoons meme":
+                    case "Make a cartoon meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("cartoons", 1, 1)),
                         );
                         return;
-                    case "Make anime meme":
+                    case "Make an anime meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("anime", 1, 1)),
                         );
                         return;
-                    case "Make games meme":
+                    case "Make a gaming meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("games", 1, 1)),
                         );
                         return;
-                    case "Make misc meme":
+                    case "Make a random meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("misc", 1, 1)),
@@ -221,55 +221,55 @@ export class EventsController implements IEventsController {
             // user context menus
             if (interaction.isUserContextMenuCommand()) {
                 switch (interaction.commandName) {
-                    case "Make reaction meme":
+                    case "Make a reaction meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("reaction", 1, 1)),
                         );
                         return;
-                    case "Make social post meme":
+                    case "Make a social media post meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("socialPost", 1, 1)),
                         );
                         return;
-                    case "Make youtube meme":
+                    case "Make a YouTube thumbnail meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("youtube", 1, 1)),
                         );
                         return;
-                    case "Make animals meme":
+                    case "Make an animal meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("animals", 1, 1)),
                         );
                         return;
-                    case "Make movies meme":
+                    case "Make a movie meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("movies", 1, 1)),
                         );
                         return;
-                    case "Make cartoons meme":
+                    case "Make a cartoon meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("cartoons", 1, 1)),
                         );
                         return;
-                    case "Make anime meme":
+                    case "Make an anime meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("anime", 1, 1)),
                         );
                         return;
-                    case "Make games meme":
+                    case "Make a gaming meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("games", 1, 1)),
                         );
                         return;
-                    case "Make misc meme":
+                    case "Make a random meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
                             _.sample(this._templateRepository.getTemplateNamesByTopic("misc", 1, 1)),
