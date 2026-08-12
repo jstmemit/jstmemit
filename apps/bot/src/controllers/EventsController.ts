@@ -154,6 +154,9 @@ export class EventsController implements IEventsController {
             // message context menus
             if (interaction.isMessageContextMenuCommand()) {
                 switch (interaction.commandName) {
+                    case "Make it a Quote":
+                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
+                        return;
                     case "Make reaction meme":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
                             interaction,
