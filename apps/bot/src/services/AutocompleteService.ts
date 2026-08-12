@@ -23,9 +23,10 @@ export class AutocompleteService implements IAutocompleteService {
      */
     public getTemplateMatches(query: string, locale: Locale): ApplicationCommandOptionChoiceData[] {
         const templates: Template[] = this._templatesRepository.findTemplates(query);
-        const matches: ApplicationCommandOptionChoiceData[] = this._convertTemplatesIntoMatches(templates, locale);
+        const matches: Template[] = this._convertTemplatesIntoMatches(templates);
+        const sortedMatches: Template[] = this._sortTemplateMatches(matches, locale);
 
-        return this._sortTemplateMatches(matches, locale);
+        return this._addTemplateTypeEmoji(sortedMatches, locale);
     }
 
     /**
@@ -46,18 +47,14 @@ export class AutocompleteService implements IAutocompleteService {
      * Makes an array of autocomplete matches from an array of templates
      *
      * @param templates
-     * @param locale
      * @private
      *
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
-    private _convertTemplatesIntoMatches(templates: Template[], locale: Locale): ApplicationCommandOptionChoiceData[] {
-        return templates.map((template: Template): ApplicationCommandOptionChoiceData => {
-            return {
-                name: this._localizeTemplateName(template, locale),
-                value: template.name,
-            };
-        });
+    private _convertTemplatesIntoMatches(templates: Template[]): Template[] {
+        return templates.filter(
+            (template: Template): boolean => (template.images?.length ?? 0) + (template.texts?.length ?? 0) <= 4,
+        );
     }
 
     /**
@@ -70,14 +67,34 @@ export class AutocompleteService implements IAutocompleteService {
      *
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
-    private _sortTemplateMatches(
-        matches: ApplicationCommandOptionChoiceData[],
-        locale: Locale,
-    ): ApplicationCommandOptionChoiceData[] {
+    private _sortTemplateMatches(matches: Template[], locale: Locale): Template[] {
         return matches
-            .sort((a: ApplicationCommandOptionChoiceData, b: ApplicationCommandOptionChoiceData): number =>
-                a.name.localeCompare(b.name, locale),
-            )
+            .sort((a: Template, b: Template): number => {
+                const nameA: string = this._localizeTemplateName(a, locale);
+                const nameB: string = this._localizeTemplateName(b, locale);
+
+                return nameA.localeCompare(nameB, locale);
+            })
             .slice(0, 25);
+    }
+
+    /**
+     * Add emoji for template name: 🎬 for animated and 📸 for static templates.
+     *
+     * @param templates
+     * @param locale
+     * @private
+     *
+     * @authors Kyrylo Maliuha & Oleksii Sych
+     */
+    private _addTemplateTypeEmoji(templates: Template[], locale: Locale): ApplicationCommandOptionChoiceData[] {
+        return templates.map((template: Template): ApplicationCommandOptionChoiceData => {
+            const isAnimated: boolean = (template.animationDuration ?? 0) > 0;
+
+            return {
+                name: `${isAnimated ? "🎬" : "📸"} ${this._localizeTemplateName(template, locale)}`,
+                value: template.name,
+            };
+        });
     }
 }
