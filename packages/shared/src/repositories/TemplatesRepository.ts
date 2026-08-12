@@ -435,13 +435,28 @@ export class TemplatesRepository implements ITemplatesRepository {
      * all share a specific topic
      *
      * @param topic
+     * @param [imageLimit]
+     * @param [textLimit]
      * @returns string[]
      *
      * @author Kyrylo Maliuha
      */
-    public getTemplateNamesByTopic(topic: TemplateTopic): string[] {
+    public getTemplateNamesByTopic(topic: TemplateTopic, imageLimit?: number, textLimit?: number): string[] {
         const templates: Template[] = this.getAllByField("topics", topic);
-        return templates.map((template: Template): string => template.name);
+
+        return templates
+            .filter((template: Template): boolean => {
+                if (imageLimit !== undefined && (template.images?.length ?? 0) > imageLimit) {
+                    return false;
+                }
+
+                if (textLimit !== undefined && (template.texts?.length ?? 0) > textLimit) {
+                    return false;
+                }
+
+                return true;
+            })
+            .map((template: Template): string => template.name);
     }
 
     /**
