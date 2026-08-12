@@ -1,5 +1,5 @@
 import type { IAutocompleteService } from "#/interfaces/IAutocompleteService.ts";
-import { Locale } from "discord.js";
+import type { Locale } from "discord.js";
 import { type ApplicationCommandOptionChoiceData } from "discord.js";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
@@ -40,12 +40,7 @@ export class AutocompleteService implements IAutocompleteService {
      * @authors Kyrylo Maliuha & Oleksii Sych
      */
     private _localizeTemplateName(template: Template, locale: Locale): string {
-        return (
-            template.displayName[locale] ??
-            template.displayName[Locale.EnglishUS] ??
-            Object.values(template.displayName)[0] ??
-            template.name
-        );
+        return template.displayName[locale] || template.name;
     }
 
     /**
