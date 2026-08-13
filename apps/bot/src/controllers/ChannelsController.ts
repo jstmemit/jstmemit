@@ -55,7 +55,7 @@ export class ChannelsController implements IChannelsController {
         }
 
         try {
-            let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
+            let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId, true);
 
             const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
                 interaction.channelId,
