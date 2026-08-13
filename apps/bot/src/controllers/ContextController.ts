@@ -15,6 +15,7 @@ import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBot
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
+import type { messagesTable } from "@jstmemit/db/schema.ts";
 
 const env = Env.parse(process.env);
 
@@ -77,7 +78,7 @@ export class ContextController implements IContextController {
             }
 
             try {
-                await this._contextService.saveImagesBatch(
+                await this._contextService.saveImages(
                     this._contextService.buildMessageImages(id, channelId, author.avatarURL(), attachments),
                 );
             } catch (error) {
@@ -121,7 +122,9 @@ export class ContextController implements IContextController {
                 if (this._checkIfLinkToGif(content)) {
                     await this._contextService.saveGif(id, channelId, content);
                 } else {
-                    await this._contextService.saveContent(id, channelId, content);
+                    await this._contextService.saveContent([
+                        { messageId: id, channelId, content, timestamp: new Date() },
+                    ]);
                 }
             }
 
@@ -195,6 +198,7 @@ export class ContextController implements IContextController {
             }
 
             const messages: Collection<string, Message> = await channel.messages.fetch({ limit: 50 });
+            const contents: (typeof messagesTable.$inferInsert)[] = [];
             const images: ContextImage[] = [];
 
             for (const message of messages.values()) {
@@ -217,7 +221,7 @@ export class ContextController implements IContextController {
                         if (this._checkIfLinkToGif(content)) {
                             await this._contextService.saveGif(id, channelId, content);
                         } else {
-                            await this._contextService.saveContent(id, channelId, content);
+                            contents.push({ messageId: id, channelId, content, timestamp: new Date() });
                         }
                     }
 
@@ -236,9 +240,9 @@ export class ContextController implements IContextController {
                 }
             }
 
-            await this._contextService.saveImagesBatch(images);
-
             await Promise.all([
+                this._contextService.saveImages(images),
+                this._contextService.saveContent(contents),
                 this._contextService.saveEmojis(channel.id, guild),
                 this._contextService.saveStickers(channel.id, guild),
             ]);

@@ -3,28 +3,30 @@ import { messagesTable } from "../schema.ts";
 import { and, count, eq, gte, lte, sql, lt, desc } from "drizzle-orm";
 import { db } from "../index.ts";
 import { analytics } from "@jstmemit/analytics";
+import type { BatchItem } from "drizzle-orm/batch";
 
 export class MessagesRepository implements IMessagesRepository {
-    public async new(messageId: string, channelId: string, content: string, timestamp: Date): Promise<boolean> {
+    public async new(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number> {
+        if (messages.length === 0) {
+            return 0;
+        }
+
         try {
-            const message: typeof messagesTable.$inferInsert = {
-                messageId: messageId,
-                channelId: channelId,
-                content: content,
-                timestamp: timestamp,
-            };
+            const statements: BatchItem<"sqlite">[] = messages.map((message) =>
+                db
+                    .insert(messagesTable)
+                    .values(message)
+                    .onConflictDoNothing({ target: messagesTable.messageId })
+                    .returning({ id: messagesTable.id }),
+            );
 
-            const inserted = await db
-                .insert(messagesTable)
-                .values(message)
-                .onConflictDoNothing({ target: messagesTable.messageId })
-                .returning({ id: messagesTable.id });
+            const results = await db.batch(statements as [BatchItem<"sqlite">, ...BatchItem<"sqlite">[]]);
 
-            return inserted.length > 0;
+            return results.reduce((total: number, rows): number => total + (rows as { id: number }[]).length, 0);
         } catch (error) {
             analytics.captureException(error);
 
-            return false;
+            return 0;
         }
     }
 

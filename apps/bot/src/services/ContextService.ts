@@ -20,6 +20,7 @@ import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTran
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
+import type { messagesTable } from "@jstmemit/db/schema.ts";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
@@ -47,17 +48,14 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Calls MessagesRepository to save text content into
-     * the database
+     * Saves text content into the database
      *
-     * @param messageId
-     * @param channelId
-     * @param content
+     * @param messages
      *
      * @author Kyrylo Maliuha
      */
-    public async saveContent(messageId: string, channelId: string, content: string): Promise<void> {
-        await this._messagesRepository.new(messageId, channelId, content, new Date());
+    public async saveContent(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number> {
+        return this._messagesRepository.new(messages);
     }
 
     /**
@@ -76,7 +74,7 @@ export class ContextService implements IContextService {
             channelId,
         });
 
-        await this._messagesRepository.new(messageId, channelId, result.text, new Date());
+        await this._messagesRepository.new([{ messageId, channelId, content: result.text, timestamp: new Date() }]);
     }
 
     /**
@@ -86,7 +84,7 @@ export class ContextService implements IContextService {
      *
      * @author Kyrylo Maliuha
      */
-    public async saveImagesBatch(images: readonly ContextImage[]): Promise<void> {
+    public async saveImages(images: readonly ContextImage[]): Promise<void> {
         await this._imagesRepository.addMany(images);
     }
 
@@ -168,7 +166,7 @@ export class ContextService implements IContextService {
         const text: string = `${poll.question.text}, ${answers}`;
 
         if (text.length < 2000) {
-            await this.saveContent(messageId, channelId, text);
+            await this.saveContent([{ messageId, channelId, content: text, timestamp: new Date() }]);
         }
     }
 
@@ -176,7 +174,7 @@ export class ContextService implements IContextService {
         const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
         const timestamp: Date = new Date();
 
-        await this.saveImagesBatch(
+        await this.saveImages(
             emojis.map((emoji: GuildEmoji): ContextImage => ({
                 messageId: emoji.id,
                 channelId,
@@ -189,10 +187,17 @@ export class ContextService implements IContextService {
 
     public async saveStickers(channelId: string, guild: Guild): Promise<void> {
         const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
+        const timestamp: Date = new Date();
 
-        for (const sticker of stickers.values()) {
-            await this.saveAvatar(sticker.id, channelId, sticker.url);
-        }
+        await this.saveImages(
+            stickers.map((sticker: Sticker): ContextImage => ({
+                messageId: sticker.id,
+                channelId,
+                imageUrl: `${sticker.url}#${channelId}`,
+                source: "avatar",
+                timestamp,
+            })),
+        );
     }
 
     public async checkAndFetchGuildAssets(channelId: string, enabled: boolean, guild: Guild | null): Promise<void> {
