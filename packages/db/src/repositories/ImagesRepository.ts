@@ -1,7 +1,7 @@
 import { IImagesRepository } from "../interfaces/IImagesRepository.ts";
 import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
-import { and, desc, eq, gt, isNotNull, isNull, lt, ne, or, sql } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNotNull, isNull, lt, or, sql } from "drizzle-orm";
 import { analytics } from "@jstmemit/analytics";
 
 export class ImagesRepository extends IImagesRepository {
@@ -34,20 +34,27 @@ export class ImagesRepository extends IImagesRepository {
 
     public async getImagesByChannelId(channelId: string, timestamp: Date, limit: number = 100): Promise<string[]> {
         try {
-            const images = await db
-                .select()
+            const recent = db
+                .select({ imageUrl: imagesTable.imageUrl })
                 .from(imagesTable)
                 .where(
                     and(
                         eq(imagesTable.channelId, channelId),
-                        ne(imagesTable.source, "avatar"),
+                        inArray(imagesTable.source, ["attachment", "gif"]),
                         or(isNull(imagesTable.expiresAt), gt(imagesTable.expiresAt, timestamp)),
                     ),
                 )
+                .orderBy(desc(imagesTable.timestamp))
+                .limit(500)
+                .as("recent");
+
+            const images = await db
+                .select({ imageUrl: recent.imageUrl })
+                .from(recent)
                 .orderBy(sql`random()`)
                 .limit(limit);
 
-            return images.map((image) => image.imageUrl);
+            return images.map((image): string => image.imageUrl);
         } catch (error) {
             analytics.captureException(error);
 
