@@ -265,7 +265,7 @@ export class ContextController implements IContextController {
                 this._contextService.saveStickers(channel.id, guild),
             ]);
 
-            await this._cacheService.set(`refresh`, true, ms("1w"));
+            await this._cacheService.set(`refresh:${channel.id}`, true, ms("1w"));
         } catch (error) {
             analytics.captureException(error);
             logger.emit({
