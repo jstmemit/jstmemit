@@ -1,15 +1,19 @@
 import type { Attachment, Collection, Guild, Poll } from "discord.js";
+import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
 
 export abstract class IContextService {
     public abstract saveContent(messageId: string, channelId: string, content: string): Promise<void>;
 
     public abstract saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<void>;
 
-    public abstract saveImages(
+    public abstract buildMessageImages(
         messageId: string,
         channelId: string,
+        avatarUrl: string | null,
         attachments: Collection<string, Attachment>,
-    ): Promise<void>;
+    ): ContextImage[];
+
+    public abstract saveImagesBatch(images: readonly ContextImage[]): Promise<void>;
 
     public abstract saveGif(messageId: string, channelId: string, content: string): Promise<void>;
 

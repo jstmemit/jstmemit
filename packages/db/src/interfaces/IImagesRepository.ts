@@ -1,3 +1,5 @@
+import type { imagesTable } from "../schema.ts";
+
 export abstract class IImagesRepository {
     public abstract add(
         messageId: string,
@@ -7,6 +9,8 @@ export abstract class IImagesRepository {
         timestamp: Date,
         expiresAt?: Date,
     ): Promise<void>;
+
+    public abstract addMany(images: readonly (typeof imagesTable.$inferInsert)[]): Promise<void>;
 
     public abstract getImagesByChannelId(channelId: string, timestamp: Date, limit?: number): Promise<string[]>;
 

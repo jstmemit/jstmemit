@@ -3,6 +3,7 @@ import { imagesTable } from "../schema.ts";
 import { db } from "../index.ts";
 import { and, desc, eq, gt, inArray, isNotNull, isNull, lt, or, sql } from "drizzle-orm";
 import { analytics } from "@jstmemit/analytics";
+import type { BatchItem } from "drizzle-orm/batch";
 
 export class ImagesRepository extends IImagesRepository {
     public async add(
@@ -27,6 +28,28 @@ export class ImagesRepository extends IImagesRepository {
                 target: imagesTable.imageUrl,
                 set: { timestamp, expiresAt },
             });
+        } catch (error) {
+            analytics.captureException(error);
+        }
+    }
+
+    public async addMany(images: readonly (typeof imagesTable.$inferInsert)[]): Promise<void> {
+        if (images.length === 0) {
+            return;
+        }
+
+        try {
+            const statements: BatchItem<"sqlite">[] = images.map((image) =>
+                db
+                    .insert(imagesTable)
+                    .values(image)
+                    .onConflictDoUpdate({
+                        target: imagesTable.imageUrl,
+                        set: { timestamp: image.timestamp, expiresAt: image.expiresAt },
+                    }),
+            );
+
+            await db.batch(statements as [BatchItem<"sqlite">, ...BatchItem<"sqlite">[]]);
         } catch (error) {
             analytics.captureException(error);
         }
