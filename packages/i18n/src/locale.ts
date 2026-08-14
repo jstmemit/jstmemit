@@ -2439,21 +2439,37 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🎉 Yeay! {{count}} meme di **<#{{channelId}}>**!",
         [Locale.Czech]: "🎉 Hurá! {{count}} memů v **<#{{channelId}}>**!",
     }),
-    "milestones.description": buildLocales("Below are some stats about how you reacted to them.", {
-        [Locale.Russian]: "Ниже немного статистики о том, как вы на них реагировали.",
-        [Locale.Ukrainian]: "Нижче трохи статистики про те, як ви на них реагували.",
-        [Locale.Dutch]: "Hieronder wat stats over hoe jullie erop reageerden.",
-        [Locale.French]: "Voici quelques stats sur la façon dont vous y avez réagi.",
-        [Locale.German]: "Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt.",
-        [Locale.Polish]: "Poniżej trochę statystyk o tym, jak na nie reagowaliście.",
-        [Locale.SpanishES]: "Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos.",
-        [Locale.SpanishLATAM]: "Abajo hay algunas estadísticas de cómo reaccionaron a ellos.",
-        [Locale.PortugueseBR]: "Abaixo estão algumas estatísticas de como vocês reagiram a eles.",
-        [Locale.Turkish]: "Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.",
-        [Locale.Italian]: "Qui sotto qualche statistica su come ci avete reagito.",
-        [Locale.Indonesian]: "Di bawah ada beberapa statistik soal cara kalian menanggapinya.",
-        [Locale.Czech]: "Níže je pár statistik o tom, jak jste na ně reagovali.",
-    }),
+    "milestones.description": buildLocales(
+        "Below are some stats about how you reacted to them. You can also view all achievements of the channel in {{achievements}}",
+        {
+            [Locale.Russian]:
+                "Ниже немного статистики о том, как вы на них реагировали. Все достижения канала можно посмотреть в {{achievements}}",
+            [Locale.Ukrainian]:
+                "Нижче трохи статистики про те, як ви на них реагували. Усі досягнення каналу можна переглянути в {{achievements}}",
+            [Locale.Dutch]:
+                "Hieronder wat stats over hoe jullie erop reageerden. Alle prestaties van het kanaal zie je in {{achievements}}",
+            [Locale.French]:
+                "Voici quelques stats sur la façon dont vous y avez réagi. Vous pouvez aussi voir tous les succès du salon dans {{achievements}}",
+            [Locale.German]:
+                "Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt. Alle Erfolge des Kanals findest du in {{achievements}}",
+            [Locale.Polish]:
+                "Poniżej trochę statystyk o tym, jak na nie reagowaliście. Wszystkie osiągnięcia kanału zobaczysz w {{achievements}}",
+            [Locale.SpanishES]:
+                "Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos. También puedes ver todos los logros del canal en {{achievements}}",
+            [Locale.SpanishLATAM]:
+                "Abajo hay algunas estadísticas de cómo reaccionaron a ellos. También puedes ver todos los logros del canal en {{achievements}}",
+            [Locale.PortugueseBR]:
+                "Abaixo estão algumas estatísticas de como vocês reagiram a eles. Você também pode ver todas as conquistas do canal em {{achievements}}",
+            [Locale.Turkish]:
+                "Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var. Kanalın tüm başarılarını {{achievements}} üzerinden görebilirsin",
+            [Locale.Italian]:
+                "Qui sotto qualche statistica su come ci avete reagito. Puoi anche vedere tutti gli obiettivi del canale in {{achievements}}",
+            [Locale.Indonesian]:
+                "Di bawah ada beberapa statistik soal cara kalian menanggapinya. Semua pencapaian channel juga bisa dilihat di {{achievements}}",
+            [Locale.Czech]:
+                "Níže je pár statistik o tom, jak jste na ně reagovali. Všechny úspěchy kanálu si můžeš prohlédnout v {{achievements}}",
+        },
+    ),
     "milestones.nextGoal": buildLocales("Next goal: {{currentGoal}}/{{nextGoal}} memes", {
         [Locale.Russian]: "Следующая цель: {{currentGoal}}/{{nextGoal}} мемов",
         [Locale.Ukrainian]: "Наступна ціль: {{currentGoal}}/{{nextGoal}} мемів",
