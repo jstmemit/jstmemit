@@ -99,8 +99,14 @@ export class RatingsService implements IRatingsService {
 
         const { likes, dislikes } = await this._ratingsRepository.getMemeRatings(messageId);
 
-        await interaction.editReply({
-            components: [this.constructRatingButtons(likes, dislikes, generationId)],
-        });
+        try {
+            await interaction.editReply({
+                components: [this.constructRatingButtons(likes, dislikes, generationId)],
+            });
+        } catch {
+            await interaction.message.edit({
+                components: [this.constructRatingButtons(likes, dislikes, generationId)],
+            });
+        }
     }
 }

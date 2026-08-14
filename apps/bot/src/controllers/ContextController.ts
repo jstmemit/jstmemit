@@ -14,6 +14,8 @@ import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.t
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
+import type { messagesTable } from "@jstmemit/db/schema.ts";
 
 const env = Env.parse(process.env);
 
@@ -75,43 +77,23 @@ export class ContextController implements IContextController {
                 return;
             }
 
-            const avatar: string | null = author.avatarURL();
-
-            if (avatar) {
-                try {
-                    await this._contextService.saveAvatar(id, channelId, avatar);
-                } catch (error) {
-                    analytics.captureException(error);
-                    logger.emit({
-                        severityText: "error",
-                        body: "context.save_avatar.error",
-                        attributes: {
-                            posthogDistinctId: message.author.id,
-                            channel_id: message.channelId,
-                            guild_id: message.guildId,
-                            error_message: error instanceof Error ? error.message : String(error),
-                        },
-                    });
-                }
-            }
-
-            if (attachments) {
-                try {
-                    await this._contextService.saveImages(id, channelId, attachments);
-                } catch (error) {
-                    analytics.captureException(error);
-                    logger.emit({
-                        severityText: "error",
-                        body: "context.save_images.error",
-                        attributes: {
-                            posthogDistinctId: message.author.id,
-                            channel_id: message.channelId,
-                            guild_id: message.guildId,
-                            attachments_amount: attachments.size,
-                            error_message: error instanceof Error ? error.message : String(error),
-                        },
-                    });
-                }
+            try {
+                await this._contextService.saveImages(
+                    this._contextService.buildMessageImages(id, channelId, author.avatarURL(), attachments),
+                );
+            } catch (error) {
+                analytics.captureException(error);
+                logger.emit({
+                    severityText: "error",
+                    body: "context.save_images.error",
+                    attributes: {
+                        posthogDistinctId: message.author.id,
+                        channel_id: message.channelId,
+                        guild_id: message.guildId,
+                        attachments_amount: attachments.size,
+                        error_message: error instanceof Error ? error.message : String(error),
+                    },
+                });
             }
 
             if (message.flags.has("IsVoiceMessage") && message?.attachments?.first()?.proxyURL) {
@@ -140,7 +122,9 @@ export class ContextController implements IContextController {
                 if (this._checkIfLinkToGif(content)) {
                     await this._contextService.saveGif(id, channelId, content);
                 } else {
-                    await this._contextService.saveContent(id, channelId, content);
+                    await this._contextService.saveContent([
+                        { messageId: id, channelId, content, timestamp: new Date() },
+                    ]);
                 }
             }
 
@@ -214,6 +198,8 @@ export class ContextController implements IContextController {
             }
 
             const messages: Collection<string, Message> = await channel.messages.fetch({ limit: 50 });
+            const contents: (typeof messagesTable.$inferInsert)[] = [];
+            const images: ContextImage[] = [];
 
             for (const message of messages.values()) {
                 if (message.author.bot || message.system) {
@@ -223,15 +209,9 @@ export class ContextController implements IContextController {
                 const { id, content, channelId, attachments, author, poll } = message;
 
                 try {
-                    const avatar: string | null = author.avatarURL();
-
-                    if (avatar) {
-                        await this._contextService.saveAvatar(id, channelId, avatar);
-                    }
-
-                    if (attachments.size > 0) {
-                        await this._contextService.saveImages(id, channelId, attachments);
-                    }
+                    images.push(
+                        ...this._contextService.buildMessageImages(id, channelId, author.avatarURL(), attachments),
+                    );
 
                     if (poll) {
                         await this._contextService.savePoll(id, channelId, poll);
@@ -241,7 +221,7 @@ export class ContextController implements IContextController {
                         if (this._checkIfLinkToGif(content)) {
                             await this._contextService.saveGif(id, channelId, content);
                         } else {
-                            await this._contextService.saveContent(id, channelId, content);
+                            contents.push({ messageId: id, channelId, content, timestamp: new Date() });
                         }
                     }
 
@@ -261,11 +241,13 @@ export class ContextController implements IContextController {
             }
 
             await Promise.all([
+                this._contextService.saveImages(images),
+                this._contextService.saveContent(contents),
                 this._contextService.saveEmojis(channel.id, guild),
                 this._contextService.saveStickers(channel.id, guild),
             ]);
 
-            await this._cacheService.set(`refresh`, true, ms("1w"));
+            await this._cacheService.set(`refresh:${channel.id}`, true, ms("1w"));
         } catch (error) {
             analytics.captureException(error);
             logger.emit({

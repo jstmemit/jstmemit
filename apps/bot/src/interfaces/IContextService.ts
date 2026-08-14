@@ -1,15 +1,20 @@
 import type { Attachment, Collection, Guild, Poll } from "discord.js";
+import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
+import type { messagesTable } from "@jstmemit/db/schema.ts";
 
 export abstract class IContextService {
-    public abstract saveContent(messageId: string, channelId: string, content: string): Promise<void>;
+    public abstract saveContent(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number>;
 
     public abstract saveTranscribedVoice(messageId: string, channelId: string, audio: string): Promise<void>;
 
-    public abstract saveImages(
+    public abstract buildMessageImages(
         messageId: string,
         channelId: string,
+        avatarUrl: string | null,
         attachments: Collection<string, Attachment>,
-    ): Promise<void>;
+    ): ContextImage[];
+
+    public abstract saveImages(images: readonly ContextImage[]): Promise<void>;
 
     public abstract saveGif(messageId: string, channelId: string, content: string): Promise<void>;
 

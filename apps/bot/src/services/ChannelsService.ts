@@ -27,11 +27,15 @@ export class ChannelsService implements IChannelsService {
      * by passed channelId.
      *
      * @param channelId
+     * @param upsert
      *
      * @author Jia Miao Hui
      */
-    public async getChannel(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
-        return await this._getCachedChannel(channelId);
+    public async getChannel(
+        channelId: string,
+        upsert?: boolean,
+    ): Promise<typeof channelsTable.$inferSelect | undefined> {
+        return await this._getCachedChannel(channelId, upsert);
     }
 
     /**
@@ -62,12 +66,13 @@ export class ChannelsService implements IChannelsService {
      * Upserts a channel into database and returns if it's enabled or not.
      *
      * @param channelId
+     * @param upsert
      *
      * @author Kyrylo Maliuha
      */
-    public async isChannelEnabled(channelId: string): Promise<boolean> {
+    public async isChannelEnabled(channelId: string, upsert?: boolean): Promise<boolean> {
         try {
-            const channel = await this._getCachedChannel(channelId);
+            const channel = await this._getCachedChannel(channelId, upsert);
 
             if (!channel) {
                 return false;
@@ -104,7 +109,8 @@ export class ChannelsService implements IChannelsService {
     }
 
     /**
-     * Deletes all channel messages
+     * Deletes all channel messages, disables the channel
+     * and invalidates context cache for the channel
      *
      * @param channelId
      *
@@ -113,6 +119,14 @@ export class ChannelsService implements IChannelsService {
     public async deleteChannelData(channelId: string): Promise<boolean> {
         try {
             await this._messagesRepository.deleteAllByChannelId(channelId);
+            await this._channelsRepository.switch(channelId, true);
+
+            await Promise.all([
+                this._cacheService.delete(`context:texts:${channelId}`),
+                this._cacheService.delete(`context:images:${channelId}`),
+                this._cacheService.delete(`context:avatars:${channelId}`),
+                this._cacheService.delete(`context:channel:${channelId},`),
+            ]);
 
             return true;
         } catch (e) {
@@ -166,17 +180,31 @@ export class ChannelsService implements IChannelsService {
      * if it's not there yet
      *
      * @param channelId
+     * @param upsert
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private async _getCachedChannel(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
-        const channel: typeof channelsTable.$inferSelect | undefined = await this._cacheService.getOrSet(
-            `context:channel:${channelId}`,
-            (): Promise<typeof channelsTable.$inferSelect | undefined> =>
-                this._channelsRepository.upsert(channelId, new Date()),
-            ms("1m"),
-        );
+    private async _getCachedChannel(
+        channelId: string,
+        upsert: boolean = false,
+    ): Promise<typeof channelsTable.$inferSelect | undefined> {
+        let channel;
+
+        if (upsert) {
+            channel = await this._cacheService.getOrSet(
+                `context:channel:${channelId}`,
+                (): Promise<typeof channelsTable.$inferSelect | undefined> =>
+                    this._channelsRepository.upsert(channelId, new Date()),
+                ms("1m"),
+            );
+        } else {
+            channel = await this._cacheService.getOrSet(
+                `context:channel:${channelId}`,
+                (): Promise<typeof channelsTable.$inferSelect | undefined> => this._channelsRepository.get(channelId),
+                ms("5m"),
+            );
+        }
 
         if (!channel) {
             return undefined;

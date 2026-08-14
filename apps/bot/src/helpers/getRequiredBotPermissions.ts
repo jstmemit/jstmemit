@@ -18,7 +18,9 @@ export const getRequiredBotPermissions = (interaction: Message | Interaction): R
     }
 
     return {
-        sendMessages: permissions.has(PermissionFlagsBits.SendMessages),
+        sendMessages: interaction.channel?.isThread()
+            ? permissions.has(PermissionFlagsBits.SendMessagesInThreads)
+            : permissions.has(PermissionFlagsBits.SendMessages),
         attachFiles: permissions.has(PermissionFlagsBits.AttachFiles),
         embedLinks: permissions.has(PermissionFlagsBits.EmbedLinks),
         readHistory: permissions.has(PermissionFlagsBits.ReadMessageHistory),

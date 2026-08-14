@@ -35,6 +35,7 @@ export class SettingsController implements ISettingsController {
         try {
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
+                true,
             );
 
             if (!channel) {
