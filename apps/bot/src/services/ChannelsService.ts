@@ -119,6 +119,12 @@ export class ChannelsService implements IChannelsService {
         try {
             await this._messagesRepository.deleteAllByChannelId(channelId);
 
+            await Promise.all([
+                this._cacheService.delete(`context:texts:${channelId}`),
+                this._cacheService.delete(`context:images:${channelId}`),
+                this._cacheService.delete(`context:avatars:${channelId}`),
+            ]);
+
             return true;
         } catch (e) {
             console.error(e);
