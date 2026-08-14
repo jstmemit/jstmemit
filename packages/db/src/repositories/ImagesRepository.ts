@@ -137,4 +137,16 @@ export class ImagesRepository extends IImagesRepository {
             return false;
         }
     }
+
+    public async deleteAllByChannelId(channelId: string): Promise<boolean> {
+        try {
+            await db.delete(imagesTable).where(eq(imagesTable.channelId, channelId));
+
+            return true;
+        } catch (error) {
+            analytics.captureException(error);
+
+            return false;
+        }
+    }
 }
