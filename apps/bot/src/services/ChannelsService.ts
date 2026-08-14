@@ -109,7 +109,8 @@ export class ChannelsService implements IChannelsService {
     }
 
     /**
-     * Deletes all channel messages
+     * Deletes all channel messages, disables the channel
+     * and invalidates context cache for the channel
      *
      * @param channelId
      *
@@ -118,11 +119,13 @@ export class ChannelsService implements IChannelsService {
     public async deleteChannelData(channelId: string): Promise<boolean> {
         try {
             await this._messagesRepository.deleteAllByChannelId(channelId);
+            await this._channelsRepository.switch(channelId, true);
 
             await Promise.all([
                 this._cacheService.delete(`context:texts:${channelId}`),
                 this._cacheService.delete(`context:images:${channelId}`),
                 this._cacheService.delete(`context:avatars:${channelId}`),
+                this._cacheService.delete(`context:channel:${channelId},`),
             ]);
 
             return true;
