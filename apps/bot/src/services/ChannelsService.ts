@@ -6,20 +6,24 @@ import { client } from "#/bot.ts";
 import { type BaseMessageOptions, type Channel, MessageFlags } from "discord.js";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import ms from "ms";
+import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 
 export class ChannelsService implements IChannelsService {
     private readonly _channelsRepository: IChannelsRepository;
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _cacheService: ICacheService;
+    private readonly _imagesRepository: IImagesRepository;
 
     public constructor(
         channelsRepository: IChannelsRepository,
         messagesRepository: IMessagesRepository,
         cacheService: ICacheService,
+        imagesRepository: IImagesRepository,
     ) {
         this._channelsRepository = channelsRepository;
         this._messagesRepository = messagesRepository;
         this._cacheService = cacheService;
+        this._imagesRepository = imagesRepository;
     }
 
     /**
@@ -119,13 +123,15 @@ export class ChannelsService implements IChannelsService {
     public async deleteChannelData(channelId: string): Promise<boolean> {
         try {
             await this._messagesRepository.deleteAllByChannelId(channelId);
+            await this._imagesRepository.deleteAllByChannelId(channelId);
             await this._channelsRepository.switch(channelId, true);
 
             await Promise.all([
                 this._cacheService.delete(`context:texts:${channelId}`),
                 this._cacheService.delete(`context:images:${channelId}`),
                 this._cacheService.delete(`context:avatars:${channelId}`),
-                this._cacheService.delete(`context:channel:${channelId},`),
+                this._cacheService.delete(`context:channel:${channelId}`),
+                this._cacheService.delete(`generations:${channelId}`),
             ]);
 
             return true;

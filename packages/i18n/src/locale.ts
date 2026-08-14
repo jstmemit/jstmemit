@@ -649,34 +649,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "🗑️ Smazat všechna data tohoto kanálu?",
     }),
     "deleteData.confirm.body": buildLocales(
-        "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with {{enable}}.",
+        "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot will also be turned off in this channel, so it stops picking up new messages. You can turn it back on anytime with {{enable}}.",
         {
             [Locale.Russian]:
-                "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот останется включённым и начнёт обучаться заново на новых сообщениях. Если после этого вы хотите полностью его остановить, выключите его через {{enable}}.",
+                "Это навсегда удалит все сохранённые сообщения и ссылки на изображения для этого канала из Jstmemit, и это нельзя отменить. Бот также будет выключен в этом канале, так что он перестанет собирать новые сообщения. Включить его обратно можно в любой момент через {{enable}}.",
             [Locale.Ukrainian]:
-                "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот залишиться увімкненим і почне навчатися заново на нових повідомленнях. Якщо після цього ви хочете повністю його зупинити, вимкніть його через {{enable}}.",
+                "Це назавжди видалить усі збережені повідомлення та посилання на зображення для цього каналу з Jstmemit, і це не можна скасувати. Бот також буде вимкнено у цьому каналі, тож він перестане збирати нові повідомлення. Увімкнути його назад можна будь-коли через {{enable}}.",
             [Locale.Dutch]:
-                "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot blijft ingeschakeld en begint opnieuw te leren van nieuwe berichten. Wil je hem daarna helemaal stoppen, zet hem dan uit met {{enable}}.",
+                "Dit verwijdert permanent alle opgeslagen berichten en afbeeldingslinks van dit kanaal uit Jstmemit en kan niet ongedaan gemaakt worden. De bot wordt ook uitgezet in dit kanaal, dus hij pikt geen nieuwe berichten meer op. Je kunt hem altijd weer aanzetten met {{enable}}.",
             [Locale.French]:
-                "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot reste activé et recommencera à apprendre avec les nouveaux messages. Si vous voulez l'arrêter complètement ensuite, désactivez-le avec {{enable}}.",
+                "Cela supprime définitivement tous les messages et liens d'images enregistrés pour ce salon de Jstmemit, et c'est irréversible. Le bot sera aussi désactivé dans ce salon, il arrêtera donc de récupérer les nouveaux messages. Vous pouvez le réactiver à tout moment avec {{enable}}.",
             [Locale.German]:
-                "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot bleibt aktiviert und beginnt, aus neuen Nachrichten neu zu lernen. Wenn du ihn danach komplett stoppen willst, schalte ihn mit {{enable}} aus.",
+                "Das löscht dauerhaft alle gespeicherten Nachrichten und Bildlinks für diesen Kanal aus Jstmemit und kann nicht rückgängig gemacht werden. Der Bot wird außerdem in diesem Kanal ausgeschaltet und nimmt dann keine neuen Nachrichten mehr auf. Du kannst ihn jederzeit mit {{enable}} wieder einschalten.",
             [Locale.Polish]:
-                "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot pozostanie włączony i zacznie uczyć się od nowa z nowych wiadomości. Jeśli potem chcesz go całkowicie zatrzymać, wyłącz go przez {{enable}}.",
+                "To trwale usunie wszystkie zapisane wiadomości i linki do obrazków dla tego kanału z Jstmemit i nie można tego cofnąć. Bot zostanie też wyłączony na tym kanale, więc przestanie zbierać nowe wiadomości. W każdej chwili możesz go włączyć z powrotem przez {{enable}}.",
             [Locale.SpanishES]:
-                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con {{enable}}.",
+                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot también se desactivará en este canal, así que dejará de recoger mensajes nuevos. Puedes volver a activarlo cuando quieras con {{enable}}.",
             [Locale.SpanishLATAM]:
-                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot sigue activado y empezará a aprender de nuevo con los mensajes nuevos. Si después quieres detenerlo por completo, desactívalo con {{enable}}.",
+                "Esto borra permanentemente todos los mensajes y enlaces de imágenes guardados de este canal en Jstmemit y no se puede deshacer. El bot también se va a desactivar en este canal, así que dejará de guardar mensajes nuevos. Puedes volver a activarlo cuando quieras con {{enable}}.",
             [Locale.PortugueseBR]:
-                "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot continua ativado e vai começar a aprender de novo com as mensagens novas. Se depois quiser pará-lo de vez, desligue-o com {{enable}}.",
+                "Isso apaga permanentemente todas as mensagens e links de imagens salvos deste canal no Jstmemit e não pode ser desfeito. O bot também vai ser desligado neste canal, então ele para de recolher mensagens novas. Você pode ligá-lo de novo quando quiser com {{enable}}.",
             [Locale.Turkish]:
-                "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot açık kalır ve yeni mesajlardan yeniden öğrenmeye başlar. Sonrasında tamamen durdurmak istersen {{enable}} ile kapat.",
+                "Bu, bu kanala ait tüm kayıtlı mesajları ve görsel bağlantılarını Jstmemit'ten kalıcı olarak siler ve geri alınamaz. Bot ayrıca bu kanalda kapatılır, yani yeni mesajları almayı bırakır. İstediğin zaman {{enable}} ile tekrar açabilirsin.",
             [Locale.Italian]:
-                "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot resta attivo e ricomincerà a imparare dai nuovi messaggi. Se poi vuoi fermarlo del tutto, spegnilo con {{enable}}.",
+                "Questo elimina definitivamente tutti i messaggi e i link alle immagini salvati per questo canale da Jstmemit e non può essere annullato. Il bot verrà anche spento in questo canale, quindi smetterà di raccogliere nuovi messaggi. Puoi riaccenderlo quando vuoi con {{enable}}.",
             [Locale.Indonesian]:
-                "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot tetap aktif dan akan mulai belajar lagi dari pesan baru. Kalau setelahnya mau berhenti total, matikan lewat {{enable}}.",
+                "Ini akan menghapus permanen semua pesan dan tautan gambar yang tersimpan untuk channel ini dari Jstmemit dan tidak bisa dibatalkan. Bot juga akan dimatikan di channel ini, jadi dia berhenti mengambil pesan baru. Kamu bisa menyalakannya lagi kapan saja lewat {{enable}}.",
             [Locale.Czech]:
-                "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot zůstane zapnutý a začne se znovu učit z nových zpráv. Pokud ho pak chceš úplně zastavit, vypni ho přes {{enable}}.",
+                "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot se navíc v tomto kanálu vypne, takže přestane sbírat nové zprávy. Kdykoliv ho můžeš zase zapnout přes {{enable}}.",
         },
     ),
     "deleteData.success.heading": buildLocales("✅ Data deleted!", {
@@ -695,34 +695,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "✅ Data smazána!",
     }),
     "deleteData.success.body": buildLocales(
-        "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with {{enable}} if you wish to stop using it.",
+        "All saved messages and image links for this channel were deleted, and Jstmemit is now turned off here. Turn it back on with {{enable}} whenever you want memes again.",
         {
             [Locale.Russian]:
-                "Все сохранённые сообщения и ссылки на изображения для этого канала были удалены. Бот всё ещё включён и начнёт обучаться заново на новых сообщениях. Выключите его через {{enable}}, если больше не хотите им пользоваться.",
+                "Все сохранённые сообщения и ссылки на изображения для этого канала удалены, а Jstmemit теперь выключен тут. Включите его обратно через {{enable}}, когда снова захотите мемов.",
             [Locale.Ukrainian]:
-                "Усі збережені повідомлення та посилання на зображення для цього каналу було видалено. Бот все ще увімкнений і почне навчатися заново на нових повідомленнях. Вимкніть його через {{enable}}, якщо більше не хочете ним користуватися.",
+                "Усі збережені повідомлення та посилання на зображення для цього каналу видалено, а Jstmemit тепер вимкнено тут. Увімкніть його назад через {{enable}}, коли знову захочете мемів.",
             [Locale.Dutch]:
-                "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd. De bot staat nog aan en begint opnieuw te leren van nieuwe berichten. Zet hem uit met {{enable}} als je hem niet meer wilt gebruiken.",
+                "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd en Jstmemit staat hier nu uit. Zet hem weer aan met {{enable}} wanneer je weer memes wilt.",
             [Locale.French]:
-                "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés. Le bot est toujours actif et recommencera à apprendre avec les nouveaux messages. Désactivez-le avec {{enable}} si vous ne voulez plus l'utiliser.",
+                "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés, et Jstmemit est maintenant désactivé ici. Réactivez-le avec {{enable}} quand vous voudrez de nouveaux mèmes.",
             [Locale.German]:
-                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht. Der Bot ist noch an und beginnt, aus neuen Nachrichten neu zu lernen. Schalte ihn mit {{enable}} aus, wenn du ihn nicht mehr nutzen möchtest.",
+                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht und Jstmemit ist hier jetzt ausgeschaltet. Schalte ihn mit {{enable}} wieder ein, wenn du wieder Memes willst.",
             [Locale.Polish]:
-                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte. Bot jest nadal włączony i zacznie uczyć się od nowa z nowych wiadomości. Wyłącz go przez {{enable}}, jeśli nie chcesz już z niego korzystać.",
+                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte, a Jstmemit jest tu teraz wyłączony. Włącz go z powrotem przez {{enable}}, gdy znowu będziesz chcieć memów.",
             [Locale.SpanishES]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con {{enable}} si ya no quieres usarlo.",
+                "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados, y Jstmemit ahora está desactivado aquí. Vuelve a activarlo con {{enable}} cuando quieras más memes.",
             [Locale.SpanishLATAM]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados. El bot sigue activo y empezará a aprender de nuevo con los mensajes nuevos. Desactívalo con {{enable}} si ya no quieres usarlo.",
+                "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados, y Jstmemit ahora está desactivado aquí. Vuelve a activarlo con {{enable}} cuando quieras más memes.",
             [Locale.PortugueseBR]:
-                "Todas as mensagens e links de imagens salvos deste canal foram apagados. O bot ainda está ligado e vai começar a aprender de novo com as mensagens novas. Desligue-o com {{enable}} se não quiser mais usá-lo.",
+                "Todas as mensagens e links de imagens salvos deste canal foram apagados, e o Jstmemit agora está desligado aqui. Ligue-o de novo com {{enable}} quando quiser mais memes.",
             [Locale.Turkish]:
-                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi. Bot hâlâ açık ve yeni mesajlardan yeniden öğrenmeye başlayacak. Artık kullanmak istemiyorsan {{enable}} ile kapat.",
+                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi, Jstmemit de burada kapatıldı. Yine caps istediğinde {{enable}} ile tekrar aç.",
             [Locale.Italian]:
-                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati. Il bot è ancora acceso e ricomincerà a imparare dai nuovi messaggi. Spegnilo con {{enable}} se non vuoi più usarlo.",
+                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati, e Jstmemit ora è spento qui. Riaccendilo con {{enable}} quando vuoi altri meme.",
             [Locale.Indonesian]:
-                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus. Bot masih menyala dan akan mulai belajar lagi dari pesan baru. Matikan lewat {{enable}} kalau tidak mau memakainya lagi.",
+                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus, dan Jstmemit sekarang mati di sini. Nyalakan lagi lewat {{enable}} kalau mau meme lagi.",
             [Locale.Czech]:
-                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány. Bot je pořád zapnutý a začne se znovu učit z nových zpráv. Vypni ho přes {{enable}}, pokud ho už nechceš používat.",
+                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány a Jstmemit je tady teď vypnutý. Zapni ho zpátky přes {{enable}}, až budeš zase chtít memy.",
         },
     ),
     "deleteData.button.cancel": buildLocales("Cancel", {
@@ -2439,21 +2439,37 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🎉 Yeay! {{count}} meme di **<#{{channelId}}>**!",
         [Locale.Czech]: "🎉 Hurá! {{count}} memů v **<#{{channelId}}>**!",
     }),
-    "milestones.description": buildLocales("Below are some stats about how you reacted to them.", {
-        [Locale.Russian]: "Ниже немного статистики о том, как вы на них реагировали.",
-        [Locale.Ukrainian]: "Нижче трохи статистики про те, як ви на них реагували.",
-        [Locale.Dutch]: "Hieronder wat stats over hoe jullie erop reageerden.",
-        [Locale.French]: "Voici quelques stats sur la façon dont vous y avez réagi.",
-        [Locale.German]: "Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt.",
-        [Locale.Polish]: "Poniżej trochę statystyk o tym, jak na nie reagowaliście.",
-        [Locale.SpanishES]: "Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos.",
-        [Locale.SpanishLATAM]: "Abajo hay algunas estadísticas de cómo reaccionaron a ellos.",
-        [Locale.PortugueseBR]: "Abaixo estão algumas estatísticas de como vocês reagiram a eles.",
-        [Locale.Turkish]: "Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var.",
-        [Locale.Italian]: "Qui sotto qualche statistica su come ci avete reagito.",
-        [Locale.Indonesian]: "Di bawah ada beberapa statistik soal cara kalian menanggapinya.",
-        [Locale.Czech]: "Níže je pár statistik o tom, jak jste na ně reagovali.",
-    }),
+    "milestones.description": buildLocales(
+        "Below are some stats about how you reacted to them. You can also view all achievements of the channel in {{achievements}}",
+        {
+            [Locale.Russian]:
+                "Ниже немного статистики о том, как вы на них реагировали. Все достижения канала можно посмотреть в {{achievements}}",
+            [Locale.Ukrainian]:
+                "Нижче трохи статистики про те, як ви на них реагували. Усі досягнення каналу можна переглянути в {{achievements}}",
+            [Locale.Dutch]:
+                "Hieronder wat stats over hoe jullie erop reageerden. Alle prestaties van het kanaal zie je in {{achievements}}",
+            [Locale.French]:
+                "Voici quelques stats sur la façon dont vous y avez réagi. Vous pouvez aussi voir tous les succès du salon dans {{achievements}}",
+            [Locale.German]:
+                "Unten ein paar Statistiken dazu, wie ihr darauf reagiert habt. Alle Erfolge des Kanals findest du in {{achievements}}",
+            [Locale.Polish]:
+                "Poniżej trochę statystyk o tym, jak na nie reagowaliście. Wszystkie osiągnięcia kanału zobaczysz w {{achievements}}",
+            [Locale.SpanishES]:
+                "Abajo tienes algunas estadísticas de cómo reaccionasteis a ellos. También puedes ver todos los logros del canal en {{achievements}}",
+            [Locale.SpanishLATAM]:
+                "Abajo hay algunas estadísticas de cómo reaccionaron a ellos. También puedes ver todos los logros del canal en {{achievements}}",
+            [Locale.PortugueseBR]:
+                "Abaixo estão algumas estatísticas de como vocês reagiram a eles. Você também pode ver todas as conquistas do canal em {{achievements}}",
+            [Locale.Turkish]:
+                "Aşağıda onlara nasıl tepki verdiğinize dair birkaç istatistik var. Kanalın tüm başarılarını {{achievements}} üzerinden görebilirsin",
+            [Locale.Italian]:
+                "Qui sotto qualche statistica su come ci avete reagito. Puoi anche vedere tutti gli obiettivi del canale in {{achievements}}",
+            [Locale.Indonesian]:
+                "Di bawah ada beberapa statistik soal cara kalian menanggapinya. Semua pencapaian channel juga bisa dilihat di {{achievements}}",
+            [Locale.Czech]:
+                "Níže je pár statistik o tom, jak jste na ně reagovali. Všechny úspěchy kanálu si můžeš prohlédnout v {{achievements}}",
+        },
+    ),
     "milestones.nextGoal": buildLocales("Next goal: {{currentGoal}}/{{nextGoal}} memes", {
         [Locale.Russian]: "Следующая цель: {{currentGoal}}/{{nextGoal}} мемов",
         [Locale.Ukrainian]: "Наступна ціль: {{currentGoal}}/{{nextGoal}} мемів",
