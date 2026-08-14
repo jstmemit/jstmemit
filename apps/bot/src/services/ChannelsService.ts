@@ -130,7 +130,7 @@ export class ChannelsService implements IChannelsService {
                 this._cacheService.delete(`context:texts:${channelId}`),
                 this._cacheService.delete(`context:images:${channelId}`),
                 this._cacheService.delete(`context:avatars:${channelId}`),
-                this._cacheService.delete(`context:channel:${channelId},`),
+                this._cacheService.delete(`context:channel:${channelId}`),
             ]);
 
             return true;
