@@ -34,10 +34,7 @@ textNarrationWorker.on("failed", (job, error) => {
 });
 
 voiceTranscription.on("failed", (job, error) => {
-    analytics.captureException(error, job?.data.userId, {
-        channelId: job?.data.channelId,
-        guildId: job?.data.guildId,
-    });
+    analytics.captureException(error, job?.data.channelId);
 });
 
 addWorkerTelemetry(textNarrationWorker, "text-narration", logger);
