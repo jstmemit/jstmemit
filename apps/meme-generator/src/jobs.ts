@@ -16,36 +16,36 @@ await banditDecayQueue.upsertJobScheduler(
         opts: {
             attempts: 5,
             backoff: { type: "exponential", delay: 3000 },
-            removeOnComplete: 100,
-            removeOnFail: 1000,
+            removeOnComplete: 10,
+            removeOnFail: 10,
         },
     },
 );
 
 await messagePurgeQueue.upsertJobScheduler(
     "message-purge-daily",
-    { pattern: "0 0 1 * * *", tz: "Europe/Amsterdam" },
+    { pattern: "0 0 2 * * *", tz: "Europe/Amsterdam" },
     {
         name: "message-purge",
         opts: {
             attempts: 5,
             backoff: { type: "exponential", delay: 3000 },
-            removeOnComplete: 100,
-            removeOnFail: 1000,
+            removeOnComplete: 10,
+            removeOnFail: 10,
         },
     },
 );
 
 await imagePurgeQueue.upsertJobScheduler(
     "image-purge-daily",
-    { pattern: "0 0 1 * * *", tz: "Europe/Amsterdam" },
+    { pattern: "0 0 3 * * *", tz: "Europe/Amsterdam" },
     {
         name: "image-purge",
         opts: {
             attempts: 5,
             backoff: { type: "exponential", delay: 3000 },
-            removeOnComplete: 100,
-            removeOnFail: 1000,
+            removeOnComplete: 10,
+            removeOnFail: 10,
         },
     },
 );
