@@ -15,7 +15,8 @@
         "website:run-build": "node ./apps/website/dist/server/entry.mjs",
         "template-preview:dev": "cd apps/template-preview && pnpm run dev",
         "template-preview:build": "cd apps/template-preview && pnpm run build",
-        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs"
+        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs",
+        "typecheck": "tsc --noEmit -p apps/bot && tsc --noEmit -p apps/meme-generator && tsc --noEmit -p apps/voice && tsc --noEmit -p packages/db && tsc --noEmit -p packages/cache && tsc --noEmit -p packages/analytics && tsc --noEmit -p packages/bandit && tsc --noEmit -p packages/i18n && tsc --noEmit -p packages/images && tsc --noEmit -p packages/queue && tsc --noEmit -p packages/shared"
     },
     "devEngines": {
         "packageManager": {
