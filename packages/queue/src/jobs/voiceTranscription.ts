@@ -5,10 +5,11 @@ import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTran
 export const createVoiceTranscriptionQueue = (connection: ConnectionOptions) =>
     new Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>("voice-transcription", {
         connection,
+        streams: { events: { maxLen: 250 } },
         defaultJobOptions: {
             attempts: 3,
             backoff: { type: "exponential", delay: 100 },
-            removeOnComplete: 10,
-            removeOnFail: 50,
+            removeOnComplete: true,
+            removeOnFail: true,
         },
     });
