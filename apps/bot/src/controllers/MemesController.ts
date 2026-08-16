@@ -106,6 +106,10 @@ export class MemesController implements IMemesController {
 
         if (interaction instanceof Message) {
             trigger ??= "auto";
+
+            if (interaction.system) {
+                return;
+            }
         } else if (interaction.isButton()) {
             trigger = "regenerate";
 
