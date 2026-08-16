@@ -60,3 +60,32 @@ addWorkerTelemetry(memeGenerationWorker, "meme-generation", logger);
 addWorkerTelemetry(banditDecayWorker, "bandit-decay", logger);
 addWorkerTelemetry(messagePurgeWorker, "message-purge", logger);
 addWorkerTelemetry(imagePurgeWorker, "image-purge", logger);
+
+process.on("unhandledRejection", (reason: unknown): void => {
+    const error: Error = reason instanceof Error ? reason : new Error(String(reason));
+
+    analytics.captureException(error, "meme-generator", { handler: "unhandledRejection" });
+    logger.emit({
+        severityText: "error",
+        body: "process.unhandled_rejection",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            stack: error.stack,
+        },
+    });
+});
+
+process.on("uncaughtException", (error: Error, origin: NodeJS.UncaughtExceptionOrigin): void => {
+    analytics.captureException(error, "meme-generator", { handler: "uncaughtException", origin });
+    logger.emit({
+        severityText: "fatal",
+        body: "process.uncaught_exception",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            origin,
+            stack: error.stack,
+        },
+    });
+});
