@@ -1,4 +1,11 @@
-import { ActionRowBuilder, ButtonBuilder, type ButtonInteraction, ButtonStyle } from "discord.js";
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    type ButtonInteraction,
+    ButtonStyle,
+    DiscordAPIError,
+    RESTJSONErrorCodes,
+} from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
@@ -109,9 +116,17 @@ export class RatingsService implements IRatingsService {
                 components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
             });
         } catch {
-            await interaction.message.edit({
-                components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
-            });
+            try {
+                await interaction.message.edit({
+                    components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
+                });
+            } catch (error) {
+                if (error instanceof DiscordAPIError && error.code === RESTJSONErrorCodes.UnknownMessage) {
+                    return;
+                }
+
+                throw error;
+            }
         }
     }
 }
