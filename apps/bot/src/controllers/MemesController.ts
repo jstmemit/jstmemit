@@ -221,7 +221,7 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const budget: number = 1200 - (Date.now() - startedAt);
+            const budget: number = 900 - (Date.now() - startedAt);
 
             const fastResult: MemeGenerationResult | undefined = await Promise.race([
                 job,
@@ -229,7 +229,7 @@ export class MemesController implements IMemesController {
             ]);
 
             if (fastResult) {
-                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 1200ms
+                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 900ms
                 await interaction.reply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
