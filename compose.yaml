@@ -6,14 +6,14 @@ services:
     sqld:
         image: ghcr.io/tursodatabase/libsql-server@sha256:817fb6c6865d048a509f5c120905629fb9b5af20ad0c526cdc68a6d8793898ad
         logging: *default-logging
-        volumes: [ "sqld-data:/var/lib/sqld" ]
+        volumes: ["sqld-data:/var/lib/sqld"]
         restart: unless-stopped
         deploy:
             resources:
                 limits: { cpus: "4", memory: 6g }
                 reservations: { cpus: "2", memory: 2g }
         healthcheck:
-            test: [ "CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080" ]
+            test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080"]
             interval: 5s
             timeout: 3s
             retries: 10
@@ -38,15 +38,15 @@ services:
     redis:
         image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
         logging: *default-logging
-        command: [ "redis-server", "--appendonly", "yes", "--maxmemory", "3gb", "--maxmemory-policy", "noeviction" ]
-        volumes: [ "redis-data:/data" ]
+        command: ["redis-server", "--appendonly", "yes", "--maxmemory", "3gb", "--maxmemory-policy", "noeviction"]
+        volumes: ["redis-data:/data"]
         restart: unless-stopped
         deploy:
             resources:
                 limits: { cpus: "2", memory: 4g }
                 reservations: { cpus: "1", memory: 512m }
         healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
+            test: ["CMD", "redis-cli", "ping"]
             interval: 5s
             timeout: 3s
             retries: 5
@@ -55,13 +55,24 @@ services:
     redis-cache:
         image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
         logging: *default-logging
-        command: [ "redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "4500mb", "--maxmemory-policy", "allkeys-lru" ]
+        command:
+            [
+                "redis-server",
+                "--save",
+                "",
+                "--appendonly",
+                "no",
+                "--maxmemory",
+                "4500mb",
+                "--maxmemory-policy",
+                "allkeys-lru",
+            ]
         restart: unless-stopped
         deploy:
             resources:
                 limits: { cpus: "2", memory: 6g }
         healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
+            test: ["CMD", "redis-cli", "ping"]
             interval: 5s
             timeout: 3s
             retries: 5
@@ -103,7 +114,7 @@ services:
         deploy:
             resources:
                 limits: { cpus: "1", memory: 1g }
-        ports: [ "4321:4321" ]
+        ports: ["4321:4321"]
 
     meme-generator:
         image: ghcr.io/jstmemit/meme-generator
@@ -175,8 +186,9 @@ services:
 
     kokoro:
         image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.6.0
-        command: [ "python", "-m", "uvicorn", "api.src.main:app", "--host", "0.0.0.0", "--port", "8880", "--no-access-log" ]
-        volumes: [ "kokoro-models:/app/api/src/models" ]
+        command:
+            ["python", "-m", "uvicorn", "api.src.main:app", "--host", "0.0.0.0", "--port", "8880", "--no-access-log"]
+        volumes: ["kokoro-models:/app/api/src/models"]
         logging: *default-logging
         restart: unless-stopped
         environment:
@@ -195,7 +207,11 @@ services:
                 limits: { memory: 5g }
                 reservations: { cpus: "2" }
         healthcheck:
-            test: [ "CMD-SHELL", "python3 -c \"import urllib.request;urllib.request.urlopen('http://localhost:8880/health')\" || exit 1" ]
+            test:
+                [
+                    "CMD-SHELL",
+                    'python3 -c "import urllib.request;urllib.request.urlopen(''http://localhost:8880/health'')" || exit 1',
+                ]
             interval: 10s
             timeout: 5s
             retries: 5
