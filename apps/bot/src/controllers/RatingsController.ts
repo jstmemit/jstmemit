@@ -46,7 +46,8 @@ export class RatingsController implements IRatingsController {
                 rating,
             );
 
-            await this._ratingsService.updateRatingButtons(interaction, generationId);
+            const templateName: string | undefined = this._getTemplateNameFromButtons(interaction);
+            await this._ratingsService.updateRatingButtons(interaction, generationId, templateName);
 
             const generation = await this._generationsRepository.get(generationId);
 
@@ -92,5 +93,23 @@ export class RatingsController implements IRatingsController {
                 },
             });
         }
+    }
+
+    private _getTemplateNameFromButtons(interaction: ButtonInteraction): string | undefined {
+        for (const row of interaction.message.components) {
+            if (!("components" in row)) {
+                continue;
+            }
+
+            for (const component of row.components) {
+                const customId: string | null = "customId" in component ? component.customId : null;
+
+                if (customId?.startsWith("custom:")) {
+                    return customId.slice("custom:".length);
+                }
+            }
+        }
+
+        return undefined;
     }
 }

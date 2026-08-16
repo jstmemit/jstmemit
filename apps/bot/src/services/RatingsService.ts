@@ -91,21 +91,26 @@ export class RatingsService implements IRatingsService {
      *
      * @param interaction
      * @param generationId
+     * @param templateName
      *
      * @author Kyrylo Maliuha
      */
-    public async updateRatingButtons(interaction: ButtonInteraction, generationId: number): Promise<void> {
+    public async updateRatingButtons(
+        interaction: ButtonInteraction,
+        generationId: number,
+        templateName?: string,
+    ): Promise<void> {
         const messageId: string = interaction.message.id;
 
         const { likes, dislikes } = await this._ratingsRepository.getMemeRatings(messageId);
 
         try {
             await interaction.editReply({
-                components: [this.constructRatingButtons(likes, dislikes, generationId)],
+                components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
             });
         } catch {
             await interaction.message.edit({
-                components: [this.constructRatingButtons(likes, dislikes, generationId)],
+                components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
             });
         }
     }
