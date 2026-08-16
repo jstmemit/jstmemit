@@ -2,14 +2,14 @@
 
 /* TODO: extract into a shared file so that main website and template preview have same font and colors */
 @theme {
-    --color-neon-ice: #21F1ED;
-    --color-hot-fuchsia: #F72D55;
+    --color-neon-ice: #21f1ed;
+    --color-hot-fuchsia: #f72d55;
     --color-dark-cyan: #159592;
-    --color-bubblegum-pink: #EC5775;
-    --color-carbon-black: #1E2124;
-    --color-carbon-gray: #3F3F3F;
+    --color-bubblegum-pink: #ec5775;
+    --color-carbon-black: #1e2124;
+    --color-carbon-gray: #3f3f3f;
     --color-carbon-light-gray: #424242;
-    --color-discord-blue: #5865F2;
+    --color-discord-blue: #5865f2;
 
     --font-sans: "Plus Jakarta Sans", sans-serif;
 }

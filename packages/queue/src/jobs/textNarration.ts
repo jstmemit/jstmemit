@@ -5,10 +5,11 @@ import type { TextNarrationResult } from "@jstmemit/shared/models/TextNarrationR
 export const createTextNarrationQueue = (connection: ConnectionOptions) =>
     new Queue<TextNarrationJob, TextNarrationResult>("text-narration", {
         connection,
+        streams: { events: { maxLen: 250 } },
         defaultJobOptions: {
             attempts: 3,
             backoff: { type: "exponential", delay: 100 },
-            removeOnComplete: 10,
-            removeOnFail: 50,
+            removeOnComplete: true,
+            removeOnFail: true,
         },
     });
