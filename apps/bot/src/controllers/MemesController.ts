@@ -715,7 +715,14 @@ export class MemesController implements IMemesController {
             | ModalSubmitInteraction,
         trigger?: MemeGenerationTrigger,
     ): void {
-        analytics.captureException(error);
+        const userId: string = interaction instanceof Message ? interaction.author.id : interaction.user.id;
+
+        analytics.captureException(error, userId, {
+            errorId: interaction.id,
+            trigger,
+            channelId: interaction.channelId,
+            guildId: interaction.guildId ?? undefined,
+        });
         logger.emit({
             severityText: "error",
             body: "generate_meme.job.failed",
