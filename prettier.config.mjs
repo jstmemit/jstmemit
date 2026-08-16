@@ -9,6 +9,7 @@ const config = {
     semi: true,
     singleQuote: false,
     bracketSpacing: true,
+    endOfLine: "auto",
     plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
     overrides: [
         {
