@@ -2,7 +2,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default [
-    { ignores: ["**/dist/**", "**/node_modules/**", "eslint.config.mjs"] },
+    { ignores: ["**/dist/**", "**/node_modules/**", "eslint.config.mjs", "**/content.d.ts", ".prettierrc.ts"] },
     ...tseslint.configs.recommendedTypeChecked,
     {
         files: ["**/*.{js,mjs,cjs,ts,tsx}"],

@@ -71,6 +71,7 @@ export class FeedbackController implements IFeedbackController {
                         command: "/feedback",
                         hasMessage: Boolean(message),
                         hasUserId: Boolean(userId),
+                        error,
                     },
                 });
                 logger.emit({
