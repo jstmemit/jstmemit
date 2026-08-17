@@ -155,7 +155,10 @@ export class EventsController implements IEventsController {
             if (interaction.isMessageContextMenuCommand()) {
                 switch (interaction.commandName) {
                     case "Make it a Quote":
-                        await this._memesController.handleGenerateViaContextMenuInteraction(interaction, "quote");
+                        await this._memesController.handleGenerateViaContextMenuInteraction(
+                            interaction,
+                            _.sample(this._templateRepository.getTemplateNamesByTopic("quote", 1, 1)),
+                        );
                         return;
                     case "Make it a Demotivator":
                         await this._memesController.handleGenerateViaContextMenuInteraction(
