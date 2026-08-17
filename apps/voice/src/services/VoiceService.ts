@@ -38,7 +38,7 @@ export class VoiceService implements IVoiceService {
 
     public async convertTextToSpeech(data: TextNarrationJob): Promise<TextNarrationResult> {
         if (!data.voiceId) {
-            data.voiceId = _.sample(this._voicesRepository.getAllVoices())?.id || "af_sky";
+            data.voiceId = _.sample(this._voicesRepository.getAllVoices())?.id || "af_heart";
         }
 
         return {
