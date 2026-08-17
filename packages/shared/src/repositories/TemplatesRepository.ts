@@ -447,15 +447,10 @@ export class TemplatesRepository implements ITemplatesRepository {
 
         return templates
             .filter((template: Template): boolean => {
-                if (imageLimit !== undefined && (template.images?.length ?? 0) > imageLimit) {
-                    return false;
-                }
-
-                if (textLimit !== undefined && (template.texts?.length ?? 0) > textLimit) {
-                    return false;
-                }
-
-                return true;
+                return !(
+                    (imageLimit !== undefined && (template.images?.length ?? 0) > imageLimit) ||
+                    (textLimit !== undefined && (template.texts?.length ?? 0) > textLimit)
+                );
             })
             .map((template: Template): string => template.name);
     }
