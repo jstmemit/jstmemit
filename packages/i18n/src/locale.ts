@@ -433,6 +433,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Turkish]: "🤔 Henüz yeterli bağlam yok",
         [Locale.Italian]: "🤔 Non c'è ancora abbastanza contesto",
         [Locale.Indonesian]: "🤔 Konteksnya belum cukup",
+        [Locale.Czech]: "🤔 Zatím není dost kontextu",
     }),
     "notEnoughContext.body": buildLocales(
         "Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs.",
@@ -771,34 +772,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
     }),
     "settings.about.body": buildLocales(
-        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 300+ templates ¯\\_(ツ)_/¯",
+        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 425+ templates ¯\\_(ツ)_/¯",
         {
             [Locale.Russian]:
-                "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 300+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
+                "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 425+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
             [Locale.Ukrainian]:
-                "Бот, який робить меми з вашого чату. Говоріть про що завгодно, а він...\nперетворить це на мем на одному з 300+ шаблонів і постібеться з вас ¯\\_(ツ)_/¯",
+                "Бот, який робить меми з вашого чату. Говоріть про що завгодно, а він...\nперетворить це на мем на одному з 425+ шаблонів і постібеться з вас ¯\\_(ツ)_/¯",
             [Locale.Dutch]:
-                "De bot die memes maakt van jullie chat. Praat waar je maar over wilt en...\nhij plakt het op een van zijn 300+ meme templates en pest je ermee ¯\\_(ツ)_/¯",
+                "De bot die memes maakt van jullie chat. Praat waar je maar over wilt en...\nhij plakt het op een van zijn 425+ meme templates en pest je ermee ¯\\_(ツ)_/¯",
             [Locale.French]:
-                "Le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et...\nil en fera un mème sur un de ses 300+ modèles pour se moquer de vous ¯\\_(ツ)_/¯",
+                "Le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et...\nil en fera un mème sur un de ses 425+ modèles pour se moquer de vous ¯\\_(ツ)_/¯",
             [Locale.German]:
-                "Der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und...\ner macht daraus ein Meme auf einer von 300+ Vorlagen und zieht euch damit auf ¯\\_(ツ)_/¯",
+                "Der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und...\ner macht daraus ein Meme auf einer von 425+ Vorlagen und zieht euch damit auf ¯\\_(ツ)_/¯",
             [Locale.Polish]:
-                "Bot, który robi memy z waszego czatu. Gadajcie o czym chcecie, a on...\nwrzuci to na jeden z 300+ szablonów i zrobi sobie z was jaja ¯\\_(ツ)_/¯",
+                "Bot, który robi memy z waszego czatu. Gadajcie o czym chcecie, a on...\nwrzuci to na jeden z 425+ szablonów i zrobi sobie z was jaja ¯\\_(ツ)_/¯",
             [Locale.SpanishES]:
-                "El bot que hace memes de vuestro chat. Hablad de lo que queráis y...\nlo convertirá en un meme con una de sus 300+ plantillas para reírse de vosotros ¯\\_(ツ)_/¯",
+                "El bot que hace memes de vuestro chat. Hablad de lo que queráis y...\nlo convertirá en un meme con una de sus 425+ plantillas para reírse de vosotros ¯\\_(ツ)_/¯",
             [Locale.SpanishLATAM]:
-                "El bot que hace memes de su chat. Hablen de lo que quieran y...\nlo va a convertir en un meme con una de sus 300+ plantillas para burlarse de ustedes ¯\\_(ツ)_/¯",
+                "El bot que hace memes de su chat. Hablen de lo que quieran y...\nlo va a convertir en un meme con una de sus 425+ plantillas para burlarse de ustedes ¯\\_(ツ)_/¯",
             [Locale.PortugueseBR]:
-                "O bot que faz memes do seu chat. Falem do que quiserem e...\nele transforma isso em meme com um dos 300+ templates pra tirar sarro de vocês ¯\\_(ツ)_/¯",
+                "O bot que faz memes do seu chat. Falem do que quiserem e...\nele transforma isso em meme com um dos 425+ templates pra tirar sarro de vocês ¯\\_(ツ)_/¯",
             [Locale.Turkish]:
-                "Sohbetinizden caps üreten bot. Ne konuşursanız konuşun...\nonu 300'den fazla şablondan biriyle capse çevirip sizinle dalga geçer ¯\\_(ツ)_/¯",
+                "Sohbetinizden caps üreten bot. Ne konuşursanız konuşun...\nonu 425'ten fazla şablondan biriyle capse çevirip sizinle dalga geçer ¯\\_(ツ)_/¯",
             [Locale.Italian]:
-                "Il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e...\nlo trasforma in un meme con uno dei suoi 300+ template per prendervi in giro ¯\\_(ツ)_/¯",
+                "Il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e...\nlo trasforma in un meme con uno dei suoi 425+ template per prendervi in giro ¯\\_(ツ)_/¯",
             [Locale.Indonesian]:
-                "Bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan...\ndia bakal jadiin itu meme pakai salah satu dari 300+ template buat nyindir kalian ¯\\_(ツ)_/¯",
+                "Bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan...\ndia bakal jadiin itu meme pakai salah satu dari 425+ template buat nyindir kalian ¯\\_(ツ)_/¯",
             [Locale.Czech]:
-                "Bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a...\nudělá z toho mem na jedné z 300+ šablon a utáhne si z vás ¯\\_(ツ)_/¯",
+                "Bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a...\nudělá z toho mem na jedné z 425+ šablon a utáhne si z vás ¯\\_(ツ)_/¯",
         },
     ),
     "settings.about.enablePrompt": buildLocales("Enable Jstmemit below to start!", {
@@ -1001,7 +1002,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Obrázky se komprimují a zmenšují, text je o něco horší",
     }),
     "settings.frequency.heading": buildLocales("Frequency", {
-        [Locale.Russian]: "Редкость",
+        [Locale.Russian]: "Частота",
         [Locale.Ukrainian]: "Частота",
         [Locale.Dutch]: "Frequentie",
         [Locale.French]: "Fréquence",
@@ -1201,20 +1202,20 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "Sangat sering",
         [Locale.Czech]: "Velmi často",
     }),
-    "settings.frequency.veryOften.description": buildLocales("Once every ~5 messages (can produce spam)", {
-        [Locale.Russian]: "Раз в ~5 сообщений (может делать спам)",
-        [Locale.Ukrainian]: "Раз на ~5 повідомлень (може робити спам)",
-        [Locale.Dutch]: "Eén per ~5 berichten (kan spam opleveren)",
-        [Locale.French]: "Un tous les ~5 messages (peut produire du spam)",
-        [Locale.German]: "Eins pro ~5 Nachrichten (kann Spam erzeugen)",
-        [Locale.Polish]: "Raz na ~5 wiadomości (może robić spam)",
-        [Locale.SpanishES]: "Uno cada ~5 mensajes (puede generar spam)",
-        [Locale.SpanishLATAM]: "Uno cada ~5 mensajes (puede generar spam)",
-        [Locale.PortugueseBR]: "Um a cada ~5 mensagens (pode virar spam)",
-        [Locale.Turkish]: "Her ~5 mesajda bir (spam olabilir)",
-        [Locale.Italian]: "Uno ogni ~5 messaggi (può produrre spam)",
-        [Locale.Indonesian]: "Sekali tiap ~5 pesan (bisa jadi spam)",
-        [Locale.Czech]: "Jednou za ~5 zpráv (může dělat spam)",
+    "settings.frequency.veryOften.description": buildLocales("Once every ~5 messages (for small or quiet servers)", {
+        [Locale.Russian]: "Раз в ~5 сообщений (для маленьких или тихих серверов)",
+        [Locale.Ukrainian]: "Раз на ~5 повідомлень (для маленьких або тихих серверів)",
+        [Locale.Dutch]: "Eén per ~5 berichten (voor kleine of rustige servers)",
+        [Locale.French]: "Un tous les ~5 messages (pour les petits serveurs ou les salons calmes)",
+        [Locale.German]: "Eins pro ~5 Nachrichten (für kleine oder ruhige Server)",
+        [Locale.Polish]: "Raz na ~5 wiadomości (dla małych lub cichych serwerów)",
+        [Locale.SpanishES]: "Uno cada ~5 mensajes (para servidores pequeños o tranquilos)",
+        [Locale.SpanishLATAM]: "Uno cada ~5 mensajes (para servidores chicos o tranquilos)",
+        [Locale.PortugueseBR]: "Um a cada ~5 mensagens (para servidores pequenos ou parados)",
+        [Locale.Turkish]: "Her ~5 mesajda bir (küçük ya da sakin sunucular için)",
+        [Locale.Italian]: "Uno ogni ~5 messaggi (per server piccoli o tranquilli)",
+        [Locale.Indonesian]: "Sekali tiap ~5 pesan (untuk server kecil atau sepi)",
+        [Locale.Czech]: "Jednou za ~5 zpráv (pro malé nebo klidné servery)",
     }),
     "settings.avatars.heading": buildLocales("Avatars in memes", {
         [Locale.Russian]: "Аватары в мемах",
@@ -1446,14 +1447,14 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Smazat všechna data",
     }),
     "feedback.submit.heading": buildLocales("💬 Feedback submitted!", {
-        [Locale.Russian]: "💬 Идея отправлена!",
-        [Locale.Ukrainian]: "💬 Ідею відправлено!",
+        [Locale.Russian]: "💬 Отзыв отправлен!",
+        [Locale.Ukrainian]: "💬 Відгук надіслано!",
         [Locale.Dutch]: "💬 Feedback verstuurd!",
-        [Locale.French]: "💬 Avis envoyé !",
+        [Locale.French]: "💬 Message envoyé !",
         [Locale.German]: "💬 Feedback abgeschickt!",
-        [Locale.Polish]: "💬 Opinia wysłana!",
-        [Locale.SpanishES]: "💬 ¡Sugerencia enviada!",
-        [Locale.SpanishLATAM]: "💬 ¡Sugerencia enviada!",
+        [Locale.Polish]: "💬 Wiadomość wysłana!",
+        [Locale.SpanishES]: "💬 ¡Mensaje enviado!",
+        [Locale.SpanishLATAM]: "💬 ¡Mensaje enviado!",
         [Locale.PortugueseBR]: "💬 Feedback enviado!",
         [Locale.Turkish]: "💬 Geri bildirim gönderildi!",
         [Locale.Italian]: "💬 Feedback inviato!",
@@ -1568,13 +1569,13 @@ export const locale: Record<string, LocalizationMap> = {
     }),
     "modal.feedback.title": buildLocales("Send feedback", {
         [Locale.Russian]: "Отправить отзыв",
-        [Locale.Ukrainian]: "Відправити ідею",
+        [Locale.Ukrainian]: "Надіслати відгук",
         [Locale.Dutch]: "Feedback versturen",
-        [Locale.French]: "Envoyer un avis",
+        [Locale.French]: "Envoyer un message",
         [Locale.German]: "Feedback senden",
-        [Locale.Polish]: "Wyślij opinię",
-        [Locale.SpanishES]: "Enviar sugerencia",
-        [Locale.SpanishLATAM]: "Enviar sugerencia",
+        [Locale.Polish]: "Wyślij wiadomość",
+        [Locale.SpanishES]: "Enviar mensaje",
+        [Locale.SpanishLATAM]: "Enviar mensaje",
         [Locale.PortugueseBR]: "Enviar feedback",
         [Locale.Turkish]: "Geri bildirim gönder",
         [Locale.Italian]: "Invia feedback",
@@ -2133,34 +2134,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Můžu si bota přidat do „Moje aplikace“ a používat ho kdekoliv?",
     }),
     "help.faq.addBotToMyApps.answer": buildLocales(
-        '**Yes, but without some features.** You\'ll be able to use {{custom}} and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work for privacy reasons.',
+        '**Yes, but without some features.** You\'ll be able to use {{custom}} and right-click actions (like `"Make it a Quote"` or `"Make it a News Report"`) everywhere on Discord. But memes based on your chat won\'t work, because apps added this way can\'t read message history.',
         {
             [Locale.Russian]:
-                "**Да, но без части функций.** Вы сможете использовать {{custom}} и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут из соображений приватности.",
+                "**Да, но без части функций.** Вы сможете использовать {{custom}} и действия по правому клику (например «Превратить в цитату» или «Превратить в срочные новости») где угодно в Discord. Но мемы на основе вашего чата работать не будут, потому что приложения, добавленные таким образом, не могут читать историю сообщений.",
             [Locale.Ukrainian]:
-                "**Так, але без частини функцій.** Ви зможете використовувати {{custom}} та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть з міркувань приватності.",
+                "**Так, але без частини функцій.** Ви зможете використовувати {{custom}} та дії за правим кліком (наприклад «Переробити у цитату» чи «Переробити у гарячі новини») будь-де в Discord. Але меми на основі вашого чату не працюватимуть, бо застосунки, додані таким чином, не можуть читати історію повідомлень.",
             [Locale.Dutch]:
-                '**Ja, maar zonder sommige functies.** Je kunt {{custom}} en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, vanwege privacy.',
+                '**Ja, maar zonder sommige functies.** Je kunt {{custom}} en de rechtsklik acties (zoals "Maak er een quote van" of "Maak er breaking news van") overal op Discord gebruiken. Maar memes op basis van je chat werken dan niet, omdat apps die zo zijn toegevoegd de berichtgeschiedenis niet kunnen lezen.',
             [Locale.French]:
-                "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser {{custom}} et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, pour des raisons de confidentialité.",
+                "**Oui, mais sans certaines fonctionnalités.** Vous pourrez utiliser {{custom}} et les actions par clic droit (comme « En faire une citation » ou « En faire un flash info ») partout sur Discord. Mais les mèmes basés sur votre chat ne fonctionneront pas, car les applications ajoutées ainsi ne peuvent pas lire l'historique des messages.",
             [Locale.German]:
-                '**Ja, aber ohne manche Funktionen.** Du kannst {{custom}} und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, aus Datenschutzgründen.',
+                '**Ja, aber ohne manche Funktionen.** Du kannst {{custom}} und die Rechtsklick-Aktionen (wie "Mach ein Zitat draus" oder "Mach eine Eilmeldung draus") überall auf Discord nutzen. Aber Memes auf Basis eures Chats funktionieren dann nicht, weil so hinzugefügte Apps den Nachrichtenverlauf nicht lesen können.',
             [Locale.Polish]:
-                "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać {{custom}} i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać ze względu na prywatność.",
+                "**Tak, ale bez niektórych funkcji.** Będziesz mógł używać {{custom}} i akcji z prawego kliknięcia (jak „Zrób z tego cytat” czy „Zrób z tego pilne wiadomości”) wszędzie na Discordzie. Ale memy na podstawie waszego czatu nie będą działać, bo aplikacje dodane w ten sposób nie mogą czytać historii wiadomości.",
             [Locale.SpanishES]:
-                "**Sí, pero sin algunas funciones.** Podrás usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, por privacidad.",
+                "**Sí, pero sin algunas funciones.** Podrás usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en vuestro chat no funcionarán, porque las apps añadidas así no pueden leer el historial de mensajes.",
             [Locale.SpanishLATAM]:
-                "**Sí, pero sin algunas funciones.** Vas a poder usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, por privacidad.",
+                "**Sí, pero sin algunas funciones.** Vas a poder usar {{custom}} y las acciones del clic derecho (como «Convertir en cita» o «Convertir en noticia urgente») en cualquier parte de Discord. Pero los memes basados en su chat no van a funcionar, porque las apps agregadas así no pueden leer el historial de mensajes.",
             [Locale.PortugueseBR]:
-                '**Sim, mas sem alguns recursos.** Você vai poder usar o {{custom}} e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, por questões de privacidade.',
+                '**Sim, mas sem alguns recursos.** Você vai poder usar o {{custom}} e as ações do clique direito (como "Transformar em citação" ou "Transformar em notícia urgente") em qualquer lugar do Discord. Mas os memes baseados no seu chat não vão funcionar, porque apps adicionados assim não conseguem ler o histórico de mensagens.',
             [Locale.Turkish]:
-                '**Evet, ama bazı özellikler olmadan.** {{custom}} komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler gizlilik nedeniyle çalışmaz.',
+                '**Evet, ama bazı özellikler olmadan.** {{custom}} komutunu ve sağ tık işlemlerini ("Alıntıya çevir" veya "Son dakika haberine çevir" gibi) Discord\'un her yerinde kullanabilirsin. Ama sohbetinize dayalı capsler çalışmaz, çünkü bu şekilde eklenen uygulamalar mesaj geçmişini okuyamaz.',
             [Locale.Italian]:
-                '**Sì, ma senza alcune funzioni.** Potrai usare {{custom}} e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, per motivi di privacy.',
+                '**Sì, ma senza alcune funzioni.** Potrai usare {{custom}} e le azioni del tasto destro (come "Trasforma in citazione" o "Trasforma in notizia flash") ovunque su Discord. Ma i meme basati sulla vostra chat non funzioneranno, perché le app aggiunte così non possono leggere la cronologia dei messaggi.',
             [Locale.Indonesian]:
-                '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai {{custom}} dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, demi privasi.',
+                '**Bisa, tapi tanpa beberapa fitur.** Kamu bisa memakai {{custom}} dan aksi klik kanan (seperti "Jadikan quote" atau "Jadikan berita terkini") di mana saja di Discord. Tapi meme berdasarkan chat kalian tidak akan bekerja, karena aplikasi yang ditambahkan begini tidak bisa membaca riwayat pesan.',
             [Locale.Czech]:
-                "**Ano, ale bez některých funkcí.** Budeš moct používat {{custom}} a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, kvůli soukromí.",
+                "**Ano, ale bez některých funkcí.** Budeš moct používat {{custom}} a akce přes pravé kliknutí (jako „Udělat z toho citát“ nebo „Udělat z toho zprávy“) kdekoliv na Discordu. Ale memy založené na vašem chatu fungovat nebudou, protože takto přidané aplikace nemůžou číst historii zpráv.",
         },
     ),
     "help.faq.whatIfIWantToMakeACustomMeme.question": buildLocales(
@@ -2297,11 +2298,11 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.Dutch]:
                 "Elke keer dat je kanaal een mijlpaal in het aantal memes bereikt, wordt er een prestatie ontgrendeld.\nHieronder zie je een lijst hiervan en statistieken over hoe je {{emoji}}Jstmemit hebt gebruikt.",
             [Locale.French]:
-                "Chaque fois que votre canal atteint un palier de mèmes, il débloque un succès.\nCi-dessous, vous pouvez voir leur liste et des statistiques sur la façon dont vous avez utilisé {{emoji}}Jstmemit.",
+                "Chaque fois que votre salon atteint un palier de mèmes, il débloque un succès.\nCi-dessous, vous pouvez voir leur liste et des statistiques sur la façon dont vous avez utilisé {{emoji}}Jstmemit.",
             [Locale.German]:
                 "Jedes Mal, wenn dein Kanal einen Meilenstein bei der Anzahl der Memes erreicht, wird ein Erfolg freigeschaltet.\nUnten siehst du eine Liste davon und Statistiken darüber, wie du {{emoji}}Jstmemit genutzt hast.",
             [Locale.Polish]:
-                "Za każdym razem, gdy Twój kanał osiągnie kamień milowy w liczbie memów, odblokowuje osiągnięcie.\nPoniżej znajduje się ich lista oraz statystyki dotyczące korzystania z {{emoji}}Jstmemit.",
+                "Za każdym razem, gdy twój kanał osiągnie kolejny próg memów, odblokowuje osiągnięcie.\nPoniżej znajdziesz ich listę oraz statystyki korzystania z {{emoji}}Jstmemit.",
             [Locale.SpanishES]:
                 "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro.\nA continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
             [Locale.SpanishLATAM]:
@@ -2309,13 +2310,13 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.PortugueseBR]:
                 "Toda vez que seu canal atinge um marco de quantidade de memes, ele desbloqueia uma conquista.\nAbaixo você pode ver uma lista delas e estatísticas de como você usou o {{emoji}}Jstmemit.",
             [Locale.Turkish]:
-                "Kanalınız bir meme sayısı kilometre taşına her ulaştığında bir başarı kilidi açılır.\nAşağıda bunların bir listesini ve {{emoji}}Jstmemit'i nasıl kullandığınıza dair istatistikleri görebilirsiniz.",
+                "Kanalın belli bir caps sayısına her ulaştığında bir başarı açılır.\nAşağıda bunların listesini ve {{emoji}}Jstmemit'i nasıl kullandığına dair istatistikleri görebilirsin.",
             [Locale.Italian]:
                 "Ogni volta che il tuo canale raggiunge un traguardo nel numero di meme, sblocca un obiettivo.\nDi seguito puoi vedere un loro elenco e le statistiche su come hai utilizzato {{emoji}}Jstmemit.",
             [Locale.Indonesian]:
-                "Setiap kali saluran Anda mencapai tonggak jumlah meme, itu membuka pencapaian.\nDi bawah ini Anda dapat melihat daftarnya dan statistik tentang bagaimana Anda menggunakan {{emoji}}Jstmemit.",
+                "Setiap kali channel kamu mencapai jumlah meme tertentu, kamu membuka pencapaian.\nDi bawah ini kamu bisa lihat daftarnya dan statistik cara kamu memakai {{emoji}}Jstmemit.",
             [Locale.Czech]:
-                "Pokaždé, když tvůj kanál dosáhne milníku v počtu memů, odemkne se úspěch.\nNíže vidíš jejich seznam a statistiky o tom, jak jsi {{emoji}}Jstmemit používal.",
+                "Pokaždé, když tvůj kanál dosáhne milníku v počtu memů, odemkne se úspěch.\nNíže vidíš jejich seznam a statistiky o tom, jak se {{emoji}}Jstmemit v kanálu používá.",
         },
     ),
     "milestones.view.unlockedAchievements": buildLocales("Unlocked achievements", {
@@ -2373,7 +2374,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.SpanishES]: "memes generados",
         [Locale.SpanishLATAM]: "memes generados",
         [Locale.PortugueseBR]: "memes gerados",
-        [Locale.Turkish]: "oluşturulan memler",
+        [Locale.Turkish]: "oluşturulan capsler",
         [Locale.Italian]: "meme generati",
         [Locale.Indonesian]: "meme dibuat",
         [Locale.Czech]: "vygenerované memy",
@@ -2384,14 +2385,14 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Dutch]: "🎉 Je hebt alle prestaties ontgrendeld",
         [Locale.French]: "🎉 Vous avez débloqué tous les succès",
         [Locale.German]: "🎉 Du hast alle Erfolge freigeschaltet",
-        [Locale.Polish]: "🎉 Odblokowałeś wszystkie osiągnięcia",
+        [Locale.Polish]: "🎉 Wszystkie osiągnięcia odblokowane",
         [Locale.SpanishES]: "🎉 Has desbloqueado todos los logros",
         [Locale.SpanishLATAM]: "🎉 Has desbloqueado todos los logros",
         [Locale.PortugueseBR]: "🎉 Você desbloqueou todas as conquistas",
-        [Locale.Turkish]: "🎉 Tüm başarıların kilidini açtınız",
+        [Locale.Turkish]: "🎉 Tüm başarıların kilidini açtın",
         [Locale.Italian]: "🎉 Hai sbloccato tutti gli obiettivi",
-        [Locale.Indonesian]: "🎉 Anda membuka semua pencapaian",
-        [Locale.Czech]: "🎉 Odemkl jsi všechny úspěchy",
+        [Locale.Indonesian]: "🎉 Kamu membuka semua pencapaian",
+        [Locale.Czech]: "🎉 Máš odemčené všechny úspěchy",
     }),
     "milestones.view.allAchievementsDescription": buildLocales(
         "Thank you for your interest in {{emoji}}Jstmemit. Now you can rest, brew some coffee, and praise yourself.",
@@ -2411,17 +2412,17 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.SpanishES]:
                 "Gracias por tu interés en {{emoji}}Jstmemit. Ahora puedes descansar, preparar un café y felicitarte a ti mismo.",
             [Locale.SpanishLATAM]:
-                "Gracias por tu interés en J{{emoji}}stmemit. Ahora puedes descansar, preparar un café y felicitarte a ti mismo.",
+                "Gracias por tu interés en {{emoji}}Jstmemit. Ahora puedes descansar, preparar un café y felicitarte a ti mismo.",
             [Locale.PortugueseBR]:
                 "Obrigado pelo seu interesse no {{emoji}}Jstmemit. Agora você pode descansar, fazer um café e se parabenizar.",
             [Locale.Turkish]:
-                "{{emoji}}Jstmemit'e gösterdiğiniz ilgi için teşekkür ederiz. Artık dinlenebilir, kahve yapabilir ve kendinizi övebilirsiniz.",
+                "{{emoji}}Jstmemit'e gösterdiğin ilgi için teşekkürler. Artık dinlenebilir, kahve yapabilir ve kendini övebilirsin.",
             [Locale.Italian]:
                 "Grazie per il tuo interesse in {{emoji}}Jstmemit. Ora puoi riposarti, preparare un caffè e farti i complimenti.",
             [Locale.Indonesian]:
-                "Terima kasih atas minat Anda pada {{emoji}}Jstmemit. Sekarang Anda bisa beristirahat, menyeduh kopi, dan memuji diri sendiri.",
+                "Terima kasih atas minatmu pada {{emoji}}Jstmemit. Sekarang kamu bisa istirahat, seduh kopi, dan puji diri sendiri.",
             [Locale.Czech]:
-                "Děkujeme za tvůj zájem o {{emoji}}Jstmemit. Nyní si můžeš odpočinout, uvařit kávu a pochválit se.",
+                "Děkujeme za tvůj zájem o {{emoji}}Jstmemit. Teď si můžeš odpočinout, uvařit kávu a pochválit se.",
         },
     ),
     "milestones.heading": buildLocales("🎉 Yay! {{count}} memes in **<#{{channelId}}>**!", {
