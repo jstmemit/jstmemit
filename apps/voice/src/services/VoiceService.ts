@@ -62,7 +62,7 @@ export class VoiceService implements IVoiceService {
                 speed: 1,
                 return_download_link: false,
                 volume_multiplier: 1,
-                lang_code: voice?.locale,
+                lang_code: voice?.id.charAt(0),
                 normalization_options: {
                     normalize: true,
                     unit_normalization: false,
