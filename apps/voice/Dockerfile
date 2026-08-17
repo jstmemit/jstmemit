@@ -8,6 +8,7 @@ COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY packages ./packages
 COPY apps/voice ./apps/voice
 
-RUN pnpm install --frozen-lockfile --filter @jstmemit/voice...
+RUN --mount=type=cache,target=/pnpm-store \
+    pnpm install --frozen-lockfile --store-dir /pnpm-store --filter @jstmemit/voice...
 
 CMD ["pnpm", "run", "voice:start"]

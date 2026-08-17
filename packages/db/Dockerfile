@@ -4,10 +4,13 @@ LABEL authors="kamazra4ka"
 RUN corepack enable
 WORKDIR /app
 
+RUN apk add --no-cache python3 make g++
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml tsconfig.base.json ./
 COPY packages ./packages
 
-RUN apk add --no-cache python3 make g++
-RUN pnpm install --frozen-lockfile --filter ./packages/db...
+RUN --mount=type=cache,target=/pnpm-store \
+    apk add --no-cache python3 make g++ \
+    && pnpm install --frozen-lockfile --store-dir /pnpm-store --filter @jstmemit/db... \
+    && apk del python3 make g++
 
 CMD ["pnpm", "run", "-w", "db:migrate"]
