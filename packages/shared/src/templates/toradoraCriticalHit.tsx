@@ -26,7 +26,7 @@ export const toradoraCriticalHit: Template = {
         [Locale.Korean]: "치명타",
         [Locale.ChineseCN]: "暴击",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
+    topics: [Topic.Reaction, Topic.Anime, Topic.Toradora, Topic.Demotivator],
     types: [Type.DefaultText, Type.FaceImage],
     width: 500,
     height: 400,
