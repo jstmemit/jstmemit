@@ -428,6 +428,7 @@ import { tsAngryKenClapping1 } from "#/templates/tsAngryKenClapping1.tsx";
 import { tsWoodyCrazy } from "#/templates/tsWoodyCrazy.tsx";
 import { tsWoodyStare } from "#/templates/tsWoodyStare.tsx";
 import { wnlFuminoSoulLeaving } from "#/templates/wnlFuminoSoulLeaving.tsx";
+import { userDemotivator } from "#/templates/userDemotivator.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -891,6 +892,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             tsWoodyCrazy,
             tsWoodyStare,
             wnlFuminoSoulLeaving,
+            userDemotivator,
         ];
     }
 
