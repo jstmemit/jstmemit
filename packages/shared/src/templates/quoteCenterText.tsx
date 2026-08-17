@@ -6,8 +6,8 @@ import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 
-export const quote: Template = {
-    name: "quote",
+export const quoteCenterText: Template = {
+    name: "quoteCenterText",
     displayName: buildLocales("Quote", {
         [Locale.Russian]: "Цитата",
         [Locale.Ukrainian]: "Цитата",
