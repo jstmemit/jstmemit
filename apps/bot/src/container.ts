@@ -42,6 +42,8 @@ import { AutocompleteService } from "#/services/AutocompleteService.ts";
 import { AutocompleteController } from "#/controllers/AutocompleteController.ts";
 import { MilestonesController } from "#/controllers/MilestonesController.ts";
 import { CommandsService } from "#/services/CommandsService.ts";
+import { analytics } from "@jstmemit/analytics";
+import { client } from "#/bot.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -106,3 +108,57 @@ container.register({
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
 export const logger: Logger = container.resolve<Logger>("logger");
+
+process.on("unhandledRejection", (reason: unknown): void => {
+    const error: Error = reason instanceof Error ? reason : new Error(String(reason));
+
+    analytics.captureException(error, "bot", { handler: "unhandledRejection" });
+    logger.emit({
+        severityText: "error",
+        body: "process.unhandled_rejection",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            stack: error.stack,
+        },
+    });
+});
+
+process.on("uncaughtException", (error: Error, origin: NodeJS.UncaughtExceptionOrigin): void => {
+    analytics.captureException(error, "bot", { handler: "uncaughtException", origin });
+    logger.emit({
+        severityText: "fatal",
+        body: "process.uncaught_exception",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            origin,
+            stack: error.stack,
+        },
+    });
+});
+
+client.on("error", (error: Error): void => {
+    analytics.captureException(error, "bot", { handler: "client_error" });
+    logger.emit({
+        severityText: "error",
+        body: "discord.client.error",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+        },
+    });
+});
+
+client.on("shardError", (error: Error, shardId: number): void => {
+    analytics.captureException(error, "bot", { handler: "shard_error", shardId });
+    logger.emit({
+        severityText: "error",
+        body: "discord.shard.error",
+        attributes: {
+            shard_id: shardId,
+            error_name: error.name,
+            error_message: error.message,
+        },
+    });
+});

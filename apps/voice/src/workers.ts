@@ -34,11 +34,37 @@ textNarrationWorker.on("failed", (job, error) => {
 });
 
 voiceTranscription.on("failed", (job, error) => {
-    analytics.captureException(error, job?.data.userId, {
-        channelId: job?.data.channelId,
-        guildId: job?.data.guildId,
-    });
+    analytics.captureException(error, job?.data.channelId);
 });
 
 addWorkerTelemetry(textNarrationWorker, "text-narration", logger);
 addWorkerTelemetry(voiceTranscription, "voice-transcription", logger);
+
+process.on("unhandledRejection", (reason: unknown): void => {
+    const error: Error = reason instanceof Error ? reason : new Error(String(reason));
+
+    analytics.captureException(error, "voice", { handler: "unhandledRejection" });
+    logger.emit({
+        severityText: "error",
+        body: "process.unhandled_rejection",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            stack: error.stack,
+        },
+    });
+});
+
+process.on("uncaughtException", (error: Error, origin: NodeJS.UncaughtExceptionOrigin): void => {
+    analytics.captureException(error, "voice", { handler: "uncaughtException", origin });
+    logger.emit({
+        severityText: "fatal",
+        body: "process.uncaught_exception",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            origin,
+            stack: error.stack,
+        },
+    });
+});

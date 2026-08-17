@@ -256,7 +256,13 @@ export class ComponentsService implements IComponentsService {
                     `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
                 ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("milestones.description", language)))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("milestones.description", language, {
+                        achievements: this._commandsService.getCommandMention("achievements"),
+                    }),
+                ),
+            )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false));
 
         if (achievement) {

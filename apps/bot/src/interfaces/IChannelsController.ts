@@ -1,7 +1,4 @@
-import type {
-    ButtonInteraction,
-    ChatInputCommandInteraction,
-} from "discord.js";
+import type { ButtonInteraction, ChatInputCommandInteraction } from "discord.js";
 
 export abstract class IChannelsController {
     public abstract handleEnableInteraction(

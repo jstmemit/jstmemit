@@ -13,5 +13,9 @@ export abstract class IRatingsService {
         generationId: number,
         templateName?: string,
     ): ActionRowBuilder<ButtonBuilder>;
-    public abstract updateRatingButtons(interaction: ButtonInteraction, generationId: number): Promise<void>;
+    public abstract updateRatingButtons(
+        interaction: ButtonInteraction,
+        generationId: number,
+        templateName?: string,
+    ): Promise<void>;
 }

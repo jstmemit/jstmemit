@@ -106,6 +106,10 @@ export class MemesController implements IMemesController {
 
         if (interaction instanceof Message) {
             trigger ??= "auto";
+
+            if (interaction.system) {
+                return;
+            }
         } else if (interaction.isButton()) {
             trigger = "regenerate";
 
@@ -217,7 +221,7 @@ export class MemesController implements IMemesController {
                 return;
             }
 
-            const budget: number = 1200 - (Date.now() - startedAt);
+            const budget: number = 900 - (Date.now() - startedAt);
 
             const fastResult: MemeGenerationResult | undefined = await Promise.race([
                 job,
@@ -225,7 +229,7 @@ export class MemesController implements IMemesController {
             ]);
 
             if (fastResult) {
-                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 1200ms
+                // if bot sent the meme because of /meme or regenerate button + meme got generated faster than 900ms
                 await interaction.reply({
                     content: `<@${interaction.user.id}>`,
                     components: [this._ratingsService.constructRatingButtons(0, 0, fastResult.generationId)],
@@ -711,7 +715,14 @@ export class MemesController implements IMemesController {
             | ModalSubmitInteraction,
         trigger?: MemeGenerationTrigger,
     ): void {
-        analytics.captureException(error);
+        const userId: string = interaction instanceof Message ? interaction.author.id : interaction.user.id;
+
+        analytics.captureException(error, userId, {
+            errorId: interaction.id,
+            trigger,
+            channelId: interaction.channelId,
+            guildId: interaction.guildId ?? undefined,
+        });
         logger.emit({
             severityText: "error",
             body: "generate_meme.job.failed",

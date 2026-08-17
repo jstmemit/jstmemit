@@ -19,6 +19,8 @@ import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscr
 import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 import ms from "ms";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
+import type { messagesTable } from "@jstmemit/db/schema.ts";
 
 export class ContextService implements IContextService {
     private readonly _expiration: number = 30 * 24 * 60 * 60 * 1000;
@@ -46,17 +48,14 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Calls MessagesRepository to save text content into
-     * the database
+     * Saves text content into the database
      *
-     * @param messageId
-     * @param channelId
-     * @param content
+     * @param messages
      *
      * @author Kyrylo Maliuha
      */
-    public async saveContent(messageId: string, channelId: string, content: string): Promise<void> {
-        await this._messagesRepository.new(messageId, channelId, content, new Date());
+    public async saveContent(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number> {
+        return this._messagesRepository.new(messages);
     }
 
     /**
@@ -75,37 +74,45 @@ export class ContextService implements IContextService {
             channelId,
         });
 
-        await this._messagesRepository.new(messageId, channelId, result.text, new Date());
+        await this._messagesRepository.new([{ messageId, channelId, content: result.text, timestamp: new Date() }]);
     }
 
     /**
-     * Gets expiration date for every attachment and
-     * then calls ImagesRepository to save it into
-     * the database
+     * Saves passed images in a batch
      *
-     * @param messageId
-     * @param channelId
-     * @param attachments
+     * @param images
      *
      * @author Kyrylo Maliuha
      */
-    public async saveImages(
+    public async saveImages(images: readonly ContextImage[]): Promise<void> {
+        await this._imagesRepository.addMany(images);
+    }
+
+    public buildMessageImages(
         messageId: string,
         channelId: string,
+        avatarUrl: string | null,
         attachments: Collection<string, Attachment>,
-    ): Promise<void> {
-        await Promise.all(
-            attachments.map(async (attachment: Attachment): Promise<void> => {
-                await this._imagesRepository.add(
-                    messageId,
-                    channelId,
-                    `${attachment.proxyURL}#${channelId}`,
-                    "attachment",
-                    new Date(),
-                    this._getExpirationDate(attachment.proxyURL),
-                );
-            }),
-        );
+    ): ContextImage[] {
+        const timestamp: Date = new Date();
+        const images: ContextImage[] = [];
+
+        if (avatarUrl) {
+            images.push({ messageId, channelId, imageUrl: `${avatarUrl}#${channelId}`, source: "avatar", timestamp });
+        }
+
+        for (const attachment of attachments.values()) {
+            images.push({
+                messageId,
+                channelId,
+                imageUrl: `${attachment.proxyURL}#${channelId}`,
+                source: "attachment",
+                timestamp,
+                expiresAt: this._getExpirationDate(attachment.proxyURL),
+            });
+        }
+
+        return images;
     }
 
     /**
@@ -159,26 +166,38 @@ export class ContextService implements IContextService {
         const text: string = `${poll.question.text}, ${answers}`;
 
         if (text.length < 2000) {
-            await this.saveContent(messageId, channelId, text);
+            await this.saveContent([{ messageId, channelId, content: text, timestamp: new Date() }]);
         }
     }
 
     public async saveEmojis(channelId: string, guild: Guild): Promise<void> {
         const emojis: Collection<string, GuildEmoji> = await guild.emojis.fetch();
+        const timestamp: Date = new Date();
 
-        for (const emoji of emojis.values()) {
-            const url: string = emoji.imageURL({ size: 128 });
-
-            await this.saveAvatar(emoji.id, channelId, url);
-        }
+        await this.saveImages(
+            emojis.map((emoji: GuildEmoji): ContextImage => ({
+                messageId: emoji.id,
+                channelId,
+                imageUrl: `${emoji.imageURL({ size: 128 })}#${channelId}`,
+                source: "avatar",
+                timestamp,
+            })),
+        );
     }
 
     public async saveStickers(channelId: string, guild: Guild): Promise<void> {
         const stickers: Collection<string, Sticker> = await guild.stickers.fetch();
+        const timestamp: Date = new Date();
 
-        for (const sticker of stickers.values()) {
-            await this.saveAvatar(sticker.id, channelId, sticker.url);
-        }
+        await this.saveImages(
+            stickers.map((sticker: Sticker): ContextImage => ({
+                messageId: sticker.id,
+                channelId,
+                imageUrl: `${sticker.url}#${channelId}`,
+                source: "avatar",
+                timestamp,
+            })),
+        );
     }
 
     public async checkAndFetchGuildAssets(channelId: string, enabled: boolean, guild: Guild | null): Promise<void> {

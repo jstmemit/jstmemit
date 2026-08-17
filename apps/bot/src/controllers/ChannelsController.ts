@@ -15,6 +15,9 @@ import type { IContextService } from "#/interfaces/IContextService.ts";
 import type { IContextController } from "#/interfaces/IContextController.ts";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import { getRequiredBotPermissions } from "#/helpers/getRequiredBotPermissions.ts";
+import ms from "ms";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 
 export class ChannelsController implements IChannelsController {
     private readonly _channelsService: IChannelsService;
@@ -22,6 +25,8 @@ export class ChannelsController implements IChannelsController {
     private readonly _messagesRepository: IMessagesRepository;
     private readonly _contextController: IContextController;
     private readonly _contextService: IContextService;
+    private readonly _cacheService: ICacheService;
+    private readonly _generationsRepository: IGenerationsRepository;
 
     public constructor(
         channelsService: IChannelsService,
@@ -29,12 +34,16 @@ export class ChannelsController implements IChannelsController {
         messagesRepository: IMessagesRepository,
         contextController: IContextController,
         contextService: IContextService,
+        cacheService: ICacheService,
+        generationsRepository: IGenerationsRepository,
     ) {
         this._channelsService = channelsService;
         this._componentsService = componentsService;
         this._messagesRepository = messagesRepository;
         this._contextController = contextController;
         this._contextService = contextService;
+        this._cacheService = cacheService;
+        this._generationsRepository = generationsRepository;
     }
 
     /**
@@ -55,15 +64,19 @@ export class ChannelsController implements IChannelsController {
         }
 
         try {
-            let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId);
+            let isEnabled: boolean = await this._channelsService.isChannelEnabled(interaction.channelId, true);
 
             const messagesAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
                 interaction.channelId,
             );
 
-            const generationsAmount: number = await this._messagesRepository.getMessagesAmountByChannelId(
-                interaction.channelId,
-            );
+            const cached: number | undefined = await this._cacheService.get(`generations:${interaction.channelId}`);
+            const generationsAmount: number =
+                cached !== undefined
+                    ? cached
+                    : await this._generationsRepository.getCountPerChannel(interaction.channelId);
+
+            await this._cacheService.set(`generations:${interaction.channelId}`, generationsAmount, ms("7d"));
 
             if ((!isEnabled && messagesAmount < 1) || interaction.isButton()) {
                 isEnabled = await this._channelsService.switchChannel(interaction.channelId);
