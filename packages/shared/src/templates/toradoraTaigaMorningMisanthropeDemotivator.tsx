@@ -26,7 +26,7 @@ export const toradoraTaigaMorningMisanthropeDemotivator: Template = {
         [Locale.Korean]: "타이가 아침 염세주의자 데모티베이터",
         [Locale.ChineseCN]: "大河早晨厌世者负能量图",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
+    topics: [Topic.Reaction, Topic.Anime, Topic.Toradora, Topic.Demotivator],
     types: [Type.FaceImage, Type.DefaultText],
     width: 500,
     height: 418,

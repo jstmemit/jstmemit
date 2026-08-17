@@ -50,6 +50,10 @@ if (templateName) {
                 emoji: "twemoji",
                 quality: 55,
                 drawDebugBorder: true,
+                images: {
+                    timeout: 20000,
+                    maxBytes: 20 * 1024 * 1024,
+                },
             },
         );
         meme = `data:image/webp;base64,${staticMeme.toString("base64")}`;
@@ -66,6 +70,10 @@ if (templateName) {
             emoji: "twemoji",
             quality: 55,
             drawDebugBorder: true,
+            images: {
+                timeout: 20000,
+                maxBytes: 20 * 1024 * 1024,
+            },
         });
         meme = `data:image/webp;base64,${animatedMeme.toString("base64")}`;
     }

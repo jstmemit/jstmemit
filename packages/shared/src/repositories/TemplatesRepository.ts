@@ -16,7 +16,7 @@ import { manLookingUp } from "#/templates/manLookingUp.tsx";
 import { uncanny } from "#/templates/uncanny.tsx";
 import { tf2Hahaha } from "#/templates/tf2Hahaha.tsx";
 import { yesChad } from "#/templates/yesChad.tsx";
-import { quote } from "#/templates/quote.tsx";
+import { quoteCenterText } from "#/templates/quoteCenterText.tsx";
 import { stonks } from "#/templates/stonks.tsx";
 import { stonks1 } from "#/templates/stonks1.tsx";
 import { disappointedGuy } from "#/templates/disappointedGuy.tsx";
@@ -428,6 +428,7 @@ import { tsAngryKenClapping1 } from "#/templates/tsAngryKenClapping1.tsx";
 import { tsWoodyCrazy } from "#/templates/tsWoodyCrazy.tsx";
 import { tsWoodyStare } from "#/templates/tsWoodyStare.tsx";
 import { wnlFuminoSoulLeaving } from "#/templates/wnlFuminoSoulLeaving.tsx";
+import { userDemotivator } from "#/templates/userDemotivator.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -446,15 +447,10 @@ export class TemplatesRepository implements ITemplatesRepository {
 
         return templates
             .filter((template: Template): boolean => {
-                if (imageLimit !== undefined && (template.images?.length ?? 0) > imageLimit) {
-                    return false;
-                }
-
-                if (textLimit !== undefined && (template.texts?.length ?? 0) > textLimit) {
-                    return false;
-                }
-
-                return true;
+                return !(
+                    (imageLimit !== undefined && (template.images?.length ?? 0) > imageLimit) ||
+                    (textLimit !== undefined && (template.texts?.length ?? 0) > textLimit)
+                );
             })
             .map((template: Template): string => template.name);
     }
@@ -479,7 +475,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             uncanny,
             tf2Hahaha,
             yesChad,
-            quote,
+            quoteCenterText,
             stonks,
             stonks1,
             disappointedGuy,
@@ -891,6 +887,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             tsWoodyCrazy,
             tsWoodyStare,
             wnlFuminoSoulLeaving,
+            userDemotivator,
         ];
     }
 

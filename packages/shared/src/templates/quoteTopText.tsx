@@ -26,7 +26,7 @@ export const quoteTopText: Template = {
         [Locale.Korean]: "인용구 상단 텍스트",
         [Locale.ChineseCN]: "引用顶部文本",
     }),
-    topics: [Topic.Misc],
+    topics: [Topic.Quote],
     types: [Type.BackgroundImage, Type.TextTopWithBackground],
     width: 800,
     height: 800,
