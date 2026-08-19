@@ -1,7 +1,8 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
-import { type TemplateTopic, TopicLocalizationMap } from "#/models/TemplateTopic.ts";
+import { type TemplateTopic } from "#/models/TemplateTopic.ts";
+import { TopicLocalizationMap } from "#/data/topicLocalizationMap.ts";
 import type { LocalizationMap } from "discord.js";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
