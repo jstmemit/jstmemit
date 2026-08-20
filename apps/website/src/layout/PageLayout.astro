@@ -51,7 +51,7 @@ const { title, canonical } = Astro.props;
             property="og:image:alt"
             content="Two blurred example memes, heading 'Personalized memes for your community' and 'auto-generate memes from your conversations' subtext"
         />
-        <meta property="og:url" content="https://jstmemit.com" />
+        <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
 
