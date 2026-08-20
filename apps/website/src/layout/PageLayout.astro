@@ -132,6 +132,7 @@ const { title, canonical } = Astro.props;
                         isPartOf: { "@id": "https://jstmemit.com/#website" },
                         about: { "@id": "https://jstmemit.com/#app" },
                         primaryImageOfPage: { "@id": "https://jstmemit.com/#logo" },
+                        hasPart: { "@id": "https://jstmemit.com/#faq" },
                         inLanguage: "en",
                     },
                     {
@@ -177,6 +178,16 @@ const { title, canonical } = Astro.props;
                             priceCurrency: "EUR",
                             availability: "https://schema.org/InStock",
                         },
+                    },
+                    {
+                        "@type": "SoftwareSourceCode",
+                        "@id": "https://jstmemit.com/#source",
+                        name: "Jstmemit",
+                        programmingLanguage: "TypeScript",
+                        codeRepository: "https://github.com/jstmemit/jstmemit",
+                        license: "https://opensource.org/licenses/MIT",
+                        targetProduct: { "@id": "https://jstmemit.com/#app" },
+                        maintainer: { "@id": "https://jstmemit.com/#org" },
                     },
                 ],
             })}
