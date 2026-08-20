@@ -11,7 +11,7 @@ import { getBreadcrumbListJsonLd } from "#/helpers/jsonLd/getBreadcrumbListJsonL
 interface Props {
     title: string;
     canonical: string;
-    isMain: boolean;
+    isMain?: boolean;
 }
 
 const { title, canonical, isMain } = Astro.props;
