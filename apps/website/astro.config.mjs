@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import node from "@astrojs/node";
 import compress from "astro-compress";
+import compressor from "astro-compressor";
 import critters from "astro-critters";
 import { svgoOptimizer } from "astro/config";
 
@@ -46,5 +47,6 @@ export default defineConfig({
         compress({
             CSS: false,
         }),
+        compressor(),
     ],
 });
