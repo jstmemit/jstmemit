@@ -10,9 +10,28 @@ import Footer from "#/components/Footer.astro";
 interface Props {
     title: string;
     canonical: string;
+    isMain: boolean;
 }
 
-const { title, canonical } = Astro.props;
+const { title, canonical, isMain } = Astro.props;
+
+const segments: string[] = new URL(canonical).pathname.split("/").filter(Boolean);
+
+const breadcrumb = {
+    "@type": "BreadcrumbList",
+    "@id": canonical + "#breadcrumb",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://jstmemit.com" },
+        ...segments.map((segment: string, index: number) => ({
+            "@type": "ListItem",
+            position: index + 2,
+            name: title.split("//").pop()?.trim() ?? segment,
+            ...(index < segments.length - 1
+                ? { item: "https://jstmemit.com/" + segments.slice(0, index + 1).join("/") }
+                : {}),
+        })),
+    ],
+};
 ---
 
 <html
@@ -132,7 +151,8 @@ const { title, canonical } = Astro.props;
                         isPartOf: { "@id": "https://jstmemit.com/#website" },
                         about: { "@id": "https://jstmemit.com/#app" },
                         primaryImageOfPage: { "@id": "https://jstmemit.com/#logo" },
-                        hasPart: { "@id": "https://jstmemit.com/#faq" },
+                        ...(isMain ? { hasPart: { "@id": "https://jstmemit.com/#faq" } } : {}),
+                        ...(isMain ? {} : { breadcrumb: { "@id": canonical + "#breadcrumb" } }),
                         inLanguage: "en",
                     },
                     {
@@ -189,6 +209,7 @@ const { title, canonical } = Astro.props;
                         targetProduct: { "@id": "https://jstmemit.com/#app" },
                         maintainer: { "@id": "https://jstmemit.com/#org" },
                     },
+                    ...(isMain ? [] : [breadcrumb]),
                 ],
             })}
         />
