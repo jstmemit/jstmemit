@@ -6,6 +6,7 @@ import plusJakartaSansWoff2 from "@fontsource-variable/plus-jakarta-sans/files/p
 import jetBrainsMono from "#/fonts/JetBrainsMono-Regular.woff2";
 import Posthog from "#/components/Posthog.astro";
 import Footer from "#/components/Footer.astro";
+import { getBreadcrumbListJsonLd } from "#/helpers/jsonLd/getBreadcrumbListJsonLd.ts";
 
 interface Props {
     title: string;
@@ -15,23 +16,7 @@ interface Props {
 
 const { title, canonical, isMain } = Astro.props;
 
-const segments: string[] = new URL(canonical).pathname.split("/").filter(Boolean);
-
-const breadcrumb = {
-    "@type": "BreadcrumbList",
-    "@id": canonical + "#breadcrumb",
-    itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://jstmemit.com" },
-        ...segments.map((segment: string, index: number) => ({
-            "@type": "ListItem",
-            position: index + 2,
-            name: title.split("//").pop()?.trim() ?? segment,
-            ...(index < segments.length - 1
-                ? { item: "https://jstmemit.com/" + segments.slice(0, index + 1).join("/") }
-                : {}),
-        })),
-    ],
-};
+const breadcrumb = getBreadcrumbListJsonLd(canonical, title);
 ---
 
 <html
