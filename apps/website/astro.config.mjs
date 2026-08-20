@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import node from "@astrojs/node";
 import compress from "astro-compress";
 import critters from "astro-critters";
+import { svgoOptimizer } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -23,6 +24,16 @@ export default defineConfig({
     adapter: node({
         mode: "standalone",
     }),
+
+    prefetch: {
+        defaultStrategy: "hover",
+        prefetchAll: true,
+    },
+
+    experimental: {
+        clientPrerender: true,
+        svgOptimizer: svgoOptimizer(),
+    },
 
     integrations: [
         critters(),
