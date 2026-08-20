@@ -30,6 +30,8 @@ const { title, canonical } = Astro.props;
         <link rel="sitemap" href="/sitemap-index.xml" />
         <meta name="generator" content={Astro.generator} />
 
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+
         <link rel="preload" as="font" type="font/woff2" href={plusJakartaSansWoff2} crossorigin />
         <link rel="preload" as="font" type="font/woff2" href={jetBrainsMono} crossorigin />
 
@@ -77,33 +79,108 @@ const { title, canonical } = Astro.props;
 
         <meta name="theme-color" content="#EC5775" />
 
-        <script is:inline type="application/ld+json">
-            {
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "SoftwareApplication",
-                "name": "Jstmemit",
-                "url": "https://jstmemit.com",
-                "applicationCategory": "UtilitiesApplication",
-                "operatingSystem": "Discord",
-                "description": "Discord bot that automatically generates memes from your server's own messages and images.",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "EUR"
-                },
-                "image": "https://files.jstmemit.com/jstmemit/images/logos/logo.png",
-                "sameAs": ["https://github.com/jstmemit/jstmemit"]
-            }
-        </script>
-
-        <script is:inline type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "url": "https://jstmemit.com",
-                "primaryImageOfPage": "https://files.jstmemit.com/jstmemit/images/logos/logo.png"
-            }
-        </script>
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://jstmemit.com/#org",
+                        name: "Jstmemit",
+                        url: "https://jstmemit.com",
+                        logo: {
+                            "@type": "ImageObject",
+                            "@id": "https://jstmemit.com/#logo",
+                            url: "https://files.jstmemit.com/jstmemit/images/logos/logo.png",
+                            caption: "Jstmemit logo",
+                        },
+                        contactPoint: [
+                            {
+                                "@type": "ContactPoint",
+                                contactType: "customer support",
+                                url: "https://discord.gg/THRnn8fhkZ",
+                            },
+                            { "@type": "ContactPoint", contactType: "privacy", email: "privacy@jstmemit.com" },
+                        ],
+                        legalName: "Wide Units",
+                        identifier: {
+                            "@type": "PropertyValue",
+                            propertyID: "KVK",
+                            value: "97552887",
+                        },
+                        sameAs: [
+                            "https://github.com/jstmemit",
+                            "https://top.gg/bot/1375836467745783990",
+                            "https://discord.gg/THRnn8fhkZ",
+                        ],
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://jstmemit.com/#website",
+                        url: "https://jstmemit.com",
+                        name: "Jstmemit",
+                        publisher: { "@id": "https://jstmemit.com/#org" },
+                        inLanguage: "en",
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": canonical + "#webpage",
+                        url: canonical,
+                        name: title,
+                        isPartOf: { "@id": "https://jstmemit.com/#website" },
+                        about: { "@id": "https://jstmemit.com/#app" },
+                        primaryImageOfPage: { "@id": "https://jstmemit.com/#logo" },
+                        inLanguage: "en",
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "@id": "https://jstmemit.com/#app",
+                        name: "Jstmemit",
+                        url: "https://jstmemit.com",
+                        description:
+                            "Discord bot that automatically generates memes from your server's own messages and images.",
+                        image: "https://files.jstmemit.com/jstmemit/images/logos/logo.png",
+                        applicationCategory: "UtilitiesApplication",
+                        applicationSubCategory: "Discord bot",
+                        operatingSystem: "Discord",
+                        softwareVersion: "1.4.0",
+                        datePublished: "2026-07-06",
+                        dateModified: new Date().toISOString(),
+                        license: "https://opensource.org/licenses/MIT",
+                        isAccessibleForFree: true,
+                        inLanguage: "en",
+                        author: { "@id": "https://jstmemit.com/#org" },
+                        publisher: { "@id": "https://jstmemit.com/#org" },
+                        installUrl: "https://discord.com/oauth2/authorize?client_id=1375836467745783990",
+                        downloadUrl: "https://github.com/jstmemit/jstmemit",
+                        softwareHelp: "https://discord.gg/THRnn8fhkZ",
+                        featureList: [
+                            "Auto-generates memes from your channel's own messages, images and GIFs",
+                            "More than 400 meme templates",
+                            "Animated meme templates",
+                            "Commands are translated into 13 languages",
+                            "Custom memes with your own text and images via /custom",
+                            "Turn any message or user profile into a meme via right-click actions",
+                            "Off by default, enabled per channel",
+                            "No usage limits and no watermarks",
+                            "Supports PNG, JPEG, WEBP, AVIF, GIF and more as input",
+                        ],
+                        screenshot: [
+                            "https://files.jstmemit.com/jstmemit/images/topgg/cinemaGuys.png",
+                            "https://files.jstmemit.com/jstmemit/images/topgg/spongebobCaveman.png",
+                        ],
+                        offers: {
+                            "@type": "Offer",
+                            price: "0",
+                            priceCurrency: "EUR",
+                            availability: "https://schema.org/InStock",
+                        },
+                    },
+                ],
+            })}
+        />
 
         <Posthog />
     </head>
