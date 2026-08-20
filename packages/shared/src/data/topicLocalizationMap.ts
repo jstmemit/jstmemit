@@ -600,4 +600,32 @@ export const TopicLocalizationMap: Record<TemplateTopic, LocalizationMap> = {
         [Locale.Korean]: "디모티베이터",
         [Locale.ChineseCN]: "反励志图",
     }),
+    [Topic.EightySix]: buildLocales("86 EIGHTY-SIX", {
+        [Locale.Russian]: "Восемьдесят шесть",
+        [Locale.Ukrainian]: "Вісімдесят шість",
+        [Locale.Japanese]: "86-エイティシックス-",
+        [Locale.Korean]: "86 -에이티식스-",
+        [Locale.ChineseCN]: "86 -不存在的战区-",
+    }),
+    [Topic.Barakamon]: buildLocales("Barakamon", {
+        [Locale.Russian]: "Баракамон",
+        [Locale.Ukrainian]: "Баракамон",
+        [Locale.Japanese]: "ばらかもん",
+        [Locale.Korean]: "바라카몬",
+        [Locale.ChineseCN]: "元气囡仔",
+    }),
+    [Topic.GJBu]: buildLocales("GJ-bu", {
+        [Locale.Russian]: "Клуб добрых дел",
+        [Locale.Ukrainian]: "Клуб добрих справ",
+        [Locale.Japanese]: "GJ部",
+        [Locale.Korean]: "GJ부",
+        [Locale.ChineseCN]: "GJ部",
+    }),
+    [Topic.GreatTeacherOnizuka]: buildLocales("Great Teacher Onizuka", {
+        [Locale.Russian]: "Крутой учитель Онидзука",
+        [Locale.Ukrainian]: "Крутий учитель Онідзука",
+        [Locale.Japanese]: "GTO",
+        [Locale.Korean]: "GTO",
+        [Locale.ChineseCN]: "麻辣教师GTO",
+    }),
 };

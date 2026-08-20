@@ -67,6 +67,10 @@ export const Topic = {
     UmaMusume: "umaMusume",
     Quote: "quote",
     Demotivator: "demotivator",
+    EightySix: "eightySix",
+    Barakamon: "barakamon",
+    GJBu: "gjbu",
+    GreatTeacherOnizuka: "greatTeacherOnizuka",
 } as const;
 
 export type TemplateTopic = (typeof Topic)[keyof typeof Topic];
