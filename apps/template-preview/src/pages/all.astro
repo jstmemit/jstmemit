@@ -17,14 +17,14 @@ const templates: Template[] = templatesRepository.getAll();
     <ul>
         {
             templates.map((template: Template) => (
-                <li class="list-none mt-5">
+                <li class="mt-5 list-none">
                     <Examples
                         cols={4}
                         gap="gap-1"
                         variants={variants}
                         template={template}
                         heading={template.name}
-                        link=`/templates/${template.name}`
+                        link={`/templates/${template.name}`}
                     />
                 </li>
             ))
