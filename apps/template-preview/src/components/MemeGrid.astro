@@ -11,9 +11,6 @@ interface Props {
     gap?: string;
 }
 
-const renderer: Renderer = new Renderer({ cacheMaxBytes: 128 * 1024 * 1024 });
-const fetchCache: Map<string, Promise<ArrayBuffer>> = new Map<string, Promise<ArrayBuffer>>();
-
 const { template, variants, cols, gap = "gap-5" } = Astro.props;
 ---
 
@@ -25,8 +22,6 @@ const { template, variants, cols, gap = "gap-5" } = Astro.props;
                 templateWidth={template.width}
                 templateHeight={template.height}
                 templateName={template.name}
-                renderer={renderer}
-                fetchCache={fetchCache}
                 size=`1/${cols}`
             />
         ))
