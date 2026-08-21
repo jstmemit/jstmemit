@@ -1,0 +1,84 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+
+export const hucUmaruTantrum: Template = {
+    name: "hucUmaruTantrum",
+    displayName: buildLocales("Umaru throwing a tantrum", {
+        [Locale.Russian]: "Умару в истерике",
+        [Locale.Ukrainian]: "Умару в істериці",
+        [Locale.Dutch]: "Umaru heeft een driftbui",
+        [Locale.French]: "Umaru fait un caprice",
+        [Locale.German]: "Umaru hat einen Wutanfall",
+        [Locale.Polish]: "Umaru w histerii",
+        [Locale.SpanishES]: "Umaru haciendo un berrinche",
+        [Locale.SpanishLATAM]: "Umaru haciendo un berrinche",
+        [Locale.PortugueseBR]: "Umaru fazendo birra",
+        [Locale.Turkish]: "Umaru öfke krizi geçiriyor",
+        [Locale.Italian]: "Umaru fa i capricci",
+        [Locale.Indonesian]: "Umaru sedang tantrum",
+        [Locale.Czech]: "Umaru má záchvat vzteku",
+        [Locale.Japanese]: "癇癪を起こすうまる",
+        [Locale.Korean]: "떼쓰는 우마루",
+        [Locale.ChineseCN]: "满地打滚的小埋",
+    }),
+    topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
+    types: [Type.TextLeftWithBackground, Type.Animated],
+    width: 870,
+    height: 545,
+    animationDuration: 700,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    images: [],
+    element: ({ texts }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: "Comic Sans MS",
+            }}
+        >
+            <img
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/hucUmaruTantrum.gif"
+                width={435}
+                height={545}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "50%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "10px",
+                    backgroundColor: "white",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 8,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 60,
+                        lineHeight: 1.05,
+                        paddingBottom: "0.2em",
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+        </div>
+    ),
+};
