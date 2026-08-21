@@ -3,7 +3,7 @@ import _ from "lodash";
 
 // test data for meme template previews
 
-const texts: string[] = [
+export const texts: string[] = [
     "lorem",
     "Lorem ipsum dolor sit.",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",

@@ -1,6 +1,8 @@
 import { Renderer } from "takumi-js/node";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
+import { texts } from "../data/variants.ts";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 const fontsRepository = new FontsRepository();
 const fontsService = new FontsService(fontsRepository);
@@ -18,8 +20,13 @@ export const fetchCache: Map<string, Promise<ArrayBuffer>> = globalRef.__takumiF
 (globalRef.__takumiFetchCache = new Map<string, Promise<ArrayBuffer>>());
 
 if (!globalRef.__takumiFontsLoaded) {
-    for (const font of fontsService.getFonts()) {
+    const defaultFonts: FontOptions[] = fontsService.getFonts();
+    const fallback = fontsService.getFontsFor(texts);
+    const fonts: FontOptions[] = [...defaultFonts, ...(fallback?.fonts || [])];
+
+    for (const font of fonts) {
         await renderer.registerFont(font);
     }
+
     globalRef.__takumiFontsLoaded = true;
 }
