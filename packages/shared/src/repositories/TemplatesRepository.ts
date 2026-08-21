@@ -469,6 +469,39 @@ import { hucUmaruStarEyes } from "#/templates/hucUmaruStarEyes.tsx";
 import { hucUmaruTantrum } from "#/templates/hucUmaruTantrum.tsx";
 import { hucUmaruTearingUp } from "#/templates/hucUmaruTearingUp.tsx";
 import { hucUmaruTransformation } from "#/templates/hucUmaruTransformation.tsx";
+import { jetCrash } from "#/templates/jetCrash.tsx";
+import { missleAtack } from "#/templates/missleAtack.tsx";
+import { policeCarCrash } from "#/templates/policeCarCrash.tsx";
+import { jkHigurumaCoveringFace } from "#/templates/jkHigurumaCoveringFace.tsx";
+import { jkSukunaDomainExpansion } from "#/templates/jkSukunaDomainExpansion.tsx";
+import { jkSukunaSmirking } from "#/templates/jkSukunaSmirking.tsx";
+import { jkSukunaTransformation } from "#/templates/jkSukunaTransformation.tsx";
+import { kaguyaKaguyaAngry } from "#/templates/kaguyaKaguyaAngry.tsx";
+import { kaguyasamaChikaDancing } from "#/templates/kaguyasamaChikaDancing.tsx";
+import { kaguyasamaChikaDetectiveSmile } from "#/templates/kaguyasamaChikaDetectiveSmile.tsx";
+import { kaguyasamaChikaExcited } from "#/templates/kaguyasamaChikaExcited.tsx";
+import { kaguyasamaChikaGiggling } from "#/templates/kaguyasamaChikaGiggling.tsx";
+import { kaguyasamaChikaHappy } from "#/templates/kaguyasamaChikaHappy.tsx";
+import { kaguyasamaChikaHeartEyes } from "#/templates/kaguyasamaChikaHeartEyes.tsx";
+import { kaguyasamaChikaHittingIshigami } from "#/templates/kaguyasamaChikaHittingIshigami.tsx";
+import { kaguyasamaChikaHorrified } from "#/templates/kaguyasamaChikaHorrified.tsx";
+import { kaguyasamaChikaPouting } from "#/templates/kaguyasamaChikaPouting.tsx";
+import { kaguyasamaHayasakaShy } from "#/templates/kaguyasamaHayasakaShy.tsx";
+import { kaguyasamaHayasakaUnimpressed } from "#/templates/kaguyasamaHayasakaUnimpressed.tsx";
+import { kaguyasamaKaguyaCatEars } from "#/templates/kaguyasamaKaguyaCatEars.tsx";
+import { kaguyasamaKaguyaCryingPout } from "#/templates/kaguyasamaKaguyaCryingPout.tsx";
+import { kaguyasamaKaguyaExcided } from "#/templates/kaguyasamaKaguyaExcided.tsx";
+import { kaguyasamaKaguyaHappy } from "#/templates/kaguyasamaKaguyaHappy.tsx";
+import { kaguyasamaKaguyaIntenseBlush } from "#/templates/kaguyasamaKaguyaIntenseBlush.tsx";
+import { kaguyasamaKaguyaLaughing } from "#/templates/kaguyasamaKaguyaLaughing.tsx";
+import { kaguyasamaKaguyaNervousTea } from "#/templates/kaguyasamaKaguyaNervousTea.tsx";
+import { kaguyasamaKaguyaPanicking } from "#/templates/kaguyasamaKaguyaPanicking.tsx";
+import { kaguyasamaKaguyaRomantic } from "#/templates/kaguyasamaKaguyaRomantic.tsx";
+import { kaguyasamaMikoPointingAngry } from "#/templates/kaguyasamaMikoPointingAngry.tsx";
+import { kaguyasamaShiroganeNervous } from "#/templates/kaguyasamaShiroganeNervous.tsx";
+import { kaguyasamaShiroganeScared } from "#/templates/kaguyasamaShiroganeScared.tsx";
+import { konMugiExcited } from "#/templates/konMugiExcited.tsx";
+import { konMugiPointing } from "#/templates/konMugiPointing.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -967,6 +1000,39 @@ export class TemplatesRepository implements ITemplatesRepository {
             hucUmaruTantrum,
             hucUmaruTearingUp,
             hucUmaruTransformation,
+            jetCrash,
+            missleAtack,
+            policeCarCrash,
+            jkHigurumaCoveringFace,
+            jkSukunaDomainExpansion,
+            jkSukunaSmirking,
+            jkSukunaTransformation,
+            kaguyaKaguyaAngry,
+            kaguyasamaChikaDancing,
+            kaguyasamaChikaDetectiveSmile,
+            kaguyasamaChikaExcited,
+            kaguyasamaChikaGiggling,
+            kaguyasamaChikaHappy,
+            kaguyasamaChikaHeartEyes,
+            kaguyasamaChikaHittingIshigami,
+            kaguyasamaChikaHorrified,
+            kaguyasamaChikaPouting,
+            kaguyasamaHayasakaShy,
+            kaguyasamaHayasakaUnimpressed,
+            kaguyasamaKaguyaCatEars,
+            kaguyasamaKaguyaCryingPout,
+            kaguyasamaKaguyaExcided,
+            kaguyasamaKaguyaHappy,
+            kaguyasamaKaguyaIntenseBlush,
+            kaguyasamaKaguyaLaughing,
+            kaguyasamaKaguyaNervousTea,
+            kaguyasamaKaguyaPanicking,
+            kaguyasamaKaguyaRomantic,
+            kaguyasamaMikoPointingAngry,
+            kaguyasamaShiroganeNervous,
+            kaguyasamaShiroganeScared,
+            konMugiExcited,
+            konMugiPointing,
         ];
     }
 
