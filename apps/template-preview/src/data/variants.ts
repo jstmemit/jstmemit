@@ -34,7 +34,11 @@ const images: string[] = [
     "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/rust.jpg",
 ];
 
-export const variants: TemplateProps[] = _.times(12, () => ({
-    texts: _.shuffle(texts),
-    images: _.shuffle(images),
-}));
+export const variants: TemplateProps[] = [];
+
+for (let i: number = 0; i < texts.length; i++) {
+    variants.push({
+        texts: _.times(10, (): string => texts[i]),
+        images: _.shuffle(images),
+    });
+}
