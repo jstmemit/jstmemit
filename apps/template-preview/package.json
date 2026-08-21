@@ -6,14 +6,15 @@
         "node": ">=22.12.0"
     },
     "scripts": {
-        "dev": "astro dev",
+        "dev": "set \"UV_THREADPOOL_SIZE=16\" && set \"NODE_OPTIONS=--max-old-space-size=4096\" && astro dev",
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro"
     },
     "devDependencies": {
         "@jstmemit/shared": "workspace:*",
-        "@types/lodash": "^4.17.24"
+        "@types/lodash": "^4.17.24",
+        "cross-env": "^10.1.0"
     },
     "dependencies": {
         "@astrojs/node": "^11.1.4",
