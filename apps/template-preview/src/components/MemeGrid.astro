@@ -1,25 +1,28 @@
 ---
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import { variants } from "../data/variants.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
+import { Renderer } from "takumi-js/node";
 
 interface Props {
     template: Template;
+    variants: TemplateProps[];
+    cols: number;
+    gap?: string;
 }
 
-const { template } = Astro.props;
+const { template, variants, cols, gap = "gap-5" } = Astro.props;
 ---
 
-<ul class="flex flex-wrap gap-5">
+<ul class:list={["flex flex-wrap", gap]}>
     {
         variants.map((variant: TemplateProps) => (
             <MemeCard
-                server:defer
                 variant={variant}
                 templateWidth={template.width}
                 templateHeight={template.height}
                 templateName={template.name}
+                size={`1/${cols}`}
             />
         ))
     }

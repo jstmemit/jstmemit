@@ -116,8 +116,8 @@ export class FontsService implements IFontsService {
     }
 
     /**
-     *  Checks if any of the strings in the array have
-     *  characters that require a fallback font
+     * Checks if any of the strings in the array have
+     * characters that require a fallback font
      *
      * @param texts
      *

@@ -11,6 +11,10 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
+    server: {
+        timeout: 120000,
+    },
+
     adapter: node({
         mode: "standalone",
     }),

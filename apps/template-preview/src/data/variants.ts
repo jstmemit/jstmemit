@@ -3,44 +3,42 @@ import _ from "lodash";
 
 // test data for meme template previews
 
-const texts: string[] = [
-    "Cities Skylines 2",
-    "without bicycles",
-    "KFC",
-    "at 23:59",
-    "Game of the year",
-    "Sony Headquarters",
-    "LinusTechTips",
-    "is not coming here",
-    "meow",
-    "aaaaaaaa",
-    "Bot settings",
-    "Mark Rutte",
-    "r/LinusTechTips",
-    "hop on war thunder",
-    "yes",
-    "why",
-    "lol",
-    "پیام آزمایشی",
-    "тестовое сообщение",
-];
-const images: string[] = [
-    "https://media1.tenor.com/m/1AhUNYnySx4AAAAC/f-bi-raid.gif",
-    "https://files.wideunits.nl/memes/examples/city.png",
-    "https://files.wideunits.nl/memes/examples/markrutte.jpeg",
-    "https://files.wideunits.nl/memes/examples/chicken.png",
-    "https://files.wideunits.nl/memes/examples/lightning.png",
-    "https://files.wideunits.nl/memes/examples/battlefield.png",
-    "https://files.wideunits.nl/memes/examples/hamster.png",
-    "https://files.wideunits.nl/memes/examples/siege.jpg",
-    "https://files.wideunits.nl/memes/examples/ubisoft.jpg",
-    "https://files.wideunits.nl/memes/examples/applestore.jpg",
-    "https://files.wideunits.nl/memes/examples/linus.png",
-    "https://files.wideunits.nl/memes/examples/cat.png",
-    "https://files.wideunits.nl/memes/examples/rust.jpg",
+export const texts: string[] = [
+    "lorem",
+    "Lorem ipsum dolor sit.",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sequi tenetur veniam!",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci beatae blanditiis consequatur distinctio neque optio reprehenderit.",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam consectetur corporis dolores eaque error, expedita ipsa iste laudantium, magni nobis quis sed sequi sint?",
+    "लोरेम इप्सम",
+    "ת 🍋 סד דו אייוסמוד 🐪",
+    "أميت 🕌 كونسكتيتور أديبيسكينج إيليت 🌙 سيد دو إيوسمود ☕️",
+    "ロレム・イプサム・ドロル・シット・アメット 🍣 コンセクテトゥル 🗻 アディピシシング・エリット 🎌 苏姆 多洛",
+    "Λορεμ ιπσθμ δολορ σιτ αμετ 🏛 κονσεκτετθερ αδιπισκινγ ελιτ 🫒 σεδ δο 🐙 Лорем ипсум долор сит амет 🪆 консектетур адиписцинг елит 🐻 ",
+    "Λorem ipsum ديمو 🌍 मिश्रित script混合 テスト 🧪 αδιπισκινγ ελιτ σεδ δο ✨ ลอเรม อิปซัม โดลอร์ ซิท อาเมท 🐘 คอนเซคเทเทอร์ 🍜 อาดิพิสซิ่ง เอลิท 🏮 埃利特 塞德 多 🥢普苏姆 多洛尔 坐 阿梅特 🐉",
 ];
 
-export const variants: TemplateProps[] = _.times(12, () => ({
-    texts: _.shuffle(texts),
-    images: _.shuffle(images),
-}));
+const images: string[] = [
+    "https://wideunits.nl/cdn-cgi/image/f=webp,q=30,onerror=redirect,metadata=none/https://files.wideunits.nl/memes/examples/fbi.gif",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/city.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/markrutte.jpeg",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/chicken.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/lightning.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/battlefield.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/hamster.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/siege.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/ubisoft.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/applestore.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/linus.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/cat.png",
+    "https://jstmemit.com/cdn-cgi/image/f=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=30,slow-connection-quality=22,width=768/https://files.wideunits.nl/memes/examples/rust.jpg",
+];
+
+export const variants: TemplateProps[] = [];
+
+for (let i: number = 0; i < texts.length; i++) {
+    variants.push({
+        texts: _.times(10, (): string => texts[i]),
+        images: _.shuffle(images),
+    });
+}

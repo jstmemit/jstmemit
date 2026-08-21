@@ -1,6 +1,7 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
 import type { Template } from "@jstmemit/shared/models/Template";
+import { variants } from "../data/variants.ts";
 
 import Slots from "../components/Slots.astro";
 import Examples from "../components/Examples.astro";
@@ -32,6 +33,6 @@ const { topic, template } = Astro.props;
         <Slots title="Text slots" slots={template.texts} />
         <Slots title="Image slots" slots={template.images} />
 
-        <Examples template={template} />
+        <Examples variants={variants} template={template} />
     </section>
 </div>
