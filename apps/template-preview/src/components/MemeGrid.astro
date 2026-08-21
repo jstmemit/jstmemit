@@ -2,6 +2,7 @@
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
+import { Renderer } from "takumi-js/node";
 
 interface Props {
     template: Template;
@@ -10,6 +11,9 @@ interface Props {
     gap?: string;
 }
 
+const renderer: Renderer = new Renderer({ cacheMaxBytes: 128 * 1024 * 1024 });
+const fetchCache: Map<string, Promise<ArrayBuffer>> = new Map<string, Promise<ArrayBuffer>>();
+
 const { template, variants, cols, gap = "gap-5" } = Astro.props;
 ---
 
@@ -17,11 +21,12 @@ const { template, variants, cols, gap = "gap-5" } = Astro.props;
     {
         variants.map((variant: TemplateProps) => (
             <MemeCard
-                server:defer
                 variant={variant}
                 templateWidth={template.width}
                 templateHeight={template.height}
                 templateName={template.name}
+                renderer={renderer}
+                fetchCache={fetchCache}
                 size=`1/${cols}`
             />
         ))

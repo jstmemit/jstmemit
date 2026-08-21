@@ -16,5 +16,5 @@ const { template, variants, cols = 3 } = Astro.props;
 
 <section>
     <h2 class="mb-3 text-3xl font-bold">Meme examples</h2>
-    <MemeGrid cols={cols} variants={variants} template={template} gap="gap-1" />
+    <MemeGrid cols={cols} variants={variants} template={template} gap="gap-1" server:defer />
 </section>
