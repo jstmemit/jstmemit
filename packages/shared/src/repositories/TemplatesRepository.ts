@@ -469,6 +469,16 @@ import { hucUmaruStarEyes } from "#/templates/hucUmaruStarEyes.tsx";
 import { hucUmaruTantrum } from "#/templates/hucUmaruTantrum.tsx";
 import { hucUmaruTearingUp } from "#/templates/hucUmaruTearingUp.tsx";
 import { hucUmaruTransformation } from "#/templates/hucUmaruTransformation.tsx";
+import { jetCrash } from "#/templates/jetCrash.tsx";
+import { missleAtack } from "#/templates/missleAtack.tsx";
+import { policeCarCrash } from "#/templates/policeCarCrash.tsx";
+import { jkHigurumaCoveringFace } from "#/templates/jkHigurumaCoveringFace.tsx";
+import { jkSukunaDomainExpansion } from "#/templates/jkSukunaDomainExpansion.tsx";
+import { jkSukunaSmirking } from "#/templates/jkSukunaSmirking.tsx";
+import { jkSukunaTransformation } from "#/templates/jkSukunaTransformation.tsx";
+import { kaguyaKaguyaAngry } from "#/templates/kaguyaKaguyaAngry.tsx";
+import { kaguyasamaChikaDancing } from "#/templates/kaguyasamaChikaDancing.tsx";
+import { kaguyasamaChikaDetectiveSmile } from "#/templates/kaguyasamaChikaDetectiveSmile.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -967,6 +977,16 @@ export class TemplatesRepository implements ITemplatesRepository {
             hucUmaruTantrum,
             hucUmaruTearingUp,
             hucUmaruTransformation,
+            jetCrash,
+            missleAtack,
+            policeCarCrash,
+            jkHigurumaCoveringFace,
+            jkSukunaDomainExpansion,
+            jkSukunaSmirking,
+            jkSukunaTransformation,
+            kaguyaKaguyaAngry,
+            kaguyasamaChikaDancing,
+            kaguyasamaChikaDetectiveSmile,
         ];
     }
 
