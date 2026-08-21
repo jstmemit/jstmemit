@@ -31,6 +31,8 @@ const fontsService: IFontsService = new FontsService(fontsRepository);
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
+const signal: AbortSignal = Astro.request.signal;
+
 let meme: string | undefined = undefined;
 
 if (templateName) {
@@ -54,6 +56,7 @@ if (templateName) {
                 emoji: "twemoji",
                 quality: 55,
                 drawDebugBorder: true,
+                signal: signal,
                 images: {
                     timeout: 20000,
                     maxBytes: 20 * 1024 * 1024,
@@ -76,6 +79,7 @@ if (templateName) {
             emoji: "twemoji",
             quality: 55,
             drawDebugBorder: true,
+            signal: signal,
             images: {
                 timeout: 20000,
                 maxBytes: 20 * 1024 * 1024,
