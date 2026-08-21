@@ -430,6 +430,45 @@ import { tsWoodyCrazy } from "#/templates/tsWoodyCrazy.tsx";
 import { tsWoodyStare } from "#/templates/tsWoodyStare.tsx";
 import { wnlFuminoSoulLeaving } from "#/templates/wnlFuminoSoulLeaving.tsx";
 import { userDemotivator } from "#/templates/userDemotivator.tsx";
+import { eightySixHenriettaAngry } from "#/templates/eightySixHenriettaAngry.tsx";
+import { barakamonNaruSlap } from "#/templates/barakamonNaruSlap.tsx";
+import { gintamaGintokiChocolate } from "#/templates/gintamaGintokiChocolate.tsx";
+import { gintamaGintokiCool } from "#/templates/gintamaGintokiCool.tsx";
+import { gintamaGintokiDisgusted } from "#/templates/gintamaGintokiDisgusted.tsx";
+import { gintamaGintokiMocking } from "#/templates/gintamaGintokiMocking.tsx";
+import { gintamaGintokiSeriousAndGoofy } from "#/templates/gintamaGintokiSeriousAndGoofy.tsx";
+import { gintamaGintokiSeriousAura } from "#/templates/gintamaGintokiSeriousAura.tsx";
+import { gintamaGintokiShocked } from "#/templates/gintamaGintokiShocked.tsx";
+import { gintamaGintokiSpillingDrink } from "#/templates/gintamaGintokiSpillingDrink.tsx";
+import { gintamaKaguraAnnoyed } from "#/templates/gintamaKaguraAnnoyed.tsx";
+import { gintamaKaguraSike } from "#/templates/gintamaKaguraSike.tsx";
+import { gintamaGintokiGintokiRippingShirt } from "#/templates/gintamaGintokiGintokiRippingShirt.tsx";
+import { gjbuKasumiBites } from "#/templates/gjbuKasumiBites.tsx";
+import { gtoOnizukaCrying } from "#/templates/gtoOnizukaCrying.tsx";
+import { gtoOnizukaEating } from "#/templates/gtoOnizukaEating.tsx";
+import { gtoOnizukaSmiling } from "#/templates/gtoOnizukaSmiling.tsx";
+import { gtoOnizukaWalkingWithSpray } from "#/templates/gtoOnizukaWalkingWithSpray.tsx";
+import { hucUmaruAngryPout } from "#/templates/hucUmaruAngryPout.tsx";
+import { hucUmaruCoolSunglasses } from "#/templates/hucUmaruCoolSunglasses.tsx";
+import { hucUmaruCryingLoudly } from "#/templates/hucUmaruCryingLoudly.tsx";
+import { hucUmaruEvilSmirk } from "#/templates/hucUmaruEvilSmirk.tsx";
+import { hucUmaruExcited } from "#/templates/hucUmaruExcited.tsx";
+import { hucUmaruFactory } from "#/templates/hucUmaruFactory.tsx";
+import { hucUmaruGamingAndSliding } from "#/templates/hucUmaruGamingAndSliding.tsx";
+import { hucUmaruHeadpat } from "#/templates/hucUmaruHeadpat.tsx";
+import { hucUmaruInterruptedDuringGaming } from "#/templates/hucUmaruInterruptedDuringGaming.tsx";
+import { hucUmaruLightSwitch } from "#/templates/hucUmaruLightSwitch.tsx";
+import { hucUmaruMaracasDance } from "#/templates/hucUmaruMaracasDance.tsx";
+import { hucUmaruPlayingDS } from "#/templates/hucUmaruPlayingDS.tsx";
+import { hucUmaruPouting } from "#/templates/hucUmaruPouting.tsx";
+import { hucUmaruRagingFire } from "#/templates/hucUmaruRagingFire.tsx";
+import { hucUmaruRunningCrying } from "#/templates/hucUmaruRunningCrying.tsx";
+import { hucUmaruSleeping } from "#/templates/hucUmaruSleeping.tsx";
+import { hucUmaruSliding } from "#/templates/hucUmaruSliding.tsx";
+import { hucUmaruStarEyes } from "#/templates/hucUmaruStarEyes.tsx";
+import { hucUmaruTantrum } from "#/templates/hucUmaruTantrum.tsx";
+import { hucUmaruTearingUp } from "#/templates/hucUmaruTearingUp.tsx";
+import { hucUmaruTransformation } from "#/templates/hucUmaruTransformation.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -889,6 +928,45 @@ export class TemplatesRepository implements ITemplatesRepository {
             tsWoodyStare,
             wnlFuminoSoulLeaving,
             userDemotivator,
+            eightySixHenriettaAngry,
+            barakamonNaruSlap,
+            gintamaGintokiChocolate,
+            gintamaGintokiCool,
+            gintamaGintokiDisgusted,
+            gintamaGintokiMocking,
+            gintamaGintokiSeriousAndGoofy,
+            gintamaGintokiSeriousAura,
+            gintamaGintokiShocked,
+            gintamaGintokiSpillingDrink,
+            gintamaKaguraAnnoyed,
+            gintamaKaguraSike,
+            gintamaGintokiGintokiRippingShirt,
+            gjbuKasumiBites,
+            gtoOnizukaCrying,
+            gtoOnizukaEating,
+            gtoOnizukaSmiling,
+            gtoOnizukaWalkingWithSpray,
+            hucUmaruAngryPout,
+            hucUmaruCoolSunglasses,
+            hucUmaruCryingLoudly,
+            hucUmaruEvilSmirk,
+            hucUmaruExcited,
+            hucUmaruFactory,
+            hucUmaruGamingAndSliding,
+            hucUmaruHeadpat,
+            hucUmaruInterruptedDuringGaming,
+            hucUmaruLightSwitch,
+            hucUmaruMaracasDance,
+            hucUmaruPlayingDS,
+            hucUmaruPouting,
+            hucUmaruRagingFire,
+            hucUmaruRunningCrying,
+            hucUmaruSleeping,
+            hucUmaruSliding,
+            hucUmaruStarEyes,
+            hucUmaruTantrum,
+            hucUmaruTearingUp,
+            hucUmaruTransformation,
         ];
     }
 
