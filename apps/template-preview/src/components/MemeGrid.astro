@@ -6,12 +6,14 @@ import MemeCard from "./MemeCard.astro";
 interface Props {
     template: Template;
     variants: TemplateProps[];
+    cols: number;
+    gap?: string;
 }
 
-const { template, variants } = Astro.props;
+const { template, variants, cols, gap = "gap-5" } = Astro.props;
 ---
 
-<ul class="flex flex-wrap gap-5">
+<ul class:list={["flex flex-wrap", gap]}>
     {
         variants.map((variant: TemplateProps) => (
             <MemeCard
@@ -20,6 +22,7 @@ const { template, variants } = Astro.props;
                 templateWidth={template.width}
                 templateHeight={template.height}
                 templateName={template.name}
+                size=`1/${cols}`
             />
         ))
     }
