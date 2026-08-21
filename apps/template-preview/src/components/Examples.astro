@@ -1,6 +1,5 @@
 ---
 import MemeGrid from "./MemeGrid.astro";
-import { variants } from "../data/variants.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
 
@@ -8,10 +7,10 @@ interface Props {
     template: Template;
 }
 
-const { template } = Astro.props;
+const { template, variants } = Astro.props;
 ---
 
 <section>
     <h2 class="mb-3 text-3xl font-bold">Meme examples</h2>
-    <MemeGrid template={template} />
+    <MemeGrid variants={variants} template={template} />
 </section>

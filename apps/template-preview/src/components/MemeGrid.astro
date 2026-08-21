@@ -1,14 +1,14 @@
 ---
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import { variants } from "../data/variants.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
 
 interface Props {
     template: Template;
+    variants: TemplateProps[];
 }
 
-const { template } = Astro.props;
+const { template, variants } = Astro.props;
 ---
 
 <ul class="flex flex-wrap gap-5">
