@@ -1,9 +1,5 @@
 ---
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
-import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
-import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-import { FontsService } from "@jstmemit/shared/services/FontsService";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
@@ -25,9 +21,6 @@ interface Props {
 
 const { variant, templateWidth, templateHeight, templateName, size = "1/3" } = Astro.props;
 
-const fontsRepository: IFontsRepository = new FontsRepository();
-const fontsService: IFontsService = new FontsService(fontsRepository);
-
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
@@ -40,17 +33,13 @@ if (templateName) {
     if (variant?.texts === undefined) {
         throw new Error();
     }
-    const { fonts, fontFamilies }: { fonts?: FontOptions[]; fontFamilies: string[] } = fontsService.getFontsFor(
-        variant.texts,
-    );
+
     if (template.animationDuration === undefined) {
         const staticMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(
             template.element(variant!),
             {
                 width: template.width,
                 height: template.height,
-                fonts: fonts,
-                fontFamilies: fontFamilies,
                 dithering: "floyd-steinberg",
                 renderer: renderer,
                 emoji: "twemoji",
@@ -70,8 +59,6 @@ if (templateName) {
         const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
             width: template.width,
             height: template.height,
-            fonts: fonts,
-            fontFamilies: fontFamilies,
             renderer: renderer,
             fps: 12,
             format: "webp",
@@ -97,5 +84,13 @@ const sizes = {
 ---
 
 <li class:list={[`bg-white/10 w-[${templateWidth}px] h-[${templateHeight}px]`, sizes[size]]}>
-    <img src={meme} width={templateWidth} height={templateHeight} alt={templateName} />
+    <img
+        src={meme}
+        width={templateWidth}
+        height={templateHeight}
+        alt={templateName}
+        decoding="async"
+        fetchpriority="high"
+        loading="eager"
+    />
 </li>
