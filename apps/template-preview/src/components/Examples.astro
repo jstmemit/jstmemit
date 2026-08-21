@@ -7,14 +7,18 @@ import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 interface Props {
     template: Template;
     variants: TemplateProps[];
+    heading?: string;
+    link?: string;
     cols?: number;
     gap?: string;
 }
 
-const { template, variants, cols = 3 } = Astro.props;
+const { template, variants, cols = 3, heading = "Meme examples", link = "#" } = Astro.props;
 ---
 
 <section>
-    <h2 class="mb-3 text-3xl font-bold">Meme examples</h2>
+    <a href={link}>
+        <h2 class="mb-3 text-3xl font-bold">{heading}</h2>
+    </a>
     <MemeGrid cols={cols} variants={variants} template={template} gap="gap-1" server:defer />
 </section>
