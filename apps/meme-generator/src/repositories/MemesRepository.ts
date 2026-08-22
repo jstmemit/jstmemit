@@ -51,7 +51,7 @@ export class MemesRepository implements IMemesRepository {
                     renderer: this._renderer,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache, timeout: 12000 },
+                    images: { fetchCache: this._fetchCache, timeout: 12000, maxBytes: 20 * 1024 * 1024 },
                     quality: turbo ? 35 : 45,
                     fps: 12,
                     scenes: [{ durationMs: animationDuration, node: template.element(props) }],
@@ -64,7 +64,7 @@ export class MemesRepository implements IMemesRepository {
                     quality: turbo ? 30 : 55,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache, timeout: 12000 },
+                    images: { fetchCache: this._fetchCache, timeout: 12000, maxBytes: 20 * 1024 * 1024 },
                 });
             }
         } catch (error) {
