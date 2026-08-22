@@ -100,7 +100,7 @@ export class MilestonesService implements IMilestonesService {
 
             const { likes, dislikes, templates, voices } = await this.getStatsPerChannel(interaction.channelId);
             const achievement: Achievement | undefined = achievementsList.find(
-                (achievement: Achievement): boolean => achievement.requiredCount === count,
+                (achievement: Achievement): boolean => achievement.requiredCount === milestone,
             );
 
             const components: (ActionRowBuilder<ButtonBuilder> | ContainerBuilder)[] = [
