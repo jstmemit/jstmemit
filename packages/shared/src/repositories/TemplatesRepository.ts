@@ -541,8 +541,14 @@ import { lsKonataGaming } from "#/templates/lsKonataGaming.tsx";
 import { lsKonataGamingSmug } from "#/templates/lsKonataGamingSmug.tsx";
 import { lsKonataHappy } from "#/templates/lsKonataHappy.tsx";
 import { lsKonataNerd } from "#/templates/lsKonataNerd.tsx";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { readdirSync, readFileSync } from "node:fs";
 
 export class TemplatesRepository implements ITemplatesRepository {
+    private _imageUrls: string[] | undefined;
+    private _templates: Template[] | undefined;
+
     /**
      * Returns an array of template names that
      * all share a specific topic
@@ -573,7 +579,11 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @returns Template[]
      */
     public getAll(): Template[] {
-        return [
+        if (this._templates) {
+            return this._templates;
+        }
+
+        this._templates = [
             topBottomText,
             liveReaction,
             spongebobBurningTheNote,
@@ -1112,6 +1122,27 @@ export class TemplatesRepository implements ITemplatesRepository {
             lsKonataHappy,
             lsKonataNerd,
         ];
+
+        return this._templates;
+    }
+
+    public getAllImageUrls(): string[] {
+        if (this._imageUrls) return this._imageUrls;
+
+        const dir = join(dirname(fileURLToPath(import.meta.url)), "../templates");
+        const urls = new Set<string>();
+
+        for (const file of readdirSync(dir)) {
+            if (!file.endsWith(".tsx")) continue;
+
+            const source = readFileSync(join(dir, file), "utf8");
+            for (const [, url] of source.matchAll(/src="(https?:\/\/[^"]+)"/g)) {
+                urls.add(url!);
+            }
+        }
+
+        this._imageUrls = [...urls];
+        return this._imageUrls;
     }
 
     /**
