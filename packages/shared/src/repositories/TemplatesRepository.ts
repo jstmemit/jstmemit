@@ -527,6 +527,20 @@ import { gtoUrumiPhoneCall } from "#/templates/gtoUrumiPhoneCall.tsx";
 import { konYuiCryingWindow } from "#/templates/konYuiCryingWindow.tsx";
 import { konYuiDoublePeace } from "#/templates/konYuiDoublePeace.tsx";
 import { konYuiHappySmile } from "#/templates/konYuiHappySmile.tsx";
+import { lhAkatsukiBlush } from "#/templates/lhAkatsukiBlush.tsx";
+import { lhAkatsukiRolling } from "#/templates/lhAkatsukiRolling.tsx";
+import { lhShiroeGlassesPush } from "#/templates/lhShiroeGlassesPush.tsx";
+import { lhShiroeNervous } from "#/templates/lhShiroeNervous.tsx";
+import { lhShiroeScheming } from "#/templates/lhShiroeScheming.tsx";
+import { llMakiHappy } from "#/templates/llMakiHappy.tsx";
+import { lsKonataApologizing } from "#/templates/lsKonataApologizing.tsx";
+import { lsKonataHi } from "#/templates/lsKonataHi.tsx";
+import { lsKonataCantConcentrate } from "#/templates/lsKonataCantConcentrate.tsx";
+import { lsKonataDancing } from "#/templates/lsKonataDancing.tsx";
+import { lsKonataGaming } from "#/templates/lsKonataGaming.tsx";
+import { lsKonataGamingSmug } from "#/templates/lsKonataGamingSmug.tsx";
+import { lsKonataHappy } from "#/templates/lsKonataHappy.tsx";
+import { lsKonataNerd } from "#/templates/lsKonataNerd.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -1083,6 +1097,20 @@ export class TemplatesRepository implements ITemplatesRepository {
             konYuiCryingWindow,
             konYuiDoublePeace,
             konYuiHappySmile,
+            lhAkatsukiBlush,
+            lhAkatsukiRolling,
+            lhShiroeGlassesPush,
+            lhShiroeNervous,
+            lhShiroeScheming,
+            llMakiHappy,
+            lsKonataApologizing,
+            lsKonataHi,
+            lsKonataCantConcentrate,
+            lsKonataDancing,
+            lsKonataGaming,
+            lsKonataGamingSmug,
+            lsKonataHappy,
+            lsKonataNerd,
         ];
     }
 
