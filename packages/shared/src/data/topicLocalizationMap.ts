@@ -646,4 +646,11 @@ export const TopicLocalizationMap: Record<TemplateTopic, LocalizationMap> = {
         [Locale.Korean]: "파괴",
         [Locale.ChineseCN]: "毁灭",
     }),
+    [Topic.LoveLab]: buildLocales("Love Lab", {
+        [Locale.Russian]: "Лаборатория любви",
+        [Locale.Ukrainian]: "Лабораторія кохання",
+        [Locale.Japanese]: "恋愛ラボ",
+        [Locale.Korean]: "연애 연구소",
+        [Locale.ChineseCN]: "恋爱研究所",
+    }),
 };
