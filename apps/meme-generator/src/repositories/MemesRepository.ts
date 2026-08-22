@@ -1,4 +1,4 @@
-import { render, renderAnimation } from "takumi-js";
+import { type ImageSource, render, renderAnimation } from "takumi-js";
 import { type RegisteredFamily, Renderer } from "takumi-js/node";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
@@ -6,6 +6,7 @@ import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
+import { analytics } from "@jstmemit/analytics";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _templatesRepository: ITemplatesRepository;
@@ -13,6 +14,7 @@ export class MemesRepository implements IMemesRepository {
     private readonly _renderer: Renderer;
     private readonly _fontsReady: Promise<void>;
     private readonly _fetchCache: Map<string, Promise<ArrayBuffer>>;
+    private readonly _sources: ImageSource[] = [];
 
     public constructor(templatesRepository: ITemplatesRepository, fontsService: IFontsService) {
         this._fontsService = fontsService;
@@ -21,7 +23,9 @@ export class MemesRepository implements IMemesRepository {
         this._fontsReady = this._registerFonts();
         this._templatesRepository = templatesRepository;
 
-        this._prefetch(this._templatesRepository.getAllImageUrls());
+        this._prefetch(this._templatesRepository.getAllImageUrls()).catch((error: unknown): void =>
+            analytics.captureException(error),
+        );
     }
 
     /**
@@ -52,7 +56,12 @@ export class MemesRepository implements IMemesRepository {
                     renderer: this._renderer,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache, timeout: 12000, maxBytes: 20 * 1024 * 1024 },
+                    images: {
+                        fetchCache: this._fetchCache,
+                        timeout: 25000,
+                        maxBytes: 20 * 1024 * 1024,
+                        sources: this._sources,
+                    },
                     quality: turbo ? 35 : 45,
                     fps: 12,
                     scenes: [{ durationMs: animationDuration, node: template.element(props) }],
@@ -65,7 +74,12 @@ export class MemesRepository implements IMemesRepository {
                     quality: turbo ? 30 : 55,
                     format: "webp",
                     emoji: "twemoji",
-                    images: { fetchCache: this._fetchCache, timeout: 12000, maxBytes: 20 * 1024 * 1024 },
+                    images: {
+                        fetchCache: this._fetchCache,
+                        timeout: 25000,
+                        maxBytes: 20 * 1024 * 1024,
+                        sources: this._sources,
+                    },
                 });
             }
         } catch (error) {
@@ -91,23 +105,50 @@ export class MemesRepository implements IMemesRepository {
 
     /**
      * Prefetches images that are used in meme templates
+     * with a delay of 150ms
      *
      * @param urls
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private _prefetch(urls: string[]): void {
+    private async _prefetch(urls: string[]): Promise<void> {
         for (const url of urls) {
-            if (this._fetchCache.has(url)) continue;
+            await this._addSource(url);
+            await new Promise<void>((resolve: (value: void | Promise<void>) => void): NodeJS.Timeout =>
+                setTimeout(resolve, 150),
+            );
+        }
+    }
 
-            const data: Promise<ArrayBuffer> = fetch(url).then((res: Response): Promise<ArrayBuffer> => {
-                if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
-                return res.arrayBuffer();
-            });
+    /**
+     * Fetches image from the passed URL and saves
+     * buffer into fetchCache and sources
+     *
+     * @param url
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private async _addSource(url: string): Promise<void> {
+        if (this._sources.some((source: ImageSource): boolean => source.src === url)) return;
 
-            data.catch((): boolean => this._fetchCache.delete(url));
-            this._fetchCache.set(url, data);
+        try {
+            let fetchPromise: Promise<ArrayBuffer> | undefined = this._fetchCache.get(url);
+
+            if (!fetchPromise) {
+                fetchPromise = fetch(url).then((response: Response): Promise<ArrayBuffer> => {
+                    if (!response.ok) throw new Error(`${response.url} ${response.status}`);
+                    return response.arrayBuffer();
+                });
+                this._fetchCache.set(url, fetchPromise);
+            }
+
+            const data: ArrayBuffer = await fetchPromise;
+            this._sources.push({ src: url, data, cache: "auto" });
+        } catch (error) {
+            this._fetchCache.delete(url);
+            analytics.captureException(error);
         }
     }
 }
