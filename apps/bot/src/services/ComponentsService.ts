@@ -732,9 +732,7 @@ export class ComponentsService implements IComponentsService {
      */
     public getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`## ${t("help.autoMemes.heading", language)}`),
-            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.autoMemes.heading", language)}`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
             );
@@ -750,7 +748,7 @@ export class ComponentsService implements IComponentsService {
      */
     public getHelpVoiceMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.voice.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.voice.heading", language)}`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     t("help.voice.description", language, {
@@ -770,9 +768,7 @@ export class ComponentsService implements IComponentsService {
      */
     public getHelpRightClickMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`## ${t("help.rightClick.heading", language)}`),
-            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.rightClick.heading", language)}`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(`${t("help.rightClick.description", language)}`),
             );
