@@ -85,13 +85,10 @@ export class MilestonesService implements IMilestonesService {
             await this._cacheService.set(`generations:${interaction.channelId}`, count, ms("7d"));
 
             const lastFired: number = (await this._cacheService.get(`milestone:${interaction.channelId}`)) ?? 0;
+            const previous: number = this._highestMilestoneAtOrBelow(count - 1);
             const milestone: number = this._highestMilestoneAtOrBelow(count);
 
-            if (milestone === 0 || milestone <= lastFired) {
-                return;
-            }
-
-            if (!this._isMilestoneCount(count)) {
+            if (milestone === 0 || milestone === previous || milestone <= lastFired) {
                 return;
             }
 
@@ -211,11 +208,5 @@ export class MilestonesService implements IMilestonesService {
         }
 
         return milestone;
-    }
-
-    private _isMilestoneCount(count: number): boolean {
-        if (count < 25 || count % 25 !== 0) return false;
-        const quotient: number = count / 25;
-        return (quotient & (quotient - 1)) === 0;
     }
 }
