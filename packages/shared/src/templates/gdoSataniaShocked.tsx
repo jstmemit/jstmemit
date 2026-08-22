@@ -43,7 +43,7 @@ export const gdoSataniaShocked: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaShocked.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoSataniaShocked.png"
                 width={900}
                 height={900}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

@@ -44,7 +44,7 @@ export const adTomoAndOsakaAgree: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adTomoAndOsakaAgree.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adTomoAndOsakaAgree.gif"
                 width={540}
                 height={404}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

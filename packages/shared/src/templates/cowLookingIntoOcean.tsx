@@ -43,7 +43,7 @@ export const cowLookingIntoOcean: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/cowlookingintoocean.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/cowlookingintoocean.png"
                 width={403}
                 height={352}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -44,7 +44,7 @@ export const gintamaGintokiSeriousAura: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaGintokiSeriousAura.webp"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaGintokiSeriousAura.webp"
                 width={630}
                 height={358}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

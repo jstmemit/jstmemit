@@ -44,7 +44,7 @@ export const adKaguraLaughing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adKaguraLaughing.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/adKaguraLaughing.gif"
                 width={498}
                 height={373}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

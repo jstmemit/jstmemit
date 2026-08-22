@@ -44,7 +44,7 @@ export const kaguyasamaChikaHeartEyes: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/kaguyasamaChikaHeartEyes.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/kaguyasamaChikaHeartEyes.gif"
                 width={480}
                 height={270}
                 style={{ position: "absolute", top: 0, right: 0 }}
