@@ -1,10 +1,11 @@
 import { render, renderAnimation } from "takumi-js";
-import { Renderer } from "takumi-js/node";
+import { type RegisteredFamily, Renderer } from "takumi-js/node";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _templatesRepository: ITemplatesRepository;
@@ -74,19 +75,23 @@ export class MemesRepository implements IMemesRepository {
     }
 
     private async _registerFonts(): Promise<void> {
-        await Promise.all(this._fontsService.getAllFonts().map((font) => this._renderer.registerFont(font)));
+        await Promise.all(
+            this._fontsService
+                .getAllFonts()
+                .map((font: FontOptions): Promise<RegisteredFamily[]> => this._renderer.registerFont(font)),
+        );
     }
 
     private _prefetch(urls: string[]): void {
         for (const url of urls) {
             if (this._fetchCache.has(url)) continue;
 
-            const data = fetch(url).then((res) => {
+            const data: Promise<ArrayBuffer> = fetch(url).then((res: Response): Promise<ArrayBuffer> => {
                 if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
                 return res.arrayBuffer();
             });
 
-            data.catch(() => this._fetchCache.delete(url));
+            data.catch((): boolean => this._fetchCache.delete(url));
             this._fetchCache.set(url, data);
         }
     }
