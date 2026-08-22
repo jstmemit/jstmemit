@@ -502,6 +502,31 @@ import { kaguyasamaShiroganeNervous } from "#/templates/kaguyasamaShiroganeNervo
 import { kaguyasamaShiroganeScared } from "#/templates/kaguyasamaShiroganeScared.tsx";
 import { konMugiExcited } from "#/templates/konMugiExcited.tsx";
 import { konMugiPointing } from "#/templates/konMugiPointing.tsx";
+import { konosubaAquaBegging } from "#/templates/konosubaAquaBegging.tsx";
+import { konosubaAquaCrying } from "#/templates/konosubaAquaCrying.tsx";
+import { konosubaAquaCrying1 } from "#/templates/konosubaAquaCrying1.tsx";
+import { konosubaAquaCryingSmilingFace } from "#/templates/konosubaAquaCryingSmilingFace.tsx";
+import { konosubaAquaEatingGround } from "#/templates/konosubaAquaEatingGround.tsx";
+import { konosubaAquaCondescending } from "#/templates/konosubaAquaCondescending.tsx";
+import { konosubaAquaPanicking } from "#/templates/konosubaAquaPanicking.tsx";
+import { konosubaAquaPleading } from "#/templates/konosubaAquaPleading.tsx";
+import { konosubaAquaShadowSmirk } from "#/templates/konosubaAquaShadowSmirk.tsx";
+import { konosubaAquaSmug } from "#/templates/konosubaAquaSmug.tsx";
+import { konosubaAquaTantrum } from "#/templates/konosubaAquaTantrum.tsx";
+import { konosubaAquaThinking } from "#/templates/konosubaAquaThinking.tsx";
+import { konosubaDarknessHappy } from "#/templates/konosubaDarknessHappy.tsx";
+import { konosubaDarknessSwingingSword } from "#/templates/konosubaDarknessSwingingSword.tsx";
+import { konosubaKazumaSaluting } from "#/templates/konosubaKazumaSaluting.tsx";
+import { konosubaMeguminApproves } from "#/templates/konosubaMeguminApproves.tsx";
+import { konosubaMeguminCryingSmilingFace } from "#/templates/konosubaMeguminCryingSmilingFace.tsx";
+import { konosubaMeguminHuggingStaff } from "#/templates/konosubaMeguminHuggingStaff.tsx";
+import { konosubaMeguminIntroducingHerself } from "#/templates/konosubaMeguminIntroducingHerself.tsx";
+import { konosubaMeguminSmiling } from "#/templates/konosubaMeguminSmiling.tsx";
+import { konosubaMeguminSmug } from "#/templates/konosubaMeguminSmug.tsx";
+import { gtoUrumiPhoneCall } from "#/templates/gtoUrumiPhoneCall.tsx";
+import { konYuiCryingWindow } from "#/templates/konYuiCryingWindow.tsx";
+import { konYuiDoublePeace } from "#/templates/konYuiDoublePeace.tsx";
+import { konYuiHappySmile } from "#/templates/konYuiHappySmile.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     /**
@@ -1033,6 +1058,31 @@ export class TemplatesRepository implements ITemplatesRepository {
             kaguyasamaShiroganeScared,
             konMugiExcited,
             konMugiPointing,
+            konosubaAquaBegging,
+            konosubaAquaCrying,
+            konosubaAquaCrying1,
+            konosubaAquaCryingSmilingFace,
+            konosubaAquaEatingGround,
+            konosubaAquaCondescending,
+            konosubaAquaPanicking,
+            konosubaAquaPleading,
+            konosubaAquaShadowSmirk,
+            konosubaAquaSmug,
+            konosubaAquaTantrum,
+            konosubaAquaThinking,
+            konosubaDarknessHappy,
+            konosubaDarknessSwingingSword,
+            konosubaKazumaSaluting,
+            konosubaMeguminApproves,
+            konosubaMeguminCryingSmilingFace,
+            konosubaMeguminHuggingStaff,
+            konosubaMeguminIntroducingHerself,
+            konosubaMeguminSmiling,
+            konosubaMeguminSmug,
+            gtoUrumiPhoneCall,
+            konYuiCryingWindow,
+            konYuiDoublePeace,
+            konYuiHappySmile,
         ];
     }
 
