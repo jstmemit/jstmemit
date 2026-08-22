@@ -40,7 +40,6 @@ if (templateName) {
             {
                 width: template.width,
                 height: template.height,
-                dithering: "floyd-steinberg",
                 renderer: renderer,
                 emoji: "twemoji",
                 quality: 55,
@@ -64,7 +63,7 @@ if (templateName) {
             format: "webp",
             scenes: [{ durationMs: animationDuration, node: template.element(variant!) }],
             emoji: "twemoji",
-            quality: 55,
+            quality: 45,
             drawDebugBorder: true,
             signal: signal,
             images: {
