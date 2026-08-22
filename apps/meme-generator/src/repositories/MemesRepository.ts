@@ -74,6 +74,13 @@ export class MemesRepository implements IMemesRepository {
         }
     }
 
+    /**
+     * Registers all fonts into the renderer
+     *
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private async _registerFonts(): Promise<void> {
         await Promise.all(
             this._fontsService
@@ -82,6 +89,14 @@ export class MemesRepository implements IMemesRepository {
         );
     }
 
+    /**
+     * Prefetches images that are used in meme templates
+     *
+     * @param urls
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
     private _prefetch(urls: string[]): void {
         for (const url of urls) {
             if (this._fetchCache.has(url)) continue;

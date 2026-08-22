@@ -1126,16 +1126,24 @@ export class TemplatesRepository implements ITemplatesRepository {
         return this._templates;
     }
 
+    /**
+     * Goes through meme templates and finds
+     * all used images inside src attributes
+     *
+     * @returns string[]
+     *
+     * @author Kyrylo Maliuha
+     */
     public getAllImageUrls(): string[] {
         if (this._imageUrls) return this._imageUrls;
 
-        const dir = join(dirname(fileURLToPath(import.meta.url)), "../templates");
+        const directory: string = join(dirname(fileURLToPath(import.meta.url)), "../templates");
         const urls = new Set<string>();
 
-        for (const file of readdirSync(dir)) {
+        for (const file of readdirSync(directory)) {
             if (!file.endsWith(".tsx")) continue;
 
-            const source = readFileSync(join(dir, file), "utf8");
+            const source: string = readFileSync(join(directory, file), "utf8");
             for (const [, url] of source.matchAll(/src="(https?:\/\/[^"]+)"/g)) {
                 urls.add(url!);
             }
