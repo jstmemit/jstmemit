@@ -4,7 +4,6 @@ import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import type { Template } from "@jstmemit/shared/models/Template";
-import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _fontsService: IFontsService;
@@ -39,17 +38,12 @@ export class MemesRepository implements IMemesRepository {
         try {
             await this._fontsReady;
 
-            const { fonts, fontFamilies }: { fonts?: FontOptions[]; fontFamilies: string[] } =
-                this._fontsService.getFontsFor(props.texts);
-
             if (animated) {
                 const animationDuration: number = template.animationDuration ?? 1500;
                 return await renderAnimation({
                     width: template.width,
                     height: template.height,
                     renderer: this._renderer,
-                    fonts,
-                    fontFamilies,
                     format: "webp",
                     emoji: "twemoji",
                     images: { fetchCache: this._fetchCache, timeout: 12000 },
@@ -62,8 +56,6 @@ export class MemesRepository implements IMemesRepository {
                     width: template.width,
                     height: template.height,
                     renderer: this._renderer,
-                    fonts,
-                    fontFamilies,
                     quality: turbo ? 30 : 55,
                     format: "webp",
                     emoji: "twemoji",
@@ -77,7 +69,7 @@ export class MemesRepository implements IMemesRepository {
     }
 
     private async _registerFonts(): Promise<void> {
-        for (const font of this._fontsService.getFonts()) {
+        for (const font of this._fontsService.getAllFonts()) {
             await this._renderer.registerFont(font);
         }
     }
