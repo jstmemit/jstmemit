@@ -1,7 +1,8 @@
 import type { ITemplatesRepository } from "#/interfaces/ITemplatesRepository.ts";
 import type { Template } from "#/models/Template.ts";
 import type { TemplateMapKey } from "#/models/TemplateMapKey.ts";
-import { type TemplateTopic, TopicLocalizationMap } from "#/models/TemplateTopic.ts";
+import { type TemplateTopic } from "#/models/TemplateTopic.ts";
+import { TopicLocalizationMap } from "#/data/topicLocalizationMap.ts";
 import type { LocalizationMap } from "discord.js";
 import { topBottomText } from "#/templates/topBottomText.tsx";
 import { explains } from "#/templates/explains.tsx";
@@ -429,8 +430,125 @@ import { tsWoodyCrazy } from "#/templates/tsWoodyCrazy.tsx";
 import { tsWoodyStare } from "#/templates/tsWoodyStare.tsx";
 import { wnlFuminoSoulLeaving } from "#/templates/wnlFuminoSoulLeaving.tsx";
 import { userDemotivator } from "#/templates/userDemotivator.tsx";
+import { eightySixHenriettaAngry } from "#/templates/eightySixHenriettaAngry.tsx";
+import { barakamonNaruSlap } from "#/templates/barakamonNaruSlap.tsx";
+import { gintamaGintokiChocolate } from "#/templates/gintamaGintokiChocolate.tsx";
+import { gintamaGintokiCool } from "#/templates/gintamaGintokiCool.tsx";
+import { gintamaGintokiDisgusted } from "#/templates/gintamaGintokiDisgusted.tsx";
+import { gintamaGintokiMocking } from "#/templates/gintamaGintokiMocking.tsx";
+import { gintamaGintokiSeriousAndGoofy } from "#/templates/gintamaGintokiSeriousAndGoofy.tsx";
+import { gintamaGintokiSeriousAura } from "#/templates/gintamaGintokiSeriousAura.tsx";
+import { gintamaGintokiShocked } from "#/templates/gintamaGintokiShocked.tsx";
+import { gintamaGintokiSpillingDrink } from "#/templates/gintamaGintokiSpillingDrink.tsx";
+import { gintamaKaguraAnnoyed } from "#/templates/gintamaKaguraAnnoyed.tsx";
+import { gintamaKaguraSike } from "#/templates/gintamaKaguraSike.tsx";
+import { gintamaGintokiGintokiRippingShirt } from "#/templates/gintamaGintokiGintokiRippingShirt.tsx";
+import { gjbuKasumiBites } from "#/templates/gjbuKasumiBites.tsx";
+import { gtoOnizukaCrying } from "#/templates/gtoOnizukaCrying.tsx";
+import { gtoOnizukaEating } from "#/templates/gtoOnizukaEating.tsx";
+import { gtoOnizukaSmiling } from "#/templates/gtoOnizukaSmiling.tsx";
+import { gtoOnizukaWalkingWithSpray } from "#/templates/gtoOnizukaWalkingWithSpray.tsx";
+import { hucUmaruAngryPout } from "#/templates/hucUmaruAngryPout.tsx";
+import { hucUmaruCoolSunglasses } from "#/templates/hucUmaruCoolSunglasses.tsx";
+import { hucUmaruCryingLoudly } from "#/templates/hucUmaruCryingLoudly.tsx";
+import { hucUmaruEvilSmirk } from "#/templates/hucUmaruEvilSmirk.tsx";
+import { hucUmaruExcited } from "#/templates/hucUmaruExcited.tsx";
+import { hucUmaruFactory } from "#/templates/hucUmaruFactory.tsx";
+import { hucUmaruGamingAndSliding } from "#/templates/hucUmaruGamingAndSliding.tsx";
+import { hucUmaruHeadpat } from "#/templates/hucUmaruHeadpat.tsx";
+import { hucUmaruInterruptedDuringGaming } from "#/templates/hucUmaruInterruptedDuringGaming.tsx";
+import { hucUmaruLightSwitch } from "#/templates/hucUmaruLightSwitch.tsx";
+import { hucUmaruMaracasDance } from "#/templates/hucUmaruMaracasDance.tsx";
+import { hucUmaruPlayingDS } from "#/templates/hucUmaruPlayingDS.tsx";
+import { hucUmaruPouting } from "#/templates/hucUmaruPouting.tsx";
+import { hucUmaruRagingFire } from "#/templates/hucUmaruRagingFire.tsx";
+import { hucUmaruRunningCrying } from "#/templates/hucUmaruRunningCrying.tsx";
+import { hucUmaruSleeping } from "#/templates/hucUmaruSleeping.tsx";
+import { hucUmaruSliding } from "#/templates/hucUmaruSliding.tsx";
+import { hucUmaruStarEyes } from "#/templates/hucUmaruStarEyes.tsx";
+import { hucUmaruTantrum } from "#/templates/hucUmaruTantrum.tsx";
+import { hucUmaruTearingUp } from "#/templates/hucUmaruTearingUp.tsx";
+import { hucUmaruTransformation } from "#/templates/hucUmaruTransformation.tsx";
+import { jetCrash } from "#/templates/jetCrash.tsx";
+import { missleAtack } from "#/templates/missleAtack.tsx";
+import { policeCarCrash } from "#/templates/policeCarCrash.tsx";
+import { jkHigurumaCoveringFace } from "#/templates/jkHigurumaCoveringFace.tsx";
+import { jkSukunaDomainExpansion } from "#/templates/jkSukunaDomainExpansion.tsx";
+import { jkSukunaSmirking } from "#/templates/jkSukunaSmirking.tsx";
+import { jkSukunaTransformation } from "#/templates/jkSukunaTransformation.tsx";
+import { kaguyaKaguyaAngry } from "#/templates/kaguyaKaguyaAngry.tsx";
+import { kaguyasamaChikaDancing } from "#/templates/kaguyasamaChikaDancing.tsx";
+import { kaguyasamaChikaDetectiveSmile } from "#/templates/kaguyasamaChikaDetectiveSmile.tsx";
+import { kaguyasamaChikaExcited } from "#/templates/kaguyasamaChikaExcited.tsx";
+import { kaguyasamaChikaGiggling } from "#/templates/kaguyasamaChikaGiggling.tsx";
+import { kaguyasamaChikaHappy } from "#/templates/kaguyasamaChikaHappy.tsx";
+import { kaguyasamaChikaHeartEyes } from "#/templates/kaguyasamaChikaHeartEyes.tsx";
+import { kaguyasamaChikaHittingIshigami } from "#/templates/kaguyasamaChikaHittingIshigami.tsx";
+import { kaguyasamaChikaHorrified } from "#/templates/kaguyasamaChikaHorrified.tsx";
+import { kaguyasamaChikaPouting } from "#/templates/kaguyasamaChikaPouting.tsx";
+import { kaguyasamaHayasakaShy } from "#/templates/kaguyasamaHayasakaShy.tsx";
+import { kaguyasamaHayasakaUnimpressed } from "#/templates/kaguyasamaHayasakaUnimpressed.tsx";
+import { kaguyasamaKaguyaCatEars } from "#/templates/kaguyasamaKaguyaCatEars.tsx";
+import { kaguyasamaKaguyaCryingPout } from "#/templates/kaguyasamaKaguyaCryingPout.tsx";
+import { kaguyasamaKaguyaExcided } from "#/templates/kaguyasamaKaguyaExcided.tsx";
+import { kaguyasamaKaguyaHappy } from "#/templates/kaguyasamaKaguyaHappy.tsx";
+import { kaguyasamaKaguyaIntenseBlush } from "#/templates/kaguyasamaKaguyaIntenseBlush.tsx";
+import { kaguyasamaKaguyaLaughing } from "#/templates/kaguyasamaKaguyaLaughing.tsx";
+import { kaguyasamaKaguyaNervousTea } from "#/templates/kaguyasamaKaguyaNervousTea.tsx";
+import { kaguyasamaKaguyaPanicking } from "#/templates/kaguyasamaKaguyaPanicking.tsx";
+import { kaguyasamaKaguyaRomantic } from "#/templates/kaguyasamaKaguyaRomantic.tsx";
+import { kaguyasamaMikoPointingAngry } from "#/templates/kaguyasamaMikoPointingAngry.tsx";
+import { kaguyasamaShiroganeNervous } from "#/templates/kaguyasamaShiroganeNervous.tsx";
+import { kaguyasamaShiroganeScared } from "#/templates/kaguyasamaShiroganeScared.tsx";
+import { konMugiExcited } from "#/templates/konMugiExcited.tsx";
+import { konMugiPointing } from "#/templates/konMugiPointing.tsx";
+import { konosubaAquaBegging } from "#/templates/konosubaAquaBegging.tsx";
+import { konosubaAquaCrying } from "#/templates/konosubaAquaCrying.tsx";
+import { konosubaAquaCrying1 } from "#/templates/konosubaAquaCrying1.tsx";
+import { konosubaAquaCryingSmilingFace } from "#/templates/konosubaAquaCryingSmilingFace.tsx";
+import { konosubaAquaEatingGround } from "#/templates/konosubaAquaEatingGround.tsx";
+import { konosubaAquaCondescending } from "#/templates/konosubaAquaCondescending.tsx";
+import { konosubaAquaPanicking } from "#/templates/konosubaAquaPanicking.tsx";
+import { konosubaAquaPleading } from "#/templates/konosubaAquaPleading.tsx";
+import { konosubaAquaShadowSmirk } from "#/templates/konosubaAquaShadowSmirk.tsx";
+import { konosubaAquaSmug } from "#/templates/konosubaAquaSmug.tsx";
+import { konosubaAquaTantrum } from "#/templates/konosubaAquaTantrum.tsx";
+import { konosubaAquaThinking } from "#/templates/konosubaAquaThinking.tsx";
+import { konosubaDarknessHappy } from "#/templates/konosubaDarknessHappy.tsx";
+import { konosubaDarknessSwingingSword } from "#/templates/konosubaDarknessSwingingSword.tsx";
+import { konosubaKazumaSaluting } from "#/templates/konosubaKazumaSaluting.tsx";
+import { konosubaMeguminApproves } from "#/templates/konosubaMeguminApproves.tsx";
+import { konosubaMeguminCryingSmilingFace } from "#/templates/konosubaMeguminCryingSmilingFace.tsx";
+import { konosubaMeguminHuggingStaff } from "#/templates/konosubaMeguminHuggingStaff.tsx";
+import { konosubaMeguminIntroducingHerself } from "#/templates/konosubaMeguminIntroducingHerself.tsx";
+import { konosubaMeguminSmiling } from "#/templates/konosubaMeguminSmiling.tsx";
+import { konosubaMeguminSmug } from "#/templates/konosubaMeguminSmug.tsx";
+import { gtoUrumiPhoneCall } from "#/templates/gtoUrumiPhoneCall.tsx";
+import { konYuiCryingWindow } from "#/templates/konYuiCryingWindow.tsx";
+import { konYuiDoublePeace } from "#/templates/konYuiDoublePeace.tsx";
+import { konYuiHappySmile } from "#/templates/konYuiHappySmile.tsx";
+import { lhAkatsukiBlush } from "#/templates/lhAkatsukiBlush.tsx";
+import { lhAkatsukiRolling } from "#/templates/lhAkatsukiRolling.tsx";
+import { lhShiroeGlassesPush } from "#/templates/lhShiroeGlassesPush.tsx";
+import { lhShiroeNervous } from "#/templates/lhShiroeNervous.tsx";
+import { lhShiroeScheming } from "#/templates/lhShiroeScheming.tsx";
+import { llMakiHappy } from "#/templates/llMakiHappy.tsx";
+import { lsKonataApologizing } from "#/templates/lsKonataApologizing.tsx";
+import { lsKonataHi } from "#/templates/lsKonataHi.tsx";
+import { lsKonataCantConcentrate } from "#/templates/lsKonataCantConcentrate.tsx";
+import { lsKonataDancing } from "#/templates/lsKonataDancing.tsx";
+import { lsKonataGaming } from "#/templates/lsKonataGaming.tsx";
+import { lsKonataGamingSmug } from "#/templates/lsKonataGamingSmug.tsx";
+import { lsKonataHappy } from "#/templates/lsKonataHappy.tsx";
+import { lsKonataNerd } from "#/templates/lsKonataNerd.tsx";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { readdirSync, readFileSync } from "node:fs";
 
 export class TemplatesRepository implements ITemplatesRepository {
+    private _imageUrls: string[] | undefined;
+    private _templates: Template[] | undefined;
+
     /**
      * Returns an array of template names that
      * all share a specific topic
@@ -461,7 +579,11 @@ export class TemplatesRepository implements ITemplatesRepository {
      * @returns Template[]
      */
     public getAll(): Template[] {
-        return [
+        if (this._templates) {
+            return this._templates;
+        }
+
+        this._templates = [
             topBottomText,
             liveReaction,
             spongebobBurningTheNote,
@@ -888,7 +1010,147 @@ export class TemplatesRepository implements ITemplatesRepository {
             tsWoodyStare,
             wnlFuminoSoulLeaving,
             userDemotivator,
+            eightySixHenriettaAngry,
+            barakamonNaruSlap,
+            gintamaGintokiChocolate,
+            gintamaGintokiCool,
+            gintamaGintokiDisgusted,
+            gintamaGintokiMocking,
+            gintamaGintokiSeriousAndGoofy,
+            gintamaGintokiSeriousAura,
+            gintamaGintokiShocked,
+            gintamaGintokiSpillingDrink,
+            gintamaKaguraAnnoyed,
+            gintamaKaguraSike,
+            gintamaGintokiGintokiRippingShirt,
+            gjbuKasumiBites,
+            gtoOnizukaCrying,
+            gtoOnizukaEating,
+            gtoOnizukaSmiling,
+            gtoOnizukaWalkingWithSpray,
+            hucUmaruAngryPout,
+            hucUmaruCoolSunglasses,
+            hucUmaruCryingLoudly,
+            hucUmaruEvilSmirk,
+            hucUmaruExcited,
+            hucUmaruFactory,
+            hucUmaruGamingAndSliding,
+            hucUmaruHeadpat,
+            hucUmaruInterruptedDuringGaming,
+            hucUmaruLightSwitch,
+            hucUmaruMaracasDance,
+            hucUmaruPlayingDS,
+            hucUmaruPouting,
+            hucUmaruRagingFire,
+            hucUmaruRunningCrying,
+            hucUmaruSleeping,
+            hucUmaruSliding,
+            hucUmaruStarEyes,
+            hucUmaruTantrum,
+            hucUmaruTearingUp,
+            hucUmaruTransformation,
+            jetCrash,
+            missleAtack,
+            policeCarCrash,
+            jkHigurumaCoveringFace,
+            jkSukunaDomainExpansion,
+            jkSukunaSmirking,
+            jkSukunaTransformation,
+            kaguyaKaguyaAngry,
+            kaguyasamaChikaDancing,
+            kaguyasamaChikaDetectiveSmile,
+            kaguyasamaChikaExcited,
+            kaguyasamaChikaGiggling,
+            kaguyasamaChikaHappy,
+            kaguyasamaChikaHeartEyes,
+            kaguyasamaChikaHittingIshigami,
+            kaguyasamaChikaHorrified,
+            kaguyasamaChikaPouting,
+            kaguyasamaHayasakaShy,
+            kaguyasamaHayasakaUnimpressed,
+            kaguyasamaKaguyaCatEars,
+            kaguyasamaKaguyaCryingPout,
+            kaguyasamaKaguyaExcided,
+            kaguyasamaKaguyaHappy,
+            kaguyasamaKaguyaIntenseBlush,
+            kaguyasamaKaguyaLaughing,
+            kaguyasamaKaguyaNervousTea,
+            kaguyasamaKaguyaPanicking,
+            kaguyasamaKaguyaRomantic,
+            kaguyasamaMikoPointingAngry,
+            kaguyasamaShiroganeNervous,
+            kaguyasamaShiroganeScared,
+            konMugiExcited,
+            konMugiPointing,
+            konosubaAquaBegging,
+            konosubaAquaCrying,
+            konosubaAquaCrying1,
+            konosubaAquaCryingSmilingFace,
+            konosubaAquaEatingGround,
+            konosubaAquaCondescending,
+            konosubaAquaPanicking,
+            konosubaAquaPleading,
+            konosubaAquaShadowSmirk,
+            konosubaAquaSmug,
+            konosubaAquaTantrum,
+            konosubaAquaThinking,
+            konosubaDarknessHappy,
+            konosubaDarknessSwingingSword,
+            konosubaKazumaSaluting,
+            konosubaMeguminApproves,
+            konosubaMeguminCryingSmilingFace,
+            konosubaMeguminHuggingStaff,
+            konosubaMeguminIntroducingHerself,
+            konosubaMeguminSmiling,
+            konosubaMeguminSmug,
+            gtoUrumiPhoneCall,
+            konYuiCryingWindow,
+            konYuiDoublePeace,
+            konYuiHappySmile,
+            lhAkatsukiBlush,
+            lhAkatsukiRolling,
+            lhShiroeGlassesPush,
+            lhShiroeNervous,
+            lhShiroeScheming,
+            llMakiHappy,
+            lsKonataApologizing,
+            lsKonataHi,
+            lsKonataCantConcentrate,
+            lsKonataDancing,
+            lsKonataGaming,
+            lsKonataGamingSmug,
+            lsKonataHappy,
+            lsKonataNerd,
         ];
+
+        return this._templates;
+    }
+
+    /**
+     * Goes through meme templates and finds
+     * all used images inside src attributes
+     *
+     * @returns string[]
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getAllImageUrls(): string[] {
+        if (this._imageUrls) return this._imageUrls;
+
+        const directory: string = join(dirname(fileURLToPath(import.meta.url)), "../templates");
+        const urls = new Set<string>();
+
+        for (const file of readdirSync(directory)) {
+            if (!file.endsWith(".tsx")) continue;
+
+            const source: string = readFileSync(join(directory, file), "utf8");
+            for (const [, url] of source.matchAll(/src="(https?:\/\/[^"]+)"/g)) {
+                urls.add(url!);
+            }
+        }
+
+        this._imageUrls = [...urls];
+        return this._imageUrls;
     }
 
     /**

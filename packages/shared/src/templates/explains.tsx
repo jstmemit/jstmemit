@@ -45,7 +45,7 @@ export const explains: Template = {
             <img src={images[0]} width={455} height={360} style={{ position: "absolute", top: 20, left: 0 }} />
             <img src={images[0]} width={400} height={320} style={{ position: "absolute", top: 435, left: 0 }} />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/explains.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/explains.png"
                 width={700}
                 height={800}
                 style={{ position: "absolute", top: 0, left: 0 }}

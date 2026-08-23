@@ -116,8 +116,8 @@ export class FontsService implements IFontsService {
     }
 
     /**
-     *  Checks if any of the strings in the array have
-     *  characters that require a fallback font
+     * Checks if any of the strings in the array have
+     * characters that require a fallback font
      *
      * @param texts
      *
@@ -146,5 +146,11 @@ export class FontsService implements IFontsService {
      */
     public getFonts(): FontOptions[] {
         return this._fonts;
+    }
+
+    public getAllFonts(): FontOptions[] {
+        const fallbacks: FontOptions[] = this._fallbacks.flatMap(({ fonts }): FontOptions[] => fonts);
+
+        return [...this._fonts, ...fallbacks];
     }
 }
