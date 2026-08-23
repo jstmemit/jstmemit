@@ -9,6 +9,13 @@ export class FontsService implements IFontsService {
     public constructor(fontsRepository: IFontsRepository) {
         this._fonts = [
             {
+                name: "Minecraft",
+                data: fontsRepository.getMinecraft(),
+                weight: 700,
+                style: "normal",
+                generic: "serif",
+            },
+            {
                 name: "Impact",
                 data: fontsRepository.getImpact(),
                 weight: 700,
