@@ -200,6 +200,7 @@ export class MemesController implements IMemesController {
                 trigger,
                 parentGenerationId,
                 turbo: channel.turbo,
+                font: channel.font,
             });
 
             // if bot sent the meme without being prompted to do so
@@ -357,6 +358,7 @@ export class MemesController implements IMemesController {
                 texts,
                 images,
                 turbo: false,
+                font: null,
             });
 
             await interaction.editReply({
@@ -408,6 +410,7 @@ export class MemesController implements IMemesController {
                 texts,
                 images,
                 turbo: false,
+                font: null,
             });
 
             await interaction.editReply({

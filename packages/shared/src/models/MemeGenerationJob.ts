@@ -13,4 +13,5 @@ export interface MemeGenerationJob {
     images?: Record<string, string>;
     turbo: boolean;
     parentGenerationId?: number;
+    font: string | null;
 }
