@@ -32,14 +32,14 @@ export const boykisserEnergy: Template = {
     height: 662,
     texts: [],
     images: [{ id: 0, description: "femboy face" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

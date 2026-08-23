@@ -35,14 +35,14 @@ export const kaguyasamaKaguyaDroppingPhone1: Template = {
         { id: 0, description: "Kaguya's face" },
         { id: 1, description: "phone screen" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

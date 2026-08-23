@@ -35,7 +35,7 @@ export const falklandWolf: Template = {
         { id: 0, description: "Image of the wolf" },
         { id: 1, description: "Profile picture of the guy who tweets about it" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -90,7 +90,7 @@ export const falklandWolf: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

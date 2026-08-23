@@ -35,7 +35,7 @@ export const bernieSandersLive: Template = {
         { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 3 },
     ],
     images: [{ id: 0, description: "Person who is debating with Bernie Sanders on his live stream" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -77,7 +77,7 @@ export const bernieSandersLive: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -107,7 +107,7 @@ export const bernieSandersLive: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

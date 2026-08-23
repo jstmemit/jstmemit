@@ -35,14 +35,14 @@ export const spongebobMonolith: Template = {
         { id: 0, description: "Monolith`s face" },
         { id: 1, description: "SpongeBob`s face" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -95,7 +95,7 @@ export const spongebobMonolith: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

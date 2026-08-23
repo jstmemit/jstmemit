@@ -36,14 +36,14 @@ export const toradoraTaigaCatchesRyuujiAndAmi: Template = {
         { id: 1, description: "Ami`s face" },
         { id: 2, description: "Taiga`s face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

@@ -36,14 +36,14 @@ export const futuramaSkeletons: Template = {
         { id: 1, description: "face in the center" },
         { id: 2, description: "face in the right" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -108,7 +108,7 @@ export const futuramaSkeletons: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

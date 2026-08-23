@@ -35,14 +35,14 @@ export const ditfZeroTwoHuggingPaper1: Template = {
         { id: 0, description: "Zero Two's face" },
         { id: 1, description: "image on the paper" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

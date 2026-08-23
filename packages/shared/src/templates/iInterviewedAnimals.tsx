@@ -32,7 +32,7 @@ export const iInterviewedAnimals: Template = {
     height: 426,
     texts: [{ id: 0, description: "what the animal says", minLength: 1, maxLength: 2 }],
     images: [{ id: 0, description: "the thumbnail subject" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -70,7 +70,7 @@ export const iInterviewedAnimals: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 40,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

@@ -32,14 +32,14 @@ export const spongebobBurningTheNote: Template = {
     height: 727,
     texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "image that gets burned down" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img src={images[0]} width={195} height={275} style={{ position: "absolute", top: 50, left: 45 }} />
@@ -71,7 +71,7 @@ export const spongebobBurningTheNote: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

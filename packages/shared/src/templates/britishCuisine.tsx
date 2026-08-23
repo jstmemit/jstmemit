@@ -44,7 +44,7 @@ export const britishCuisine: Template = {
         { id: 1, description: "Profile picture of the guy who said about British cuisine" },
         { id: 2, description: "Profile picture of the guy who posted about the worst takeaway order of all times" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -102,7 +102,7 @@ export const britishCuisine: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 30,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",
@@ -125,7 +125,7 @@ export const britishCuisine: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 25,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

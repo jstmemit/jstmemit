@@ -35,14 +35,14 @@ export const topBottomText: Template = {
         { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
     ],
     images: [{ id: 0, description: "background" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
                 backgroundColor: "#000",
             }}
         >
@@ -72,7 +72,7 @@ export const topBottomText: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -102,7 +102,7 @@ export const topBottomText: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

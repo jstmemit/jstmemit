@@ -36,14 +36,14 @@ export const animeTheThreeStagesOfApproval: Template = {
         { id: 2, description: "third reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -72,7 +72,7 @@ export const animeTheThreeStagesOfApproval: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -104,7 +104,7 @@ export const animeTheThreeStagesOfApproval: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -135,7 +135,7 @@ export const animeTheThreeStagesOfApproval: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

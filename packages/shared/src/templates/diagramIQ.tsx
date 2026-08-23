@@ -40,14 +40,14 @@ export const diagramIQ: Template = {
         { id: 1, description: "normal face" },
         { id: 2, description: "clever face" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -110,7 +110,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -140,7 +140,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -169,7 +169,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

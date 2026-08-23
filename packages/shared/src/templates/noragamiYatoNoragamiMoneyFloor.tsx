@@ -32,14 +32,14 @@ export const noragamiYatoNoragamiMoneyFloor: Template = {
     height: 447,
     texts: [],
     images: [{ id: 0, description: "Yato`s face" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

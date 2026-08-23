@@ -35,7 +35,7 @@ export const post: Template = {
         { id: 1, description: "post text", minLength: 5, maxLength: 20 },
     ],
     images: [{ id: 0, description: "post author's profile picture" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -82,7 +82,7 @@ export const post: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -112,7 +112,7 @@ export const post: Template = {
                         lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 85,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
