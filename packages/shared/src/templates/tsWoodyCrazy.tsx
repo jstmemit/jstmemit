@@ -44,7 +44,7 @@ export const tsWoodyCrazy: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/tsWoodyCrazy.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/tsWoodyCrazy.gif"
                 width={498}
                 height={494}
                 style={{ position: "absolute", top: 0, left: 0 }}

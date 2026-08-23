@@ -44,7 +44,7 @@ export const gintamaGintokiCool: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaGintokiCool.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaGintokiCool.gif"
                 width={500}
                 height={281}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

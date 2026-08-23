@@ -43,7 +43,7 @@ export const ceRebeccaSquidward: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaSquidward.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ceRebeccaSquidward.png"
                 width={640}
                 height={482}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

@@ -44,7 +44,7 @@ export const officeMichaelParkour: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=55,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/officeMichaelParkour.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/officeMichaelParkour.gif"
                 width={498}
                 height={498}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
