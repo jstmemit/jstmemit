@@ -67,6 +67,7 @@ export const channelsTable = sqliteTable("channels_table", {
     addedAt: int({ mode: "timestamp" }).notNull(),
     turbo: int({ mode: "boolean" }).notNull().default(false),
     milestones: int({ mode: "boolean" }).notNull().default(true),
+    font: text(),
 });
 
 export const ratingsTable = sqliteTable(

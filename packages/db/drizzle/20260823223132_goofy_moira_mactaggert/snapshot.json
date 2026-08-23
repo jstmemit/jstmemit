@@ -1,0 +1,708 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "1d36f0e6-c72e-41b5-9119-22aa83a9126c",
+  "prevIds": [
+    "0bdc42fb-f9ee-477a-b7d6-f9d9a661ed6d"
+  ],
+  "ddl": [
+    {
+      "name": "bandit_stats_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "channels_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "generations_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "images_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "messages_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "narrations_table",
+      "entityType": "tables"
+    },
+    {
+      "name": "ratings_table",
+      "entityType": "tables"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "scope",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "scopeId",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "templateName",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "successes",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "failures",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updatedAt",
+      "entityType": "columns",
+      "table": "bandit_stats_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "enabled",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "10",
+      "generated": null,
+      "name": "frequency",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "true",
+      "generated": null,
+      "name": "useAvatarsInMemes",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "addedAt",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "turbo",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "true",
+      "generated": null,
+      "name": "milestones",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "font",
+      "entityType": "columns",
+      "table": "channels_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "generations_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "generations_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "templateName",
+      "entityType": "columns",
+      "table": "generations_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "generations_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "messageId",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "imageUrl",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'attachment'",
+      "generated": null,
+      "name": "source",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "timestamp",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "expiresAt",
+      "entityType": "columns",
+      "table": "images_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "messages_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "messageId",
+      "entityType": "columns",
+      "table": "messages_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "messages_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "content",
+      "entityType": "columns",
+      "table": "messages_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "timestamp",
+      "entityType": "columns",
+      "table": "messages_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "narrations_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "narrations_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "voice",
+      "entityType": "columns",
+      "table": "narrations_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "narrations_table"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "ratings_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "messageId",
+      "entityType": "columns",
+      "table": "ratings_table"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "''",
+      "generated": null,
+      "name": "channelId",
+      "entityType": "columns",
+      "table": "ratings_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "likes",
+      "entityType": "columns",
+      "table": "ratings_table"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "dislikes",
+      "entityType": "columns",
+      "table": "ratings_table"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "bandit_stats_table_pk",
+      "table": "bandit_stats_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "channels_table_pk",
+      "table": "channels_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "generations_table_pk",
+      "table": "generations_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "images_table_pk",
+      "table": "images_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "messages_table_pk",
+      "table": "messages_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "narrations_table_pk",
+      "table": "narrations_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "ratings_table_pk",
+      "table": "ratings_table",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        {
+          "value": "scope",
+          "isExpression": false
+        },
+        {
+          "value": "scopeId",
+          "isExpression": false
+        },
+        {
+          "value": "templateName",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "bandit_scope_template_idx",
+      "entityType": "indexes",
+      "table": "bandit_stats_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "channelId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "generations_channel_idx",
+      "entityType": "indexes",
+      "table": "generations_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "templateName",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "generations_template_idx",
+      "entityType": "indexes",
+      "table": "generations_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "channelId",
+          "isExpression": false
+        },
+        {
+          "value": "source",
+          "isExpression": false
+        },
+        {
+          "value": "timestamp",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "images_channel_source_timestamp_idx",
+      "entityType": "indexes",
+      "table": "images_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "expiresAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "images_expires_at_idx",
+      "entityType": "indexes",
+      "table": "images_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "timestamp",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "images_timestamp_idx",
+      "entityType": "indexes",
+      "table": "images_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "channelId",
+          "isExpression": false
+        },
+        {
+          "value": "timestamp",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "messages_channel_timestamp_idx",
+      "entityType": "indexes",
+      "table": "messages_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "timestamp",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "messages_timestamp_idx",
+      "entityType": "indexes",
+      "table": "messages_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "channelId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "narrations_channel_idx",
+      "entityType": "indexes",
+      "table": "narrations_table"
+    },
+    {
+      "columns": [
+        {
+          "value": "channelId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "ratings_channel_idx",
+      "entityType": "indexes",
+      "table": "ratings_table"
+    },
+    {
+      "columns": [
+        "channelId"
+      ],
+      "nameExplicit": false,
+      "name": "channels_table_channelId_unique",
+      "entityType": "uniques",
+      "table": "channels_table"
+    },
+    {
+      "columns": [
+        "imageUrl"
+      ],
+      "nameExplicit": false,
+      "name": "images_table_imageUrl_unique",
+      "entityType": "uniques",
+      "table": "images_table"
+    },
+    {
+      "columns": [
+        "messageId"
+      ],
+      "nameExplicit": false,
+      "name": "messages_table_messageId_unique",
+      "entityType": "uniques",
+      "table": "messages_table"
+    },
+    {
+      "columns": [
+        "messageId"
+      ],
+      "nameExplicit": false,
+      "name": "ratings_table_messageId_unique",
+      "entityType": "uniques",
+      "table": "ratings_table"
+    }
+  ],
+  "renames": []
+}
