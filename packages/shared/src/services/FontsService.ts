@@ -9,6 +9,13 @@ export class FontsService implements IFontsService {
     public constructor(fontsRepository: IFontsRepository) {
         this._fonts = [
             {
+                name: "Impact",
+                data: fontsRepository.getImpact(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
                 name: "Comic Sans MS",
                 data: fontsRepository.getComicSansRegular(),
                 weight: 400,
