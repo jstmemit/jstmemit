@@ -27,5 +27,5 @@ const { template, variants, cols = 3, heading = "Meme examples", link } = Astro.
         )
     }
 
-    <MemeGrid cols={cols} variants={variants} template={template} gap="gap-1" server:defer />
+    <MemeGrid cols={cols} variants={variants} templateName={template.name} gap="gap-1" server:defer />
 </section>
