@@ -48,8 +48,8 @@ const fallbackFontNames: string[] = fontsService.getFallbackFonts().map((font: F
 
 for (let i: number = 0; i < texts.length; i++) {
     variants.push({
-        texts: _.times(10, (): string => texts[i]),
-        images: _.shuffle(images),
+        texts: _.times(5, (): string => texts[i]),
+        images: _.drop(_.shuffle(images), 5),
         font: [..._.shuffle(displayFontNames), ...fallbackFontNames].toString(),
     });
 }
