@@ -10,7 +10,7 @@ import { variants } from "../data/variants.ts";
 import { Renderer } from "takumi-js/node";
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templates: Template[] = templatesRepository.getAll();
+const templates: Template[] = templatesRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <BaseLayout>
