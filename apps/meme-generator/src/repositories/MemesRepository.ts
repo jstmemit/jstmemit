@@ -18,7 +18,7 @@ export class MemesRepository implements IMemesRepository {
 
     public constructor(templatesRepository: ITemplatesRepository, fontsService: IFontsService) {
         this._fontsService = fontsService;
-        this._renderer = new Renderer({ cacheMaxBytes: 512 * 1024 * 1024 });
+        this._renderer = new Renderer({ cacheMaxBytes: 1024 * 1024 * 1024 });
         this._fetchCache = new Map<string, Promise<ArrayBuffer>>();
         this._fontsReady = this._registerFonts();
         this._templatesRepository = templatesRepository;
