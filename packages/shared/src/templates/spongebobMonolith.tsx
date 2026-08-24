@@ -46,7 +46,7 @@ export const spongebobMonolith: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobMonolith.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobMonolith.png"
                 width={1080}
                 height={1080}
                 style={{ position: "absolute", top: 0, left: 0 }}
