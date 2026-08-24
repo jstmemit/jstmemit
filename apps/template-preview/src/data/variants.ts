@@ -1,5 +1,13 @@
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
+import { FontsService } from "@jstmemit/shared/services/FontsService.ts";
+import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import _ from "lodash";
+import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
+import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
+import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
+
+const fontsRepository: IFontsRepository = new FontsRepository();
+const fontsService: IFontsService = new FontsService(fontsRepository);
 
 // test data for meme template previews
 
@@ -15,7 +23,7 @@ export const texts: string[] = [
     "أميت 🕌 كونسكتيتور أديبيسكينج إيليت 🌙 سيد دو إيوسمود ☕️",
     "ロレム・イプサム・ドロル・シット・アメット 🍣 コンセクテトゥル 🗻 アディピシシング・エリット 🎌 苏姆 多洛",
     "Λορεμ ιπσθμ δολορ σιτ αμετ 🏛 κονσεκτετθερ αδιπισκινγ ελιτ 🫒 σεδ δο 🐙 Лорем ипсум долор сит амет 🪆 консектетур адиписцинг елит 🐻 ",
-    "Λorem ipsum ديمو 🌍 मिश्रित script混合 テスト 🧪 αδιπισκινγ ελιτ σεδ δο ✨ ลอเรม อิปซัม โดลอร์ ซิท อาเมท 🐘 คอนเซคเทเทอร์ 🍜 อาดิพิสซิ่ง เอลิท 🏮 埃利特 塞德 多 🥢普苏姆 多洛尔 坐 阿梅特 🐉",
+    "Лорем ипсум ديمو 🌍 मिश्रित script 混合 テスト 🧪 αδιπισκινγ ελιτ σεδ δο ✨ ลอเรม อิปซัม โดลอร์ ซิท อาเมท 🐘 คอนเซคเทเทอร์ 🍜 อาดิพิสซิ่ง เอลิท 🏮 埃利特 塞德 多 🥢普苏姆 多洛尔 坐 阿梅特 🐉",
 ];
 
 const images: string[] = [
@@ -35,10 +43,13 @@ const images: string[] = [
 
 export const variants: TemplateProps[] = [];
 
+const displayFontNames: string[] = fontsService.getDisplayFonts().map((font: FontOptions): string => font.name);
+const fallbackFontNames: string[] = fontsService.getFallbackFonts().map((font: FontOptions): string => font.name);
+
 for (let i: number = 0; i < texts.length; i++) {
     variants.push({
         texts: _.times(10, (): string => texts[i]),
         images: _.shuffle(images),
-        font: "Minecraft",
+        font: [..._.shuffle(displayFontNames), ...fallbackFontNames].toString(),
     });
 }

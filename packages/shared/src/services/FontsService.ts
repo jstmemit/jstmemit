@@ -3,10 +3,11 @@ import type { FontOptions } from "#/models/FontOptions.ts";
 import type { IFontsService } from "../interfaces/IFontsService.ts";
 
 export class FontsService implements IFontsService {
-    private readonly _fonts: FontOptions[];
+    private readonly _displayFonts: FontOptions[];
+    private readonly _fallbackFonts: FontOptions[];
 
     public constructor(fontsRepository: IFontsRepository) {
-        this._fonts = [
+        this._displayFonts = [
             {
                 name: "Comic Sans MS",
                 data: fontsRepository.getComicSansRegular(),
@@ -21,7 +22,6 @@ export class FontsService implements IFontsService {
                 style: "normal",
                 generic: "sans-serif",
             },
-            { name: "Noto Sans Math", data: fontsRepository.getNotoSansMath(), weight: 400, style: "normal" },
             {
                 name: "Impact",
                 data: fontsRepository.getImpact(),
@@ -71,11 +71,45 @@ export class FontsService implements IFontsService {
                 style: "normal",
                 generic: "serif",
             },
-            { name: "Noto Sans SC", data: fontsRepository.getNotoSansSc(), weight: 500, style: "normal" },
-            { name: "Noto Sans TC", data: fontsRepository.getNotoSansTc(), weight: 500, style: "normal" },
-            { name: "Noto Sans HK", data: fontsRepository.getNotoSansHk(), weight: 500, style: "normal" },
-            { name: "Noto Sans JP", data: fontsRepository.getNotoSansJp(), weight: 500, style: "normal" },
-            { name: "Noto Sans KR", data: fontsRepository.getNotoSansKr(), weight: 500, style: "normal" },
+        ];
+
+        this._fallbackFonts = [
+            {
+                name: "Noto Sans Math",
+                data: fontsRepository.getNotoSansMath(),
+                weight: 400,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans SC",
+                data: fontsRepository.getNotoSansSc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans TC",
+                data: fontsRepository.getNotoSansTc(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans HK",
+                data: fontsRepository.getNotoSansHk(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans JP",
+                data: fontsRepository.getNotoSansJp(),
+                weight: 500,
+                style: "normal",
+            },
+            {
+                name: "Noto Sans KR",
+                data: fontsRepository.getNotoSansKr(),
+                weight: 500,
+                style: "normal",
+            },
             {
                 name: "Noto Sans Arabic",
                 data: fontsRepository.getNotoSansArabic(),
@@ -88,7 +122,12 @@ export class FontsService implements IFontsService {
                 weight: 400,
                 style: "normal",
             },
-            { name: "Noto Sans Thai", data: fontsRepository.getNotoSansThai(), weight: 400, style: "normal" },
+            {
+                name: "Noto Sans Thai",
+                data: fontsRepository.getNotoSansThai(),
+                weight: 400,
+                style: "normal",
+            },
             {
                 name: "Noto Sans Devanagari",
                 data: fontsRepository.getNotoSansDevanagari(),
@@ -113,7 +152,12 @@ export class FontsService implements IFontsService {
                 weight: 400,
                 style: "normal",
             },
-            { name: "Noto Sans", data: fontsRepository.getNotoSans(), weight: 400, style: "normal" },
+            {
+                name: "Noto Sans",
+                data: fontsRepository.getNotoSans(),
+                weight: 400,
+                style: "normal",
+            },
         ];
     }
 
@@ -123,6 +167,24 @@ export class FontsService implements IFontsService {
      * @author Kyrylo Maliuha
      */
     public getFonts(): FontOptions[] {
-        return this._fonts;
+        return [...this._displayFonts, ...this._fallbackFonts];
+    }
+
+    /**
+     * Gets display fonts
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDisplayFonts(): FontOptions[] {
+        return this._displayFonts;
+    }
+
+    /**
+     * Gets fallback fonts
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFallbackFonts(): FontOptions[] {
+        return this._fallbackFonts;
     }
 }
