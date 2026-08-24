@@ -1,4 +1,8 @@
 export abstract class IFontsRepository {
+    public abstract getJtype(): Buffer;
+    public abstract getPixel(): Buffer;
+    public abstract getMisaki(): Buffer;
+    public abstract getCubic(): Buffer;
     public abstract getOpenDyslexic(): Buffer;
     public abstract getMinecraft(): Buffer;
     public abstract getImpact(): Buffer;
