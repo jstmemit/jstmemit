@@ -98,7 +98,7 @@ export class MemesRepository implements IMemesRepository {
     private async _registerFonts(): Promise<void> {
         await Promise.all(
             this._fontsService
-                .getAllFonts()
+                .getFonts()
                 .map((font: FontOptions): Promise<RegisteredFamily[]> => this._renderer.registerFont(font)),
         );
     }

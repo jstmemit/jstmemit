@@ -20,7 +20,7 @@ export const fetchCache: Map<string, Promise<ArrayBuffer>> = globalRef.__takumiF
 
 if (!globalRef.__takumiFontsLoaded) {
     await Promise.all(
-        fontsService.getAllFonts().map((font: FontOptions): Promise<RegisteredFamily[]> => renderer.registerFont(font)),
+        fontsService.getFonts().map((font: FontOptions): Promise<RegisteredFamily[]> => renderer.registerFont(font)),
     );
 
     globalRef.__takumiFontsLoaded = true;

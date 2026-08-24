@@ -39,5 +39,6 @@ for (let i: number = 0; i < texts.length; i++) {
     variants.push({
         texts: _.times(10, (): string => texts[i]),
         images: _.shuffle(images),
+        font: "Minecraft",
     });
 }
