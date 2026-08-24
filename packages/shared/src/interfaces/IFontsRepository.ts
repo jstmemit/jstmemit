@@ -1,4 +1,5 @@
 export abstract class IFontsRepository {
+    public abstract getOpenDyslexic(): Buffer;
     public abstract getMinecraft(): Buffer;
     public abstract getImpact(): Buffer;
     public abstract getComicSansRegular(): Buffer;

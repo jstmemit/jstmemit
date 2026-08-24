@@ -6,6 +6,10 @@ import { fileURLToPath } from "node:url";
 const here: string = dirname(fileURLToPath(import.meta.url));
 
 export class FontsRepository implements IFontsRepository {
+    public getOpenDyslexic(): Buffer {
+        return readFileSync(join(here, "../fonts/OpenDyslexic.ttf"));
+    }
+
     public getMinecraft(): Buffer {
         return readFileSync(join(here, "../fonts/Minecraft.ttf"));
     }
