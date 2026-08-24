@@ -43,7 +43,7 @@ export const futuramaFryReadingLetter: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaFryReadingLetter.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaFryReadingLetter.jpg"
                 width={720}
                 height={1110}
                 style={{ position: "absolute", top: 0, left: 0 }}

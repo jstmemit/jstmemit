@@ -1,80 +1,13 @@
 ---
-import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
-import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
-import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
-import { TemplatesService } from "../services/TemplatesService.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { render, renderAnimation } from "takumi-js";
-import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
-import { renderer, fetchCache } from "../utils/renderer";
-import { Renderer } from "takumi-js/node";
 
 interface Props {
-    src?: string;
-    variant?: TemplateProps;
-    templateWidth?: number;
-    templateHeight?: number;
-    templateName?: string;
+    src: string;
+    template: Template;
     size: "1/3" | "1/4";
 }
 
-const { variant, templateWidth, templateHeight, templateName, size = "1/3" } = Astro.props;
-
-const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
-
-const signal: AbortSignal = Astro.request.signal;
-
-let meme: string | undefined = undefined;
-
-if (templateName) {
-    const template: Template = templatesService.getTemplateByName(templateName || "");
-    if (variant?.texts === undefined) {
-        throw new Error();
-    }
-
-    if (template.animationDuration === undefined) {
-        const staticMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await render(
-            template.element(variant!),
-            {
-                width: template.width,
-                height: template.height,
-                renderer: renderer,
-                emoji: "twemoji",
-                quality: 55,
-                drawDebugBorder: true,
-                signal: signal,
-                images: {
-                    timeout: 20000,
-                    maxBytes: 20 * 1024 * 1024,
-                    fetchCache: fetchCache,
-                },
-            },
-        );
-        meme = `data:image/webp;base64,${staticMeme.toString("base64")}`;
-    } else {
-        const animationDuration = template.animationDuration === null ? 1500 : template.animationDuration;
-        const animatedMeme: Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> = await renderAnimation({
-            width: template.width,
-            height: template.height,
-            renderer: renderer,
-            fps: 12,
-            format: "webp",
-            scenes: [{ durationMs: animationDuration, node: template.element(variant!) }],
-            emoji: "twemoji",
-            quality: 45,
-            drawDebugBorder: true,
-            signal: signal,
-            images: {
-                timeout: 20000,
-                maxBytes: 20 * 1024 * 1024,
-                fetchCache: fetchCache,
-            },
-        });
-        meme = `data:image/webp;base64,${animatedMeme.toString("base64")}`;
-    }
-}
+const { src, template, size = "1/3" } = Astro.props;
 
 const sizes = {
     "1/3": "lg:max-w-[calc((100%-20px)/2)] 2xl:max-w-[calc((100%-20px*2)/3)]",
@@ -82,12 +15,12 @@ const sizes = {
 };
 ---
 
-<li class:list={[`bg-white/10 w-[${templateWidth}px] h-[${templateHeight}px]`, sizes[size]]}>
+<li class:list={["bg-white/10", sizes[size]]}>
     <img
-        src={meme}
-        width={templateWidth}
-        height={templateHeight}
-        alt={templateName}
+        src={src}
+        width={template.width}
+        height={template.height}
+        alt={template.name}
         decoding="async"
         fetchpriority="low"
         loading="lazy"

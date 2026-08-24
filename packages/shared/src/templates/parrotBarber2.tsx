@@ -43,7 +43,7 @@ export const parrotBarber2: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/parrotBarber2.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/parrotBarber2.jpg"
                 width={672}
                 height={921}
                 style={{ position: "absolute", top: 0, left: 0 }}

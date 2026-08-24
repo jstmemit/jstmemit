@@ -44,7 +44,7 @@ export const hucUmaruFactory: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/hucUmaruFactory.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/hucUmaruFactory.gif"
                 width={720}
                 height={404}
                 style={{ position: "absolute", top: 0, left: 0 }}

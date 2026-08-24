@@ -43,7 +43,7 @@ export const lsWindowsXPWallpaper: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/lsWindowsXPWallpaper.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/lsWindowsXPWallpaper.png"
                 width={1014}
                 height={788}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

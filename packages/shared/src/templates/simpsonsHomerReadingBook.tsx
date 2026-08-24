@@ -43,7 +43,7 @@ export const simpsonsHomerReadingBook: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsHomerReadingBook.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsHomerReadingBook.jpg"
                 width={400}
                 height={400}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

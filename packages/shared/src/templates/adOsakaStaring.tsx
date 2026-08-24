@@ -43,7 +43,7 @@ export const adOsakaStaring: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/adOsakaStaring.png"
                 width={474}
                 height={577}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

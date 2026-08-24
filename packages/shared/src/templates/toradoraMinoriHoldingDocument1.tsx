@@ -55,7 +55,7 @@ export const toradoraMinoriHoldingDocument1: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriHoldingDocument1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/toradoraMinoriHoldingDocument1.png"
                 width={640}
                 height={374}
                 style={{ position: "absolute", top: 0, right: 0 }}
