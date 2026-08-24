@@ -19,18 +19,18 @@ export const texts: string[] = [
 ];
 
 const images: string[] = [
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/city.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/markrutte.jpeg",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/chicken.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/lightning.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/battlefield.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/hamster.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/siege.jpg",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/ubisoft.jpg",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/applestore.jpg",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/linus.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/cat.png",
-    "https://jstmemit.com/cdn-cgi/image/f=auto,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=22,slow-connection-quality=18,width=360/https://files.wideunits.nl/memes/examples/rust.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/city.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/markrutte.jpeg",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/chicken.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/lightning.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/battlefield.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/hamster.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/siege.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/ubisoft.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/applestore.jpg",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/linus.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/cat.png",
+    "https://jstmemit.com/cdn-cgi/image/f=webp,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,q=10,width=325/https://files.wideunits.nl/memes/examples/rust.jpg",
 ];
 
 export const variants: TemplateProps[] = [];
