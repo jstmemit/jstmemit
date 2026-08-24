@@ -367,9 +367,9 @@ export class SettingsController implements ISettingsController {
             this._componentsService.getSettingsBodyMessageComponent(
                 interaction.locale,
                 channel.frequency,
-                channel.turbo,
                 channel.useAvatarsInMemes,
                 channel.milestones,
+                channel.font,
             ),
             this._componentsService.getSettingsFooterMessageComponent(interaction.locale),
         ]);
