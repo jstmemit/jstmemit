@@ -47,7 +47,7 @@ const memes: string[] = await Promise.all(
                     fetchCache: fetchCache,
                 },
             });
-            return `data:image/webp;base64,${Buffer.from(staticMeme).toString("base64")}`;
+            return `data:image/webp;base64,${staticMeme.toString("base64")}`;
         }
 
         const animationDuration: number = template.animationDuration === null ? 1500 : template.animationDuration;
@@ -68,7 +68,7 @@ const memes: string[] = await Promise.all(
                 fetchCache: fetchCache,
             },
         });
-        return `data:image/webp;base64,${Buffer.from(animatedMeme).toString("base64")}`;
+        return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
     }),
 );
 ---
