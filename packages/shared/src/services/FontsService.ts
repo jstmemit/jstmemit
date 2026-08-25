@@ -31,6 +31,34 @@ export class FontsService implements IFontsService {
                 generic: "sans-serif",
             },
             {
+                name: "Source Han",
+                data: fontsRepository.getSourceHan(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "KeinannPOP",
+                data: fontsRepository.getKeinannPop(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Rubik Hebrew",
+                data: fontsRepository.getRubikHebrew(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Teko",
+                data: fontsRepository.getTeko(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
                 name: "Minecraft",
                 data: fontsRepository.getMinecraft(),
                 weight: 700,
@@ -84,79 +112,79 @@ export class FontsService implements IFontsService {
             {
                 name: "Noto Sans SC",
                 data: fontsRepository.getNotoSansSc(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans TC",
                 data: fontsRepository.getNotoSansTc(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans HK",
                 data: fontsRepository.getNotoSansHk(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans JP",
                 data: fontsRepository.getNotoSansJp(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans KR",
                 data: fontsRepository.getNotoSansKr(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Arabic",
                 data: fontsRepository.getNotoSansArabic(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Hebrew",
                 data: fontsRepository.getNotoSansHebrew(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Thai",
                 data: fontsRepository.getNotoSansThai(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Devanagari",
                 data: fontsRepository.getNotoSansDevanagari(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Bengali",
                 data: fontsRepository.getNotoSansBengali(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Georgian",
                 data: fontsRepository.getNotoSansGeorgian(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Armenian",
                 data: fontsRepository.getNotoSansArmenian(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans",
                 data: fontsRepository.getNotoSans(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
         ];
@@ -178,11 +206,32 @@ export class FontsService implements IFontsService {
      */
     public getFontFamiliesForSetting(setting: string): string {
         const fallbackFonts: string[] = this._fallbackFonts.map((font: FontOptions): string => font.name);
-        const displayFonts: string[] = this._displayFonts.map((font: FontOptions): string => font.name);
 
         switch (setting) {
+            case "Comic Sans MS":
+                return ["Comic Sans MS", ...fallbackFonts].toString();
+
+            case "Impact":
+                return ["Impact", "Source Han", "KeinannPOP", "Rubik Hebrew", "Teko", ...fallbackFonts].toString();
+
+            case "Minecraft":
+                return ["Minecraft", "Cubic", "Misaki", "Pixel", "Jtype", ...fallbackFonts].toString();
+
+            case "OpenDyslexic":
+                return [
+                    "OpenDyslexic",
+                    "Impact",
+                    "Source Han",
+                    "KeinannPOP",
+                    "Rubik Hebrew",
+                    "Teko",
+                    ...fallbackFonts,
+                ].toString();
+
             default:
-                return [..._.shuffle(displayFonts), ...fallbackFonts].toString();
+                return this.getFontFamiliesForSetting(
+                    _.sample(["Comic Sans MS", "Impact", "Minecraft", "OpenDyslexic"]),
+                );
         }
     }
 }

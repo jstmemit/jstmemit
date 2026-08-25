@@ -6,6 +6,22 @@ import { fileURLToPath } from "node:url";
 const here: string = dirname(fileURLToPath(import.meta.url));
 
 export class FontsRepository implements IFontsRepository {
+    public getTeko(): Buffer {
+        return readFileSync(join(here, "../fonts/Teko.ttf"));
+    }
+
+    public getRubikHebrew(): Buffer {
+        return readFileSync(join(here, "../fonts/RubikHebrew.ttf"));
+    }
+
+    public getSourceHan(): Buffer {
+        return readFileSync(join(here, "../fonts/SourceHan.ttf"));
+    }
+
+    public getKeinannPop(): Buffer {
+        return readFileSync(join(here, "../fonts/KeinannPOP.ttf"));
+    }
+
     public getJtype(): Buffer {
         return readFileSync(join(here, "../fonts/Jtype.ttf"));
     }

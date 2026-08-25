@@ -1,4 +1,8 @@
 export abstract class IFontsRepository {
+    public abstract getTeko(): Buffer;
+    public abstract getRubikHebrew(): Buffer;
+    public abstract getSourceHan(): Buffer;
+    public abstract getKeinannPop(): Buffer;
     public abstract getJtype(): Buffer;
     public abstract getPixel(): Buffer;
     public abstract getMisaki(): Buffer;
