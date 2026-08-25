@@ -42,6 +42,7 @@ import type { IMilestonesService } from "#/interfaces/IMilestonesService.ts";
 import type { IContextService } from "#/interfaces/IContextService.ts";
 import ms from "ms";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -304,7 +305,8 @@ export class MemesController implements IMemesController {
      * @author Kyrylo Maliuha
      */
     public async handleGenerateCustomMemeModalSubmit(interaction: ModalSubmitInteraction): Promise<void> {
-        const templateName: string | undefined = interaction.customId.split(":")[1];
+        const templateName: string | undefined = interaction.customId.split(":")[1]?.split("|")[0];
+        const font: string | undefined = interaction.customId.split(":")[1]?.split("|")[1] || "default";
 
         logger.emit({
             severityText: "info",
@@ -358,13 +360,21 @@ export class MemesController implements IMemesController {
                 texts,
                 images,
                 turbo: false,
-                font: null,
+                font,
             });
 
             await interaction.editReply({
                 content: `<@${interaction.user.id}>`,
                 files: this._getMemeAttachment(jobResult),
-                components: [this._ratingsService.constructRatingButtons(0, 0, jobResult.generationId, templateName)],
+                components: [
+                    this._ratingsService.constructRatingButtons(
+                        0,
+                        0,
+                        jobResult.generationId,
+                        templateName,
+                        font as Font["value"],
+                    ),
+                ],
             });
         } catch (error) {
             this._captureMemeGenerationError(error, interaction, "custom");
@@ -432,11 +442,14 @@ export class MemesController implements IMemesController {
         id: string,
     ): Promise<void> {
         let templateName: string;
+        let font: string;
 
         if (interaction.isButton()) {
-            templateName = id;
+            templateName = id.split("|")[0] || "";
+            font = id.split("|")[1] || "default";
         } else {
             templateName = interaction.options.getString("template", true);
+            font = interaction.options.getString("font", false) || "default";
         }
 
         const template: Template | undefined = await this._getTemplate(interaction, templateName);
@@ -450,6 +463,7 @@ export class MemesController implements IMemesController {
             templateName,
             template?.texts,
             template?.images,
+            font as Font["value"],
         );
 
         await interaction.showModal(modal);
