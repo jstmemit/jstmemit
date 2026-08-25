@@ -1135,7 +1135,7 @@ export class ComponentsService implements IComponentsService {
                 label: t("settings.font.comicSans.label", language),
                 value: "Comic Sans MS",
                 description: t("settings.font.comicSans.description", language),
-                emoji: "🖍️",
+                emoji: "🎨",
             },
             {
                 label: t("settings.font.impact.label", language),
@@ -1147,7 +1147,7 @@ export class ComponentsService implements IComponentsService {
                 label: t("settings.font.minecraft.label", language),
                 value: "Minecraft",
                 description: t("settings.font.minecraft.description", language),
-                emoji: "⛏️",
+                emoji: "🧱",
             },
             {
                 label: t("settings.font.openDyslexic.label", language),
