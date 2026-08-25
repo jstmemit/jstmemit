@@ -2,6 +2,15 @@ import { type RegisteredFamily, Renderer } from "takumi-js/node";
 import { FontsService } from "@jstmemit/shared/services/FontsService";
 import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
+import { Agent, setGlobalDispatcher } from "undici";
+import ms from "ms";
+
+setGlobalDispatcher(
+    new Agent({
+        connectTimeout: ms("1m"),
+        connections: 256,
+    }),
+);
 
 const fontsRepository = new FontsRepository();
 const fontsService = new FontsService(fontsRepository);
