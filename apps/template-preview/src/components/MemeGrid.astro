@@ -3,7 +3,7 @@ import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
 import { render, renderAnimation } from "takumi-js";
-import { renderer, fetchCache } from "../utils/renderer";
+import { renderer, fetchCache, sources } from "../utils/renderer";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
@@ -44,6 +44,7 @@ const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Pr
                 timeout: 60000,
                 maxBytes: 20 * 1024 * 1024,
                 fetchCache: fetchCache,
+                sources: sources,
             },
         });
         return `data:image/webp;base64,${staticMeme.toString("base64")}`;
@@ -65,6 +66,7 @@ const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Pr
             timeout: 60000,
             maxBytes: 20 * 1024 * 1024,
             fetchCache: fetchCache,
+            sources: sources,
         },
     });
     return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
