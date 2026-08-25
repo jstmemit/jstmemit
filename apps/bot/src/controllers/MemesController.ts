@@ -420,7 +420,7 @@ export class MemesController implements IMemesController {
                 texts,
                 images,
                 turbo: false,
-                font: null,
+                font: "default",
             });
 
             await interaction.editReply({
