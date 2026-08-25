@@ -35,14 +35,14 @@ export const cinemaGuys: Template = {
         { id: 1, description: "second reaction", minLength: 1, maxLength: 20 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -70,7 +70,7 @@ export const cinemaGuys: Template = {
                         lineClamp: 8,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -100,7 +100,7 @@ export const cinemaGuys: Template = {
                         lineClamp: 8,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

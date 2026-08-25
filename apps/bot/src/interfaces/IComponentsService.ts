@@ -60,9 +60,9 @@ export abstract class IComponentsService {
     public abstract getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,
-        turbo: boolean,
         useAvatarsInMemes: boolean,
         milestones: boolean,
+        font: string | null,
     ): ContainerBuilder;
     public abstract getSettingsFooterMessageComponent(language: Locale): ContainerBuilder;
     public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;

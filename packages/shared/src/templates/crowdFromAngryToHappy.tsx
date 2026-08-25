@@ -35,14 +35,14 @@ export const crowdFromAngryToHappy: Template = {
         { id: 1, description: "second speach", minLength: 1, maxLength: 2 },
     ],
     images: [{ id: 0, description: "person face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -91,7 +91,7 @@ export const crowdFromAngryToHappy: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -121,7 +121,7 @@ export const crowdFromAngryToHappy: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

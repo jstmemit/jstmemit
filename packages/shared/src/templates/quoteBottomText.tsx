@@ -32,14 +32,14 @@ export const quoteBottomText: Template = {
     height: 800,
     texts: [{ id: 0, description: "quote", minLength: 1, maxLength: 20 }],
     images: [{ id: 0, description: "background image" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -73,7 +73,7 @@ export const quoteBottomText: Template = {
                         lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 44,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

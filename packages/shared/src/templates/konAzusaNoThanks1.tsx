@@ -32,14 +32,14 @@ export const konAzusaNoThanks1: Template = {
     height: 550,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
     images: [{ id: 0, description: "Kaguya's face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -79,7 +79,7 @@ export const konAzusaNoThanks1: Template = {
                         lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

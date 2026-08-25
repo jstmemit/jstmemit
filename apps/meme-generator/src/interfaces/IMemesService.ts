@@ -10,5 +10,6 @@ export abstract class IMemesService {
         channelId: string,
         userId: string,
         turbo: boolean,
+        font: string | null,
     ): Promise<TemplateProps | undefined>;
 }

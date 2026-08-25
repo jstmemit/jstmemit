@@ -37,14 +37,14 @@ export const pfAllToghether: Template = {
         { id: 2, description: "The Wolf's face (center right)" },
         { id: 3, description: "Jimmie's face (right)" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -121,7 +121,7 @@ export const pfAllToghether: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

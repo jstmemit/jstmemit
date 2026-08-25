@@ -35,14 +35,14 @@ export const toradoraCriticalHit: Template = {
         { id: 0, description: "Ryuuji`s face" },
         { id: 1, description: "Taiga`s face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

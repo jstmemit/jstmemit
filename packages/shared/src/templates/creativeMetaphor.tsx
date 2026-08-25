@@ -35,7 +35,7 @@ export const creativeMetaphor: Template = {
         { id: 1, description: "Creative metaphor", minLength: 1, maxLength: 5 },
     ],
     images: [{ id: 0, description: "Person who posted a creative metaphor" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -61,7 +61,7 @@ export const creativeMetaphor: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 43,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",
@@ -83,7 +83,7 @@ export const creativeMetaphor: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 48,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

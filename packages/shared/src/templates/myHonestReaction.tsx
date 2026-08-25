@@ -32,14 +32,14 @@ export const myHonestReaction: Template = {
     height: 1000,
     texts: [],
     images: [{ id: 0, description: "person face" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -73,7 +73,7 @@ export const myHonestReaction: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         fontWeight: 700,
                         lineHeight: 1.05,

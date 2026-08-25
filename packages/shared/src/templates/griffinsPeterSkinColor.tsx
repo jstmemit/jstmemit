@@ -35,14 +35,14 @@ export const griffinsPeterSkinColor: Template = {
         { id: 1, description: "second option", minLength: 1, maxLength: 4 },
     ],
     images: [{ id: 0, description: "Peter`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -83,7 +83,7 @@ export const griffinsPeterSkinColor: Template = {
                         lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -113,7 +113,7 @@ export const griffinsPeterSkinColor: Template = {
                         lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

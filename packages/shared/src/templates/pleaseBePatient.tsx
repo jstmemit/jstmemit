@@ -39,7 +39,7 @@ export const pleaseBePatient: Template = {
         },
     ],
     images: [{ id: 0, description: "Person with 'please be patient' blue cap" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -86,7 +86,7 @@ export const pleaseBePatient: Template = {
                         lineClamp: 10,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

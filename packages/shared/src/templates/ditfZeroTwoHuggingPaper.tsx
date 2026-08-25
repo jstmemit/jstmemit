@@ -32,14 +32,14 @@ export const ditfZeroTwoHuggingPaper: Template = {
     height: 827,
     texts: [{ id: 0, description: "the phrase on a sheet of paper", minLength: 1, maxLength: 20 }],
     images: [{ id: 0, description: "Zero Two's face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -74,7 +74,7 @@ export const ditfZeroTwoHuggingPaper: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

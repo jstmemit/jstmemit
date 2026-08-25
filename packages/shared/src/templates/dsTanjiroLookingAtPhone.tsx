@@ -36,14 +36,14 @@ export const dsTanjiroLookingAtPhone: Template = {
         { id: 2, description: "post", minLength: 1, maxLength: 12 },
     ],
     images: [{ id: 0, description: "user avatar" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -83,7 +83,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 15,
                         fontWeight: 700,
                         lineHeight: 1.05,
@@ -113,7 +113,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 15,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -142,7 +142,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 20,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

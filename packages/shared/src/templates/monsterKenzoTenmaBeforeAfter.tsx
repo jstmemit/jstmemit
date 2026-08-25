@@ -35,14 +35,14 @@ export const monsterKenzoTenmaBeforeAfter: Template = {
         { id: 1, description: "second option", minLength: 1, maxLength: 6 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -71,7 +71,7 @@ export const monsterKenzoTenmaBeforeAfter: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -101,7 +101,7 @@ export const monsterKenzoTenmaBeforeAfter: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 30,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

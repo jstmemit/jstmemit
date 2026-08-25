@@ -35,14 +35,14 @@ export const tbobsJamesFrancoFirstTime: Template = {
         { id: 0, description: "James Franco`s face" },
         { id: 1, description: "Old man face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img

@@ -32,14 +32,14 @@ export const bearArrest: Template = {
     height: 434,
     texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "arrested bear" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -73,7 +73,7 @@ export const bearArrest: Template = {
                     alignItems: "baseline",
                     justifyContent: "flex-start",
                     textAlign: "start",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 40,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

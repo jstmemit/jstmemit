@@ -35,7 +35,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
         { id: 1, description: "post author's tag", minLength: 1, maxLength: 1 },
     ],
     images: [{ id: 0, description: "Inappropriate profile picture" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -72,7 +72,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 40,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",
@@ -95,7 +95,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: 35,
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

@@ -32,14 +32,14 @@ export const arobmiSistineFibelTeaSip: Template = {
     height: 1212,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -68,7 +68,7 @@ export const arobmiSistineFibelTeaSip: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 60,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

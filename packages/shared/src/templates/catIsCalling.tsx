@@ -32,7 +32,7 @@ export const catIsCalling: Template = {
     height: 936,
     texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -66,7 +66,7 @@ export const catIsCalling: Template = {
                         lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 100,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
