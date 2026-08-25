@@ -912,7 +912,7 @@ export class ComponentsService implements IComponentsService {
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
                                 .setValue(option.value)
-                                .setDefault(font === null && option.value === "Random" ? true : option.value === font)
+                                .setDefault(font === null && option.value === "default" ? true : option.value === font)
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),
@@ -1128,7 +1128,7 @@ export class ComponentsService implements IComponentsService {
             {
                 label: t("settings.font.random.label", language),
                 description: t("settings.font.random.description", language),
-                value: "Random",
+                value: "default",
                 emoji: "🎲",
             },
             {

@@ -2,6 +2,7 @@ import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";
 import type { FontOptions } from "#/models/FontOptions.ts";
 import type { IFontsService } from "../interfaces/IFontsService.ts";
 import _ from "lodash";
+import type { Font } from "#/models/Font.ts";
 
 export class FontsService implements IFontsService {
     private readonly _displayFonts: FontOptions[];
@@ -204,7 +205,7 @@ export class FontsService implements IFontsService {
      *
      * @author Kyrylo Maliuha
      */
-    public getFontFamiliesForSetting(setting: string): string {
+    public getFontFamiliesForSetting(setting: Font["value"]): string {
         const fallbackFonts: string[] = this._fallbackFonts.map((font: FontOptions): string => font.name);
 
         switch (setting) {
