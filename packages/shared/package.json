@@ -5,6 +5,7 @@
     "devDependencies": {
         "@jstmemit/i18n": "workspace:*",
         "@jstmemit/meme-generator": "workspace:*",
+        "@types/lodash": "^4.17.24",
         "discord.js": "^14.27.0",
         "react": "^19.2.7"
     },
@@ -22,6 +23,7 @@
         ]
     },
     "dependencies": {
+        "lodash": "^4.18.1",
         "takumi": "^0.8.2"
     }
 }
