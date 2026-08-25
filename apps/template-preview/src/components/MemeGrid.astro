@@ -25,57 +25,55 @@ const template: Template = templatesService.getTemplateByName(templateName || ""
 
 const signal: AbortSignal = Astro.request.signal;
 
-const memes: string[] = await Promise.all(
-    variants.map(async (variant: TemplateProps): Promise<string> => {
-        if (variant?.texts === undefined) {
-            throw new Error();
-        }
+const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Promise<string> => {
+    if (variant?.texts === undefined) {
+        throw new Error();
+    }
 
-        if (template.animationDuration === undefined) {
-            const staticMeme = await render(template.element(variant), {
-                width: template.width,
-                height: template.height,
-                renderer: renderer,
-                emoji: "twemoji",
-                format: "webp",
-                quality: 40,
-                drawDebugBorder: true,
-                signal: signal,
-                images: {
-                    timeout: 20000,
-                    maxBytes: 20 * 1024 * 1024,
-                    fetchCache: fetchCache,
-                },
-            });
-            return `data:image/webp;base64,${staticMeme.toString("base64")}`;
-        }
-
-        const animationDuration: number = template.animationDuration === null ? 1500 : template.animationDuration;
-        const animatedMeme = await renderAnimation({
+    if (template.animationDuration === undefined) {
+        const staticMeme = await render(template.element(variant), {
             width: template.width,
             height: template.height,
             renderer: renderer,
-            fps: 10,
-            format: "webp",
-            scenes: [{ durationMs: animationDuration, node: template.element(variant) }],
             emoji: "twemoji",
-            quality: 35,
+            format: "webp",
+            quality: 40,
             drawDebugBorder: true,
             signal: signal,
             images: {
-                timeout: 20000,
+                timeout: 60000,
                 maxBytes: 20 * 1024 * 1024,
                 fetchCache: fetchCache,
             },
         });
-        return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
-    }),
-);
+        return `data:image/webp;base64,${staticMeme.toString("base64")}`;
+    }
+
+    const animationDuration: number = template.animationDuration === null ? 1500 : template.animationDuration;
+    const animatedMeme = await renderAnimation({
+        width: template.width,
+        height: template.height,
+        renderer: renderer,
+        fps: 10,
+        format: "webp",
+        scenes: [{ durationMs: animationDuration, node: template.element(variant) }],
+        emoji: "twemoji",
+        quality: 25,
+        drawDebugBorder: true,
+        signal: signal,
+        images: {
+            timeout: 60000,
+            maxBytes: 20 * 1024 * 1024,
+            fetchCache: fetchCache,
+        },
+    });
+    return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
+});
 ---
 
 <ul class:list={["flex flex-wrap", gap]}>
     {
-        variants.map((variant: TemplateProps, i: number) => (
+        variants.map(async (variant: TemplateProps, i: number): Promise => (
             <MemeCard src={memes[i]} template={template} size={`1/${cols}`} />
         ))
     }
