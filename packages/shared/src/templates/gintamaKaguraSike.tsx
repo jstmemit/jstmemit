@@ -44,7 +44,7 @@ export const gintamaKaguraSike: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaKaguraSike.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gintamaKaguraSike.gif"
                 width={500}
                 height={280}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

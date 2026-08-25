@@ -13,7 +13,7 @@ const globalRef = globalThis as unknown as {
 };
 
 export const renderer: Renderer =
-    globalRef.__takumiRenderer ?? (globalRef.__takumiRenderer = new Renderer({ cacheMaxBytes: 512 * 1024 * 1024 }));
+    globalRef.__takumiRenderer ?? (globalRef.__takumiRenderer = new Renderer({ cacheMaxBytes: 1024 * 1024 * 1024 }));
 
 export const fetchCache: Map<string, Promise<ArrayBuffer>> = globalRef.__takumiFetchCache ??
 (globalRef.__takumiFetchCache = new Map<string, Promise<ArrayBuffer>>());

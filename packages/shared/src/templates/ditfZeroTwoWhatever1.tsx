@@ -46,7 +46,7 @@ export const ditfZeroTwoWhatever1: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoWhatever.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoWhatever.png"
                 width={736}
                 height={414}
                 style={{ position: "absolute", top: 0, left: 0 }}
