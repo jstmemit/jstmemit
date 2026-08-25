@@ -4,7 +4,6 @@ import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
 import _ from "lodash";
 import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 
 const fontsRepository: IFontsRepository = new FontsRepository();
 const fontsService: IFontsService = new FontsService(fontsRepository);
@@ -43,13 +42,10 @@ export const images: string[] = [
 
 export const variants: TemplateProps[] = [];
 
-const displayFontNames: string[] = fontsService.getDisplayFonts().map((font: FontOptions): string => font.name);
-const fallbackFontNames: string[] = fontsService.getFallbackFonts().map((font: FontOptions): string => font.name);
-
 for (let i: number = 0; i < texts.length; i++) {
     variants.push({
         texts: _.times(5, (): string => texts[i]),
         images: _.drop(_.shuffle(images), 5),
-        font: [..._.shuffle(displayFontNames), ...fallbackFontNames].toString(),
+        font: fontsService.getFontFamiliesForSetting("default"),
     });
 }

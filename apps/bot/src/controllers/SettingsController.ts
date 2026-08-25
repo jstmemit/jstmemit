@@ -6,6 +6,7 @@ import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import { analytics } from "@jstmemit/analytics";
 import { respond } from "#/helpers/respond.ts";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
@@ -140,6 +141,57 @@ export class SettingsController implements ISettingsController {
         } catch (error) {
             await this._replyWithError(interaction, error, {
                 command: "/settings",
+            });
+        }
+    }
+
+    /**
+     * Handles changing of the fonts
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleFontSelect(interaction: StringSelectMenuInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const old: Font["value"] = (channel?.font || "default") as Font["value"];
+            channel.font = interaction.values[0] as Font["value"];
+
+            await this._channelsService.setChannel(interaction.channelId, channel);
+
+            // memes in chat frequency
+            analytics.capture({
+                event: "font_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    language: interaction.locale,
+                    old: old,
+                    new: channel.font,
+                    enabled: channel.enabled,
+                    turbo: channel.turbo,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
+                },
+            });
+
+            await this._replyWithSettings(interaction, channel);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+                action: "font",
             });
         }
     }

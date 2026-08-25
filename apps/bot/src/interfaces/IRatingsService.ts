@@ -1,4 +1,5 @@
 import type { ActionRowBuilder, ButtonBuilder, ButtonInteraction } from "discord.js";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export abstract class IRatingsService {
     public abstract addRating(
@@ -12,6 +13,7 @@ export abstract class IRatingsService {
         dislikes: number,
         generationId: number,
         templateName?: string,
+        font?: Font["value"],
     ): ActionRowBuilder<ButtonBuilder>;
     public abstract updateRatingButtons(
         interaction: ButtonInteraction,

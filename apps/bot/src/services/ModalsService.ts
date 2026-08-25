@@ -4,6 +4,7 @@ import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
 import type { Locale } from "discord.js";
 import { FileUploadBuilder, LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import { t } from "@jstmemit/i18n";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class ModalsService implements IModalsService {
     public getGenerateCustomMemeModal(
@@ -11,9 +12,10 @@ export class ModalsService implements IModalsService {
         templateName: string,
         texts: TemplateText[] | undefined,
         images: TemplateImage[] | undefined,
+        font: Font["value"],
     ): ModalBuilder {
         const modal: ModalBuilder = new ModalBuilder()
-            .setCustomId(`custom-meme:${templateName}`)
+            .setCustomId(`custom-meme:${templateName}|${font}`)
             .setTitle(t("modal.customMeme.title", language));
 
         texts?.forEach((text: TemplateText): void => {

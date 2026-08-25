@@ -1,6 +1,8 @@
 import type { IFontsRepository } from "#/interfaces/IFontsRepository.ts";
 import type { FontOptions } from "#/models/FontOptions.ts";
 import type { IFontsService } from "../interfaces/IFontsService.ts";
+import _ from "lodash";
+import type { Font } from "#/models/Font.ts";
 
 export class FontsService implements IFontsService {
     private readonly _displayFonts: FontOptions[];
@@ -25,6 +27,34 @@ export class FontsService implements IFontsService {
             {
                 name: "Impact",
                 data: fontsRepository.getImpact(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Source Han",
+                data: fontsRepository.getSourceHan(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "KeinannPOP",
+                data: fontsRepository.getKeinannPop(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Rubik Hebrew",
+                data: fontsRepository.getRubikHebrew(),
+                weight: 700,
+                style: "normal",
+                generic: "sans-serif",
+            },
+            {
+                name: "Teko",
+                data: fontsRepository.getTeko(),
                 weight: 700,
                 style: "normal",
                 generic: "sans-serif",
@@ -83,79 +113,79 @@ export class FontsService implements IFontsService {
             {
                 name: "Noto Sans SC",
                 data: fontsRepository.getNotoSansSc(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans TC",
                 data: fontsRepository.getNotoSansTc(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans HK",
                 data: fontsRepository.getNotoSansHk(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans JP",
                 data: fontsRepository.getNotoSansJp(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans KR",
                 data: fontsRepository.getNotoSansKr(),
-                weight: 500,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Arabic",
                 data: fontsRepository.getNotoSansArabic(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Hebrew",
                 data: fontsRepository.getNotoSansHebrew(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Thai",
                 data: fontsRepository.getNotoSansThai(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Devanagari",
                 data: fontsRepository.getNotoSansDevanagari(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Bengali",
                 data: fontsRepository.getNotoSansBengali(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Georgian",
                 data: fontsRepository.getNotoSansGeorgian(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans Armenian",
                 data: fontsRepository.getNotoSansArmenian(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
             {
                 name: "Noto Sans",
                 data: fontsRepository.getNotoSans(),
-                weight: 400,
+                weight: 700,
                 style: "normal",
             },
         ];
@@ -171,20 +201,38 @@ export class FontsService implements IFontsService {
     }
 
     /**
-     * Gets display fonts
+     * Gets list of font families for the passed setting
      *
      * @author Kyrylo Maliuha
      */
-    public getDisplayFonts(): FontOptions[] {
-        return this._displayFonts;
-    }
+    public getFontFamiliesForSetting(setting: Font["value"]): string {
+        const fallbackFonts: string[] = this._fallbackFonts.map((font: FontOptions): string => font.name);
 
-    /**
-     * Gets fallback fonts
-     *
-     * @author Kyrylo Maliuha
-     */
-    public getFallbackFonts(): FontOptions[] {
-        return this._fallbackFonts;
+        switch (setting) {
+            case "Comic Sans MS":
+                return ["Comic Sans MS", ...fallbackFonts].toString();
+
+            case "Impact":
+                return ["Impact", "Source Han", "KeinannPOP", "Rubik Hebrew", "Teko", ...fallbackFonts].toString();
+
+            case "Minecraft":
+                return ["Minecraft", "Cubic", "Misaki", "Pixel", "Jtype", ...fallbackFonts].toString();
+
+            case "OpenDyslexic":
+                return [
+                    "OpenDyslexic",
+                    "Impact",
+                    "Source Han",
+                    "KeinannPOP",
+                    "Rubik Hebrew",
+                    "Teko",
+                    ...fallbackFonts,
+                ].toString();
+
+            default:
+                return this.getFontFamiliesForSetting(
+                    _.sample(["Comic Sans MS", "Impact", "Minecraft", "OpenDyslexic"]),
+                );
+        }
     }
 }

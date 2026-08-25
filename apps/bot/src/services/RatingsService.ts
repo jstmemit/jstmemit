@@ -10,6 +10,7 @@ import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import ms from "ms";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class RatingsService implements IRatingsService {
     private readonly _ratingsRepository: IRatingsRepository;
@@ -63,6 +64,7 @@ export class RatingsService implements IRatingsService {
      * @param dislikes
      * @param generationId
      * @param templateName
+     * @param font
      *
      * @author Kyrylo Maliuha
      */
@@ -71,6 +73,7 @@ export class RatingsService implements IRatingsService {
         dislikes: number,
         generationId: number,
         templateName?: string,
+        font?: Font["value"],
     ): ActionRowBuilder<ButtonBuilder> {
         const likeButton: ButtonBuilder = new ButtonBuilder()
             .setCustomId(`like:${generationId}`)
@@ -79,7 +82,7 @@ export class RatingsService implements IRatingsService {
             .setStyle(ButtonStyle.Success);
 
         const regenerateButton: ButtonBuilder = new ButtonBuilder()
-            .setCustomId(templateName ? `custom:${templateName}` : `meme:${generationId}`)
+            .setCustomId(templateName ? `custom:${templateName}:${font}` : `meme:${generationId}`)
             .setEmoji(templateName ? "✏️" : "🔄")
             .setStyle(ButtonStyle.Primary);
 
