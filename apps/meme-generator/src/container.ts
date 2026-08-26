@@ -24,6 +24,7 @@ import { CacheService } from "@jstmemit/cache/services/CacheService";
 import { cache } from "@jstmemit/cache";
 import "@jstmemit/telemetry";
 import { ImageService } from "@jstmemit/images/services/ImageService";
+import { RendererService } from "#/services/RendererService.ts";
 
 const env = Env.parse(process.env);
 
@@ -49,6 +50,7 @@ container.register({
     imagesRepository: asClass(ImagesRepository).singleton(),
     cacheService: asClass(CacheService).singleton(),
     imageService: asClass(ImageService).singleton(),
+    rendererService: asClass(RendererService).singleton(),
 });
 
 export const messagesRepository: IMessagesRepository = container.resolve<MessagesRepository>("messagesRepository");
