@@ -6,7 +6,6 @@ export abstract class ISettingsController {
     ): Promise<void>;
     public abstract handleFontSelect(interaction: StringSelectMenuInteraction): Promise<void>;
     public abstract handleFrequencySelect(interaction: StringSelectMenuInteraction): Promise<void>;
-    public abstract handleModeSelect(interaction: StringSelectMenuInteraction): Promise<void>;
     public abstract handleUserAvatarsSelect(interaction: StringSelectMenuInteraction): Promise<void>;
     public abstract handleOpenDeleteDataConfirmationInteraction(interaction: ButtonInteraction): Promise<void>;
     public abstract handleDeleteDataInteraction(interaction: ButtonInteraction): Promise<void>;

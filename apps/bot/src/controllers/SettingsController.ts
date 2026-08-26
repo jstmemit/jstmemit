@@ -180,7 +180,6 @@ export class SettingsController implements ISettingsController {
                     old: old,
                     new: channel.font,
                     enabled: channel.enabled,
-                    turbo: channel.turbo,
                     useAvatarsInMemes: channel.useAvatarsInMemes,
                     channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     memberCount: interaction.guild?.memberCount,
@@ -231,7 +230,6 @@ export class SettingsController implements ISettingsController {
                     old: old,
                     new: channel.frequency,
                     enabled: channel.enabled,
-                    turbo: channel.turbo,
                     useAvatarsInMemes: channel.useAvatarsInMemes,
                     channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     memberCount: interaction.guild?.memberCount,
@@ -243,57 +241,6 @@ export class SettingsController implements ISettingsController {
             await this._replyWithError(interaction, error, {
                 command: "/settings",
                 action: "frequency",
-            });
-        }
-    }
-
-    /**
-     * Handles changing of the meme generation mode
-     * setting for the channel
-     *
-     * @param interaction
-     *
-     * @author Kyrylo Maliuha
-     */
-    public async handleModeSelect(interaction: StringSelectMenuInteraction): Promise<void> {
-        try {
-            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
-                interaction.channelId,
-            );
-
-            if (!channel) {
-                throw new Error();
-            }
-
-            const old: boolean = channel.turbo;
-            channel.turbo = interaction.values[0] === "true";
-
-            await this._channelsService.setChannel(interaction.channelId, channel);
-
-            // meme generation mode (prioritize quality or speed)
-            analytics.capture({
-                event: "mode_changed",
-                distinctId: interaction.user.id,
-                properties: {
-                    guildId: interaction.guildId,
-                    channelId: interaction.channelId,
-                    command: "/settings",
-                    language: interaction.locale,
-                    old: old,
-                    new: channel.turbo,
-                    enabled: channel.enabled,
-                    useAvatarsInMemes: channel.useAvatarsInMemes,
-                    frequency: channel.frequency,
-                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
-                    memberCount: interaction.guild?.memberCount,
-                },
-            });
-
-            await this._replyWithSettings(interaction, channel);
-        } catch (error) {
-            await this._replyWithError(interaction, error, {
-                command: "/settings",
-                action: "mode",
             });
         }
     }
@@ -333,7 +280,6 @@ export class SettingsController implements ISettingsController {
                     new: channel.milestones,
                     enabled: channel.enabled,
                     useAvatarsInMemes: channel.useAvatarsInMemes,
-                    turbo: channel.turbo,
                     frequency: channel.frequency,
                     channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     memberCount: interaction.guild?.memberCount,
@@ -384,7 +330,6 @@ export class SettingsController implements ISettingsController {
                     old: old,
                     new: channel.useAvatarsInMemes,
                     enabled: channel.enabled,
-                    turbo: channel.turbo,
                     frequency: channel.frequency,
                     channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     memberCount: interaction.guild?.memberCount,
