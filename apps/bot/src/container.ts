@@ -46,6 +46,7 @@ import { analytics } from "@jstmemit/analytics";
 import { client } from "#/bot.ts";
 import { PermissionsService } from "#/services/PermissionsService.ts";
 import type { IPermissionsService } from "#/interfaces/IPermissionsService.ts";
+import { ContextMenusService } from "#/services/ContextMenusService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -106,6 +107,7 @@ container.register({
     autocompleteController: asClass(AutocompleteController).singleton(),
     commandsService: asClass(CommandsService).singleton(),
     permissionsService: asClass(PermissionsService).singleton(),
+    contextMenusService: asClass(ContextMenusService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
