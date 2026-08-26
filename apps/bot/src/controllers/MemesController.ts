@@ -43,6 +43,7 @@ import type { IContextService } from "#/interfaces/IContextService.ts";
 import ms from "ms";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { Font } from "@jstmemit/shared/models/Font";
+import type { IPermissionsService } from "#/interfaces/IPermissionsService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
@@ -57,6 +58,7 @@ export class MemesController implements IMemesController {
     private readonly _milestonesService: IMilestonesService;
     private readonly _contextService: IContextService;
     private readonly _messagesRepository: IMessagesRepository;
+    private readonly _permissionsService: IPermissionsService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
@@ -71,6 +73,7 @@ export class MemesController implements IMemesController {
         milestonesService: IMilestonesService,
         contextService: IContextService,
         messagesRepository: IMessagesRepository,
+        permissionsService: IPermissionsService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
@@ -84,6 +87,7 @@ export class MemesController implements IMemesController {
         this._milestonesService = milestonesService;
         this._contextService = contextService;
         this._messagesRepository = messagesRepository;
+        this._permissionsService = permissionsService;
     }
 
     /**
@@ -631,20 +635,6 @@ export class MemesController implements IMemesController {
         return texts;
     }
 
-    private _getAppPermissionsBitfield(
-        interaction:
-            | ChatInputCommandInteraction
-            | ButtonInteraction
-            | Message
-            | ModalSubmitInteraction
-            | MessageContextMenuCommandInteraction
-            | UserContextMenuCommandInteraction,
-    ): string | undefined {
-        return interaction instanceof Message
-            ? interaction.guild?.members.me?.permissionsIn(interaction.channelId).bitfield.toString()
-            : interaction.appPermissions?.bitfield.toString();
-    }
-
     private _getTelemetryProperties(
         interaction:
             | ChatInputCommandInteraction
@@ -662,7 +652,7 @@ export class MemesController implements IMemesController {
             guild_id: interaction.guildId || undefined,
             channel_type: channel ? ChannelType[channel.type] : undefined,
             is_thread: channel?.isThread(),
-            permissions: this._getAppPermissionsBitfield(interaction),
+            permissions: this._permissionsService.getAppPermissionsBitfield(interaction),
             receive_latency_ms: Date.now() - interaction.createdTimestamp,
         };
 

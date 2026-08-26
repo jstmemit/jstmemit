@@ -44,6 +44,8 @@ import { MilestonesController } from "#/controllers/MilestonesController.ts";
 import { CommandsService } from "#/services/CommandsService.ts";
 import { analytics } from "@jstmemit/analytics";
 import { client } from "#/bot.ts";
+import { PermissionsService } from "#/services/PermissionsService.ts";
+import type { IPermissionsService } from "#/interfaces/IPermissionsService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
@@ -103,10 +105,12 @@ container.register({
     autocompleteService: asClass(AutocompleteService).singleton(),
     autocompleteController: asClass(AutocompleteController).singleton(),
     commandsService: asClass(CommandsService).singleton(),
+    permissionsService: asClass(PermissionsService).singleton(),
 });
 
 export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
 export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
+export const permissionsService: IPermissionsService = container.resolve<IPermissionsService>("permissionsService");
 export const logger: Logger = container.resolve<Logger>("logger");
 
 process.on("unhandledRejection", (reason: unknown): void => {
