@@ -18,7 +18,6 @@ export class MemesRepository implements IMemesRepository {
      * @param template
      * @param props
      * @param animated
-     * @param turbo
      *
      * @author Kyrylo Maliuha
      */
@@ -26,7 +25,6 @@ export class MemesRepository implements IMemesRepository {
         template: Template,
         props: TemplateProps,
         animated: boolean,
-        turbo: boolean,
     ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>> {
         try {
             await this._rendererService.fontsReady;
@@ -45,7 +43,7 @@ export class MemesRepository implements IMemesRepository {
                         maxBytes: 20 * 1024 * 1024,
                         sources: this._rendererService.sources,
                     },
-                    quality: turbo ? 35 : 45,
+                    quality: 40,
                     fps: 12,
                     scenes: [{ durationMs: animationDuration, node: template.element(props) }],
                 });
@@ -54,7 +52,7 @@ export class MemesRepository implements IMemesRepository {
                     width: template.width,
                     height: template.height,
                     renderer: this._rendererService.renderer,
-                    quality: turbo ? 30 : 55,
+                    quality: 70,
                     format: "webp",
                     emoji: "twemoji",
                     images: {

@@ -6,6 +6,5 @@ export abstract class IMemesRepository {
         template: Template,
         props: TemplateProps,
         animated: boolean,
-        turbo: boolean,
     ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>>;
 }
