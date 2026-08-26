@@ -1,12 +1,22 @@
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 import type { TemplateImage } from "@jstmemit/shared/models/TemplateImage";
-import type { Locale } from "discord.js";
+import { type Attachment, type Locale, MessageFlags, type ModalSubmitInteraction } from "discord.js";
 import { FileUploadBuilder, LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import { t } from "@jstmemit/i18n";
 import type { Font } from "@jstmemit/shared/models/Font";
+import type { Template } from "@jstmemit/shared/models/Template";
+import { logger } from "#/container.ts";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { getTelemetryProperties } from "#/helpers/getTelemetryProperties.ts";
 
 export class ModalsService implements IModalsService {
+    private readonly _componentsService: IComponentsService;
+
+    public constructor(componentsService: IComponentsService) {
+        this._componentsService = componentsService;
+    }
+
     public getGenerateCustomMemeModal(
         language: Locale,
         templateName: string,
@@ -78,5 +88,61 @@ export class ModalsService implements IModalsService {
         modal.addLabelComponents(input);
 
         return modal;
+    }
+
+    public async getMemeModalImages(
+        template: Template,
+        interaction: ModalSubmitInteraction,
+    ): Promise<Record<string, string> | undefined> {
+        const images: Record<string, string> = {};
+
+        for (const image of template.images ?? []) {
+            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
+            const attachment: Attachment | undefined = files?.first();
+
+            if (!attachment) {
+                images[image.id] = "";
+                continue;
+            }
+
+            if (!attachment.contentType?.startsWith("image/")) {
+                logger.emit({
+                    severityText: "warn",
+                    body: "generate_meme.modal.unsupported_attachment_image_format",
+                    attributes: {
+                        ...getTelemetryProperties(interaction),
+                    },
+                });
+                await interaction.editReply({
+                    components: [
+                        this._componentsService.getWrongFileFormatMessageComponent(
+                            interaction.locale,
+                            interaction.id,
+                            image.description,
+                        ),
+                    ],
+                    flags: MessageFlags.IsComponentsV2,
+                });
+                return;
+            }
+
+            images[image.id] = attachment.url;
+        }
+
+        return images;
+    }
+
+    public getMemeModalTexts(template: Template, interaction: ModalSubmitInteraction): Record<string, string> {
+        const texts: Record<string, string> = {};
+
+        template.texts?.forEach((text: TemplateText): void => {
+            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
+
+            if (value.length > 0) {
+                texts[text.id] = value;
+            }
+        });
+
+        return texts;
     }
 }
