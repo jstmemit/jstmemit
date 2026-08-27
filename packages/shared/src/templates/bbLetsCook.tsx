@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const bbLetsCook: Template = {
     name: "bbLetsCook",
@@ -29,8 +30,8 @@ export const bbLetsCook: Template = {
     topics: [Topic.BreakingBad, Topic.Movies],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 498,
-    height: 350,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 9 }],
+    height: 370,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Jesse`s face" },
         { id: 1, description: "Walter`s face" },
@@ -49,7 +50,7 @@ export const bbLetsCook: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bbLetsCook.png"
                 width={498}
                 height={350}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
@@ -57,7 +58,7 @@ export const bbLetsCook: Template = {
                 height={80}
                 style={{
                     position: "absolute",
-                    top: "25%",
+                    top: "32%",
                     left: 135,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -69,7 +70,7 @@ export const bbLetsCook: Template = {
                 height={80}
                 style={{
                     position: "absolute",
-                    top: "22%",
+                    top: "29%",
                     right: 140,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -81,12 +82,13 @@ export const bbLetsCook: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "90px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -95,7 +97,7 @@ export const bbLetsCook: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: "Comic Sans MS",
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
                         color: "#000000",

@@ -66,23 +66,29 @@ export const bearArrest: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "20%",
                     display: "flex",
-                    alignItems: "baseline",
+                    alignItems: "center",
                     justifyContent: "flex-start",
                     textAlign: "start",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#000000",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    padding: "10px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        paddingBottom: "0.2em",
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

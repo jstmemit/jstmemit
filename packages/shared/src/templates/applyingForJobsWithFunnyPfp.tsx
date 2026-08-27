@@ -61,52 +61,6 @@ export const applyingForJobsWithFunnyPfp: Template = {
                 height={1051}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
-            <div
-                style={{
-                    position: "absolute",
-                    left: 110,
-                    top: 0,
-                    width: "100%",
-                    maxWidth: "59%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
-                    display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#fff",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                }}
-            >
-                {texts[0]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 110,
-                    top: 55,
-                    width: "100%",
-                    maxWidth: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
-                    display: "flex",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 35,
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#808080",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                }}
-            >
-                @{texts[1]}
-            </div>
             <img
                 src={images[0]}
                 width={100}
@@ -118,6 +72,64 @@ export const applyingForJobsWithFunnyPfp: Template = {
                     borderRadius: 24,
                 }}
             />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 110,
+                    top: 0,
+                    width: "100%",
+                    maxWidth: "57%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        paddingBottom: "0.2em",
+                        color: "#ffffff",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    left: 110,
+                    top: 55,
+                    width: "100%",
+                    maxWidth: "57%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: "Comic Sans MS",
+                        fontSize: 35,
+                        lineHeight: 1.05,
+                        paddingBottom: "0.2em",
+                        color: "#808080",
+                    }}
+                >
+                    @{texts[1]}
+                </div>
+            </div>
         </div>
     ),
 };
