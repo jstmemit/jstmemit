@@ -13,12 +13,19 @@ interface Props {
     gap?: string;
 }
 
-const { template, variants, cols = 3, heading = "Meme examples", link = "#" } = Astro.props;
+const { template, variants, cols = 3, heading = "Meme examples", link } = Astro.props;
 ---
 
 <section>
-    <a href={link}>
-        <h2 class="mb-3 text-3xl font-bold">{heading}</h2>
-    </a>
-    <MemeGrid cols={cols} variants={variants} template={template} gap="gap-1" server:defer />
+    {
+        link ? (
+            <a href={link}>
+                <h2 class="mb-3 text-3xl font-bold">{heading}</h2>
+            </a>
+        ) : (
+            <h2 class="mb-3 text-3xl font-bold">{heading}</h2>
+        )
+    }
+
+    <MemeGrid cols={cols} variants={variants} templateName={template.name} gap="gap-1" server:defer />
 </section>

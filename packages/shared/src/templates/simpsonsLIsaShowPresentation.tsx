@@ -33,18 +33,18 @@ export const simpsonsLIsaShowPresentation: Template = {
     height: 551,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 25 }],
     images: [{ id: 0, description: "Lisa`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsLIsaShowPresentation.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/simpsonsLIsaShowPresentation.jpg"
                 width={736}
                 height={551}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -80,7 +80,7 @@ export const simpsonsLIsaShowPresentation: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

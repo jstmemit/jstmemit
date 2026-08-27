@@ -36,7 +36,7 @@ export const creativeMetaphor: Template = {
         { id: 1, description: "Creative metaphor", minLength: 1, maxLength: 5 },
     ],
     images: [{ id: 0, description: "Person who posted a creative metaphor" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -46,7 +46,7 @@ export const creativeMetaphor: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/creativeMetaphor.png"
                 width={1202}
                 height={1028}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -62,7 +62,7 @@ export const creativeMetaphor: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: fontSize(texts[0]),
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",
@@ -84,7 +84,7 @@ export const creativeMetaphor: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: fontSize(texts[1]),
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

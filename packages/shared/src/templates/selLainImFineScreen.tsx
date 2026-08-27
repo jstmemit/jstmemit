@@ -32,14 +32,14 @@ export const selLainImFineScreen: Template = {
     height: 721,
     texts: [],
     images: [{ id: 0, description: "PC screen" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -55,7 +55,7 @@ export const selLainImFineScreen: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/selLainImFineScreen.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/selLainImFineScreen.png"
                 width={736}
                 height={721}
                 style={{ position: "absolute", bottom: 0, left: 0 }}

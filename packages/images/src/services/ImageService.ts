@@ -23,18 +23,17 @@ export class ImageService implements IImageService {
      * version of it as a base64 string
      *
      * @param url
-     * @param turbo if true, reduces quality
      *
      * @author Kyrylo Maliuha
      */
-    public async convertToDataUri(url: string, turbo: boolean): Promise<string> {
+    public async convertToDataUri(url: string): Promise<string> {
         if (!this._isValidUrl(url)) {
             return this._transparentImage;
         }
 
         try {
             const cached: string | undefined = await this._cacheService.get<string>(
-                this._getConvertToDataUriCacheKey(turbo, url),
+                this._getConvertToDataUriCacheKey(url),
             );
 
             if (cached !== undefined) {
@@ -58,7 +57,7 @@ export class ImageService implements IImageService {
                 return this._transparentImage;
             }
 
-            const resized: Sharp = this._resizeImage(input, format, turbo);
+            const resized: Sharp = this._resizeImage(input, format);
 
             let buf: Buffer;
 
@@ -70,12 +69,12 @@ export class ImageService implements IImageService {
                     buf = await this._resizePng(resized);
                     break;
                 default:
-                    buf = await this._resizeJpeg(resized, turbo);
+                    buf = await this._resizeJpeg(resized);
                     break;
             }
 
             const result = `data:image/${format};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(this._getConvertToDataUriCacheKey(turbo, url), result, ms("24h"));
+            await this._cacheService.set(this._getConvertToDataUriCacheKey(url), result, ms("24h"));
             return result;
         } catch (error) {
             analytics.captureException(error);
@@ -97,20 +96,19 @@ export class ImageService implements IImageService {
      *
      * @param input
      * @param format
-     * @param turbo
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private _resizeImage(input: Buffer, format: string, turbo: boolean): Sharp {
+    private _resizeImage(input: Buffer, format: string): Sharp {
         const img: Sharp = sharp(input, {
             animated: format === "gif",
         });
 
         return img.resize({
-            width: turbo ? 128 : 512,
+            width: 512,
             withoutEnlargement: true,
-            kernel: turbo ? "nearest" : "cubic",
+            kernel: "cubic",
         });
     }
 
@@ -139,14 +137,13 @@ export class ImageService implements IImageService {
     /**
      * Builds cache key for a fetched image
      *
-     * @param turbo
      * @param url
      * @private
      *
      * @author Kyrylo Maliuha
      */
-    private _getConvertToDataUriCacheKey(turbo: boolean, url: string): string {
-        return `image:${turbo ? "t" : "n"}:${url}`;
+    private _getConvertToDataUriCacheKey(url: string): string {
+        return `image:${url}`;
     }
 
     /**
@@ -214,8 +211,8 @@ export class ImageService implements IImageService {
         return await input.png({ compressionLevel: 1 }).toBuffer();
     }
 
-    private async _resizeJpeg(input: Sharp, turbo: boolean): Promise<Buffer<ArrayBufferLike>> {
-        return await input.jpeg({ quality: 82, optimizeCoding: !turbo }).toBuffer();
+    private async _resizeJpeg(input: Sharp): Promise<Buffer<ArrayBufferLike>> {
+        return await input.jpeg({ quality: 82 }).toBuffer();
     }
 
     private _safeHost(url: string): string {
@@ -226,12 +223,12 @@ export class ImageService implements IImageService {
         }
     }
 
-    public async selectImages(channelImages: string[], slotCount: number, turbo: boolean): Promise<string[]> {
+    public async selectImages(channelImages: string[], slotCount: number): Promise<string[]> {
         const primary: string[] = channelImages.slice(0, slotCount);
         const backups: string[] = channelImages.slice(slotCount, slotCount * 3);
 
         const converted: string[] = await Promise.all(
-            primary.map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
+            primary.map((url: string): Promise<string> => this.convertToDataUri(url)),
         );
 
         const images: string[] = converted.filter((image: string): boolean => this._isNotTransparent(image));
@@ -240,7 +237,7 @@ export class ImageService implements IImageService {
             const missing: number = slotCount - images.length;
 
             const retried: string[] = await Promise.all(
-                backups.slice(0, missing + 2).map((url: string): Promise<string> => this.convertToDataUri(url, turbo)),
+                backups.slice(0, missing + 2).map((url: string): Promise<string> => this.convertToDataUri(url)),
             );
 
             images.push(...retried.filter((image: string): boolean => this._isNotTransparent(image)).slice(0, missing));

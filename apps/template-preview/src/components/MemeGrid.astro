@@ -2,28 +2,81 @@
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
-import { Renderer } from "takumi-js/node";
+import { render, renderAnimation } from "takumi-js";
+import { renderer, fetchCache, sources } from "../utils/renderer";
+import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
+import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
+import { TemplatesService } from "../services/TemplatesService.ts";
 
 interface Props {
-    template: Template;
+    templateName: string;
     variants: TemplateProps[];
     cols: number;
     gap?: string;
 }
 
-const { template, variants, cols, gap = "gap-5" } = Astro.props;
+const templatesRepository: ITemplatesRepository = new TemplatesRepository();
+const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
+
+const { templateName, variants, cols, gap = "gap-5" } = Astro.props;
+
+const template: Template = templatesService.getTemplateByName(templateName || "");
+
+const signal: AbortSignal = Astro.request.signal;
+
+const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Promise<string> => {
+    if (variant?.texts === undefined) {
+        throw new Error();
+    }
+
+    if (template.animationDuration === undefined) {
+        const staticMeme = await render(template.element(variant), {
+            width: template.width,
+            height: template.height,
+            renderer: renderer,
+            emoji: "twemoji",
+            format: "webp",
+            quality: 40,
+            drawDebugBorder: true,
+            signal: signal,
+            images: {
+                timeout: 60000,
+                maxBytes: 20 * 1024 * 1024,
+                fetchCache: fetchCache,
+                sources: sources,
+            },
+        });
+        return `data:image/webp;base64,${staticMeme.toString("base64")}`;
+    }
+
+    const animationDuration: number = template.animationDuration === null ? 1500 : template.animationDuration;
+    const animatedMeme = await renderAnimation({
+        width: template.width,
+        height: template.height,
+        renderer: renderer,
+        fps: 10,
+        format: "webp",
+        scenes: [{ durationMs: animationDuration, node: template.element(variant) }],
+        emoji: "twemoji",
+        quality: 25,
+        drawDebugBorder: true,
+        signal: signal,
+        images: {
+            timeout: 60000,
+            maxBytes: 20 * 1024 * 1024,
+            fetchCache: fetchCache,
+            sources: sources,
+        },
+    });
+    return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
+});
 ---
 
 <ul class:list={["flex flex-wrap", gap]}>
     {
-        variants.map((variant: TemplateProps) => (
-            <MemeCard
-                variant={variant}
-                templateWidth={template.width}
-                templateHeight={template.height}
-                templateName={template.name}
-                size={`1/${cols}`}
-            />
+        variants.map(async (variant: TemplateProps, i: number): Promise => (
+            <MemeCard src={memes[i]} template={template} size={`1/${cols}`} />
         ))
     }
 </ul>

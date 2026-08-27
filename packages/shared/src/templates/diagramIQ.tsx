@@ -41,18 +41,18 @@ export const diagramIQ: Template = {
         { id: 1, description: "normal face" },
         { id: 2, description: "clever face" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/diagramIQ.jpg"
                 width={1272}
                 height={843}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -111,7 +111,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -141,7 +141,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -170,7 +170,7 @@ export const diagramIQ: Template = {
                     style={{
                         lineClamp: 2,
                         wordBreak: "break-word",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

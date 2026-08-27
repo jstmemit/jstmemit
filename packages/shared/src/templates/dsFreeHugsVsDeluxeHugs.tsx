@@ -35,18 +35,18 @@ export const dsFreeHugsVsDeluxeHugs: Template = {
         { id: 0, description: "Tanjiro's face" },
         { id: 1, description: "Inosuke's face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dsFreeHugsVsDeluxeHugs.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dsFreeHugsVsDeluxeHugs.png"
                 width={438}
                 height={412}
                 style={{ position: "absolute", top: 0, left: 0 }}

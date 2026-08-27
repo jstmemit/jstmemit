@@ -33,14 +33,14 @@ export const jetCrash: Template = {
     animationDuration: 3400,
     texts: [],
     images: [{ id: 0, description: "background image" }],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -55,7 +55,7 @@ export const jetCrash: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/jetCrash.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/jetCrash.gif"
                 width={1280}
                 height={720}
                 style={{ position: "absolute", top: 0, right: 0 }}

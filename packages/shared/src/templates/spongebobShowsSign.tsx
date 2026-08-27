@@ -35,7 +35,7 @@ export const spongebobShowsSign: Template = {
         { id: 0, description: "what spongebobBurningTheNote says while holding the sign", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "image on the sign" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -45,7 +45,7 @@ export const spongebobShowsSign: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobShowsSign.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/spongebobShowsSign.png"
                 width={657}
                 height={493}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -75,7 +75,7 @@ export const spongebobShowsSign: Template = {
                         lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         fontWeight: 700,
                         lineHeight: 1.05,

@@ -35,18 +35,18 @@ export const frierenBlowingKissToFlamme: Template = {
         { id: 0, description: "Frieren's face" },
         { id: 1, description: "Flamme's face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKissToFlamme.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenBlowingKissToFlamme.png"
                 width={1200}
                 height={1700}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

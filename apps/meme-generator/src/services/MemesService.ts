@@ -32,6 +32,7 @@ export class MemesService implements IMemesService {
     private readonly _templatesRepository: ITemplatesRepository;
     private readonly _cacheService: ICacheService;
     private readonly _imageService: IImageService;
+    private readonly _defaultFont: string = "Comic Sans MS";
 
     public constructor(
         memesRepository: IMemesRepository,
@@ -69,7 +70,7 @@ export class MemesService implements IMemesService {
     public async generateMeme(data: MemeGenerationJob): Promise<MemeGenerationResult> {
         const startTime: number = performance.now();
 
-        const { channelId, userId, templateName, turbo } = data;
+        const { channelId, userId, templateName, font } = data;
 
         let template: Template | undefined = templateName
             ? this._templatesRepository.getAll().find((template: Template): boolean => template.name === templateName)
@@ -87,8 +88,8 @@ export class MemesService implements IMemesService {
 
         const props: TemplateProps | undefined =
             data.texts || data.images
-                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {}, turbo)
-                : await this.getMemeTemplateContext(template, channelId, userId, turbo);
+                ? await this._getCustomMemeProps(template, data.texts ?? {}, data.images ?? {}, font)
+                : await this.getMemeTemplateContext(template, channelId, userId, font);
 
         if (!props) {
             throw new Error("No props");
@@ -102,7 +103,7 @@ export class MemesService implements IMemesService {
         const animated: boolean = hasAnimatedImage || template.animationDuration != null;
 
         const [meme, generationId] = await Promise.all([
-            this._memesRepository.generateMeme(template, props, animated, turbo),
+            this._memesRepository.generateMeme(template, props, animated),
             this._generationsRepository.add(channelId, template.name, new Date()),
         ]);
 
@@ -137,7 +138,6 @@ export class MemesService implements IMemesService {
                 renderMs: renderTime - contextTime,
                 totalMs: renderTime - startTime,
 
-                turbo: turbo,
                 isAnimated: template.isAnimated ?? false,
                 animationDuration: template.animationDuration ?? undefined,
                 memeBytes: meme.byteLength,
@@ -180,7 +180,7 @@ export class MemesService implements IMemesService {
      * @param template
      * @param channelId
      * @param userId
-     * @param turbo
+     * @param font
      *
      * @author Kyrylo Maliuha
      */
@@ -188,7 +188,7 @@ export class MemesService implements IMemesService {
         template: Template,
         channelId: string,
         userId: string,
-        turbo: boolean,
+        font: string | null,
     ): Promise<TemplateProps | undefined> {
         const templateImages: TemplateImage[] | undefined = template.images;
         const templateTexts: TemplateText[] | undefined = template.texts;
@@ -240,28 +240,28 @@ export class MemesService implements IMemesService {
         }
 
         const [images, texts] = await Promise.all([
-            this._imageService.selectImages(_.shuffle(channelImages), templateImages.length, turbo),
+            this._imageService.selectImages(_.shuffle(channelImages), templateImages.length),
             this._transformService.transformIntoMultipleTexts(templateTexts, channelTexts),
         ]);
 
-        return { images, texts };
+        return { images, texts, font: font || this._defaultFont };
     }
 
     private async _getCustomMemeProps(
         template: Template,
         texts: Record<string, string>,
         images: Record<string, string>,
-        turbo: boolean,
+        font: string | null,
     ): Promise<TemplateProps> {
         const orderedTexts: string[] = (template.texts ?? []).map((text: TemplateText): string => texts[text.id] ?? "");
 
         const orderedImages: string[] = await Promise.all(
             (template.images ?? []).map(async (image: TemplateImage): Promise<string> => {
                 const url: string = images[image.id] ?? "";
-                return await this._imageService.convertToDataUri(url, turbo);
+                return await this._imageService.convertToDataUri(url);
             }),
         );
 
-        return { texts: orderedTexts, images: orderedImages };
+        return { texts: orderedTexts, images: orderedImages, font: font || this._defaultFont };
     }
 }

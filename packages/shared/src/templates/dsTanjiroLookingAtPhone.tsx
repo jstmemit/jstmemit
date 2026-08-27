@@ -37,18 +37,18 @@ export const dsTanjiroLookingAtPhone: Template = {
         { id: 2, description: "post", minLength: 1, maxLength: 12 },
     ],
     images: [{ id: 0, description: "user avatar" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dsTanjiroLookingAtPhone.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dsTanjiroLookingAtPhone.png"
                 width={400}
                 height={400}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
@@ -84,7 +84,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         fontWeight: 700,
                         lineHeight: 1.05,
@@ -114,7 +114,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -143,7 +143,7 @@ export const dsTanjiroLookingAtPhone: Template = {
                         lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

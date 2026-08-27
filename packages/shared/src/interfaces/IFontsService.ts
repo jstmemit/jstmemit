@@ -1,7 +1,7 @@
 import type { FontOptions } from "#/models/FontOptions.ts";
+import type { Font } from "#/models/Font.ts";
 
 export abstract class IFontsService {
     public abstract getFonts(): FontOptions[];
-    public abstract getAllFonts(): FontOptions[];
-    public abstract getFontsFor(texts: string[]): { fonts?: FontOptions[]; fontFamilies: string[] };
+    public abstract getFontFamiliesForSetting(setting: Font["value"]): string;
 }

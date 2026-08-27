@@ -36,14 +36,14 @@ export const newsReporterSitting: Template = {
         { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "breaking news" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -58,7 +58,7 @@ export const newsReporterSitting: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/newsreportersitting.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/newsreportersitting.png"
                 width={766}
                 height={496}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -83,7 +83,7 @@ export const newsReporterSitting: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -114,7 +114,7 @@ export const newsReporterSitting: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

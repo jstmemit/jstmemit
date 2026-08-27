@@ -35,14 +35,14 @@ export const ditfZeroTwoHuggingPaper1: Template = {
         { id: 0, description: "Zero Two's face" },
         { id: 1, description: "image on the paper" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -58,7 +58,7 @@ export const ditfZeroTwoHuggingPaper1: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoHuggingPaper1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoHuggingPaper1.png"
                 width={732}
                 height={827}
                 style={{ position: "absolute", top: 0, left: 0 }}

@@ -39,18 +39,18 @@ export const blendsMaidCast: Template = {
         { id: 3, description: "Mafuyu`s face" },
         { id: 4, description: "Miu`s face" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaidCast.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaidCast.png"
                 width={849}
                 height={630}
                 style={{ position: "absolute", bottom: 0, right: 0 }}
@@ -137,7 +137,7 @@ export const blendsMaidCast: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

@@ -35,18 +35,18 @@ export const blendsHideriFingerTapping: Template = {
         { id: 0, description: "What Hideri holding in hands" },
         { id: 1, description: "Hideri`s face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriFingerTapping.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsHideriFingerTapping.png"
                 width={801}
                 height={765}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

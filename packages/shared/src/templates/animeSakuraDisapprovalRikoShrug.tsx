@@ -36,18 +36,18 @@ export const animeSakuraDisapprovalRikoShrug: Template = {
         { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/animeSakuraDisapprovalRikoShrug.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/animeSakuraDisapprovalRikoShrug.png"
                 width={504}
                 height={993}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
@@ -73,7 +73,7 @@ export const animeSakuraDisapprovalRikoShrug: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -104,7 +104,7 @@ export const animeSakuraDisapprovalRikoShrug: Template = {
                         lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

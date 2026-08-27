@@ -32,18 +32,18 @@ export const bearArrest: Template = {
     height: 434,
     texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
     images: [{ id: 0, description: "arrested bear" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bearArrest.jpg"
                 width={640}
                 height={434}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -80,7 +80,7 @@ export const bearArrest: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

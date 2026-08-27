@@ -9,6 +9,6 @@ export abstract class IMemesService {
         template: Template,
         channelId: string,
         userId: string,
-        turbo: boolean,
+        font: string | null,
     ): Promise<TemplateProps | undefined>;
 }

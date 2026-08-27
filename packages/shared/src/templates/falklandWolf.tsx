@@ -36,7 +36,7 @@ export const falklandWolf: Template = {
         { id: 0, description: "Image of the wolf" },
         { id: 1, description: "Profile picture of the guy who tweets about it" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -66,7 +66,7 @@ export const falklandWolf: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/falklandWolf.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/falklandWolf.png"
                 width={814}
                 height={691}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -91,7 +91,7 @@ export const falklandWolf: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

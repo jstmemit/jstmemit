@@ -39,18 +39,18 @@ export const connor: Template = {
         { id: 4, description: "Connor`s phrase", minLength: 1, maxLength: 12 },
     ],
     images: [{ id: 0, description: "Connor's face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/connor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/connor.png"
                 width={960}
                 height={1211}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -85,7 +85,7 @@ export const connor: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -115,7 +115,7 @@ export const connor: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -145,7 +145,7 @@ export const connor: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -176,7 +176,7 @@ export const connor: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[3]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -206,7 +206,7 @@ export const connor: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[4]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

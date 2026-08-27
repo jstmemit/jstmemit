@@ -36,18 +36,18 @@ export const crowdFromAngryToHappy: Template = {
         { id: 1, description: "second speach", minLength: 1, maxLength: 2 },
     ],
     images: [{ id: 0, description: "person face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/crowdFromAngryToHappy.jpg"
                 width={716}
                 height={700}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -92,7 +92,7 @@ export const crowdFromAngryToHappy: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -122,7 +122,7 @@ export const crowdFromAngryToHappy: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

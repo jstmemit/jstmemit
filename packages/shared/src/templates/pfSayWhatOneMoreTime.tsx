@@ -37,18 +37,18 @@ export const pfSayWhatOneMoreTime: Template = {
         { id: 1, description: "face of the person in the corner" },
         { id: 2, description: "face of the person on the right" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfSayWhatOneMoreTime.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfSayWhatOneMoreTime.jpg"
                 width={1920}
                 height={1317}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -108,7 +108,7 @@ export const pfSayWhatOneMoreTime: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

@@ -36,7 +36,7 @@ export const post: Template = {
         { id: 1, description: "post text", minLength: 5, maxLength: 20 },
     ],
     images: [{ id: 0, description: "post author's profile picture" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -46,7 +46,7 @@ export const post: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/post.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/post.png"
                 width={1108}
                 height={772}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -83,7 +83,7 @@ export const post: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -113,7 +113,7 @@ export const post: Template = {
                         lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

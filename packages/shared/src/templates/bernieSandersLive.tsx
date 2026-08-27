@@ -36,7 +36,7 @@ export const bernieSandersLive: Template = {
         { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 3 },
     ],
     images: [{ id: 0, description: "Person who is debating with Bernie Sanders on his live stream" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -58,7 +58,7 @@ export const bernieSandersLive: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bernieSandersLive.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/bernieSandersLive.png"
                 width={981}
                 height={1038}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -78,7 +78,7 @@ export const bernieSandersLive: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -108,7 +108,7 @@ export const bernieSandersLive: Template = {
                 <span
                     style={{
                         textAlign: "center",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

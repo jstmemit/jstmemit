@@ -33,7 +33,7 @@ export const catIsCalling: Template = {
     height: 936,
     texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -43,7 +43,7 @@ export const catIsCalling: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/catIsCalling.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/catIsCalling.png"
                 width={1498}
                 height={936}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -67,7 +67,7 @@ export const catIsCalling: Template = {
                         lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

@@ -35,18 +35,18 @@ export const frierenFlammeShowingSerieDrawing: Template = {
         { id: 0, description: "Flamme's face" },
         { id: 1, description: "Serie's face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenFlammeShowingSerieDrawing.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenFlammeShowingSerieDrawing.png"
                 width={1080}
                 height={1530}
                 style={{ position: "absolute", bottom: 0, right: 0 }}

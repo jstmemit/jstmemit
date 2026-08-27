@@ -45,7 +45,7 @@ export const britishCuisine: Template = {
         { id: 1, description: "Profile picture of the guy who said about British cuisine" },
         { id: 2, description: "Profile picture of the guy who posted about the worst takeaway order of all times" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -87,7 +87,7 @@ export const britishCuisine: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/britishCuisine.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/britishCuisine.png"
                 width={933}
                 height={1051}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -103,7 +103,7 @@ export const britishCuisine: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: fontSize(texts[0]),
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",
@@ -126,7 +126,7 @@ export const britishCuisine: Template = {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: font,
                     fontSize: fontSize(texts[1]),
                     lineHeight: 1.05,
                     paddingBottom: "0.2em",

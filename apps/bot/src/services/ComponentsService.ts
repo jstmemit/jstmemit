@@ -16,11 +16,11 @@ import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 import type { Frequency } from "#/models/Frequency.ts";
 import { t } from "@jstmemit/i18n";
-import type { Mode } from "@jstmemit/shared/models/Mode";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
 import type { Achievement } from "@jstmemit/shared/models/Achievement";
 import { achievementsList } from "#/data/achievementsList.ts";
 import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class ComponentsService implements IComponentsService {
     private readonly _commandsService: ICommandsService;
@@ -862,21 +862,21 @@ export class ComponentsService implements IComponentsService {
      *
      * @param language
      * @param frequency
-     * @param turbo
      * @param useAvatarsInMemes
      * @param milestones
+     * @param font
      *
      * @author Kyrylo Maliuha
      */
     public getSettingsBodyMessageComponent(
         language: Locale,
         frequency: number,
-        turbo: boolean,
         useAvatarsInMemes: boolean,
         milestones: boolean,
+        font: string | null = "Random",
     ): ContainerBuilder {
         const frequencies: Frequency[] = this._getFrequencyOptions(language);
-        const modes: Mode[] = this._getModeOptions(language);
+        const fonts: Font[] = this._getFontOptions(language);
 
         return new ContainerBuilder()
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("settings.meme.heading", language)}`))
@@ -902,17 +902,17 @@ export class ComponentsService implements IComponentsService {
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`### ${t("settings.quality.heading", language)}`),
+                new TextDisplayBuilder().setContent(`### ${t("settings.font.heading", language)}`),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.quality.body", language)))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.font.body", language)))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-                    new StringSelectMenuBuilder().setCustomId("mode").addOptions(
-                        modes.map((option: Mode) =>
+                    new StringSelectMenuBuilder().setCustomId("font").addOptions(
+                        fonts.map((option: Font) =>
                             new SelectMenuOptionBuilder()
                                 .setLabel(option.label)
                                 .setValue(option.value)
-                                .setDefault(option.value === String(turbo))
+                                .setDefault(font === null && option.value === "default" ? true : option.value === font)
                                 .setEmoji({ name: option.emoji })
                                 .setDescription(option.description),
                         ),
@@ -1123,19 +1123,37 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    private _getModeOptions(language: Locale): Mode[] {
+    private _getFontOptions(language: Locale): Font[] {
         return [
             {
-                label: t("settings.quality.image.label", language),
-                value: "false",
-                description: t("settings.quality.image.description", language),
-                emoji: "🖼️",
+                label: t("settings.font.random.label", language),
+                description: t("settings.font.random.description", language),
+                value: "default",
+                emoji: "🎲",
             },
             {
-                label: t("settings.quality.speed.label", language),
-                value: "true",
-                description: t("settings.quality.speed.description", language),
-                emoji: "⚡",
+                label: t("settings.font.comicSans.label", language),
+                value: "Comic Sans MS",
+                description: t("settings.font.comicSans.description", language),
+                emoji: "🎨",
+            },
+            {
+                label: t("settings.font.impact.label", language),
+                value: "Impact",
+                description: t("settings.font.impact.description", language),
+                emoji: "🗿",
+            },
+            {
+                label: t("settings.font.minecraft.label", language),
+                value: "Minecraft",
+                description: t("settings.font.minecraft.description", language),
+                emoji: "🧱",
+            },
+            {
+                label: t("settings.font.openDyslexic.label", language),
+                value: "OpenDyslexic",
+                description: t("settings.font.openDyslexic.description", language),
+                emoji: "📖",
             },
         ];
     }

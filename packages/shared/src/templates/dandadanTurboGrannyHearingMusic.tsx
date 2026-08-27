@@ -34,18 +34,18 @@ export const dandadanTurboGrannyHearingMusic: Template = {
     animationDuration: 510,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/dandadanTurboGrannyHearingMusic.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/dandadanTurboGrannyHearingMusic.gif"
                 width={600}
                 height={338}
                 style={{ position: "absolute", top: 0, right: 0 }}
@@ -70,7 +70,7 @@ export const dandadanTurboGrannyHearingMusic: Template = {
                         lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

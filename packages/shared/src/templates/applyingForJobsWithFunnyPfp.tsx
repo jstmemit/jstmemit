@@ -35,7 +35,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
         { id: 1, description: "post author's tag", minLength: 1, maxLength: 1 },
     ],
     images: [{ id: 0, description: "Inappropriate profile picture" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -56,7 +56,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
                 }}
             />
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/applyingForJobsWithFunnyPfp.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/applyingForJobsWithFunnyPfp.png"
                 width={933}
                 height={1051}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -91,7 +91,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",
@@ -120,7 +120,7 @@ export const applyingForJobsWithFunnyPfp: Template = {
                         lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         fontSize: 35,
                         lineHeight: 1.05,
                         paddingBottom: "0.2em",

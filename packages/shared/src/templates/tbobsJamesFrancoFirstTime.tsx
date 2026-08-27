@@ -35,18 +35,18 @@ export const tbobsJamesFrancoFirstTime: Template = {
         { id: 0, description: "James Franco`s face" },
         { id: 1, description: "Old man face" },
     ],
-    element: ({ images }: TemplateProps) => (
+    element: ({ images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=auto,q=50,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tbobsJamesFrancoFirstTime.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tbobsJamesFrancoFirstTime.png"
                 width={1200}
                 height={1296}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
