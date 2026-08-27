@@ -393,9 +393,6 @@ export class EventsController implements IEventsController {
                     case "font":
                         await this._settingsController.handleFontSelect(interaction);
                         return;
-                    case "mode":
-                        await this._settingsController.handleModeSelect(interaction);
-                        return;
                     case "milestones":
                         await this._settingsController.handleMilestonesSelect(interaction);
                         return;

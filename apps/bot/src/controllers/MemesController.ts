@@ -191,7 +191,6 @@ export class MemesController implements IMemesController {
                 userId,
                 trigger,
                 parentGenerationId,
-                turbo: channel.turbo,
                 font: channel.font,
             });
 
@@ -353,7 +352,6 @@ export class MemesController implements IMemesController {
                 templateName: templateName,
                 texts,
                 images,
-                turbo: false,
                 font,
             });
 
@@ -416,7 +414,6 @@ export class MemesController implements IMemesController {
                 templateName,
                 texts,
                 images,
-                turbo: false,
                 font: "default",
             });
 
