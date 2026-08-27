@@ -1,21 +1,16 @@
 import {
-    type User,
     type UserContextMenuCommandInteraction,
     type MessageContextMenuCommandInteraction,
     type ModalSubmitInteraction,
-    type Attachment,
     type ModalBuilder,
     type ButtonInteraction,
     type ContainerBuilder,
     type ActionRowBuilder,
     type ButtonBuilder,
     type ChatInputCommandInteraction,
-    ChannelType,
     Message,
-    InteractionContextType,
     Locale,
     MessageFlags,
-    type TextBasedChannel,
     type AttachmentPayload,
 } from "discord.js";
 import type { IMemesController } from "#/interfaces/IMemesController.ts";
@@ -29,11 +24,8 @@ import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IModalsService } from "#/interfaces/IModalsService.ts";
-import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 import { logger } from "#/container.ts";
 import { analytics } from "@jstmemit/analytics";
-import type { VoiceTranscriptionJob } from "@jstmemit/shared/models/VoiceTranscriptionJob";
-import type { VoiceTranscriptionResult } from "@jstmemit/shared/models/VoiceTranscriptionResult";
 import { timeout } from "#/helpers/timeout.ts";
 import type { MemeGenerationTrigger } from "@jstmemit/shared/models/MemeGenerationTrigger";
 import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
@@ -43,12 +35,12 @@ import type { IContextService } from "#/interfaces/IContextService.ts";
 import ms from "ms";
 import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import type { Font } from "@jstmemit/shared/models/Font";
+import { getTelemetryProperties } from "#/helpers/getTelemetryProperties.ts";
+import type { IContextMenusService } from "#/interfaces/IContextMenusService.ts";
 
 export class MemesController implements IMemesController {
     private readonly _memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>;
     private readonly _memeGenerationQueueEvents: QueueEvents;
-    private readonly _voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>;
-    private readonly _voiceTranscriptionQueueEvents: QueueEvents;
     private readonly _ratingsService: IRatingsService;
     private readonly _componentsService: IComponentsService;
     private readonly _channelsService: IChannelsService;
@@ -57,12 +49,11 @@ export class MemesController implements IMemesController {
     private readonly _milestonesService: IMilestonesService;
     private readonly _contextService: IContextService;
     private readonly _messagesRepository: IMessagesRepository;
+    private readonly _contextMenusService: IContextMenusService;
 
     public constructor(
         memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult>,
         memeGenerationQueueEvents: QueueEvents,
-        voiceTranscriptionQueue: Queue<VoiceTranscriptionJob, VoiceTranscriptionResult>,
-        voiceTranscriptionQueueEvents: QueueEvents,
         ratingsService: IRatingsService,
         componentsService: IComponentsService,
         channelsService: IChannelsService,
@@ -71,11 +62,10 @@ export class MemesController implements IMemesController {
         milestonesService: IMilestonesService,
         contextService: IContextService,
         messagesRepository: IMessagesRepository,
+        contextMenusService: IContextMenusService,
     ) {
         this._memeGenerationQueue = memeGenerationQueue;
         this._memeGenerationQueueEvents = memeGenerationQueueEvents;
-        this._voiceTranscriptionQueue = voiceTranscriptionQueue;
-        this._voiceTranscriptionQueueEvents = voiceTranscriptionQueueEvents;
         this._ratingsService = ratingsService;
         this._componentsService = componentsService;
         this._channelsService = channelsService;
@@ -84,6 +74,7 @@ export class MemesController implements IMemesController {
         this._milestonesService = milestonesService;
         this._contextService = contextService;
         this._messagesRepository = messagesRepository;
+        this._contextMenusService = contextMenusService;
     }
 
     /**
@@ -125,7 +116,7 @@ export class MemesController implements IMemesController {
             body: "generate_meme.interaction.received",
             attributes: {
                 trigger,
-                ...this._getTelemetryProperties(interaction),
+                ...getTelemetryProperties(interaction),
             },
         });
 
@@ -148,7 +139,7 @@ export class MemesController implements IMemesController {
                 body: "generate_meme.channel.not_enabled",
                 attributes: {
                     trigger,
-                    ...this._getTelemetryProperties(interaction),
+                    ...getTelemetryProperties(interaction),
                 },
             });
 
@@ -268,7 +259,7 @@ export class MemesController implements IMemesController {
                         body: "generate_meme.context.insufficient.error_shown",
                         attributes: {
                             trigger,
-                            ...this._getTelemetryProperties(interaction),
+                            ...getTelemetryProperties(interaction),
                         },
                     });
 
@@ -313,7 +304,7 @@ export class MemesController implements IMemesController {
             body: "generate_meme.interaction.received",
             attributes: {
                 trigger: "custom",
-                ...this._getTelemetryProperties(interaction),
+                ...getTelemetryProperties(interaction),
             },
         });
 
@@ -329,7 +320,7 @@ export class MemesController implements IMemesController {
                 body: "generate_meme.interaction.channel_missing",
                 attributes: {
                     trigger: "custom",
-                    ...this._getTelemetryProperties(interaction),
+                    ...getTelemetryProperties(interaction),
                 },
             });
             await interaction.reply({
@@ -341,8 +332,11 @@ export class MemesController implements IMemesController {
 
         await interaction.deferReply();
 
-        const texts: Record<string, string> = this._getModalTexts(template, interaction);
-        const images: Record<string, string> | undefined = await this._getModalImages(template, interaction);
+        const texts: Record<string, string> = this._modalsService.getMemeModalTexts(template, interaction);
+        const images: Record<string, string> | undefined = await this._modalsService.getMemeModalImages(
+            template,
+            interaction,
+        );
 
         if (!images) {
             return;
@@ -393,7 +387,7 @@ export class MemesController implements IMemesController {
             body: "generate_meme.interaction.received",
             attributes: {
                 trigger: "context",
-                ...this._getTelemetryProperties(interaction),
+                ...getTelemetryProperties(interaction),
             },
         });
 
@@ -406,8 +400,11 @@ export class MemesController implements IMemesController {
         await interaction.deferReply();
 
         try {
-            const texts: Record<string, string> = await this._getContextMenuTexts(template, interaction);
-            const images: Record<string, string> = this._getContextMenuImage(template, interaction);
+            const texts: Record<string, string> = await this._contextMenusService.getContextMenuTexts(
+                template,
+                interaction,
+            );
+            const images: Record<string, string> = this._contextMenusService.getContextMenuImage(template, interaction);
 
             const jobResult: MemeGenerationResult = await this._addGenerateMemeJob({
                 channelId: interaction.channelId,
@@ -487,7 +484,7 @@ export class MemesController implements IMemesController {
                 severityText: "error",
                 body: "generate_meme.template.not_found",
                 attributes: {
-                    ...this._getTelemetryProperties(interaction),
+                    ...getTelemetryProperties(interaction),
                 },
             });
 
@@ -500,195 +497,6 @@ export class MemesController implements IMemesController {
         }
 
         return template;
-    }
-
-    private async _getContextMenuTexts(
-        template: Template,
-        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
-    ): Promise<Record<string, string>> {
-        const texts: Record<string, string> = {};
-        const slots: TemplateText[] = template.texts ?? [];
-        const [first, second] = slots;
-
-        if (interaction.isMessageContextMenuCommand()) {
-            const message: Message = interaction.targetMessage;
-            const voiceMessage: string | undefined = message?.attachments.first()?.proxyURL;
-
-            if (message.flags.has("IsVoiceMessage") && voiceMessage) {
-                logger.emit({
-                    severityText: "info",
-                    body: "generate_meme.context_menu.used_on_voice_message",
-                    attributes: {
-                        ...this._getTelemetryProperties(interaction),
-                    },
-                });
-                const result: VoiceTranscriptionResult = await this._addVoiceTranscriptionJob({
-                    url: voiceMessage,
-                    channelId: interaction.channelId,
-                });
-                message.content = result.text;
-            }
-
-            if (first && !second) {
-                texts[first.id] = message.content;
-            } else if (first && second) {
-                texts[first.id] = message.author.displayName;
-                texts[second.id] = message.content;
-            }
-        }
-
-        if (interaction.isUserContextMenuCommand()) {
-            const user: User = interaction.targetUser;
-
-            if (first) {
-                texts[first.id] = user.displayName;
-            }
-        }
-
-        return texts;
-    }
-
-    private _getContextMenuImage(
-        template: Template,
-        interaction: MessageContextMenuCommandInteraction | UserContextMenuCommandInteraction,
-    ): Record<string, string> {
-        const images: Record<string, string> = {};
-
-        if (template.images?.[0]) {
-            if (interaction.isMessageContextMenuCommand()) {
-                const message: Message = interaction.targetMessage;
-
-                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
-            }
-
-            if (interaction.isUserContextMenuCommand()) {
-                const user: User = interaction.targetUser;
-
-                images[template.images[0].id] = user.displayAvatarURL({ extension: "png", size: 512 });
-            }
-        }
-
-        if (template.images?.[1]) {
-            images[template.images[1].id] = interaction.user.displayAvatarURL({ extension: "png", size: 512 });
-        }
-
-        return images;
-    }
-
-    private async _getModalImages(
-        template: Template,
-        interaction: ModalSubmitInteraction,
-    ): Promise<Record<string, string> | undefined> {
-        const images: Record<string, string> = {};
-
-        for (const image of template.images ?? []) {
-            const files = interaction.fields.getUploadedFiles(`image:${image.id}`);
-            const attachment: Attachment | undefined = files?.first();
-
-            if (!attachment) {
-                images[image.id] = "";
-                continue;
-            }
-
-            if (!attachment.contentType?.startsWith("image/")) {
-                logger.emit({
-                    severityText: "warn",
-                    body: "generate_meme.modal.unsupported_attachment_image_format",
-                    attributes: {
-                        ...this._getTelemetryProperties(interaction),
-                    },
-                });
-                await interaction.editReply({
-                    components: [
-                        this._componentsService.getWrongFileFormatMessageComponent(
-                            interaction.locale,
-                            interaction.id,
-                            image.description,
-                        ),
-                    ],
-                    flags: MessageFlags.IsComponentsV2,
-                });
-                return;
-            }
-
-            images[image.id] = attachment.url;
-        }
-
-        return images;
-    }
-
-    private _getModalTexts(template: Template, interaction: ModalSubmitInteraction): Record<string, string> {
-        const texts: Record<string, string> = {};
-
-        template.texts?.forEach((text: TemplateText): void => {
-            const value: string = interaction.fields.getTextInputValue(`text:${text.id}`);
-
-            if (value.length > 0) {
-                texts[text.id] = value;
-            }
-        });
-
-        return texts;
-    }
-
-    private _getAppPermissionsBitfield(
-        interaction:
-            | ChatInputCommandInteraction
-            | ButtonInteraction
-            | Message
-            | ModalSubmitInteraction
-            | MessageContextMenuCommandInteraction
-            | UserContextMenuCommandInteraction,
-    ): string | undefined {
-        return interaction instanceof Message
-            ? interaction.guild?.members.me?.permissionsIn(interaction.channelId).bitfield.toString()
-            : interaction.appPermissions?.bitfield.toString();
-    }
-
-    private _getTelemetryProperties(
-        interaction:
-            | ChatInputCommandInteraction
-            | ButtonInteraction
-            | Message
-            | ModalSubmitInteraction
-            | MessageContextMenuCommandInteraction
-            | UserContextMenuCommandInteraction,
-    ): Record<string, string | number | boolean | undefined> {
-        const channel: TextBasedChannel | null = interaction.channel;
-
-        const base: Record<string, string | number | boolean | undefined> = {
-            interaction_id: interaction.id,
-            channel_id: interaction.channelId || undefined,
-            guild_id: interaction.guildId || undefined,
-            channel_type: channel ? ChannelType[channel.type] : undefined,
-            is_thread: channel?.isThread(),
-            permissions: this._getAppPermissionsBitfield(interaction),
-            receive_latency_ms: Date.now() - interaction.createdTimestamp,
-        };
-
-        if (interaction instanceof Message) {
-            return {
-                ...base,
-                posthogDistinctId: interaction.author.id,
-                source: "message",
-                guild_locale: interaction.guild?.preferredLocale,
-                attachment_count: interaction.attachments.size,
-                content_length: interaction.content.length,
-                author_is_bot: interaction.author.bot,
-            };
-        }
-
-        return {
-            ...base,
-            posthogDistinctId: interaction.user.id,
-            source: "interaction",
-            user_locale: interaction.locale,
-            guild_locale: interaction.guildLocale || undefined,
-            context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
-            is_user_install: "1" in (interaction.authorizingIntegrationOwners || {}),
-            deferred: interaction.deferred,
-            replied: interaction.replied,
-        };
     }
 
     private async _addGenerateMemeJob(data: MemeGenerationJob): Promise<MemeGenerationResult> {
@@ -745,26 +553,8 @@ export class MemesController implements IMemesController {
             body: "generate_meme.job.failed",
             attributes: {
                 trigger,
-                ...this._getTelemetryProperties(interaction),
+                ...getTelemetryProperties(interaction),
             },
         });
-    }
-
-    private async _addVoiceTranscriptionJob(data: VoiceTranscriptionJob): Promise<VoiceTranscriptionResult> {
-        const job: Job<VoiceTranscriptionJob, VoiceTranscriptionResult> = await this._voiceTranscriptionQueue.add(
-            "voice-transcription",
-            data,
-        );
-
-        logger.emit({
-            severityText: "debug",
-            body: "voice.speech_to_text.job.added",
-            attributes: {
-                job_id: job.id,
-                channel_id: data.channelId,
-            },
-        });
-
-        return job.waitUntilFinished(this._voiceTranscriptionQueueEvents, ms("10m"));
     }
 }
