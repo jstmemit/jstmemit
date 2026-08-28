@@ -3,6 +3,7 @@ import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepos
 import {
     type Attachment,
     type Collection,
+    type Embed,
     type Guild,
     type GuildEmoji,
     type PartialPollAnswer,
@@ -116,28 +117,33 @@ export class ContextService implements IContextService {
     }
 
     /**
-     * Finds a source link to the Tenor or Giphy GIF and then calls
-     * ImagesRepository to save it into the database
+     * Gets source link of the GIF from embed's thumbnail property or message
+     * and then calls ImagesRepository to save it into the database
      *
      * @param messageId
      * @param channelId
+     * @param embed
      * @param content
      *
      * @author Kyrylo Maliuha
      */
-    public async saveGif(messageId: string, channelId: string, content: string): Promise<void> {
+    public async saveGif(messageId: string, channelId: string, embed: Embed, content: string): Promise<void> {
         let result: string | undefined = "";
 
-        if (content.includes("tenor")) {
-            result = await this._gifService.getTenorSourceUrl(content);
-        }
+        if (embed.data.thumbnail?.url) {
+            result = embed.data.thumbnail.url;
+        } else {
+            if (content.includes("tenor")) {
+                result = await this._gifService.getTenorSourceUrl(content);
+            }
 
-        if (content.includes("giphy")) {
-            result = await this._gifService.getGiphySourceUrl(content);
+            if (content.includes("giphy")) {
+                result = await this._gifService.getGiphySourceUrl(content);
+            }
         }
 
         if (!result) {
-            return undefined;
+            return;
         }
 
         await this._imagesRepository.add(messageId, channelId, `${result}#${channelId}`, "gif", new Date());
