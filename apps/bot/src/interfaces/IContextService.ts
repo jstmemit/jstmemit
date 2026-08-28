@@ -17,7 +17,7 @@ export abstract class IContextService {
 
     public abstract saveImages(images: readonly ContextImage[]): Promise<void>;
 
-    public abstract saveGif(messageId: string, channelId: string, embed: Embed): Promise<void>;
+    public abstract saveGif(messageId: string, channelId: string, embed: Embed, content: string): Promise<void>;
 
     public abstract saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void>;
 

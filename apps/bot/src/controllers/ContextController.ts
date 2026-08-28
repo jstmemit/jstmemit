@@ -120,7 +120,7 @@ export class ContextController implements IContextController {
 
             if (content.length > 0 && content.length < 2000) {
                 if (this._checkIfLinkToGif(content) && embeds[0]) {
-                    await this._contextService.saveGif(id, channelId, embeds[0]);
+                    await this._contextService.saveGif(id, channelId, embeds[0], content);
                 } else {
                     await this._contextService.saveContent([
                         { messageId: id, channelId, content, timestamp: new Date() },
@@ -223,7 +223,7 @@ export class ContextController implements IContextController {
 
                     if (content.length > 0 && content.length < 2000) {
                         if (this._checkIfLinkToGif(content) && embeds[0]) {
-                            await this._contextService.saveGif(id, channelId, embeds[0]);
+                            await this._contextService.saveGif(id, channelId, embeds[0], content);
                         } else {
                             contents.push({ messageId: id, channelId, content, timestamp: new Date() });
                         }
