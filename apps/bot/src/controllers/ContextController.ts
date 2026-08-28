@@ -51,7 +51,7 @@ export class ContextController implements IContextController {
     public async handleNewMessage(message: Message): Promise<void> {
         try {
             let mentioned: boolean = false;
-            const { id, content, channelId, attachments, author } = message;
+            const { id, content, channelId, attachments, embeds, author } = message;
 
             if (!channelId) {
                 return;
@@ -119,8 +119,8 @@ export class ContextController implements IContextController {
             }
 
             if (content.length > 0 && content.length < 2000) {
-                if (this._checkIfLinkToGif(content)) {
-                    await this._contextService.saveGif(id, channelId, content);
+                if (this._checkIfLinkToGif(content) && embeds[0]) {
+                    await this._contextService.saveGif(id, channelId, embeds[0]);
                 } else {
                     await this._contextService.saveContent([
                         { messageId: id, channelId, content, timestamp: new Date() },
@@ -149,7 +149,11 @@ export class ContextController implements IContextController {
     }
 
     private _checkIfLinkToGif(text: string): boolean {
-        return text.startsWith("https://tenor.com/view") || text.startsWith("https://media3.giphy.com/");
+        return (
+            text.startsWith("https://tenor.com/view") ||
+            text.startsWith("https://media3.giphy.com/") ||
+            text.startsWith("https://klipy.com/gifs/")
+        );
     }
 
     private async _checkForNeededPermissions(message: Message): Promise<boolean> {
@@ -206,7 +210,7 @@ export class ContextController implements IContextController {
                     continue;
                 }
 
-                const { id, content, channelId, attachments, author, poll } = message;
+                const { id, content, channelId, attachments, author, poll, embeds } = message;
 
                 try {
                     images.push(
@@ -218,8 +222,8 @@ export class ContextController implements IContextController {
                     }
 
                     if (content.length > 0 && content.length < 2000) {
-                        if (this._checkIfLinkToGif(content)) {
-                            await this._contextService.saveGif(id, channelId, content);
+                        if (this._checkIfLinkToGif(content) && embeds[0]) {
+                            await this._contextService.saveGif(id, channelId, embeds[0]);
                         } else {
                             contents.push({ messageId: id, channelId, content, timestamp: new Date() });
                         }

@@ -1,4 +1,5 @@
-import type { Attachment, Collection, Guild, Poll } from "discord.js";
+import type { Embed } from "discord.js";
+import { type Attachment, type Collection, type Guild, type Poll } from "discord.js";
 import type { ContextImage } from "@jstmemit/shared/models/ContextImage";
 import type { messagesTable } from "@jstmemit/db/schema.ts";
 
@@ -16,7 +17,7 @@ export abstract class IContextService {
 
     public abstract saveImages(images: readonly ContextImage[]): Promise<void>;
 
-    public abstract saveGif(messageId: string, channelId: string, content: string): Promise<void>;
+    public abstract saveGif(messageId: string, channelId: string, embed: Embed): Promise<void>;
 
     public abstract saveAvatar(messageId: string, channelId: string, avatarUrl: string): Promise<void>;
 
