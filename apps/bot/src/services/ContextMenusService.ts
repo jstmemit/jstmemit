@@ -89,6 +89,7 @@ export class ContextMenusService implements IContextMenusService {
                 const message: Message = interaction.targetMessage;
 
                 images[template.images[0].id] =
+                    message.attachments.first()?.proxyURL ||
                     message.embeds[0]?.data.thumbnail?.proxy_url ||
                     message.author.displayAvatarURL({ extension: "png", size: 512 });
             }
