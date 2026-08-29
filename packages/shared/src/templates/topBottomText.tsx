@@ -32,8 +32,8 @@ export const topBottomText: Template = {
     width: 800,
     height: 800,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 10 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 8 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "background" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -59,7 +59,7 @@ export const topBottomText: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -76,7 +76,6 @@ export const topBottomText: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -89,7 +88,7 @@ export const topBottomText: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -106,7 +105,6 @@ export const topBottomText: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

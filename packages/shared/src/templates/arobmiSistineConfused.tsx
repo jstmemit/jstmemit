@@ -30,7 +30,7 @@ export const arobmiSistineConfused: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 540,
-    height: 394,
+    height: 414,
     animationDuration: 2100,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -56,12 +56,12 @@ export const arobmiSistineConfused: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "110px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const arobmiSistineConfused: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

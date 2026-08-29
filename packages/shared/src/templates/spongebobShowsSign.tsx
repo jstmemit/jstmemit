@@ -28,9 +28,9 @@ export const spongebobShowsSign: Template = {
         [Locale.ChineseCN]: "海绵宝宝展示牌子",
     }),
     topics: [Topic.SpongeBob, Topic.Cartoons],
-    types: [Type.ObjectImage, Type.TextLeft],
+    types: [Type.ObjectImage, Type.TextBottomWithBackground],
     width: 657,
-    height: 493,
+    height: 623,
     texts: [
         { id: 0, description: "what spongebobBurningTheNote says while holding the sign", minLength: 1, maxLength: 8 },
     ],
@@ -60,26 +60,25 @@ export const spongebobShowsSign: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
-                    width: "45%",
-                    height: "55%",
+                    bottom: 0,
+                    width: "100%",
+                    height: "130px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
-                        fontWeight: 700,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

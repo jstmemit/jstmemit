@@ -32,7 +32,7 @@ export const konosubaMeguminApproves: Template = {
     width: 712,
     height: 498,
     animationDuration: 1170,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 14 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -61,19 +61,18 @@ export const konosubaMeguminApproves: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 9,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

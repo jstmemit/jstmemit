@@ -31,7 +31,7 @@ export const wojackPoint: Template = {
     types: [Type.BackgroundImage, Type.TextBottom],
     width: 512,
     height: 512,
-    texts: [{ id: 0, description: "what wojak says", minLength: 1, maxLength: 6 }],
+    texts: [{ id: 0, description: "what wojak says", minLength: 1, maxLength: 7 }],
     images: [{ id: 0, description: "pointed at image" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -66,7 +66,7 @@ export const wojackPoint: Template = {
                     left: "30%",
                     bottom: 0,
                     width: "45%",
-                    height: "30%",
+                    height: "40%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -76,13 +76,12 @@ export const wojackPoint: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

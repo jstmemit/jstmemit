@@ -31,7 +31,7 @@ export const pfConfusedTravolta: Template = {
     types: [Type.TextBottom, Type.FaceImage],
     width: 735,
     height: 552,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Vincent's face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -78,13 +78,12 @@ export const pfConfusedTravolta: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

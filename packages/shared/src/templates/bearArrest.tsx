@@ -30,7 +30,7 @@ export const bearArrest: Template = {
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 640,
     height: 434,
-    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "arrested bear" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -83,7 +83,6 @@ export const bearArrest: Template = {
                         fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

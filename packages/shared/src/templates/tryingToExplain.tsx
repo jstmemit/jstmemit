@@ -30,8 +30,8 @@ export const tryingToExplain: Template = {
     topics: [Topic.Movies, Topic.Reaction],
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,
-    height: 1118,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    height: 1080,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "person`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -47,7 +47,7 @@ export const tryingToExplain: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tryingToExplain.png"
                 width={1080}
                 height={1118}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
@@ -55,7 +55,7 @@ export const tryingToExplain: Template = {
                 height={200}
                 style={{
                     position: "absolute",
-                    top: 420,
+                    top: 382,
                     left: 290,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -67,23 +67,22 @@ export const tryingToExplain: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "28%",
+                    height: "270px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

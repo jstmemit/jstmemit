@@ -66,7 +66,7 @@ export const isThisAPigeon: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
@@ -78,7 +78,6 @@ export const isThisAPigeon: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

@@ -33,7 +33,7 @@ export const futuramaToasterBoo: Template = {
     height: 1214,
     texts: [
         { id: 0, description: "text on first bread", minLength: 1, maxLength: 5 },
-        { id: 1, description: "text on second bread", minLength: 1, maxLength: 4 },
+        { id: 1, description: "text on second bread", minLength: 1, maxLength: 3 },
     ],
     images: [{ id: 0, description: "Fry`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -79,10 +79,10 @@ export const futuramaToasterBoo: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "39%",
-                    top: "30%",
+                    left: "38%",
+                    top: "29%",
                     width: "29%",
-                    height: "16%",
+                    height: "18%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -99,7 +99,6 @@ export const futuramaToasterBoo: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -110,9 +109,9 @@ export const futuramaToasterBoo: Template = {
                 style={{
                     position: "absolute",
                     left: "20%",
-                    top: "55%",
+                    top: "54%",
                     width: "29%",
-                    height: "16%",
+                    height: "18%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -129,7 +128,6 @@ export const futuramaToasterBoo: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -153,13 +151,12 @@ export const futuramaToasterBoo: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -31,7 +31,7 @@ export const selLainFunnyILaugh: Template = {
     types: [Type.DefaultText, Type.TextRightWithBackground],
     width: 1000,
     height: 480,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -60,7 +60,7 @@ export const selLainFunnyILaugh: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
@@ -72,7 +72,6 @@ export const selLainFunnyILaugh: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

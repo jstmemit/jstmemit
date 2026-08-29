@@ -31,7 +31,7 @@ export const btrBocchiHappy: Template = {
     types: [Type.TextLeftWithBackground],
     width: 1280,
     height: 576,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -60,19 +60,18 @@ export const btrBocchiHappy: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

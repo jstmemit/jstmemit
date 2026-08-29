@@ -32,10 +32,10 @@ export const wnlFuminoRealization: Template = {
     width: 1088,
     height: 1237,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
-        { id: 2, description: "third option", minLength: 1, maxLength: 12 },
-        { id: 3, description: "fourth option", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 6 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 6 },
+        { id: 2, description: "third option", minLength: 1, maxLength: 6 },
+        { id: 3, description: "fourth option", minLength: 1, maxLength: 6 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -71,13 +71,12 @@ export const wnlFuminoRealization: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -101,13 +100,12 @@ export const wnlFuminoRealization: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -131,13 +129,12 @@ export const wnlFuminoRealization: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -161,13 +158,12 @@ export const wnlFuminoRealization: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[3]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

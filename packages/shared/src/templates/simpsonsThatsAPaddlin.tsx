@@ -31,7 +31,7 @@ export const simpsonsThatsAPaddlin: Template = {
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 500,
     height: 461,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "face of Jasper Beardly" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -72,19 +72,18 @@ export const simpsonsThatsAPaddlin: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

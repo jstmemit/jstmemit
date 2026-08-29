@@ -60,7 +60,7 @@ export const selLainStare: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                 }}
             >
                 <div
@@ -71,7 +71,6 @@ export const selLainStare: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

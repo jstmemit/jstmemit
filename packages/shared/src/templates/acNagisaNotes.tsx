@@ -73,7 +73,7 @@ export const acNagisaNotes: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -85,7 +85,6 @@ export const acNagisaNotes: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

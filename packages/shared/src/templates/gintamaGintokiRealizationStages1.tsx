@@ -31,7 +31,7 @@ export const gintamaGintokiRealizationStages1: Template = {
     types: [Type.TextTopWithBackground, Type.Animated],
     animationDuration: 1900,
     width: 640,
-    height: 470,
+    height: 480,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -56,12 +56,12 @@ export const gintamaGintokiRealizationStages1: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const gintamaGintokiRealizationStages1: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

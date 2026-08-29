@@ -32,7 +32,7 @@ export const tsAngryKenClapping1: Template = {
     width: 1096,
     height: 720,
     animationDuration: 320,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
     images: [{ id: 0, description: "Ken`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -73,19 +73,18 @@ export const tsAngryKenClapping1: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "30px",
                     backgroundColor: "#0e0a04",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 9,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

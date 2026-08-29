@@ -30,10 +30,10 @@ export const uncanny: Template = {
     topics: [Topic.Cartoons, Topic.Reaction, Topic.Incredibles],
     types: [Type.TwoOption, Type.TextTopWithBackground],
     width: 950,
-    height: 600,
+    height: 670,
     texts: [
-        { id: 0, description: "left caption", minLength: 1, maxLength: 6 },
-        { id: 1, description: "right caption", minLength: 1, maxLength: 6 },
+        { id: 0, description: "left caption", minLength: 1, maxLength: 5 },
+        { id: 1, description: "right caption", minLength: 1, maxLength: 5 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -58,7 +58,7 @@ export const uncanny: Template = {
                     left: 0,
                     top: 0,
                     width: "50%",
-                    height: "100px",
+                    height: "170px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -76,7 +76,6 @@ export const uncanny: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -89,7 +88,7 @@ export const uncanny: Template = {
                     right: 0,
                     top: 0,
                     width: "50%",
-                    height: "100px",
+                    height: "170px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -107,7 +106,6 @@ export const uncanny: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -30,10 +30,10 @@ export const evangelionShinjiCalmVsPanic: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 1200,
-    height: 700,
+    height: 810,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 5 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 5 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -58,7 +58,7 @@ export const evangelionShinjiCalmVsPanic: Template = {
                     left: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "220px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -75,7 +75,6 @@ export const evangelionShinjiCalmVsPanic: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -88,7 +87,7 @@ export const evangelionShinjiCalmVsPanic: Template = {
                     right: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "220px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -105,7 +104,6 @@ export const evangelionShinjiCalmVsPanic: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

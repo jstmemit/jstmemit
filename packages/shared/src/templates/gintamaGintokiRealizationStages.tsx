@@ -32,9 +32,9 @@ export const gintamaGintokiRealizationStages: Template = {
     width: 1084,
     height: 1080,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
-        { id: 2, description: "third option", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
+        { id: 2, description: "third option", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -76,7 +76,6 @@ export const gintamaGintokiRealizationStages: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -106,7 +105,6 @@ export const gintamaGintokiRealizationStages: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -136,7 +134,6 @@ export const gintamaGintokiRealizationStages: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

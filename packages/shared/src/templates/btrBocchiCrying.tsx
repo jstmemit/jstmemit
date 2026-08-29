@@ -32,7 +32,7 @@ export const btrBocchiCrying: Template = {
     width: 996,
     height: 498,
     animationDuration: 3150,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -73,7 +73,6 @@ export const btrBocchiCrying: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

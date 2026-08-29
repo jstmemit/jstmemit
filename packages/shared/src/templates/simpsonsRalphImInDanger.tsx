@@ -31,7 +31,7 @@ export const simpsonsRalphImInDanger: Template = {
     types: [Type.FaceImage, Type.TextBottom],
     width: 1024,
     height: 581,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Ralph`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -67,12 +67,12 @@ export const simpsonsRalphImInDanger: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "35%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                     backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
@@ -84,7 +84,6 @@ export const simpsonsRalphImInDanger: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

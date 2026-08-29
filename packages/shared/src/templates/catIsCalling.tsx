@@ -31,7 +31,7 @@ export const catIsCalling: Template = {
     types: [Type.TextTop],
     width: 1498,
     height: 936,
-    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -70,7 +70,6 @@ export const catIsCalling: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         textShadow: "4px 4px 8px #fd9da8",
                     }}

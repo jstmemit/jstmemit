@@ -30,7 +30,7 @@ export const tsWoodyCrazy: Template = {
     topics: [Topic.Reaction, Topic.Cartoons, Topic.ToyStory],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 498,
-    height: 584,
+    height: 594,
     animationDuration: 1000,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -56,7 +56,7 @@ export const tsWoodyCrazy: Template = {
                     right: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -73,7 +73,6 @@ export const tsWoodyCrazy: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

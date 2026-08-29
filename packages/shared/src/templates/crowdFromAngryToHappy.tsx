@@ -80,10 +80,10 @@ export const crowdFromAngryToHappy: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
+                    top: "1%",
                     width: "50%",
                     height: "15%",
-                    padding: "50px",
+                    padding: "10px 50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -95,11 +95,9 @@ export const crowdFromAngryToHappy: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",
-
                         textOverflow: "ellipsis",
                     }}
                 >
@@ -110,10 +108,10 @@ export const crowdFromAngryToHappy: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "50%",
+                    top: "52%",
                     width: "50%",
                     height: "15%",
-                    padding: "50px",
+                    padding: "10px 50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -125,7 +123,6 @@ export const crowdFromAngryToHappy: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",

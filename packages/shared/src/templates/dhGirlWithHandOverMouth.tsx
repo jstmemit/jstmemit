@@ -31,7 +31,7 @@ export const dhGirlWithHandOverMouth: Template = {
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 718,
     height: 1131,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "doctor House`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -51,12 +51,12 @@ export const dhGirlWithHandOverMouth: Template = {
             />
             <img
                 src={images[0]}
-                width={450}
-                height={450}
+                width={500}
+                height={500}
                 style={{
                     position: "absolute",
-                    top: "20%",
-                    right: "-15%",
+                    top: "21%",
+                    right: "-20%",
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}
@@ -77,13 +77,12 @@ export const dhGirlWithHandOverMouth: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

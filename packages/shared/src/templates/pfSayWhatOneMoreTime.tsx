@@ -30,8 +30,8 @@ export const pfSayWhatOneMoreTime: Template = {
     topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1920,
-    height: 1317,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 1417,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "face of the person with a gun" },
         { id: 1, description: "face of the person in the corner" },
@@ -51,7 +51,7 @@ export const pfSayWhatOneMoreTime: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfSayWhatOneMoreTime.jpg"
                 width={1920}
                 height={1317}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
@@ -59,7 +59,7 @@ export const pfSayWhatOneMoreTime: Template = {
                 height={300}
                 style={{
                     position: "absolute",
-                    top: "18%",
+                    top: "25%",
                     left: "22%",
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -95,12 +95,13 @@ export const pfSayWhatOneMoreTime: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "18%",
+                    height: "350px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -111,7 +112,6 @@ export const pfSayWhatOneMoreTime: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -60,8 +60,8 @@ export const yesChad: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    width: "50%",
-                    height: "25%",
+                    width: "53%",
+                    height: "27%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -77,7 +77,6 @@ export const yesChad: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

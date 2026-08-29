@@ -32,8 +32,8 @@ export const griffinsPeterSkinColor: Template = {
     width: 1000,
     height: 539,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 4 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 4 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 2 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 2 },
     ],
     images: [{ id: 0, description: "Peter`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -81,13 +81,12 @@ export const griffinsPeterSkinColor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -111,13 +110,12 @@ export const griffinsPeterSkinColor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

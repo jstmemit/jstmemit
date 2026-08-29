@@ -31,7 +31,7 @@ export const pfTwoGangsterWithGuns: Template = {
     types: [Type.TextBottom, Type.FaceImage],
     width: 1461,
     height: 822,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Vincent's face (left)" },
         { id: 1, description: "Jules's face (center left)" },
@@ -82,7 +82,7 @@ export const pfTwoGangsterWithGuns: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "40%",
+                    height: "30%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -93,13 +93,12 @@ export const pfTwoGangsterWithGuns: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

@@ -30,7 +30,7 @@ export const spongebobCaveman: Template = {
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTop],
     width: 716,
-    height: 552,
+    height: 592,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -55,7 +55,7 @@ export const spongebobCaveman: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "140px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -72,7 +72,6 @@ export const spongebobCaveman: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -31,7 +31,7 @@ export const blendsHideriMaidUniformWink: Template = {
     types: [Type.FaceImage, Type.TextBottom],
     width: 425,
     height: 700,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Hideri`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -85,7 +85,6 @@ export const blendsHideriMaidUniformWink: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

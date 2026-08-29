@@ -5,7 +5,6 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
-import { fontSize } from "#/utils/fontSize.ts";
 
 export const britishCuisine: Template = {
     name: "britishCuisine",
@@ -99,21 +98,26 @@ export const britishCuisine: Template = {
                     top: 0,
                     width: "100%",
                     maxWidth: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: font,
-                    fontSize: fontSize(texts[0]),
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#808080",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
                 }}
             >
-                @{texts[0]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#808080",
+                    }}
+                >
+                    @{texts[0]}
+                </div>
             </div>
             <div
                 style={{
@@ -122,21 +126,26 @@ export const britishCuisine: Template = {
                     top: 115,
                     width: "100%",
                     maxWidth: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: font,
-                    fontSize: fontSize(texts[1]),
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#808080",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
                 }}
             >
-                @{texts[1]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: 30,
+                        lineHeight: 1.05,
+                        color: "#808080",
+                    }}
+                >
+                    @{texts[1]}
+                </div>
             </div>
         </div>
     ),

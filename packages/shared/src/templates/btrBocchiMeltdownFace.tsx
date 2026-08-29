@@ -30,7 +30,7 @@ export const btrBocchiMeltdownFace: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground],
     width: 640,
-    height: 467,
+    height: 477,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -55,12 +55,12 @@ export const btrBocchiMeltdownFace: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -72,7 +72,6 @@ export const btrBocchiMeltdownFace: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

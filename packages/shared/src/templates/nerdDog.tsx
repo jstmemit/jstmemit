@@ -31,7 +31,7 @@ export const nerdDog: Template = {
     types: [Type.TextTopWithBackground, Type.ObjectImage],
     width: 890,
     height: 1085,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "object" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -77,13 +77,12 @@ export const nerdDog: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

@@ -31,7 +31,7 @@ export const moneyTonyStark: Template = {
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 1200,
     height: 1000,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Tony Stark`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -85,7 +85,6 @@ export const moneyTonyStark: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -68,7 +68,7 @@ export const lookAtThis: Template = {
                     left: "31%",
                     bottom: 0,
                     width: "45%",
-                    height: "30%",
+                    height: "40%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -84,7 +84,6 @@ export const lookAtThis: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

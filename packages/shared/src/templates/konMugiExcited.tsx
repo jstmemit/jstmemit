@@ -30,7 +30,7 @@ export const konMugiExcited: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Kon],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,
-    height: 405,
+    height: 415,
     animationDuration: 700,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -56,7 +56,7 @@ export const konMugiExcited: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -73,7 +73,6 @@ export const konMugiExcited: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

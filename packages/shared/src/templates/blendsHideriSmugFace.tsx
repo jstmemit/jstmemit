@@ -31,7 +31,7 @@ export const blendsHideriSmugFace: Template = {
     types: [Type.TextRightWithBackground],
     width: 638,
     height: 396,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 13 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -72,7 +72,6 @@ export const blendsHideriSmugFace: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -32,7 +32,7 @@ export const frierenLightning: Template = {
     width: 700,
     height: 360,
     animationDuration: 4410,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -67,13 +67,12 @@ export const frierenLightning: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -30,7 +30,7 @@ export const arobmiCryingSistine: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextBottomWithBackground],
     width: 1200,
-    height: 855,
+    height: 895,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -55,7 +55,7 @@ export const arobmiCryingSistine: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "180px",
+                    height: "220px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -72,7 +72,6 @@ export const arobmiCryingSistine: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

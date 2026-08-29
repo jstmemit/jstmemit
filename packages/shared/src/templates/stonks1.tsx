@@ -60,24 +60,23 @@ export const stonks1: Template = {
                     position: "absolute",
                     right: 0,
                     bottom: 0,
-                    width: "50%",
+                    width: "52%",
                     height: "50%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

@@ -32,8 +32,8 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
     width: 400,
     height: 400,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -63,7 +63,7 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                     borderBottom: "2px solid #000000",
                 }}
@@ -76,7 +76,6 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -94,7 +93,7 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                     borderTop: "2px solid #000000",
                 }}
@@ -107,7 +106,6 @@ export const rtnobgsMaiSakurajimaPhoneReaction: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

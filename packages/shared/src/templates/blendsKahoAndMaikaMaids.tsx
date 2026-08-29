@@ -31,7 +31,7 @@ export const blendsKahoAndMaikaMaids: Template = {
     types: [Type.FaceImage, Type.TextBottom],
     width: 422,
     height: 600,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 14 }],
     images: [
         { id: 0, description: "Kaho`s face" },
         { id: 1, description: "Maika`s face" },
@@ -102,7 +102,6 @@ export const blendsKahoAndMaikaMaids: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

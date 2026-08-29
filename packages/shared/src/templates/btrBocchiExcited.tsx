@@ -30,7 +30,7 @@ export const btrBocchiExcited: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 498,
-    height: 433,
+    height: 443,
     animationDuration: 1450,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -56,12 +56,12 @@ export const btrBocchiExcited: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const btrBocchiExcited: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

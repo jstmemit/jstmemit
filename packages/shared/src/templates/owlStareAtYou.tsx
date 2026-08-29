@@ -30,8 +30,8 @@ export const owlStareAtYou: Template = {
     topics: [Topic.Animals],
     types: [Type.TextTopWithBackground],
     width: 1600,
-    height: 1600,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    height: 1400,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -47,7 +47,7 @@ export const owlStareAtYou: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/owlStareAtYou.png"
                 width={1600}
                 height={1600}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
@@ -55,23 +55,23 @@ export const owlStareAtYou: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "28%",
+                    height: "320px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

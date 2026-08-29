@@ -30,9 +30,9 @@ export const dandadanTurboGrannyDance: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 1280,
-    height: 920,
+    height: 950,
     animationDuration: 4000,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -56,12 +56,12 @@ export const dandadanTurboGrannyDance: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "200px",
+                    height: "230px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const dandadanTurboGrannyDance: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

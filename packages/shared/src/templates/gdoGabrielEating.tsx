@@ -8,7 +8,7 @@ import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
 export const gdoGabrielEating: Template = {
-    name: "gdbGabrielEating",
+    name: "gdoGabrielEating",
     displayName: buildLocales("Gabriel eating", {
         [Locale.Russian]: "Габриэль ест",
         [Locale.Ukrainian]: "Габріель їсть",
@@ -32,7 +32,7 @@ export const gdoGabrielEating: Template = {
     width: 1080,
     height: 540,
     animationDuration: 560,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -61,7 +61,7 @@ export const gdoGabrielEating: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const gdoGabrielEating: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

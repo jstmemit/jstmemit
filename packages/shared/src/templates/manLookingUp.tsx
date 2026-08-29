@@ -30,8 +30,8 @@ export const manLookingUp: Template = {
     topics: [Topic.Reaction, Topic.Movies],
     types: [Type.TextTopWithBackground],
     width: 661,
-    height: 372,
-    texts: [{ id: 0, description: "whispered phrase", minLength: 1, maxLength: 6 }],
+    height: 440,
+    texts: [{ id: 0, description: "whispered phrase", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -47,7 +47,7 @@ export const manLookingUp: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/manlookingup.png"
                 width={661}
                 height={372}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
@@ -55,23 +55,23 @@ export const manLookingUp: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "15%",
+                    height: "130px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    background: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 1,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -31,7 +31,7 @@ export const jkSatoruGojoNahIdWin1: Template = {
     types: [Type.TextRightWithBackground, Type.FaceImage],
     width: 700,
     height: 368,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Gojo's face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -78,13 +78,12 @@ export const jkSatoruGojoNahIdWin1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

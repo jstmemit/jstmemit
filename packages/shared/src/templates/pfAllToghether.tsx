@@ -31,7 +31,7 @@ export const pfAllToghether: Template = {
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 950,
     height: 632,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Jules's face (left)" },
         { id: 1, description: "Vincent's face (center left)" },
@@ -108,7 +108,7 @@ export const pfAllToghether: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "170",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -125,7 +125,6 @@ export const pfAllToghether: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

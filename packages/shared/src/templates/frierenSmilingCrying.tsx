@@ -30,7 +30,7 @@ export const frierenSmilingCrying: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 686,
-    height: 408,
+    height: 428,
     texts: [
         { id: 0, description: "first option", minLength: 1, maxLength: 5 },
         { id: 1, description: "second option", minLength: 1, maxLength: 5 },
@@ -58,12 +58,12 @@ export const frierenSmilingCrying: Template = {
                     left: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "130px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                     borderRight: "2px solid black",
                 }}
@@ -76,7 +76,6 @@ export const frierenSmilingCrying: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -89,12 +88,12 @@ export const frierenSmilingCrying: Template = {
                     right: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "130px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                     borderLeft: "2px solid black",
                 }}
@@ -107,7 +106,6 @@ export const frierenSmilingCrying: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -31,7 +31,7 @@ export const futuramaFrySleeplessInsomnia: Template = {
     types: [Type.FaceImage, Type.TextCenterWithBackground, Type.FourOption],
     width: 604,
     height: 479,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "Fry`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -84,19 +84,18 @@ export const futuramaFrySleeplessInsomnia: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "0 15px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -30,8 +30,8 @@ export const btrBocchiAnxiousSmiling: Template = {
     topics: [Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextTopWithBackground, Type.DefaultText, Type.FaceImage],
     width: 1020,
-    height: 1211,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 1241,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Bocchi`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -55,7 +55,7 @@ export const btrBocchiAnxiousSmiling: Template = {
                 height={420}
                 style={{
                     position: "absolute",
-                    top: 350,
+                    top: 400,
                     left: 300,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -67,7 +67,7 @@ export const btrBocchiAnxiousSmiling: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "150px",
+                    height: "180px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -84,7 +84,6 @@ export const btrBocchiAnxiousSmiling: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -30,8 +30,8 @@ export const toradoraTaigaWideGrin: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground],
     width: 1078,
-    height: 748,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 798,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -55,12 +55,12 @@ export const toradoraTaigaWideGrin: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "150px",
+                    height: "200px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
@@ -72,7 +72,6 @@ export const toradoraTaigaWideGrin: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

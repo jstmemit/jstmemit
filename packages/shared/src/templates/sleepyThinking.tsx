@@ -31,7 +31,7 @@ export const sleepyThinking: Template = {
     types: [Type.TextBottom, Type.ObjectImage],
     width: 885,
     height: 900,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "dream thumbnail" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -83,7 +83,6 @@ export const sleepyThinking: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

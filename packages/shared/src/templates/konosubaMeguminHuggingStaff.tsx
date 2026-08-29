@@ -32,7 +32,7 @@ export const konosubaMeguminHuggingStaff: Template = {
     width: 996,
     height: 620,
     animationDuration: 930,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 13 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -61,7 +61,7 @@ export const konosubaMeguminHuggingStaff: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
@@ -73,7 +73,6 @@ export const konosubaMeguminHuggingStaff: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

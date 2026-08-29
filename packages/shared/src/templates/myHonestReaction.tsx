@@ -78,7 +78,6 @@ export const myHonestReaction: Template = {
                         fontSize: fontSize("MY HONEST REACTION"),
                         fontWeight: 700,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -82,12 +82,12 @@ export const bbLetsCook: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -99,7 +99,6 @@ export const bbLetsCook: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

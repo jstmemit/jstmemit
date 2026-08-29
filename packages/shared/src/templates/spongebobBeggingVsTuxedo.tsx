@@ -32,8 +32,8 @@ export const spongebobBeggingVsTuxedo: Template = {
     width: 755,
     height: 601,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 20 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 20 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 10 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 10 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -64,18 +64,17 @@ export const spongebobBeggingVsTuxedo: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -93,18 +92,17 @@ export const spongebobBeggingVsTuxedo: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

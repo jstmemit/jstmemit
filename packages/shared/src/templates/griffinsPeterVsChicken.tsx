@@ -30,7 +30,7 @@ export const griffinsPeterVsChicken: Template = {
     topics: [Topic.Griffins, Topic.Cartoons, Topic.Animals],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 2000,
-    height: 1350,
+    height: 1475,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "Chicken`s face" },
@@ -82,12 +82,12 @@ export const griffinsPeterVsChicken: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "225",
+                    height: "350px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                     backgroundColor: "white",
                 }}
             >
@@ -99,7 +99,6 @@ export const griffinsPeterVsChicken: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

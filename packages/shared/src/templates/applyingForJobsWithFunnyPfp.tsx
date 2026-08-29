@@ -31,8 +31,8 @@ export const applyingForJobsWithFunnyPfp: Template = {
     width: 933,
     height: 1051,
     texts: [
-        { id: 0, description: "post author's name", minLength: 1, maxLength: 2 },
-        { id: 1, description: "post author's tag", minLength: 1, maxLength: 1 },
+        { id: 0, description: "post author's name", minLength: 1, maxLength: 4 },
+        { id: 1, description: "post author's tag", minLength: 1, maxLength: 5 },
     ],
     images: [{ id: 0, description: "Inappropriate profile picture" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -94,7 +94,6 @@ export const applyingForJobsWithFunnyPfp: Template = {
                         fontFamily: font,
                         fontSize: 40,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -123,7 +122,6 @@ export const applyingForJobsWithFunnyPfp: Template = {
                         fontFamily: font,
                         fontSize: 35,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#808080",
                     }}
                 >

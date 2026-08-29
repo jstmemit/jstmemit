@@ -32,8 +32,8 @@ export const futuramaBenderAsDrake: Template = {
     width: 2048,
     height: 2048,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -63,18 +63,17 @@ export const futuramaBenderAsDrake: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 9,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -92,18 +91,17 @@ export const futuramaBenderAsDrake: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 9,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

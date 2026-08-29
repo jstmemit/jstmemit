@@ -31,7 +31,7 @@ export const simpsonsLIsaShowPresentation: Template = {
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 736,
     height: 551,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 25 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Lisa`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -72,18 +72,16 @@ export const simpsonsLIsaShowPresentation: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

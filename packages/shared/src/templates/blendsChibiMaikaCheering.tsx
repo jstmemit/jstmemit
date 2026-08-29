@@ -31,7 +31,7 @@ export const blendsChibiMaikaCheering: Template = {
     types: [Type.TextLeftWithBackground],
     width: 1472,
     height: 986,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 16 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -66,13 +66,12 @@ export const blendsChibiMaikaCheering: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 10,
+                        lineClamp: 9,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -63,7 +63,6 @@ export const spongebobBurningTheNote: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
                     background: "white",
                 }}
             >
@@ -75,7 +74,6 @@ export const spongebobBurningTheNote: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

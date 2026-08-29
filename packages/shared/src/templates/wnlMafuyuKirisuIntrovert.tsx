@@ -70,13 +70,12 @@ export const wnlMafuyuKirisuIntrovert: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -101,13 +100,12 @@ export const wnlMafuyuKirisuIntrovert: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

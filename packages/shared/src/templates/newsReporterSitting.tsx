@@ -28,13 +28,10 @@ export const newsReporterSitting: Template = {
         [Locale.ChineseCN]: "坐着的新闻记者",
     }),
     topics: [Topic.News],
-    types: [Type.TextBottom, Type.TextTop, Type.BackgroundImage],
+    types: [Type.TextBottom, Type.BackgroundImage],
     width: 766,
     height: 496,
-    texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 8 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
-    ],
+    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "breaking news" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -67,40 +64,9 @@ export const newsReporterSitting: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
-                    width: "100%",
-                    height: "20%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    padding: "15px",
-                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8))",
-                }}
-            >
-                <div
-                    style={{
-                        lineClamp: 2,
-                        wordBreak: "break-word",
-                        textOverflow: "ellipsis",
-                        fontFamily: font,
-                        fontSize: fontSize(texts[0]),
-                        lineHeight: 1.05,
-                        paddingBottom: "0.2em",
-                        color: "#ffffff",
-                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
-                    }}
-                >
-                    {texts[0]}
-                </div>
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "30%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -117,12 +83,11 @@ export const newsReporterSitting: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
                 >
-                    {texts[1]}
+                    {texts[0]}
                 </div>
             </div>
         </div>

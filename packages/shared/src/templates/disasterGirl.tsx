@@ -67,12 +67,12 @@ export const disasterGirl: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "25%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                     backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent)",
                 }}
             >
@@ -84,7 +84,6 @@ export const disasterGirl: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

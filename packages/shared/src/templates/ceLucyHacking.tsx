@@ -30,7 +30,7 @@ export const ceLucyHacking: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground, Type.AvatarImage],
     width: 640,
-    height: 572,
+    height: 582,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "avatar" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -69,7 +69,7 @@ export const ceLucyHacking: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -86,7 +86,6 @@ export const ceLucyHacking: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

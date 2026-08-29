@@ -31,7 +31,7 @@ export const toradoraTaigaCreepySmile: Template = {
     types: [Type.TextRightWithBackground, Type.DefaultText],
     width: 1102,
     height: 650,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 13 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -60,19 +60,18 @@ export const toradoraTaigaCreepySmile: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 8,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

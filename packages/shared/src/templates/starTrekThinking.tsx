@@ -30,10 +30,10 @@ export const starTrekThinking: Template = {
     topics: [Topic.StarTrek, Topic.Movies, Topic.Reaction],
     types: [Type.TextTopWithBackground, Type.TextBottomWithBackground],
     width: 1200,
-    height: 1200,
+    height: 1230,
     texts: [
-        { id: 0, description: "caption", minLength: 1, maxLength: 10 },
-        { id: 1, description: "caption", minLength: 1, maxLength: 10 },
+        { id: 0, description: "caption", minLength: 1, maxLength: 8 },
+        { id: 1, description: "caption", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -50,7 +50,7 @@ export const starTrekThinking: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/starTrekThinking.png"
                 width={1200}
                 height={1200}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
@@ -58,12 +58,13 @@ export const starTrekThinking: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "15%",
+                    height: "210px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -74,7 +75,6 @@ export const starTrekThinking: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -87,12 +87,13 @@ export const starTrekThinking: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "15%",
+                    height: "210px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -103,7 +104,6 @@ export const starTrekThinking: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

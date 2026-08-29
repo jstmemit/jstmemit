@@ -32,9 +32,9 @@ export const diagramIQ: Template = {
     width: 1272,
     height: 843,
     texts: [
-        { id: 0, description: "stupid text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "normal text", minLength: 1, maxLength: 7 },
-        { id: 2, description: "clever text", minLength: 1, maxLength: 5 },
+        { id: 0, description: "stupid text", minLength: 1, maxLength: 2 },
+        { id: 1, description: "normal text", minLength: 1, maxLength: 5 },
+        { id: 2, description: "clever text", minLength: 1, maxLength: 2 },
     ],
     images: [
         { id: 0, description: "stupid face" },
@@ -100,7 +100,6 @@ export const diagramIQ: Template = {
                     bottom: 400,
                     width: "400px",
                     height: "200px",
-                    padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -114,7 +113,6 @@ export const diagramIQ: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         textOverflow: "ellipsis",
                     }}
@@ -128,9 +126,8 @@ export const diagramIQ: Template = {
                     left: "50%",
                     top: 0,
                     transform: "translateX(-50%)",
-                    width: "50%",
+                    width: "95%",
                     height: "15%",
-                    padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -139,12 +136,11 @@ export const diagramIQ: Template = {
             >
                 <span
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         textOverflow: "ellipsis",
                     }}
@@ -159,7 +155,6 @@ export const diagramIQ: Template = {
                     bottom: 400,
                     width: "400px",
                     height: "200px",
-                    padding: "50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -173,7 +168,6 @@ export const diagramIQ: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         textOverflow: "ellipsis",
                     }}

@@ -32,8 +32,8 @@ export const shirobakoWorkStress3: Template = {
     width: 950,
     height: 528,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 6 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 6 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -70,13 +70,12 @@ export const shirobakoWorkStress3: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -101,13 +100,12 @@ export const shirobakoWorkStress3: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

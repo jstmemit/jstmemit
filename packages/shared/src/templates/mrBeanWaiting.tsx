@@ -31,7 +31,7 @@ export const mrBeanWaiting: Template = {
     types: [Type.TextBottom, Type.FaceImage, Type.FourOption],
     width: 640,
     height: 640,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Mr Bean`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -120,7 +120,6 @@ export const mrBeanWaiting: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

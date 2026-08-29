@@ -31,7 +31,7 @@ export const parrotBarber: Template = {
     types: [Type.TextBottom, Type.FaceImage],
     width: 663,
     height: 1094,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Parrot face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -84,7 +84,6 @@ export const parrotBarber: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

@@ -31,7 +31,7 @@ export const willSmith: Template = {
     types: [Type.FaceImage, Type.TextRight],
     width: 891,
     height: 891,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 16 }],
     images: [{ id: 0, description: "person`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -77,13 +77,12 @@ export const willSmith: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 13,
+                        lineClamp: 11,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -32,8 +32,8 @@ export const frierenExpectationVsReality: Template = {
     width: 638,
     height: 640,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 10 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 10 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -75,7 +75,6 @@ export const frierenExpectationVsReality: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -105,7 +104,6 @@ export const frierenExpectationVsReality: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

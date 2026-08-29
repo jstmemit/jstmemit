@@ -32,8 +32,8 @@ export const womanYellingAtACat: Template = {
     width: 1200,
     height: 1200,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 15 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 15 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [{ id: 0, description: "cat`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -75,18 +75,17 @@ export const womanYellingAtACat: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -104,18 +103,17 @@ export const womanYellingAtACat: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

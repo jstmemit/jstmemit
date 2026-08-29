@@ -30,8 +30,8 @@ export const dandadanTurboGrannyCatSquintedEyes1: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextTopWithBackground],
     width: 1395,
-    height: 1307,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    height: 1317,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -60,7 +60,7 @@ export const dandadanTurboGrannyCatSquintedEyes1: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
@@ -72,7 +72,6 @@ export const dandadanTurboGrannyCatSquintedEyes1: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

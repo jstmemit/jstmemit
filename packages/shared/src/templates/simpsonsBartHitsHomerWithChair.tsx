@@ -31,7 +31,7 @@ export const simpsonsBartHitsHomerWithChair: Template = {
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 2180,
     height: 1646,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Homer`s face" },
         { id: 1, description: "Bart`s face" },
@@ -82,12 +82,12 @@ export const simpsonsBartHitsHomerWithChair: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "24%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
@@ -99,7 +99,6 @@ export const simpsonsBartHitsHomerWithChair: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

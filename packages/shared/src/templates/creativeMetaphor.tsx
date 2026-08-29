@@ -5,7 +5,6 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
-import { fontSize } from "#/utils/fontSize.ts";
 
 export const creativeMetaphor: Template = {
     name: "creativeMetaphor",
@@ -33,7 +32,7 @@ export const creativeMetaphor: Template = {
     height: 1028,
     texts: [
         { id: 0, description: "Name of the person who posted a creative metaphor", minLength: 1, maxLength: 5 },
-        { id: 1, description: "Creative metaphor", minLength: 1, maxLength: 5 },
+        { id: 1, description: "Creative metaphor", minLength: 1, maxLength: 6 },
     ],
     images: [{ id: 0, description: "Person who posted a creative metaphor" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -58,43 +57,53 @@ export const creativeMetaphor: Template = {
                     bottom: 270,
                     width: "100%",
                     maxWidth: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
                     display: "flex",
-                    fontFamily: font,
-                    fontSize: fontSize(texts[0]),
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#808080",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
                 }}
             >
-                @{texts[0]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: 43,
+                        lineHeight: 1.05,
+                        color: "#808080",
+                    }}
+                >
+                    @{texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 160,
-                    bottom: 200,
-                    width: "60%",
-                    padding: "10px",
-                    textAlign: "left",
-                    justifyContent: "flex-start",
+                    bottom: 190,
+                    width: "80%",
                     display: "flex",
-                    fontFamily: font,
-                    fontSize: fontSize(texts[1]),
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#fff",
-                    wordBreak: "break-word",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "start",
+                    padding: "10px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: 48,
+                        lineHeight: 1.05,
+                        color: "#fff",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
             <img
                 src={images[0]}

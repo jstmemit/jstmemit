@@ -30,8 +30,8 @@ export const evangelionShinjiIkariMentalBreakdown: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Evangelion],
     types: [Type.TextTopWithBackground],
     width: 844,
-    height: 661,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 711,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -55,7 +55,7 @@ export const evangelionShinjiIkariMentalBreakdown: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "160px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -72,7 +72,6 @@ export const evangelionShinjiIkariMentalBreakdown: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

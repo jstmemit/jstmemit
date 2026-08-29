@@ -32,8 +32,8 @@ export const bernieSandersLive: Template = {
     width: 981,
     height: 1038,
     texts: [
-        { id: 0, description: "person speech", minLength: 1, maxLength: 3 },
-        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 3 },
+        { id: 0, description: "person speech", minLength: 1, maxLength: 2 },
+        { id: 1, description: "Bernie Sanders reaction", minLength: 1, maxLength: 2 },
     ],
     images: [{ id: 0, description: "Person who is debating with Bernie Sanders on his live stream" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -81,7 +81,6 @@ export const bernieSandersLive: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#fff",
                         wordBreak: "break-word",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
@@ -111,7 +110,6 @@ export const bernieSandersLive: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         wordBreak: "break-word",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",

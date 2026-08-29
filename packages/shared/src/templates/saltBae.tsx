@@ -31,7 +31,7 @@ export const saltBae: Template = {
     types: [Type.FaceImage, Type.TextBottom],
     width: 1500,
     height: 1495,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Bae`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -67,7 +67,7 @@ export const saltBae: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "40%",
+                    height: "30%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -78,13 +78,12 @@ export const saltBae: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 4,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

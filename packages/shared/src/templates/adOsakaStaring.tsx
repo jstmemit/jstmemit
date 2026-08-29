@@ -31,7 +31,7 @@ export const adOsakaStaring: Template = {
     types: [Type.TextLeftWithBackground],
     width: 948,
     height: 577,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 14 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -72,7 +72,6 @@ export const adOsakaStaring: Template = {
                         fontFamily: font,
                         fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
