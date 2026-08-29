@@ -54,7 +54,9 @@ export class ContextMenusService implements IContextMenusService {
             }
 
             if (first && !second) {
-                texts[first.id] = message.content;
+                texts[first.id] = message.embeds[0]?.data.thumbnail?.proxy_url
+                    ? message.author.displayName
+                    : message.content;
             } else if (first && second) {
                 texts[first.id] = message.author.displayName;
                 texts[second.id] = message.content;
@@ -82,7 +84,9 @@ export class ContextMenusService implements IContextMenusService {
             if (interaction.isMessageContextMenuCommand()) {
                 const message: Message = interaction.targetMessage;
 
-                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+                images[template.images[0].id] =
+                    message.embeds[0]?.data.thumbnail?.proxy_url ||
+                    message.author.displayAvatarURL({ extension: "png", size: 512 });
             }
 
             if (interaction.isUserContextMenuCommand()) {
