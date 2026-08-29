@@ -53,8 +53,13 @@ export class ContextMenusService implements IContextMenusService {
                 message.content = result.text;
             }
 
+            // if a template has 1 slot
             if (first && !second) {
-                texts[first.id] = message.content;
+                texts[first.id] = message.embeds[0]?.data.thumbnail?.proxy_url
+                    ? message.author.displayName
+                    : message.content;
+
+                // if a template has 2 slots
             } else if (first && second) {
                 texts[first.id] = message.author.displayName;
                 texts[second.id] = message.content;
@@ -78,11 +83,15 @@ export class ContextMenusService implements IContextMenusService {
     ): Record<string, string> {
         const images: Record<string, string> = {};
 
+        // if a template has image slot #1
         if (template.images?.[0]) {
             if (interaction.isMessageContextMenuCommand()) {
                 const message: Message = interaction.targetMessage;
 
-                images[template.images[0].id] = message.author.displayAvatarURL({ extension: "png", size: 512 });
+                images[template.images[0].id] =
+                    message.attachments.first()?.proxyURL ||
+                    message.embeds[0]?.data.thumbnail?.proxy_url ||
+                    message.author.displayAvatarURL({ extension: "png", size: 512 });
             }
 
             if (interaction.isUserContextMenuCommand()) {
@@ -92,6 +101,7 @@ export class ContextMenusService implements IContextMenusService {
             }
         }
 
+        // if a template has image slot #2
         if (template.images?.[1]) {
             images[template.images[1].id] = interaction.user.displayAvatarURL({ extension: "png", size: 512 });
         }
