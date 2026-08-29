@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const dsTanjiroLookingAtPhone: Template = {
     name: "dsTanjiroLookingAtPhone",
@@ -87,7 +88,6 @@ export const dsTanjiroLookingAtPhone: Template = {
                         fontSize: 15,
                         fontWeight: 700,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >
@@ -116,7 +116,6 @@ export const dsTanjiroLookingAtPhone: Template = {
                         fontFamily: font,
                         fontSize: 15,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#58585b",
                     }}
                 >
@@ -127,9 +126,9 @@ export const dsTanjiroLookingAtPhone: Template = {
                 style={{
                     position: "absolute",
                     left: "3%",
-                    top: "17%",
-                    width: "85%",
-                    height: "19%",
+                    top: "16%",
+                    width: "93%",
+                    height: "20%",
                     display: "flex",
                     alignItems: "flex-start",
                     justifyContent: "flex-start",
@@ -143,9 +142,8 @@ export const dsTanjiroLookingAtPhone: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 20,
+                        fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#cbcbcb",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const griffinsPeterGriffinRunningAway: Template = {
     name: "griffinsPeterGriffinRunningAway",
@@ -27,10 +28,10 @@ export const griffinsPeterGriffinRunningAway: Template = {
         [Locale.ChineseCN]: "彼得·格里芬逃跑",
     }),
     topics: [Topic.Griffins, Topic.Cartoons],
-    types: [Type.TextTop, Type.FaceImage],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 800,
-    height: 600,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 750,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Peter`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -46,7 +47,7 @@ export const griffinsPeterGriffinRunningAway: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/griffinsPeterGriffinRunningAway.png"
                 width={800}
                 height={600}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
@@ -54,7 +55,7 @@ export const griffinsPeterGriffinRunningAway: Template = {
                 height={200}
                 style={{
                     position: "absolute",
-                    top: "20%",
+                    bottom: 280,
                     right: 220,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -66,12 +67,13 @@ export const griffinsPeterGriffinRunningAway: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -80,9 +82,8 @@ export const griffinsPeterGriffinRunningAway: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

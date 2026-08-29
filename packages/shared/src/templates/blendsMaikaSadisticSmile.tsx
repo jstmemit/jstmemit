@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blendsMaikaSadisticSmile: Template = {
     name: "blendsMaikaSadisticSmile",
@@ -29,8 +30,8 @@ export const blendsMaikaSadisticSmile: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextBottomWithBackground],
     width: 787,
-    height: 552,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 582,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -54,12 +55,12 @@ export const blendsMaikaSadisticSmile: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "140px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -69,9 +70,8 @@ export const blendsMaikaSadisticSmile: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

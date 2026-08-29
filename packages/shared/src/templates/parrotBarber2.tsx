@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const parrotBarber2: Template = {
     name: "parrotBarber2",
@@ -30,7 +31,7 @@ export const parrotBarber2: Template = {
     types: [Type.TextBottom, Type.FaceImage],
     width: 672,
     height: 921,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Parrot face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -81,9 +82,8 @@ export const parrotBarber2: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

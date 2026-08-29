@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const konosubaAquaCrying1: Template = {
     name: "konosubaAquaCrying1",
@@ -46,7 +47,7 @@ export const konosubaAquaCrying1: Template = {
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/konosubaAquaCrying.gif"
                 width={540}
-                height={457}
+                height={470}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -60,19 +61,18 @@ export const konosubaAquaCrying1: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

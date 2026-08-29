@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tf2Hahaha: Template = {
     name: "tf2Hahaha",
@@ -30,7 +31,7 @@ export const tf2Hahaha: Template = {
     types: [Type.FaceImage, Type.TextRight],
     width: 1732,
     height: 1732,
-    texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 10 }],
     images: [
         { id: 0, description: "person who says the phrase" },
         { id: 1, description: "person who reacts" },
@@ -108,9 +109,8 @@ export const tf2Hahaha: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 85,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

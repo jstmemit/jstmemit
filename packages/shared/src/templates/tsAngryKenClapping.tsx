@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tsAngryKenClapping: Template = {
     name: "tsAngryKenClapping",
@@ -31,7 +32,7 @@ export const tsAngryKenClapping: Template = {
     width: 1096,
     height: 720,
     animationDuration: 320,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -60,19 +61,18 @@ export const tsAngryKenClapping: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "30px",
                     backgroundColor: "#0e0a04",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 9,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 80,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

@@ -9,8 +9,8 @@ import { images } from "../data/variants.ts";
 
 setGlobalDispatcher(
     new Agent({
-        connectTimeout: ms("1m"),
-        connections: 256,
+        connectTimeout: ms("5m"),
+        connections: 128,
     }),
 );
 

@@ -1,1 +1,5 @@
-export const fontSize = (text: string = "") => (text.length <= 12 ? "11vw" : text.length <= 30 ? "7vw" : "5vw");
+export const fontSize = (text: string = ""): string => {
+    const len: number = Math.max(1, text.length);
+    const size: number = Math.max(6, 11 - Math.sqrt(len));
+    return `${size.toFixed(1)}vw`;
+};

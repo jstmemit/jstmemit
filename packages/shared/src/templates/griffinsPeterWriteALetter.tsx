@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const griffinsPeterWriteALetter: Template = {
     name: "griffinsPeterWriteALetter",
@@ -27,10 +28,10 @@ export const griffinsPeterWriteALetter: Template = {
         [Locale.ChineseCN]: "彼得写信",
     }),
     topics: [Topic.Griffins, Topic.Cartoons],
-    types: [Type.TextTop, Type.FaceImage],
+    types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 1080,
-    height: 598,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 788,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Peter`s face" },
         { id: 1, description: "Lois`s face" },
@@ -57,7 +58,7 @@ export const griffinsPeterWriteALetter: Template = {
                 height={200}
                 style={{
                     position: "absolute",
-                    top: "25%",
+                    top: "150px",
                     left: "38%",
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -69,7 +70,7 @@ export const griffinsPeterWriteALetter: Template = {
                 height={150}
                 style={{
                     position: "absolute",
-                    bottom: "24%",
+                    top: "304px",
                     right: "2%",
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -79,15 +80,15 @@ export const griffinsPeterWriteALetter: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
+                    bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "190px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
-                    backgroundImage: "linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5))",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -96,11 +97,9 @@ export const griffinsPeterWriteALetter: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
-                        color: "#ffffff",
-                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

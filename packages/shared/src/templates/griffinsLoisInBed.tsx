@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const griffinsLoisInBed: Template = {
     name: "griffinsLoisInBed",
@@ -30,7 +31,7 @@ export const griffinsLoisInBed: Template = {
     types: [Type.TextTop, Type.FaceImage],
     width: 735,
     height: 479,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Lois`s face" },
         { id: 1, description: "Peter`s face" },
@@ -82,7 +83,6 @@ export const griffinsLoisInBed: Template = {
                     top: 0,
                     width: "50%",
                     height: "50%",
-
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -92,13 +92,12 @@ export const griffinsLoisInBed: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

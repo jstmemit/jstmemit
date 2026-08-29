@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const expandingBrain1: Template = {
     name: "expandingBrain1",
@@ -31,10 +32,10 @@ export const expandingBrain1: Template = {
     width: 857,
     height: 1202,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
-        { id: 2, description: "third reaction", minLength: 1, maxLength: 12 },
-        { id: 3, description: "fourth reaction", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
+        { id: 2, description: "third reaction", minLength: 1, maxLength: 8 },
+        { id: 3, description: "fourth reaction", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -69,13 +70,12 @@ export const expandingBrain1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -98,13 +98,12 @@ export const expandingBrain1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -127,13 +126,12 @@ export const expandingBrain1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -156,13 +154,12 @@ export const expandingBrain1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[3]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

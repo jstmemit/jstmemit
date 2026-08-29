@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const griffinsPaddedWalls: Template = {
     name: "griffinsPaddedWalls",
@@ -29,8 +30,8 @@ export const griffinsPaddedWalls: Template = {
     topics: [Topic.Griffins, Topic.Cartoons],
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 640,
-    height: 457,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 15 }],
+    height: 477,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Peter`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -54,7 +55,7 @@ export const griffinsPaddedWalls: Template = {
                 height={120}
                 style={{
                     position: "absolute",
-                    top: "12%",
+                    top: "11%",
                     left: "32%",
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -66,25 +67,23 @@ export const griffinsPaddedWalls: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100px",
-
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

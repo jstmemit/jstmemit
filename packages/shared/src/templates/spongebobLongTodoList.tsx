@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const spongebobLongTodoList: Template = {
     name: "spongebobLongTodoList",
@@ -29,8 +30,8 @@ export const spongebobLongTodoList: Template = {
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 1000,
-    height: 991,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    height: 971,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -54,7 +55,7 @@ export const spongebobLongTodoList: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "200px",
+                    height: "180px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -65,13 +66,12 @@ export const spongebobLongTodoList: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

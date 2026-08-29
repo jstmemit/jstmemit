@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const simpsonsMonkeyInHomerHead: Template = {
     name: "simpsonsMonkeyInHomerHead",
@@ -29,8 +30,8 @@ export const simpsonsMonkeyInHomerHead: Template = {
     topics: [Topic.Simpsons, Topic.Cartoons, Topic.Reaction],
     types: [Type.ObjectImage, Type.TextBottomWithBackground],
     width: 450,
-    height: 490,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 480,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "face of monkey in Homer`s head" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -66,24 +67,23 @@ export const simpsonsMonkeyInHomerHead: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "90px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

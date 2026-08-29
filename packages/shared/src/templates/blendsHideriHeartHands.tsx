@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blendsHideriHeartHands: Template = {
     name: "blendsHideriHeartHands",
@@ -27,10 +28,10 @@ export const blendsHideriHeartHands: Template = {
         [Locale.ChineseCN]: "绯多莉比爱心手势",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
-    types: [Type.TextLeftWithBackground, Type.FaceImage],
+    types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 1710,
-    height: 900,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
+    height: 1200,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Hideri`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -64,27 +65,27 @@ export const blendsHideriHeartHands: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: "20%",
-                    top: "8%",
-                    width: "25%",
-                    height: "50%",
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "300px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 80,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
-                        color: "#ffffff",
+                        color: "#000000",
                     }}
                 >
                     {texts[0]}

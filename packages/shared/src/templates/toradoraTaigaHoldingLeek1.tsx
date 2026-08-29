@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const toradoraTaigaHoldingLeek1: Template = {
     name: "toradoraTaigaHoldingLeek1",
@@ -29,7 +30,7 @@ export const toradoraTaigaHoldingLeek1: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 519,
-    height: 380,
+    height: 390,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Taiga`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -54,7 +55,7 @@ export const toradoraTaigaHoldingLeek1: Template = {
                 height={100}
                 style={{
                     position: "absolute",
-                    top: 125,
+                    top: 135,
                     left: 150,
                     objectFit: "cover",
                     borderRadius: "100%",
@@ -67,12 +68,12 @@ export const toradoraTaigaHoldingLeek1: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -82,9 +83,8 @@ export const toradoraTaigaHoldingLeek1: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

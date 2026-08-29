@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const post: Template = {
     name: "post",
@@ -31,8 +32,8 @@ export const post: Template = {
     width: 1108,
     height: 772,
     texts: [
-        { id: 0, description: "post author's name", minLength: 1, maxLength: 4 },
-        { id: 1, description: "post text", minLength: 5, maxLength: 20 },
+        { id: 0, description: "post author's name", minLength: 1, maxLength: 5 },
+        { id: 1, description: "post text", minLength: 5, maxLength: 30 },
     ],
     images: [{ id: 0, description: "post author's profile picture" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -85,7 +86,6 @@ export const post: Template = {
                         fontFamily: font,
                         fontSize: 50,
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
@@ -109,13 +109,12 @@ export const post: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 85,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

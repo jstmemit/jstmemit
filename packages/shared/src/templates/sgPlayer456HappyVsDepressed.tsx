@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const sgPlayer456HappyVsDepressed: Template = {
     name: "sgPlayer456HappyVsDepressed",
@@ -31,8 +32,8 @@ export const sgPlayer456HappyVsDepressed: Template = {
     width: 718,
     height: 714,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -72,9 +73,8 @@ export const sgPlayer456HappyVsDepressed: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -102,9 +102,8 @@ export const sgPlayer456HappyVsDepressed: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

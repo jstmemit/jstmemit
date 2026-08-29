@@ -4,6 +4,7 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 
 export const arobmiAngrySistineFibel: Template = {
@@ -29,7 +30,7 @@ export const arobmiAngrySistineFibel: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.AkashicRecords],
     types: [Type.TextTopWithBackground],
     width: 658,
-    height: 496,
+    height: 516,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -54,7 +55,7 @@ export const arobmiAngrySistineFibel: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "130px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -69,9 +70,8 @@ export const arobmiAngrySistineFibel: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

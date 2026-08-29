@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const spongebobRainbow: Template = {
     name: "spongebobRainbow",
@@ -29,8 +30,8 @@ export const spongebobRainbow: Template = {
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 1920,
-    height: 1400,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    height: 1550,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "SpongeBob`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -67,12 +68,12 @@ export const spongebobRainbow: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "200px",
+                    height: "350px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                     backgroundColor: "white",
                 }}
             >
@@ -82,9 +83,8 @@ export const spongebobRainbow: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 80,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

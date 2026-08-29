@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const dandadanOkarunWriting: Template = {
     name: "dandadanOkarunWriting",
@@ -29,7 +30,7 @@ export const dandadanOkarunWriting: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 498,
-    height: 412,
+    height: 422,
     animationDuration: 2000,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -55,12 +56,12 @@ export const dandadanOkarunWriting: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -70,9 +71,8 @@ export const dandadanOkarunWriting: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

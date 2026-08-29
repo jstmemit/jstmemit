@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blendsMafuyuHoshikawaSparkle: Template = {
     name: "blendsMafuyuHoshikawaSparkle",
@@ -29,8 +30,8 @@ export const blendsMafuyuHoshikawaSparkle: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.BlendS],
     types: [Type.TextTopWithBackground],
     width: 1280,
-    height: 900,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    height: 950,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -54,7 +55,7 @@ export const blendsMafuyuHoshikawaSparkle: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "180px",
+                    height: "230px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -69,9 +70,8 @@ export const blendsMafuyuHoshikawaSparkle: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tf2ScoutTalk: Template = {
     name: "tf2ScoutTalk",
@@ -30,7 +31,7 @@ export const tf2ScoutTalk: Template = {
     types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 640,
     height: 857,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 26 }],
     images: [{ id: 0, description: "Scout`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -76,13 +77,12 @@ export const tf2ScoutTalk: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

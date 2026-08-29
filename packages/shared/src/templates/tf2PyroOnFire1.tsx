@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tf2PyroOnFire1: Template = {
     name: "tf2PyroOnFire1",
@@ -29,7 +30,7 @@ export const tf2PyroOnFire1: Template = {
     topics: [Topic.Reaction, Topic.Games, Topic.TeamFortress2],
     types: [Type.TextTopWithBackground, Type.Animated, Type.FaceImage],
     width: 640,
-    height: 450,
+    height: 480,
     animationDuration: 3480,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Pyro`s face" }],
@@ -55,7 +56,7 @@ export const tf2PyroOnFire1: Template = {
                 height={150}
                 style={{
                     position: "absolute",
-                    top: 100,
+                    top: 130,
                     right: 260,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -67,7 +68,7 @@ export const tf2PyroOnFire1: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -82,9 +83,8 @@ export const tf2PyroOnFire1: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

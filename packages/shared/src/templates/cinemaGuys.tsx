@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const cinemaGuys: Template = {
     name: "cinemaGuys",
@@ -31,8 +32,8 @@ export const cinemaGuys: Template = {
     width: 1280,
     height: 947,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 20 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 20 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 10 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 10 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -67,13 +68,12 @@ export const cinemaGuys: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -97,13 +97,12 @@ export const cinemaGuys: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 8,
+                        lineClamp: 5,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

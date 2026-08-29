@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const connor: Template = {
     name: "connor",
@@ -31,11 +32,11 @@ export const connor: Template = {
     width: 960,
     height: 1211,
     texts: [
-        { id: 0, description: "option 1", minLength: 1, maxLength: 12 },
-        { id: 1, description: "option 2", minLength: 1, maxLength: 12 },
-        { id: 2, description: "option 3", minLength: 1, maxLength: 12 },
-        { id: 3, description: "option 4 (the chosen one)", minLength: 1, maxLength: 20 },
-        { id: 4, description: "Connor`s phrase", minLength: 1, maxLength: 12 },
+        { id: 0, description: "option 1", minLength: 1, maxLength: 5 },
+        { id: 1, description: "option 2", minLength: 1, maxLength: 5 },
+        { id: 2, description: "option 3", minLength: 1, maxLength: 5 },
+        { id: 3, description: "option 4 (the chosen one)", minLength: 1, maxLength: 12 },
+        { id: 4, description: "Connor`s phrase", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "Connor's face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -80,14 +81,13 @@ export const connor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         width: "100%",
                     }}
@@ -110,14 +110,13 @@ export const connor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         width: "100%",
                     }}
@@ -140,14 +139,13 @@ export const connor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         width: "100%",
                     }}
@@ -171,14 +169,13 @@ export const connor: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         textAlign: "left",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[3]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         width: "100%",
                     }}
@@ -192,8 +189,9 @@ export const connor: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "10%",
+                    height: "15%",
                     display: "flex",
+                    textAlign: "center",
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
@@ -206,9 +204,8 @@ export const connor: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 55,
+                        fontSize: fontSize(texts[4]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

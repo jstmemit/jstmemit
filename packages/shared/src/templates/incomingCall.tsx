@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const incomingCall: Template = {
     name: "incomingCall",
@@ -30,7 +31,7 @@ export const incomingCall: Template = {
     types: [Type.AvatarImage, Type.TextCenter],
     width: 640,
     height: 1055,
-    texts: [{ id: 0, description: "name", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "name", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -65,9 +66,10 @@ export const incomingCall: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
                     width: "100%",
-                    height: "100%",
+                    height: "15%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -81,9 +83,8 @@ export const incomingCall: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                     }}
                 >

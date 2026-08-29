@@ -30,7 +30,7 @@ export const bearArrest: Template = {
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 640,
     height: 434,
-    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "breaking news", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "arrested bear" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -66,23 +66,28 @@ export const bearArrest: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "20%",
                     display: "flex",
-                    alignItems: "baseline",
+                    alignItems: "center",
                     justifyContent: "flex-start",
                     textAlign: "start",
-                    fontFamily: font,
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#000000",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
+                    padding: "10px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: 40,
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

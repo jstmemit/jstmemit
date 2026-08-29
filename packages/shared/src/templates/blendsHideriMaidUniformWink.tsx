@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blendsHideriMaidUniformWink: Template = {
     name: "blendsHideriMaidUniformWink",
@@ -30,7 +31,7 @@ export const blendsHideriMaidUniformWink: Template = {
     types: [Type.FaceImage, Type.TextBottom],
     width: 425,
     height: 700,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "Hideri`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -82,9 +83,8 @@ export const blendsHideriMaidUniformWink: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

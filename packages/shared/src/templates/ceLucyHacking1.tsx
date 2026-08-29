@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const ceLucyHacking1: Template = {
     name: "ceLucyHacking1",
@@ -29,7 +30,7 @@ export const ceLucyHacking1: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.DefaultText, Type.AvatarImage],
     width: 640,
-    height: 572,
+    height: 582,
     texts: [],
     images: [{ id: 0, description: "user avatar" }],
     element: ({ images, font }: TemplateProps) => (
@@ -68,7 +69,7 @@ export const ceLucyHacking1: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -83,9 +84,8 @@ export const ceLucyHacking1: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize("I am rapidly uncovering your location"),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

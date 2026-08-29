@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const catIsCalling: Template = {
     name: "catIsCalling",
@@ -30,7 +31,7 @@ export const catIsCalling: Template = {
     types: [Type.TextTop],
     width: 1498,
     height: 936,
-    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "what the cat says", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -67,9 +68,8 @@ export const catIsCalling: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 100,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         textShadow: "4px 4px 8px #fd9da8",
                     }}

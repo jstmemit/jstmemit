@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const futuramaZappBranniganAsDrake: Template = {
     name: "futuramaZappBranniganAsDrake",
@@ -31,8 +32,8 @@ export const futuramaZappBranniganAsDrake: Template = {
     width: 2048,
     height: 1368,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 10 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 10 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -62,18 +63,17 @@ export const futuramaZappBranniganAsDrake: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 100,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -91,18 +91,17 @@ export const futuramaZappBranniganAsDrake: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "30px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 100,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

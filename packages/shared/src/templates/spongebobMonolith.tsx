@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const spongebobMonolith: Template = {
     name: "spongebobMonolith",
@@ -81,7 +82,7 @@ export const spongebobMonolith: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "150px",
+                    height: "200px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -96,9 +97,8 @@ export const spongebobMonolith: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

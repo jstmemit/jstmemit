@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const spongebobHandsomeFace: Template = {
     name: "spongebobHandsomeFace",
@@ -31,8 +32,8 @@ export const spongebobHandsomeFace: Template = {
     width: 750,
     height: 1334,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 8 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 14 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 14 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -68,13 +69,12 @@ export const spongebobHandsomeFace: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
@@ -99,13 +99,12 @@ export const spongebobHandsomeFace: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

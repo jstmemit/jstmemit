@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const futuramaNotSureIfFry: Template = {
     name: "futuramaNotSureIfFry",
@@ -29,8 +30,8 @@ export const futuramaNotSureIfFry: Template = {
     topics: [Topic.Futurama, Topic.Cartoons, Topic.Reaction],
     types: [Type.TextTopWithBackground],
     width: 603,
-    height: 519,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 569,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -46,7 +47,7 @@ export const futuramaNotSureIfFry: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/futuramaNotSureIfFry.jpg"
                 width={603}
                 height={519}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
@@ -54,12 +55,13 @@ export const futuramaNotSureIfFry: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "13%",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
                     padding: "15px",
+                    backgroundColor: "white",
                 }}
             >
                 <div
@@ -68,9 +70,8 @@ export const futuramaNotSureIfFry: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const looksAtPaperAngry: Template = {
     name: "looksAtPaperAngry",
@@ -30,7 +31,7 @@ export const looksAtPaperAngry: Template = {
     types: [Type.TextBottomWithBackground, Type.FaceImage],
     width: 768,
     height: 727,
-    texts: [{ id: 0, description: "what's written on the paper", minLength: 1, maxLength: 3 }],
+    texts: [{ id: 0, description: "what's written on the paper", minLength: 1, maxLength: 2 }],
     images: [
         { id: 0, description: "person passing the note" },
         { id: 1, description: "person reading it angrily" },
@@ -111,9 +112,8 @@ export const looksAtPaperAngry: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

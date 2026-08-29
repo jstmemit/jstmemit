@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const ceLucyCryingDavidChad: Template = {
     name: "ceLucyCryingDavidChad",
@@ -29,10 +30,10 @@ export const ceLucyCryingDavidChad: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.CyberpunkEdgerunners],
     types: [Type.TextTopWithBackground, Type.TwoOption],
     width: 736,
-    height: 433,
+    height: 463,
     texts: [
-        { id: 0, description: "the phrase Lucy says", minLength: 1, maxLength: 6 },
-        { id: 1, description: "the phrase David says", minLength: 1, maxLength: 6 },
+        { id: 0, description: "the phrase Lucy says", minLength: 1, maxLength: 5 },
+        { id: 1, description: "the phrase David says", minLength: 1, maxLength: 5 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -57,12 +58,12 @@ export const ceLucyCryingDavidChad: Template = {
                     left: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "140px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px 30px",
+                    padding: "15px",
                     backgroundColor: "white",
                 }}
             >
@@ -72,9 +73,8 @@ export const ceLucyCryingDavidChad: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -87,12 +87,12 @@ export const ceLucyCryingDavidChad: Template = {
                     right: 0,
                     top: 0,
                     width: "50%",
-                    height: "110px",
+                    height: "140px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px 30px",
+                    padding: "15px",
                     backgroundColor: "white",
                 }}
             >
@@ -102,9 +102,8 @@ export const ceLucyCryingDavidChad: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

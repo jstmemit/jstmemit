@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const crowdFromAngryToHappy: Template = {
     name: "crowdFromAngryToHappy",
@@ -79,10 +80,10 @@ export const crowdFromAngryToHappy: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
+                    top: "1%",
                     width: "50%",
                     height: "15%",
-                    padding: "50px",
+                    padding: "10px 50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -92,13 +93,11 @@ export const crowdFromAngryToHappy: Template = {
                     style={{
                         textAlign: "center",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",
-
                         textOverflow: "ellipsis",
                     }}
                 >
@@ -109,10 +108,10 @@ export const crowdFromAngryToHappy: Template = {
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "50%",
+                    top: "52%",
                     width: "50%",
                     height: "15%",
-                    padding: "50px",
+                    padding: "10px 50px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -122,9 +121,8 @@ export const crowdFromAngryToHappy: Template = {
                     style={{
                         textAlign: "center",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                         wordBreak: "break-word",
                         whiteSpace: "nowrap",

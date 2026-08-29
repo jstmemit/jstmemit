@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const mrBeanWaiting1: Template = {
     name: "mrBeanWaiting1",
@@ -30,7 +31,7 @@ export const mrBeanWaiting1: Template = {
     types: [Type.TextCenterWithBackground, Type.FaceImage, Type.FourOption],
     width: 736,
     height: 617,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "Mr Bean`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -113,13 +114,12 @@ export const mrBeanWaiting1: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 1,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

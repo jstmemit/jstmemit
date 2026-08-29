@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const dogAndTeblet: Template = {
     name: "dogAndTeblet",
@@ -30,7 +31,7 @@ export const dogAndTeblet: Template = {
     types: [Type.TextCenter, Type.FaceImage],
     width: 1000,
     height: 572,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 7 }],
     images: [{ id: 0, description: "dog face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -80,9 +81,8 @@ export const dogAndTeblet: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const gdoSataniaEvilSmart: Template = {
     name: "gdoSataniaEvilSmart",
@@ -31,7 +32,7 @@ export const gdoSataniaEvilSmart: Template = {
     width: 1000,
     height: 421,
     animationDuration: 1620,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -70,9 +71,8 @@ export const gdoSataniaEvilSmart: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 70,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

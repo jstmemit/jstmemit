@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const simpsonsHomerInLesbianBar: Template = {
     name: "simpsonsHomerInLesbianBar",
@@ -29,8 +30,8 @@ export const simpsonsHomerInLesbianBar: Template = {
     topics: [Topic.Simpsons, Topic.Cartoons],
     types: [Type.FaceImage, Type.TextBottomWithBackground],
     width: 800,
-    height: 580,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 630,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [
         { id: 0, description: "Homer`s face" },
         { id: 1, description: "faces of all girls" },
@@ -249,7 +250,7 @@ export const simpsonsHomerInLesbianBar: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    bottom: 250,
+                    bottom: 300,
                     left: 60,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -261,7 +262,7 @@ export const simpsonsHomerInLesbianBar: Template = {
                 height={90}
                 style={{
                     position: "absolute",
-                    bottom: 250,
+                    bottom: 300,
                     left: 130,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -273,7 +274,7 @@ export const simpsonsHomerInLesbianBar: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -284,13 +285,12 @@ export const simpsonsHomerInLesbianBar: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 3,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

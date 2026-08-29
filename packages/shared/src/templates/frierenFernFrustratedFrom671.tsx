@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const frierenFernFrustratedFrom671: Template = {
     name: "frierenFernFrustratedFrom671",
@@ -29,7 +30,7 @@ export const frierenFernFrustratedFrom671: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 811,
-    height: 920,
+    height: 870,
     animationDuration: 500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -55,7 +56,7 @@ export const frierenFernFrustratedFrom671: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "200px",
+                    height: "150px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -70,9 +71,8 @@ export const frierenFernFrustratedFrom671: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

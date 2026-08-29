@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blendsHideriSmugFace: Template = {
     name: "blendsHideriSmugFace",
@@ -30,7 +31,7 @@ export const blendsHideriSmugFace: Template = {
     types: [Type.TextRightWithBackground],
     width: 638,
     height: 396,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 13 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -69,9 +70,8 @@ export const blendsHideriSmugFace: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

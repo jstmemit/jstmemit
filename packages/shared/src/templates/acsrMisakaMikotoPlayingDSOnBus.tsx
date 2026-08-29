@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const acsrMisakaMikotoPlayingDSOnBus: Template = {
     name: "acsrMisakaMikotoPlayingDSOnBus",
@@ -31,8 +32,8 @@ export const acsrMisakaMikotoPlayingDSOnBus: Template = {
     width: 736,
     height: 923,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 15 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 15 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -69,13 +70,12 @@ export const acsrMisakaMikotoPlayingDSOnBus: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 8,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -100,13 +100,12 @@ export const acsrMisakaMikotoPlayingDSOnBus: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 8,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

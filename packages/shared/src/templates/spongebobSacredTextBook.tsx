@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const spongebobSacredTextBook: Template = {
     name: "spongebobSacredTextBook",
@@ -30,7 +31,7 @@ export const spongebobSacredTextBook: Template = {
     types: [Type.FaceImage, Type.TextBottomWithBackground, Type.DefaultText],
     width: 1280,
     height: 1245,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "SpongeBob`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -77,13 +78,12 @@ export const spongebobSacredTextBook: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

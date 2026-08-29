@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const futuramaSkeletons: Template = {
     name: "futuramaSkeletons",
@@ -94,7 +95,7 @@ export const futuramaSkeletons: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "20%",
+                    height: "30%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -109,9 +110,8 @@ export const futuramaSkeletons: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

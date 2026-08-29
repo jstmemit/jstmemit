@@ -27,12 +27,12 @@ export const iInterviewedAnimals: Template = {
         [Locale.ChineseCN]: "我采访了动物",
     }),
     topics: [Topic.YouTube, Topic.Animals],
-    types: [Type.DefaultText, Type.ObjectImage, Type.TextRight],
+    types: [Type.DefaultText, Type.ObjectImage],
     width: 621,
     height: 426,
-    texts: [{ id: 0, description: "what the animal says", minLength: 1, maxLength: 2 }],
+    texts: [],
     images: [{ id: 0, description: "the thumbnail subject" }],
-    element: ({ texts, images, font }: TemplateProps) => (
+    element: ({ images }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -58,29 +58,6 @@ export const iInterviewedAnimals: Template = {
                 height={426}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
-            <div
-                style={{
-                    position: "absolute",
-                    right: 50,
-                    bottom: 150,
-                    width: "25%",
-                    height: "33%",
-                    padding: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: font,
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    paddingBottom: "0.2em",
-                    color: "#ffffff",
-                    wordBreak: "break-word",
-                    textShadow: "0 0 8px rgba(0, 0, 0, 1)",
-                }}
-            >
-                "{texts[0]}"
-            </div>
         </div>
     ),
 };

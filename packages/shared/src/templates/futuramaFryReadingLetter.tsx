@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const futuramaFryReadingLetter: Template = {
     name: "futuramaFryReadingLetter",
@@ -30,7 +31,7 @@ export const futuramaFryReadingLetter: Template = {
     types: [Type.FaceImage, Type.TextCenterWithBackground],
     width: 720,
     height: 1110,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "Fry`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -77,13 +78,12 @@ export const futuramaFryReadingLetter: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

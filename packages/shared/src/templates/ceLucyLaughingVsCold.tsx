@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const ceLucyLaughingVsCold: Template = {
     name: "ceLucyLaughingVsCold",
@@ -31,8 +32,8 @@ export const ceLucyLaughingVsCold: Template = {
     width: 2046,
     height: 1846,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 15 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 15 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 12 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -62,19 +63,18 @@ export const ceLucyLaughingVsCold: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 90,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -92,19 +92,18 @@ export const ceLucyLaughingVsCold: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 90,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const expandingBrain: Template = {
     name: "expandingBrain",
@@ -31,9 +32,9 @@ export const expandingBrain: Template = {
     width: 1440,
     height: 1403,
     texts: [
-        { id: 0, description: "first reaction", minLength: 1, maxLength: 18 },
-        { id: 1, description: "second reaction", minLength: 1, maxLength: 18 },
-        { id: 2, description: "third reaction", minLength: 1, maxLength: 18 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 8 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 8 },
+        { id: 2, description: "third reaction", minLength: 1, maxLength: 8 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -63,18 +64,17 @@ export const expandingBrain: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -92,18 +92,17 @@ export const expandingBrain: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -121,18 +120,17 @@ export const expandingBrain: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "25px",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 6,
+                        lineClamp: 4,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 60,
+                        fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

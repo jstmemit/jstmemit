@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const stonks: Template = {
     name: "stonks",
@@ -30,7 +31,7 @@ export const stonks: Template = {
     types: [Type.BackgroundImage, Type.TextRight],
     width: 512,
     height: 386,
-    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 15 }],
+    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 16 }],
     images: [{ id: 0, description: "what the stonks guy is happy about" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -64,7 +65,7 @@ export const stonks: Template = {
                     position: "absolute",
                     right: 0,
                     top: 0,
-                    width: "45%",
+                    width: "50%",
                     height: "100%",
                     display: "flex",
                     alignItems: "center",
@@ -80,9 +81,8 @@ export const stonks: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}

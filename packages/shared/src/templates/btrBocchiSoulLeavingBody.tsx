@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const btrBocchiSoulLeavingBody: Template = {
     name: "btrBocchiSoulLeavingBody",
@@ -29,8 +30,8 @@ export const btrBocchiSoulLeavingBody: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.BocchiTheRock],
     types: [Type.TextBottomWithBackground],
     width: 1280,
-    height: 850,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    height: 960,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -54,12 +55,12 @@ export const btrBocchiSoulLeavingBody: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "130px",
+                    height: "240px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "20px",
                     backgroundColor: "white",
                 }}
             >
@@ -69,9 +70,8 @@ export const btrBocchiSoulLeavingBody: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 50,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

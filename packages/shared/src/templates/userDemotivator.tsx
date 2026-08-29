@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const userDemotivator: Template = {
     name: "userDemotivator",
@@ -29,7 +30,7 @@ export const userDemotivator: Template = {
     topics: [Topic.Demotivator],
     types: [Type.ObjectImage, Type.TextBottomWithBackground],
     width: 500,
-    height: 570,
+    height: 580,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "image" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -62,7 +63,7 @@ export const userDemotivator: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -76,9 +77,8 @@ export const userDemotivator: Template = {
                         textOverflow: "ellipsis",
                         wordBreak: "break-word",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "white",
                     }}
                 >

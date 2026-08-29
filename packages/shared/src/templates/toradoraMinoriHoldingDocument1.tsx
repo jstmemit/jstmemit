@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const toradoraMinoriHoldingDocument1: Template = {
     name: "toradoraMinoriHoldingDocument1",
@@ -29,8 +30,8 @@ export const toradoraMinoriHoldingDocument1: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextBottomWithBackground, Type.ObjectImage],
     width: 640,
-    height: 464,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 494,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Document" }],
     element: ({ images, texts, font }: TemplateProps) => (
         <div
@@ -66,12 +67,12 @@ export const toradoraMinoriHoldingDocument1: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -81,9 +82,8 @@ export const toradoraMinoriHoldingDocument1: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const toradoraTaigaAngryCrying: Template = {
     name: "toradoraTaigaAngryCrying",
@@ -29,7 +30,7 @@ export const toradoraTaigaAngryCrying: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.Toradora],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,
-    height: 371,
+    height: 381,
     animationDuration: 2300,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -55,7 +56,7 @@ export const toradoraTaigaAngryCrying: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -70,9 +71,8 @@ export const toradoraTaigaAngryCrying: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

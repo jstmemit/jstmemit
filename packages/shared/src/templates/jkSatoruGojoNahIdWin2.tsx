@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const jkSatoruGojoNahIdWin2: Template = {
     name: "jkSatoruGojoNahIdWin2",
@@ -29,8 +30,8 @@ export const jkSatoruGojoNahIdWin2: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.JujutsuKaisen],
     types: [Type.TextTopWithBackground],
     width: 350,
-    height: 458,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
+    height: 448,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -54,12 +55,12 @@ export const jkSatoruGojoNahIdWin2: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "90px",
+                    height: "80px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
@@ -69,9 +70,8 @@ export const jkSatoruGojoNahIdWin2: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const dfragRokaShibasaki: Template = {
     name: "dfragRokaShibasaki",
@@ -29,7 +30,7 @@ export const dfragRokaShibasaki: Template = {
     topics: [Topic.Anime, Topic.DFrag],
     types: [Type.TextTopWithBackground, Type.FaceImage],
     width: 750,
-    height: 543,
+    height: 573,
     texts: [{ id: 0, description: "the phrase Roka says", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "Roka`s face" }],
     element: ({ texts, images, font }: TemplateProps) => (
@@ -66,7 +67,7 @@ export const dfragRokaShibasaki: Template = {
                     left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "140px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -81,9 +82,8 @@ export const dfragRokaShibasaki: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 40,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

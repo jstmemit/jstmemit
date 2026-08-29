@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const yesChad: Template = {
     name: "yesChad",
@@ -59,8 +60,8 @@ export const yesChad: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    width: "50%",
-                    height: "25%",
+                    width: "53%",
+                    height: "27%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -74,9 +75,8 @@ export const yesChad: Template = {
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 80,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

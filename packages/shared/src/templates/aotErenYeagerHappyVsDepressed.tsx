@@ -4,6 +4,7 @@ import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 
 export const aotErenYeagerHappyVsDepressed: Template = {
@@ -68,13 +69,12 @@ export const aotErenYeagerHappyVsDepressed: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -98,13 +98,12 @@ export const aotErenYeagerHappyVsDepressed: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 6,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 45,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

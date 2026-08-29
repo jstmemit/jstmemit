@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
     name: "kaguyasamaChikaFujiwaraFadingSmile",
@@ -31,9 +32,9 @@ export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
     width: 630,
     height: 551,
     texts: [
-        { id: 0, description: "first option", minLength: 1, maxLength: 8 },
-        { id: 1, description: "second option", minLength: 1, maxLength: 8 },
-        { id: 2, description: "third option", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first option", minLength: 1, maxLength: 6 },
+        { id: 1, description: "second option", minLength: 1, maxLength: 6 },
+        { id: 2, description: "third option", minLength: 1, maxLength: 6 },
     ],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -63,19 +64,18 @@ export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -93,19 +93,18 @@ export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[1]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >
@@ -123,19 +122,18 @@ export const kaguyasamaChikaFujiwaraFadingSmile: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 30,
+                        fontSize: fontSize(texts[2]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#000000",
                     }}
                 >

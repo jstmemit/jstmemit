@@ -5,6 +5,7 @@ import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
 import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const quoteTopText: Template = {
     name: "quoteTopText",
@@ -30,7 +31,7 @@ export const quoteTopText: Template = {
     types: [Type.BackgroundImage, Type.TextTopWithBackground],
     width: 800,
     height: 800,
-    texts: [{ id: 0, description: "quote", minLength: 1, maxLength: 20 }],
+    texts: [{ id: 0, description: "quote", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "background image" }],
     element: ({ texts, images, font }: TemplateProps) => (
         <div
@@ -64,19 +65,18 @@ export const quoteTopText: Template = {
                     alignItems: "flex-start",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "30px",
+                    padding: "20px",
                     backgroundColor: "rgba(0,0,0,0.5)",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 5,
+                        lineClamp: 3,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,
-                        fontSize: 44,
+                        fontSize: fontSize(texts[0]),
                         lineHeight: 1.05,
-                        paddingBottom: "0.2em",
                         color: "#ffffff",
                         textShadow: "0 0 8px rgba(0, 0, 0, 1)",
                     }}
