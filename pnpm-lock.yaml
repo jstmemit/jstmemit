@@ -448,9 +448,6 @@ importers:
         specifier: ^8.10.0
         version: 8.10.0
     devDependencies:
-      '@jstmemit/cache':
-        specifier: workspace:*
-        version: link:../../packages/cache
       '@jstmemit/images':
         specifier: workspace:*
         version: link:../../packages/images
