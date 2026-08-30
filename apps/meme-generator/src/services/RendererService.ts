@@ -7,6 +7,7 @@ import type { RegisteredFamily } from "@takumi-rs/core";
 import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 import type { IRendererService } from "#/interfaces/IRendererService.ts";
 import { image, text } from "@takumi-rs/helpers";
+import { emojiRegex } from "@jstmemit/shared/regex/emojiRegex";
 
 export class RendererService implements IRendererService {
     private readonly _templatesRepository: ITemplatesRepository;
@@ -15,7 +16,6 @@ export class RendererService implements IRendererService {
     public readonly sources: ImageSource[] = [];
     public readonly fontsReady: Promise<void>;
     public readonly renderer: Renderer = new Renderer({ cacheMaxBytes: 1024 * 1024 * 1024 });
-    private readonly _emojiRegex: RegExp = /<a?:\w{2,32}:(\d{17,20})>/g;
 
     public constructor(fontsService: IFontsService, templatesRepository: ITemplatesRepository) {
         this._templatesRepository = templatesRepository;
@@ -97,10 +97,9 @@ export class RendererService implements IRendererService {
         if (node.type !== "container" || !node.children) return node;
 
         node.children = node.children.flatMap((child: Node): Node[] => {
-            if (child.type !== "text" || !this._emojiRegex.test(child.text))
-                return [this.extractDiscordEmojis(child, width)];
+            if (child.type !== "text" || !emojiRegex.test(child.text)) return [this.extractDiscordEmojis(child, width)];
 
-            return child.text.split(new RegExp(this._emojiRegex, "g")).flatMap((part: string, index: number): Node[] =>
+            return child.text.split(new RegExp(emojiRegex, "g")).flatMap((part: string, index: number): Node[] =>
                 index % 2
                     ? [
                           image({

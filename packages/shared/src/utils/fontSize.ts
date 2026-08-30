@@ -1,4 +1,4 @@
-const emojiRegex: RegExp = /<a?:\w{2,32}:(\d{17,20})>/g;
+import { emojiRegex } from "#/regex/emojiRegex.ts";
 
 export const fontSize = (text: string = ""): string => {
     text = text.replaceAll(emojiRegex, "1");

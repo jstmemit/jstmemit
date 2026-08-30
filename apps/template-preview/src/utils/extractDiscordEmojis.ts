@@ -1,7 +1,6 @@
 import { image, text } from "@takumi-rs/helpers";
 import type { ImageSource, Node } from "takumi-js";
-
-const emojiRegex: RegExp = /<a?:\w{2,32}:(\d{17,20})>/g;
+import { emojiRegex } from "@jstmemit/shared/regex/emojiRegex";
 
 export const extractDiscordEmojis = function (node: Node, width: number): Node {
     if (node.type !== "container" || !node.children) return node;
