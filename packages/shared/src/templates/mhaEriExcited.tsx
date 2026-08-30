@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const mhaEriExcited: Template = {
+    name: "mhaEriExcited",
+    displayName: buildLocales("Eri excited", {
+        [Locale.Russian]: "Радостная Эри",
+        [Locale.Ukrainian]: "Радісна Ері",
+        [Locale.Dutch]: "Opgewonden Eri",
+        [Locale.French]: "Eri excitée",
+        [Locale.German]: "Aufgeregte Eri",
+        [Locale.Polish]: "Podekscytowana Eri",
+        [Locale.SpanishES]: "Eri emocionada",
+        [Locale.SpanishLATAM]: "Eri emocionada",
+        [Locale.PortugueseBR]: "Eri animada",
+        [Locale.Turkish]: "Heyecanlı Eri",
+        [Locale.Italian]: "Eri emozionata",
+        [Locale.Indonesian]: "Eri bersemangat",
+        [Locale.Czech]: "Nadšená Eri",
+        [Locale.Japanese]: "興奮する壊理",
+        [Locale.Korean]: "신난 에리",
+        [Locale.ChineseCN]: "兴奋的坏理",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
-    types: [Type.TextBottomWithBackground, Type.Animated],
-    width: 500,
-    height: 452,
-    animationDuration: 600,
+    topics: [Topic.Reaction, Topic.Anime, Topic.MyHeroicAcademy],
+    types: [Type.TextTopWithBackground, Type.Animated],
+    width: 540,
+    height: 404,
+    animationDuration: 3640,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,16 +45,16 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
-                width={500}
-                height={352}
-                style={{ position: "absolute", top: 0, right: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/mhaEriExcited.gif"
+                width={540}
+                height={304}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "100%",
                     height: "100px",
                     display: "flex",

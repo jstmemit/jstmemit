@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const mhaDekuWinningRace: Template = {
+    name: "mhaDekuWinningRace",
+    displayName: buildLocales("Deku winning race", {
+        [Locale.Russian]: "Деку побеждает в гонке",
+        [Locale.Ukrainian]: "Деку перемагає в гонці",
+        [Locale.Dutch]: "Deku wint de race",
+        [Locale.French]: "Deku gagnant la course",
+        [Locale.German]: "Deku gewinnt das Rennen",
+        [Locale.Polish]: "Deku wygrywający wyścig",
+        [Locale.SpanishES]: "Deku ganando la carrera",
+        [Locale.SpanishLATAM]: "Deku ganando la carrera",
+        [Locale.PortugueseBR]: "Deku vencendo a corrida",
+        [Locale.Turkish]: "Yarışı kazanan Deku",
+        [Locale.Italian]: "Deku che vince la gara",
+        [Locale.Indonesian]: "Deku memenangkan balapan",
+        [Locale.Czech]: "Deku vyhrávající závod",
+        [Locale.Japanese]: "レースに勝つデク",
+        [Locale.Korean]: "경주에서 이기는 데쿠",
+        [Locale.ChineseCN]: "赢得比赛的出久",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
+    topics: [Topic.Reaction, Topic.Anime, Topic.MyHeroicAcademy],
     types: [Type.TextBottomWithBackground, Type.Animated],
-    width: 500,
-    height: 452,
-    animationDuration: 600,
+    width: 540,
+    height: 402,
+    animationDuration: 2800,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,9 +45,9 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
-                width={500}
-                height={352}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/mhaDekuWinningRace.gif"
+                width={540}
+                height={302}
                 style={{ position: "absolute", top: 0, right: 0 }}
             />
             <div

@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const mhaDekuAllMightFace1: Template = {
+    name: "mhaDekuAllMightFace1",
+    displayName: buildLocales("Deku All Might face 1", {
+        [Locale.Russian]: "Деку с лицом Всемогущего 1",
+        [Locale.Ukrainian]: "Деку з обличчям Всемогутнього 1",
+        [Locale.Dutch]: "Deku met All Might gezicht 1",
+        [Locale.French]: "Visage d'All Might sur Deku 1",
+        [Locale.German]: "Deku mit All Might Gesicht 1",
+        [Locale.Polish]: "Deku z twarzą All Mighta 1",
+        [Locale.SpanishES]: "Cara de All Might en Deku 1",
+        [Locale.SpanishLATAM]: "Cara de All Might en Deku 1",
+        [Locale.PortugueseBR]: "Rosto de All Might no Deku 1",
+        [Locale.Turkish]: "All Might yüzlü Deku 1",
+        [Locale.Italian]: "Faccia di All Might su Deku 1",
+        [Locale.Indonesian]: "Deku dengan wajah All Might 1",
+        [Locale.Czech]: "Deku s tváří All Mighta 1",
+        [Locale.Japanese]: "オールマイトの顔のデク 1",
+        [Locale.Korean]: "올마이트 얼굴을 한 데쿠 1",
+        [Locale.ChineseCN]: "出久的欧尔麦特脸 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
-    types: [Type.TextBottomWithBackground, Type.Animated],
+    topics: [Topic.Reaction, Topic.Anime, Topic.MyHeroicAcademy],
+    types: [Type.TextTopWithBackground, Type.Animated],
     width: 500,
-    height: 452,
-    animationDuration: 600,
+    height: 381,
+    animationDuration: 880,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,16 +45,16 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/mhaDekuAllMightFace.gif"
                 width={500}
-                height={352}
-                style={{ position: "absolute", top: 0, right: 0 }}
+                height={281}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "100%",
                     height: "100px",
                     display: "flex",
