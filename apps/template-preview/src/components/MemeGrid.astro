@@ -2,12 +2,14 @@
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import MemeCard from "./MemeCard.astro";
-import { render, renderAnimation } from "takumi-js";
+import { type Node, render, renderAnimation } from "takumi-js";
 import { renderer, fetchCache, sources } from "../utils/renderer";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import { TemplatesService } from "../services/TemplatesService.ts";
+import { extractDiscordEmojis } from "../utils/extractDiscordEmojis.ts";
+import { fromJsx } from "@takumi-rs/helpers/jsx";
 
 interface Props {
     templateName: string;
@@ -30,8 +32,11 @@ const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Pr
         throw new Error();
     }
 
+    const { node } = await fromJsx(template.element(variant));
+    const element: Node = extractDiscordEmojis(node, template.width);
+
     if (template.animationDuration === undefined) {
-        const staticMeme = await render(template.element(variant), {
+        const staticMeme = await render(element, {
             width: template.width,
             height: template.height,
             renderer: renderer,
@@ -57,7 +62,7 @@ const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Pr
         renderer: renderer,
         fps: 10,
         format: "webp",
-        scenes: [{ durationMs: animationDuration, node: template.element(variant) }],
+        scenes: [{ durationMs: animationDuration, node: element }],
         emoji: "twemoji",
         quality: 25,
         drawDebugBorder: true,

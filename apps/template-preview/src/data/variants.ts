@@ -11,7 +11,7 @@ const fontsService: IFontsService = new FontsService(fontsRepository);
 // test data for meme template previews
 
 export const texts: string[] = [
-    "lorem",
+    "lorem <a:meme:1534260419085205677>",
     "Lorem ipsum dolor sit.",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sequi tenetur veniam!",
