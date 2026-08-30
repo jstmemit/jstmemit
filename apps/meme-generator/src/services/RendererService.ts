@@ -1,11 +1,12 @@
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
 import { Renderer } from "takumi-js/node";
-import type { ImageSource } from "takumi-js";
+import type { ImageSource, Node } from "takumi-js";
 import { analytics } from "@jstmemit/analytics";
 import type { RegisteredFamily } from "@takumi-rs/core";
 import type { FontOptions } from "@jstmemit/shared/models/FontOptions";
 import type { IRendererService } from "#/interfaces/IRendererService.ts";
+import { image, text } from "@takumi-rs/helpers";
 
 export class RendererService implements IRendererService {
     private readonly _templatesRepository: ITemplatesRepository;
@@ -14,6 +15,7 @@ export class RendererService implements IRendererService {
     public readonly sources: ImageSource[] = [];
     public readonly fontsReady: Promise<void>;
     public readonly renderer: Renderer = new Renderer({ cacheMaxBytes: 1024 * 1024 * 1024 });
+    private readonly _emojiRegex: RegExp = /<a?:\w{2,32}:(\d{17,20})>/g;
 
     public constructor(fontsService: IFontsService, templatesRepository: ITemplatesRepository) {
         this._templatesRepository = templatesRepository;
@@ -89,5 +91,28 @@ export class RendererService implements IRendererService {
             this.fetchCache.delete(url);
             analytics.captureException(error);
         }
+    }
+
+    public extractDiscordEmojis(node: Node, width: number): Node {
+        if (node.type !== "container" || !node.children) return node;
+
+        node.children = node.children.flatMap((child: Node): Node[] => {
+            if (child.type !== "text" || !this._emojiRegex.test(child.text))
+                return [this.extractDiscordEmojis(child, width)];
+
+            return child.text.split(new RegExp(this._emojiRegex, "g")).flatMap((part: string, index: number): Node[] =>
+                index % 2
+                    ? [
+                          image({
+                              src: `https://cdn.discordapp.com/emojis/${part}.webp?size=128`,
+                              width: width / 12.5,
+                              height: width / 12.5,
+                          }),
+                      ]
+                    : part.split(/(?<=\s)/).map((word: string): Node => text(word, child.style)),
+            );
+        });
+
+        return node;
     }
 }

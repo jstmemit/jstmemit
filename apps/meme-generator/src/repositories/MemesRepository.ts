@@ -1,8 +1,9 @@
-import { render, renderAnimation } from "takumi-js";
+import { type Node, render, renderAnimation } from "takumi-js";
 import type { IMemesRepository } from "#/interfaces/IMemesRepository.ts";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IRendererService } from "#/interfaces/IRendererService.ts";
+import { fromJsx } from "@takumi-rs/helpers/jsx";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _rendererService: IRendererService;
@@ -29,6 +30,9 @@ export class MemesRepository implements IMemesRepository {
         try {
             await this._rendererService.fontsReady;
 
+            const { node } = await fromJsx(template.element(props));
+            const element: Node = this._rendererService.extractDiscordEmojis(node, template.width);
+
             if (animated) {
                 const animationDuration: number = template.animationDuration ?? 1500;
                 return await renderAnimation({
@@ -45,10 +49,10 @@ export class MemesRepository implements IMemesRepository {
                     },
                     quality: 40,
                     fps: 12,
-                    scenes: [{ durationMs: animationDuration, node: template.element(props) }],
+                    scenes: [{ durationMs: animationDuration, node: element }],
                 });
             } else {
-                return await render(template.element(props), {
+                return await render(element, {
                     width: template.width,
                     height: template.height,
                     renderer: this._rendererService.renderer,
