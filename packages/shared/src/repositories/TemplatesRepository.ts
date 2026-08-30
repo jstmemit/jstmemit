@@ -544,6 +544,28 @@ import { lsKonataNerd } from "#/templates/lsKonataNerd.tsx";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readdirSync, readFileSync } from "node:fs";
+import { lsKonataPhonePanic } from "#/templates/lsKonataPhonePanic.tsx";
+import { lsKonataReadingManga } from "#/templates/lsKonataReadingManga.tsx";
+import { lsKonataSneezing } from "#/templates/lsKonataSneezing.tsx";
+import { lsKonataTryingToExplaing } from "#/templates/lsKonataTryingToExplaing.tsx";
+import { lsKonataTryingToExplaing1 } from "#/templates/lsKonataTryingToExplaing1.tsx";
+import { lsKonataWaitingForRamen } from "#/templates/lsKonataWaitingForRamen.tsx";
+import { lsKonataWaitingForRamen1 } from "#/templates/lsKonataWaitingForRamen1.tsx";
+import { lsKonataYawning } from "#/templates/lsKonataYawning.tsx";
+import { lsMiyukiAndTsukasa } from "#/templates/lsMiyukiAndTsukasa.tsx";
+import { lsTsukasaBitingPhone } from "#/templates/lsTsukasaBitingPhone.tsx";
+import { lsTsukasaSleeping } from "#/templates/lsTsukasaSleeping.tsx";
+import { mhaBabyDekuExcited } from "#/templates/mhaBabyDekuExcited.tsx";
+import { mhaBakugoGrinning } from "#/templates/mhaBakugoGrinning.tsx";
+import { mhaDekuAllMightFace1 } from "#/templates/mhaDekuAllMightFace1.tsx";
+import { mhaDekuAndEriDetermined } from "#/templates/mhaDekuAndEriDetermined.tsx";
+import { mhaDekuLunging } from "#/templates/mhaDekuLunging.tsx";
+import { mhaDekuPunching } from "#/templates/mhaDekuPunching.tsx";
+import { mhaDekuWinningRace } from "#/templates/mhaDekuWinningRace.tsx";
+import { mhaEriExcited } from "#/templates/mhaEriExcited.tsx";
+import { mhaTodorokiSmiling } from "#/templates/mhaTodorokiSmiling.tsx";
+import { monsterJohanAndTenmaStaring } from "#/templates/monsterJohanAndTenmaStaring.tsx";
+import { monsterTenmaEating } from "#/templates/monsterTenmaEating.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1121,6 +1143,28 @@ export class TemplatesRepository implements ITemplatesRepository {
             lsKonataGamingSmug,
             lsKonataHappy,
             lsKonataNerd,
+            lsKonataPhonePanic,
+            lsKonataReadingManga,
+            lsKonataSneezing,
+            lsKonataTryingToExplaing,
+            lsKonataTryingToExplaing1,
+            lsKonataWaitingForRamen,
+            lsKonataWaitingForRamen1,
+            lsKonataYawning,
+            lsMiyukiAndTsukasa,
+            lsTsukasaBitingPhone,
+            lsTsukasaSleeping,
+            mhaBabyDekuExcited,
+            mhaBakugoGrinning,
+            mhaDekuAllMightFace1,
+            mhaDekuAndEriDetermined,
+            mhaDekuLunging,
+            mhaDekuPunching,
+            mhaDekuWinningRace,
+            mhaEriExcited,
+            mhaTodorokiSmiling,
+            monsterJohanAndTenmaStaring,
+            monsterTenmaEating,
         ];
 
         return this._templates;
