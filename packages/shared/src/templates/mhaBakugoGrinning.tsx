@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const mhaBakugoGrinning: Template = {
+    name: "mhaBakugoGrinning",
+    displayName: buildLocales("Bakugo grinning", {
+        [Locale.Russian]: "Бакуго ухмыляется",
+        [Locale.Ukrainian]: "Бакуго посміхається",
+        [Locale.Dutch]: "Grijnzende Bakugo",
+        [Locale.French]: "Bakugo souriant",
+        [Locale.German]: "Grinsender Bakugo",
+        [Locale.Polish]: "Uśmiechający się Bakugo",
+        [Locale.SpanishES]: "Bakugo sonriendo",
+        [Locale.SpanishLATAM]: "Bakugo sonriendo",
+        [Locale.PortugueseBR]: "Bakugo sorrindo",
+        [Locale.Turkish]: "Sırıtan Bakugo",
+        [Locale.Italian]: "Bakugo che ghigna",
+        [Locale.Indonesian]: "Bakugo menyeringai",
+        [Locale.Czech]: "Usmívající se Bakugo",
+        [Locale.Japanese]: "ニヤリと笑う爆豪",
+        [Locale.Korean]: "씨익 웃는 바쿠고",
+        [Locale.ChineseCN]: "咧嘴笑的爆豪",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
+    topics: [Topic.Reaction, Topic.Anime, Topic.MyHeroicAcademy],
     types: [Type.TextBottomWithBackground, Type.Animated],
-    width: 500,
-    height: 452,
-    animationDuration: 600,
+    width: 540,
+    height: 404,
+    animationDuration: 770,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,9 +45,9 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
-                width={500}
-                height={352}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/mhaBakugoGrinning.gif"
+                width={540}
+                height={304}
                 style={{ position: "absolute", top: 0, right: 0 }}
             />
             <div

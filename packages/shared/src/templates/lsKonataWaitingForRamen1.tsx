@@ -7,34 +7,34 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const lsKonataWaitingForRamen1: Template = {
+    name: "lsKonataWaitingForRamen1",
+    displayName: buildLocales("Konata waiting for ramen 1", {
+        [Locale.Russian]: "Коната ждет рамен 1",
+        [Locale.Ukrainian]: "Коната чекає на рамен 1",
+        [Locale.Dutch]: "Konata wacht op ramen 1",
+        [Locale.French]: "Konata attendant ses ramen 1",
+        [Locale.German]: "Konata wartet auf Ramen 1",
+        [Locale.Polish]: "Konata czekająca na ramen 1",
+        [Locale.SpanishES]: "Konata esperando ramen 1",
+        [Locale.SpanishLATAM]: "Konata esperando ramen 1",
+        [Locale.PortugueseBR]: "Konata esperando ramen 1",
+        [Locale.Turkish]: "Ramen bekleyen Konata 1",
+        [Locale.Italian]: "Konata che aspetta il ramen 1",
+        [Locale.Indonesian]: "Konata menunggu ramen 1",
+        [Locale.Czech]: "Konata čekající na ramen 1",
+        [Locale.Japanese]: "ラーメンを待つこなた 1",
+        [Locale.Korean]: "라멘을 기다리는 코나타 1",
+        [Locale.ChineseCN]: "等待拉面的此方 1",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
-    types: [Type.TextBottomWithBackground, Type.Animated],
+    types: [Type.TextBottomWithBackground, Type.FaceImage, Type.Animated],
     width: 500,
-    height: 452,
-    animationDuration: 600,
+    height: 370,
+    animationDuration: 1500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
-    images: [],
-    element: ({ texts, font }: TemplateProps) => (
+    images: [{ id: 0, description: "Konata`s face" }],
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
@@ -45,10 +45,22 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataWaitingForRamen.gif"
                 width={500}
-                height={352}
+                height={270}
                 style={{ position: "absolute", top: 0, right: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={170}
+                height={170}
+                style={{
+                    position: "absolute",
+                    top: 70,
+                    right: 105,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
             <div
                 style={{

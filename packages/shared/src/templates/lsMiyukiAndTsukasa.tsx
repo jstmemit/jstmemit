@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const lsKonataApologizing: Template = {
-    name: "lsKonataApologizing",
-    displayName: buildLocales("Konata apologizing", {
-        [Locale.Russian]: "Извиняющаяся Коната",
-        [Locale.Ukrainian]: "Коната вибачається",
-        [Locale.Dutch]: "Zich verontschuldigende Konata",
-        [Locale.French]: "Konata qui s'excuse",
-        [Locale.German]: "Sich entschuldigende Konata",
-        [Locale.Polish]: "Przepraszająca Konata",
-        [Locale.SpanishES]: "Konata disculpándose",
-        [Locale.SpanishLATAM]: "Konata disculpándose",
-        [Locale.PortugueseBR]: "Konata se desculpando",
-        [Locale.Turkish]: "Özür dileyen Konata",
-        [Locale.Italian]: "Konata che si scusa",
-        [Locale.Indonesian]: "Konata meminta maaf",
-        [Locale.Czech]: "Omlouvající se Konata",
-        [Locale.Japanese]: "謝るこなた",
-        [Locale.Korean]: "사과하는 코나타",
-        [Locale.ChineseCN]: "道歉的此方",
+export const lsMiyukiAndTsukasa: Template = {
+    name: "lsMiyukiAndTsukasa",
+    displayName: buildLocales("Miyuki and Tsukasa", {
+        [Locale.Russian]: "Миюки и Цукаса",
+        [Locale.Ukrainian]: "Міюкі та Цукаса",
+        [Locale.Dutch]: "Miyuki en Tsukasa",
+        [Locale.French]: "Miyuki et Tsukasa",
+        [Locale.German]: "Miyuki und Tsukasa",
+        [Locale.Polish]: "Miyuki i Tsukasa",
+        [Locale.SpanishES]: "Miyuki y Tsukasa",
+        [Locale.SpanishLATAM]: "Miyuki y Tsukasa",
+        [Locale.PortugueseBR]: "Miyuki e Tsukasa",
+        [Locale.Turkish]: "Miyuki ve Tsukasa",
+        [Locale.Italian]: "Miyuki e Tsukasa",
+        [Locale.Indonesian]: "Miyuki dan Tsukasa",
+        [Locale.Czech]: "Miyuki a Tsukasa",
+        [Locale.Japanese]: "みゆきとつかさ",
+        [Locale.Korean]: "미유키와 츠카사",
+        [Locale.ChineseCN]: "美幸和司",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
-    types: [Type.TextBottomWithBackground, Type.Animated],
-    width: 500,
-    height: 452,
-    animationDuration: 600,
+    types: [Type.TextTopWithBackground, Type.Animated],
+    width: 550,
+    height: 406,
+    animationDuration: 2700,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,16 +45,16 @@ export const lsKonataApologizing: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
-                width={500}
-                height={352}
-                style={{ position: "absolute", top: 0, right: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsMiyukiAndTsukasa.gif"
+                width={550}
+                height={306}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "100%",
                     height: "100px",
                     display: "flex",
