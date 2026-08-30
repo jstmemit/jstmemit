@@ -46,6 +46,6 @@ for (let i: number = 0; i < texts.length; i++) {
     variants.push({
         texts: _.times(5, (): string => texts[i]),
         images: _.drop(_.shuffle(images), 5),
-        font: fontsService.getFontFamiliesForSetting("default"),
+        font: fontsService.getFontFamiliesForSetting("Comic Sans MS"),
     });
 }
