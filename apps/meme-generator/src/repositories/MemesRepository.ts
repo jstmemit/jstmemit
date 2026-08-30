@@ -4,12 +4,15 @@ import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
 import type { Template } from "@jstmemit/shared/models/Template";
 import type { IRendererService } from "#/interfaces/IRendererService.ts";
 import { fromJsx } from "@takumi-rs/helpers/jsx";
+import type { IImageService } from "@jstmemit/images/interfaces/IImageService";
 
 export class MemesRepository implements IMemesRepository {
     private readonly _rendererService: IRendererService;
+    private readonly _imageService: IImageService;
 
-    public constructor(rendererService: IRendererService) {
+    public constructor(rendererService: IRendererService, imageService: IImageService) {
         this._rendererService = rendererService;
+        this._imageService = imageService;
     }
 
     /**
@@ -31,7 +34,7 @@ export class MemesRepository implements IMemesRepository {
             await this._rendererService.fontsReady;
 
             const { node } = await fromJsx(template.element(props));
-            const element: Node = this._rendererService.extractDiscordEmojis(node, template.width);
+            const element: Node = this._imageService.renderEmojiImages(node, template.width);
 
             if (animated) {
                 const animationDuration: number = template.animationDuration ?? 1500;

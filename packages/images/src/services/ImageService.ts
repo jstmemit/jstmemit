@@ -2,16 +2,19 @@ import type { IImageService } from "#/interfaces/IImageService.ts";
 import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
 import { analytics } from "@jstmemit/analytics";
 import type { Metadata, Sharp } from "sharp";
+import type { Node } from "takumi-js";
 import sharp from "sharp";
 import type { Logger } from "@opentelemetry/api-logs";
 import ms from "ms";
+import { emojiRegex } from "@jstmemit/shared/regex/emojiRegex";
+import { image, text } from "@takumi-rs/helpers";
 
 export class ImageService implements IImageService {
     private readonly _transparentImage: string;
-    private readonly _cacheService: ICacheService;
-    private readonly _logger: Logger;
+    private readonly _cacheService: ICacheService | null = null;
+    private readonly _logger: Logger | null = null;
 
-    public constructor(cacheService: ICacheService, logger: Logger) {
+    public constructor(cacheService: ICacheService | null, logger: Logger | null) {
         this._transparentImage =
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNgYGBgAAAABQABeqhXUAAAAABJRU5ErkJggg==";
         this._cacheService = cacheService;
@@ -32,7 +35,7 @@ export class ImageService implements IImageService {
         }
 
         try {
-            const cached: string | undefined = await this._cacheService.get<string>(
+            const cached: string | undefined = await this._cacheService?.get<string>(
                 this._getConvertToDataUriCacheKey(url),
             );
 
@@ -49,7 +52,7 @@ export class ImageService implements IImageService {
             const format: string | null = await this._getFormat(input);
 
             if (format === null) {
-                this._logger.emit({
+                this._logger?.emit({
                     severityText: "warn",
                     body: "generate_meme.image.unsupported_format",
                     attributes: { url_host: this._safeHost(url) },
@@ -74,11 +77,11 @@ export class ImageService implements IImageService {
             }
 
             const result = `data:image/${format};base64,${buf.toString("base64")}`;
-            await this._cacheService.set(this._getConvertToDataUriCacheKey(url), result, ms("24h"));
+            await this._cacheService?.set(this._getConvertToDataUriCacheKey(url), result, ms("24h"));
             return result;
         } catch (error) {
             analytics.captureException(error);
-            this._logger.emit({
+            this._logger?.emit({
                 severityText: "warn",
                 body: "generate_meme.image.sharp_convert_failed",
                 attributes: {
@@ -162,7 +165,7 @@ export class ImageService implements IImageService {
         });
 
         if (!res.ok) {
-            this._logger.emit({
+            this._logger?.emit({
                 severityText: "warn",
                 body: "generate_meme.image.fetch_failed",
                 attributes: { url_host: this._safeHost(url), status: res.status },
@@ -173,7 +176,7 @@ export class ImageService implements IImageService {
         const contentType: string = res.headers.get("content-type") ?? "";
 
         if (!contentType.startsWith("image/")) {
-            this._logger.emit({
+            this._logger?.emit({
                 severityText: "warn",
                 body: "generate_meme.image.not_an_image",
                 attributes: { url_host: this._safeHost(url), content_type: contentType },
@@ -248,6 +251,28 @@ export class ImageService implements IImageService {
         }
 
         return images;
+    }
+
+    public renderEmojiImages(node: Node, width: number): Node {
+        if (node.type !== "container" || !node.children) return node;
+
+        node.children = node.children.flatMap((child: Node): Node[] => {
+            if (child.type !== "text" || !emojiRegex.test(child.text)) return [this.renderEmojiImages(child, width)];
+
+            return child.text.split(new RegExp(emojiRegex, "g")).flatMap((part: string, index: number): Node[] =>
+                index % 2
+                    ? [
+                          image({
+                              src: `https://cdn.discordapp.com/emojis/${part}.webp?size=128`,
+                              width: width / 12.5,
+                              height: width / 12.5,
+                          }),
+                      ]
+                    : part.split(/(?<=\s)/).map((word: string): Node => text(word, child.style)),
+            );
+        });
+
+        return node;
     }
 
     /**

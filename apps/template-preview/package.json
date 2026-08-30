@@ -13,6 +13,7 @@
     },
     "devDependencies": {
         "@jstmemit/shared": "workspace:*",
+        "@jstmemit/images": "workspace:*",
         "@types/lodash": "^4.17.24",
         "@types/ms": "^2.1.0",
         "@vitejs/plugin-basic-ssl": "^2.3.0",

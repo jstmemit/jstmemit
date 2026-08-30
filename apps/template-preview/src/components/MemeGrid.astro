@@ -10,6 +10,8 @@ import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
 import { TemplatesService } from "../services/TemplatesService.ts";
 import { extractDiscordEmojis } from "../utils/extractDiscordEmojis.ts";
 import { fromJsx } from "@takumi-rs/helpers/jsx";
+import type { IImageService } from "@jstmemit/images/interfaces/IImageService";
+import { ImageService } from "@jstmemit/images/services/ImageService";
 
 interface Props {
     templateName: string;
@@ -20,6 +22,7 @@ interface Props {
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
+const imageService: IImageService = new ImageService(null, null);
 
 const { templateName, variants, cols, gap = "gap-5" } = Astro.props;
 
@@ -33,7 +36,7 @@ const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Pr
     }
 
     const { node } = await fromJsx(template.element(variant));
-    const element: Node = extractDiscordEmojis(node, template.width);
+    const element: Node = imageService.renderEmojiImages(node, template.width);
 
     if (template.animationDuration === undefined) {
         const staticMeme = await render(element, {
