@@ -259,6 +259,14 @@ export class ImageService implements IImageService {
         node.children = node.children.flatMap((child: Node): Node[] => {
             if (child.type !== "text" || !emojiRegex.test(child.text)) return [this.renderEmojiImages(child, width)];
 
+            node.style = {
+                ...node.style,
+                display: "flex",
+                alignContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+            };
+
             return child.text.split(new RegExp(emojiRegex, "g")).flatMap((part: string, index: number): Node[] =>
                 index % 2
                     ? [
@@ -268,7 +276,11 @@ export class ImageService implements IImageService {
                               height: width / 12.5,
                           }),
                       ]
-                    : part.split(/(?<=\s)/).map((word: string): Node => text(word, child.style)),
+                    : part
+                          .split(/(?<=\s)/)
+                          .map((word: string): Node =>
+                              text(word, { ...child.style, flexShrink: 0, whiteSpace: "normal" }),
+                          ),
             );
         });
 

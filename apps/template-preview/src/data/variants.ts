@@ -12,7 +12,7 @@ const fontsService: IFontsService = new FontsService(fontsRepository);
 
 export const texts: string[] = [
     "lorem <a:meme:1534260419085205677>",
-    "Lorem ipsum dolor sit.",
+    "Lorem <a:meme:1534260419085205677> ipsum <a:meme:1534260419085205677> dolor sit.",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sequi tenetur veniam!",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci beatae blanditiis consequatur distinctio neque optio reprehenderit.",
