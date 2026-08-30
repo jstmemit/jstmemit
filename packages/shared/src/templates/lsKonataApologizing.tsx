@@ -28,7 +28,7 @@ export const lsKonataApologizing: Template = {
         [Locale.ChineseCN]: "道歉的此方",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.LuckyStar],
-    types: [Type.TextTopWithBackground, Type.Animated],
+    types: [Type.TextBottomWithBackground, Type.Animated],
     width: 500,
     height: 452,
     animationDuration: 600,
@@ -48,13 +48,13 @@ export const lsKonataApologizing: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/lsKonataApologizing.gif"
                 width={500}
                 height={352}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                style={{ position: "absolute", top: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: 0,
+                    bottom: 0,
                     width: "100%",
                     height: "100px",
                     display: "flex",
