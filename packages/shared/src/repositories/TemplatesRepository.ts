@@ -608,6 +608,24 @@ import { rtnobgsMaiJudging1 } from "#/templates/rtnobgsMaiJudging1.tsx";
 import { rtnobgsMaiPointing } from "#/templates/rtnobgsMaiPointing.tsx";
 import { rtnobgsMaiSakurajimaApproves } from "#/templates/rtnobgsMaiSakurajimaApproves.tsx";
 import { rtnobgsMaiSakurajimaTurnsAndApproves } from "#/templates/rtnobgsMaiSakurajimaTurnsAndApproves.tsx";
+import { selLainBlankStare } from "#/templates/selLainBlankStare.tsx";
+import { selLainClown } from "#/templates/selLainClown.tsx";
+import { selLainHologram } from "#/templates/selLainHologram.tsx";
+import { selLainStaring } from "#/templates/selLainStaring.tsx";
+import { selLainStaring1 } from "#/templates/selLainStaring1.tsx";
+import { sfAnyaCrossingArms } from "#/templates/sfAnyaCrossingArms.tsx";
+import { sfAnyaCrossingArms1 } from "#/templates/sfAnyaCrossingArms1.tsx";
+import { sfAnyaDarkSmirk } from "#/templates/sfAnyaDarkSmirk.tsx";
+import { sfAnyaDesperateGrip } from "#/templates/sfAnyaDesperateGrip.tsx";
+import { sfAnyaExcitedPrincess } from "#/templates/sfAnyaExcitedPrincess.tsx";
+import { sfAnyaPaleShock } from "#/templates/sfAnyaPaleShock.tsx";
+import { sfAnyaShocked } from "#/templates/sfAnyaShocked.tsx";
+import { sfAnyaSobbingOnCouch } from "#/templates/sfAnyaSobbingOnCouch.tsx";
+import { sfAnyaStarEyes } from "#/templates/sfAnyaStarEyes.tsx";
+import { sfAnyaTearingUp } from "#/templates/sfAnyaTearingUp.tsx";
+import { sfLoidOnGuard } from "#/templates/sfLoidOnGuard.tsx";
+import { sfLoidSighing } from "#/templates/sfLoidSighing.tsx";
+import { sfYorAngry } from "#/templates/sfYorAngry.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1249,6 +1267,24 @@ export class TemplatesRepository implements ITemplatesRepository {
             rtnobgsMaiPointing,
             rtnobgsMaiSakurajimaApproves,
             rtnobgsMaiSakurajimaTurnsAndApproves,
+            selLainBlankStare,
+            selLainClown,
+            selLainHologram,
+            selLainStaring,
+            selLainStaring1,
+            sfAnyaCrossingArms,
+            sfAnyaCrossingArms1,
+            sfAnyaDarkSmirk,
+            sfAnyaDesperateGrip,
+            sfAnyaExcitedPrincess,
+            sfAnyaPaleShock,
+            sfAnyaShocked,
+            sfAnyaSobbingOnCouch,
+            sfAnyaStarEyes,
+            sfAnyaTearingUp,
+            sfLoidOnGuard,
+            sfLoidSighing,
+            sfYorAngry,
         ];
 
         return this._templates;
