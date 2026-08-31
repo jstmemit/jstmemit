@@ -566,6 +566,66 @@ import { mhaEriExcited } from "#/templates/mhaEriExcited.tsx";
 import { mhaTodorokiSmiling } from "#/templates/mhaTodorokiSmiling.tsx";
 import { monsterJohanAndTenmaStaring } from "#/templates/monsterJohanAndTenmaStaring.tsx";
 import { monsterTenmaEating } from "#/templates/monsterTenmaEating.tsx";
+import { nichijouHakaseDrinkingMilk } from "#/templates/nichijouHakaseDrinkingMilk.tsx";
+import { nichijouHakaseLaughingHearts } from "#/templates/nichijouHakaseLaughingHearts.tsx";
+import { nichijouHakasePanicking } from "#/templates/nichijouHakasePanicking.tsx";
+import { nichijouHakaseShocked } from "#/templates/nichijouHakaseShocked.tsx";
+import { nichijouHakaseShocked1 } from "#/templates/nichijouHakaseShocked1.tsx";
+import { nichijouHakaseSparkling } from "#/templates/nichijouHakaseSparkling.tsx";
+import { nichijouMioDetermined } from "#/templates/nichijouMioDetermined.tsx";
+import { nichijouMioDetermined1 } from "#/templates/nichijouMioDetermined1.tsx";
+import { nichijouMioRunningDesperately } from "#/templates/nichijouMioRunningDesperately.tsx";
+import { nichijouSakamotoHeldUp } from "#/templates/nichijouSakamotoHeldUp.tsx";
+import { nichijouSakamotoMesmerized } from "#/templates/nichijouSakamotoMesmerized.tsx";
+import { nichijouSakamotoStruggling } from "#/templates/nichijouSakamotoStruggling.tsx";
+import { nichijouYuukoMioHandshake } from "#/templates/nichijouYuukoMioHandshake.tsx";
+import { noragamiHiyoriLooking } from "#/templates/noragamiHiyoriLooking.tsx";
+import { noragamiHiyoriShockedBlush } from "#/templates/noragamiHiyoriShockedBlush.tsx";
+import { noragamiKofukuShocked } from "#/templates/noragamiKofukuShocked.tsx";
+import { noragamiKofukuSmiling } from "#/templates/noragamiKofukuSmiling.tsx";
+import { noragamiYatoGodOfCalamity } from "#/templates/noragamiYatoGodOfCalamity.tsx";
+import { noragamiYatoShocked } from "#/templates/noragamiYatoShocked.tsx";
+import { noragamiYatoSmiling } from "#/templates/noragamiYatoSmiling.tsx";
+import { noragamiYukineBlushingGeek } from "#/templates/noragamiYukineBlushingGeek.tsx";
+import { noragamiYatoHeartbroken } from "#/templates/noragamiYatoHeartbroken.tsx";
+import { noragamiYatoHeartbroken1 } from "#/templates/noragamiYatoHeartbroken1.tsx";
+import { noragamiYatoSmile } from "#/templates/noragamiYatoSmile.tsx";
+import { opmSaitamaEatingSonicsSword } from "#/templates/opmSaitamaEatingSonicsSword.tsx";
+import { opmSaitamaHeroForm } from "#/templates/opmSaitamaHeroForm.tsx";
+import { opmSaitamaPunch } from "#/templates/opmSaitamaPunch.tsx";
+import { opmSaitamaRunning } from "#/templates/opmSaitamaRunning.tsx";
+import { opmSaitamaSleeping } from "#/templates/opmSaitamaSleeping.tsx";
+import { opmSaitamasPunch } from "#/templates/opmSaitamasPunch.tsx";
+import { opmSaitamaUnbothered } from "#/templates/opmSaitamaUnbothered.tsx";
+import { rtnobgsFutabaAnnoyed } from "#/templates/rtnobgsFutabaAnnoyed.tsx";
+import { rtnobgsFutabaDisappointed } from "#/templates/rtnobgsFutabaDisappointed.tsx";
+import { rtnobgsKaedeSmiling } from "#/templates/rtnobgsKaedeSmiling.tsx";
+import { rtnobgsKaedeThinking } from "#/templates/rtnobgsKaedeThinking.tsx";
+import { rtnobgsMaiBlush } from "#/templates/rtnobgsMaiBlush.tsx";
+import { rtnobgsMaiFingerGun } from "#/templates/rtnobgsMaiFingerGun.tsx";
+import { rtnobgsMaiJudging } from "#/templates/rtnobgsMaiJudging.tsx";
+import { rtnobgsMaiJudging1 } from "#/templates/rtnobgsMaiJudging1.tsx";
+import { rtnobgsMaiPointing } from "#/templates/rtnobgsMaiPointing.tsx";
+import { rtnobgsMaiSakurajimaApproves } from "#/templates/rtnobgsMaiSakurajimaApproves.tsx";
+import { rtnobgsMaiSakurajimaTurnsAndApproves } from "#/templates/rtnobgsMaiSakurajimaTurnsAndApproves.tsx";
+import { selLainBlankStare } from "#/templates/selLainBlankStare.tsx";
+import { selLainClown } from "#/templates/selLainClown.tsx";
+import { selLainHologram } from "#/templates/selLainHologram.tsx";
+import { selLainStaring } from "#/templates/selLainStaring.tsx";
+import { selLainStaring1 } from "#/templates/selLainStaring1.tsx";
+import { sfAnyaCrossingArms } from "#/templates/sfAnyaCrossingArms.tsx";
+import { sfAnyaCrossingArms1 } from "#/templates/sfAnyaCrossingArms1.tsx";
+import { sfAnyaDarkSmirk } from "#/templates/sfAnyaDarkSmirk.tsx";
+import { sfAnyaDesperateGrip } from "#/templates/sfAnyaDesperateGrip.tsx";
+import { sfAnyaExcitedPrincess } from "#/templates/sfAnyaExcitedPrincess.tsx";
+import { sfAnyaPaleShock } from "#/templates/sfAnyaPaleShock.tsx";
+import { sfAnyaShocked } from "#/templates/sfAnyaShocked.tsx";
+import { sfAnyaSobbingOnCouch } from "#/templates/sfAnyaSobbingOnCouch.tsx";
+import { sfAnyaStarEyes } from "#/templates/sfAnyaStarEyes.tsx";
+import { sfAnyaTearingUp } from "#/templates/sfAnyaTearingUp.tsx";
+import { sfLoidOnGuard } from "#/templates/sfLoidOnGuard.tsx";
+import { sfLoidSighing } from "#/templates/sfLoidSighing.tsx";
+import { sfYorAngry } from "#/templates/sfYorAngry.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1165,6 +1225,66 @@ export class TemplatesRepository implements ITemplatesRepository {
             mhaTodorokiSmiling,
             monsterJohanAndTenmaStaring,
             monsterTenmaEating,
+            nichijouHakaseDrinkingMilk,
+            nichijouHakaseLaughingHearts,
+            nichijouHakasePanicking,
+            nichijouHakaseShocked,
+            nichijouHakaseShocked1,
+            nichijouHakaseSparkling,
+            nichijouMioDetermined,
+            nichijouMioDetermined1,
+            nichijouMioRunningDesperately,
+            nichijouSakamotoHeldUp,
+            nichijouSakamotoMesmerized,
+            nichijouSakamotoStruggling,
+            nichijouYuukoMioHandshake,
+            noragamiHiyoriLooking,
+            noragamiHiyoriShockedBlush,
+            noragamiKofukuShocked,
+            noragamiKofukuSmiling,
+            noragamiYatoGodOfCalamity,
+            noragamiYatoShocked,
+            noragamiYatoSmiling,
+            noragamiYukineBlushingGeek,
+            noragamiYatoHeartbroken,
+            noragamiYatoHeartbroken1,
+            noragamiYatoSmile,
+            opmSaitamaEatingSonicsSword,
+            opmSaitamaHeroForm,
+            opmSaitamaPunch,
+            opmSaitamaRunning,
+            opmSaitamaSleeping,
+            opmSaitamasPunch,
+            opmSaitamaUnbothered,
+            rtnobgsFutabaAnnoyed,
+            rtnobgsFutabaDisappointed,
+            rtnobgsKaedeSmiling,
+            rtnobgsKaedeThinking,
+            rtnobgsMaiBlush,
+            rtnobgsMaiFingerGun,
+            rtnobgsMaiJudging,
+            rtnobgsMaiJudging1,
+            rtnobgsMaiPointing,
+            rtnobgsMaiSakurajimaApproves,
+            rtnobgsMaiSakurajimaTurnsAndApproves,
+            selLainBlankStare,
+            selLainClown,
+            selLainHologram,
+            selLainStaring,
+            selLainStaring1,
+            sfAnyaCrossingArms,
+            sfAnyaCrossingArms1,
+            sfAnyaDarkSmirk,
+            sfAnyaDesperateGrip,
+            sfAnyaExcitedPrincess,
+            sfAnyaPaleShock,
+            sfAnyaShocked,
+            sfAnyaSobbingOnCouch,
+            sfAnyaStarEyes,
+            sfAnyaTearingUp,
+            sfLoidOnGuard,
+            sfLoidSighing,
+            sfYorAngry,
         ];
 
         return this._templates;
