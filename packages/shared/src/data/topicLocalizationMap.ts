@@ -653,4 +653,18 @@ export const TopicLocalizationMap: Record<TemplateTopic, LocalizationMap> = {
         [Locale.Korean]: "연애 연구소",
         [Locale.ChineseCN]: "恋爱研究所",
     }),
+    [Topic.Nichijou]: buildLocales("Nichijou", {
+        [Locale.Russian]: "Мелочи жизни",
+        [Locale.Ukrainian]: "Дрібниці життя",
+        [Locale.Japanese]: "日常",
+        [Locale.Korean]: "일상",
+        [Locale.ChineseCN]: "日常",
+    }),
+    [Topic.OnePunchMan]: buildLocales("One Punch Man", {
+        [Locale.Russian]: "Ванпанчмен",
+        [Locale.Ukrainian]: "Ванпанчмен",
+        [Locale.Japanese]: "ワンパンマン",
+        [Locale.Korean]: "원펀맨",
+        [Locale.ChineseCN]: "一拳超人",
+    }),
 };
