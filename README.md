@@ -20,11 +20,13 @@
     - <a href="#setting-up-your-editor">Setting up your editor</a>
         - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
-        - <a href="#textsimages">Topics</a>
-        - <a href="#textsimages">Types</a>
-        - <a href="#textsimages">Texts/images</a>
+        - <a href="#name">Name</a>
+        - <a href="#display-name">Display Name</a>
+        - <a href="#topics">Topics</a>
+        - <a href="#types">Types</a>
+        - <a href="#texts-and-images">Texts and Images</a>
         - <a href="#render">Render</a>
-        - <a href="#fonts">Fonts</a>
+        - <a href="#fonts-and-font-size">Fonts and font size</a>
         - <a href="#layout">Layout</a>
         - <a href="#test-your-template">Test your template</a>
         - <a href="#done">Done!</a>
@@ -123,20 +125,49 @@ There are also some useful extensions if you plan on contributing to more than m
 
 All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
 
+### Name
+
+The `name` is a unique identifier for the meme template. Make sure this name is not already taken.
+
+### Display name
+
+The `displayName` property provides localized translations for the template's name. Use the `buildLocales` utility to define them:
+
+```tsx
+displayName: buildLocales("Text over background", {
+    [Locale.Russian]: "Текст на фоне",
+    [Locale.Ukrainian]: "Текст на фоні",
+    [Locale.Dutch]: "Tekst over achtergrond",
+    [Locale.French]: "Texte sur fond",
+    [Locale.German]: "Text über Hintergrund",
+    [Locale.Polish]: "Tekst na tle",
+    [Locale.SpanishES]: "Texto sobre fondo",
+    [Locale.SpanishLATAM]: "Texto sobre fondo",
+    [Locale.PortugueseBR]: "Texto sobre fundo",
+    [Locale.Turkish]: "Arka plan üzerinde metin",
+    [Locale.Italian]: "Testo sullo sfondo",
+    [Locale.Indonesian]: "Teks di atas latar belakang",
+    [Locale.Czech]: "Text na pozadí",
+    [Locale.Japanese]: "背景上のテキスト",
+    [Locale.Korean]: "배경 위 텍스트",
+    [Locale.ChineseCN]: "背景上的文本",
+})
+```
+
 #### Topics
 
 Each template must have topics that describe it. For example, if you are making a meme template with SpongeBob characters on it, then you must add the `Topic.SpongeBob` topic to it. The topics field is an array, allowing you to add as many topics as needed:
 ```tsx
 import { Topic } from "#/models/TemplateTopic.ts";  // don`t forget to import `Topic` enum
 
-export const spongebob: Template = {
+export const spongebobHappy: Template = {
     // ...
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
 }
 ```
 **Available topics:**
 
-Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean
+Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean, Toradora, HimoutoUmaruChan, JujutsuKaisen, KaguyaSama, Kon, KonoSuba, LogHorizon, LuckyStar, MyHeroicAcademy, Monster, Noragami, RascalDoesNotDreamOfBunnyGirlSenpai, SerialExperimentsLain, SpyFamily, SquidGame, Shirobako, TheBalladOfBusterScruggs, TheQuintessentialQuintuplets, UzakiChanWantsToHangOut, ShikanokoNokonokoKoshitantan, UmaMusume, Quote, Demotivator, EightySix, Barakamon, GJBu, GreatTeacherOnizuka, Destruction, LoveLab, Nichijou, OnePunchMan
 
 ---
 
@@ -146,9 +177,9 @@ Each template must have types that describe its structure and layout components.
 ```tsx
 import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
 
-export const spongebob: Template = {
+export const spongebobHappy: Template = {
     // ...
-    types: [Type.faceImage, Type.textBottom]
+    types: [Type.FaceImage, Type.TextBottom],
 }
 ```
 
@@ -178,9 +209,9 @@ After that you can use them in your layout:
 ```tsx
 <img
     src={images[0]}
-    width={800}
-    height={800}
-    style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+    width={500}
+    height={500}
+    style={{ position: "absolute", top: 0, left: 0 }}
 />
 ```
 
@@ -196,18 +227,57 @@ After that you can use them in your layout:
 
 Your layout will be rendered into an image using [Takumi](https://takumi.kane.tw/), a library that is similar to [Satori](https://github.com/vercel/satori) but has performance, supports almost all CSS properties and can render animations.
 
-#### Fonts
+#### Fonts and font size
+
+Font is a prop of the element property. It's a string that contains the chosen font and fallback fonts.
 
 Available fonts:
+- Default (random)
 - Comic Sans MS
-- Noto Sans Math
+- Impact
+- Minecraft
+- OpenDyslexic
 
-If there are CJK (Chinese, Japanese and Korean) characters present, then these more fonts are injected:
-- Noto Sans SC
-- Noto Sans TC 
-- Noto Sans HK 
-- Noto Sans JP 
-- Noto Sans KR 
+There is a `fontSize` utility for dynamic font sizing depending on the text length (returns the font size in viewport width units, e.g., `vw`).
+```tsx
+<div
+        style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: "10px",
+            backgroundColor: "white",
+        }}
+>
+    <div
+            style={{
+                lineClamp: 2,
+                wordBreak: "break-word",
+                textOverflow: "ellipsis",
+                fontFamily: font,
+                fontSize: fontSize(texts[0]),
+                lineHeight: 1.05,
+                paddingBottom: "0.2em",
+                color: "#000000",
+            }}
+    >
+        {texts[0]}
+    </div>
+</div>
+```
+
+[//]: # (If there are CJK &#40;Chinese, Japanese and Korean&#41; characters present, then these more fonts are injected:)
+[//]: # (- Noto Sans SC)
+[//]: # (- Noto Sans TC )
+[//]: # (- Noto Sans HK )
+[//]: # (- Noto Sans JP )
+[//]: # (- Noto Sans KR )
 #### Layout
 
 **textOverBackground.tsx**
@@ -217,26 +287,47 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const textOverBackground: Template = {
     name: "textOverBackground", // make sure this name is not taken
+    displayName: buildLocales("Text over background", {
+        [Locale.Russian]: "Текст на фоне",
+        [Locale.Ukrainian]: "Текст на фоні",
+        [Locale.Dutch]: "Tekst over achtergrond",
+        [Locale.French]: "Texte sur fond",
+        [Locale.German]: "Text über Hintergrund",
+        [Locale.Polish]: "Tekst na tle",
+        [Locale.SpanishES]: "Texto sobre fondo",
+        [Locale.SpanishLATAM]: "Texto sobre fondo",
+        [Locale.PortugueseBR]: "Texto sobre fundo",
+        [Locale.Turkish]: "Arka plan üzerinde metin",
+        [Locale.Italian]: "Testo sullo sfondo",
+        [Locale.Indonesian]: "Teks di atas latar belakang",
+        [Locale.Czech]: "Text na pozadí",
+        [Locale.Japanese]: "背景上のテキスト",
+        [Locale.Korean]: "배경 위 텍스트",
+        [Locale.ChineseCN]: "背景上的文本",
+    }),
     topics: [Topic.Misc],
-    types: [Type.backgroundImage, Type.textTopWithBackground, Type.textBottomWithBackground],
-    width: 800,
-    height: 800,
+    types: [Type.BackgroundImage, Type.TextTopWithBackground, Type.TextBottomWithBackground],
+    width: 500,
+    height: 500,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 10 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 8 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "background" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
             <div
                     style={{
                         display: "flex",
                         position: "relative",
                         width: "100%",
                         height: "100%",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         backgroundColor: "#000",
                     }}
             >
@@ -244,7 +335,7 @@ export const textOverBackground: Template = {
                         src={images[0]}
                         width={800}
                         height={600}
-                        style={{ position: "absolute", top: 100, left: 0, opacity: 0.6 }}
+                        style={{ position: "absolute", top: 100, left: 0 }}
                 />
                 <div
                         style={{
@@ -257,7 +348,7 @@ export const textOverBackground: Template = {
                             alignItems: "center",
                             justifyContent: "center",
                             textAlign: "center",
-                            padding: "15px",
+                            padding: "10px",
                             backgroundColor: "white",
                         }}
                 >
@@ -266,8 +357,8 @@ export const textOverBackground: Template = {
                                 lineClamp: 2,
                                 wordBreak: "break-word",
                                 textOverflow: "ellipsis",
-                                fontFamily: "Comic Sans MS",
-                                fontSize: 40,
+                                fontFamily: font,
+                                fontSize: fontSize(texts[0]),
                                 lineHeight: 1.05,
                                 paddingBottom: "0.2em",
                                 color: "#000000",
@@ -287,7 +378,7 @@ export const textOverBackground: Template = {
                             alignItems: "center",
                             justifyContent: "center",
                             textAlign: "center",
-                            padding: "15px",
+                            padding: "10px",
                             backgroundColor: "white",
                         }}
                 >
@@ -296,8 +387,8 @@ export const textOverBackground: Template = {
                                 lineClamp: 2,
                                 wordBreak: "break-word",
                                 textOverflow: "ellipsis",
-                                fontFamily: "Comic Sans MS",
-                                fontSize: 40,
+                                fontFamily: font,
+                                fontSize: fontSize(texts[0]),
                                 lineHeight: 1.05,
                                 paddingBottom: "0.2em",
                                 color: "#000000",
