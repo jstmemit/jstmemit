@@ -27,7 +27,7 @@ export const sgPlayersCelebrating: Template = {
         [Locale.Korean]: "환호하는 참가자들",
         [Locale.ChineseCN]: "庆祝的玩家们",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.SquidGame],
+    topics: [Topic.Reaction, Topic.Movies, Topic.SquidGame],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,
     height: 380,

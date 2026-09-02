@@ -27,7 +27,7 @@ export const sgGiHunSmiling: Template = {
         [Locale.Korean]: "미소 짓는 기훈",
         [Locale.ChineseCN]: "微笑的基勋",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.SquidGame],
+    topics: [Topic.Reaction, Topic.Movies, Topic.SquidGame],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 498,
     height: 554,
