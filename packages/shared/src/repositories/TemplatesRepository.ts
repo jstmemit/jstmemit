@@ -626,6 +626,56 @@ import { sfAnyaTearingUp } from "#/templates/sfAnyaTearingUp.tsx";
 import { sfLoidOnGuard } from "#/templates/sfLoidOnGuard.tsx";
 import { sfLoidSighing } from "#/templates/sfLoidSighing.tsx";
 import { sfYorAngry } from "#/templates/sfYorAngry.tsx";
+import { sgGiHunSmiling } from "#/templates/sgGiHunSmiling.tsx";
+import { sgPlayersCelebrating } from "#/templates/sgPlayersCelebrating.tsx";
+import { shirobakoAoiAirQuotes } from "#/templates/shirobakoAoiAirQuotes.tsx";
+import { shirobakoAoiBlankStare } from "#/templates/shirobakoAoiBlankStare.tsx";
+import { shirobakoAoiBlush } from "#/templates/shirobakoAoiBlush.tsx";
+import { shirobakoAoiDetermined } from "#/templates/shirobakoAoiDetermined.tsx";
+import { shirobakoAoiDizzy } from "#/templates/shirobakoAoiDizzy.tsx";
+import { shirobakoAoiExhausted } from "#/templates/shirobakoAoiExhausted.tsx";
+import { shirobakoAoiPanicking } from "#/templates/shirobakoAoiPanicking.tsx";
+import { shirobakoAoiStressedPhoneCall } from "#/templates/shirobakoAoiStressedPhoneCall.tsx";
+import { shirobakoEmaSmiling } from "#/templates/shirobakoEmaSmiling.tsx";
+import { shirobakoEmaYasuharaBlush } from "#/templates/shirobakoEmaYasuharaBlush.tsx";
+import { shirobakoYanoTalking } from "#/templates/shirobakoYanoTalking.tsx";
+import { snkNokoNosePick } from "#/templates/snkNokoNosePick.tsx";
+import { snkNokoShikanokoDeerArmy } from "#/templates/snkNokoShikanokoDeerArmy.tsx";
+import { snkNokoShikanokoDeerArmy1 } from "#/templates/snkNokoShikanokoDeerArmy1.tsx";
+import { snkNokotanEmptyHead } from "#/templates/snkNokotanEmptyHead.tsx";
+import { tqqIchikaHappy } from "#/templates/tqqIchikaHappy.tsx";
+import { tqqItsukiBlushing } from "#/templates/tqqItsukiBlushing.tsx";
+import { tqqItsukiDizzy } from "#/templates/tqqItsukiDizzy.tsx";
+import { tqqItsukiShocked } from "#/templates/tqqItsukiShocked.tsx";
+import { tqqItsukiSmiling } from "#/templates/tqqItsukiSmiling.tsx";
+import { tqqMikuBlush } from "#/templates/tqqMikuBlush.tsx";
+import { tqqMikuPoutingBlueAura } from "#/templates/tqqMikuPoutingBlueAura.tsx";
+import { tqqMikuPoutingOnFire } from "#/templates/tqqMikuPoutingOnFire.tsx";
+import { tqqMikuSmiling } from "#/templates/tqqMikuSmiling.tsx";
+import { tqqNinoCrying } from "#/templates/tqqNinoCrying.tsx";
+import { tqqNinoMenacingSmile } from "#/templates/tqqNinoMenacingSmile.tsx";
+import { tqqNinoShopping } from "#/templates/tqqNinoShopping.tsx";
+import { tqqNinoTense } from "#/templates/tqqNinoTense.tsx";
+import { tqqYotsubaEatingCake } from "#/templates/tqqYotsubaEatingCake.tsx";
+import { tqqYotsubaFlustered } from "#/templates/tqqYotsubaFlustered.tsx";
+import { tqqYotsubaPanicking } from "#/templates/tqqYotsubaPanicking.tsx";
+import { tqqYotsubaSurprisedBlush } from "#/templates/tqqYotsubaSurprisedBlush.tsx";
+import { tqqYotsubaWinter } from "#/templates/tqqYotsubaWinter.tsx";
+import { ucwthoUzakiHanaSmug } from "#/templates/ucwthoUzakiHanaSmug.tsx";
+import { ucwthoUzakiHanaSmugLaugh } from "#/templates/ucwthoUzakiHanaSmugLaugh.tsx";
+import { ucwthoUzakiLaughing } from "#/templates/ucwthoUzakiLaughing.tsx";
+import { ucwthoUzakiLaughs } from "#/templates/ucwthoUzakiLaughs.tsx";
+import { ucwthoUzakiOrdersEverything } from "#/templates/ucwthoUzakiOrdersEverything.tsx";
+import { ucwthoUzakiTryingToExplain } from "#/templates/ucwthoUzakiTryingToExplain.tsx";
+import { ucwthoUzakiYelling } from "#/templates/ucwthoUzakiYelling.tsx";
+import { umAgnesTachyonSmile } from "#/templates/umAgnesTachyonSmile.tsx";
+import { umSpecialWeekSprinting } from "#/templates/umSpecialWeekSprinting.tsx";
+import { umTokaiTeioShocked } from "#/templates/umTokaiTeioShocked.tsx";
+import { umDaiwaAndVodkaCheekPinch } from "#/templates/umDaiwaAndVodkaCheekPinch.tsx";
+import { umSpecialWeekRunningWithCarrot } from "#/templates/umSpecialWeekRunningWithCarrot.tsx";
+import { umOguriCapSweating } from "#/templates/umOguriCapSweating.tsx";
+import { umSpecialWeekSurprised } from "#/templates/umSpecialWeekSurprised.tsx";
+import { umTMOperaOLaughing } from "#/templates/umTMOperaOLaughing.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1285,6 +1335,56 @@ export class TemplatesRepository implements ITemplatesRepository {
             sfLoidOnGuard,
             sfLoidSighing,
             sfYorAngry,
+            sgGiHunSmiling,
+            sgPlayersCelebrating,
+            shirobakoAoiAirQuotes,
+            shirobakoAoiBlankStare,
+            shirobakoAoiBlush,
+            shirobakoAoiDetermined,
+            shirobakoAoiDizzy,
+            shirobakoAoiExhausted,
+            shirobakoAoiPanicking,
+            shirobakoAoiStressedPhoneCall,
+            shirobakoEmaSmiling,
+            shirobakoEmaYasuharaBlush,
+            shirobakoYanoTalking,
+            snkNokoNosePick,
+            snkNokoShikanokoDeerArmy,
+            snkNokoShikanokoDeerArmy1,
+            snkNokotanEmptyHead,
+            tqqIchikaHappy,
+            tqqItsukiBlushing,
+            tqqItsukiDizzy,
+            tqqItsukiShocked,
+            tqqItsukiSmiling,
+            tqqMikuBlush,
+            tqqMikuPoutingBlueAura,
+            tqqMikuPoutingOnFire,
+            tqqMikuSmiling,
+            tqqNinoCrying,
+            tqqNinoMenacingSmile,
+            tqqNinoShopping,
+            tqqNinoTense,
+            tqqYotsubaEatingCake,
+            tqqYotsubaFlustered,
+            tqqYotsubaPanicking,
+            tqqYotsubaSurprisedBlush,
+            tqqYotsubaWinter,
+            ucwthoUzakiHanaSmug,
+            ucwthoUzakiHanaSmugLaugh,
+            ucwthoUzakiLaughing,
+            ucwthoUzakiLaughs,
+            ucwthoUzakiOrdersEverything,
+            ucwthoUzakiTryingToExplain,
+            ucwthoUzakiYelling,
+            umAgnesTachyonSmile,
+            umSpecialWeekSprinting,
+            umTokaiTeioShocked,
+            umDaiwaAndVodkaCheekPinch,
+            umSpecialWeekRunningWithCarrot,
+            umOguriCapSweating,
+            umSpecialWeekSurprised,
+            umTMOperaOLaughing,
         ];
 
         return this._templates;
