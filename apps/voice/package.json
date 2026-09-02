@@ -1,0 +1,40 @@
+{
+    "name": "@jstmemit/voice",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "start": "tsx src/workers.ts"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.17.24",
+        "@types/ms": "^2.1.0",
+        "tsx": "^4.23.1"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        "./*.ts": "./src/*.ts",
+        "./*": [
+            "./src/*.ts"
+        ]
+    },
+    "dependencies": {
+        "@jstmemit/analytics": "workspace:*",
+        "@jstmemit/cache": "workspace:*",
+        "@jstmemit/queue": "workspace:*",
+        "@jstmemit/shared": "workspace:*",
+        "@jstmemit/telemetry": "workspace:*",
+        "@opentelemetry/api-logs": "^0.220.0",
+        "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
+        "@opentelemetry/resources": "^2.9.0",
+        "@opentelemetry/sdk-logs": "^0.220.0",
+        "@opentelemetry/sdk-node": "^0.220.0",
+        "awilix": "^13.0.5",
+        "bullmq": "^5.80.8",
+        "lodash": "^4.18.1",
+        "ms": "^2.1.3"
+    }
+}

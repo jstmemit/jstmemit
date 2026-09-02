@@ -1,0 +1,137 @@
+import {
+    type ButtonInteraction,
+    type ChatInputCommandInteraction,
+    InteractionContextType,
+    MessageFlags,
+    type ModalBuilder,
+    type ModalSubmitInteraction,
+} from "discord.js";
+import type { IModalsService } from "#/interfaces/IModalsService.ts";
+import type { IFeedbackController } from "#/interfaces/IFeedbackController.ts";
+import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
+import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
+import { respond } from "#/helpers/respond.ts";
+import { analytics } from "@jstmemit/analytics";
+import { logger } from "#/container.ts";
+
+export class FeedbackController implements IFeedbackController {
+    private readonly _feedbackChannelId: string = "1525814003425874032";
+    private readonly _modalsService: IModalsService;
+    private readonly _componentsService: IComponentsService;
+    private readonly _channelsService: IChannelsService;
+
+    public constructor(
+        modalsService: IModalsService,
+        componentsService: IComponentsService,
+        channelsService: IChannelsService,
+    ) {
+        this._modalsService = modalsService;
+        this._componentsService = componentsService;
+        this._channelsService = channelsService;
+    }
+
+    public async handleOpenFeedbackModal(
+        interaction: ChatInputCommandInteraction | ButtonInteraction,
+        error: boolean = false,
+    ): Promise<void> {
+        const modal: ModalBuilder = this._modalsService.getSendFeedbackModal(
+            interaction.locale,
+            interaction.user.id,
+            error,
+        );
+
+        analytics.capture({
+            event: "feedback_modal_opened",
+            distinctId: interaction.user.id,
+            properties: {
+                channelId: interaction.channelId,
+                guildId: interaction.guildId,
+                language: interaction.locale,
+            },
+        });
+
+        await interaction.showModal(modal);
+    }
+
+    public async handleNewFeedbackSubmit(interaction: ModalSubmitInteraction, error: boolean = false): Promise<void> {
+        try {
+            const userId: string | undefined = interaction.customId.split(":")[1];
+            const message: string | undefined = interaction.fields.getTextInputValue(`text`);
+
+            if (!message || !userId) {
+                analytics.capture({
+                    event: "feedback_modal_failed",
+                    distinctId: interaction.user.id,
+                    properties: {
+                        channelId: interaction.channelId,
+                        guildId: interaction.guildId,
+                        language: interaction.locale,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        command: "/feedback",
+                        hasMessage: Boolean(message),
+                        hasUserId: Boolean(userId),
+                        error,
+                    },
+                });
+                logger.emit({
+                    severityText: "error",
+                    body: "feedback.interaction.modal_submit.no_user_or_message_error",
+                    attributes: {
+                        posthogDistinctId: interaction.user.id,
+                        interaction_id: interaction.id,
+                        channel_id: interaction.channelId,
+                        guild_id: interaction?.guildId,
+                        language: interaction.locale,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        command: "/feedback",
+                        messageLength: message.length,
+                    },
+                });
+                await respond(interaction, [
+                    this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+                ]);
+                return;
+            }
+
+            await interaction.deferReply({
+                flags: MessageFlags.Ephemeral,
+            });
+
+            await this._channelsService.sendMessage(this._feedbackChannelId, [
+                this._componentsService.getFeedbackMessageComponent(userId, message),
+            ]);
+
+            await interaction.editReply({
+                components: [this._componentsService.getFeedbackMessageSubmitComponent(interaction.locale, message)],
+                flags: MessageFlags.IsComponentsV2,
+            });
+
+            analytics.capture({
+                event: "feedback_modal_submitted",
+                distinctId: interaction.user.id,
+                properties: {
+                    channelId: interaction.channelId,
+                    guildId: interaction.guildId,
+                    language: interaction.locale,
+                },
+            });
+        } catch (error) {
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "feedback.interaction.modal_submit.error",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction?.guildId,
+                    language: interaction.locale,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
+        }
+    }
+}

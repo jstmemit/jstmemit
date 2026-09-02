@@ -1,0 +1,100 @@
+---
+import List from "#/components/ui/List.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import IconText from "#/components/ui/IconText.astro";
+import Card from "#/components/ui/Card.astro";
+import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+---
+
+<Section headingId="butWhatAboutPrivacyHeading" descriptionId="butWhatAboutPrivacyDescription" variant="light">
+    <Content slot="text" classes="gap-6 sm:gap-15 xl:flex-row xl:gap-5 xl:pb-8 2xl:gap-25">
+        <div class="2xl:w-unset flex flex-col gap-3 xl:mt-12 xl:w-[45%] xl:pt-2">
+            <Heading id="butWhatAboutPrivacyHeading">
+                But what about <Highlight color="text-bubblegum-pink">privacy?</Highlight>
+            </Heading>
+            <Paragraph id="butWhatAboutPrivacyDescription">
+                The bot keeps just enough recent chat to make memes, such as the messages themselves and links to
+                attachments like GIFs, but not who sent them. This data gets automatically purged on schedule, but you
+                can also remove it at any moment in <b>/settings</b>
+            </Paragraph>
+            <Paragraph>
+                Oh, and Jstmemit is turned off everywhere by default and needs to be enabled per channel using <b
+                    >/enable</b
+                >
+            </Paragraph>
+
+            <List classes="justify-center md:justify-start">
+                <IconText
+                    icon="https://files.jstmemit.com/jstmemit/images/emojis/gif.svg"
+                    alt="gif logo icon"
+                    text="GIFs: 90 days"
+                />
+                <IconText
+                    icon="https://files.jstmemit.com/jstmemit/images/emojis/chats.svg"
+                    alt="texts icon"
+                    text="Texts: 30 days"
+                />
+                <IconText
+                    icon="https://files.jstmemit.com/jstmemit/images/emojis/image.svg"
+                    alt="image icon"
+                    text="Images: 1 day"
+                />
+            </List>
+        </div>
+
+        <div>
+            <ul class="relative flex flex-col gap-10 sm:min-h-95 md:min-h-115 xl:min-h-95">
+                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-10 sm:left-105 lg:text-lg">
+                    <p>Your message<br class="hidden sm:block" /> in Discord</p>
+                </li>
+
+                <li>
+                    <Card classes="p-4 pt-5 max-w-full sm:max-w-fit" label="Discord">
+                        <img
+                            class="h-22.5 w-auto sm:h-auto sm:w-90"
+                            src="https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=40,slow-connection-quality=30,width=700/https://files.jstmemit.com/jstmemit/images/cocaColaBetterThanPepsi.png"
+                            alt="A discord message saying that cola is better than pepsi, has an avatar, username, tag"
+                        />
+                    </Card>
+                </li>
+
+                <li class="absolute top-40 left-10 z-10 hidden min-w-50 sm:block lg:left-23">
+                    <img
+                        src="https://files.jstmemit.com/jstmemit/images/arrowBent.svg"
+                        alt="pink arrow"
+                        aria-hidden="true"
+                    />
+                </li>
+
+                <li class="mb-1 font-bold whitespace-nowrap sm:absolute sm:top-70 sm:left-0 lg:left-5 lg:text-lg">
+                    <p>Anonymous text<br class="hidden sm:block" /> content for memes</p>
+                </li>
+
+                <li class="sm:absolute sm:top-49 sm:left-40 lg:left-55">
+                    <Card classes="p-4 pt-5" label="Stored">
+                        <pre
+                            class="min-h-auto font-mono text-xs sm:w-auto sm:text-sm">
+<span class="text-golden">{`{`}</span>
+    <span class="text-hot-fuchsia">[</span>
+        <span class="text-dark-cyan">"<span class="text-white">Coca cola is better than pepsi</span>"</span>,
+        <span class="text-dark-cyan">"<span class="text-white">and fanta</span>"</span>
+    <span class="text-hot-fuchsia">]</span>
+<span class="text-golden">{`}`}</span></pre>
+                    </Card>
+                    <p class="mx-auto mt-4 mr-4 text-center font-medium sm:hidden">
+                        Used for memes in <br class="hidden sm:block" />the same channel
+                    </p>
+                </li>
+
+                <li
+                    class="absolute top-98 left-90 -mt-3 hidden w-full font-bold whitespace-nowrap sm:block lg:left-100 lg:text-lg"
+                >
+                    <p>Used for memes in <br />the same channel</p>
+                </li>
+            </ul>
+        </div>
+    </Content>
+</Section>

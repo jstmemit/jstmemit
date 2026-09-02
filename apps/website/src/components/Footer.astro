@@ -1,0 +1,48 @@
+---
+import type { NavbarLink } from "#/models/NavbarLink.ts";
+import Link from "#/components/Link.astro";
+
+const links: NavbarLink[] = [
+    {
+        href: "/privacy",
+        name: "Privacy policy",
+    },
+    {
+        href: "/terms-of-service",
+        name: "Terms of Service",
+    },
+    {
+        href: "https://discord.gg/THRnn8fhkZ",
+        name: "Support",
+        target: "_blank",
+        rel: "noopener noreferrer",
+    },
+];
+---
+
+<nav class="bg-carbon-black relative w-full overflow-hidden px-8 py-12">
+    <div class="mx-auto flex w-full max-w-333 flex-col justify-between gap-5 sm:flex-row sm:items-center">
+        <a href="/" class="flex items-center gap-5">
+            <img
+                src="https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=70,slow-connection-quality=30,width=120/https://files.jstmemit.com/jstmemit/images/logos/logoFooter.png"
+                class="h-15 w-auto"
+                loading="lazy"
+                fetchpriority="low"
+                decoding="async"
+                alt="rounded logo with a red outline"
+            />
+            <p class="mb-1 ml-1 text-2xl font-extrabold text-white">jstmemit</p>
+        </a>
+        <ul class="-mt-0.5 flex flex-col gap-2 text-white/90 select-none sm:flex-row sm:gap-6">
+            {links.map((link) => <Link href={link.href} name={link.name} target={link.target} rel={link.rel} />)}
+        </ul>
+    </div>
+    <img
+        class="pointer-events-none absolute top-0 left-0 z-1 h-full w-full object-cover opacity-6 select-none"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        src="https://jstmemit.com/cdn-cgi/image/format=avif,fit=scale-down,metadata=none,sharpen=1,onerror=redirect,quality=30,slow-connection-quality=30,width=auto/https://files.jstmemit.com/jstmemit/images/background/Noise.png"
+        alt="background noise"
+    />
+</nav>

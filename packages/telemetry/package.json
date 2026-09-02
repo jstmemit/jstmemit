@@ -1,0 +1,20 @@
+{
+    "name": "@jstmemit/telemetry",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "@jstmemit/analytics": "workspace:*",
+        "@opentelemetry/api-logs": "^0.220.0",
+        "@opentelemetry/exporter-logs-otlp-http": "^0.220.0",
+        "@opentelemetry/resources": "^2.9.0",
+        "@opentelemetry/sdk-logs": "^0.220.0",
+        "@opentelemetry/sdk-node": "^0.220.0",
+        "bullmq": "^5.80.8"
+    },
+    "exports": {
+        ".": "./src/index.ts",
+        "./*.ts": "./src/*.ts",
+        "./*.tsx": "./src/*.tsx"
+    }
+}

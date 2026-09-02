@@ -3,8 +3,8 @@
     "private": true,
     "type": "module",
     "dependencies": {
-        "bullmq": "^5.78.0",
-        "@jstmemit/shared": "workspace:*"
+        "@jstmemit/shared": "workspace:*",
+        "bullmq": "^5.80.8"
     },
     "exports": {
         "./*": "./src/*.ts"

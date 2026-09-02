@@ -1,17 +1,52 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import node from "@astrojs/node";
+import compress from "astro-compress";
+import compressor from "astro-compressor";
+import critters from "astro-critters";
+import { svgoOptimizer } from "astro/config";
 
-import tailwindcss from '@tailwindcss/vite';
+import sitemap from "@astrojs/sitemap";
 
-import node from '@astrojs/node';
+import robotsTxt from "astro-robots-txt";
+
+import og from "astro-og";
+
+import favicons from "astro-favicons";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  },
+    site: "https://jstmemit.com",
+    vite: {
+        plugins: [tailwindcss()],
+    },
 
-  adapter: node({
-    mode: 'standalone'
-  })
+    adapter: node({
+        mode: "standalone",
+    }),
+
+    prefetch: {
+        defaultStrategy: "hover",
+        prefetchAll: true,
+    },
+
+    experimental: {
+        clientPrerender: true,
+        svgOptimizer: svgoOptimizer(),
+    },
+
+    integrations: [
+        critters(),
+        sitemap(),
+        favicons(),
+        og(),
+        robotsTxt({
+            host: true,
+        }),
+        compress({
+            CSS: false,
+        }),
+        compressor(),
+    ],
 });

@@ -1,12 +1,7 @@
-import type {
-    ChatInputCommandInteraction,
-    StringSelectMenuInteraction,
-} from "discord.js";
-import {
-    type BaseMessageOptions,
-    type ButtonInteraction,
-    MessageFlags,
-} from "discord.js";
+import type { MessageContextMenuCommandInteraction } from "discord.js";
+import { Message, type ModalSubmitInteraction } from "discord.js";
+import { type ChatInputCommandInteraction, type StringSelectMenuInteraction } from "discord.js";
+import { type BaseMessageOptions, type ButtonInteraction, MessageFlags } from "discord.js";
 
 /**
  * Sends a new message by modifying the deferred interaction if
@@ -15,6 +10,7 @@ import {
  *
  * @param interaction
  * @param components
+ * @param ephemeral
  *
  * @remarks .editReply() would make a new message in button or
  * select menu interactions and .update() doesn't exist for
@@ -26,18 +22,59 @@ export const respond = async (
     interaction:
         | ButtonInteraction
         | ChatInputCommandInteraction
-        | StringSelectMenuInteraction,
+        | StringSelectMenuInteraction
+        | Message
+        | ModalSubmitInteraction
+        | MessageContextMenuCommandInteraction,
     components: BaseMessageOptions["components"],
+    ephemeral: boolean = false,
 ): Promise<void> => {
-    if (interaction.isChatInputCommand()) {
-        await interaction.editReply({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-        });
-    } else {
-        await interaction.update({
-            flags: MessageFlags.IsComponentsV2,
-            components,
-        });
+    const flags: (MessageFlags.IsComponentsV2 | MessageFlags.Ephemeral)[] = [MessageFlags.IsComponentsV2];
+
+    if (ephemeral) {
+        flags.push(MessageFlags.Ephemeral);
+    }
+
+    try {
+        if (interaction instanceof Message) {
+            await interaction.reply({
+                flags: MessageFlags.IsComponentsV2,
+                failIfNotExists: false,
+                components,
+            });
+
+            return;
+        }
+
+        if (interaction.isChatInputCommand()) {
+            await interaction.editReply({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
+        } else if (!interaction.isModalSubmit() && !interaction.isMessageContextMenuCommand()) {
+            await interaction.update({
+                flags: MessageFlags.IsComponentsV2,
+                components,
+            });
+        }
+    } catch {
+        if (!(interaction instanceof Message)) {
+            if (interaction.isChatInputCommand()) {
+                await interaction.reply({
+                    flags,
+                    components,
+                });
+            } else if (interaction.deferred || interaction.replied) {
+                await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components,
+                });
+            } else {
+                await interaction.reply({
+                    flags,
+                    components,
+                });
+            }
+        }
     }
 };

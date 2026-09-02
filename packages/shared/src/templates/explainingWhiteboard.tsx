@@ -1,38 +1,62 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const explainingWhiteboard: Template = {
-    id: 40,
     name: "explainingWhiteboard",
+    displayName: buildLocales("Explaining whiteboard", {
+        [Locale.Russian]: "Объяснение у доски",
+        [Locale.Ukrainian]: "Пояснення біля дошки",
+        [Locale.Dutch]: "Uitleg op whiteboard",
+        [Locale.French]: "Explication au tableau blanc",
+        [Locale.German]: "Erklärung am Whiteboard",
+        [Locale.Polish]: "Wyjaśnianie na tablicy",
+        [Locale.SpanishES]: "Explicando en la pizarra",
+        [Locale.SpanishLATAM]: "Explicando en la pizarra",
+        [Locale.PortugueseBR]: "Explicando no quadro branco",
+        [Locale.Turkish]: "Beyaz tahtada anlatım",
+        [Locale.Italian]: "Spiegazione alla lavagna",
+        [Locale.Indonesian]: "Menjelaskan di papan tulis",
+        [Locale.Czech]: "Vysvětlování na tabuli",
+        [Locale.Japanese]: "ホワイトボードで説明",
+        [Locale.Korean]: "화이트보드로 설명",
+        [Locale.ChineseCN]: "白板讲解",
+    }),
+    topics: [Topic.Reaction],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1280,
-    height: 900,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 4 }],
-    images: [{ id: 0, description: "person`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    height: 950,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    images: [{ id: 0, description: "person face" }],
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/explainingWhiteboard.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/explainingWhiteboard.jpg"
                 width={1280}
                 height={900}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
-                width={250}
-                height={250}
+                width={270}
+                height={270}
                 style={{
                     position: "absolute",
-                    top: 210,
-                    left: 425,
+                    bottom: 430,
+                    left: 415,
                     borderRadius: "100%",
                     objectFit: "cover",
                 }}
@@ -42,20 +66,29 @@ export const explainingWhiteboard: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "20%",
+                    height: "225px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 90,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
+                    backgroundColor: "white",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

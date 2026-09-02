@@ -5,10 +5,11 @@ import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGeneratio
 export const createMemeGenerationQueue = (connection: ConnectionOptions) =>
     new Queue<MemeGenerationJob, MemeGenerationResult>("meme-generation", {
         connection,
+        streams: { events: { maxLen: 1000 } },
         defaultJobOptions: {
             attempts: 3,
-            backoff: { type: "exponential", delay: 2000 },
-            removeOnComplete: 100,
-            removeOnFail: 500,
+            backoff: { type: "exponential", delay: 100 },
+            removeOnComplete: true,
+            removeOnFail: true,
         },
     });

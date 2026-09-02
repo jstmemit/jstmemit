@@ -6,6 +6,7 @@ import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import type { channelsTable } from "@jstmemit/db/schema.ts";
 import { analytics } from "@jstmemit/analytics";
 import { respond } from "#/helpers/respond.ts";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class SettingsController implements ISettingsController {
     private readonly _channelsService: IChannelsService;
@@ -28,11 +29,14 @@ export class SettingsController implements ISettingsController {
     ): Promise<void> {
         if (interaction.isCommand()) {
             await interaction.deferReply();
+        } else {
+            await interaction.deferUpdate();
         }
 
         try {
             const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
                 interaction.channelId,
+                true,
             );
 
             if (!channel) {
@@ -47,6 +51,10 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     trigger: interaction.isCommand() ? "/settings" : "/enable",
                     command: "/settings",
+                    language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    receiveLatencyMs: Date.now() - interaction.createdTimestamp,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -82,6 +90,9 @@ export class SettingsController implements ISettingsController {
                 properties: {
                     guildId: interaction.guildId,
                     command: "/settings",
+                    language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -119,6 +130,9 @@ export class SettingsController implements ISettingsController {
                 properties: {
                     guildId: interaction.guildId,
                     command: "/settings",
+                    language: interaction.locale,
+                    memberCount: interaction.guild?.memberCount,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
                     ...channel,
                 },
             });
@@ -127,6 +141,56 @@ export class SettingsController implements ISettingsController {
         } catch (error) {
             await this._replyWithError(interaction, error, {
                 command: "/settings",
+            });
+        }
+    }
+
+    /**
+     * Handles changing of the fonts
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleFontSelect(interaction: StringSelectMenuInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const old: Font["value"] = (channel?.font || "default") as Font["value"];
+            channel.font = interaction.values[0] as Font["value"];
+
+            await this._channelsService.setChannel(interaction.channelId, channel);
+
+            // memes in chat frequency
+            analytics.capture({
+                event: "font_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    language: interaction.locale,
+                    old: old,
+                    new: channel.font,
+                    enabled: channel.enabled,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
+                },
+            });
+
+            await this._replyWithSettings(interaction, channel);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+                action: "font",
             });
         }
     }
@@ -162,8 +226,13 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     channelId: interaction.channelId,
                     command: "/settings",
+                    language: interaction.locale,
                     old: old,
                     new: channel.frequency,
+                    enabled: channel.enabled,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
                 },
             });
 
@@ -172,6 +241,56 @@ export class SettingsController implements ISettingsController {
             await this._replyWithError(interaction, error, {
                 command: "/settings",
                 action: "frequency",
+            });
+        }
+    }
+
+    /**
+     * Handles changing of the milestone messages
+     * setting for the channel
+     *
+     * @param interaction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public async handleMilestonesSelect(interaction: StringSelectMenuInteraction): Promise<void> {
+        try {
+            const channel: typeof channelsTable.$inferSelect | undefined = await this._channelsService.getChannel(
+                interaction.channelId,
+            );
+
+            if (!channel) {
+                throw new Error();
+            }
+
+            const old: boolean = channel.milestones;
+            channel.milestones = interaction.values[0] === "true";
+
+            await this._channelsService.setChannel(interaction.channelId, channel);
+
+            analytics.capture({
+                event: "milestones_changed",
+                distinctId: interaction.user.id,
+                properties: {
+                    guildId: interaction.guildId,
+                    channelId: interaction.channelId,
+                    command: "/settings",
+                    language: interaction.locale,
+                    old: old,
+                    new: channel.milestones,
+                    enabled: channel.enabled,
+                    useAvatarsInMemes: channel.useAvatarsInMemes,
+                    frequency: channel.frequency,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
+                },
+            });
+
+            await this._replyWithSettings(interaction, channel);
+        } catch (error) {
+            await this._replyWithError(interaction, error, {
+                command: "/settings",
+                action: "milestones",
             });
         }
     }
@@ -207,8 +326,13 @@ export class SettingsController implements ISettingsController {
                     guildId: interaction.guildId,
                     channelId: interaction.channelId,
                     command: "/settings",
+                    language: interaction.locale,
                     old: old,
                     new: channel.useAvatarsInMemes,
+                    enabled: channel.enabled,
+                    frequency: channel.frequency,
+                    channelAgeDays: Math.round((Date.now() - channel.addedAt.getTime()) / 86400000),
+                    memberCount: interaction.guild?.memberCount,
                 },
             });
 
@@ -236,9 +360,15 @@ export class SettingsController implements ISettingsController {
         channel: typeof channelsTable.$inferSelect,
     ): Promise<void> {
         await respond(interaction, [
-            this._componentsService.getSettingsHeaderMessageComponent(channel.enabled),
-            this._componentsService.getSettingsBodyMessageComponent(channel.frequency, channel.useAvatarsInMemes),
-            this._componentsService.getSettingsFooterMessageComponent(),
+            this._componentsService.getSettingsHeaderMessageComponent(interaction.locale, channel.enabled),
+            this._componentsService.getSettingsBodyMessageComponent(
+                interaction.locale,
+                channel.frequency,
+                channel.useAvatarsInMemes,
+                channel.milestones,
+                channel.font,
+            ),
+            this._componentsService.getSettingsFooterMessageComponent(interaction.locale),
         ]);
     }
 
@@ -252,8 +382,8 @@ export class SettingsController implements ISettingsController {
      */
     private async _replyWithDeleteDataConfirmation(interaction: ButtonInteraction): Promise<void> {
         await respond(interaction, [
-            this._componentsService.getDeleteDataConfirmationMessageComponent(),
-            this._componentsService.getDeleteDataButtonsComponent(),
+            this._componentsService.getDeleteDataConfirmationMessageComponent(interaction.locale),
+            this._componentsService.getDeleteDataButtonsComponent(interaction.locale),
         ]);
     }
 
@@ -266,7 +396,7 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithDeleteDataSuccess(interaction: ButtonInteraction): Promise<void> {
-        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent()]);
+        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale)]);
     }
 
     /**
@@ -287,11 +417,14 @@ export class SettingsController implements ISettingsController {
     ): Promise<void> {
         console.error(error);
         analytics.captureException(error, interaction.user.id, {
-            channel_id: interaction.channelId,
-            guild_id: interaction.guildId || "",
+            channelId: interaction.channelId,
+            guildId: interaction.guildId || "",
             trigger: interaction.isCommand() ? "/settings" : "/enable",
+            language: interaction.locale,
             ...properties,
         });
-        await respond(interaction, [this._componentsService.getErrorMessageComponent(interaction.id)]);
+        await respond(interaction, [
+            this._componentsService.getErrorMessageComponent(interaction.locale, interaction.id),
+        ]);
     }
 }

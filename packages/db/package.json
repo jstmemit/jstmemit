@@ -3,18 +3,22 @@
     "private": true,
     "type": "module",
     "dependencies": {
+        "@jstmemit/analytics": "workspace:*",
         "@jstmemit/shared": "workspace:*",
-        "@libsql/client": "^0.17.3",
+        "@libsql/client": "^0.17.4",
         "@tursodatabase/database": "^0.6.1",
-        "better-sqlite3": "^12.10.0",
+        "better-sqlite3": "^12.11.1",
         "dotenv": "^17.4.2",
+        "drizzle-kit": "1.0.0-rc.3",
+        "ms": "^2.1.3",
+        "undici": "^8.10.0",
         "zod": "^4.4.3"
     },
     "devDependencies": {
-        "@types/node": "^25.9.2",
-        "drizzle-kit": "1.0.0-rc.3",
+        "@types/ms": "^2.1.0",
+        "@types/node": "^25.9.5",
         "drizzle-orm": "1.0.0-rc.3",
-        "tsx": "^4.22.4"
+        "tsx": "^4.23.1"
     },
     "exports": {
         "./repositories/*": "./src/repositories/*.ts",

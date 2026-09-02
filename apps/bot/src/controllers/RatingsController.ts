@@ -1,9 +1,10 @@
 import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
-import type { ButtonInteraction } from "discord.js";
+import { type ButtonInteraction, InteractionContextType } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { analytics } from "@jstmemit/analytics";
 import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
+import { logger } from "#/container.ts";
 
 export class RatingsController implements IRatingsController {
     private readonly _ratingsService: IRatingsService;
@@ -36,18 +37,24 @@ export class RatingsController implements IRatingsController {
         generationId: number,
     ): Promise<void> {
         try {
+            await interaction.deferUpdate();
+
             const success: boolean = await this._ratingsService.addRating(
                 interaction.user.id,
                 interaction.message.id,
+                interaction.channelId,
                 rating,
             );
+
+            const templateName: string | undefined = this._getTemplateNameFromButtons(interaction);
+            await this._ratingsService.updateRatingButtons(interaction, generationId, templateName);
 
             const generation = await this._generationsRepository.get(generationId);
 
             if (generation && success) {
                 await this._banditService.recordRating(
                     generation.channelId,
-                    generation.templateId,
+                    generation.templateName,
                     rating,
                     interaction.user.id,
                 );
@@ -59,13 +66,50 @@ export class RatingsController implements IRatingsController {
                         generationId: generationId,
                         channelId: interaction.channelId,
                         guildId: interaction.guildId,
+                        language: interaction.locale,
+                        templateName: generation.templateName,
+                        secondsSinceGeneration: Math.round((Date.now() - generation.createdAt.getTime()) / 1000),
+                        isFirstRating: success,
+                        context: interaction.context != null ? InteractionContextType[interaction.context] : undefined,
+                        isUserInstall: "1" in (interaction.authorizingIntegrationOwners || {}),
+                        receiveLatencyMs: Date.now() - interaction.createdTimestamp,
                     },
                 });
             }
-
-            await this._ratingsService.updateRatingButtons(interaction, generationId);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+            logger.emit({
+                severityText: "error",
+                body: "ratings.interaction.error",
+                attributes: {
+                    posthogDistinctId: interaction.user.id,
+                    interaction_id: interaction.id,
+                    channel_id: interaction.channelId,
+                    guild_id: interaction?.guildId,
+                    generation_id: generationId,
+                    rating,
+                    error_message: error instanceof Error ? error.message : String(error),
+                    error_stack: error instanceof Error ? error.stack : undefined,
+                },
+            });
         }
+    }
+
+    private _getTemplateNameFromButtons(interaction: ButtonInteraction): string | undefined {
+        for (const row of interaction.message.components) {
+            if (!("components" in row)) {
+                continue;
+            }
+
+            for (const component of row.components) {
+                const customId: string | null = "customId" in component ? component.customId : null;
+
+                if (customId?.startsWith("custom:")) {
+                    return customId.slice("custom:".length);
+                }
+            }
+        }
+
+        return undefined;
     }
 }

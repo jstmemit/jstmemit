@@ -1,5 +1,7 @@
+import type { messagesTable } from "../schema.ts";
+
 export abstract class IMessagesRepository {
-    public abstract new(messageId: string, channelId: string, content: string, timestamp: Date): Promise<boolean>;
+    public abstract new(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number>;
 
     public abstract getMessagesAmountByChannelId(channelId: string): Promise<number>;
 
@@ -11,4 +13,6 @@ export abstract class IMessagesRepository {
     ): Promise<string[]>;
 
     public abstract deleteAllByChannelId(channelId: string): Promise<boolean>;
+
+    public abstract deleteAllOlderThan(days?: number): Promise<boolean>;
 }

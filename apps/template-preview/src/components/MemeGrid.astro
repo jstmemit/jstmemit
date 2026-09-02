@@ -1,50 +1,82 @@
 ---
-import satori from "satori";
-import { Resvg } from "@resvg/resvg-js";
-import type { IFontsRepository } from "@jstmemit/shared/interfaces/IFontsRepository";
-import { FontsRepository } from "@jstmemit/shared/repositories/FontsRepository";
-import type { IFontsService } from "@jstmemit/shared/interfaces/IFontsService";
-import { FontsService } from "@jstmemit/shared/services/FontsService";
 import type { TemplateProps } from "@jstmemit/shared/models/TemplateProps";
-import { variants } from "../data/variants.ts";
 import type { Template } from "@jstmemit/shared/models/Template";
-import { TemplatesService } from "../services/TemplatesService.ts";
+import MemeCard from "./MemeCard.astro";
+import { render, renderAnimation } from "takumi-js";
+import { renderer, fetchCache, sources } from "../utils/renderer";
 import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
 import type { ITemplatesService } from "../interfaces/ITemplatesService.ts";
-import MemeCard from "./MemeCard.astro";
+import { TemplatesService } from "../services/TemplatesService.ts";
 
-const fontsRepository: IFontsRepository = new FontsRepository();
-const fontsService: IFontsService = new FontsService(fontsRepository);
+interface Props {
+    templateName: string;
+    variants: TemplateProps[];
+    cols: number;
+    gap?: string;
+}
 
 const templatesRepository: ITemplatesRepository = new TemplatesRepository();
 const templatesService: ITemplatesService = new TemplatesService(templatesRepository);
 
-interface Props {
-    templateName: string;
-}
+const { templateName, variants, cols, gap = "gap-5" } = Astro.props;
 
-const { templateName } = Astro.props;
+const template: Template = templatesService.getTemplateByName(templateName || "");
 
-const template: Template = templatesService.getTemplateByName(templateName);
+const signal: AbortSignal = Astro.request.signal;
 
-const examples: string[] = await Promise.all(
-    variants.map(async (input: TemplateProps): Promise<string> => {
-        const svg: string = await satori(template.element(input), {
+const memes: Promise<string>[] = variants.map(async (variant: TemplateProps): Promise<string> => {
+    if (variant?.texts === undefined) {
+        throw new Error();
+    }
+
+    if (template.animationDuration === undefined) {
+        const staticMeme = await render(template.element(variant), {
             width: template.width,
             height: template.height,
-            fonts: fontsService.getFonts(),
+            renderer: renderer,
+            emoji: "twemoji",
+            format: "webp",
+            quality: 40,
+            drawDebugBorder: true,
+            signal: signal,
+            images: {
+                timeout: 60000,
+                maxBytes: 20 * 1024 * 1024,
+                fetchCache: fetchCache,
+                sources: sources,
+            },
         });
-        const png: Buffer<ArrayBufferLike> = new Resvg(svg).render().asPng();
-        return `data:image/png;base64,${png.toString("base64")}`;
-    }),
-);
+        return `data:image/webp;base64,${staticMeme.toString("base64")}`;
+    }
+
+    const animationDuration: number = template.animationDuration === null ? 1500 : template.animationDuration;
+    const animatedMeme = await renderAnimation({
+        width: template.width,
+        height: template.height,
+        renderer: renderer,
+        fps: 10,
+        format: "webp",
+        scenes: [{ durationMs: animationDuration, node: template.element(variant) }],
+        emoji: "twemoji",
+        quality: 25,
+        drawDebugBorder: true,
+        signal: signal,
+        images: {
+            timeout: 60000,
+            maxBytes: 20 * 1024 * 1024,
+            fetchCache: fetchCache,
+            sources: sources,
+        },
+    });
+    return `data:image/webp;base64,${animatedMeme.toString("base64")}`;
+});
 ---
 
-<ul class="flex flex-wrap gap-5">
+<ul class:list={["flex flex-wrap", gap]}>
     {
-        examples.map((src: string) => (
-            <MemeCard src={src} width={template.width} height={template.height} name={template.name} />
+        variants.map(async (variant: TemplateProps, i: number): Promise => (
+            <MemeCard src={memes[i]} template={template} size={`1/${cols}`} />
         ))
     }
 </ul>

@@ -1,0 +1,89 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
+
+export const ditfZeroTwoHuggingPaper: Template = {
+    name: "ditfZeroTwoHuggingPaper",
+    displayName: buildLocales("Zero Two hugging paper", {
+        [Locale.Russian]: "Зеро Ту обнимает бумагу",
+        [Locale.Ukrainian]: "Зіро Ту обіймає папір",
+        [Locale.Dutch]: "Zero Two knuffelt papier",
+        [Locale.French]: "Zero Two enlace une feuille de papier",
+        [Locale.German]: "Zero Two umarmt ein Blatt Papier",
+        [Locale.Polish]: "Zero Two przytula kartkę",
+        [Locale.SpanishES]: "Zero Two abrazando un papel",
+        [Locale.SpanishLATAM]: "Zero Two abrazando un papel",
+        [Locale.PortugueseBR]: "Zero Two abraçando um papel",
+        [Locale.Turkish]: "Zero Two kağıda sarılıyor",
+        [Locale.Italian]: "Zero Two abbraccia un foglio",
+        [Locale.Indonesian]: "Zero Two memeluk kertas",
+        [Locale.Czech]: "Zero Two objímá papír",
+        [Locale.Japanese]: "紙を抱きしめるゼロツー",
+        [Locale.Korean]: "종이를 껴안는 제로투",
+        [Locale.ChineseCN]: "02抱着纸",
+    }),
+    topics: [Topic.Anime, Topic.DarlingInTheFranxx],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
+    width: 732,
+    height: 827,
+    texts: [{ id: 0, description: "the phrase on a sheet of paper", minLength: 1, maxLength: 14 }],
+    images: [{ id: 0, description: "Zero Two's face" }],
+    element: ({ texts, images, font }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: font,
+            }}
+        >
+            <img
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/ditfZeroTwoHuggingPaper.png"
+                width={732}
+                height={827}
+                style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={170}
+                height={170}
+                style={{ position: "absolute", bottom: 160, left: 240, borderRadius: "100%", objectFit: "cover" }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: "14%",
+                    top: "1%",
+                    width: "69%",
+                    height: "40%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    transform: "rotate(-3deg)",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 6,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+        </div>
+    ),
+};

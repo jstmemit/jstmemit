@@ -1,0 +1,76 @@
+---
+import Separator from "#/components/ui/Separator.astro";
+import type { MarqueeItem } from "#/models/MarqueeItem.ts";
+
+interface Props {
+    texts: MarqueeItem[];
+    direction?: "left" | "right";
+    variant?: "bg" | "hero";
+    freeze?: boolean;
+}
+
+const { texts, direction = "right", variant = "bg", freeze = false } = Astro.props;
+texts.push(...texts);
+---
+
+{
+    variant === "bg" && (
+        <div class="relative">
+            <ul
+                class:list={[
+                    "absolute top-0 flex items-center gap-2.5 text-xs text-white/30",
+                    direction === "right" ? "animate-marquee-right" : "animate-marquee-left",
+                ]}
+            >
+                {texts.map((item: MarqueeItem, index: number) => (
+                    <li class="flex items-center gap-2.5 whitespace-nowrap">
+                        {item.text}
+
+                        {index !== texts.length - 1 && <Separator />}
+                    </li>
+                ))}
+            </ul>
+            <ul
+                class:list={[
+                    "flex items-center gap-2.5 text-xs text-white/30",
+                    direction === "right" ? "animate-marquee-right2" : "animate-marquee-left2",
+                ]}
+            >
+                {texts.map((item: MarqueeItem, index: number) => (
+                    <li class="flex items-center gap-2.5 whitespace-nowrap">
+                        {item.text}
+
+                        {index !== texts.length - 1 && <Separator />}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+{
+    variant === "hero" && (
+        <div class="relative z-1 flex bg-black/50 py-6 backdrop-blur-md md:w-screen">
+            <div class="absolute top-0 left-0 z-2 h-full w-18 bg-linear-to-r from-black to-transparent" />
+            <div class="absolute top-0 right-0 z-2 h-full w-18 bg-linear-to-l from-black to-transparent" />
+
+            <ul
+                class:list={[
+                    direction === "right" ? "animate-marquee-right" : "animate-marquee-left",
+                    freeze && "ml-8 md:animate-none",
+                    "absolute top-1.5 flex items-center gap-10 font-bold text-white uppercase italic md:text-2xl",
+                ]}
+            >
+                {texts.map((item: MarqueeItem) => (
+                    <li class="flex items-center gap-2.5 whitespace-nowrap">
+                        <img src={item.icon} alt={item.alt} />
+
+                        {item.text}
+
+                        <Separator variant="text" text="/" classes="ml-3 -mr-5 text-white/15" />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}

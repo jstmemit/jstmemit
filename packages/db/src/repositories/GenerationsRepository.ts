@@ -1,18 +1,15 @@
 import { generationsTable } from "../schema.ts";
 import { db } from "../index.ts";
 import type { IGenerationsRepository } from "../interfaces/IGenerationsRepository.ts";
-import { eq } from "drizzle-orm";
+import { count, eq, countDistinct } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class GenerationsRepository implements IGenerationsRepository {
-    public async add(
-        channelId: string,
-        templateId: number,
-        date: Date,
-    ): Promise<number> {
+    public async add(channelId: string, templateName: string, date: Date): Promise<number> {
         try {
             const generation = {
                 channelId: channelId,
-                templateId: templateId,
+                templateName: templateName,
                 createdAt: date,
             };
 
@@ -20,15 +17,13 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return Number(result.lastInsertRowid);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
     }
 
-    public async get(
-        generationId: number,
-    ): Promise<typeof generationsTable.$inferSelect | undefined> {
+    public async get(generationId: number): Promise<typeof generationsTable.$inferSelect | undefined> {
         try {
             const generations = await db
                 .select()
@@ -38,9 +33,40 @@ export class GenerationsRepository implements IGenerationsRepository {
 
             return generations[0];
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
+        }
+    }
+
+    public async getCountPerChannel(channelId: string): Promise<number> {
+        try {
+            const result = await db
+                .select({ count: count() })
+                .from(generationsTable)
+                .where(eq(generationsTable.channelId, channelId))
+                .limit(1);
+
+            return result[0]?.count as number;
+        } catch (error) {
+            analytics.captureException(error);
+
+            return 0;
+        }
+    }
+
+    public async getTemplateCountPerChannel(channelId: string): Promise<number> {
+        try {
+            const result = await db
+                .select({ count: countDistinct(generationsTable.templateName) })
+                .from(generationsTable)
+                .where(eq(generationsTable.channelId, channelId));
+
+            return result[0]?.count as number;
+        } catch (error) {
+            analytics.captureException(error);
+
+            return 0;
         }
     }
 }

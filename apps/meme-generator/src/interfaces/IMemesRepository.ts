@@ -5,7 +5,6 @@ export abstract class IMemesRepository {
     public abstract generateMeme(
         template: Template,
         props: TemplateProps,
-    ): Promise<string | undefined>;
-
-    public abstract convertIntoBuffer(svg: string, width: number): Buffer;
+        animated: boolean,
+    ): Promise<Buffer<ArrayBufferLike> | Uint8Array<ArrayBufferLike>>;
 }

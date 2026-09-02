@@ -1,10 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "paths": {
-      "#/*": ["./src/*"]
+    "extends": "../../tsconfig.base.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "paths": {
+            "#/*": ["./src/*"]
+        }
     }
-  }
 }

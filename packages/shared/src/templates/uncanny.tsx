@@ -1,76 +1,116 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const uncanny: Template = {
-    id: 11,
     name: "uncanny",
+    displayName: buildLocales("Incredible uncanny", {
+        [Locale.Russian]: "Невероятный и жуткий",
+        [Locale.Ukrainian]: "Неймовірний і моторошний",
+        [Locale.Dutch]: "Ongelooflijk griezelig",
+        [Locale.French]: "Incroyable et troublant",
+        [Locale.German]: "Unglaublich unheimlich",
+        [Locale.Polish]: "Niesamowicie niepokojący",
+        [Locale.SpanishES]: "Increíble e inquietante",
+        [Locale.SpanishLATAM]: "Increíble e inquietante",
+        [Locale.PortugueseBR]: "Incrível e sinistro",
+        [Locale.Turkish]: "İnanılmaz tekinsiz",
+        [Locale.Italian]: "Incredibilmente inquietante",
+        [Locale.Indonesian]: "Sangat menakutkan",
+        [Locale.Czech]: "Neuvěřitelně děsivý",
+        [Locale.Japanese]: "ミスター・インクレディブル アンキャニー",
+        [Locale.Korean]: "미스터 인크레더블 불쾌한 골짜기",
+        [Locale.ChineseCN]: "超人总动员 惊悚",
+    }),
+    topics: [Topic.Cartoons, Topic.Reaction, Topic.Incredibles],
+    types: [Type.TwoOption, Type.TextTopWithBackground],
     width: 950,
-    height: 500,
+    height: 670,
     texts: [
-        { id: 0, description: "left caption", minLength: 1, maxLength: 4 },
-        { id: 1, description: "right caption", minLength: 1, maxLength: 4 },
+        { id: 0, description: "left caption", minLength: 1, maxLength: 5 },
+        { id: 1, description: "right caption", minLength: 1, maxLength: 5 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/uncanny.png"
                 width={950}
                 height={500}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    bottom: 0,
+                    top: 0,
                     width: "50%",
-                    height: "auto",
+                    height: "170px",
                     display: "flex",
-                    padding: "15px",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundColor: "white",
+                    borderRight: "4px solid black",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
-                    left: "50%",
-                    bottom: 0,
+                    right: 0,
+                    top: 0,
                     width: "50%",
-                    height: "auto",
-                    padding: "15px",
+                    height: "170px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 52,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundColor: "white",
+                    borderLeft: "4px solid black",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

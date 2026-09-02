@@ -1,0 +1,54 @@
+---
+import type { MemeGridItem } from "#/models/MemeGridItem.ts";
+import Card from "#/components/ui/Card.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import MemeSwiper from "#/components/ui/MemeSwiper.astro";
+import { memeGrid } from "#/data/memeGrid.ts";
+
+interface Props {
+    classes?: string;
+}
+
+const { classes } = Astro.props;
+---
+
+<section aria-labelledby="thisIsWhatYouGetHeading" aria-describedby="thisIsWhatYouGetDescription" class="xl:hidden">
+    <div class="flex flex-col gap-3 px-8 pt-8">
+        <Heading id="thisIsWhatYouGetHeading">
+            This is what you <em class="text-bubblegum-pink not-italic">get</em>
+        </Heading>
+        <Paragraph id="thisIsWhatYouGetDescription">
+            Don't forget that your memes will be made from your own chats, images and inside jokes. This makes them
+            relatable and funnier than these examples.
+        </Paragraph>
+    </div>
+    <MemeSwiper memes={memeGrid} height="h-120" />
+</section>
+
+<ul
+    aria-label="Grid of meme examples"
+    class:list={[
+        "bg-carbon-black absolute -top-40 -right-20 hidden w-full max-w-[42vw] rotate-8 grid-cols-9 gap-6 gap-y-12 rounded-4xl p-4 xl:grid 2xl:max-w-180",
+        classes,
+    ]}
+>
+    {
+        memeGrid.map((meme: MemeGridItem) => (
+            <Card
+                label={meme.image.split("/").pop() || "meme.png"}
+                color={meme.color}
+                classes={`${meme.span} ${meme.height}`}
+                border={`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`}
+            >
+                <img
+                    src={meme.image}
+                    alt={meme.alt}
+                    fetchpriority="low"
+                    loading="lazy"
+                    class:list={["bg-carbon-black h-full w-full rounded-xl rounded-t-none", meme.span, meme.height]}
+                />
+            </Card>
+        ))
+    }
+</ul>

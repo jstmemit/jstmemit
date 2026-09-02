@@ -1,29 +1,53 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const blooInBed: Template = {
-    id: 30,
     name: "blooInBed",
+    displayName: buildLocales("Bloo in bed", {
+        [Locale.Russian]: "Блу в кровати",
+        [Locale.Ukrainian]: "Блу в ліжку",
+        [Locale.Dutch]: "Bloo in bed",
+        [Locale.French]: "Bloo au lit",
+        [Locale.German]: "Bloo im Bett",
+        [Locale.Polish]: "Bloo w łóżku",
+        [Locale.SpanishES]: "Bloo en la cama",
+        [Locale.SpanishLATAM]: "Bloo en la cama",
+        [Locale.PortugueseBR]: "Bloo na cama",
+        [Locale.Turkish]: "Bloo yatakta",
+        [Locale.Italian]: "Bloo a letto",
+        [Locale.Indonesian]: "Bloo di tempat tidur",
+        [Locale.Czech]: "Bloo v posteli",
+        [Locale.Japanese]: "ベッドのブルー",
+        [Locale.Korean]: "침대의 블루",
+        [Locale.ChineseCN]: "床上的布鲁",
+    }),
+    topics: [Topic.Reaction, Topic.Cartoons],
+    types: [Type.TextLeftWithBackground, Type.TwoOption],
     width: 864,
     height: 871,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 12 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 12 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/blooInBed.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blooInBed.png"
                 width={864}
                 height={871}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -35,18 +59,25 @@ export const blooInBed: Template = {
                     top: 0,
                     width: "50%",
                     height: "50%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 7,
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
@@ -55,18 +86,26 @@ export const blooInBed: Template = {
                     bottom: 0,
                     width: "50%",
                     height: "50%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 7,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

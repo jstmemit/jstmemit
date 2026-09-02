@@ -1,0 +1,57 @@
+---
+import List from "#/components/ui/List.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Message from "#/components/ui/Message.astro";
+import Separator from "#/components/ui/Separator.astro";
+import Content from "#/components/ui/Content.astro";
+import Highlight from "#/components/ui/Highlight.astro";
+
+interface Props {
+    classes?: string;
+}
+
+const { classes } = Astro.props;
+---
+
+<Section
+    classes={classes}
+    variant="light"
+    headingId="howExactlyDoesThatWorkHeading"
+    descriptionId="howExactlyDoesThatWorkDescription"
+>
+    <Content slot="text">
+        <Heading id="howExactlyDoesThatWorkHeading">
+            How <Highlight color="text-bubblegum-pink">exactly</Highlight> does that <Highlight
+                color="text-bubblegum-pink">work?</Highlight
+            >
+        </Heading>
+        <Paragraph id="howExactlyDoesThatWorkDescription">
+            To generate memes the bot stores a short memory of your channel. This includes text content and links to
+            GIFs and Images.
+        </Paragraph>
+        <Paragraph>
+            During each meme generation the bot runs a Markov chain algorithm and then filters out bad results. Fusing
+            multiple messages together is what makes it chaotic and funny.
+        </Paragraph>
+        <Paragraph>
+            And if a meme requires images, <b>Jstmemit</b> will pick random ones out of a pool of avatars, attachments and
+            GIFs.
+        </Paragraph>
+
+        <List>
+            <Message heading="Message #1" color="text-bubblegum-pink">our base is raided</Message>
+            <Separator variant="arrow" classes="mt-6" />
+            <Message heading="Message #2" color="text-dark-cyan">bruh this weapon is so trash</Message>
+            <Separator variant="arrow" classes="mt-6" />
+            <Message heading="Meme text" color="hidden">
+                <Highlight color="text-bubblegum-pink">[[</Highlight>our base<Highlight color="text-bubblegum-pink"
+                    >]]</Highlight
+                >
+                {" "}is{" "}
+                <Highlight color="text-dark-cyan">[[</Highlight>so trash<Highlight color="text-dark-cyan">]]</Highlight>
+            </Message>
+        </List>
+    </Content>
+</Section>

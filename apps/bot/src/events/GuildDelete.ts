@@ -1,7 +1,8 @@
-import { eventsController } from "#/container.ts";
 import { client } from "#/bot.ts";
-import { Events, type Guild } from "discord.js";
+import type { Guild } from "discord.js";
+import { Events } from "discord.js";
+import { eventsController } from "#/container.ts";
 
-client.on(Events.GuildDelete, (guild: Guild) =>
-    eventsController.handleGuildDelete(guild),
-);
+client.on(Events.GuildDelete, (guild: Guild): void => {
+    eventsController.handleGuildDelete(guild);
+});

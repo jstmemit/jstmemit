@@ -8,7 +8,9 @@ COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY packages ./packages
 COPY apps/website ./apps/website
 
-RUN pnpm install --frozen-lockfile --filter @jstmemit/website...
+RUN --mount=type=cache,target=/pnpm-store \
+    pnpm install --frozen-lockfile --store-dir /pnpm-store --filter @jstmemit/website...
+
 RUN pnpm run website:build
 
 ENV HOST=0.0.0.0

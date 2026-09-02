@@ -1,9 +1,10 @@
-import type { FontStyle, FontWeight } from "satori";
+import type { GenericFontFamily } from "#/models/GenericFontFamily.ts";
 
 export interface FontOptions {
     data: Buffer | ArrayBuffer;
     name: string;
-    weight?: FontWeight;
-    style?: FontStyle;
+    weight?: number;
+    style?: string;
     lang?: string;
+    generic?: GenericFontFamily;
 }

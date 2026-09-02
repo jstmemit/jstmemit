@@ -18,7 +18,7 @@
         "noEmit": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "types": ["node"],
-        "include": ["*.ts"]
-    }
+        "types": ["node"]
+    },
+    "include": ["*.ts", "*.mjs"]
 }

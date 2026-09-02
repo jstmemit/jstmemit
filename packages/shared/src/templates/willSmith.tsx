@@ -1,26 +1,50 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const willSmith: Template = {
-    id: 56,
     name: "willSmith",
+    displayName: buildLocales("Will Smith", {
+        [Locale.Russian]: "Уилл Смит",
+        [Locale.Ukrainian]: "Вілл Сміт",
+        [Locale.Dutch]: "Will Smith",
+        [Locale.French]: "Will Smith",
+        [Locale.German]: "Will Smith",
+        [Locale.Polish]: "Will Smith",
+        [Locale.SpanishES]: "Will Smith",
+        [Locale.SpanishLATAM]: "Will Smith",
+        [Locale.PortugueseBR]: "Will Smith",
+        [Locale.Turkish]: "Will Smith",
+        [Locale.Italian]: "Will Smith",
+        [Locale.Indonesian]: "Will Smith",
+        [Locale.Czech]: "Will Smith",
+        [Locale.Japanese]: "ウィル・スミス",
+        [Locale.Korean]: "윌 스미스",
+        [Locale.ChineseCN]: "威尔·史密斯",
+    }),
+    topics: [Topic.Movies, Topic.Reaction],
+    types: [Type.FaceImage, Type.TextRight],
     width: 891,
     height: 891,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 16 }],
     images: [{ id: 0, description: "person`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/willSmith.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/willSmith.jpg"
                 width={891}
                 height={891}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -42,20 +66,28 @@ export const willSmith: Template = {
                     position: "absolute",
                     right: 0,
                     top: 0,
-                    padding: "15px",
-                    width: "40%",
+                    width: "45%",
                     height: "80%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 50,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 11,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -1,32 +1,56 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const connor: Template = {
-    id: 36,
     name: "connor",
+    displayName: buildLocales("Connor choosing", {
+        [Locale.Russian]: "Коннор выбирает",
+        [Locale.Ukrainian]: "Коннор обирає",
+        [Locale.Dutch]: "Connor kiest",
+        [Locale.French]: "Connor fait son choix",
+        [Locale.German]: "Connor entscheidet sich",
+        [Locale.Polish]: "Connor wybiera",
+        [Locale.SpanishES]: "Connor eligiendo",
+        [Locale.SpanishLATAM]: "Connor eligiendo",
+        [Locale.PortugueseBR]: "Connor escolhendo",
+        [Locale.Turkish]: "Connor seçim yapıyor",
+        [Locale.Italian]: "Connor che sceglie",
+        [Locale.Indonesian]: "Connor memilih",
+        [Locale.Czech]: "Connor si vybírá",
+        [Locale.Japanese]: "選択するコナー",
+        [Locale.Korean]: "선택하는 코너",
+        [Locale.ChineseCN]: "康纳做出选择",
+    }),
+    topics: [Topic.Games],
+    types: [Type.TextTopWithBackground, Type.FourOption, Type.TextBottom, Type.FaceImage],
     width: 960,
     height: 1211,
     texts: [
-        { id: 0, description: "option 1", minLength: 1, maxLength: 6 },
-        { id: 1, description: "option 2", minLength: 1, maxLength: 6 },
-        { id: 2, description: "option 3", minLength: 1, maxLength: 6 },
-        { id: 3, description: "option 4 (the chosen one)", minLength: 1, maxLength: 6 },
-        { id: 4, description: "the chosen option, repeated", minLength: 1, maxLength: 6 },
+        { id: 0, description: "option 1", minLength: 1, maxLength: 5 },
+        { id: 1, description: "option 2", minLength: 1, maxLength: 5 },
+        { id: 2, description: "option 3", minLength: 1, maxLength: 5 },
+        { id: 3, description: "option 4 (the chosen one)", minLength: 1, maxLength: 12 },
+        { id: 4, description: "Connor`s phrase", minLength: 1, maxLength: 8 },
     ],
-    images: [{ id: 0, description: "the chooser's face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    images: [{ id: 0, description: "Connor's face" }],
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/connor.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/connor.png"
                 width={960}
                 height={1211}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -46,107 +70,148 @@ export const connor: Template = {
             <div
                 style={{
                     position: "absolute",
-                    left: 96,
+                    left: "10%",
                     top: 0,
-                    width: 768,
-                    height: 121,
+                    width: "90%",
+                    height: "10%",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "flex-start",
-                    textAlign: "left",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 45,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 3,
-                    WebkitTextStrokeColor: "#ffffff",
+                    padding: "10px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        textAlign: "left",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        width: "100%",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+
+            <div
+                style={{
+                    position: "absolute",
+                    left: "10%",
+                    top: "10%",
+                    width: "90%",
+                    height: "10%",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "10px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        textAlign: "left",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        width: "100%",
+                    }}
+                >
+                    {texts[1]}
+                </div>
+            </div>
+
+            <div
+                style={{
+                    position: "absolute",
+                    left: "10%",
+                    top: "20%",
+                    width: "90%",
+                    height: "10%",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "10px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 1,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        textAlign: "left",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[2]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        width: "100%",
+                    }}
+                >
+                    {texts[2]}
+                </div>
+            </div>
+
+            <div
+                style={{
+                    position: "absolute",
+                    left: "10%",
+                    top: "30%",
+                    width: "90%",
+                    minHeight: "10%",
+                    maxHeight: "20%",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "10px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 3,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        textAlign: "left",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[3]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                        width: "100%",
+                    }}
+                >
+                    {texts[3]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
-                    left: 96,
-                    top: 109,
-                    width: 768,
-                    height: 121,
+                    left: 0,
+                    bottom: 0,
+                    width: "100%",
+                    height: "15%",
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    textAlign: "left",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 45,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 3,
-                    WebkitTextStrokeColor: "#ffffff",
-                }}
-            >
-                {texts[1]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 96,
-                    top: 242,
-                    width: 768,
-                    height: 121,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    textAlign: "left",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 45,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 3,
-                    WebkitTextStrokeColor: "#ffffff",
-                }}
-            >
-                {texts[2]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 96,
-                    top: 363,
-                    width: 768,
-                    height: 121,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    textAlign: "left",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 45,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 3,
-                    WebkitTextStrokeColor: "#ffffff",
-                }}
-            >
-                {texts[3]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
-                    left: 96,
-                    top: 969,
-                    width: 768,
-                    height: 303,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 55,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 5,
-                    WebkitTextStrokeColor: "#000000",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
+                    padding: "10px",
                 }}
             >
-                {texts[4]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[4]),
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                    }}
+                >
+                    {texts[4]}
+                </div>
             </div>
         </div>
     ),

@@ -1,30 +1,54 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const disappointedGuy1: Template = {
-    id: 18,
     name: "disappointedGuy1",
+    displayName: buildLocales("Disappointed guy 1", {
+        [Locale.Russian]: "Разочарованный парень 1",
+        [Locale.Ukrainian]: "Розчарований хлопець 1",
+        [Locale.Dutch]: "Teleurgestelde man 1",
+        [Locale.French]: "Gars déçu 1",
+        [Locale.German]: "Enttäuschter Typ 1",
+        [Locale.Polish]: "Rozczarowany facet 1",
+        [Locale.SpanishES]: "Chico decepcionado 1",
+        [Locale.SpanishLATAM]: "Chico decepcionado 1",
+        [Locale.PortugueseBR]: "Cara decepcionado 1",
+        [Locale.Turkish]: "Hayal kırıklığına uğramış adam 1",
+        [Locale.Italian]: "Ragazzo deluso 1",
+        [Locale.Indonesian]: "Cowok kecewa 1",
+        [Locale.Czech]: "Zklamaný chlap 1",
+        [Locale.Japanese]: "がっかりする男 1",
+        [Locale.Korean]: "실망한 남자 1",
+        [Locale.ChineseCN]: "失望的男人 1",
+    }),
+    topics: [Topic.Reaction],
+    types: [Type.TextLeftWithBackground, Type.ThreeOption],
     width: 850,
     height: 1097,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
-        { id: 2, description: "text3", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 10 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 10 },
+        { id: 2, description: "third reaction", minLength: 1, maxLength: 10 },
     ],
     images: [],
-    element: ({ texts }: TemplateProps) => (
+    element: ({ texts, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/disappointedGuy1.png"
                 width={850}
                 height={1097}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -36,18 +60,26 @@ export const disappointedGuy1: Template = {
                     top: 0,
                     width: "49%",
                     height: "33%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 5,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
@@ -56,38 +88,54 @@ export const disappointedGuy1: Template = {
                     top: "33%",
                     width: "49%",
                     height: "33%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 5,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
             <div
                 style={{
                     position: "absolute",
                     left: 0,
-                    top: "66%",
+                    bottom: 0,
                     width: "49%",
                     height: "34%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[2]}
+                <div
+                    style={{
+                        lineClamp: 5,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[2]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[2]}
+                </div>
             </div>
         </div>
     ),

@@ -1,29 +1,53 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tryingToExplain: Template = {
-    id: 55,
     name: "tryingToExplain",
+    displayName: buildLocales("Trying to explain", {
+        [Locale.Russian]: "Пытается объяснить",
+        [Locale.Ukrainian]: "Намагається пояснити",
+        [Locale.Dutch]: "Proberen uit te leggen",
+        [Locale.French]: "Essayant d'expliquer",
+        [Locale.German]: "Versuchen zu erklären",
+        [Locale.Polish]: "Próba wyjaśnienia",
+        [Locale.SpanishES]: "Intentando explicar",
+        [Locale.SpanishLATAM]: "Intentando explicar",
+        [Locale.PortugueseBR]: "Tentando explicar",
+        [Locale.Turkish]: "Açıklamaya çalışıyor",
+        [Locale.Italian]: "Cercando di spiegare",
+        [Locale.Indonesian]: "Mencoba menjelaskan",
+        [Locale.Czech]: "Snaží se vysvětlit",
+        [Locale.Japanese]: "必死に説明しようとする",
+        [Locale.Korean]: "설명하려는 중",
+        [Locale.ChineseCN]: "试图解释",
+    }),
+    topics: [Topic.Movies, Topic.Reaction],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 1080,
-    height: 1118,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 10 }],
+    height: 1080,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [{ id: 0, description: "person`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/tryingToExplain.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tryingToExplain.png"
                 width={1080}
                 height={1118}
-                style={{ position: "absolute", top: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <img
                 src={images[0]}
@@ -31,7 +55,7 @@ export const tryingToExplain: Template = {
                 height={200}
                 style={{
                     position: "absolute",
-                    top: 420,
+                    top: 382,
                     left: 290,
                     borderRadius: "100%",
                     objectFit: "cover",
@@ -42,20 +66,28 @@ export const tryingToExplain: Template = {
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "28%",
+                    height: "270px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 60,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 3,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

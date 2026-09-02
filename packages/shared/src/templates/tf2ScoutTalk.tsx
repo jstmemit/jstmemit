@@ -1,49 +1,93 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tf2ScoutTalk: Template = {
-    id: 54,
     name: "tf2ScoutTalk",
+    displayName: buildLocales("Scout talk", {
+        [Locale.Russian]: "Разведчик говорит",
+        [Locale.Ukrainian]: "Розвідник говорить",
+        [Locale.Dutch]: "Scout praten",
+        [Locale.French]: "Scout parle",
+        [Locale.German]: "Scout spricht",
+        [Locale.Polish]: "Scout gada",
+        [Locale.SpanishES]: "Scout hablando",
+        [Locale.SpanishLATAM]: "Scout hablando",
+        [Locale.PortugueseBR]: "Scout falando",
+        [Locale.Turkish]: "Scout konuşuyor",
+        [Locale.Italian]: "Scout che parla",
+        [Locale.Indonesian]: "Scout bicara",
+        [Locale.Czech]: "Scout mluví",
+        [Locale.Japanese]: "スカウトの会話",
+        [Locale.Korean]: "스카웃 이야기",
+        [Locale.ChineseCN]: "侦察兵谈话",
+    }),
+    topics: [Topic.TeamFortress2, Topic.Games],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
     width: 640,
     height: 857,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 20 }],
-    images: [],
-    element: ({ texts }: TemplateProps) => (
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 26 }],
+    images: [{ id: 0, description: "Scout`s face" }],
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/tf2ScoutTalk.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tf2ScoutTalk.jpg"
                 width={640}
                 height={857}
                 style={{ position: "absolute", top: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={250}
+                height={250}
+                style={{
+                    position: "absolute",
+                    top: 300,
+                    left: 200,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
             />
             <div
                 style={{
                     position: "absolute",
                     left: 0,
                     top: 0,
-                    padding: "15px",
                     width: "100%",
                     height: "35%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 40,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 6,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

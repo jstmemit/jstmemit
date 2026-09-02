@@ -1,18 +1,87 @@
 @import "tailwindcss";
 
-@theme {
-    --color-neon-ice: #21F1ED;
-    --color-hot-fuchsia: #F72D55;
-    --color-dark-cyan: #159592;
-    --color-bubblegum-pink: #EC5775;
-    --color-carbon-black: #1E2124;
-    --color-carbon-gray: #3F3F3F;
-    --color-carbon-light-gray: #424242;
-    --color-discord-blue: #5865F2;
-
-    --font-sans: "Plus Jakarta Sans", sans-serif;
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
-body {
-    background-image: url("https://cdn.discordapp.com/attachments/1474061648279896257/1515704205027967177/og_jstmemit_bg.png?ex=6a2ff90a&is=6a2ea78a&hm=9e40fba7c41d18ce7633378553778d7c0784f957bc908ed58b43e83bf028db3a&");
+@theme {
+    --color-neon-ice: #21f1ed;
+    --color-hot-fuchsia: #f72d55;
+    --color-dark-cyan: #159592;
+    --color-bubblegum-pink: #ec5775;
+    --color-carbon-black: #1e2124;
+    --color-ash-black: #0f1112;
+    --color-void-black: #090a0b;
+    --color-carbon-gray: #3f3f3f;
+    --color-carbon-light-gray: #424242;
+    --color-golden: #ffab25;
+    --color-discord-blue: #5865f2;
+
+    --text-shadow-1: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+    --shadow-5: 0 5px 0 0 rgba(0, 0, 0, 0.25);
+    --shadow-10: 0 10px 0 0 rgba(0, 0, 0, 0.25);
+
+    --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --animate-marquee-right: marqueeRight 75s linear infinite;
+    --animate-marquee-right2: marqueeRight2 75s linear infinite;
+    --animate-marquee-left: marqueeLeft 75s linear infinite;
+    --animate-marquee-left2: marqueeLeft2 75s linear infinite;
+
+    @keyframes marqueeRight {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    @keyframes marqueeRight2 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes marqueeLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @keyframes marqueeLeft2 {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+}
+
+astro-swiper {
+    display: block;
+    width: 100%;
+}
+
+.swiper-pagination {
+    bottom: 0.4rem !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--color-hot-fuchsia) !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--color-hot-fuchsia) !important;
 }

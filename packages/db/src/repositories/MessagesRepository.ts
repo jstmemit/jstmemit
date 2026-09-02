@@ -1,25 +1,32 @@
 import { type IMessagesRepository } from "../interfaces/IMessagesRepository.ts";
 import { messagesTable } from "../schema.ts";
-import { and, count, eq, gte, lte, sql } from "drizzle-orm";
+import { and, count, eq, gte, lte, sql, lt, desc } from "drizzle-orm";
 import { db } from "../index.ts";
+import { analytics } from "@jstmemit/analytics";
+import type { BatchItem } from "drizzle-orm/batch";
 
 export class MessagesRepository implements IMessagesRepository {
-    public async new(messageId: string, channelId: string, content: string, timestamp: Date): Promise<boolean> {
+    public async new(messages: readonly (typeof messagesTable.$inferInsert)[]): Promise<number> {
+        if (messages.length === 0) {
+            return 0;
+        }
+
         try {
-            const message: typeof messagesTable.$inferInsert = {
-                messageId: messageId,
-                channelId: channelId,
-                content: content,
-                timestamp: timestamp,
-            };
+            const statements: BatchItem<"sqlite">[] = messages.map((message) =>
+                db
+                    .insert(messagesTable)
+                    .values(message)
+                    .onConflictDoNothing({ target: messagesTable.messageId })
+                    .returning({ id: messagesTable.id }),
+            );
 
-            await db.insert(messagesTable).values(message);
+            const results = await db.batch(statements as [BatchItem<"sqlite">, ...BatchItem<"sqlite">[]]);
 
-            return true;
+            return results.reduce((total: number, rows): number => total + (rows as { id: number }[]).length, 0);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
-            return false;
+            return 0;
         }
     }
 
@@ -32,7 +39,7 @@ export class MessagesRepository implements IMessagesRepository {
 
             return messages[0]?.amount || 0;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return 0;
         }
@@ -45,7 +52,7 @@ export class MessagesRepository implements IMessagesRepository {
         maxLength?: number,
     ): Promise<string[]> {
         try {
-            const messages = await db
+            const recent = db
                 .select({ content: messagesTable.content })
                 .from(messagesTable)
                 .where(
@@ -55,12 +62,19 @@ export class MessagesRepository implements IMessagesRepository {
                         maxLength !== undefined ? lte(sql`length(${messagesTable.content})`, maxLength) : undefined,
                     ),
                 )
+                .orderBy(desc(messagesTable.timestamp))
+                .limit(500)
+                .as("recent");
+
+            const messages = await db
+                .select({ content: recent.content })
+                .from(recent)
                 .orderBy(sql`random()`)
                 .limit(limit);
 
-            return messages.map((message) => message.content);
+            return messages.map((message): string => message.content);
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return [];
         }
@@ -72,7 +86,22 @@ export class MessagesRepository implements IMessagesRepository {
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
+
+            return false;
+        }
+    }
+
+    public async deleteAllOlderThan(days: number = 30): Promise<boolean> {
+        try {
+            const expiration = new Date();
+            expiration.setDate(expiration.getDate() - days);
+
+            await db.delete(messagesTable).where(lt(messagesTable.timestamp, expiration));
+
+            return true;
+        } catch (error) {
+            analytics.captureException(error);
 
             return false;
         }

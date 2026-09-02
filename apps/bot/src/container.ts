@@ -1,114 +1,170 @@
-import type { IContextController } from "#/interfaces/IContextController.ts";
 import { ContextController } from "#/controllers/ContextController.ts";
-import type { IContextService } from "#/interfaces/IContextService.ts";
 import { ContextService } from "#/services/ContextService.ts";
-import type { IMessagesRepository } from "@jstmemit/db/interfaces/IMessagesRepository";
 import { MessagesRepository } from "@jstmemit/db/repositories/MessagesRepository";
 import { ChannelsService } from "#/services/ChannelsService.ts";
-import type { IChannelsService } from "#/interfaces/IChannelsService.ts";
-import type { IChannelsRepository } from "@jstmemit/db/interfaces/IChannelsRepository";
 import { ChannelsRepository } from "@jstmemit/db/repositories/ChannelsRepository";
-import type { IImagesRepository } from "@jstmemit/db/interfaces/IImagesRepository";
 import { ImagesRepository } from "@jstmemit/db/repositories/ImagesRepository";
 import { MemesController } from "#/controllers/MemesController.ts";
 import type { z } from "zod";
 import { Env } from "@jstmemit/shared/schemas/Env";
-import { QueueEvents, type ConnectionOptions, type Queue } from "bullmq";
+import { QueueEvents, type ConnectionOptions } from "bullmq";
 import { createRedisConnection } from "@jstmemit/queue/connection";
-import type { MemeGenerationJob } from "@jstmemit/shared/models/MemeGenerationJob";
-import type { MemeGenerationResult } from "@jstmemit/shared/models/MemeGenerationResult";
 import { createMemeGenerationQueue } from "@jstmemit/queue/jobs/memeGeneration";
-import type { IMemesController } from "#/interfaces/IMemesController.ts";
-import type { IChannelsController } from "#/interfaces/IChannelsController.ts";
 import { ChannelsController } from "#/controllers/ChannelsController.ts";
 import { EventsController } from "#/controllers/EventsController.ts";
 import type { IEventsController } from "#/interfaces/IEventsController.ts";
-import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import { RatingsService } from "#/services/RatingsService.ts";
-import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
 import { RatingsRepository } from "@jstmemit/db/repositories/RatingsRepository";
-import type { IRatingsController } from "#/interfaces/IRatingsController.ts";
 import { RatingsController } from "#/controllers/RatingsController.ts";
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { ComponentsService } from "#/services/ComponentsService.ts";
-import type { ISettingsController } from "#/interfaces/ISettingsController.ts";
 import { SettingsController } from "#/controllers/SettingsController.ts";
-import type { IGenerationsRepository } from "@jstmemit/db/interfaces/IGenerationsRepository";
 import { GenerationsRepository } from "@jstmemit/db/repositories/GenerationsRepository";
-import type { IBanditRepository } from "@jstmemit/db/interfaces/IBanditRepository";
 import { BanditRepository } from "@jstmemit/db/repositories/BanditRepository";
-import type { IBanditService } from "@jstmemit/bandit/interfaces/IBanditService";
 import { BanditService } from "@jstmemit/bandit/services/BanditService";
-import type { ITemplatesRepository } from "@jstmemit/shared/interfaces/ITemplatesRepository";
 import { TemplatesRepository } from "@jstmemit/shared/repositories/TemplatesRepository";
+import { ModalsService } from "#/services/ModalsService.ts";
+import { FeedbackController } from "#/controllers/FeedbackController.ts";
+import { HelpController } from "#/controllers/HelpController.ts";
+import { VoiceController } from "#/controllers/VoiceController.ts";
+import { createContainer, asClass, asValue, InjectionMode, type AwilixContainer } from "awilix";
+import { GifService } from "@jstmemit/images/services/GifService";
+import "@jstmemit/telemetry";
+import { type Logger, logs } from "@opentelemetry/api-logs";
+import { CacheService } from "@jstmemit/cache/services/CacheService";
+import { cache } from "@jstmemit/cache";
+import { VoicesRepository } from "@jstmemit/shared/repositories/VoicesRepository";
+import { createTextNarrationQueue } from "@jstmemit/queue/jobs/textNarration";
+import { createVoiceTranscriptionQueue } from "@jstmemit/queue/jobs/voiceTranscription";
+import { MilestonesService } from "#/services/MilestonesService.ts";
+import { NarrationsRepository } from "@jstmemit/db/repositories/NarrationsRepository";
+import { AutocompleteService } from "#/services/AutocompleteService.ts";
+import { AutocompleteController } from "#/controllers/AutocompleteController.ts";
+import { MilestonesController } from "#/controllers/MilestonesController.ts";
+import { CommandsService } from "#/services/CommandsService.ts";
+import { analytics } from "@jstmemit/analytics";
+import { client } from "#/bot.ts";
+import { PermissionsService } from "#/services/PermissionsService.ts";
+import type { IPermissionsService } from "#/interfaces/IPermissionsService.ts";
+import { ContextMenusService } from "#/services/ContextMenusService.ts";
 
 const env: z.infer<typeof Env> = Env.parse(process.env);
 
 const redisConnection: ConnectionOptions = createRedisConnection(env.REDIS_HOST, env.REDIS_PORT);
-const memeGenerationQueue: Queue<MemeGenerationJob, MemeGenerationResult> = createMemeGenerationQueue(redisConnection);
-const memeGenerationQueueEvents: QueueEvents = new QueueEvents("meme-generation", {
-    connection: redisConnection,
+
+const container: AwilixContainer = createContainer({ injectionMode: InjectionMode.CLASSIC });
+
+container.register({
+    memeGenerationQueueEvents: asValue(
+        new QueueEvents("meme-generation", {
+            connection: redisConnection,
+        }),
+    ),
+    memeGenerationQueue: asValue(createMemeGenerationQueue(redisConnection)),
+    textNarrationQueue: asValue(createTextNarrationQueue(redisConnection)),
+    textNarrationQueueEvents: asValue(
+        new QueueEvents("text-narration", {
+            connection: redisConnection,
+        }),
+    ),
+    voiceTranscriptionQueue: asValue(createVoiceTranscriptionQueue(redisConnection)),
+    voiceTranscriptionQueueEvents: asValue(
+        new QueueEvents("voice-transcription", {
+            connection: redisConnection,
+        }),
+    ),
+    keyv: asValue(cache),
+    logger: asValue(logs.getLogger("jstmemit/bot")),
+    messagesRepository: asClass(MessagesRepository).singleton(),
+    componentsService: asClass(ComponentsService).singleton(),
+    imagesRepository: asClass(ImagesRepository).singleton(),
+    generationsRepository: asClass(GenerationsRepository).singleton(),
+    templatesRepository: asClass(TemplatesRepository).singleton(),
+    banditRepository: asClass(BanditRepository).singleton(),
+    banditService: asClass(BanditService).singleton(),
+    ratingsRepository: asClass(RatingsRepository).singleton(),
+    ratingsService: asClass(RatingsService).singleton(),
+    ratingsController: asClass(RatingsController).singleton(),
+    modalsService: asClass(ModalsService).singleton(),
+    contextService: asClass(ContextService).singleton(),
+    channelsRepository: asClass(ChannelsRepository).singleton(),
+    channelsService: asClass(ChannelsService).singleton(),
+    channelsController: asClass(ChannelsController).singleton(),
+    memesController: asClass(MemesController).singleton(),
+    contextController: asClass(ContextController).singleton(),
+    settingsController: asClass(SettingsController).singleton(),
+    feedbackController: asClass(FeedbackController).singleton(),
+    helpController: asClass(HelpController).singleton(),
+    eventsController: asClass(EventsController).singleton(),
+    gifService: asClass(GifService).singleton(),
+    cacheService: asClass(CacheService).singleton(),
+    voiceController: asClass(VoiceController).singleton(),
+    voicesRepository: asClass(VoicesRepository).singleton(),
+    milestonesService: asClass(MilestonesService).singleton(),
+    milestonesController: asClass(MilestonesController).singleton(),
+    narrationsRepository: asClass(NarrationsRepository).singleton(),
+    autocompleteService: asClass(AutocompleteService).singleton(),
+    autocompleteController: asClass(AutocompleteController).singleton(),
+    commandsService: asClass(CommandsService).singleton(),
+    permissionsService: asClass(PermissionsService).singleton(),
+    contextMenusService: asClass(ContextMenusService).singleton(),
 });
 
-// messages
-const messagesRepository: IMessagesRepository = new MessagesRepository();
+export const componentsService: IComponentsService = container.resolve<IComponentsService>("componentsService");
+export const eventsController: IEventsController = container.resolve<IEventsController>("eventsController");
+export const permissionsService: IPermissionsService = container.resolve<IPermissionsService>("permissionsService");
+export const logger: Logger = container.resolve<Logger>("logger");
 
-// components
-export const componentsService: IComponentsService = new ComponentsService();
+process.on("unhandledRejection", (reason: unknown): void => {
+    const error: Error = reason instanceof Error ? reason : new Error(String(reason));
 
-// channels
-const channelsRepository: IChannelsRepository = new ChannelsRepository();
-const channelsService: IChannelsService = new ChannelsService(channelsRepository, messagesRepository);
-const channelsController: IChannelsController = new ChannelsController(
-    channelsService,
-    componentsService,
-    messagesRepository,
-);
+    analytics.captureException(error, "bot", { handler: "unhandledRejection" });
+    logger.emit({
+        severityText: "error",
+        body: "process.unhandled_rejection",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            stack: error.stack,
+        },
+    });
+});
 
-// images
-const imagesRepository: IImagesRepository = new ImagesRepository();
+process.on("uncaughtException", (error: Error, origin: NodeJS.UncaughtExceptionOrigin): void => {
+    analytics.captureException(error, "bot", { handler: "uncaughtException", origin });
+    logger.emit({
+        severityText: "fatal",
+        body: "process.uncaught_exception",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+            origin,
+            stack: error.stack,
+        },
+    });
+});
 
-// context
-const contextService: IContextService = new ContextService(messagesRepository, imagesRepository);
-const contextController: IContextController = new ContextController(contextService, channelsService);
+client.on("error", (error: Error): void => {
+    analytics.captureException(error, "bot", { handler: "client_error" });
+    logger.emit({
+        severityText: "error",
+        body: "discord.client.error",
+        attributes: {
+            error_name: error.name,
+            error_message: error.message,
+        },
+    });
+});
 
-// generations
-const generationsRepository: IGenerationsRepository = new GenerationsRepository();
-
-// templates
-
-const templatesRepository: ITemplatesRepository = new TemplatesRepository();
-
-// bandit
-const banditRepository: IBanditRepository = new BanditRepository();
-const banditService: IBanditService = new BanditService(banditRepository, templatesRepository);
-
-// ratings
-const ratingsRepository: IRatingsRepository = new RatingsRepository();
-const ratingsService: IRatingsService = new RatingsService(ratingsRepository);
-const ratingsController: IRatingsController = new RatingsController(
-    ratingsService,
-    generationsRepository,
-    banditService,
-);
-
-// memes
-const memesController: IMemesController = new MemesController(
-    memeGenerationQueue,
-    memeGenerationQueueEvents,
-    ratingsService,
-    componentsService,
-    banditService,
-);
-
-// settings
-const settingsController: ISettingsController = new SettingsController(channelsService, componentsService);
-
-// events
-export const eventsController: IEventsController = new EventsController(
-    contextController,
-    channelsController,
-    memesController,
-    ratingsController,
-    settingsController,
-);
+client.on("shardError", (error: Error, shardId: number): void => {
+    analytics.captureException(error, "bot", { handler: "shard_error", shardId });
+    logger.emit({
+        severityText: "error",
+        body: "discord.shard.error",
+        attributes: {
+            shard_id: shardId,
+            error_name: error.name,
+            error_message: error.message,
+        },
+    });
+});

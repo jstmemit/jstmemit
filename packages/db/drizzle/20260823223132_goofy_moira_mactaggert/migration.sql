@@ -1,0 +1,1 @@
+ALTER TABLE `channels_table` ADD `font` text;

@@ -1,26 +1,50 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const yesChad: Template = {
-    id: 13,
     name: "yesChad",
+    displayName: buildLocales("Yes Chad", {
+        [Locale.Russian]: "Да, Чад",
+        [Locale.Ukrainian]: "Так, Чад",
+        [Locale.Dutch]: "Ja Chad",
+        [Locale.French]: "Oui Chad",
+        [Locale.German]: "Ja Chad",
+        [Locale.Polish]: "Tak, Chad",
+        [Locale.SpanishES]: "Sí Chad",
+        [Locale.SpanishLATAM]: "Sí Chad",
+        [Locale.PortugueseBR]: "Sim Chad",
+        [Locale.Turkish]: "Evet Chad",
+        [Locale.Italian]: "Sì Chad",
+        [Locale.Indonesian]: "Ya Chad",
+        [Locale.Czech]: "Ano Chad",
+        [Locale.Japanese]: "イエス・チャド",
+        [Locale.Korean]: "예스 채드",
+        [Locale.ChineseCN]: "是的查德",
+    }),
+    topics: [Topic.Misc],
+    types: [Type.FaceImage, Type.TextBottom],
     width: 1400,
     height: 733,
-    texts: [{ id: 0, description: "what chad approves of", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "what chad approves of", minLength: 1, maxLength: 5 }],
     images: [{ id: 0, description: "the chad's face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/yeschad.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/yeschad.png"
                 width={1400}
                 height={733}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -36,22 +60,28 @@ export const yesChad: Template = {
                     position: "absolute",
                     left: 0,
                     bottom: 0,
-                    width: "50%",
-                    height: "auto",
-                    padding: "15px",
+                    width: "53%",
+                    height: "27%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Impact",
-                    fontSize: 70,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                    WebkitTextStrokeWidth: 6,
-                    WebkitTextStrokeColor: "#ffffff",
+                    padding: "15px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

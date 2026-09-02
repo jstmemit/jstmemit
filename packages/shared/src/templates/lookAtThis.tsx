@@ -1,51 +1,54 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const lookAtThis: Template = {
-    id: 43,
     name: "lookAtThis",
+    displayName: buildLocales("Look at this", {
+        [Locale.Russian]: "Посмотри на это",
+        [Locale.Ukrainian]: "Подивись на це",
+        [Locale.Dutch]: "Kijk hiernaar",
+        [Locale.French]: "Regarde ça",
+        [Locale.German]: "Sieh dir das an",
+        [Locale.Polish]: "Spójrz na to",
+        [Locale.SpanishES]: "Mira esto",
+        [Locale.SpanishLATAM]: "Mira esto",
+        [Locale.PortugueseBR]: "Olhe para isso",
+        [Locale.Turkish]: "Şuna bak",
+        [Locale.Italian]: "Guarda questo",
+        [Locale.Indonesian]: "Lihat ini",
+        [Locale.Czech]: "Podívej se na to",
+        [Locale.Japanese]: "これを見て",
+        [Locale.Korean]: "이것 좀 봐",
+        [Locale.ChineseCN]: "看这个",
+    }),
+    topics: [Topic.Reaction],
+    types: [Type.TextBottom, Type.ObjectImage],
     width: 480,
     height: 380,
-    texts: [{ id: 0, description: "text1", minLength: 1, maxLength: 4 }],
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 6 }],
     images: [{ id: 0, description: "object of interest" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/lookAtThis.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/lookAtThis.jpg"
                 width={480}
                 height={380}
                 style={{ position: "absolute", top: 0, left: 0 }}
             />
-            <div
-                style={{
-                    position: "absolute",
-                    left: "52%",
-                    bottom: 0,
-                    transform: "translateX(-50%)",
-                    width: "45%",
-                    height: "auto",
-                    padding: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 30,
-                    lineHeight: 1.05,
-                    color: "#000000",
-                }}
-            >
-                {texts[0]}
-            </div>
             <img
                 src={images[0]}
                 width={100}
@@ -59,6 +62,34 @@ export const lookAtThis: Template = {
                     objectFit: "cover",
                 }}
             />
+            <div
+                style={{
+                    position: "absolute",
+                    left: "31%",
+                    bottom: 0,
+                    width: "45%",
+                    height: "40%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 3,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
         </div>
     ),
 };

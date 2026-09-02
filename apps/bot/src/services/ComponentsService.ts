@@ -1,3 +1,4 @@
+import type { Locale, MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -14,115 +15,540 @@ import {
 import type { IComponentsService } from "#/interfaces/IComponentsService.ts";
 import { emojis } from "#/data/emojis.ts";
 import type { Frequency } from "#/models/Frequency.ts";
+import { t } from "@jstmemit/i18n";
+import type { RequiredBotPermissions } from "@jstmemit/shared/models/RequiredBotPermissions";
+import type { Achievement } from "@jstmemit/shared/models/Achievement";
+import { achievementsList } from "#/data/achievementsList.ts";
+import type { ICommandsService } from "#/interfaces/ICommandsService.ts";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class ComponentsService implements IComponentsService {
+    private readonly _commandsService: ICommandsService;
+
+    public constructor(commandsService: ICommandsService) {
+        this._commandsService = commandsService;
+    }
+
     /**
      * Returns back a message component for /enable command with a progress bar
      * showing passed messages amount in the channel
      *
+     * @param language
      * @param isEnabled
      * @param messagesAmount
+     * @param permissions
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableMessageComponent(isEnabled: boolean, messagesAmount: number): ContainerBuilder {
+    public getEnableMessageComponent(
+        language: Locale,
+        isEnabled: boolean,
+        permissions: RequiredBotPermissions,
+        messagesAmount: number = 0,
+    ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
+        const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
-        return new ContainerBuilder()
+        const container: ContainerBuilder = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? `🎉 Bot is ready!` : `🔴 Jstmemit is off in this channel`}`,
+                    `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     isEnabled
-                        ? `Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.`
+                        ? t("enable.body.enabled", language)
                         : messagesAmount >= 30
-                          ? `You already have over **${messagesAmount} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.`
-                          : `Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.`,
+                          ? t("enable.body.disabled.ready", language, { messagesAmount: String(messagesAmount) })
+                          : t("enable.body.disabled.notReady", language),
                 ),
             )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
-                        ? `Messages in memory: **${messagesAmount}/30**`
-                        : `Messages in memory: **${messagesAmount}**`,
+                        ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
+                        : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
                 ),
+            );
+
+        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+
+        if (hasMissingPermissions) {
+            container.addSeparatorComponents(
+                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true),
+            );
+            container.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`\n### ${t("enable.permissions.heading", language)} ⚠️`),
+                new TextDisplayBuilder().setContent(
+                    `${t("enable.permissions.description", language, {
+                        settings: this._commandsService.getCommandMention("settings"),
+                    })}\n${this._createPermissionsList(permissions, language)}`,
+                ),
+            );
+        }
+
+        return container;
+    }
+
+    /**
+     * Returns a list of translated permissions
+     *
+     * @param permissions
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    private _createPermissionsList(permissions: RequiredBotPermissions, language: Locale): string {
+        return (Object.keys(permissions) as (keyof RequiredBotPermissions)[])
+            .map(
+                (permission) =>
+                    `- ${t(`enable.permissions.${permission}`, language)} ${permissions[permission] ? "✅" : "❌"}`,
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${progressBar}`));
+            .join("\n");
     }
 
     /**
      * Returns back a row with enable/disable and open settings buttons
      *
+     * @param language
      * @param isEnabled
+     * @param count
+     * @param isFirstTime
      *
      * @author Kyrylo Maliuha
      */
-    public getEnableButtonsComponent(isEnabled: boolean): ActionRowBuilder<ButtonBuilder> {
+    public getEnableButtonsComponent(
+        language: Locale,
+        isEnabled: boolean,
+        count: number = 0,
+        isFirstTime?: boolean,
+    ): ActionRowBuilder<ButtonBuilder> {
+        const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
+
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
                 new ButtonBuilder()
-                    .setStyle(isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
-                    .setLabel(`${isEnabled ? `Turn off` : `Turn on`}`)
-                    .setCustomId(`${isEnabled ? "disable" : "enable"}`),
+                    .setStyle(
+                        showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
+                    )
+                    .setLabel(
+                        t(
+                            showFirstMeme
+                                ? "enable.button.firstMeme"
+                                : isEnabled
+                                  ? "enable.button.turnOff"
+                                  : "enable.button.turnOn",
+                            language,
+                        ),
+                    )
+                    .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
             )
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel(`⚙️ Open settings`)
-                    .setCustomId(`settings`),
+                    .setLabel(t("enable.button.settings", language))
+                    .setCustomId("settings"),
             );
+    }
+
+    /**
+     Returns back a milestone view message component
+     *
+     * @param language
+     * @param channelId
+     * @param count
+     * @param milestones
+     *
+     * @author Kyrylo Maliuha & Oleksii Sych
+     */
+    public getMilestoneViewMessageComponent(
+        language: Locale,
+        channelId: string,
+        count: number,
+        milestones: Achievement[],
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(count, count * 2, 10);
+
+        const component = new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("milestones.view.description", language, {
+                        emoji: emojis.jstmemit,
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("milestones.view.unlockedAchievements", language)}`),
+            );
+
+        if (milestones.length !== 0) {
+            for (const milestone of milestones) {
+                component.addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${milestone.emoji} **${milestone.name[language]}:** ${milestone.requiredCount} ${t("milestones.generatedMemes", language)}`,
+                    ),
+                );
+            }
+        } else {
+            component.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("milestones.view.zeroAchievements", language)}`),
+            );
+        }
+
+        component.addSeparatorComponents(
+            new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
+        );
+
+        const nextAchievement: Achievement | undefined = achievementsList[milestones.length];
+
+        if (nextAchievement) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `### ${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(nextAchievement.requiredCount) })}`,
+                    ),
+                )
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+        } else {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`### ${t("milestones.view.allAchievements", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.view.allAchievementsDescription", language, {
+                            emoji: emojis.jstmemit,
+                        }),
+                    ),
+                );
+        }
+        return component;
+    }
+
+    /**
+     * Returns back a milestone message component
+     *
+     * @param language
+     * @param count
+     * @param channelId
+     * @param [achievement]
+     *
+     * @author Kyrylo Maliuha & Oleksii Sych
+     */
+    public getMilestoneMessageComponent(
+        language: Locale,
+        count: number,
+        channelId: string,
+        achievement?: Achievement,
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(count, count * 2, 10);
+
+        const component = new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("milestones.description", language, {
+                        achievements: this._commandsService.getCommandMention("achievements"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false));
+
+        if (achievement) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`### ${t("milestones.newAchieve", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${achievement.emoji} **${achievement.name[language]}:** ${achievement.requiredCount} ${t("milestones.generatedMemes", language)}`,
+                    ),
+                )
+                .addSeparatorComponents(
+                    new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
+                );
+        }
+
+        const lastAchievement: Achievement | undefined = achievementsList[achievementsList.length - 1];
+
+        if (lastAchievement && lastAchievement.requiredCount < count) {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`${t("milestones.view.allAchievements", language)}`),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.view.allAchievementsDescription", language, {
+                            emoji: emojis.jstmemit,
+                        }),
+                    ),
+                );
+        } else {
+            component
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `${t("milestones.nextGoal", language, { currentGoal: String(count), nextGoal: String(count * 2) })}`,
+                    ),
+                )
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar))
+                .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        t("milestones.turnOffInSettings", language, {
+                            settings: this._commandsService.getCommandMention("settings"),
+                        }),
+                    ),
+                );
+        }
+
+        return component;
+    }
+
+    /**
+     * Returns back a row of channel stats buttons for
+     * milestone messages
+     *
+     * @param language
+     * @param likes
+     * @param dislikes
+     * @param templates
+     * @param voices
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMilestoneButtonsComponent(
+        language: Locale,
+        likes: number,
+        dislikes: number,
+        templates: number,
+        voices: number,
+    ): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.likes", language, { count: String(likes) })} 👍`)
+                    .setDisabled(true)
+                    .setCustomId(`total-likes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.dislikes", language, { count: String(dislikes) })} 👎`)
+                    .setDisabled(true)
+                    .setCustomId(`total-dislikes`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.templates", language, { count: String(templates) })} 🖼️`)
+                    .setDisabled(true)
+                    .setCustomId(`total-templates`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(`${t("stats.voices", language, { count: String(voices) })} 🔊`)
+                    .setDisabled(true)
+                    .setCustomId(`total-voices`),
+            );
+    }
+
+    /**
+     * Returns back a row with Frequently Asked Questions button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFaqButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.faq", language))
+                .setCustomId(`faq`),
+        );
+    }
+
+    /**
+     * Returns back a row with Features list button
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpButtonComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("help.button.features", language))
+                .setCustomId(`help`),
+        );
     }
 
     /**
      * Returns back a message component for an unknown error
      *
+     * @param language
      * @param interactionId
      *
      * @author Kyrylo Maliuha
      */
-    public getErrorMessageComponent(interactionId: string): ContainerBuilder {
+    public getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔴 Something went wrong!`))
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `Bot failed to answer your request because of an unknown error. Please try again and if this happens often, contact support.`,
-                ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.body", language)))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+    }
+
+    /**
+     * Returns a row with send feedback button
+     *
+     * @param language
+     * @param retryInteraction
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getErrorButtonsComponent(language: Locale, retryInteraction: string): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("error.button.tryAgain", language))
+                .setCustomId(retryInteraction),
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("error.button.reportError", language))
+                .setCustomId(`feedback`),
+        );
     }
 
     /**
      * Returns back a message component for a "not enough context" error
      *
+     * @param language
+     * @param interactionId
+     * @param messagesAmount
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getNotEnoughContextMessageComponent(
+        language: Locale,
+        interactionId: string,
+        messagesAmount: number,
+    ): ContainerBuilder {
+        const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
+
+        const container: ContainerBuilder = new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    messagesAmount < 30
+                        ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
+                        : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
+                ),
+            );
+
+        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+
+        return container;
+    }
+
+    /**
+     * Returns back a message component for the "unknown template" error
+     *
+     * @param language
      * @param interactionId
      *
      * @author Kyrylo Maliuha
      */
-    public getNotEnoughContextMessageComponent(interactionId: string): ContainerBuilder {
+    public getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🤔 Not enough context yet`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
+            )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs. If this error persists, please contact support.`,
+                    t("unknownTemplate.body", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
                 ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Error ID:** ${interactionId}`));
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
     }
 
     /**
-     * Returns back a message component for a "missing permissions" error
+     * Returns back a message component for the "wrong file format" error
+     *
+     * @param language
+     * @param interactionId
+     * @param file
      *
      * @author Kyrylo Maliuha
      */
-    public getMissingPermissionsMessageComponent(): ContainerBuilder {
+    public getWrongFileFormatMessageComponent(language: Locale, interactionId: string, file: string): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🔒 You don't have permission for that`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("wrongFileFormat.heading", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(t("wrongFileFormat.body", language, { file })),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+    }
+
+    /**
+     * Returns back a message component for a "missing permissions" user error (when a user
+     * without permissions tries to change bot settings)
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingPermissions.body", language)));
+    }
+
+    /**
+     * Returns back a message component for a "missing permissions" bot error (when bot is triggered
+     * in the channel, but he doesn't have enough permissions to respond)
+     *
+     * @param language
+     * @param permissions
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getMissingBotPermissionsMessageComponent(
+        language: Locale,
+        permissions: RequiredBotPermissions,
+    ): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("missingBotPermissions.heading", language)}`),
+            )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.`,
+                    `${t("missingBotPermissions.body", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                        custom: this._commandsService.getCommandMention("custom"),
+                    })}\n\n${this._createPermissionsList(permissions, language)}`,
                 ),
             );
     }
@@ -130,14 +556,20 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a message component for confirming deleting all data
      *
+     * @param language
+     *
      * @author Kyrylo Maliuha
      */
-    public getDeleteDataConfirmationMessageComponent(): ContainerBuilder {
+    public getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 🗑️ Delete all data for this channel?`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
+            )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    "This permanently deletes all saved messages and image links for this channel from Jstmemit and can't be undone. The bot stays enabled and will start learning again from new messages. If you wish to stop it entirely afterwards, turn it off with `/enable`.",
+                    t("deleteData.confirm.body", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                    }),
                 ),
             );
     }
@@ -145,14 +577,20 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a message component that is sent after data deletion is done
      *
+     * @param language
+     *
      * @author Kyrylo Maliuha
      */
-    public getDeleteDataSuccessMessageComponent(): ContainerBuilder {
+    public getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ✅ Data deleted!`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
+            )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    "All saved messages and image links for this channel were deleted. The bot is still on and will start learning again from new messages. Turn it off with `/enable` if you wish to stop using it.",
+                    t("deleteData.success.body", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                    }),
                 ),
             );
     }
@@ -160,26 +598,35 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a row with cancel and delete data buttons
      *
+     * @param language
+     *
      * @author Kyrylo Maliuha
      */
-    public getDeleteDataButtonsComponent(): ActionRowBuilder<ButtonBuilder> {
+    public getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
         return new ActionRowBuilder<ButtonBuilder>()
             .addComponents(
-                new ButtonBuilder().setStyle(ButtonStyle.Secondary).setLabel(`Cancel`).setCustomId(`settings`),
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(t("deleteData.button.cancel", language))
+                    .setCustomId(`settings`),
             )
             .addComponents(
-                new ButtonBuilder().setStyle(ButtonStyle.Danger).setLabel(`Delete all data`).setCustomId(`delete-data`),
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Danger)
+                    .setLabel(t("deleteData.button.delete", language))
+                    .setCustomId(`delete-data`),
             );
     }
 
     /**
      * Returns back a message component for header of the /settings command.
      *
+     * @param language
      * @param isEnabled
      *
      * @author Kyrylo Maliuha
      */
-    public getSettingsHeaderMessageComponent(isEnabled: boolean): ContainerBuilder {
+    public getSettingsHeaderMessageComponent(language: Locale, isEnabled: boolean): ContainerBuilder {
         return new ContainerBuilder()
             .addSectionComponents(
                 new SectionBuilder()
@@ -187,9 +634,9 @@ export class ComponentsService implements IComponentsService {
                         new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
                     )
                     .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(`# ❓ About this bot`),
+                        new TextDisplayBuilder().setContent(`# ${t("settings.about.heading", language)}`),
                         new TextDisplayBuilder().setContent(
-                            `A discord bot that generates memes based on whatever's going on in the channel. Talk about a boss raid, then get memes about that. ${isEnabled ? `` : `Enable Jstmemit below to start!`}`,
+                            `${t("settings.about.body", language)} ${isEnabled ? `` : t("settings.about.enablePrompt", language)}`,
                         ),
                     ),
             )
@@ -199,42 +646,246 @@ export class ComponentsService implements IComponentsService {
                     .setButtonAccessory(
                         new ButtonBuilder()
                             .setStyle(isEnabled ? ButtonStyle.Secondary : ButtonStyle.Success)
-                            .setLabel(`${isEnabled ? `Disable` : `Enable`}`)
+                            .setLabel(
+                                `${isEnabled ? t("settings.button.disable", language) : t("settings.button.enable", language)}`,
+                            )
                             .setCustomId(`${isEnabled ? "disable" : "enable"}`),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
-                            `${isEnabled ? "**✅ Jstmemit is turned on in this channel!**" : "**⚠️ Jstmemit needs to be enabled to make memes here!**"}`,
+                            `${isEnabled ? t("settings.status.enabled", language) : t("settings.status.disabled", language)}`,
                         ),
                     ),
             );
     }
 
     /**
-     * Returns back a message component for body of the /settings command.
+     * Returns back a message component for Header part of the /help command.
      *
-     * @param frequency
-     * @param useAvatarsInMemes
+     * @param language
+     * @param isEnabled
      *
      * @author Kyrylo Maliuha
      */
-    public getSettingsBodyMessageComponent(frequency: number, useAvatarsInMemes: boolean): ContainerBuilder {
-        const frequencies: Frequency[] = this._getFrequencyOptions();
-
+    public getHelpHeaderMessageComponent(language: Locale, isEnabled?: boolean): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 Meme settings`))
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
+                        new TextDisplayBuilder().setContent(`${t("settings.about.body", language)}`),
+                    ),
+            )
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    "You can control how often the bot is going to send memes and what's on them",
+                    `${t("help.about.commands.user", language, {
+                        voice: this._commandsService.getCommandMention("voice"),
+                        custom: this._commandsService.getCommandMention("custom"),
+                        feedback: this._commandsService.getCommandMention("feedback"),
+                        help: this._commandsService.getCommandMention("help"),
+                    })}\n${t("help.about.commands.guild", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                        enable: this._commandsService.getCommandMention("enable"),
+                        settings: this._commandsService.getCommandMention("settings"),
+                        achievements: this._commandsService.getCommandMention("achievements"),
+                    })}`,
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addActionRowComponents(
+                new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
+                    ...(isEnabled === undefined
+                        ? []
+                        : [
+                              new ButtonBuilder()
+                                  .setStyle(isEnabled ? ButtonStyle.Secondary : ButtonStyle.Success)
+                                  .setLabel(
+                                      isEnabled
+                                          ? t("enable.button.settings", language)
+                                          : t("settings.button.enable", language),
+                                  )
+                                  .setCustomId(isEnabled ? "settings" : "enable"),
+                          ]),
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(t("help.button.addJstmemit", language))
+                        .setURL("https://discord.com/oauth2/authorize?client_id=1375836467745783990"),
+
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(t("help.button.website", language))
+                        .setURL("https://jstmemit.com"),
+                ),
+            );
+    }
+
+    /**
+     * Returns back a message component for explanation of the auto
+     * generated memes from channel context in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpAutoMemesMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.autoMemes.heading", language)}`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.autoMemes.description", language)}`),
+            );
+    }
+
+    /**
+     * Returns back a message component for explanation of the
+     * voice narration in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpVoiceMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.voice.heading", language)}`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.voice.description", language, {
+                        voice: this._commandsService.getCommandMention("voice"),
+                    }),
+                ),
+            );
+    }
+
+    /**
+     * Returns back a message component for explanation of the
+     * right-click actions in /help
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpRightClickMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.rightClick.heading", language)}`))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`${t("help.rightClick.description", language)}`),
+            );
+    }
+
+    /**
+     * Returns back a message component for FAQ part of the /help command.
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.faq.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.iAddedTheBotWhatNow.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.iAddedTheBotWhatNow.answer", language, {
+                        enable: this._commandsService.getCommandMention("enable"),
+                        meme: this._commandsService.getCommandMention("meme"),
+                        settings: this._commandsService.getCommandMention("settings"),
+                    }),
                 ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Frequency`))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    `How often should the bot send a random meme in the chat without being asked to?`,
+                    `### ${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.question", language)}`,
                 ),
             )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `${t("help.faq.canIHaveDifferentQuestionsForEveryChannel.answer", language)}`,
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.isThereALimit.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.isThereALimit.answer", language, {
+                        meme: this._commandsService.getCommandMention("meme"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.canIDeleteStoredData.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.canIDeleteStoredData.answer", language, {
+                        settings: this._commandsService.getCommandMention("settings"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("help.faq.addBotToMyApps.question", language)}`),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.addBotToMyApps.answer", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    `### ${t("help.faq.whatIfIWantToMakeACustomMeme.question", language)}`,
+                ),
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("help.faq.whatIfIWantToMakeACustomMeme.answer", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                    }),
+                ),
+            );
+    }
+
+    /**
+     * Returns back a message component for body of the /settings command.
+     *
+     * @param language
+     * @param frequency
+     * @param useAvatarsInMemes
+     * @param milestones
+     * @param font
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getSettingsBodyMessageComponent(
+        language: Locale,
+        frequency: number,
+        useAvatarsInMemes: boolean,
+        milestones: boolean,
+        font: string | null = "Random",
+    ): ContainerBuilder {
+        const frequencies: Frequency[] = this._getFrequencyOptions(language);
+        const fonts: Font[] = this._getFontOptions(language);
+
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("settings.meme.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.meme.body", language)))
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.frequency.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.frequency.body", language)))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                     new StringSelectMenuBuilder().setCustomId("frequency").addOptions(
@@ -250,27 +901,71 @@ export class ComponentsService implements IComponentsService {
                 ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`### Avatars in memes`))
             .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`Include profile pictures in generated memes?`),
+                new TextDisplayBuilder().setContent(`### ${t("settings.font.heading", language)}`),
             )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.font.body", language)))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder().setCustomId("font").addOptions(
+                        fonts.map((option: Font) =>
+                            new SelectMenuOptionBuilder()
+                                .setLabel(option.label)
+                                .setValue(option.value)
+                                .setDefault(font === null && option.value === "default" ? true : option.value === font)
+                                .setEmoji({ name: option.emoji })
+                                .setDescription(option.description),
+                        ),
+                    ),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.avatars.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.avatars.body", language)))
             .addActionRowComponents(
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
                     new StringSelectMenuBuilder()
                         .setCustomId("avatar")
                         .addOptions(
                             new SelectMenuOptionBuilder()
-                                .setLabel("Yes")
+                                .setLabel(t("settings.avatars.yes.label", language))
                                 .setValue("true")
                                 .setDefault(useAvatarsInMemes)
                                 .setEmoji({ name: "✅" })
-                                .setDescription("Bot will use avatars for memes (recommended)"),
+                                .setDescription(t("settings.avatars.yes.description", language)),
                             new SelectMenuOptionBuilder()
-                                .setLabel("No")
+                                .setLabel(t("settings.avatars.no.label", language))
                                 .setValue("false")
                                 .setDefault(!useAvatarsInMemes)
                                 .setEmoji({ name: "❌" })
-                                .setDescription("Bot won't use avatars for memes"),
+                                .setDescription(t("settings.avatars.no.description", language)),
+                        ),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("settings.milestones.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.milestones.body", language)))
+            .addActionRowComponents(
+                new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId("milestones")
+                        .addOptions(
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.yes.label", language))
+                                .setValue("true")
+                                .setDefault(milestones)
+                                .setEmoji({ name: "🎉" })
+                                .setDescription(t("settings.milestones.yes.description", language)),
+                            new SelectMenuOptionBuilder()
+                                .setLabel(t("settings.milestones.no.label", language))
+                                .setValue("false")
+                                .setDefault(!milestones)
+                                .setEmoji({ name: "🔇" })
+                                .setDescription(t("settings.milestones.no.description", language)),
                         ),
                 ),
             );
@@ -279,21 +974,56 @@ export class ComponentsService implements IComponentsService {
     /**
      * Returns back a message component for footer of the /settings command.
      *
+     * @param language
+     *
      * @author Kyrylo Maliuha
      */
-    public getSettingsFooterMessageComponent(): ContainerBuilder {
+    public getSettingsFooterMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder().addSectionComponents(
             new SectionBuilder()
                 .setButtonAccessory(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Danger)
-                        .setLabel(`Delete all data`)
+                        .setLabel(t("settings.footer.deleteButton", language))
                         .setCustomId(`open-delete-data-confirmation`),
                 )
-                .addTextDisplayComponents(
-                    new TextDisplayBuilder().setContent("Want to remove all message data about this channel?"),
-                ),
+                .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("settings.footer.body", language))),
         );
+    }
+
+    /**
+     * Returns back a message component for received feedback messages
+     *
+     * @param userId
+     * @param message
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFeedbackMessageComponent(userId: string, message: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# 💬 New feedback message`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Message:** ${message}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`**Author ID:** ${userId} | <@${userId}>`));
+    }
+
+    /**
+     * Returns back a message component for submitting a feedback message
+     *
+     * @param language
+     * @param message
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getFeedbackMessageSubmitComponent(language: Locale, message: string): ContainerBuilder {
+        return new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`# ${t("feedback.submit.heading", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("feedback.submit.body", language)))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(`### ${t("feedback.submit.yourMessage", language)}`),
+            )
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(message));
     }
 
     /**
@@ -345,37 +1075,85 @@ export class ComponentsService implements IComponentsService {
      *
      * @author Kyrylo Maliuha
      */
-    private _getFrequencyOptions(): Frequency[] {
+    private _getFrequencyOptions(language: Locale): Frequency[] {
         return [
             {
-                label: "Never",
+                label: t("settings.frequency.never.label", language),
                 value: "0",
-                description: "Don't send memes, unless requested via a /meme command",
+                description: t("settings.frequency.never.description", language),
                 emoji: "⬛",
             },
             {
-                label: "Rarely",
+                label: t("settings.frequency.rarely.label", language),
                 value: "100",
-                description: "Once every ~100 messages",
+                description: t("settings.frequency.rarely.description", language),
                 emoji: "🟥",
             },
             {
-                label: "Sometimes",
+                label: t("settings.frequency.sometimes.label", language),
                 value: "50",
-                description: "Once every ~50 message (for bigger servers)",
+                description: t("settings.frequency.sometimes.description", language),
                 emoji: "🟧",
             },
             {
-                label: "Often",
+                label: t("settings.frequency.often.label", language),
                 value: "20",
-                description: "Once every ~20 messages (for smaller servers)",
+                description: t("settings.frequency.often.description", language),
                 emoji: "🟨",
             },
             {
-                label: "Very often",
+                label: t("settings.frequency.quiteOften.label", language),
                 value: "10",
-                description: "Once every ~10 messages (can produce spam)",
+                description: t("settings.frequency.quiteOften.description", language),
                 emoji: "🟩",
+            },
+            {
+                label: t("settings.frequency.veryOften.label", language),
+                value: "5",
+                description: t("settings.frequency.veryOften.description", language),
+                emoji: "🟦",
+            },
+        ];
+    }
+
+    /**
+     * Returns an array of meme generation mode options
+     *
+     * @private
+     *
+     * @author Kyrylo Maliuha
+     */
+    private _getFontOptions(language: Locale): Font[] {
+        return [
+            {
+                label: t("settings.font.random.label", language),
+                description: t("settings.font.random.description", language),
+                value: "default",
+                emoji: "🎲",
+            },
+            {
+                label: t("settings.font.comicSans.label", language),
+                value: "Comic Sans MS",
+                description: t("settings.font.comicSans.description", language),
+                emoji: "🎨",
+            },
+            {
+                label: t("settings.font.impact.label", language),
+                value: "Impact",
+                description: t("settings.font.impact.description", language),
+                emoji: "🗿",
+            },
+            {
+                label: t("settings.font.minecraft.label", language),
+                value: "Minecraft",
+                description: t("settings.font.minecraft.description", language),
+                emoji: "🧱",
+            },
+            {
+                label: t("settings.font.openDyslexic.label", language),
+                value: "OpenDyslexic",
+                description: t("settings.font.openDyslexic.description", language),
+                emoji: "📖",
             },
         ];
     }

@@ -1,0 +1,23 @@
+{
+    "name": "@jstmemit/i18n",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@jstmemit/shared": "workspace:*",
+        "discord.js": "^14.27.0"
+    },
+    "imports": {
+        "#/*": [
+            "./src/*"
+        ]
+    },
+    "exports": {
+        ".": "./src/index.ts",
+        "./*.ts": "./src/*.ts",
+        "./*.tsx": "./src/*.tsx",
+        "./*": [
+            "./src/*.ts",
+            "./src/*.tsx"
+        ]
+    }
+}

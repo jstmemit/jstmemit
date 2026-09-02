@@ -1,25 +1,46 @@
 import type { Template } from "#/models/Template.ts";
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const newsReporterSitting: Template = {
-    id: 22,
     name: "newsReporterSitting",
+    displayName: buildLocales("News reporter sitting", {
+        [Locale.Russian]: "Сидящий репортер",
+        [Locale.Ukrainian]: "Репортер, що сидить",
+        [Locale.Dutch]: "Zittende nieuwslezer",
+        [Locale.French]: "Journaliste assis",
+        [Locale.German]: "Sitzender Nachrichtenreporter",
+        [Locale.Polish]: "Siedzący reporter wiadomości",
+        [Locale.SpanishES]: "Reportero de noticias sentado",
+        [Locale.SpanishLATAM]: "Reportero de noticias sentado",
+        [Locale.PortugueseBR]: "Repórter de notícias sentado",
+        [Locale.Turkish]: "Oturan haber muhabiri",
+        [Locale.Italian]: "Giornalista seduto",
+        [Locale.Indonesian]: "Reporter berita duduk",
+        [Locale.Czech]: "Sedící reportér",
+        [Locale.Japanese]: "座っているニュースレポーター",
+        [Locale.Korean]: "앉아있는 뉴스 리포터",
+        [Locale.ChineseCN]: "坐着的新闻记者",
+    }),
+    topics: [Topic.News],
+    types: [Type.TextBottom, Type.BackgroundImage],
     width: 766,
     height: 496,
-    texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 5 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 5 },
-    ],
+    texts: [{ id: 0, description: "bottom text", minLength: 1, maxLength: 8 }],
     images: [{ id: 0, description: "breaking news" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -34,7 +55,7 @@ export const newsReporterSitting: Template = {
                 }}
             />
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/newsreportersitting.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/newsreportersitting.png"
                 width={766}
                 height={496}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -42,42 +63,32 @@ export const newsReporterSitting: Template = {
             <div
                 style={{
                     position: "absolute",
-                    top: 0,
-                    padding: "15px",
-                    width: "100%",
-                    height: "auto",
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
-                    textAlign: "center",
-                }}
-            >
-                {texts[0]}
-            </div>
-            <div
-                style={{
-                    position: "absolute",
+                    left: 0,
                     bottom: 0,
-                    padding: "15px",
                     width: "100%",
-                    height: "auto",
+                    height: "30%",
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 60,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    color: "white",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "black",
                     textAlign: "center",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8))",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

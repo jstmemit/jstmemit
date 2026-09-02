@@ -1,29 +1,53 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const tf2Hahaha: Template = {
-    id: 12,
     name: "tf2Hahaha",
+    displayName: buildLocales("Hahaha", {
+        [Locale.Russian]: "хахаха",
+        [Locale.Ukrainian]: "хахаха",
+        [Locale.Dutch]: "hahaha",
+        [Locale.French]: "hahaha",
+        [Locale.German]: "hahaha",
+        [Locale.Polish]: "hahaha",
+        [Locale.SpanishES]: "jajaja",
+        [Locale.SpanishLATAM]: "jajaja",
+        [Locale.PortugueseBR]: "hahaha",
+        [Locale.Turkish]: "hahaha",
+        [Locale.Italian]: "ahahah",
+        [Locale.Indonesian]: "hahaha",
+        [Locale.Czech]: "hahaha",
+        [Locale.Japanese]: "ハハハ",
+        [Locale.Korean]: "하하하",
+        [Locale.ChineseCN]: "哈哈哈",
+    }),
+    topics: [Topic.TeamFortress2, Topic.Games, Topic.Reaction],
+    types: [Type.FaceImage, Type.TextRight],
     width: 1732,
     height: 1732,
-    texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 12 }],
+    texts: [{ id: 0, description: "phrase", minLength: 1, maxLength: 10 }],
     images: [
-        { id: 1, description: "person who says the phrase" },
-        { id: 2, description: "person who reacts" },
+        { id: 0, description: "person who says the phrase" },
+        { id: 1, description: "person who reacts" },
     ],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/tf2hahaha.jpg"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/tf2hahaha.jpg"
                 width={1732}
                 height={1732}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -71,20 +95,28 @@ export const tf2Hahaha: Template = {
                     top: 0,
                     width: "40%",
                     height: "50%",
-                    margin: "10px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 85,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 10,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 7,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -3,19 +3,22 @@ import {
     ButtonBuilder,
     type ButtonInteraction,
     ButtonStyle,
+    DiscordAPIError,
+    RESTJSONErrorCodes,
 } from "discord.js";
 import type { IRatingsService } from "#/interfaces/IRatingsService.ts";
 import type { IRatingsRepository } from "@jstmemit/db/interfaces/IRatingsRepository";
+import type { ICacheService } from "@jstmemit/cache/interfaces/ICacheService";
+import ms from "ms";
+import type { Font } from "@jstmemit/shared/models/Font";
 
 export class RatingsService implements IRatingsService {
-    // doesn't have to persist because template analytics is stored in database anyway
-    // and who exactly voted doesn't matter that much
-    private _ratings: Map<string, Set<string>> = new Map();
-
     private readonly _ratingsRepository: IRatingsRepository;
+    private readonly _cacheService: ICacheService;
 
-    public constructor(ratingsRepository: IRatingsRepository) {
+    public constructor(ratingsRepository: IRatingsRepository, cacheService: ICacheService) {
         this._ratingsRepository = ratingsRepository;
+        this._cacheService = cacheService;
     }
 
     /**
@@ -24,6 +27,7 @@ export class RatingsService implements IRatingsService {
      *
      * @param userId
      * @param messageId
+     * @param channelId
      * @param rating
      *
      * @author Kyrylo Maliuha
@@ -31,23 +35,24 @@ export class RatingsService implements IRatingsService {
     public async addRating(
         userId: string,
         messageId: string,
+        channelId: string,
         rating: "like" | "dislike",
     ): Promise<boolean> {
-        const alreadyRated: boolean = this._checkIfUserRated(userId, messageId);
+        const alreadyRated: boolean | undefined = await this._cacheService.get(`rating:${messageId}:${userId}`);
 
         if (alreadyRated) {
             return false;
         }
 
         if (rating === "like") {
-            await this._ratingsRepository.addLikeRating(messageId);
+            await this._ratingsRepository.addLikeRating(messageId, channelId);
         }
 
         if (rating === "dislike") {
-            await this._ratingsRepository.addDislikeRating(messageId);
+            await this._ratingsRepository.addDislikeRating(messageId, channelId);
         }
 
-        this._ratings.get(messageId)?.add(userId);
+        await this._cacheService.set(`rating:${messageId}:${userId}`, true, ms("1d"));
 
         return true;
     }
@@ -58,6 +63,8 @@ export class RatingsService implements IRatingsService {
      * @param likes
      * @param dislikes
      * @param generationId
+     * @param templateName
+     * @param font
      *
      * @author Kyrylo Maliuha
      */
@@ -65,27 +72,27 @@ export class RatingsService implements IRatingsService {
         likes: number,
         dislikes: number,
         generationId: number,
+        templateName?: string,
+        font?: Font["value"],
     ): ActionRowBuilder<ButtonBuilder> {
         const likeButton: ButtonBuilder = new ButtonBuilder()
             .setCustomId(`like:${generationId}`)
-            .setLabel(`👍 ${likes}`)
+            .setEmoji("👍")
+            .setLabel(`${likes}`)
             .setStyle(ButtonStyle.Success);
 
         const regenerateButton: ButtonBuilder = new ButtonBuilder()
-            .setCustomId(`meme`)
-            .setLabel("🔄️")
-            .setStyle(ButtonStyle.Secondary);
+            .setCustomId(templateName ? `custom:${templateName}:${font}` : `meme:${generationId}`)
+            .setEmoji(templateName ? "✏️" : "🔄")
+            .setStyle(ButtonStyle.Primary);
 
         const dislikeButton: ButtonBuilder = new ButtonBuilder()
             .setCustomId(`dislike:${generationId}`)
-            .setLabel(`👎 ${dislikes}`)
+            .setEmoji("👎")
+            .setLabel(`${dislikes}`)
             .setStyle(ButtonStyle.Danger);
 
-        return new ActionRowBuilder<ButtonBuilder>().addComponents(
-            likeButton,
-            regenerateButton,
-            dislikeButton,
-        );
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(likeButton, regenerateButton, dislikeButton);
     }
 
     /**
@@ -94,46 +101,35 @@ export class RatingsService implements IRatingsService {
      *
      * @param interaction
      * @param generationId
+     * @param templateName
      *
      * @author Kyrylo Maliuha
      */
     public async updateRatingButtons(
         interaction: ButtonInteraction,
         generationId: number,
+        templateName?: string,
     ): Promise<void> {
         const messageId: string = interaction.message.id;
 
-        const { likes, dislikes } =
-            await this._ratingsRepository.getMemeRatings(messageId);
+        const { likes, dislikes } = await this._ratingsRepository.getMemeRatings(messageId);
 
-        await interaction.update({
-            components: [
-                this.constructRatingButtons(likes, dislikes, generationId),
-            ],
-        });
-    }
+        try {
+            await interaction.editReply({
+                components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
+            });
+        } catch {
+            try {
+                await interaction.message.edit({
+                    components: [this.constructRatingButtons(likes, dislikes, generationId, templateName)],
+                });
+            } catch (error) {
+                if (error instanceof DiscordAPIError && error.code === RESTJSONErrorCodes.UnknownMessage) {
+                    return;
+                }
 
-    /**
-     * Gets a Set of users who rated the meme with passed messageId,
-     * if Set doesn't exist returns false (didn't rate) and creates one.
-     * If exists, checks if a passed userId is there and returns true (rated)
-     * if it is.
-     *
-     * @param userId
-     * @param messageId
-     * @private
-     *
-     * @author Kyrylo Maliuha
-     */
-    private _checkIfUserRated(userId: string, messageId: string): boolean {
-        const userRatings: Set<string> | undefined =
-            this._ratings.get(messageId);
-
-        if (!userRatings) {
-            this._ratings.set(messageId, new Set());
-            return false;
+                throw error;
+            }
         }
-
-        return userRatings.has(userId);
     }
 }

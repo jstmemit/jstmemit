@@ -1,0 +1,151 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
+
+export const blendsMaidCast: Template = {
+    name: "blendsMaidCast",
+    displayName: buildLocales("Maid cast", {
+        [Locale.Russian]: "Актёрский состав горничных",
+        [Locale.Ukrainian]: "Акторський склад покоївок",
+        [Locale.Dutch]: "Cast als dienstmeisjes",
+        [Locale.French]: "Le casting en tenue de bonnes",
+        [Locale.German]: "Cast als Maids",
+        [Locale.Polish]: "Obsada jako pokojówki",
+        [Locale.SpanishES]: "Elenco de maids",
+        [Locale.SpanishLATAM]: "Elenco de maids",
+        [Locale.PortugueseBR]: "Elenco de maids",
+        [Locale.Turkish]: "Maid kostümlü kadro",
+        [Locale.Italian]: "Il cast in versione maid",
+        [Locale.Indonesian]: "Para karakter berseragam maid",
+        [Locale.Czech]: "Obsazení jako servírky",
+        [Locale.Japanese]: "メイド服キャスト",
+        [Locale.Korean]: "메이드복 캐스트",
+        [Locale.ChineseCN]: "全员女仆装",
+    }),
+    topics: [Topic.Anime, Topic.BlendS],
+    types: [Type.FaceImage, Type.TextTopWithBackground],
+    width: 849,
+    height: 790,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    images: [
+        { id: 0, description: "Hideri`s face" },
+        { id: 1, description: "Kaho`s face" },
+        { id: 2, description: "Maika`s face" },
+        { id: 3, description: "Mafuyu`s face" },
+        { id: 4, description: "Miu`s face" },
+    ],
+    element: ({ texts, images, font }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: font,
+            }}
+        >
+            <img
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/blendsMaidCast.png"
+                width={849}
+                height={630}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={90}
+                height={90}
+                style={{
+                    position: "absolute",
+                    top: 250,
+                    left: 95,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                    transform: "rotate(10deg)",
+                }}
+            />
+            <img
+                src={images[1]}
+                width={90}
+                height={90}
+                style={{
+                    position: "absolute",
+                    top: 250,
+                    left: 240,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                    transform: "rotate(-5deg)",
+                }}
+            />
+            <img
+                src={images[2]}
+                width={90}
+                height={90}
+                style={{
+                    position: "absolute",
+                    top: 250,
+                    left: 385,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[3]}
+                width={90}
+                height={90}
+                style={{
+                    position: "absolute",
+                    top: 280,
+                    right: 235,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[4]}
+                width={90}
+                height={90}
+                style={{
+                    position: "absolute",
+                    top: 250,
+                    right: 100,
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "160px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "15px",
+                    backgroundColor: "white",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+        </div>
+    ),
+};

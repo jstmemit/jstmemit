@@ -1,0 +1,385 @@
+---
+import PageLayout from "#/layout/PageLayout.astro";
+import Section from "#/components/ui/Section.astro";
+import Heading from "#/components/ui/Heading.astro";
+import Paragraph from "#/components/ui/Paragraph.astro";
+import Explainer from "#/components/ui/Explainer.astro";
+import Separator from "#/components/ui/Separator.astro";
+---
+
+<PageLayout title="Jstmemit // Privacy policy" canonical="https://jstmemit.com/privacy">
+    <Section variant="dark" headingId="privacyPolicyHeading" descriptionId="privacyPolicyDescription">
+        <div slot="text" class="mx-auto mt-30 flex w-full max-w-333 flex-col gap-3">
+            <Explainer>Last updated: 26th August, 2026</Explainer>
+            <Heading variant="h1" id="privacyPolicyHeading"> Privacy policy </Heading>
+            <Paragraph id="privacyPolicyDescription">
+                <b>TL;DR:</b> We value your privacy and do not store more than the bot actually needs to function. Saved data
+                gets purged regularly.
+            </Paragraph>
+            <Paragraph
+                >Your information is never sold, and we never share it with third parties for their own purposes. We do
+                use a small number of service providers who process data on our behalf under a data processing agreement
+                (see section 4). Your data is not used to train AI models.
+            </Paragraph>
+        </div>
+    </Section>
+    <Section variant="light" headingId="introductionHeading" descriptionId="introductionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="introductionHeading"> 1. Introduction </Heading>
+            <Paragraph id="introductionDescription">
+                At <b>Jstmemit</b> (or "bot" / "our bot" / "we") we genuinely care about your privacy. This policy explains
+                how our website (<a class="text-bubblegum-pink" href="https://jstmemit.com">https://jstmemit.com</a>)
+                and the bot handle your data.
+            </Paragraph>
+        </div>
+    </Section>
+    <Section variant="dark" headingId="dontCollectDataHeading" descriptionId="dontCollectDataDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="dontCollectDataHeading"> 2. No collecting data by default </Heading>
+            <Paragraph id="dontCollectDataDescription">
+                Here's the important part: <b
+                    >our bot doesn't collect any messages or GIFs when you first add it to your server.</b
+                > And the website does not use cookies or capture session replays during your visits. It's completely privacy-friendly
+                out of the box.
+            </Paragraph>
+            <Paragraph>
+                <b>Jstmemit</b> only starts collecting them when someone with the "Manage Server" or "Manage Channels" permission
+                explicitly turns the bot on for a specific text channel.
+            </Paragraph>
+            <Paragraph>
+                However, if Jstmemit is added to "My Apps" (or in other words, user-installed) then it will not save any
+                messages, profile pictures or GIFs. It still receives what you give it: the message you right-click on,
+                the text and images you put into <b>/custom</b> or <b>/voice</b>. That content is only held in memory
+                (RAM) while the meme or voice message is being made and is never written to disk. Analytics events for
+                these actions are still sent as described in section 4.
+            </Paragraph>
+        </div>
+    </Section>
+    <Section variant="light" headingId="whatWeCollectHeading" descriptionId="whatWeCollectDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="whatWeCollectHeading"> 3. What we collect and why </Heading>
+            <Paragraph>
+                When a channel is enabled using <b>/enable</b> command:<br />
+                <b>channelId, addedAt, enabled</b>
+            </Paragraph>
+            <Paragraph>
+                Channel ID is used to read any channel specific settings from <b>/settings</b> command. The date when channel
+                was enabled is used for analytics purposes.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a setting was changed using <b>/settings</b> command:<br />
+                <b>frequency, useAvatarsInMemes, font, milestones</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to change the bot's behaviour based on set settings. For example, if a server owner
+                disables usage of avatars in memes, then this will be saved so that bot can enforce it.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                Each message in the enabled channel:<br />
+                <b>messageId, channelId, content, timestamp</b>
+            </Paragraph>
+            <Paragraph>
+                They are used as text content when applied to meme templates. Timestamp is used to find and delete saved
+                information after 30 days.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                Links to images, avatars and GIFs that appear in the enabled channel:<br />
+                <b>messageId, channelId, imageUrl, source, timestamp, expiresAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used on meme templates. Only the <b>link</b> to the file is saved. Content of those links is fetched
+                and temporarily stored in RAM when used in a meme generation, but it never ends up on the actual hard drive.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a voice message is sent:<br />
+                <b>messageId, channelId, content, timestamp</b>
+            </Paragraph>
+            <Paragraph>
+                Their transcription is used as text content when applied to meme templates. Speech-to-text happens using
+                a local Whisper model (see chapter 4)
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a voice message is generated from text:<br />
+                <b>channelId, voice, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to understand which voices are used for text-to-speech the most. Information about used
+                voices also appears in milestone messages.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                Each time a meme is generated:<br />
+                <b>channelId, templateName, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to count how many times a meme template was picked by the bot in a particular channel.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When a meme is liked or disliked:<br />
+                <b>scope (global / channel / user), scopeId, templateName, successes, failures, updatedAt</b>
+            </Paragraph>
+            <Paragraph>
+                They are used to help the bot learn which meme templates work well globally, in a specific channel and
+                for a specific user.
+            </Paragraph>
+
+            <Separator variant="hr" />
+
+            <Paragraph>
+                When feedback is sent using <b>/feedback</b> command:<br />
+                <b>userId, channelId, guildId, message, createdAt</b>
+            </Paragraph>
+            <Paragraph>
+                Your message is sent to our team so that they can work on the issue or suggestion that you provided. The
+                user ID is kept so that we can reach back to you for more information if needed. Channel and Guild IDs
+                are used for context about bot's usage in a particular guild/channel, for example, to understand what
+                have caused the mentioned in the message issue.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="analyticsHeading" descriptionId="analyticsDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="analyticsHeading"> 4. Analytics and service providers </Heading>
+            <Paragraph id="analyticsDescription">
+                We use <b>PostHog EU</b> for analytics and OpenTelemetry logs on this website and inside the bot. In addition
+                to that, we use <b>Cloudflare</b> for the website's CDN, DNS and image delivery.
+            </Paragraph>
+            <Paragraph>
+                The bot sends an analytics event when a user directly interacts with the bot, for example: <ul
+                    class="list-[lower-alpha] pl-10 text-white/75"
+                >
+                    <li>it is added to or removed from a server</li>
+                    <li>a channel is enabled or disabled</li>
+                    <li>settings are opened or changed</li>
+                    <li>a meme is generated</li>
+                    <li>a meme is rated</li>
+                    <li>a voice message is generated with /voice</li>
+                    <li>feedback is sent with /feedback</li>
+                    <li>data deletion is done via the /settings command</li>
+                </ul>
+            </Paragraph>
+            <Paragraph>
+                The bot emits an OpenTelemetry event when something goes wrong, for example: <ul
+                    class="list-[lower-alpha] pl-10 text-white/75"
+                >
+                    <li>a meme generation has failed</li>
+                    <li>there was not enough context for a meme</li>
+                    <li>a meme template was not found</li>
+                    <li>an interaction has failed without a known reason</li>
+                    <li>a ratings (like/dislike) action has failed</li>
+                </ul>
+            </Paragraph>
+            <Paragraph>
+                <b
+                    >Message content, narrated voice text and other personal information such as channel or server names
+                    is never sent to analytics or OpenTelemetry logs</b
+                >, and neither are the generated memes themselves.
+            </Paragraph>
+            <Paragraph>
+                Properties of sent events include the Discord user ID of the person who performed the action, the server
+                and channel IDs, your Discord language, together with technical details like the setting values that
+                changed, which meme template and voice were picked, how long meme generation took, error messages and
+                stack traces.
+            </Paragraph>
+            <Paragraph>
+                In addition to this information most of these events include Discord's interaction ID, which is also
+                shown to you if an error occurs. It's used to trace and investigate any errors that happen.
+            </Paragraph>
+            <Paragraph>
+                Analytics events are used to understand which features are used and how the bot performs, mostly in
+                happy flows: a meme generated was generated, a channel has enabled Jstmemit, a meme was liked.
+            </Paragraph>
+            <Paragraph>
+                Logs are used to understand how errors happen, mostly in unhappy flows: meme generation failed, bot
+                didn't respond to a command.</Paragraph
+            >
+
+            <Heading variant="h3" id="voiceHeading" classes="mt-5"> 4.1 Voice processing</Heading>
+
+            <Paragraph>
+                Currently Jstmemit doesn't use any external service providers for Speech-To-Text and Text-To-Speech
+                functionality. We host our own instances of these models:
+                <ul class="list-[lower-alpha] pl-10 text-white/75">
+                    <li>
+                        <b>Whisper</b> - used for transcribing voice messages to use their content as text on generated memes
+                    </li>
+                    <li>
+                        <b>Kokoro 82M</b> - used for generating voice messages via /voice command
+                    </li>
+                </ul>
+            </Paragraph>
+
+            <Paragraph>
+                If we ever decide to use such provider in the future for improving generated voice messages quality or
+                other reasons, it would be made opt-in only and local options would stay selected by default to all
+                users to respect their privacy.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="retentionHeading" descriptionId="retentionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="retentionHeading"> 5. How long we keep your data </Heading>
+            <Paragraph id="retentionDescription">
+                Saved data is purged automatically on a fixed schedule. However, some of it may still be cached for up
+                to 24 hours after it's removal.</Paragraph
+            >
+            <Paragraph>
+                <b>Messages</b> - deleted after 30 days.<br />
+                <b>Links to images</b> - deleted after 24 hours.<br />
+                <b>Links to (server) avatars</b> - deleted after 30 days.<br />
+                <b>Links to custom emoji's and stickers</b> - deleted after 30 days.<br />
+                <b>Links to GIFs (Tenor or GIPHY)</b> - deleted after 90 days.<br />
+            </Paragraph>
+            <Paragraph>
+                <b>OpenTelemetry logs</b> - deleted after 14 days.<br />
+                <b>Analytics events</b> - deleted after 1 year.<br />
+                <b>Ratings</b> - deleted after 1 year.<br />
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="storageHeading" descriptionId="storageDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="storageHeading"> 6. Where your data is stored </Heading>
+            <Paragraph id="storageDescription">
+                All data received by the bot is stored within the <b> European Union.</b>
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="deletionHeading" descriptionId="deletionDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="deletionHeading"> 7. Deleting your data </Heading>
+            <Paragraph id="deletionDescription">
+                If you are a server owner or have "Manage Server" / "Manage Channels" permissions, you can use the <b
+                    >/settings</b
+                > command to delete all message data the bot has saved for a channel.</Paragraph
+            >
+            <Paragraph>
+                However, it's also possible to disable a channel via <b>/enable</b>. This stops the bot from saving
+                anything new. Saved data is not wiped instantly, but the purge schedule keeps running, so remaining
+                messages disappear within 30 days at the latest (image links within 24 hours, GIF links within 90 days).
+            </Paragraph>
+            <Paragraph>
+                Kicking the bot from your server also stops all collection. Stored data continues to expire on the
+                schedules described in section 5.
+            </Paragraph>
+            <Paragraph>
+                You can also email <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
+                    >privacy@jstmemit.com</a
+                >
+                {" "}and we will delete data relating to you manually, including analytics events and ratings.
+            </Paragraph>
+            <Paragraph>
+                If email is inconvenient, you can reach us the same way you use the bot: with the <b>/feedback</b>{" "}
+                command or on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                >. Requests sent using these options are handled the same. Email is still the better option if you want
+                a written reply, or if you no longer have access to the Discord account the data belongs to. You don't
+                have to include anything else, simple "Please delete my data" is enough. When emailing, including your
+                Discord user ID helps us find the right data faster.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="legalBasisHeading" descriptionId="legalBasisDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="legalBasisHeading"> 8. Legal basis for processing </Heading>
+            <Paragraph id="legalBasisDescription"> We process data for these purposes: </Paragraph>
+            <Paragraph>
+                <b>Generating memes</b> - is done under the basis of legitimate interest in operating the bot, and only after
+                a server owner or administrator invites it and explicitly runs <b>/enable{" "}</b> command. After which members
+                are notified with a "Jstmemit is now active and will generate memes during chats here" disclaimer. No message
+                data is collected before that.
+            </Paragraph>
+            <Paragraph>
+                Because we rely on legitimate interest, we have weighed our interest in operating <b>Jstmemit</b> against
+                your privacy. The bot is essentially designed to be blind by not collecting identifiers of who sent what message.
+                In addition to that, collected content is stored for a short period of time (see section 5). You can object
+                to this processing at any time (see section 10).
+            </Paragraph>
+            <Paragraph>
+                <b>Analytics and logs</b> - we have a legitimate interest in understanding how the bot is used, which templates
+                are doing well, tracking errors and how we can keep it working.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="controllerHeading" descriptionId="controllerDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="controllerHeading"> 9. Who we are </Heading>
+            <Paragraph id="controllerDescription">
+                Jstmemit is operated by <b>Wide Units</b>, registered in the Netherlands with the Dutch Chamber of
+                Commerce (KVK) under number <b>97552887</b>.
+            </Paragraph>
+            <Paragraph>
+                General questions: <a class="text-bubblegum-pink" href="mailto:contact@jstmemit.com"
+                    >contact@jstmemit.com</a
+                ><br />
+                Privacy and GDPR requests: <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com"
+                    >privacy@jstmemit.com</a
+                >
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="dark" headingId="rightsHeading" descriptionId="rightsDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="rightsHeading"> 10. Your rights </Heading>
+            <Paragraph id="rightsDescription">
+                Under the GDPR you have the right to access the data we hold about you, to have it corrected or deleted,
+                to restrict or object to its processing, and to receive a copy of it in a portable format.
+            </Paragraph>
+            <Paragraph>
+                To exercise any of these rights, email{" "}
+                <a class="text-bubblegum-pink" href="mailto:privacy@jstmemit.com">privacy@jstmemit.com</a>. We will try
+                our best to respond as fast as possible, but depending on the request it can take up to a month.
+            </Paragraph>
+            <Paragraph>
+                If you believe we are handling your data unlawfully, you also have the right to lodge a complaint with
+                the Dutch Data Protection Authority (Autoriteit Persoonsgegevens) or the authority in your own EU
+                country.
+            </Paragraph>
+        </div>
+    </Section>
+
+    <Section variant="light" headingId="changesHeading" descriptionId="changesDescription">
+        <div slot="text" class="mx-auto flex w-full max-w-333 flex-col gap-3">
+            <Heading id="changesHeading"> 11. Changes to this policy </Heading>
+            <Paragraph id="changesDescription">
+                There can be changes to this policy in the future. "Last updated" date at the top of this page shows the
+                current version. Significant changes will be announced on our <a
+                    href="https://discord.gg/THRnn8fhkZ"
+                    target="_blank"
+                    class="text-bubblegum-pink"
+                    rel="noopener noreferrer">Support server</a
+                > before they take effect.
+            </Paragraph>
+        </div>
+    </Section>
+</PageLayout>

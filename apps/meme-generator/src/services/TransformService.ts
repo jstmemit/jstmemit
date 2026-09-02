@@ -4,6 +4,8 @@ import type { ITransformProvider } from "#/interfaces/ITransformProvider.ts";
 import type { TemplateText } from "@jstmemit/shared/models/TemplateText";
 
 export class TransformService implements ITransformService {
+    private readonly _linkRegex: RegExp = /https?:\/\/\S+|www\.\S+/gi;
+    private readonly _mentionRegex: RegExp = /<@[!&]?\d+>|<#\d+>/g;
     private readonly _markovProvider: ITransformProvider;
 
     public constructor(markovProvider: ITransformProvider) {
@@ -21,6 +23,7 @@ export class TransformService implements ITransformService {
      */
     public async transformIntoMultipleTexts(texts: TemplateText[], context: string[]): Promise<string[]> {
         const transformedTexts: string[] = [];
+        context = this._filterOutLinks(context);
 
         for (let i: number = 0; i < texts.length; i++) {
             transformedTexts.push(await this.transformIntoText(texts[i]!, context));
@@ -41,18 +44,40 @@ export class TransformService implements ITransformService {
      */
     public async transformIntoText(text: TemplateText, context: string[]): Promise<string> {
         try {
-            if (!context || context.length < 1) {
+            if (context.length < 1) {
                 return "";
             }
 
+            const random: string = this._transformToRequiredMaxLength(_.sample(context) || "", text.maxLength);
+
             if (context.length < 30) {
-                return _.sample(context) || "";
+                return random;
             }
 
-            return await this._markovProvider.getTransformedText(text, context);
+            try {
+                return await this._markovProvider.getTransformedText(text, context);
+            } catch {
+                return random;
+            }
         } catch (error) {
             console.error(error);
             return "";
         }
+    }
+
+    private _filterOutLinks(context: string[]): string[] {
+        return context
+            .map((text: string): string =>
+                text
+                    .replace(this._linkRegex, "")
+                    .replace(this._mentionRegex, "")
+                    .replace(/\s{2,}/g, " ")
+                    .trim(),
+            )
+            .filter((text: string): boolean => text.length > 0);
+    }
+
+    private _transformToRequiredMaxLength(text: string, maxLength: number): string {
+        return text.split(" ").slice(0, maxLength).join(" ");
     }
 }

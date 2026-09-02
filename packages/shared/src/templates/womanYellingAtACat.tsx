@@ -1,29 +1,53 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const womanYellingAtACat: Template = {
-    id: 59,
     name: "womanYellingAtACat",
+    displayName: buildLocales("Woman yelling at a cat", {
+        [Locale.Russian]: "Женщина кричит на кота",
+        [Locale.Ukrainian]: "Жінка кричить на кота",
+        [Locale.Dutch]: "Vrouw schreeuwt tegen kat",
+        [Locale.French]: "Femme criant sur un chat",
+        [Locale.German]: "Frau schreit Katze an",
+        [Locale.Polish]: "Kobieta krzycząca na kota",
+        [Locale.SpanishES]: "Mujer gritándole a un gato",
+        [Locale.SpanishLATAM]: "Mujer gritándole a un gato",
+        [Locale.PortugueseBR]: "Mulher gritando com gato",
+        [Locale.Turkish]: "Kediye bağıran kadın",
+        [Locale.Italian]: "Donna che urla a un gatto",
+        [Locale.Indonesian]: "Wanita berteriak pada kucing",
+        [Locale.Czech]: "Žena křičí na kočku",
+        [Locale.Japanese]: "猫に怒鳴る女",
+        [Locale.Korean]: "고양이에게 소리지르는 여자",
+        [Locale.ChineseCN]: "女人冲猫大吼",
+    }),
+    topics: [Topic.Reaction, Topic.Animals],
+    types: [Type.TwoOption, Type.TextRightWithBackground, Type.FaceImage],
     width: 1200,
     height: 1200,
     texts: [
-        { id: 0, description: "text1", minLength: 1, maxLength: 8 },
-        { id: 1, description: "text2", minLength: 1, maxLength: 8 },
+        { id: 0, description: "first reaction", minLength: 1, maxLength: 12 },
+        { id: 1, description: "second reaction", minLength: 1, maxLength: 12 },
     ],
     images: [{ id: 0, description: "cat`s face" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Impact",
+                fontFamily: font,
             }}
         >
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/womanYellingAtACat.png"
                 width={1200}
                 height={1200}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -47,18 +71,26 @@ export const womanYellingAtACat: Template = {
                     top: 0,
                     width: "48%",
                     height: "50%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 60,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 7,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
             <div
                 style={{
@@ -67,18 +99,26 @@ export const womanYellingAtACat: Template = {
                     bottom: 0,
                     width: "48%",
                     height: "50%",
-                    padding: "15px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 60,
-                    lineHeight: 1.05,
-                    color: "#000000",
+                    padding: "20px",
                 }}
             >
-                {texts[1]}
+                <div
+                    style={{
+                        lineClamp: 7,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[1]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[1]}
+                </div>
             </div>
         </div>
     ),

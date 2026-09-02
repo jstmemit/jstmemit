@@ -9,33 +9,37 @@
         "db:generate": "cd packages/db && pnpm drizzle-kit generate",
         "db:migrate": "cd packages/db && pnpm drizzle-kit migrate",
         "meme-generator:start": "cd apps/meme-generator && pnpm start",
+        "voice:start": "cd apps/voice && pnpm start",
         "website:dev": "cd apps/website && pnpm run dev",
         "website:build": "cd apps/website && pnpm run build",
         "website:run-build": "node ./apps/website/dist/server/entry.mjs",
         "template-preview:dev": "cd apps/template-preview && pnpm run dev",
         "template-preview:build": "cd apps/template-preview && pnpm run build",
-        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs"
+        "template-preview:run-build": "node ./apps/template-preview/dist/server/entry.mjs",
+        "typecheck": "tsc --noEmit -p apps/bot && tsc --noEmit -p apps/meme-generator && tsc --noEmit -p apps/voice && tsc --noEmit -p packages/db && tsc --noEmit -p packages/cache && tsc --noEmit -p packages/analytics && tsc --noEmit -p packages/bandit && tsc --noEmit -p packages/i18n && tsc --noEmit -p packages/images && tsc --noEmit -p packages/queue && tsc --noEmit -p packages/shared",
+        "lint": "eslint .",
+        "format": "prettier --check ."
     },
     "devEngines": {
         "packageManager": {
             "name": "pnpm",
-            "version": "11.5.2",
+            "version": "11.17.0",
             "onFail": "download"
         }
     },
     "type": "module",
     "devDependencies": {
-        "@types/node": "^25.9.4",
+        "@types/node": "^25.9.5",
         "@types/react": "^19.2.17",
-        "eslint": "^10.5.0",
-        "globals": "^17.6.0",
-        "prettier": "^3.8.4",
+        "eslint": "^10.7.0",
+        "globals": "^17.7.0",
+        "prettier": "^3.9.5",
         "prettier-plugin-astro": "0.14.1",
         "prettier-plugin-tailwindcss": "0.8.0",
-        "typescript-eslint": "^8.61.1"
+        "typescript-eslint": "^8.64.0"
     },
     "dependencies": {
-        "posthog-node": "^5.38.2",
+        "posthog-node": "^5.45.2",
         "zod": "^4.4.3"
     }
 }

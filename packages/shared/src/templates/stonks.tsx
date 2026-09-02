@@ -1,22 +1,46 @@
 import type { TemplateProps } from "#/models/TemplateProps.ts";
 import type { Template } from "#/models/Template.ts";
 import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const stonks: Template = {
-    id: 15,
     name: "stonks",
+    displayName: buildLocales("Stonks", {
+        [Locale.Russian]: "Stonks",
+        [Locale.Ukrainian]: "Stonks",
+        [Locale.Dutch]: "Stonks",
+        [Locale.French]: "Stonks",
+        [Locale.German]: "Stonks",
+        [Locale.Polish]: "Stonks",
+        [Locale.SpanishES]: "Stonks",
+        [Locale.SpanishLATAM]: "Stonks",
+        [Locale.PortugueseBR]: "Stonks",
+        [Locale.Turkish]: "Stonks",
+        [Locale.Italian]: "Stonks",
+        [Locale.Indonesian]: "Stonks",
+        [Locale.Czech]: "Stonks",
+        [Locale.Japanese]: "ストンクス",
+        [Locale.Korean]: "스통크스",
+        [Locale.ChineseCN]: "Stonks",
+    }),
+    topics: [Topic.Reaction],
+    types: [Type.BackgroundImage, Type.TextRight],
     width: 512,
     height: 386,
-    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 5 }],
+    texts: [{ id: 0, description: "the phrase", minLength: 1, maxLength: 16 }],
     images: [{ id: 0, description: "what the stonks guy is happy about" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
         <div
             style={{
                 display: "flex",
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                fontFamily: "Comic Sans MS",
+                fontFamily: font,
             }}
         >
             <img
@@ -31,7 +55,7 @@ export const stonks: Template = {
                 }}
             />
             <img
-                src="https://files.wideunits.nl/jstmemit/images/templates/stonks.png"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/stonks.png"
                 width={512}
                 height={386}
                 style={{ position: "absolute", top: 0, left: 0 }}
@@ -40,23 +64,31 @@ export const stonks: Template = {
                 style={{
                     position: "absolute",
                     right: 0,
-                    bottom: "60%",
+                    top: 0,
                     width: "50%",
-                    padding: "15px",
-                    height: "auto",
+                    height: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    fontFamily: "Comic Sans MS",
-                    fontSize: 26,
-                    lineHeight: 1.05,
-                    color: "#ffffff",
-                    WebkitTextStrokeWidth: 4,
-                    WebkitTextStrokeColor: "#000000",
+                    padding: "15px",
+                    backgroundImage: "linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5))",
                 }}
             >
-                {texts[0]}
+                <div
+                    style={{
+                        lineClamp: 10,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#ffffff",
+                        textShadow: "0 0 8px rgba(0, 0, 0, 1)",
+                    }}
+                >
+                    {texts[0]}
+                </div>
             </div>
         </div>
     ),

@@ -1,0 +1,25 @@
+export const Type = {
+    TextTop: "textTop",
+    TextBottom: "textBottom",
+    TextLeft: "textLeft",
+    TextRight: "textRight",
+    TextCenter: "textCenter",
+    TextTopWithBackground: "textTopWithBackground",
+    TextBottomWithBackground: "textBottomWithBackground",
+    TextLeftWithBackground: "textLeftWithBackground",
+    TextRightWithBackground: "textRightWithBackground",
+    TextCenterWithBackground: "textCenterWithBackground",
+    TextName: "textName",
+    TextPost: "textPost",
+    DefaultText: "defaultText",
+    AvatarImage: "avatarImage",
+    FaceImage: "faceImage",
+    ObjectImage: "objectImage",
+    BackgroundImage: "backgroundImage",
+    TwoOption: "twoOption",
+    ThreeOption: "threeOption",
+    FourOption: "fourOption",
+    Animated: "animated",
+} as const;
+
+export type TemplateType = (typeof Type)[keyof typeof Type];

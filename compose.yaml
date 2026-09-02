@@ -1,54 +1,224 @@
+x-logging: &default-logging
+    driver: json-file
+    options: { max-size: "10m", max-file: "3" }
+
 services:
-  sqld:
-    image: ghcr.io/tursodatabase/libsql-server:latest
-    ports: [ "8080:8080" ]
-    volumes: [ "sqld-data:/var/lib/sqld" ]
-    restart: unless-stopped
+    sqld:
+        image: ghcr.io/tursodatabase/libsql-server@sha256:817fb6c6865d048a509f5c120905629fb9b5af20ad0c526cdc68a6d8793898ad
+        logging: *default-logging
+        volumes: ["sqld-data:/var/lib/sqld"]
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "4", memory: 6g }
+                reservations: { cpus: "2", memory: 2g }
+        healthcheck:
+            test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080"]
+            interval: 5s
+            timeout: 3s
+            retries: 10
+            start_period: 5s
 
-  redis:
-    image: redis:alpine
-    command: [ "redis-server", "--appendonly", "yes" ]
-    volumes: [ "redis-data:/data" ]
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 5s
-      timeout: 3s
-      retries: 5
-      start_period: 10s
+    migrate:
+        image: ghcr.io/jstmemit/migrate
+        logging: *default-logging
+        build:
+            context: .
+            dockerfile: packages/db/Dockerfile
+        env_file:
+            - ".env.docker"
+        deploy:
+            resources:
+                limits: { cpus: "2", memory: 1g }
+        depends_on:
+            sqld:
+                condition: service_healthy
+        restart: "no"
 
-  bot:
-    build:
-      context: .
-      dockerfile: apps/bot/Dockerfile
-    env_file:
-      - ".env.docker"
-    restart: unless-stopped
-    depends_on:
-      redis:
-        condition: service_healthy
-      sqld:
-        condition: service_started
+    redis:
+        image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
+        logging: *default-logging
+        command: ["redis-server", "--appendonly", "yes", "--maxmemory", "3gb", "--maxmemory-policy", "noeviction"]
+        volumes: ["redis-data:/data"]
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "2", memory: 4g }
+                reservations: { cpus: "1", memory: 512m }
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 5s
+            timeout: 3s
+            retries: 5
+            start_period: 10s
 
-  website:
-      build:
-          context: .
-          dockerfile: apps/website/Dockerfile
-      restart: unless-stopped
-      ports: [ "4321:4321" ]
+    redis-cache:
+        image: redis:alpine@sha256:09160599abd229764c0fb44cb6be640294e1d360a54b19985ab4843dcf2d90f1
+        logging: *default-logging
+        command:
+            [
+                "redis-server",
+                "--save",
+                "",
+                "--appendonly",
+                "no",
+                "--maxmemory",
+                "4500mb",
+                "--maxmemory-policy",
+                "allkeys-lru",
+            ]
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "2", memory: 6g }
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 5s
+            timeout: 3s
+            retries: 5
+            start_period: 10s
 
-  meme-generator:
-    build:
-      context: .
-      dockerfile: apps/meme-generator/Dockerfile
-    env_file:
-      - ".env.docker"
-    restart: unless-stopped
-    depends_on:
-      redis:
-        condition: service_healthy
-      sqld:
-        condition: service_started
+    bot:
+        image: ghcr.io/jstmemit/bot
+        init: true
+        logging: *default-logging
+        build:
+            context: .
+            dockerfile: apps/bot/Dockerfile
+        env_file:
+            - ".env.docker"
+        environment:
+            - NODE_OPTIONS=--max-old-space-size=3072
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "3", memory: 4g }
+        depends_on:
+            redis:
+                condition: service_healthy
+            redis-cache:
+                condition: service_healthy
+            sqld:
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
 
+    website:
+        image: ghcr.io/jstmemit/website
+        init: true
+        logging: *default-logging
+        build:
+            context: .
+            dockerfile: apps/website/Dockerfile
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "1", memory: 1g }
+        ports: ["4321:4321"]
+
+    meme-generator:
+        image: ghcr.io/jstmemit/meme-generator
+        init: true
+        deploy:
+            replicas: 2
+            resources:
+                limits: { memory: 3g }
+                reservations: { cpus: "2", memory: 1g }
+        logging: *default-logging
+        build:
+            context: .
+            dockerfile: apps/meme-generator/Dockerfile
+        env_file:
+            - ".env.docker"
+        environment:
+            - NODE_OPTIONS=--max-old-space-size=2304
+            - VIPS_CONCURRENCY=2
+        restart: unless-stopped
+        depends_on:
+            redis:
+                condition: service_healthy
+            redis-cache:
+                condition: service_healthy
+            sqld:
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
+
+    voice:
+        image: ghcr.io/jstmemit/voice
+        init: true
+        logging: *default-logging
+        build:
+            context: .
+            dockerfile: apps/voice/Dockerfile
+        env_file:
+            - ".env.docker"
+        environment:
+            - NODE_OPTIONS=--max-old-space-size=1536
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "2", memory: 2g }
+        depends_on:
+            sqld:
+                condition: service_started
+            redis:
+                condition: service_healthy
+            redis-cache:
+                condition: service_healthy
+            migrate:
+                condition: service_completed_successfully
+            kokoro:
+                condition: service_healthy
+            whisper:
+                condition: service_started
+
+    whisper:
+        image: hwdsl2/whisper-server:latest
+        logging: *default-logging
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits: { cpus: "3", memory: 5g }
+        volumes:
+            - whisper-data:/var/lib/whisper
+            - ./.env.docker:/whisper.env:ro
+
+    kokoro:
+        image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.6.0
+        command:
+            ["python", "-m", "uvicorn", "api.src.main:app", "--host", "0.0.0.0", "--port", "8880", "--no-access-log"]
+        volumes: ["kokoro-models:/app/api/src/models"]
+        logging: *default-logging
+        restart: unless-stopped
+        environment:
+            - ONNX_NUM_THREADS=4
+            - ONNX_INTER_OP_THREADS=1
+            - ONNX_EXECUTION_MODE=sequential
+            - ONNX_OPTIMIZATION_LEVEL=all
+            - ONNX_MEMORY_PATTERN=true
+            - OMP_NUM_THREADS=4
+            - OMP_WAIT_POLICY=PASSIVE
+            - KMP_BLOCKTIME=0
+            - API_LOG_LEVEL=ERROR
+            - DOWNLOAD_MODEL=true
+        deploy:
+            resources:
+                limits: { memory: 5g }
+                reservations: { cpus: "2" }
+        healthcheck:
+            test:
+                [
+                    "CMD-SHELL",
+                    'python3 -c "import urllib.request;urllib.request.urlopen(''http://localhost:8880/health'')" || exit 1',
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 20s
 volumes:
-  sqld-data:
-  redis-data:
+    sqld-data:
+    redis-data:
+    kokoro-models:
+    whisper-data:
+        name: whisper-data

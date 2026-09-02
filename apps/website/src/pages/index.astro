@@ -1,21 +1,39 @@
 ---
-import PageLayout from "../layout/PageLayout.astro";
-import Background from "../components/Background.astro";
-import BlurredMemes from "../components/background/BlurredMemes.astro";
-
+import PageLayout from "#/layout/PageLayout.astro";
+import HowExactlyDoesThatWorkSection from "#/components/sections/HowExactlyDoesThatWorkSection.astro";
+import ChatAndJstmemitWillMakeMemesSection from "#/components/sections/ChatAndJstmemitWillMakeMemesSection.astro";
+import HeroSection from "#/components/sections/HeroSection.astro";
+import FeatureMarqueeSection from "#/components/sections/FeatureMarqueeSection.astro";
+import MemeGrid from "#/components/MemeGrid.astro";
+import BannerSection from "#/components/sections/BannerSection.astro";
+import ButWhatAboutPrivacySection from "#/components/sections/ButWhatAboutPrivacySection.astro";
+import Anchor from "#/components/ui/Anchor.astro";
+import JstmemitsSourceCodeSection from "#/components/sections/JstmemitsSourceCodeSection.astro";
+import FaqSection from "#/components/sections/FaqSection.astro";
+import OkayButShowMeSomeMemesSection from "#/components/sections/OkayButShowMeSomeMemesSection.astro";
+import AddJstmemitWontRegretSection from "#/components/sections/AddJstmemitWontRegretSection.astro";
 ---
 
-<PageLayout>
-    <Background>
-        <div slot="text" class="z-2 w-full gap-3 flex flex-col">
-            <h1 class="mx-auto w-[80%] text-center text-4xl font-bold uppercase md:w-[50%] md:text-7xl">
-                personalized memes for <span class="text-hot-fuchsia">your</span> community
-            </h1>
-            <p class="mx-auto w-[70%] text-center text-xl text-white/60 md:w-[50%] md:text-3xl">
-                Auto-generated memes from your conversations
-            </p>
-        </div>
+<PageLayout
+    title="Jstmemit // Discord bot that makes memes about your server"
+    canonical="https://jstmemit.com"
+    isMain={true}
+>
+    <HeroSection />
+    <FeatureMarqueeSection />
 
-        <BlurredMemes slot="memes" />
-    </Background>
+    <div class="relative flex flex-col overflow-hidden">
+        <Anchor id="content" classes="-top-50" />
+
+        <ChatAndJstmemitWillMakeMemesSection />
+        <HowExactlyDoesThatWorkSection classes="order-1 xl:order-0" />
+        <MemeGrid classes="order-0" />
+    </div>
+
+    <BannerSection />
+    <ButWhatAboutPrivacySection />
+    <JstmemitsSourceCodeSection />
+    <OkayButShowMeSomeMemesSection />
+    <FaqSection />
+    <AddJstmemitWontRegretSection />
 </PageLayout>

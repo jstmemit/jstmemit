@@ -2,11 +2,10 @@ import type { IChannelsRepository } from "../interfaces/IChannelsRepository.ts";
 import { channelsTable } from "../schema.ts";
 import { db } from "../index.ts";
 import { eq } from "drizzle-orm";
+import { analytics } from "@jstmemit/analytics";
 
 export class ChannelsRepository implements IChannelsRepository {
-    public async get(
-        channelId: string,
-    ): Promise<typeof channelsTable.$inferSelect | undefined> {
+    public async get(channelId: string): Promise<typeof channelsTable.$inferSelect | undefined> {
         try {
             const channels = await db
                 .select()
@@ -16,30 +15,35 @@ export class ChannelsRepository implements IChannelsRepository {
 
             return channels[0] || undefined;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
         }
     }
 
-    public async upsert(
-        channelId: string,
-        addedAt: Date,
-    ): Promise<typeof channelsTable.$inferSelect> {
-        const [channel] = await db
-            .insert(channelsTable)
-            .values({ channelId, addedAt })
-            .onConflictDoUpdate({
-                target: channelsTable.channelId,
-                set: { channelId },
-            })
-            .returning();
+    public async upsert(channelId: string, addedAt: Date): Promise<typeof channelsTable.$inferSelect | undefined> {
+        try {
+            const existing = await this.get(channelId);
 
-        if (!channel) {
-            throw new Error();
+            if (existing) {
+                return existing;
+            }
+
+            const [channel] = await db
+                .insert(channelsTable)
+                .values({ channelId, addedAt })
+                .onConflictDoUpdate({
+                    target: channelsTable.channelId,
+                    set: { channelId },
+                })
+                .returning();
+
+            return channel;
+        } catch (error) {
+            analytics.captureException(error);
+
+            return undefined;
         }
-
-        return channel;
     }
 
     public async set(
@@ -55,25 +59,19 @@ export class ChannelsRepository implements IChannelsRepository {
 
             return channels[0] || undefined;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return undefined;
         }
     }
 
-    public async switch(
-        channelId: string,
-        isEnabled: boolean,
-    ): Promise<boolean> {
+    public async switch(channelId: string, isEnabled: boolean): Promise<boolean> {
         try {
-            await db
-                .update(channelsTable)
-                .set({ enabled: !isEnabled })
-                .where(eq(channelsTable.channelId, channelId));
+            await db.update(channelsTable).set({ enabled: !isEnabled }).where(eq(channelsTable.channelId, channelId));
 
             return true;
         } catch (error) {
-            console.error(error);
+            analytics.captureException(error);
 
             return false;
         }

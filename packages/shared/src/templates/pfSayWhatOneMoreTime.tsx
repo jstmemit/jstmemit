@@ -1,0 +1,123 @@
+import type { TemplateProps } from "#/models/TemplateProps.ts";
+import type { Template } from "#/models/Template.ts";
+import * as React from "react";
+import { Topic } from "#/models/TemplateTopic.ts";
+import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
+
+export const pfSayWhatOneMoreTime: Template = {
+    name: "pfSayWhatOneMoreTime",
+    displayName: buildLocales("Say what one more time", {
+        [Locale.Russian]: "Скажи «что» ещё раз",
+        [Locale.Ukrainian]: "Скажи «що» ще раз",
+        [Locale.Dutch]: "Zeg nog één keer “wat”",
+        [Locale.French]: "Dis « quoi » encore une fois",
+        [Locale.German]: "Sag noch einmal „was“",
+        [Locale.Polish]: "Powiedz „co” jeszcze raz",
+        [Locale.SpanishES]: "Di «qué» una vez más",
+        [Locale.SpanishLATAM]: "Di «qué» una vez más",
+        [Locale.PortugueseBR]: "Diga “o quê” mais uma vez",
+        [Locale.Turkish]: "Bir kez daha “ne” de",
+        [Locale.Italian]: "Dì «cosa» un'altra volta",
+        [Locale.Indonesian]: "Katakan “apa” sekali lagi",
+        [Locale.Czech]: "Řekni „co“ ještě jednou",
+        [Locale.Japanese]: "もう一度「何」って言ってみろ",
+        [Locale.Korean]: "뭐라고 한 번만 더 말해봐",
+        [Locale.ChineseCN]: "再说一遍“什么”试试",
+    }),
+    topics: [Topic.PulpFiction, Topic.Movies, Topic.Reaction],
+    types: [Type.TextTopWithBackground, Type.FaceImage],
+    width: 1920,
+    height: 1417,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    images: [
+        { id: 0, description: "face of the person with a gun" },
+        { id: 1, description: "face of the person in the corner" },
+        { id: 2, description: "face of the person on the right" },
+    ],
+    element: ({ texts, images, font }: TemplateProps) => (
+        <div
+            style={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                fontFamily: font,
+            }}
+        >
+            <img
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/pfSayWhatOneMoreTime.jpg"
+                width={1920}
+                height={1317}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
+            />
+            <img
+                src={images[0]}
+                width={300}
+                height={300}
+                style={{
+                    position: "absolute",
+                    top: "25%",
+                    left: "22%",
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[1]}
+                width={150}
+                height={150}
+                style={{
+                    position: "absolute",
+                    bottom: "10%",
+                    left: "37%",
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <img
+                src={images[2]}
+                width={450}
+                height={450}
+                style={{
+                    position: "absolute",
+                    bottom: "-3%",
+                    right: "-3%",
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "100%",
+                    height: "350px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    padding: "30px",
+                    backgroundColor: "white",
+                }}
+            >
+                <div
+                    style={{
+                        lineClamp: 2,
+                        wordBreak: "break-word",
+                        textOverflow: "ellipsis",
+                        fontFamily: font,
+                        fontSize: fontSize(texts[0]),
+                        lineHeight: 1.05,
+                        color: "#000000",
+                    }}
+                >
+                    {texts[0]}
+                </div>
+            </div>
+        </div>
+    ),
+};

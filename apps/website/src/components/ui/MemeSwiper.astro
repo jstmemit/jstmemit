@@ -1,0 +1,65 @@
+---
+import type { MemeGridItem } from "#/models/MemeGridItem.ts";
+import { Swiper, SwiperPagination, SwiperSlide, SwiperWrapper } from "astro-swiper";
+import Card from "#/components/ui/Card.astro";
+
+interface Props {
+    memes: MemeGridItem[];
+    height?: string;
+}
+
+const { memes, height = "h-90" } = Astro.props;
+---
+
+<Swiper
+    options={{
+        loop: true,
+        effect: "creative",
+        grabCursor: true,
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        autoplay: {
+            delay: 1500,
+            disableOnInteraction: true,
+        },
+        creativeEffect: {
+            prev: {
+                shadow: true,
+                translate: ["-125%", 0, -800],
+                rotate: [0, 0, -90],
+            },
+            next: {
+                shadow: true,
+                translate: ["125%", 0, -800],
+                rotate: [0, 0, 90],
+            },
+        },
+    }}
+>
+    <SwiperWrapper class="scale-90 py-12 pt-6">
+        {
+            memes
+                .filter((meme) => !meme.excludeMobile)
+                .map((meme: MemeGridItem) => (
+                    <SwiperSlide>
+                        <Card
+                            label={meme.image.split("/").pop() || "meme.png"}
+                            color={meme.color}
+                            classes={`${height} sm:h-160 w-full object-cover mt-7`}
+                            border={`${meme.border ? "border-bubblegum-pink" : "border-dark-cyan"} border-4`}
+                        >
+                            <img
+                                src={meme.image}
+                                alt={meme.alt}
+                                fetchpriority="low"
+                                loading="lazy"
+                                class="bg-carbon-black h-full w-full rounded-xl rounded-t-none object-cover"
+                            />
+                        </Card>
+                    </SwiperSlide>
+                ))
+        }
+        <SwiperPagination />
+    </SwiperWrapper>
+</Swiper>
