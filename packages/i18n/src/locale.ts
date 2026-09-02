@@ -772,34 +772,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "<:jstmemit:1533562196980797462> Čau, jsem Jstmemit",
     }),
     "settings.about.body": buildLocales(
-        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 425+ templates ¯\\_(ツ)_/¯",
+        "The bot that makes memes from your chat. Talk about anything and...\nit will turn that into a meme on one of 660+ templates ¯\\_(ツ)_/¯",
         {
             [Locale.Russian]:
-                "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 425+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
+                "Бот, который делает мемы из вашего чата. Говорите о чём угодно, а он...\nпревратит это в мем на одном из 660+ шаблонов и постебётся над вами ¯\\_(ツ)_/¯",
             [Locale.Ukrainian]:
-                "Бот, який робить меми з вашого чату. Говоріть про що завгодно, а він...\nперетворить це на мем на одному з 425+ шаблонів і постібеться з вас ¯\\_(ツ)_/¯",
+                "Бот, який робить меми з вашого чату. Говоріть про що завгодно, а він...\nперетворить це на мем на одному з 660+ шаблонів і постібеться з вас ¯\\_(ツ)_/¯",
             [Locale.Dutch]:
-                "De bot die memes maakt van jullie chat. Praat waar je maar over wilt en...\nhij plakt het op een van zijn 425+ meme templates en pest je ermee ¯\\_(ツ)_/¯",
+                "De bot die memes maakt van jullie chat. Praat waar je maar over wilt en...\nhij plakt het op een van zijn 660+ meme templates en pest je ermee ¯\\_(ツ)_/¯",
             [Locale.French]:
-                "Le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et...\nil en fera un mème sur un de ses 425+ modèles pour se moquer de vous ¯\\_(ツ)_/¯",
+                "Le bot qui fait des mèmes à partir de votre chat. Parlez de ce que vous voulez et...\nil en fera un mème sur un de ses 660+ modèles pour se moquer de vous ¯\\_(ツ)_/¯",
             [Locale.German]:
-                "Der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und...\ner macht daraus ein Meme auf einer von 425+ Vorlagen und zieht euch damit auf ¯\\_(ツ)_/¯",
+                "Der Bot, der Memes aus eurem Chat macht. Redet über was ihr wollt und...\ner macht daraus ein Meme auf einer von 660+ Vorlagen und zieht euch damit auf ¯\\_(ツ)_/¯",
             [Locale.Polish]:
-                "Bot, który robi memy z waszego czatu. Gadajcie o czym chcecie, a on...\nwrzuci to na jeden z 425+ szablonów i zrobi sobie z was jaja ¯\\_(ツ)_/¯",
+                "Bot, który robi memy z waszego czatu. Gadajcie o czym chcecie, a on...\nwrzuci to na jeden z 660+ szablonów i zrobi sobie z was jaja ¯\\_(ツ)_/¯",
             [Locale.SpanishES]:
-                "El bot que hace memes de vuestro chat. Hablad de lo que queráis y...\nlo convertirá en un meme con una de sus 425+ plantillas para reírse de vosotros ¯\\_(ツ)_/¯",
+                "El bot que hace memes de vuestro chat. Hablad de lo que queráis y...\nlo convertirá en un meme con una de sus 660+ plantillas para reírse de vosotros ¯\\_(ツ)_/¯",
             [Locale.SpanishLATAM]:
-                "El bot que hace memes de su chat. Hablen de lo que quieran y...\nlo va a convertir en un meme con una de sus 425+ plantillas para burlarse de ustedes ¯\\_(ツ)_/¯",
+                "El bot que hace memes de su chat. Hablen de lo que quieran y...\nlo va a convertir en un meme con una de sus 660+ plantillas para burlarse de ustedes ¯\\_(ツ)_/¯",
             [Locale.PortugueseBR]:
-                "O bot que faz memes do seu chat. Falem do que quiserem e...\nele transforma isso em meme com um dos 425+ templates pra tirar sarro de vocês ¯\\_(ツ)_/¯",
+                "O bot que faz memes do seu chat. Falem do que quiserem e...\nele transforma isso em meme com um dos 660+ templates pra tirar sarro de vocês ¯\\_(ツ)_/¯",
             [Locale.Turkish]:
-                "Sohbetinizden caps üreten bot. Ne konuşursanız konuşun...\nonu 425'ten fazla şablondan biriyle capse çevirip sizinle dalga geçer ¯\\_(ツ)_/¯",
+                "Sohbetinizden caps üreten bot. Ne konuşursanız konuşun...\nonu 660'ten fazla şablondan biriyle capse çevirip sizinle dalga geçer ¯\\_(ツ)_/¯",
             [Locale.Italian]:
-                "Il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e...\nlo trasforma in un meme con uno dei suoi 425+ template per prendervi in giro ¯\\_(ツ)_/¯",
+                "Il bot che fa meme dalla vostra chat. Parlate di quello che vi pare e...\nlo trasforma in un meme con uno dei suoi 660+ template per prendervi in giro ¯\\_(ツ)_/¯",
             [Locale.Indonesian]:
-                "Bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan...\ndia bakal jadiin itu meme pakai salah satu dari 425+ template buat nyindir kalian ¯\\_(ツ)_/¯",
+                "Bot yang bikin meme dari chat kalian. Ngobrolin apa saja dan...\ndia bakal jadiin itu meme pakai salah satu dari 660+ template buat nyindir kalian ¯\\_(ツ)_/¯",
             [Locale.Czech]:
-                "Bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a...\nudělá z toho mem na jedné z 425+ šablon a utáhne si z vás ¯\\_(ツ)_/¯",
+                "Bot, který dělá memy z vašeho chatu. Bavte se o čemkoliv a...\nudělá z toho mem na jedné z 660+ šablon a utáhne si z vás ¯\\_(ツ)_/¯",
         },
     ),
     "settings.about.enablePrompt": buildLocales("Enable Jstmemit below to start!", {
