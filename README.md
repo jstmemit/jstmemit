@@ -225,18 +225,57 @@ After that you can use them in your layout:
 
 Your layout will be rendered into an image using [Takumi](https://takumi.kane.tw/), a library that is similar to [Satori](https://github.com/vercel/satori) but has performance, supports almost all CSS properties and can render animations.
 
-#### Fonts
+#### Fonts and font size
+
+Font is a prop of the element property. It's a string that contains the chosen font and fallback fonts.
 
 Available fonts:
+- Default (random)
 - Comic Sans MS
-- Noto Sans Math
+- Impact
+- Minecraft
+- OpenDyslexic
 
-If there are CJK (Chinese, Japanese and Korean) characters present, then these more fonts are injected:
-- Noto Sans SC
-- Noto Sans TC 
-- Noto Sans HK 
-- Noto Sans JP 
-- Noto Sans KR 
+There is a `fontSize` utility for dynamic font sizing depending on the text length (returns the font size in viewport width units, e.g., `vw`).
+```tsx
+<div
+        style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: "10px",
+            backgroundColor: "white",
+        }}
+>
+    <div
+            style={{
+                lineClamp: 2,
+                wordBreak: "break-word",
+                textOverflow: "ellipsis",
+                fontFamily: font,
+                fontSize: fontSize(texts[0]),
+                lineHeight: 1.05,
+                paddingBottom: "0.2em",
+                color: "#000000",
+            }}
+    >
+        {texts[0]}
+    </div>
+</div>
+```
+
+[//]: # (If there are CJK &#40;Chinese, Japanese and Korean&#41; characters present, then these more fonts are injected:)
+[//]: # (- Noto Sans SC)
+[//]: # (- Noto Sans TC )
+[//]: # (- Noto Sans HK )
+[//]: # (- Noto Sans JP )
+[//]: # (- Noto Sans KR )
 #### Layout
 
 **textOverBackground.tsx**
