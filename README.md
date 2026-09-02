@@ -20,11 +20,13 @@
     - <a href="#setting-up-your-editor">Setting up your editor</a>
         - <a href="#jetbrainswebstorm">JetBrains/Webstorm</a>
     - <a href="#making-new-meme-templates">Making new meme templates</a>
-        - <a href="#textsimages">Topics</a>
-        - <a href="#textsimages">Types</a>
-        - <a href="#textsimages">Texts/images</a>
+        - <a href="#name">Name</a>
+        - <a href="#display-name">Display Name</a>
+        - <a href="#topics">Topics</a>
+        - <a href="#types">Types</a>
+        - <a href="#texts-and-images">Texts and Images</a>
         - <a href="#render">Render</a>
-        - <a href="#fonts">Fonts</a>
+        - <a href="#fonts-and-font-size">Fonts and font size</a>
         - <a href="#layout">Layout</a>
         - <a href="#test-your-template">Test your template</a>
         - <a href="#done">Done!</a>
