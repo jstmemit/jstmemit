@@ -123,6 +123,35 @@ There are also some useful extensions if you plan on contributing to more than m
 
 All templates are located in `packages/shared/src/templates` directory. Each one of them is a `.tsx` file that exports an object with basic information (name, topics, types, width, height), what should be on the meme (texts, images) and the layout in JSX. This makes creating new templates very simple if you are familiar with web development.
 
+### Name
+
+The `name` is a unique identifier for the meme template. Make sure this name is not already taken.
+
+### Display name
+
+The `displayName` property provides localized translations for the template's name. Use the `buildLocales` utility to define them:
+
+```tsx
+displayName: buildLocales("Text over background", {
+    [Locale.Russian]: "Текст на фоне",
+    [Locale.Ukrainian]: "Текст на фоні",
+    [Locale.Dutch]: "Tekst over achtergrond",
+    [Locale.French]: "Texte sur fond",
+    [Locale.German]: "Text über Hintergrund",
+    [Locale.Polish]: "Tekst na tle",
+    [Locale.SpanishES]: "Texto sobre fondo",
+    [Locale.SpanishLATAM]: "Texto sobre fondo",
+    [Locale.PortugueseBR]: "Texto sobre fundo",
+    [Locale.Turkish]: "Arka plan üzerinde metin",
+    [Locale.Italian]: "Testo sullo sfondo",
+    [Locale.Indonesian]: "Teks di atas latar belakang",
+    [Locale.Czech]: "Text na pozadí",
+    [Locale.Japanese]: "背景上のテキスト",
+    [Locale.Korean]: "배경 위 텍스트",
+    [Locale.ChineseCN]: "背景上的文本",
+})
+```
+
 #### Topics
 
 Each template must have topics that describe it. For example, if you are making a meme template with SpongeBob characters on it, then you must add the `Topic.SpongeBob` topic to it. The topics field is an array, allowing you to add as many topics as needed:
