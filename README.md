@@ -158,14 +158,14 @@ Each template must have topics that describe it. For example, if you are making 
 ```tsx
 import { Topic } from "#/models/TemplateTopic.ts";  // don`t forget to import `Topic` enum
 
-export const spongebob: Template = {
+export const spongebobHappy: Template = {
     // ...
     topics: [Topic.SpongeBob, Topic.Cartoons, Topic.Reaction],
 }
 ```
 **Available topics:**
 
-Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean
+Reaction, SocialPost, BreakingBad, News, YouTube, Misc, Cartoons, Animals, Futurama, Griffins, Simpsons, Movies, Art, PulpFiction, Anime, TeamFortress2, Games, SpongeBob, SpiderMan, StarTrek, AssassinationClassroom, ACertainScientificRailgun, AzumangaDaioh, AttackOnTitan, AkashicRecords, BlendS, BocchiTheRock, CyberpunkEdgerunners, Dandadan, DFrag, DarlingInTheFranxx, WeNeverLearn, DeathNote, DemonSlayer, Evangelion, Frieren, GabrielDropOut, Gintama, Office, IronMan, Incredibles, ToyStory, ScoobyDoo, WinnieThePooh, MrBean, Toradora, HimoutoUmaruChan, JujutsuKaisen, KaguyaSama, Kon, KonoSuba, LogHorizon, LuckyStar, MyHeroicAcademy, Monster, Noragami, RascalDoesNotDreamOfBunnyGirlSenpai, SerialExperimentsLain, SpyFamily, SquidGame, Shirobako, TheBalladOfBusterScruggs, TheQuintessentialQuintuplets, UzakiChanWantsToHangOut, ShikanokoNokonokoKoshitantan, UmaMusume, Quote, Demotivator, EightySix, Barakamon, GJBu, GreatTeacherOnizuka, Destruction, LoveLab, Nichijou, OnePunchMan
 
 ---
 
@@ -175,9 +175,9 @@ Each template must have types that describe its structure and layout components.
 ```tsx
 import { Type } from "#/models/TemplateType.ts";  //don`t forget to import `Type` enum
 
-export const spongebob: Template = {
+export const spongebobHappy: Template = {
     // ...
-    types: [Type.faceImage, Type.textBottom]
+    types: [Type.FaceImage, Type.TextBottom],
 }
 ```
 
@@ -207,9 +207,9 @@ After that you can use them in your layout:
 ```tsx
 <img
     src={images[0]}
-    width={800}
-    height={800}
-    style={{ position: "absolute", top: 0, left: 0, opacity: 0.6 }}
+    width={500}
+    height={500}
+    style={{ position: "absolute", top: 0, left: 0 }}
 />
 ```
 
@@ -246,26 +246,47 @@ import type { TemplateProps } from "#/models/TemplateProps.ts";
 import * as React from "react";
 import { Topic } from "#/models/TemplateTopic.ts";
 import { Type } from "#/models/TemplateType.ts";
+import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
+import { Locale } from "discord.js";
+import { fontSize } from "#/utils/fontSize.ts";
 
 export const textOverBackground: Template = {
     name: "textOverBackground", // make sure this name is not taken
+    displayName: buildLocales("Text over background", {
+        [Locale.Russian]: "Текст на фоне",
+        [Locale.Ukrainian]: "Текст на фоні",
+        [Locale.Dutch]: "Tekst over achtergrond",
+        [Locale.French]: "Texte sur fond",
+        [Locale.German]: "Text über Hintergrund",
+        [Locale.Polish]: "Tekst na tle",
+        [Locale.SpanishES]: "Texto sobre fondo",
+        [Locale.SpanishLATAM]: "Texto sobre fondo",
+        [Locale.PortugueseBR]: "Texto sobre fundo",
+        [Locale.Turkish]: "Arka plan üzerinde metin",
+        [Locale.Italian]: "Testo sullo sfondo",
+        [Locale.Indonesian]: "Teks di atas latar belakang",
+        [Locale.Czech]: "Text na pozadí",
+        [Locale.Japanese]: "背景上のテキスト",
+        [Locale.Korean]: "배경 위 텍스트",
+        [Locale.ChineseCN]: "背景上的文本",
+    }),
     topics: [Topic.Misc],
-    types: [Type.backgroundImage, Type.textTopWithBackground, Type.textBottomWithBackground],
-    width: 800,
-    height: 800,
+    types: [Type.BackgroundImage, Type.TextTopWithBackground, Type.TextBottomWithBackground],
+    width: 500,
+    height: 500,
     texts: [
-        { id: 0, description: "top text", minLength: 1, maxLength: 10 },
-        { id: 1, description: "bottom text", minLength: 1, maxLength: 10 },
+        { id: 0, description: "top text", minLength: 1, maxLength: 8 },
+        { id: 1, description: "bottom text", minLength: 1, maxLength: 8 },
     ],
     images: [{ id: 0, description: "background" }],
-    element: ({ texts, images }: TemplateProps) => (
+    element: ({ texts, images, font }: TemplateProps) => (
             <div
                     style={{
                         display: "flex",
                         position: "relative",
                         width: "100%",
                         height: "100%",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: font,
                         backgroundColor: "#000",
                     }}
             >
@@ -273,7 +294,7 @@ export const textOverBackground: Template = {
                         src={images[0]}
                         width={800}
                         height={600}
-                        style={{ position: "absolute", top: 100, left: 0, opacity: 0.6 }}
+                        style={{ position: "absolute", top: 100, left: 0 }}
                 />
                 <div
                         style={{
@@ -286,7 +307,7 @@ export const textOverBackground: Template = {
                             alignItems: "center",
                             justifyContent: "center",
                             textAlign: "center",
-                            padding: "15px",
+                            padding: "10px",
                             backgroundColor: "white",
                         }}
                 >
@@ -295,8 +316,8 @@ export const textOverBackground: Template = {
                                 lineClamp: 2,
                                 wordBreak: "break-word",
                                 textOverflow: "ellipsis",
-                                fontFamily: "Comic Sans MS",
-                                fontSize: 40,
+                                fontFamily: font,
+                                fontSize: fontSize(texts[0]),
                                 lineHeight: 1.05,
                                 paddingBottom: "0.2em",
                                 color: "#000000",
@@ -316,7 +337,7 @@ export const textOverBackground: Template = {
                             alignItems: "center",
                             justifyContent: "center",
                             textAlign: "center",
-                            padding: "15px",
+                            padding: "10px",
                             backgroundColor: "white",
                         }}
                 >
@@ -325,8 +346,8 @@ export const textOverBackground: Template = {
                                 lineClamp: 2,
                                 wordBreak: "break-word",
                                 textOverflow: "ellipsis",
-                                fontFamily: "Comic Sans MS",
-                                fontSize: 40,
+                                fontFamily: font,
+                                fontSize: fontSize(texts[0]),
                                 lineHeight: 1.05,
                                 paddingBottom: "0.2em",
                                 color: "#000000",
