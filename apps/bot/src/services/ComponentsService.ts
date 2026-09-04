@@ -182,17 +182,23 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
         const component = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("milestones.view.description", language, {
-                        emoji: emojis.jstmemit,
-                    }),
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            t("milestones.view.description", language, {
+                                emoji: emojis.jstmemit,
+                            }),
+                        ),
+                    ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(
@@ -262,17 +268,23 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
         const component = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("milestones.description", language, {
-                        achievements: this._commandsService.getCommandMention("achievements"),
-                    }),
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            t("milestones.description", language, {
+                                achievements: this._commandsService.getCommandMention("achievements"),
+                            }),
+                        ),
+                    ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false));
 
@@ -417,10 +429,19 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.body", language)))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`),
+                    new TextDisplayBuilder().setContent(t("error.body", language)),
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
+                ),
+        );
     }
 
     /**
@@ -572,17 +593,20 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("deleteData.confirm.body", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL("https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp"),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("deleteData.confirm.body", language, {
+                            enable: this._commandsService.getCommandMention("enable"),
+                        }),
+                    ),
                 ),
-            );
+        );
     }
 
     /**
@@ -642,7 +666,9 @@ export class ComponentsService implements IComponentsService {
             .addSectionComponents(
                 new SectionBuilder()
                     .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                        ),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("settings.about.heading", language)}`),
@@ -683,7 +709,9 @@ export class ComponentsService implements IComponentsService {
             .addSectionComponents(
                 new SectionBuilder()
                     .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                        ),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
