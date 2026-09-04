@@ -55,8 +55,8 @@ export class ComponentsService implements IComponentsService {
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
                             isEnabled
-                                ? "https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
-                                : "https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
+                                ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
+                                : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
                         ),
                     )
                     .addTextDisplayComponents(
@@ -186,7 +186,7 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
                         ),
                     )
                     .addTextDisplayComponents(
@@ -272,7 +272,7 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
                         ),
                     )
                     .addTextDisplayComponents(
@@ -433,7 +433,7 @@ export class ComponentsService implements IComponentsService {
             new SectionBuilder()
                 .setThumbnailAccessory(
                     new ThumbnailBuilder().setURL(
-                        "https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
                     ),
                 )
                 .addTextDisplayComponents(
@@ -486,7 +486,7 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
                         ),
                     )
                     .addTextDisplayComponents(
@@ -604,7 +604,9 @@ export class ComponentsService implements IComponentsService {
         return new ContainerBuilder().addSectionComponents(
             new SectionBuilder()
                 .setThumbnailAccessory(
-                    new ThumbnailBuilder().setURL("https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp"),
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp",
+                    ),
                 )
                 .addTextDisplayComponents(
                     new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
@@ -675,7 +677,7 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
                         ),
                     )
                     .addTextDisplayComponents(
@@ -718,7 +720,7 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
                         ),
                     )
                     .addTextDisplayComponents(
