@@ -54,7 +54,9 @@ export class ComponentsService implements IComponentsService {
                 new SectionBuilder()
                     .setThumbnailAccessory(
                         new ThumbnailBuilder().setURL(
-                            "https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp",
+                            isEnabled
+                                ? "https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
+                                : "https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
                         ),
                     )
                     .addTextDisplayComponents(
