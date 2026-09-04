@@ -50,20 +50,29 @@ export class ComponentsService implements IComponentsService {
         const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
         const container: ContainerBuilder = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            isEnabled
+                                ? t("enable.body.enabled", language)
+                                : messagesAmount >= 30
+                                  ? t("enable.body.disabled.ready", language, {
+                                        messagesAmount: String(messagesAmount),
+                                    })
+                                  : t("enable.body.disabled.notReady", language),
+                        ),
+                    ),
             )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    isEnabled
-                        ? t("enable.body.enabled", language)
-                        : messagesAmount >= 30
-                          ? t("enable.body.disabled.ready", language, { messagesAmount: String(messagesAmount) })
-                          : t("enable.body.disabled.notReady", language),
-                ),
-            )
+
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
