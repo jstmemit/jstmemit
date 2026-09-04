@@ -482,10 +482,18 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
 
         const container: ContainerBuilder = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
+                        new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)),
+                    ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
