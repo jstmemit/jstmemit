@@ -84,16 +84,11 @@ export const locale: Record<string, LocalizationMap> = {
         "Hi! I'm the bot that makes memes from your chat. Talk about anything and I'll turn it into a meme on one of 660+ templates. Click on the button below and let's generate some memes!",
         {},
     ),
-    "enable.body.disabled.setupIsAlmostDone": buildLocales(
-        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
-        {},
-    ),
-    "enable.body.enabled.setupIsAlmostDone": buildLocales(
-        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n<:check:1545743815061545071> **Allow making memes in <#{{channelId}}>**",
-        {},
-    ),
+    "enable.body.checklist.inviteJstmemit": buildLocales("Invite Jstmemit to this server", {}),
+    "enable.body.checklist.givePermission": buildLocales("Give permission to read/send messages", {}),
+    "enable.body.checklist.allowMakingMemes": buildLocales("Allow making memes in <#{{channelId}}>", {}),
     "enable.body.disabled.enableToStart": buildLocales(
-        "You can always turn me off later or delete everything I've stored here if you want to start fresh.",
+        "You can always turn me off later or delete everything I've stored if you want to start fresh.",
         {},
     ),
     "enable.memory.progress": buildLocales("Messages in memory: **{{messagesAmount}}**", {

@@ -1,4 +1,4 @@
-import type { Locale, MessageActionRowComponentBuilder } from "discord.js";
+import { type Locale, Message, type MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -78,11 +78,7 @@ export class ComponentsService implements IComponentsService {
 
         container.addTextDisplayComponents(
             new TextDisplayBuilder().setContent(
-                t(
-                    isEnabled ? "enable.body.enabled.setupIsAlmostDone" : "enable.body.disabled.setupIsAlmostDone",
-                    language,
-                    { channelId: channelId },
-                ),
+                `**${emojis.check} ${t("enable.body.checklist.inviteJstmemit", language)}**\n**${hasMissingPermissions ? "◽" : emojis.check} ${t("enable.body.checklist.givePermission", language)}**\n**${!isEnabled ? "◽" : emojis.check} ${t("enable.body.checklist.allowMakingMemes", language, { channelId: channelId })}**`,
             ),
         );
 
@@ -96,11 +92,8 @@ export class ComponentsService implements IComponentsService {
             );
             container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
         } else {
-            container.addSeparatorComponents(
-                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
-            );
             container.addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("enable.body.disabled.enableToStart", language)),
+                new TextDisplayBuilder().setContent(`-# ${t("enable.body.disabled.enableToStart", language)}`),
             );
         }
 
