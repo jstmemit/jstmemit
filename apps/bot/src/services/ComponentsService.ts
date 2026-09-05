@@ -76,6 +76,16 @@ export class ComponentsService implements IComponentsService {
                 ),
         );
 
+        container.addTextDisplayComponents(
+            new TextDisplayBuilder().setContent(
+                t(
+                    isEnabled ? "enable.body.enabled.setupIsAlmostDone" : "enable.body.disabled.setupIsAlmostDone",
+                    language,
+                    { channelId: channelId },
+                ),
+            ),
+        );
+
         if (isEnabled) {
             container.addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
@@ -86,11 +96,6 @@ export class ComponentsService implements IComponentsService {
             );
             container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
         } else {
-            container.addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("enable.body.disabled.setupIsAlmostDone", language, { channelId: channelId }),
-                ),
-            );
             container.addSeparatorComponents(
                 new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
             );

@@ -88,6 +88,10 @@ export const locale: Record<string, LocalizationMap> = {
         "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
         {},
     ),
+    "enable.body.enabled.setupIsAlmostDone": buildLocales(
+        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n<:check:1545743815061545071> **Allow making memes in <#{{channelId}}>**",
+        {},
+    ),
     "enable.body.disabled.enableToStart": buildLocales(
         "You can always turn me off later or delete everything I've stored here if you want to start fresh.",
         {},
