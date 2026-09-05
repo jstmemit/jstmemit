@@ -273,6 +273,7 @@ export class MemesController implements IMemesController {
                             interaction.id,
                             messagesAmount,
                         ),
+                        this._componentsService.getNotEnoughContextButtonsComponent(locale),
                     );
                     break;
                 default:

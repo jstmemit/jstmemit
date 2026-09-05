@@ -528,6 +528,19 @@ export class ComponentsService implements IComponentsService {
         return container;
     }
 
+    public getNotEnoughContextButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Primary)
+                .setLabel(t("error.button.tryAgain", language))
+                .setCustomId("meme"),
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Secondary)
+                .setLabel(t("enable.button.settings", language))
+                .setCustomId("settings"),
+        );
+    }
+
     /**
      * Returns back a message component for the "unknown template" error
      *

@@ -26,6 +26,7 @@ export abstract class IComponentsService {
         interactionId: string,
         messagesAmount: number,
     ): ContainerBuilder;
+    public abstract getNotEnoughContextButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
     public abstract getMissingPermissionsButtons(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getMilestoneViewMessageComponent(

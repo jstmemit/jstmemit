@@ -359,20 +359,20 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "-# **ID error:** {{interactionId}}",
         [Locale.Czech]: "-# **ID chyby:** {{interactionId}}",
     }),
-    "error.button.tryAgain": buildLocales("🔁 Try again", {
-        [Locale.Russian]: "🔁 Попробовать снова",
-        [Locale.Ukrainian]: "🔁 Спробувати ще раз",
-        [Locale.Dutch]: "🔁 Opnieuw proberen",
-        [Locale.French]: "🔁 Réessayer",
-        [Locale.German]: "🔁 Erneut versuchen",
-        [Locale.Polish]: "🔁 Spróbuj ponownie",
-        [Locale.SpanishES]: "🔁 Intentar de nuevo",
-        [Locale.SpanishLATAM]: "🔁 Intentar de nuevo",
-        [Locale.PortugueseBR]: "🔁 Tentar de novo",
-        [Locale.Turkish]: "🔁 Tekrar dene",
-        [Locale.Italian]: "🔁 Riprova",
-        [Locale.Indonesian]: "🔁 Coba lagi",
-        [Locale.Czech]: "🔁 Zkusit znovu",
+    "error.button.tryAgain": buildLocales("Try again", {
+        [Locale.Russian]: "Попробовать снова",
+        [Locale.Ukrainian]: "Спробувати ще раз",
+        [Locale.Dutch]: "Opnieuw proberen",
+        [Locale.French]: "Réessayer",
+        [Locale.German]: "Erneut versuchen",
+        [Locale.Polish]: "Spróbuj ponownie",
+        [Locale.SpanishES]: "Intentar de nuevo",
+        [Locale.SpanishLATAM]: "Intentar de nuevo",
+        [Locale.PortugueseBR]: "Tentar de novo",
+        [Locale.Turkish]: "Tekrar dene",
+        [Locale.Italian]: "Riprova",
+        [Locale.Indonesian]: "Coba lagi",
+        [Locale.Czech]: "Zkusit znovu",
     }),
     "error.button.reportError": buildLocales("💬 Report error", {
         [Locale.Russian]: "💬 Сообщить об ошибке",
@@ -389,51 +389,10 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "💬 Laporkan error",
         [Locale.Czech]: "💬 Nahlásit chybu",
     }),
-    "notEnoughContext.heading": buildLocales("🤔 Not enough context yet", {
-        [Locale.Russian]: "🤔 Пока недостаточно контекста",
-        [Locale.Ukrainian]: "🤔 Поки що недостатньо контексту",
-        [Locale.Dutch]: "🤔 Nog niet genoeg context",
-        [Locale.French]: "🤔 Pas encore assez de contexte",
-        [Locale.German]: "🤔 Noch nicht genug Kontext",
-        [Locale.Polish]: "🤔 Jeszcze za mało kontekstu",
-        [Locale.SpanishES]: "🤔 Aún no hay suficiente contexto",
-        [Locale.SpanishLATAM]: "🤔 Todavía no hay suficiente contexto",
-        [Locale.PortugueseBR]: "🤔 Ainda não há contexto suficiente",
-        [Locale.Turkish]: "🤔 Henüz yeterli bağlam yok",
-        [Locale.Italian]: "🤔 Non c'è ancora abbastanza contesto",
-        [Locale.Indonesian]: "🤔 Konteksnya belum cukup",
-        [Locale.Czech]: "🤔 Zatím není dost kontextu",
-    }),
+    "notEnoughContext.heading": buildLocales("🤔 I don't know enough for a meme yet", {}),
     "notEnoughContext.body": buildLocales(
-        "Jstmemit needs more time to learn about your channel before it can make a meme. Try to chat a bit more and send a couple of GIFs.",
-        {
-            [Locale.Russian]:
-                "Jstmemit нужно больше времени, чтобы изучить ваш канал, прежде чем он сможет сделать мем. Пообщайтесь ещё немного и отправьте пару GIF.",
-            [Locale.Ukrainian]:
-                "Jstmemit потрібно більше часу, щоб вивчити ваш канал, перш ніж він зможе зробити мем. Поспілкуйтеся ще трохи і надішліть кілька GIF.",
-            [Locale.Dutch]:
-                "Jstmemit heeft meer tijd nodig om je kanaal te leren kennen voordat hij een meme kan maken. Chat nog wat verder en stuur een paar GIF's.",
-            [Locale.French]:
-                "Jstmemit a besoin de plus de temps pour apprendre à connaître votre salon avant de pouvoir faire un mème. Discutez encore un peu et envoyez quelques GIF.",
-            [Locale.German]:
-                "Jstmemit braucht mehr Zeit, um deinen Kanal kennenzulernen, bevor er ein Meme machen kann. Chattet noch ein bisschen und schickt ein paar GIFs.",
-            [Locale.Polish]:
-                "Jstmemit potrzebuje więcej czasu, żeby poznać twój kanał, zanim będzie mógł zrobić mema. Porozmawiajcie jeszcze trochę i wyślijcie kilka GIF-ów.",
-            [Locale.SpanishES]:
-                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chatead un poco más y enviad un par de GIFs.",
-            [Locale.SpanishLATAM]:
-                "Jstmemit necesita más tiempo para conocer tu canal antes de poder hacer un meme. Chateen un poco más y manden un par de GIFs.",
-            [Locale.PortugueseBR]:
-                "O Jstmemit precisa de mais tempo para conhecer o seu canal antes de poder fazer um meme. Conversem um pouco mais e mandem alguns GIFs.",
-            [Locale.Turkish]:
-                "Jstmemit'in caps yapabilmesi için kanalını tanımaya biraz daha zamanı olması gerekiyor. Biraz daha sohbet edin ve birkaç GIF gönderin.",
-            [Locale.Italian]:
-                "Jstmemit ha bisogno di più tempo per conoscere il tuo canale prima di poter fare un meme. Chattate ancora un po' e mandate qualche GIF.",
-            [Locale.Indonesian]:
-                "Jstmemit butuh waktu lebih untuk mengenal channel kamu sebelum bisa bikin meme. Coba ngobrol lagi dan kirim beberapa GIF.",
-            [Locale.Czech]:
-                "Jstmemit potřebuje víc času, aby poznal tvůj kanál, než dokáže udělat mem. Zkuste si ještě chvíli psát a pošlete pár GIFů.",
-        },
+        "There were not many messages sent in this channel, so I didn't have enough context to make a meme. Please try again after a few more messages.",
+        {},
     ),
     "unknownTemplate.heading": buildLocales("🤔 I don't know such template", {
         [Locale.Russian]: "🤔 Я не знаю такой шаблон",
