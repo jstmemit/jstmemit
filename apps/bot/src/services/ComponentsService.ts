@@ -537,18 +537,25 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("unknownTemplate.body", language, {
-                        custom: this._commandsService.getCommandMention("custom"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("unknownTemplate.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("unknownTemplate.body", language, {
+                            custom: this._commandsService.getCommandMention("custom"),
+                        }),
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
                 ),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        );
     }
 
     /**
@@ -561,14 +568,21 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getWrongFileFormatMessageComponent(language: Locale, interactionId: string, file: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("wrongFileFormat.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(t("wrongFileFormat.body", language, { file })),
-            )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("wrongFileFormat.heading", language)}`),
+                    new TextDisplayBuilder().setContent(t("wrongFileFormat.body", language, { file })),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
+                ),
+        );
     }
 
     /**
