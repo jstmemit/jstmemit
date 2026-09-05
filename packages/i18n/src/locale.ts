@@ -17,7 +17,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🎉 Bot siap!",
         [Locale.Czech]: "🎉 Bot je připraven!",
     }),
-    "enable.heading.disabled": buildLocales("🔻 May I make memes in <#{{channelId}}>?", {}),
+    "enable.heading.disabled": buildLocales("🔻 Allow making memes in <#{{channelId}}>?", {}),
     "enable.body.enabled": buildLocales(
         "Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.",
         {
@@ -81,14 +81,17 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "enable.body.disabled.notReady": buildLocales(
-        "Hi! I'm the bot that makes memes from your chat. Talk about anything and it will get turned that into a funny meme on one of 660+ templates ¯\\_(ツ)_/¯",
+        "Hi! I'm the bot that makes memes from your chat. Talk about anything and I'll turn it into a meme on one of 660+ templates. Click on the button below and let's generate some memes!",
         {},
     ),
     "enable.body.disabled.setupIsAlmostDone": buildLocales(
         "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
         {},
     ),
-    "enable.body.disabled.enableToStart": buildLocales("Click the button below to enable me and make some memes!", {}),
+    "enable.body.disabled.enableToStart": buildLocales(
+        "You can always turn me off later or delete everything I've stored here if you want to start fresh.",
+        {},
+    ),
     "enable.memory.progress": buildLocales("Messages in memory: **{{messagesAmount}}**", {
         [Locale.Russian]: "Сообщений в памяти: **{{messagesAmount}}**",
         [Locale.Ukrainian]: "Повідомлень у пам'яті: **{{messagesAmount}}**",
@@ -271,7 +274,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "Zapnout",
     }),
     "enable.button.allowMakingMemes": buildLocales("✔ Allow in this channel", {}),
-    "enable.button.notNow": buildLocales("Not now", {}),
+    "enable.button.notNow": buildLocales("No, thanks", {}),
     "enable.button.firstMeme": buildLocales("Generate your first meme", {
         [Locale.Russian]: "Сделать первый мем",
         [Locale.Ukrainian]: "Зробити перший мем",
