@@ -174,6 +174,13 @@ export class ComponentsService implements IComponentsService {
                     .setLabel(t("enable.button.settings", language))
                     .setCustomId("settings"),
             );
+        } else {
+            container.addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(t("enable.button.notNow", language))
+                    .setCustomId("notnow"),
+            );
         }
 
         return container;

@@ -85,13 +85,10 @@ export const locale: Record<string, LocalizationMap> = {
         {},
     ),
     "enable.body.disabled.setupIsAlmostDone": buildLocales(
-        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permissions to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
+        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permission to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
         {},
     ),
-    "enable.body.disabled.enableToStart": buildLocales(
-        "You're almost done with the setup, click the button below to enable me and make some memes!",
-        {},
-    ),
+    "enable.body.disabled.enableToStart": buildLocales("Click the button below to enable me and make some memes!", {}),
     "enable.memory.progress": buildLocales("Messages in memory: **{{messagesAmount}}**", {
         [Locale.Russian]: "Сообщений в памяти: **{{messagesAmount}}**",
         [Locale.Ukrainian]: "Повідомлень у пам'яті: **{{messagesAmount}}**",
@@ -273,7 +270,8 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "Nyalakan",
         [Locale.Czech]: "Zapnout",
     }),
-    "enable.button.allowMakingMemes": buildLocales("Yes, allow here", {}),
+    "enable.button.allowMakingMemes": buildLocales("✔ Allow in this channel", {}),
+    "enable.button.notNow": buildLocales("Not now", {}),
     "enable.button.firstMeme": buildLocales("Generate your first meme", {
         [Locale.Russian]: "Сделать первый мем",
         [Locale.Ukrainian]: "Зробити перший мем",
