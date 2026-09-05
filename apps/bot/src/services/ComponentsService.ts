@@ -50,20 +50,31 @@ export class ComponentsService implements IComponentsService {
         const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
         const container: ContainerBuilder = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            isEnabled
+                                ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
+                                : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            isEnabled
+                                ? t("enable.body.enabled", language)
+                                : messagesAmount >= 30
+                                  ? t("enable.body.disabled.ready", language, {
+                                        messagesAmount: String(messagesAmount),
+                                    })
+                                  : t("enable.body.disabled.notReady", language),
+                        ),
+                    ),
             )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    isEnabled
-                        ? t("enable.body.enabled", language)
-                        : messagesAmount >= 30
-                          ? t("enable.body.disabled.ready", language, { messagesAmount: String(messagesAmount) })
-                          : t("enable.body.disabled.notReady", language),
-                ),
-            )
+
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
@@ -171,17 +182,23 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
         const component = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("milestones.view.description", language, {
-                        emoji: emojis.jstmemit,
-                    }),
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${t("milestones.view.heading", language, { count: String(count), channelId })}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            t("milestones.view.description", language, {
+                                emoji: emojis.jstmemit,
+                            }),
+                        ),
+                    ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
             .addTextDisplayComponents(
@@ -251,17 +268,23 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(count, count * 2, 10);
 
         const component = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
-                ),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("milestones.description", language, {
-                        achievements: this._commandsService.getCommandMention("achievements"),
-                    }),
-                ),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/fun.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `# ${t("milestones.heading", language, { count: String(count), channelId })}`,
+                        ),
+                        new TextDisplayBuilder().setContent(
+                            t("milestones.description", language, {
+                                achievements: this._commandsService.getCommandMention("achievements"),
+                            }),
+                        ),
+                    ),
             )
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false));
 
@@ -406,10 +429,19 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getErrorMessageComponent(language: Locale, interactionId: string): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.body", language)))
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })));
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/error.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("error.heading", language)}`),
+                    new TextDisplayBuilder().setContent(t("error.body", language)),
+                    new TextDisplayBuilder().setContent(t("error.id", language, { interactionId })),
+                ),
+        );
     }
 
     /**
@@ -450,10 +482,18 @@ export class ComponentsService implements IComponentsService {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
 
         const container: ContainerBuilder = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("notEnoughContext.heading", language)}`),
+                        new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)),
+                    ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("notEnoughContext.body", language)))
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
@@ -561,17 +601,22 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("deleteData.confirm.body", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("deleteData.confirm.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("deleteData.confirm.body", language, {
+                            enable: this._commandsService.getCommandMention("enable"),
+                        }),
+                    ),
                 ),
-            );
+        );
     }
 
     /**
@@ -631,7 +676,9 @@ export class ComponentsService implements IComponentsService {
             .addSectionComponents(
                 new SectionBuilder()
                     .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                        ),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("settings.about.heading", language)}`),
@@ -672,7 +719,9 @@ export class ComponentsService implements IComponentsService {
             .addSectionComponents(
                 new SectionBuilder()
                     .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL("https://files.wideunits.nl/jstmemit/images/logos/logo.png"),
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/yes.webp",
+                        ),
                     )
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(`# ${t("help.about.heading", language)}`),
@@ -783,7 +832,7 @@ export class ComponentsService implements IComponentsService {
      */
     public getHelpFaqMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${t("help.faq.heading", language)}`))
+            .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.heading", language)}`))
             .addTextDisplayComponents(new TextDisplayBuilder().setContent(`${t("help.faq.description", language)}`))
             .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large).setDivider(true))
             .addTextDisplayComponents(

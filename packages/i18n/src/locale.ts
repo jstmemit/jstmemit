@@ -352,27 +352,28 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "⚠️ Něco se pokazilo",
     }),
     "error.body": buildLocales(
-        "Please try again, and if it keeps happening, report the error so we can look into it.",
+        "Please try again, and if it keeps happening,\nreport the error so we can look into it.",
         {
             [Locale.Russian]:
-                "Попробуйте ещё раз, а если это повторяется, сообщите об ошибке, чтобы мы могли разобраться.",
+                "Попробуйте ещё раз, а если это повторяется,\nсообщите об ошибке, чтобы мы могли разобраться.",
             [Locale.Ukrainian]:
-                "Спробуйте ще раз, а якщо це повторюється, повідомте про помилку, щоб ми могли розібратися.",
+                "Спробуйте ще раз, а якщо це повторюється,\nповідомте про помилку, щоб ми могли розібратися.",
             [Locale.Dutch]:
-                "Probeer het opnieuw en als het blijft gebeuren, meld de fout dan even zodat we ernaar kunnen kijken.",
-            [Locale.French]: "Réessayez, et si cela continue, signalez l'erreur pour qu'on puisse regarder ça.",
+                "Probeer het opnieuw en als het blijft gebeuren,\nmeld de fout dan even zodat we ernaar kunnen kijken.",
+            [Locale.French]: "Réessayez, et si cela continue,\nsignalez l'erreur pour qu'on puisse regarder ça.",
             [Locale.German]:
-                "Versuche es erneut, und wenn es weiterhin passiert, melde den Fehler, damit wir uns das ansehen können.",
-            [Locale.Polish]: "Spróbuj ponownie, a jeśli to się powtarza, zgłoś błąd, żebyśmy mogli się temu przyjrzeć.",
+                "Versuche es erneut, und wenn es weiterhin passiert,\nmelde den Fehler, damit wir uns das ansehen können.",
+            [Locale.Polish]:
+                "Spróbuj ponownie, a jeśli to się powtarza,\nzgłoś błąd, żebyśmy mogli się temu przyjrzeć.",
             [Locale.SpanishES]:
-                "Inténtalo de nuevo y si sigue pasando, informa del error para que podamos investigarlo.",
-            [Locale.SpanishLATAM]: "Intenta de nuevo y si sigue pasando, reporta el error para que podamos revisarlo.",
+                "Inténtalo de nuevo y si sigue pasando, informa del\nerror para que podamos investigarlo.",
+            [Locale.SpanishLATAM]: "Intenta de nuevo y si sigue pasando,\nreporta el error para que podamos revisarlo.",
             [Locale.PortugueseBR]:
-                "Tente de novo e, se continuar acontecendo, reporte o erro para a gente dar uma olhada.",
-            [Locale.Turkish]: "Tekrar dene, sorun devam ederse hatayı bildir ki inceleyebilelim.",
-            [Locale.Italian]: "Riprova e, se continua a succedere, segnala l'errore così possiamo dare un'occhiata.",
-            [Locale.Indonesian]: "Coba lagi, dan kalau terus terjadi, laporkan errornya biar kami bisa cek.",
-            [Locale.Czech]: "Zkus to znovu, a pokud se to opakuje, nahlas chybu, ať se na to můžeme podívat.",
+                "Tente de novo e, se continuar acontecendo, reporte\no erro para a gente dar uma olhada.",
+            [Locale.Turkish]: "Tekrar dene, sorun devam ederse\nhatayı bildir ki inceleyebilelim.",
+            [Locale.Italian]: "Riprova e, se continua a succedere,\nsegnala l'errore così possiamo dare un'occhiata.",
+            [Locale.Indonesian]: "Coba lagi, dan kalau terus terjadi,\nlaporkan errornya biar kami bisa cek.",
+            [Locale.Czech]: "Zkus to znovu, a pokud se to opakuje,\nnahlas chybu, ať se na to můžeme podívat.",
         },
     ),
     "error.id": buildLocales("**Error ID:** {{interactionId}}", {
@@ -2416,34 +2417,34 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Czech]: "🎖️ Úspěchy **<#{{channelId}}>**",
     }),
     "milestones.view.description": buildLocales(
-        "Every time your channel hits a meme count milestone it unlocks an achievement.\nBelow you can see a list of them and statistics on how you used {{emoji}}Jstmemit.",
+        "Every time your channel hits a meme count milestone it unlocks an achievement. Below you can see a list of them and statistics on how you used {{emoji}}Jstmemit.",
         {
             [Locale.Russian]:
-                "Каждый раз, когда ваш канал достигает определенного количества мемов, он открывает достижение.\nНиже вы можете увидеть их список и статистику использования {{emoji}}Jstmemit.",
+                "Каждый раз, когда ваш канал достигает определенного количества мемов, он открывает достижение. Ниже вы можете увидеть их список и статистику использования {{emoji}}Jstmemit.",
             [Locale.Ukrainian]:
-                "Щоразу, коли ваш канал досягає певної кількості мемів, він відкриває досягнення.\nНижче ви можете побачити їхній список та статистику використання {{emoji}}Jstmemit.",
+                "Щоразу, коли ваш канал досягає певної кількості мемів, він відкриває досягнення. Нижче ви можете побачити їхній список та статистику використання {{emoji}}Jstmemit.",
             [Locale.Dutch]:
-                "Elke keer dat je kanaal een mijlpaal in het aantal memes bereikt, wordt er een prestatie ontgrendeld.\nHieronder zie je een lijst hiervan en statistieken over hoe je {{emoji}}Jstmemit hebt gebruikt.",
+                "Elke keer dat je kanaal een mijlpaal in het aantal memes bereikt, wordt er een prestatie ontgrendeld. Hieronder zie je een lijst hiervan en statistieken over hoe je {{emoji}}Jstmemit hebt gebruikt.",
             [Locale.French]:
-                "Chaque fois que votre salon atteint un palier de mèmes, il débloque un succès.\nCi-dessous, vous pouvez voir leur liste et des statistiques sur la façon dont vous avez utilisé {{emoji}}Jstmemit.",
+                "Chaque fois que votre salon atteint un palier de mèmes, il débloque un succès. Ci-dessous, vous pouvez voir leur liste et des statistiques sur la façon dont vous avez utilisé {{emoji}}Jstmemit.",
             [Locale.German]:
-                "Jedes Mal, wenn dein Kanal einen Meilenstein bei der Anzahl der Memes erreicht, wird ein Erfolg freigeschaltet.\nUnten siehst du eine Liste davon und Statistiken darüber, wie du {{emoji}}Jstmemit genutzt hast.",
+                "Jedes Mal, wenn dein Kanal einen Meilenstein bei der Anzahl der Memes erreicht, wird ein Erfolg freigeschaltet. Unten siehst du eine Liste davon und Statistiken darüber, wie du {{emoji}}Jstmemit genutzt hast.",
             [Locale.Polish]:
-                "Za każdym razem, gdy twój kanał osiągnie kolejny próg memów, odblokowuje osiągnięcie.\nPoniżej znajdziesz ich listę oraz statystyki korzystania z {{emoji}}Jstmemit.",
+                "Za każdym razem, gdy twój kanał osiągnie kolejny próg memów, odblokowuje osiągnięcie. Poniżej znajdziesz ich listę oraz statystyki korzystania z {{emoji}}Jstmemit.",
             [Locale.SpanishES]:
-                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro.\nA continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
+                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro. A continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
             [Locale.SpanishLATAM]:
-                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro.\nA continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
+                "Cada vez que tu canal alcanza un hito en la cantidad de memes, desbloquea un logro. A continuación puedes ver una lista de ellos y estadísticas sobre cómo usaste {{emoji}}Jstmemit.",
             [Locale.PortugueseBR]:
-                "Toda vez que seu canal atinge um marco de quantidade de memes, ele desbloqueia uma conquista.\nAbaixo você pode ver uma lista delas e estatísticas de como você usou o {{emoji}}Jstmemit.",
+                "Toda vez que seu canal atinge um marco de quantidade de memes, ele desbloqueia uma conquista. Abaixo você pode ver uma lista delas e estatísticas de como você usou o {{emoji}}Jstmemit.",
             [Locale.Turkish]:
-                "Kanalın belli bir caps sayısına her ulaştığında bir başarı açılır.\nAşağıda bunların listesini ve {{emoji}}Jstmemit'i nasıl kullandığına dair istatistikleri görebilirsin.",
+                "Kanalın belli bir caps sayısına her ulaştığında bir başarı açılır. Aşağıda bunların listesini ve {{emoji}}Jstmemit'i nasıl kullandığına dair istatistikleri görebilirsin.",
             [Locale.Italian]:
-                "Ogni volta che il tuo canale raggiunge un traguardo nel numero di meme, sblocca un obiettivo.\nDi seguito puoi vedere un loro elenco e le statistiche su come hai utilizzato {{emoji}}Jstmemit.",
+                "Ogni volta che il tuo canale raggiunge un traguardo nel numero di meme, sblocca un obiettivo. Di seguito puoi vedere un loro elenco e le statistiche su come hai utilizzato {{emoji}}Jstmemit.",
             [Locale.Indonesian]:
-                "Setiap kali channel kamu mencapai jumlah meme tertentu, kamu membuka pencapaian.\nDi bawah ini kamu bisa lihat daftarnya dan statistik cara kamu memakai {{emoji}}Jstmemit.",
+                "Setiap kali channel kamu mencapai jumlah meme tertentu, kamu membuka pencapaian. Di bawah ini kamu bisa lihat daftarnya dan statistik cara kamu memakai {{emoji}}Jstmemit.",
             [Locale.Czech]:
-                "Pokaždé, když tvůj kanál dosáhne milníku v počtu memů, odemkne se úspěch.\nNíže vidíš jejich seznam a statistiky o tom, jak se {{emoji}}Jstmemit v kanálu používá.",
+                "Pokaždé, když tvůj kanál dosáhne milníku v počtu memů, odemkne se úspěch. Níže vidíš jejich seznam a statistiky o tom, jak se {{emoji}}Jstmemit v kanálu používá.",
         },
     ),
     "milestones.view.unlockedAchievements": buildLocales("Unlocked achievements", {
