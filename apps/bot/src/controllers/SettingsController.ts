@@ -396,7 +396,10 @@ export class SettingsController implements ISettingsController {
      * @author Kyrylo Maliuha
      */
     private async _replyWithDeleteDataSuccess(interaction: ButtonInteraction): Promise<void> {
-        await respond(interaction, [this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale)]);
+        await respond(interaction, [
+            this._componentsService.getDeleteDataSuccessMessageComponent(interaction.locale),
+            this._componentsService.getDeleteDataSuccessButtonsComponent(interaction.locale),
+        ]);
     }
 
     /**

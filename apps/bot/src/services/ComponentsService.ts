@@ -704,16 +704,44 @@ export class ComponentsService implements IComponentsService {
      * @author Kyrylo Maliuha
      */
     public getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder {
-        return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
-            )
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    t("deleteData.success.body", language, {
-                        enable: this._commandsService.getCommandMention("enable"),
-                    }),
+        return new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/sad.webp",
+                    ),
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(`# ${t("deleteData.success.heading", language)}`),
+                    new TextDisplayBuilder().setContent(
+                        t("deleteData.success.body", language, {
+                            enable: this._commandsService.getCommandMention("enable"),
+                        }),
+                    ),
                 ),
+        );
+    }
+
+    /**
+     * Returns back a row with turn on and feedback buttons
+     *
+     * @param language
+     *
+     * @author Kyrylo Maliuha
+     */
+    public getDeleteDataSuccessButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Success)
+                    .setLabel(t("deleteData.button.turnBackOn", language))
+                    .setCustomId(`enable`),
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel(t("deleteData.button.tellUsWhy", language))
+                    .setCustomId(`feedback-not-error`),
             );
     }
 

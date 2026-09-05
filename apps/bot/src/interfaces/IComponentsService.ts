@@ -71,6 +71,7 @@ export abstract class IComponentsService {
     public abstract getDeleteDataButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getDeleteDataConfirmationMessageComponent(language: Locale): ContainerBuilder;
     public abstract getDeleteDataSuccessMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getDeleteDataSuccessButtonsComponent(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getUnknownTemplateMessageComponent(language: Locale, interactionId: string): ContainerBuilder;
     public abstract getWrongFileFormatMessageComponent(
         language: Locale,

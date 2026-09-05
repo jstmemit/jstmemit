@@ -353,6 +353,9 @@ export class EventsController implements IEventsController {
                     case "help":
                         await this._helpController.handleHelpInteraction(interaction);
                         return;
+                    case "feedback-not-error":
+                        await this._feedbackController.handleOpenFeedbackModal(interaction);
+                        return;
                     case "feedback":
                         await this._feedbackController.handleOpenFeedbackModal(interaction, true);
                         return;

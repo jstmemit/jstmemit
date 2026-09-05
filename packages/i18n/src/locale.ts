@@ -508,52 +508,13 @@ export const locale: Record<string, LocalizationMap> = {
                 "Tím se z Jstmemitu trvale smažou všechny uložené zprávy a odkazy na obrázky pro tento kanál a nejde to vrátit zpět. Bot se navíc v tomto kanálu vypne, takže přestane sbírat nové zprávy. Kdykoliv ho můžeš zase zapnout přes {{enable}}.",
         },
     ),
-    "deleteData.success.heading": buildLocales("✅ Data deleted!", {
-        [Locale.Russian]: "✅ Данные удалены!",
-        [Locale.Ukrainian]: "✅ Дані видалено!",
-        [Locale.Dutch]: "✅ Data verwijderd!",
-        [Locale.French]: "✅ Données supprimées !",
-        [Locale.German]: "✅ Daten gelöscht!",
-        [Locale.Polish]: "✅ Dane usunięte!",
-        [Locale.SpanishES]: "✅ ¡Datos borrados!",
-        [Locale.SpanishLATAM]: "✅ ¡Datos borrados!",
-        [Locale.PortugueseBR]: "✅ Dados apagados!",
-        [Locale.Turkish]: "✅ Veriler silindi!",
-        [Locale.Italian]: "✅ Dati eliminati!",
-        [Locale.Indonesian]: "✅ Data terhapus!",
-        [Locale.Czech]: "✅ Data smazána!",
-    }),
+    "deleteData.success.heading": buildLocales("✅ Data for this channel was removed", {}),
     "deleteData.success.body": buildLocales(
-        "All saved messages and image links for this channel were deleted, and Jstmemit is now turned off here. Turn it back on with {{enable}} whenever you want memes again.",
-        {
-            [Locale.Russian]:
-                "Все сохранённые сообщения и ссылки на изображения для этого канала удалены, а Jstmemit теперь выключен тут. Включите его обратно через {{enable}}, когда снова захотите мемов.",
-            [Locale.Ukrainian]:
-                "Усі збережені повідомлення та посилання на зображення для цього каналу видалено, а Jstmemit тепер вимкнено тут. Увімкніть його назад через {{enable}}, коли знову захочете мемів.",
-            [Locale.Dutch]:
-                "Alle opgeslagen berichten en afbeeldingslinks van dit kanaal zijn verwijderd en Jstmemit staat hier nu uit. Zet hem weer aan met {{enable}} wanneer je weer memes wilt.",
-            [Locale.French]:
-                "Tous les messages et liens d'images enregistrés pour ce salon ont été supprimés, et Jstmemit est maintenant désactivé ici. Réactivez-le avec {{enable}} quand vous voudrez de nouveaux mèmes.",
-            [Locale.German]:
-                "Alle gespeicherten Nachrichten und Bildlinks für diesen Kanal wurden gelöscht und Jstmemit ist hier jetzt ausgeschaltet. Schalte ihn mit {{enable}} wieder ein, wenn du wieder Memes willst.",
-            [Locale.Polish]:
-                "Wszystkie zapisane wiadomości i linki do obrazków dla tego kanału zostały usunięte, a Jstmemit jest tu teraz wyłączony. Włącz go z powrotem przez {{enable}}, gdy znowu będziesz chcieć memów.",
-            [Locale.SpanishES]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal han sido borrados, y Jstmemit ahora está desactivado aquí. Vuelve a activarlo con {{enable}} cuando quieras más memes.",
-            [Locale.SpanishLATAM]:
-                "Todos los mensajes y enlaces de imágenes guardados de este canal fueron borrados, y Jstmemit ahora está desactivado aquí. Vuelve a activarlo con {{enable}} cuando quieras más memes.",
-            [Locale.PortugueseBR]:
-                "Todas as mensagens e links de imagens salvos deste canal foram apagados, e o Jstmemit agora está desligado aqui. Ligue-o de novo com {{enable}} quando quiser mais memes.",
-            [Locale.Turkish]:
-                "Bu kanala ait tüm kayıtlı mesajlar ve görsel bağlantıları silindi, Jstmemit de burada kapatıldı. Yine caps istediğinde {{enable}} ile tekrar aç.",
-            [Locale.Italian]:
-                "Tutti i messaggi e i link alle immagini salvati per questo canale sono stati eliminati, e Jstmemit ora è spento qui. Riaccendilo con {{enable}} quando vuoi altri meme.",
-            [Locale.Indonesian]:
-                "Semua pesan dan tautan gambar yang tersimpan untuk channel ini sudah dihapus, dan Jstmemit sekarang mati di sini. Nyalakan lagi lewat {{enable}} kalau mau meme lagi.",
-            [Locale.Czech]:
-                "Všechny uložené zprávy a odkazy na obrázky pro tento kanál byly smazány a Jstmemit je tady teď vypnutý. Zapni ho zpátky přes {{enable}}, až budeš zase chtít memy.",
-        },
+        "Every saved message and image link for this channel is deleted and I'm switched off here. Turn me back on with {{enable}} or a button below at any time.",
+        {},
     ),
+    "deleteData.button.turnBackOn": buildLocales("Turn back on", {}),
+    "deleteData.button.tellUsWhy": buildLocales("💬 Tell us why", {}),
     "deleteData.button.cancel": buildLocales("Cancel", {
         [Locale.Russian]: "Отмена",
         [Locale.Ukrainian]: "Скасувати",
