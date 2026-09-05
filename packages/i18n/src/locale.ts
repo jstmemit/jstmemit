@@ -2,83 +2,15 @@ import { Locale, type LocalizationMap } from "discord.js";
 import { buildLocales } from "#/helpers/buildLocales.ts";
 
 export const locale: Record<string, LocalizationMap> = {
-    "enable.heading.enabled": buildLocales("🎉 Bot is ready!", {
-        [Locale.Russian]: "🎉 Бот готов к работе!",
-        [Locale.Ukrainian]: "🎉 Бот готовий до роботи!",
-        [Locale.Dutch]: "🎉 De bot is er klaar voor!",
-        [Locale.French]: "🎉 Le bot est prêt !",
-        [Locale.German]: "🎉 Der Bot ist bereit!",
-        [Locale.Polish]: "🎉 Bot jest gotowy!",
-        [Locale.SpanishES]: "🎉 ¡El bot está listo!",
-        [Locale.SpanishLATAM]: "🎉 ¡El bot está listo!",
-        [Locale.PortugueseBR]: "🎉 O bot está pronto!",
-        [Locale.Turkish]: "🎉 Bot hazır!",
-        [Locale.Italian]: "🎉 Il bot è pronto!",
-        [Locale.Indonesian]: "🎉 Bot siap!",
-        [Locale.Czech]: "🎉 Bot je připraven!",
-    }),
+    "enable.heading.enabled": buildLocales("🎉 I'm ready to make memes!", {}),
     "enable.heading.disabled": buildLocales("🔻 Allow making memes in <#{{channelId}}>?", {}),
     "enable.body.enabled": buildLocales(
-        "Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.",
-        {
-            [Locale.Russian]:
-                "Jstmemit теперь активен и будет генерировать мемы во время общения тут. Качество улучшается по мере того, как бот изучает ваш канал, и результаты станут заметно лучше, когда в памяти будет около **~30 сообщений**.",
-            [Locale.Ukrainian]:
-                "Jstmemit тепер активний і буде генерувати меми під час спілкування тут. Якість покращується у міру того, як бот вивчає ваш канал, і результати стануть помітно кращими, коли у пам'яті буде близько **~30 повідомлень**.",
-            [Locale.Dutch]:
-                "Jstmemit is nu actief en gaat memes maken tijdens gesprekken hier. De kwaliteit wordt beter naarmate de bot je kanaal leert kennen, met veel betere resultaten zodra er zo'n **~30 berichten** in het geheugen zitten.",
-            [Locale.French]:
-                "Jstmemit est maintenant actif et va générer des mèmes pendant les discussions ici. La qualité s'améliore au fur et à mesure qu'il apprend à connaître votre salon, avec de bien meilleurs résultats une fois qu'il a environ **~30 messages** en mémoire.",
-            [Locale.German]:
-                "Jstmemit ist jetzt aktiv und wird während der Chats hier Memes erstellen. Die Qualität wird besser, je mehr der Bot deinen Kanal kennenlernt, mit deutlich besseren Ergebnissen sobald etwa **~30 Nachrichten** im Speicher sind.",
-            [Locale.Polish]:
-                "Jstmemit jest teraz aktywny i będzie generować memy podczas rozmów tutaj. Jakość poprawia się w miarę jak bot poznaje twój kanał, a wyniki będą znacznie lepsze, gdy w pamięci znajdzie się około **~30 wiadomości**.",
-            [Locale.SpanishES]:
-                "Jstmemit ya está activo y generará memes durante las conversaciones aquí. La calidad mejora a medida que conoce tu canal, con resultados mucho mejores cuando tenga unos **~30 mensajes** en memoria.",
-            [Locale.SpanishLATAM]:
-                "Jstmemit ya está activo y generará memes durante las conversaciones aquí. La calidad mejora a medida que conoce tu canal, con resultados mucho mejores cuando tenga unos **~30 mensajes** en memoria.",
-            [Locale.PortugueseBR]:
-                "O Jstmemit agora está ativo e vai gerar memes durante as conversas aqui. A qualidade melhora conforme ele conhece o seu canal, com resultados muito melhores quando tiver cerca de **~30 mensagens** na memória.",
-            [Locale.Turkish]:
-                "Jstmemit artık aktif ve buradaki sohbetler sırasında caps üretecek. Bot kanalını tanıdıkça kalite artar, hafızasında yaklaşık **~30 mesaj** olduğunda çok daha iyi sonuçlar alırsın.",
-            [Locale.Italian]:
-                "Jstmemit ora è attivo e genererà meme durante le chat qui. La qualità migliora man mano che conosce il tuo canale, con risultati molto migliori quando avrà circa **~30 messaggi** in memoria.",
-            [Locale.Indonesian]:
-                "Jstmemit sekarang aktif dan akan membuat meme selama obrolan di sini. Kualitasnya makin bagus seiring bot mengenal channel kamu, dengan hasil yang jauh lebih baik setelah ada sekitar **~30 pesan** di memori.",
-            [Locale.Czech]:
-                "Jstmemit je teď aktivní a bude během chatů tady generovat memy. Kvalita se zlepšuje, jak bot poznává tvůj kanál, a výsledky budou o dost lepší, až bude mít v paměti asi **~30 zpráv**.",
-        },
+        "I'll send memes into **<#{{channelId}}>** during active chats from now on. They will get more personalized as you send more messages, images and GIFs. Once I have **30+ messages** in memory, words in sentences will be mixed as well.",
+        {},
     ),
     "enable.body.disabled.ready": buildLocales(
         "You already have over **{{messagesAmount}} messages** in memory, so Jstmemit is ready to make memes. Just turn the bot back on and it'll start generating them during active chats.",
-        {
-            [Locale.Russian]:
-                "У вас уже более **{{messagesAmount}} сообщений** в памяти, так что Jstmemit готов делать мемы. Просто включите бота обратно, и он начнёт генерировать их во время активных чатов.",
-            [Locale.Ukrainian]:
-                "У вас вже понад **{{messagesAmount}} повідомлень** у пам'яті, тож Jstmemit готовий робити меми. Просто увімкніть бота знову, і він почне генерувати їх під час активного спілкування.",
-            [Locale.Dutch]:
-                "Je hebt al meer dan **{{messagesAmount}} berichten** in het geheugen, dus Jstmemit is klaar om memes te maken. Zet de bot gewoon weer aan en hij begint ze te maken tijdens actieve gesprekken.",
-            [Locale.French]:
-                "Vous avez déjà plus de **{{messagesAmount}} messages** en mémoire, donc Jstmemit est prêt à faire des mèmes. Réactivez simplement le bot et il commencera à en générer pendant les discussions actives.",
-            [Locale.German]:
-                "Du hast bereits über **{{messagesAmount}} Nachrichten** im Speicher, also ist Jstmemit bereit, Memes zu machen. Schalte den Bot einfach wieder ein und er fängt an, sie während aktiver Chats zu erstellen.",
-            [Locale.Polish]:
-                "Masz już ponad **{{messagesAmount}} wiadomości** w pamięci, więc Jstmemit jest gotowy do robienia memów. Po prostu włącz bota z powrotem, a zacznie je generować podczas aktywnych rozmów.",
-            [Locale.SpanishES]:
-                "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
-            [Locale.SpanishLATAM]:
-                "Ya tienes más de **{{messagesAmount}} mensajes** en memoria, así que Jstmemit está listo para hacer memes. Solo vuelve a activar el bot y empezará a generarlos durante las conversaciones activas.",
-            [Locale.PortugueseBR]:
-                "Você já tem mais de **{{messagesAmount}} mensagens** na memória, então o Jstmemit está pronto para fazer memes. É só ligar o bot de novo e ele começa a gerá-los durante as conversas ativas.",
-            [Locale.Turkish]:
-                "Hafızada zaten **{{messagesAmount}} mesajdan** fazlası var, yani Jstmemit caps yapmaya hazır. Botu tekrar aç, aktif sohbetler sırasında üretmeye başlasın.",
-            [Locale.Italian]:
-                "Hai già più di **{{messagesAmount}} messaggi** in memoria, quindi Jstmemit è pronto a fare meme. Riaccendi il bot e inizierà a generarli durante le chat attive.",
-            [Locale.Indonesian]:
-                "Kamu sudah punya lebih dari **{{messagesAmount}} pesan** di memori, jadi Jstmemit siap bikin meme. Tinggal nyalakan lagi botnya dan dia akan mulai membuatnya selama obrolan aktif.",
-            [Locale.Czech]:
-                "V paměti už máš přes **{{messagesAmount}} zpráv**, takže Jstmemit je připravený dělat memy. Stačí bota zase zapnout a začne je generovat během aktivních chatů.",
-        },
+        {},
     ),
     "enable.body.disabled.notReady": buildLocales(
         "Hi! I'm the bot that makes memes from your chat. Talk about anything and I'll turn it into a meme on one of 660+ templates. Click on the button below and let's generate some memes!",

@@ -66,7 +66,7 @@ export class ComponentsService implements IComponentsService {
                     ),
                     new TextDisplayBuilder().setContent(
                         isEnabled
-                            ? t("enable.body.enabled", language)
+                            ? t("enable.body.enabled", language, { channelId: channelId })
                             : messagesAmount >= 30
                               ? t("enable.body.disabled.ready", language, {
                                     messagesAmount: String(messagesAmount),
