@@ -1,4 +1,4 @@
-import { type Locale, Message, type MessageActionRowComponentBuilder } from "discord.js";
+import { type Locale, type MessageActionRowComponentBuilder } from "discord.js";
 import {
     ActionRowBuilder,
     ButtonBuilder,
@@ -595,10 +595,39 @@ export class ComponentsService implements IComponentsService {
      */
     public getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder {
         return new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
+            .addSectionComponents(
+                new SectionBuilder()
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder().setURL(
+                            "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/hmm.webp",
+                        ),
+                    )
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(`# ${t("missingPermissions.heading", language)}`),
+                        new TextDisplayBuilder().setContent(t("missingPermissions.body", language)),
+                    ),
             )
-            .addTextDisplayComponents(new TextDisplayBuilder().setContent(t("missingPermissions.body", language)));
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("missingPermissions.alternatives", language, {
+                        custom: this._commandsService.getCommandMention("custom"),
+                        voice: this._commandsService.getCommandMention("voice"),
+                    }),
+                ),
+            )
+            .addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false))
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(t("missingPermissions.userInstall", language)),
+            );
+    }
+
+    public getMissingPermissionsButtons(language: Locale): ActionRowBuilder<ButtonBuilder> {
+        return new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setLabel(t("missingPermissions.button.addToMyApps", language))
+                .setURL("https://discord.com/oauth2/authorize?client_id=1375836467745783990"),
+        );
     }
 
     /**

@@ -511,52 +511,20 @@ export const locale: Record<string, LocalizationMap> = {
             [Locale.Czech]: 'Soubor pro "{{file}}" není obrázek. Zkus to znovu s PNG/JPEG/AVIF/WebP.',
         },
     ),
-    "missingPermissions.heading": buildLocales("🔒 You don't have permission for that", {
-        [Locale.Russian]: "🔒 У вас нет прав для этого",
-        [Locale.Ukrainian]: "🔒 У вас немає прав для цього",
-        [Locale.Dutch]: "🔒 Daar heb je geen rechten voor",
-        [Locale.French]: "🔒 Vous n'avez pas la permission pour ça",
-        [Locale.German]: "🔒 Dafür hast du keine Berechtigung",
-        [Locale.Polish]: "🔒 Nie masz do tego uprawnień",
-        [Locale.SpanishES]: "🔒 No tienes permiso para eso",
-        [Locale.SpanishLATAM]: "🔒 No tienes permiso para eso",
-        [Locale.PortugueseBR]: "🔒 Você não tem permissão para isso",
-        [Locale.Turkish]: "🔒 Bunun için iznin yok",
-        [Locale.Italian]: "🔒 Non hai il permesso per farlo",
-        [Locale.Indonesian]: "🔒 Kamu tidak punya izin untuk itu",
-        [Locale.Czech]: "🔒 Na tohle nemáš oprávnění",
-    }),
+    "missingPermissions.heading": buildLocales("🔒 I need someone with permissions", {}),
     "missingPermissions.body": buildLocales(
-        "Only members with the **Manage Server** or **Manage Channels** permission can change Jstmemit's settings. Ask a server admin if you need this changed.",
-        {
-            [Locale.Russian]:
-                "Только участники с правом **Управлять сервером** или **Управлять каналами** могут менять настройки Jstmemit. Обратитесь к администратору сервера, если вам нужно это изменить.",
-            [Locale.Ukrainian]:
-                "Тільки учасники з правом **Керувати сервером** або **Керувати каналами** можуть змінювати налаштування Jstmemit. Зверніться до адміністратора сервера, якщо вам потрібно це змінити.",
-            [Locale.Dutch]:
-                "Alleen leden met de permissie **Server beheren** of **Kanalen beheren** kunnen de instellingen van Jstmemit aanpassen. Vraag een serveradmin als je dit wilt veranderen.",
-            [Locale.French]:
-                "Seuls les membres avec la permission **Gérer le serveur** ou **Gérer les salons** peuvent modifier les paramètres de Jstmemit. Demandez à un admin du serveur si vous voulez changer cela.",
-            [Locale.German]:
-                "Nur Mitglieder mit der Berechtigung **Server verwalten** oder **Kanäle verwalten** können die Einstellungen von Jstmemit ändern. Frag einen Server-Admin, wenn du das ändern möchtest.",
-            [Locale.Polish]:
-                "Tylko członkowie z uprawnieniem **Zarządzanie serwerem** lub **Zarządzanie kanałami** mogą zmieniać ustawienia Jstmemit. Poproś admina serwera, jeśli chcesz to zmienić.",
-            [Locale.SpanishES]:
-                "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar los ajustes de Jstmemit. Pídeselo a un admin del servidor si necesitas cambiarlo.",
-            [Locale.SpanishLATAM]:
-                "Solo los miembros con el permiso **Gestionar servidor** o **Gestionar canales** pueden cambiar la configuración de Jstmemit. Pídele a un admin del servidor si necesitas cambiarlo.",
-            [Locale.PortugueseBR]:
-                "Só membros com a permissão **Gerenciar servidor** ou **Gerenciar canais** podem mudar as configurações do Jstmemit. Peça a um admin do servidor se precisar mudar isso.",
-            [Locale.Turkish]:
-                "Jstmemit'in ayarlarını yalnızca **Sunucuyu Yönet** veya **Kanalları Yönet** iznine sahip üyeler değiştirebilir. Bunun değişmesi gerekiyorsa bir sunucu yöneticisine sor.",
-            [Locale.Italian]:
-                "Solo i membri con il permesso **Gestire il server** o **Gestire i canali** possono cambiare le impostazioni di Jstmemit. Chiedi a un admin del server se hai bisogno di cambiarlo.",
-            [Locale.Indonesian]:
-                "Hanya anggota dengan izin **Kelola Server** atau **Kelola Channel** yang bisa mengubah pengaturan Jstmemit. Minta admin server kalau kamu perlu mengubahnya.",
-            [Locale.Czech]:
-                "Nastavení Jstmemitu můžou měnit jen členové s oprávněním **Spravovat server** nebo **Spravovat kanály**. Pokud potřebuješ změnu, obrať se na admina serveru.",
-        },
+        "Please tell someone with **Manage Server** or **Manage Channels** permissions that you want to turn me on here or change settings.",
+        {},
     ),
+    "missingPermissions.alternatives": buildLocales(
+        "### In the meantime, you can still use these commands:\n**{{custom}}** - Pick any of 660+ templates and fill it in yourself\n**{{voice}}** - Narrate any text in one of 23 voices",
+        {},
+    ),
+    "missingPermissions.userInstall": buildLocales(
+        'Those commands will work even in DMs and servers without me there!\nFor this to work you can add me to **"My Apps"** using the button below.',
+        {},
+    ),
+    "missingPermissions.button.addToMyApps": buildLocales("🔗 Add to My Apps", {}),
     "missingBotPermissions.heading": buildLocales("🔒 Jstmemit can't send memes here", {
         [Locale.Russian]: "🔒 Jstmemit не может отправлять мемы тут",
         [Locale.Ukrainian]: "🔒 Jstmemit не може надсилати меми тут",

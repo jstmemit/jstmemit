@@ -27,6 +27,7 @@ export abstract class IComponentsService {
         messagesAmount: number,
     ): ContainerBuilder;
     public abstract getMissingPermissionsMessageComponent(language: Locale): ContainerBuilder;
+    public abstract getMissingPermissionsButtons(language: Locale): ActionRowBuilder<ButtonBuilder>;
     public abstract getMilestoneViewMessageComponent(
         language: Locale,
         channelId: string,
