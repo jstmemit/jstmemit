@@ -7,6 +7,7 @@ export abstract class IComponentsService {
         language: Locale,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
+        channelId: string,
         messagesAmount?: number,
     ): ContainerBuilder;
     public abstract getEnableButtonsComponent(

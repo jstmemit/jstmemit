@@ -147,6 +147,7 @@ export class MemesController implements IMemesController {
                 locale,
                 channel?.enabled || false,
                 permissions,
+                channelId,
             );
             const notEnabledButtons: ActionRowBuilder<ButtonBuilder> =
                 this._componentsService.getEnableButtonsComponent(locale, channel?.enabled || false);

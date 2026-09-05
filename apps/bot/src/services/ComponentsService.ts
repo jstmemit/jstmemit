@@ -37,6 +37,7 @@ export class ComponentsService implements IComponentsService {
      * @param isEnabled
      * @param messagesAmount
      * @param permissions
+     * @param channelId
      *
      * @author Kyrylo Maliuha
      */
@@ -44,46 +45,59 @@ export class ComponentsService implements IComponentsService {
         language: Locale,
         isEnabled: boolean,
         permissions: RequiredBotPermissions,
+        channelId: string = "",
         messagesAmount: number = 0,
     ): ContainerBuilder {
         const progressBar: string = this._createProgressBar(messagesAmount, 30, 10);
         const hasMissingPermissions: boolean = Object.values(permissions).some((granted) => !granted);
 
-        const container: ContainerBuilder = new ContainerBuilder()
-            .addSectionComponents(
-                new SectionBuilder()
-                    .setThumbnailAccessory(
-                        new ThumbnailBuilder().setURL(
-                            isEnabled
-                                ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
-                                : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
-                        ),
-                    )
-                    .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(
-                            `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language)}`,
-                        ),
-                        new TextDisplayBuilder().setContent(
-                            isEnabled
-                                ? t("enable.body.enabled", language)
-                                : messagesAmount >= 30
-                                  ? t("enable.body.disabled.ready", language, {
-                                        messagesAmount: String(messagesAmount),
-                                    })
-                                  : t("enable.body.disabled.notReady", language),
-                        ),
+        const container: ContainerBuilder = new ContainerBuilder().addSectionComponents(
+            new SectionBuilder()
+                .setThumbnailAccessory(
+                    new ThumbnailBuilder().setURL(
+                        isEnabled
+                            ? "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/happy.webp"
+                            : "https://jstmemit.com/cdn-cgi/image/f=gif,q=50,w=512,metadata=none,fit=scale-down,onerror=redirect/https://files.jstmemit.com/jstmemit/images/logos/animated/idle.webp",
                     ),
-            )
+                )
+                .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                        `# ${isEnabled ? t("enable.heading.enabled", language) : t("enable.heading.disabled", language, { channelId: channelId })}`,
+                    ),
+                    new TextDisplayBuilder().setContent(
+                        isEnabled
+                            ? t("enable.body.enabled", language)
+                            : messagesAmount >= 30
+                              ? t("enable.body.disabled.ready", language, {
+                                    messagesAmount: String(messagesAmount),
+                                })
+                              : t("enable.body.disabled.notReady", language),
+                    ),
+                ),
+        );
 
-            .addTextDisplayComponents(
+        if (isEnabled) {
+            container.addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     messagesAmount < 30
                         ? t("enable.memory.progress", language, { messagesAmount: String(messagesAmount) })
                         : t("enable.memory.full", language, { messagesAmount: String(messagesAmount) }),
                 ),
             );
-
-        container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+            container.addTextDisplayComponents(new TextDisplayBuilder().setContent(progressBar));
+        } else {
+            container.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    t("enable.body.disabled.setupIsAlmostDone", language, { channelId: channelId }),
+                ),
+            );
+            container.addSeparatorComponents(
+                new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small).setDivider(false),
+            );
+            container.addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(t("enable.body.disabled.enableToStart", language)),
+            );
+        }
 
         if (hasMissingPermissions) {
             container.addSeparatorComponents(
@@ -137,30 +151,32 @@ export class ComponentsService implements IComponentsService {
     ): ActionRowBuilder<ButtonBuilder> {
         const showFirstMeme: boolean | undefined = isEnabled && isFirstTime && count > 10;
 
-        return new ActionRowBuilder<ButtonBuilder>()
-            .addComponents(
-                new ButtonBuilder()
-                    .setStyle(
-                        showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success,
-                    )
-                    .setLabel(
-                        t(
-                            showFirstMeme
-                                ? "enable.button.firstMeme"
-                                : isEnabled
-                                  ? "enable.button.turnOff"
-                                  : "enable.button.turnOn",
-                            language,
-                        ),
-                    )
-                    .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
-            )
-            .addComponents(
+        const container: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+                .setStyle(showFirstMeme ? ButtonStyle.Success : isEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
+                .setLabel(
+                    t(
+                        showFirstMeme
+                            ? "enable.button.firstMeme"
+                            : isEnabled
+                              ? "enable.button.turnOff"
+                              : "enable.button.allowMakingMemes",
+                        language,
+                    ),
+                )
+                .setCustomId(showFirstMeme ? "meme" : isEnabled ? "disable" : "enable"),
+        );
+
+        if (isEnabled) {
+            container.addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Secondary)
                     .setLabel(t("enable.button.settings", language))
                     .setCustomId("settings"),
             );
+        }
+
+        return container;
     }
 
     /**

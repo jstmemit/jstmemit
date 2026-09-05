@@ -17,21 +17,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "🎉 Bot siap!",
         [Locale.Czech]: "🎉 Bot je připraven!",
     }),
-    "enable.heading.disabled": buildLocales("🔴 Jstmemit is off in this channel", {
-        [Locale.Russian]: "🔴 Jstmemit выключен в этом канале",
-        [Locale.Ukrainian]: "🔴 Jstmemit вимкнено у цьому каналі",
-        [Locale.Dutch]: "🔴 Jstmemit staat uit in dit kanaal",
-        [Locale.French]: "🔴 Jstmemit est désactivé dans ce salon",
-        [Locale.German]: "🔴 Jstmemit ist in diesem Kanal deaktiviert",
-        [Locale.Polish]: "🔴 Jstmemit jest wyłączony na tym kanale",
-        [Locale.SpanishES]: "🔴 Jstmemit está desactivado en este canal",
-        [Locale.SpanishLATAM]: "🔴 Jstmemit está desactivado en este canal",
-        [Locale.PortugueseBR]: "🔴 O Jstmemit está desligado neste canal",
-        [Locale.Turkish]: "🔴 Jstmemit bu kanalda kapalı",
-        [Locale.Italian]: "🔴 Jstmemit è spento in questo canale",
-        [Locale.Indonesian]: "🔴 Jstmemit mati di channel ini",
-        [Locale.Czech]: "🔴 Jstmemit je v tomto kanálu vypnutý",
-    }),
+    "enable.heading.disabled": buildLocales("🔻 May I make memes in <#{{channelId}}>?", {}),
     "enable.body.enabled": buildLocales(
         "Jstmemit is now active and will generate memes during chats here. Quality improves as it picks up on your channel, with much better results once it has around **~30 messages** in memory.",
         {
@@ -95,35 +81,16 @@ export const locale: Record<string, LocalizationMap> = {
         },
     ),
     "enable.body.disabled.notReady": buildLocales(
-        "Bot can't make memes here until you enable it for this channel. Turn it on and it will start generating memes during active chats.",
-        {
-            [Locale.Russian]:
-                "Бот не может делать мемы тут, пока вы не включите его для этого канала. Включите его, и он начнёт генерировать мемы во время активного общения.",
-            [Locale.Ukrainian]:
-                "Бот не може робити меми тут, поки ви не увімкнете його для цього каналу. Увімкніть його, і він почне генерувати меми під час активного спілкування.",
-            [Locale.Dutch]:
-                "De bot kan hier geen memes maken totdat je hem inschakelt voor dit kanaal. Zet hem aan en hij begint memes te maken tijdens actieve gesprekken.",
-            [Locale.French]:
-                "Le bot ne peut pas faire de mèmes ici tant que vous ne l'avez pas activé pour ce salon. Activez-le et il commencera à générer des mèmes pendant les discussions actives.",
-            [Locale.German]:
-                "Der Bot kann hier keine Memes machen, bis du ihn für diesen Kanal aktivierst. Schalte ihn ein und er beginnt, während aktiver Chats Memes zu erstellen.",
-            [Locale.Polish]:
-                "Bot nie może robić memów tutaj, dopóki nie włączysz go dla tego kanału. Włącz go, a zacznie generować memy podczas aktywnych rozmów.",
-            [Locale.SpanishES]:
-                "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
-            [Locale.SpanishLATAM]:
-                "El bot no puede hacer memes aquí hasta que lo actives para este canal. Actívalo y empezará a generar memes durante las conversaciones activas.",
-            [Locale.PortugueseBR]:
-                "O bot não pode fazer memes aqui até você ativá-lo para este canal. Ative-o e ele vai começar a gerar memes durante as conversas ativas.",
-            [Locale.Turkish]:
-                "Bu kanal için botu etkinleştirmeden burada caps yapamaz. Aç, aktif sohbetler sırasında caps üretmeye başlasın.",
-            [Locale.Italian]:
-                "Il bot non può fare meme qui finché non lo attivi per questo canale. Attivalo e inizierà a generare meme durante le chat attive.",
-            [Locale.Indonesian]:
-                "Bot tidak bisa bikin meme di sini sampai kamu mengaktifkannya untuk channel ini. Nyalakan dan dia akan mulai membuat meme selama obrolan aktif.",
-            [Locale.Czech]:
-                "Bot tady nemůže dělat memy, dokud ho pro tento kanál nezapneš. Zapni ho a začne generovat memy během aktivních chatů.",
-        },
+        "Hi! I'm the bot that makes memes from your chat. Talk about anything and it will get turned that into a funny meme on one of 660+ templates ¯\\_(ツ)_/¯",
+        {},
+    ),
+    "enable.body.disabled.setupIsAlmostDone": buildLocales(
+        "<:check:1545743815061545071> **Invite Jstmemit to this server**\n<:check:1545743815061545071> **Give permissions to read/send messages**\n◽ **Allow making memes in <#{{channelId}}>**",
+        {},
+    ),
+    "enable.body.disabled.enableToStart": buildLocales(
+        "You're almost done with the setup, click the button below to enable me and make some memes!",
+        {},
     ),
     "enable.memory.progress": buildLocales("Messages in memory: **{{messagesAmount}}**", {
         [Locale.Russian]: "Сообщений в памяти: **{{messagesAmount}}**",
@@ -306,6 +273,7 @@ export const locale: Record<string, LocalizationMap> = {
         [Locale.Indonesian]: "Nyalakan",
         [Locale.Czech]: "Zapnout",
     }),
+    "enable.button.allowMakingMemes": buildLocales("Yes, allow here", {}),
     "enable.button.firstMeme": buildLocales("Generate your first meme", {
         [Locale.Russian]: "Сделать первый мем",
         [Locale.Ukrainian]: "Зробити перший мем",
