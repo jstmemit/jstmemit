@@ -7,32 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const gdoRaphielLaughing: Template = {
+    name: "gdoRaphielLaughing",
+    displayName: buildLocales("Raphiel laughing", {
+        [Locale.Russian]: "Рафиэль смеется",
+        [Locale.Ukrainian]: "Рафіель сміється",
+        [Locale.Dutch]: "Lachende Raphiel",
+        [Locale.French]: "Raphiel qui rit",
+        [Locale.German]: "Lachende Raphiel",
+        [Locale.Polish]: "Śmiejąca się Raphiel",
+        [Locale.SpanishES]: "Raphiel riendo",
+        [Locale.SpanishLATAM]: "Raphiel riendo",
+        [Locale.PortugueseBR]: "Raphiel rindo",
+        [Locale.Turkish]: "Raphiel gülüyor",
+        [Locale.Italian]: "Raphiel che ride",
+        [Locale.Indonesian]: "Raphiel tertawa",
+        [Locale.Czech]: "Raphiel se směje",
+        [Locale.Japanese]: "笑うラフィエル",
+        [Locale.Korean]: "웃는 라피엘",
+        [Locale.ChineseCN]: "拉斐尔大笑",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    types: [Type.TextRightWithBackground],
+    width: 1080,
+    height: 589,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -45,9 +44,9 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoRaphielLaughing.png"
+                width={540}
+                height={589}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -55,19 +54,19 @@ export const gdoSataniaAngryCrying: Template = {
                     position: "absolute",
                     right: 0,
                     top: 0,
-                    width: "100%",
-                    height: "110px",
+                    width: "50%",
+                    height: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,

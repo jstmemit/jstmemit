@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const gdoRaphielAraAra1: Template = {
+    name: "gdoRaphielAraAra1",
+    displayName: buildLocales("Raphiel Ara Ara 1", {
+        [Locale.Russian]: "Рафиэль Ара-ара 1",
+        [Locale.Ukrainian]: "Рафіель Ара-ара 1",
+        [Locale.Dutch]: "Raphiel Ara Ara 1",
+        [Locale.French]: "Raphiel Ara Ara 1",
+        [Locale.German]: "Raphiel Ara Ara 1",
+        [Locale.Polish]: "Raphiel Ara Ara 1",
+        [Locale.SpanishES]: "Raphiel Ara Ara 1",
+        [Locale.SpanishLATAM]: "Raphiel Ara Ara 1",
+        [Locale.PortugueseBR]: "Raphiel Ara Ara 1",
+        [Locale.Turkish]: "Raphiel Ara Ara 1",
+        [Locale.Italian]: "Raphiel Ara Ara 1",
+        [Locale.Indonesian]: "Raphiel Ara Ara 1",
+        [Locale.Czech]: "Raphiel Ara Ara 1",
+        [Locale.Japanese]: "ラフィエル あらあら 1",
+        [Locale.Korean]: "라피엘 아라아라 1",
+        [Locale.ChineseCN]: "拉斐尔 啊啦啊啦 1",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 381,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,9 +44,9 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoRaphielAraAra1.png"
+                width={500}
+                height={281}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -56,7 +55,7 @@ export const gdoSataniaAngryCrying: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

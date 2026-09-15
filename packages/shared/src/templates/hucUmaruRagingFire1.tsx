@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const hucUmaruRagingFire1: Template = {
+    name: "hucUmaruRagingFire1",
+    displayName: buildLocales("Umaru raging in fire 1", {
+        [Locale.Russian]: "Разъяренная Умару в огне 1",
+        [Locale.Ukrainian]: "Розлючена Умару у вогні 1",
+        [Locale.Dutch]: "Woedende Umaru in het vuur 1",
+        [Locale.French]: "Umaru enragée dans les flammes 1",
+        [Locale.German]: "Wütende Umaru im Feuer 1",
+        [Locale.Polish]: "Wściekła Umaru w ogniu 1",
+        [Locale.SpanishES]: "Umaru enfurecida en llamas 1",
+        [Locale.SpanishLATAM]: "Umaru enfurecida en llamas 1",
+        [Locale.PortugueseBR]: "Umaru furiosa em chamas 1",
+        [Locale.Turkish]: "Alevler içinde öfkeli Umaru 1",
+        [Locale.Italian]: "Umaru furiosa tra le fiamme 1",
+        [Locale.Indonesian]: "Umaru mengamuk dalam api 1",
+        [Locale.Czech]: "Zuřící Umaru v plamenech 1",
+        [Locale.Japanese]: "炎の中で激怒するうまる 1",
+        [Locale.Korean]: "불타오르며 분노하는 우마루 1",
+        [Locale.ChineseCN]: "怒火中烧的小埋 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 381,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruRagingFire1.png"
+                width={500}
+                height={281}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const gdoGabrielCozy1: Template = {
+    name: "gdoGabrielCozy1",
+    displayName: buildLocales("Cozy Gabriel 1", {
+        [Locale.Russian]: "Уютная Габриэль 1",
+        [Locale.Ukrainian]: "Затишна Габріель 1",
+        [Locale.Dutch]: "Knusse Gabriel 1",
+        [Locale.French]: "Gabriel douillette 1",
+        [Locale.German]: "Gemütliche Gabriel 1",
+        [Locale.Polish]: "Przytulna Gabriel 1",
+        [Locale.SpanishES]: "Gabriel cómoda 1",
+        [Locale.SpanishLATAM]: "Gabriel cómoda 1",
+        [Locale.PortugueseBR]: "Gabriel confortável 1",
+        [Locale.Turkish]: "Rahat Gabriel 1",
+        [Locale.Italian]: "Gabriel comoda 1",
+        [Locale.Indonesian]: "Gabriel yang nyaman 1",
+        [Locale.Czech]: "Pohodlná Gabriel 1",
+        [Locale.Japanese]: "くつろぐガヴリール 1",
+        [Locale.Korean]: "편안한 가브릴 1",
+        [Locale.ChineseCN]: "惬意的珈百璃 1",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    types: [Type.TextTopWithBackground],
+    width: 498,
+    height: 380,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,9 +44,9 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoGabrielCozy1.png"
+                width={498}
+                height={280}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -56,7 +55,7 @@ export const gdoSataniaAngryCrying: Template = {
                     right: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

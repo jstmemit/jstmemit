@@ -31,7 +31,7 @@ export const hucUmaruCryingLoudly: Template = {
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 900,
     height: 659,
-    animationDuration: 5930,
+    animationDuration: 4000,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (

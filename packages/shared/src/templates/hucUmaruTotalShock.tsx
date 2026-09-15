@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const hucUmaruTotalShock: Template = {
+    name: "hucUmaruTotalShock",
+    displayName: buildLocales("Umaru total shock", {
+        [Locale.Russian]: "Полный шок Умару",
+        [Locale.Ukrainian]: "Повний шок Умару",
+        [Locale.Dutch]: "Totale shock van Umaru",
+        [Locale.French]: "Choc total d'Umaru",
+        [Locale.German]: "Umarus totaler Schock",
+        [Locale.Polish]: "Całkowity szok Umaru",
+        [Locale.SpanishES]: "Choque total de Umaru",
+        [Locale.SpanishLATAM]: "Choque total de Umaru",
+        [Locale.PortugueseBR]: "Choque total da Umaru",
+        [Locale.Turkish]: "Umaru'nun tam şoku",
+        [Locale.Italian]: "Shock totale di Umaru",
+        [Locale.Indonesian]: "Kejutan total Umaru",
+        [Locale.Czech]: "Úplný šok Umaru",
+        [Locale.Japanese]: "完全にショックを受けるうまる",
+        [Locale.Korean]: "완전한 충격에 빠진 우마루",
+        [Locale.ChineseCN]: "完全震惊的小埋",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 387,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruTotalShock.png"
+                width={500}
+                height={287}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

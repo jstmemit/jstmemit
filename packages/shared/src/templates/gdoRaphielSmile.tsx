@@ -28,11 +28,10 @@ export const gdoRaphielSmile: Template = {
         [Locale.ChineseCN]: "拉斐尔微笑",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextRightWithBackground, Type.Animated],
-    width: 1080,
-    height: 589,
-    animationDuration: 240,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 381,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -45,9 +44,9 @@ export const gdoRaphielSmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoRaphielSmile.gif"
-                width={540}
-                height={589}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoRaphielSmile.png"
+                width={500}
+                height={281}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -55,8 +54,8 @@ export const gdoRaphielSmile: Template = {
                     position: "absolute",
                     right: 0,
                     top: 0,
-                    width: "50%",
-                    height: "100%",
+                    width: "100%",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -67,7 +66,7 @@ export const gdoRaphielSmile: Template = {
             >
                 <div
                     style={{
-                        lineClamp: 7,
+                        lineClamp: 2,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,

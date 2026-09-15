@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const dandadanOkarunAura1: Template = {
+    name: "dandadanOkarunAura1",
+    displayName: buildLocales("Okarun's aura 1", {
+        [Locale.Russian]: "Аура Окаруна 1",
+        [Locale.Ukrainian]: "Аура Окаруна 1",
+        [Locale.Dutch]: "Okarun's aura 1",
+        [Locale.French]: "Aura d'Okarun 1",
+        [Locale.German]: "Okaruns Aura 1",
+        [Locale.Polish]: "Aura Okaruna 1",
+        [Locale.SpanishES]: "Aura de Okarun 1",
+        [Locale.SpanishLATAM]: "Aura de Okarun 1",
+        [Locale.PortugueseBR]: "Aura do Okarun 1",
+        [Locale.Turkish]: "Okarun'un aurası 1",
+        [Locale.Italian]: "Aura di Okarun 1",
+        [Locale.Indonesian]: "Aura Okarun 1",
+        [Locale.Czech]: "Okarunova aura 1",
+        [Locale.Japanese]: "オカルンのオーラ 1",
+        [Locale.Korean]: "오카룬의 오라 1",
+        [Locale.ChineseCN]: "厄卡伦的气场 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
+    types: [Type.TextBottomWithBackground],
+    width: 540,
+    height: 540,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,16 +44,16 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
-                style={{ position: "absolute", bottom: 0, left: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanOkarunAura1.png"
+                width={540}
+                height={430}
+                style={{ position: "absolute", top: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
-                    top: 0,
+                    left: 0,
+                    bottom: 0,
                     width: "100%",
                     height: "110px",
                     display: "flex",

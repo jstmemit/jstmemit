@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const dfragRokaDarkness: Template = {
-    name: "dfragRokaDarkness",
-    displayName: buildLocales("Roka's darkness", {
-        [Locale.Russian]: "Тьма Роки",
-        [Locale.Ukrainian]: "Темрява Роки",
-        [Locale.Dutch]: "Roka's duisternis",
-        [Locale.French]: "Les ténèbres de Roka",
-        [Locale.German]: "Rokas Dunkelheit",
-        [Locale.Polish]: "Ciemność Roki",
-        [Locale.SpanishES]: "Oscuridad de Roka",
-        [Locale.SpanishLATAM]: "Oscuridad de Roka",
-        [Locale.PortugueseBR]: "Escuridão da Roka",
-        [Locale.Turkish]: "Roka'nın karanlığı",
-        [Locale.Italian]: "L'oscurità di Roka",
-        [Locale.Indonesian]: "Kegelapan Roka",
-        [Locale.Czech]: "Rokina temnota",
-        [Locale.Japanese]: "芦花の闇",
-        [Locale.Korean]: "로카의 어둠",
-        [Locale.ChineseCN]: "芦花的黑暗",
+export const dandadanTurboGrannyHearingMusic1: Template = {
+    name: "dandadanTurboGrannyHearingMusic1",
+    displayName: buildLocales("Turbo Granny listening to music 1", {
+        [Locale.Russian]: "Турбо Бабуля слушает музыку 1",
+        [Locale.Ukrainian]: "Турбо Бабуся слухає музику 1",
+        [Locale.Dutch]: "Turbo Granny luistert naar muziek 1",
+        [Locale.French]: "Turbo Granny écoute de la musique 1",
+        [Locale.German]: "Turbo-Granny hört Musik 1",
+        [Locale.Polish]: "Turbo Babcia słucha muzyki 1",
+        [Locale.SpanishES]: "Turbo Granny escuchando música 1",
+        [Locale.SpanishLATAM]: "Turbo Granny escuchando música 1",
+        [Locale.PortugueseBR]: "Turbo Granny ouvindo música 1",
+        [Locale.Turkish]: "Turbo Granny müzik dinliyor 1",
+        [Locale.Italian]: "Turbo Granny che ascolta musica 1",
+        [Locale.Indonesian]: "Turbo Granny mendengarkan musik 1",
+        [Locale.Czech]: "Turbo Granny poslouchá hudbu 1",
+        [Locale.Japanese]: "音楽を聴くターボババア 1",
+        [Locale.Korean]: "음악을 듣는 터보 할멈 1",
+        [Locale.ChineseCN]: "高速婆婆听音乐 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.DFrag],
-    types: [Type.TextBottomWithBackground, Type.Animated],
-    width: 500,
-    height: 381,
-    animationDuration: 1820,
+    topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
+    types: [Type.TextBottomWithBackground],
+    width: 600,
+    height: 458,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,9 +44,9 @@ export const dfragRokaDarkness: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/dfragRokaDarkness.gif"
-                width={500}
-                height={281}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanTurboGrannyHearingMusic1.png"
+                width={600}
+                height={338}
                 style={{ position: "absolute", top: 0, right: 0 }}
             />
             <div
@@ -56,12 +55,12 @@ export const dfragRokaDarkness: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "100px",
+                    height: "120px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "15px",
                     backgroundColor: "white",
                 }}
             >

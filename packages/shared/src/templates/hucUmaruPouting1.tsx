@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const hucUmaruPouting1: Template = {
+    name: "hucUmaruPouting1",
+    displayName: buildLocales("Pouting Umaru 1", {
+        [Locale.Russian]: "Надутая Умару 1",
+        [Locale.Ukrainian]: "Надута Умару 1",
+        [Locale.Dutch]: "Pruilende Umaru 1",
+        [Locale.French]: "Umaru qui boude 1",
+        [Locale.German]: "Schmollende Umaru 1",
+        [Locale.Polish]: "Nadąsana Umaru 1",
+        [Locale.SpanishES]: "Umaru haciendo puchero 1",
+        [Locale.SpanishLATAM]: "Umaru haciendo puchero 1",
+        [Locale.PortugueseBR]: "Umaru fazendo bico 1",
+        [Locale.Turkish]: "Dudak büken Umaru 1",
+        [Locale.Italian]: "Umaru imbronciata 1",
+        [Locale.Indonesian]: "Umaru cemberut 1",
+        [Locale.Czech]: "Trucující Umaru 1",
+        [Locale.Japanese]: "拗ねるうまる 1",
+        [Locale.Korean]: "뾰로통한 우마루 1",
+        [Locale.ChineseCN]: "嘟嘴的小埋 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
+    types: [Type.TextBottomWithBackground],
+    width: 500,
+    height: 381,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
-                style={{ position: "absolute", bottom: 0, left: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruPouting1.png"
+                width={500}
+                height={281}
+                style={{ position: "absolute", top: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
-                    top: 0,
+                    left: 0,
+                    bottom: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
