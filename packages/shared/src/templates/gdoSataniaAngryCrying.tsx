@@ -30,7 +30,7 @@ export const gdoSataniaAngryCrying: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
     types: [Type.TextTopWithBackground, Type.Animated],
     width: 600,
-    height: 428,
+    height: 408,
     animationDuration: 1500,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -47,7 +47,7 @@ export const gdoSataniaAngryCrying: Template = {
             <img
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
                 width={600}
-                height={338}
+                height={318}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
