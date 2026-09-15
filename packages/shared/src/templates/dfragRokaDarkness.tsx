@@ -30,7 +30,7 @@ export const dfragRokaDarkness: Template = {
     topics: [Topic.Reaction, Topic.Anime, Topic.DFrag],
     types: [Type.TextBottomWithBackground, Type.Animated],
     width: 500,
-    height: 391,
+    height: 381,
     animationDuration: 1820,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
@@ -56,12 +56,12 @@ export const dfragRokaDarkness: Template = {
                     left: 0,
                     bottom: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "15px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >
