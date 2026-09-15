@@ -45,7 +45,7 @@ export const noragamiYatoSmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/norogamiYatoSmile.gif"
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/noragamiYatoSmile.gif"
                 width={500}
                 height={278}
                 style={{ position: "absolute", top: 0, left: 0 }}
