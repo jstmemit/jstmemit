@@ -7,31 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoRaphielSmile: Template = {
-    name: "gdoRaphielSmile",
-    displayName: buildLocales("Raphiel smiling", {
-        [Locale.Russian]: "Рафиэль улыбается",
-        [Locale.Ukrainian]: "Рафіель посміхається",
-        [Locale.Dutch]: "Raphiel glimlacht",
-        [Locale.French]: "Raphiel qui sourit",
-        [Locale.German]: "Raphiel lächelt",
-        [Locale.Polish]: "Raphiel się uśmiecha",
-        [Locale.SpanishES]: "Raphiel sonriendo",
-        [Locale.SpanishLATAM]: "Raphiel sonriendo",
-        [Locale.PortugueseBR]: "Raphiel sorrindo",
-        [Locale.Turkish]: "Raphiel gülümsüyor",
-        [Locale.Italian]: "Raphiel che sorride",
-        [Locale.Indonesian]: "Raphiel tersenyum",
-        [Locale.Czech]: "Raphiel se usmívá",
-        [Locale.Japanese]: "微笑むラフィエル",
-        [Locale.Korean]: "미소 짓는 라피엘",
-        [Locale.ChineseCN]: "拉斐尔微笑",
+export const gdoRaphielLaughing: Template = {
+    name: "gdoRaphielLaughing",
+    displayName: buildLocales("Raphiel laughing", {
+        [Locale.Russian]: "Рафиэль смеется",
+        [Locale.Ukrainian]: "Рафіель сміється",
+        [Locale.Dutch]: "Lachende Raphiel",
+        [Locale.French]: "Raphiel qui rit",
+        [Locale.German]: "Lachende Raphiel",
+        [Locale.Polish]: "Śmiejąca się Raphiel",
+        [Locale.SpanishES]: "Raphiel riendo",
+        [Locale.SpanishLATAM]: "Raphiel riendo",
+        [Locale.PortugueseBR]: "Raphiel rindo",
+        [Locale.Turkish]: "Raphiel gülüyor",
+        [Locale.Italian]: "Raphiel che ride",
+        [Locale.Indonesian]: "Raphiel tertawa",
+        [Locale.Czech]: "Raphiel se směje",
+        [Locale.Japanese]: "笑うラフィエル",
+        [Locale.Korean]: "웃는 라피엘",
+        [Locale.ChineseCN]: "拉斐尔大笑",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground],
-    width: 500,
-    height: 381,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
+    types: [Type.TextRightWithBackground],
+    width: 1080,
+    height: 589,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -44,9 +44,9 @@ export const gdoRaphielSmile: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoRaphielSmile.png"
-                width={500}
-                height={281}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gdoRaphielLaughing.png"
+                width={540}
+                height={589}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
@@ -54,19 +54,19 @@ export const gdoRaphielSmile: Template = {
                     position: "absolute",
                     right: 0,
                     top: 0,
-                    width: "100%",
-                    height: "100px",
+                    width: "50%",
+                    height: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "10px",
+                    padding: "25px",
                     backgroundColor: "white",
                 }}
             >
                 <div
                     style={{
-                        lineClamp: 2,
+                        lineClamp: 7,
                         wordBreak: "break-word",
                         textOverflow: "ellipsis",
                         fontFamily: font,

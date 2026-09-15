@@ -400,7 +400,7 @@ import { frierenWarming } from "#/templates/frierenWarming.tsx";
 import { gdoGabrielCozy } from "#/templates/gdoGabrielCozy.tsx";
 import { gdoGabrielEating } from "#/templates/gdoGabrielEating.tsx";
 import { gdoRaphielAraAra } from "#/templates/gdoRaphielAraAra.tsx";
-import { gdoRaphielSmile } from "#/templates/gdoRaphielSmile.tsx";
+import { gdoRaphielLaughing } from "#/templates/gdoRaphielLaughing.tsx";
 import { gdoSataniaAngryCrying } from "#/templates/gdoSataniaAngryCrying.tsx";
 import { gdoSataniaEvilSmart } from "#/templates/gdoSataniaEvilSmart.tsx";
 import { gdoSataniaEvilSmart1 } from "#/templates/gdoSataniaEvilSmart1.tsx";
@@ -737,6 +737,8 @@ import { btrBocchiIntrovertStages } from "#/templates/btrBocchiIntrovertStages.t
 import { btrBocchiIntrovertStages1 } from "#/templates/btrBocchiIntrovertStages1.tsx";
 import { btrBocchiIntrovertStages2 } from "#/templates/btrBocchiIntrovertStages2.tsx";
 import { btrBocchiIntrovertStages3 } from "#/templates/btrBocchiIntrovertStages3.tsx";
+import { gdoRaphielSmile } from "#/templates/gdoRaphielSmile.tsx";
+import { gdoRaphielAraAra1 } from "#/templates/gdoRaphielAraAra1.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1173,7 +1175,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             gdoGabrielCozy,
             gdoGabrielEating,
             gdoRaphielAraAra,
-            gdoRaphielSmile,
+            gdoRaphielLaughing,
             gdoSataniaAngryCrying,
             gdoSataniaEvilSmart,
             gdoSataniaEvilSmart1,
@@ -1507,6 +1509,8 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiIntrovertStages1,
             btrBocchiIntrovertStages2,
             btrBocchiIntrovertStages3,
+            gdoRaphielSmile,
+            gdoRaphielAraAra1,
         ];
 
         return this._templates;
