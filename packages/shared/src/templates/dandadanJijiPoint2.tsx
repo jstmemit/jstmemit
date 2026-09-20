@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const dandadanJijiPoint2: Template = {
+    name: "dandadanJijiPoint2",
+    displayName: buildLocales("Jiji pointing 2", {
+        [Locale.Russian]: "Дзидзи показывает пальцем 2",
+        [Locale.Ukrainian]: "Дзідзі показує пальцем 2",
+        [Locale.Dutch]: "Jiji wijst 2",
+        [Locale.French]: "Jiji qui pointe du doigt 2",
+        [Locale.German]: "Jiji zeigt 2",
+        [Locale.Polish]: "Jiji wskazuje 2",
+        [Locale.SpanishES]: "Jiji señalando 2",
+        [Locale.SpanishLATAM]: "Jiji señalando 2",
+        [Locale.PortugueseBR]: "Jiji apontando 2",
+        [Locale.Turkish]: "Jiji işaret ediyor 2",
+        [Locale.Italian]: "Jiji che indica 2",
+        [Locale.Indonesian]: "Jiji menunjuk 2",
+        [Locale.Czech]: "Jiji ukazuje 2",
+        [Locale.Japanese]: "指を差すジジ 2",
+        [Locale.Korean]: "손가락으로 가리키는 지지 2",
+        [Locale.ChineseCN]: "吉吉指着 2",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.Dandadan],
+    types: [Type.TextTopWithBackground],
+    width: 498,
+    height: 381,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
-                style={{ position: "absolute", bottom: 0, left: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/dandadanJijiPoint2.png"
+                width={498}
+                height={281}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

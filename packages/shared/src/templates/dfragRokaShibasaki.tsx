@@ -55,7 +55,7 @@ export const dfragRokaShibasaki: Template = {
                 height={230}
                 style={{
                     position: "absolute",
-                    top: 160,
+                    top: 190,
                     left: 270,
                     borderRadius: "100%",
                     objectFit: "cover",

@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const gintamaGintokiBruh: Template = {
+    name: "gintamaGintokiBruh",
+    displayName: buildLocales("Gintoki bruh", {
+        [Locale.Russian]: "Гинтоки bruh",
+        [Locale.Ukrainian]: "Гінтокі bruh",
+        [Locale.Dutch]: "Gintoki bruh",
+        [Locale.French]: "Gintoki bruh",
+        [Locale.German]: "Gintoki bruh",
+        [Locale.Polish]: "Gintoki bruh",
+        [Locale.SpanishES]: "Gintoki bruh",
+        [Locale.SpanishLATAM]: "Gintoki bruh",
+        [Locale.PortugueseBR]: "Gintoki bruh",
+        [Locale.Turkish]: "Gintoki bruh",
+        [Locale.Italian]: "Gintoki bruh",
+        [Locale.Indonesian]: "Gintoki bruh",
+        [Locale.Czech]: "Gintoki bruh",
+        [Locale.Japanese]: "呆れる銀時",
+        [Locale.Korean]: "어이없는 긴토키",
+        [Locale.ChineseCN]: "无语的银时",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 474,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiBruh.png"
+                width={500}
+                height={374}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

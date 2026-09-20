@@ -7,32 +7,31 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoGabrielEating: Template = {
-    name: "gdoGabrielEating",
-    displayName: buildLocales("Gabriel eating", {
-        [Locale.Russian]: "Габриэль ест",
-        [Locale.Ukrainian]: "Габріель їсть",
-        [Locale.Dutch]: "Gabriel eet",
-        [Locale.French]: "Gabriel qui mange",
-        [Locale.German]: "Gabriel isst",
-        [Locale.Polish]: "Gabriel je",
-        [Locale.SpanishES]: "Gabriel comiendo",
-        [Locale.SpanishLATAM]: "Gabriel comiendo",
-        [Locale.PortugueseBR]: "Gabriel comendo",
-        [Locale.Turkish]: "Gabriel yemek yiyor",
-        [Locale.Italian]: "Gabriel che mangia",
-        [Locale.Indonesian]: "Gabriel makan",
-        [Locale.Czech]: "Gabriel jí",
-        [Locale.Japanese]: "食べるガヴリール",
-        [Locale.Korean]: "먹는 가브릴",
-        [Locale.ChineseCN]: "吃东西的珈百璃",
+export const frierenCold1: Template = {
+    name: "frierenCold1",
+    displayName: buildLocales("Cold Frieren 1", {
+        [Locale.Russian]: "Замерзшая Фрирен 1",
+        [Locale.Ukrainian]: "Змерзла Фрірен 1",
+        [Locale.Dutch]: "Koude Frieren 1",
+        [Locale.French]: "Frieren qui a froid 1",
+        [Locale.German]: "Frierende Frieren 1",
+        [Locale.Polish]: "Zmarznięta Frieren 1",
+        [Locale.SpanishES]: "Frieren con frío 1",
+        [Locale.SpanishLATAM]: "Frieren con frío 1",
+        [Locale.PortugueseBR]: "Frieren com frio 1",
+        [Locale.Turkish]: "Üşüyen Frieren 1",
+        [Locale.Italian]: "Frieren infreddolita 1",
+        [Locale.Indonesian]: "Frieren kedinginan 1",
+        [Locale.Czech]: "Zmrzlá Frieren 1",
+        [Locale.Japanese]: "寒がるフリーレン 1",
+        [Locale.Korean]: "추워하는 프리렌 1",
+        [Locale.ChineseCN]: "受冻的芙莉莲 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextLeftWithBackground, Type.Animated],
-    width: 1080,
-    height: 540,
-    animationDuration: 560,
-    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 12 }],
+    topics: [Topic.Reaction, Topic.Anime, Topic.Frieren],
+    types: [Type.TextRightWithBackground],
+    width: 992,
+    height: 480,
+    texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 11 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
         <div
@@ -45,15 +44,15 @@ export const gdoGabrielEating: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoGabrielEating.gif"
-                width={540}
-                height={540}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/frierenCold1.png"
+                width={496}
+                height={480}
+                style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    left: 0,
+                    right: 0,
                     top: 0,
                     width: "50%",
                     height: "100%",
@@ -61,7 +60,7 @@ export const gdoGabrielEating: Template = {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
-                    padding: "20px",
+                    padding: "10px",
                     backgroundColor: "white",
                 }}
             >

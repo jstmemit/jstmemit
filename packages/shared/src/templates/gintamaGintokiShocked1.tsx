@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const gintamaGintokiShocked1: Template = {
+    name: "gintamaGintokiShocked1",
+    displayName: buildLocales("Shocked Gintoki 1", {
+        [Locale.Russian]: "Шокированный Гинтоки 1",
+        [Locale.Ukrainian]: "Шокований Гінтокі 1",
+        [Locale.Dutch]: "Geshockeerde Gintoki 1",
+        [Locale.French]: "Gintoki choqué 1",
+        [Locale.German]: "Geschockter Gintoki 1",
+        [Locale.Polish]: "Zszokowany Gintoki 1",
+        [Locale.SpanishES]: "Gintoki en shock 1",
+        [Locale.SpanishLATAM]: "Gintoki en shock 1",
+        [Locale.PortugueseBR]: "Gintoki chocado 1",
+        [Locale.Turkish]: "Şok olmuş Gintoki 1",
+        [Locale.Italian]: "Gintoki scioccato 1",
+        [Locale.Indonesian]: "Gintoki terkejut 1",
+        [Locale.Czech]: "Šokovaný Gintoki 1",
+        [Locale.Japanese]: "ショックを受ける銀時 1",
+        [Locale.Korean]: "충격받은 긴토키 1",
+        [Locale.ChineseCN]: "震惊的银时 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
+    types: [Type.TextTopWithBackground],
+    width: 500,
+    height: 474,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiShocked1.png"
+                width={500}
+                height={374}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -28,7 +28,7 @@ export const gintamaGintokiRealizationStages: Template = {
         [Locale.ChineseCN]: "银时认知的几个阶段",
     }),
     topics: [Topic.Reaction, Topic.Anime, Topic.Gintama],
-    types: [Type.ThreeOption, Type.TextRightWithBackground],
+    types: [Type.ThreeOption, Type.TextLeftWithBackground],
     width: 1084,
     height: 1080,
     texts: [
@@ -51,12 +51,12 @@ export const gintamaGintokiRealizationStages: Template = {
                 src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gintamaGintokiRealizationStages.png"
                 width={542}
                 height={1080}
-                style={{ position: "absolute", bottom: 0, left: 0 }}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "50%",
                     height: "33%",
@@ -85,7 +85,7 @@ export const gintamaGintokiRealizationStages: Template = {
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: "33%",
                     width: "50%",
                     height: "34%",
@@ -114,7 +114,7 @@ export const gintamaGintokiRealizationStages: Template = {
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     bottom: 0,
                     width: "50%",
                     height: "33%",

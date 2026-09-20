@@ -400,7 +400,7 @@ import { frierenWarming } from "#/templates/frierenWarming.tsx";
 import { gdoGabrielCozy } from "#/templates/gdoGabrielCozy.tsx";
 import { gdoGabrielEating } from "#/templates/gdoGabrielEating.tsx";
 import { gdoRaphielAraAra } from "#/templates/gdoRaphielAraAra.tsx";
-import { gdoRaphielSmile } from "#/templates/gdoRaphielSmile.tsx";
+import { gdoRaphielLaughing } from "#/templates/gdoRaphielLaughing.tsx";
 import { gdoSataniaAngryCrying } from "#/templates/gdoSataniaAngryCrying.tsx";
 import { gdoSataniaEvilSmart } from "#/templates/gdoSataniaEvilSmart.tsx";
 import { gdoSataniaEvilSmart1 } from "#/templates/gdoSataniaEvilSmart1.tsx";
@@ -737,6 +737,45 @@ import { btrBocchiIntrovertStages } from "#/templates/btrBocchiIntrovertStages.t
 import { btrBocchiIntrovertStages1 } from "#/templates/btrBocchiIntrovertStages1.tsx";
 import { btrBocchiIntrovertStages2 } from "#/templates/btrBocchiIntrovertStages2.tsx";
 import { btrBocchiIntrovertStages3 } from "#/templates/btrBocchiIntrovertStages3.tsx";
+import { gdoRaphielSmile } from "#/templates/gdoRaphielSmile.tsx";
+import { gdoRaphielAraAra1 } from "#/templates/gdoRaphielAraAra1.tsx";
+import { dandadanJijiPoint1 } from "#/templates/dandadanJijiPoint1.tsx";
+import { dandadanJijiPoint2 } from "#/templates/dandadanJijiPoint2.tsx";
+import { dandadanOkarunAura1 } from "#/templates/dandadanOkarunAura1.tsx";
+import { dandadanOkarunWriting1 } from "#/templates/dandadanOkarunWriting1.tsx";
+import { dandadanTurboGrannyDance1 } from "#/templates/dandadanTurboGrannyDance1.tsx";
+import { dandadanTurboGrannyHearingMusic1 } from "#/templates/dandadanTurboGrannyHearingMusic1.tsx";
+import { dfragRokaDarkness1 } from "#/templates/dfragRokaDarkness1.tsx";
+import { ditfZeroTwoCrying1 } from "#/templates/ditfZeroTwoCrying1.tsx";
+import { ditfZeroTwoSmile1 } from "#/templates/ditfZeroTwoSmile1.tsx";
+import { dnNearListening1 } from "#/templates/dnNearListening1.tsx";
+import { dnNearShocked1 } from "#/templates/dnNearShocked1.tsx";
+import { eightySixHenriettaAngry1 } from "#/templates/eightySixHenriettaAngry1.tsx";
+import { gintamaKaguraAnnoyed1 } from "#/templates/gintamaKaguraAnnoyed1.tsx";
+import { frierenCold1 } from "#/templates/frierenCold1.tsx";
+import { frierenCrying1 } from "#/templates/frierenCrying1.tsx";
+import { frierenWarming1 } from "#/templates/frierenWarming1.tsx";
+import { gdoGabrielCozy1 } from "#/templates/gdoGabrielCozy1.tsx";
+import { gdoSataniaAngryCrying1 } from "#/templates/gdoSataniaAngryCrying1.tsx";
+import { gintamaGintokiShocked1 } from "#/templates/gintamaGintokiShocked1.tsx";
+import { gintamaGintokiBruh } from "#/templates/gintamaGintokiBruh.tsx";
+import { gintamaGintokiShocked2 } from "#/templates/gintamaGintokiShocked2.tsx";
+import { hucUmaruCoolSunglasses1 } from "#/templates/hucUmaruCoolSunglasses1.tsx";
+import { hucUmaruCryingLoudly1 } from "#/templates/hucUmaruCryingLoudly1.tsx";
+import { hucUmaruExcited1 } from "#/templates/hucUmaruExcited1.tsx";
+import { hucUmaruHeadpat1 } from "#/templates/hucUmaruHeadpat1.tsx";
+import { hucUmaruPouting1 } from "#/templates/hucUmaruPouting1.tsx";
+import { hucUmaruRagingFire1 } from "#/templates/hucUmaruRagingFire1.tsx";
+import { hucUmaruSkepticalIndifference } from "#/templates/hucUmaruSkepticalIndifference.tsx";
+import { hucUmaruSleeping1 } from "#/templates/hucUmaruSleeping1.tsx";
+import { hucUmaruStarEyes1 } from "#/templates/hucUmaruStarEyes1.tsx";
+import { hucUmaruTotalShock } from "#/templates/hucUmaruTotalShock.tsx";
+import { hucUmaruTotalShock1 } from "#/templates/hucUmaruTotalShock1.tsx";
+import { hucUmaruUnrestrainedJoy } from "#/templates/hucUmaruUnrestrainedJoy.tsx";
+import { hucUmaruExpectationVsReality } from "#/templates/hucUmaruExpectatioVsReality.tsx";
+import { hucUmaruExpectationVsReality1 } from "#/templates/hucUmaruExpectatioVsReality1.tsx";
+import { hucUmaruExpectationVsReality2 } from "#/templates/hucUmaruExpectatioVsReality2.tsx";
+import { hucUmaruExpectationVsReality3 } from "#/templates/hucUmaruExpectatioVsReality3.tsx";
 
 export class TemplatesRepository implements ITemplatesRepository {
     private _imageUrls: string[] | undefined;
@@ -1173,7 +1212,7 @@ export class TemplatesRepository implements ITemplatesRepository {
             gdoGabrielCozy,
             gdoGabrielEating,
             gdoRaphielAraAra,
-            gdoRaphielSmile,
+            gdoRaphielLaughing,
             gdoSataniaAngryCrying,
             gdoSataniaEvilSmart,
             gdoSataniaEvilSmart1,
@@ -1507,6 +1546,45 @@ export class TemplatesRepository implements ITemplatesRepository {
             btrBocchiIntrovertStages1,
             btrBocchiIntrovertStages2,
             btrBocchiIntrovertStages3,
+            gdoRaphielSmile,
+            gdoRaphielAraAra1,
+            dandadanJijiPoint1,
+            dandadanJijiPoint2,
+            dandadanOkarunAura1,
+            dandadanOkarunWriting1,
+            dandadanTurboGrannyDance1,
+            dandadanTurboGrannyHearingMusic1,
+            dfragRokaDarkness1,
+            ditfZeroTwoCrying1,
+            ditfZeroTwoSmile1,
+            dnNearListening1,
+            dnNearShocked1,
+            eightySixHenriettaAngry1,
+            gintamaKaguraAnnoyed1,
+            frierenCold1,
+            frierenCrying1,
+            frierenWarming1,
+            gdoGabrielCozy1,
+            gdoSataniaAngryCrying1,
+            gintamaGintokiShocked1,
+            gintamaGintokiBruh,
+            gintamaGintokiShocked2,
+            hucUmaruCoolSunglasses1,
+            hucUmaruCryingLoudly1,
+            hucUmaruExcited1,
+            hucUmaruHeadpat1,
+            hucUmaruPouting1,
+            hucUmaruRagingFire1,
+            hucUmaruSkepticalIndifference,
+            hucUmaruSleeping1,
+            hucUmaruStarEyes1,
+            hucUmaruTotalShock,
+            hucUmaruTotalShock1,
+            hucUmaruUnrestrainedJoy,
+            hucUmaruExpectationVsReality,
+            hucUmaruExpectationVsReality1,
+            hucUmaruExpectationVsReality2,
+            hucUmaruExpectationVsReality3,
         ];
 
         return this._templates;

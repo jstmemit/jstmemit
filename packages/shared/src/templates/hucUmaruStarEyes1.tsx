@@ -7,31 +7,30 @@ import { buildLocales } from "@jstmemit/i18n/helpers/buildLocales";
 import { Locale } from "discord.js";
 import { fontSize } from "#/utils/fontSize.ts";
 
-export const gdoSataniaAngryCrying: Template = {
-    name: "gdoSataniaAngryCrying",
-    displayName: buildLocales("Satania crying angrily", {
-        [Locale.Russian]: "Сатания злобно плачет",
-        [Locale.Ukrainian]: "Сатанія злісно плаче",
-        [Locale.Dutch]: "Satania huilt boos",
-        [Locale.French]: "Satania qui pleure de colère",
-        [Locale.German]: "Satania weint wütend",
-        [Locale.Polish]: "Satania płacze ze złości",
-        [Locale.SpanishES]: "Satania llorando de enfado",
-        [Locale.SpanishLATAM]: "Satania llorando de enojo",
-        [Locale.PortugueseBR]: "Satania chorando de raiva",
-        [Locale.Turkish]: "Satania öfkeyle ağlıyor",
-        [Locale.Italian]: "Satania che piange arrabbiata",
-        [Locale.Indonesian]: "Satania menangis dengan marah",
-        [Locale.Czech]: "Satania naštvaně pláče",
-        [Locale.Japanese]: "怒り泣きするサターニャ",
-        [Locale.Korean]: "화내며 우는 사타냐",
-        [Locale.ChineseCN]: "萨塔妮亚气哭",
+export const hucUmaruStarEyes1: Template = {
+    name: "hucUmaruStarEyes1",
+    displayName: buildLocales("Star-eyed Umaru 1", {
+        [Locale.Russian]: "Умару со звездочками в глазах 1",
+        [Locale.Ukrainian]: "Умару із зірочками в очах 1",
+        [Locale.Dutch]: "Umaru met sterrenogen 1",
+        [Locale.French]: "Umaru avec des étoiles dans les yeux 1",
+        [Locale.German]: "Umaru mit Sternenaugen 1",
+        [Locale.Polish]: "Umaru z gwiazdkami w oczach 1",
+        [Locale.SpanishES]: "Umaru con ojos de estrella 1",
+        [Locale.SpanishLATAM]: "Umaru con ojos de estrella 1",
+        [Locale.PortugueseBR]: "Umaru com olhos de estrela 1",
+        [Locale.Turkish]: "Yıldız gözlü Umaru 1",
+        [Locale.Italian]: "Umaru con gli occhi a stella 1",
+        [Locale.Indonesian]: "Umaru dengan mata bintang 1",
+        [Locale.Czech]: "Umaru s hvězdičkami v očích 1",
+        [Locale.Japanese]: "星目のうまる 1",
+        [Locale.Korean]: "별 눈을 한 우마루 1",
+        [Locale.ChineseCN]: "星星眼的小埋 1",
     }),
-    topics: [Topic.Reaction, Topic.Anime, Topic.GabrielDropOut],
-    types: [Type.TextTopWithBackground, Type.Animated],
-    width: 600,
-    height: 408,
-    animationDuration: 1500,
+    topics: [Topic.Reaction, Topic.Anime, Topic.HimoutoUmaruChan],
+    types: [Type.TextTopWithBackground],
+    width: 540,
+    height: 400,
     texts: [{ id: 0, description: "caption", minLength: 1, maxLength: 8 }],
     images: [],
     element: ({ texts, font }: TemplateProps) => (
@@ -45,18 +44,18 @@ export const gdoSataniaAngryCrying: Template = {
             }}
         >
             <img
-                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/gifs/gdoSataniaAngryCrying.gif"
-                width={600}
-                height={318}
+                src="https://wideunits.nl/cdn-cgi/image/f=webp,q=50,w=800,metadata=none,fit=scale-down,onerror=redirect/https://files.wideunits.nl/jstmemit/images/templates/hucUmaruStarEyes1.png"
+                width={540}
+                height={300}
                 style={{ position: "absolute", bottom: 0, left: 0 }}
             />
             <div
                 style={{
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     top: 0,
                     width: "100%",
-                    height: "110px",
+                    height: "100px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
